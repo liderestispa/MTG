@@ -1,0 +1,105 @@
+{
+ "probadas": 4,
+ "entradas": [
+  {
+   "spec": "ETBMANA_ON=1",
+   "media": 0.015,
+   "sd": 0.0031,
+   "se": 0.0014,
+   "z_exigido": 1.96,
+   "n_probadas": 1,
+   "confirmacion": null,
+   "veredicto": "empeora",
+   "motivo": "+0.015 significativo",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.558,
+    1.631,
+    1.606,
+    1.56,
+    1.551
+   ]
+  },
+  {
+   "spec": "RECUR_ON=1",
+   "media": -0.0019,
+   "sd": 0.0037,
+   "se": 0.0016,
+   "z_exigido": 2.241,
+   "n_probadas": 2,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|-0.002| no supera 2.24·0.002=0.004",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.549,
+    1.619,
+    1.588,
+    1.538,
+    1.528
+   ]
+  },
+  {
+   "spec": "CMCRED=1",
+   "media": 0.0267,
+   "sd": 0.0338,
+   "se": 0.0151,
+   "z_exigido": 2.394,
+   "n_probadas": 3,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|+0.027| no supera 2.39·0.015=0.036",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.575,
+    1.686,
+    1.594,
+    1.592,
+    1.518
+   ]
+  },
+  {
+   "spec": "NETDRAW=1",
+   "media": 0.2886,
+   "sd": 0.0117,
+   "se": 0.0052,
+   "z_exigido": 2.498,
+   "n_probadas": 4,
+   "confirmacion": null,
+   "veredicto": "empeora",
+   "motivo": "+0.289 significativo",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.84,
+    1.893,
+    1.868,
+    1.841,
+    1.832
+   ]
+  }
+ ]
+}
