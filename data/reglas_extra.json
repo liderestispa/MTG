@@ -1,75 +1,105 @@
 {
-  "_lee_esto": [
-    "Reglas del extractor guardadas como datos. src/extract.py las aplica al final de",
-    "parse_card, sobre las ranuras de efecto que hayan quedado libres.",
-    "",
-    "Existen para que src/laboratorio.py pueda proponer, encender, medir y descartar",
-    "reglas nuevas sin que nadie escriba Python. Escribir la regla a partir del texto de",
-    "una carta sigue necesitando criterio (o sea, tokens); medirla y validarla no.",
-    "",
-    "Campos:",
-    "  nombre      identificador unico, es la clave del registro del laboratorio",
-    "  patron      regex sobre el oracle_text en minusculas, sin texto recordatorio",
-    "  efecto      clave del enum E de extract.py (LORD, ETB_DRAIN, BURN_FACE...)",
-    "  p1, p2      parametros del efecto. Si p1 falta y el patron captura un grupo,",
-    "              se usa ese numero",
-    "  tipo_linea  opcional: exige que type_line contenga esa cadena (Creature, Land...)",
-    "  activo      false mientras se mide, true una vez adoptada",
-    "  nota        que mecanica es y que midio",
-    "",
-    "Reglas: REGLAS_OFF=1 apaga todas. REGLA_SOLO=<nombre> deja solo esa activa.",
-    "NUNCA marques activo:true sin haberla pasado por src/laboratorio.py.",
-    "",
-    "Las de abajo salieron de src/cobertura_texto.py: son cartas del banco cuyo texto el",
-    "motor no lee, y cuya mecanica ya tiene un efecto implementado en sim.c. Estan",
-    "apagadas a la espera de medicion."
-  ],
-  "reglas": [
-    {
-      "nombre": "tapdown_multiple",
-      "patron": "tap up to (\\w+) target creatures?",
-      "efecto": "TAPDOWN",
-      "activo": false,
-      "nota": "Eddymurk Crab (4x Izzet Spellementals) y Floodpits Drowner (4x Dimir Midrange). El efecto TAPDOWN ya existe; falta la rama 'up to N'."
-    },
-    {
-      "nombre": "rebote_masivo_no_tipo",
-      "patron": "return all (?:non-\\w+ )?creatures to their owners' hands",
-      "efecto": "MASS_BOUNCE",
-      "activo": false,
-      "nota": "Sunderflock (4x Izzet Spellementals). La regla actual de MASS_BOUNCE no cubre la forma 'all non-X creatures'."
-    },
-    {
-      "nombre": "exilia_artefacto_rival",
-      "patron": "exile target (?:artifact or enchantment|artifact|enchantment) an opponent controls",
-      "efecto": "EXILE",
-      "activo": false,
-      "nota": "Masked Vandal (4x Elves). Hoy sale en blanco: la regla de EXILE pide 'creature|permanent|nonland'."
-    },
-    {
-      "nombre": "vida_igual_a_su_fuerza",
-      "patron": "you gain life equal to its power",
-      "efecto": "LIFEGAIN",
-      "p1": 4,
-      "activo": false,
-      "nota": "Boulderbranch Golem (3x Tron), que es un 4/5. p1=4 aproxima 'su fuerza'; si la regla paga, conviene hacerlo dinamico."
-    },
-    {
-      "nombre": "mirar_y_exiliar_de_la_mano",
-      "patron": "look at target opponent's hand",
-      "efecto": "ETB_DISCARD",
-      "p1": 1,
-      "activo": false,
-      "nota": "Deep-Cavern Bat (5x, dos mazos de Brawl). Exiliar una carta no-tierra de la mano rival es descarte con otro nombre, que es como ya se modela en otras cartas."
-    },
-    {
-      "nombre": "contadores_por_descarte",
-      "patron": "whenever you discard one or more cards, put that many \\+1/\\+1 counters",
-      "efecto": "COND_BUFF",
-      "p1": 1,
-      "p2": 1,
-      "activo": false,
-      "nota": "Marauding Mako (4x Mardu Discard) en un mazo cuyo plan es descartar. Aproximado como bono condicional."
-    }
-  ]
+ "_lee_esto": [
+  "Reglas del extractor guardadas como datos. src/extract.py las aplica al final de",
+  "parse_card, sobre las ranuras de efecto que hayan quedado libres.",
+  "",
+  "Existen para que src/laboratorio.py pueda proponer, encender, medir y descartar",
+  "reglas nuevas sin que nadie escriba Python. Escribir la regla a partir del texto de",
+  "una carta sigue necesitando criterio (o sea, tokens); medirla y validarla no.",
+  "",
+  "Campos:",
+  "  nombre      identificador unico, es la clave del registro del laboratorio",
+  "  patron      regex sobre el oracle_text en minusculas, sin texto recordatorio",
+  "  efecto      clave del enum E de extract.py (LORD, ETB_DRAIN, BURN_FACE...)",
+  "  p1, p2      parametros del efecto. Si p1 falta y el patron captura un grupo,",
+  "              se usa ese numero",
+  "  tipo_linea  opcional: exige que type_line contenga esa cadena (Creature, Land...)",
+  "  activo      false mientras se mide, true una vez adoptada",
+  "  nota        que mecanica es y que midio",
+  "",
+  "Reglas: REGLAS_OFF=1 apaga todas. REGLA_SOLO=<nombre> deja solo esa activa.",
+  "NUNCA marques activo:true sin haberla pasado por src/laboratorio.py.",
+  "",
+  "Las de abajo salieron de src/cobertura_texto.py: son cartas del banco cuyo texto el",
+  "motor no lee, y cuya mecanica ya tiene un efecto implementado en sim.c. Estan",
+  "apagadas a la espera de medicion."
+ ],
+ "reglas": [
+  {
+   "nombre": "tapdown_multiple",
+   "patron": "tap up to (\\w+) target creatures?",
+   "efecto": "TAPDOWN",
+   "activo": false,
+   "nota": "Eddymurk Crab (4x Izzet Spellementals) y Floodpits Drowner (4x Dimir Midrange). El efecto TAPDOWN ya existe; falta la rama 'up to N'."
+  },
+  {
+   "nombre": "rebote_masivo_no_tipo",
+   "patron": "return all (?:non-\\w+ )?creatures to their owners' hands",
+   "efecto": "MASS_BOUNCE",
+   "activo": false,
+   "nota": "Sunderflock (4x Izzet Spellementals). La regla actual de MASS_BOUNCE no cubre la forma 'all non-X creatures'."
+  },
+  {
+   "nombre": "exilia_artefacto_rival",
+   "patron": "exile target (?:artifact or enchantment|artifact|enchantment) an opponent controls",
+   "efecto": "EXILE",
+   "activo": false,
+   "nota": "Masked Vandal (4x Elves). Hoy sale en blanco: la regla de EXILE pide 'creature|permanent|nonland'."
+  },
+  {
+   "nombre": "vida_igual_a_su_fuerza",
+   "patron": "you gain life equal to its power",
+   "efecto": "LIFEGAIN",
+   "p1": 4,
+   "activo": false,
+   "nota": "Boulderbranch Golem (3x Tron), que es un 4/5. p1=4 aproxima 'su fuerza'; si la regla paga, conviene hacerlo dinamico."
+  },
+  {
+   "nombre": "mirar_y_exiliar_de_la_mano",
+   "patron": "look at target opponent's hand",
+   "efecto": "ETB_DISCARD",
+   "p1": 1,
+   "activo": false,
+   "nota": "Deep-Cavern Bat (5x, dos mazos de Brawl). Exiliar una carta no-tierra de la mano rival es descarte con otro nombre, que es como ya se modela en otras cartas."
+  },
+  {
+   "nombre": "contadores_por_descarte",
+   "patron": "whenever you discard one or more cards, put that many \\+1/\\+1 counters",
+   "efecto": "COND_BUFF",
+   "p1": 1,
+   "p2": 1,
+   "activo": false,
+   "nota": "Marauding Mako (4x Mardu Discard) en un mazo cuyo plan es descartar. Aproximado como bono condicional."
+  },
+  {
+   "nombre": "ficha_de_sangre",
+   "patron": "create a blood token",
+   "efecto": "LOOT_TOKEN",
+   "activo": false,
+   "nota": "La ficha de Sangre es literalmente un loot: {1},{T},descartar una carta,sacrificar: roba una carta. E_LOOT_TOKEN hace exactamente eso (draw 1 + descarte al azar) y sim.c lo ejecuta en apply(). Es la unica candidata de las 12 que toca PAUPER, que es el formato con dato semanal y donde el motor funciona, y toca los dos arquetipos mas infravalorados del banco con el MISMO numero de copias (4x Voldaren Epicure en Mono Red Madness -7,7 y 4x en Mono Red Rally -13,1), asi que los sube juntos y no los comprime uno contra el otro: es justo la trampa que hundio a Burning-Tree Emissary, y aqui no se da. Ademas CLAUDE.md diagnostica que a Madness le falta 'el valor de los efectos de descarte', y las fichas de Sangre SON su motor de descarte (habilitan la locura de Fiery Temper). Conservadora por dos lados: el descarte del motor es al azar (peor que elegir) y en Madness descartar es un beneficio que el motor no cobra. Sin efecto secundario en la decision de lanzar: E_LOOT_TOKEN no puntua en defscore(), asi que no infla el orden de juego de ninguna carta. En Voldaren Epicure cae en eff2 (eff ya es BURN_FACE) y apply() lee eff2. OJO: sim.c ignora p1 en E_LOOT_TOKEN, siempre es un loot aunque la carta haga dos fichas. [propuesta por agente; 12 copias: 8x Voldaren Epicure (4x pauper/Mono Red Madness, 4x pauper/Mono Red Ra]",
+   "p1": 1,
+   "p2": 0,
+   "tipo_linea": ""
+  },
+  {
+   "nombre": "ficha_de_mapa",
+   "patron": "create a map token",
+   "efecto": "ETB_COUNTERS",
+   "activo": false,
+   "nota": "La ficha de Mapa es {1},{T},sacrificar: una criatura tuya explora. Explorar acaba en +1/+1 contador la mayoria de las veces (solo es carta si la de arriba es tierra), asi que E_ETB_COUNTERS 1 es la mitad conservadora; ejecutado en apply(), pone el contador en la criatura de mas fuerza. La alternativa E_ETB_DRAW 1 es la mitad generosa (roba con seleccion de 4) y sobrevalora un token que cuesta un mana y un sacrificio: si ETB_COUNTERS mide plano, probar ETB_DRAW 1 como segunda vuelta, no las dos a la vez. EFECTO LATERAL A VIGILAR: cast_phase penaliza -25 a E_ETB_COUNTERS cuando no controlas criaturas, y Spyglass Siren es el juego de turno 1 con mesa vacia. Con CAST_FLOOR=-20 igual se lanza (v=-14), pero si compite con otra carta de 1 mana se retrasa; si la regla sale peor, sospechar de esto antes que del contador. En Fanatical Offering cae en eff2 (eff ya es ETB_DRAW por 'draw two cards'), que apply() tambien lee, y ahi no hay penalizacion. [propuesta por agente; 7 copias: 4x Spyglass Siren (standard/Dimir Midrange) + 3x Fanatical Offering (p]",
+   "p1": 1,
+   "p2": 0,
+   "tipo_linea": ""
+  },
+  {
+   "nombre": "moonshadow_crece",
+   "patron": "remove a -1/-1 counter from this creature",
+   "efecto": "COND_BUFF",
+   "activo": false,
+   "nota": "Moonshadow es un 7/7 menace por {B} que entra con seis contadores -1/-1: extract.py ya lo baja bien a 1/1 con entering_counters(), pero no lee la mitad que los quita (cada vez que un permanente va a tu cementerio). Hoy el motor lo juega como un 1/1 vainilla con menace toda la partida. E_COND_BUFF es la ranura correcta —bono estatico sobre esa criatura, leido en combat() en las tres pasadas (eleccion de atacantes, orden y dano)— y sim.c lo ejecuta. LA MAS DEBIL DE LAS TRES, y hay que decirlo: el +2/+2 es un juicio, no una lectura del texto (un 3/3 por {B} es lo que suele acabar siendo en un mazo que descarta); solo engancha 4 copias de UN mazo, Mardu Discard, que es Standard y por tanto se mide contra dato pre-13-bans; y su hermana de mecanica y de mazo, contadores_por_descarte (Marauding Mako), ya midio +0,009, o sea peor pero por debajo del ruido. Medirla SOLA, nunca junto a contadores_por_descarte: las dos empujan al mismo arquetipo y sumadas dejan de ser una aproximacion y pasan a ser un parche. Nota menor: COND_BUFF solo se aplica atacando, no bloqueando; para una criatura con menace eso es casi todo su uso. [propuesta por agente; 4 copias: 4x Moonshadow (standard/Mardu Discard)]",
+   "p1": 2,
+   "p2": 2,
+   "tipo_linea": "Creature"
+  }
+ ]
 }

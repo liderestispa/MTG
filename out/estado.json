@@ -1,0 +1,47 @@
+{
+ "inicio": "2026-08-16T05:43:35",
+ "horas": 4.0,
+ "fase": "laboratorio (3 candidatas)",
+ "ciclo": 3,
+ "avisos": [],
+ "actualizado": "2026-08-16T06:01:41",
+ "objetivo_control": 1.547,
+ "cobertura": {
+  "blancas": 70,
+  "copias": 145,
+  "top": [
+   "6x Restless Reef",
+   "5x Deep-Cavern Bat",
+   "4x Superior Spider-Man",
+   "4x Blood Fountain",
+   "4x Masked Vandal",
+   "4x Eddymurk Crab",
+   "4x Sunderflock",
+   "4x Great Hall of the Biblioplex"
+  ]
+ },
+ "minutos_restantes": 222,
+ "laboratorio": {
+  "probadas": 14,
+  "veredictos": {
+   "irrelevante": 5,
+   "empeora": 4,
+   "ruido": 4,
+   "MEJORA": 1
+  },
+  "mejoras": [
+   {
+    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+    "media": -0.0656
+   }
+  ]
+ },
+ "politica": {
+  "gen": 290,
+  "base": 0.45754,
+  "mejor": 0.47516,
+  "reinicios": 1,
+  "sigma": 0.0363,
+  "ganancia_autojuego": 1.762
+ }
+}

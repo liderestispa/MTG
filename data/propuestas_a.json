@@ -1,0 +1,50 @@
+{
+ "_lee_esto": [
+  "Salida del ANALISTA DE COBERTURA (parte 1). Candidatas a data/reglas_extra.json,",
+  "sacadas de las 12 primeras BLANCAS de out/cobertura_banco.json por copias.",
+  "NINGUNA esta medida. Meterlas en reglas_extra.json con activo:false y pasarlas por",
+  "src/laboratorio.py una a una (REGLA_SOLO), nunca dos juntas.",
+  "",
+  "De las 12, solo estas 3 pasan los tres filtros. El descarte va en 'razonamiento'."
+ ],
+ "propuestas": [
+  {
+   "nombre": "ficha_de_sangre",
+   "patron": "create a blood token",
+   "efecto": "LOOT_TOKEN",
+   "p1": 1,
+   "p2": 0,
+   "tipo_linea": "",
+   "nota": "La ficha de Sangre es literalmente un loot: {1},{T},descartar una carta,sacrificar: roba una carta. E_LOOT_TOKEN hace exactamente eso (draw 1 + descarte al azar) y sim.c lo ejecuta en apply(). Es la unica candidata de las 12 que toca PAUPER, que es el formato con dato semanal y donde el motor funciona, y toca los dos arquetipos mas infravalorados del banco con el MISMO numero de copias (4x Voldaren Epicure en Mono Red Madness -7,7 y 4x en Mono Red Rally -13,1), asi que los sube juntos y no los comprime uno contra el otro: es justo la trampa que hundio a Burning-Tree Emissary, y aqui no se da. Ademas CLAUDE.md diagnostica que a Madness le falta 'el valor de los efectos de descarte', y las fichas de Sangre SON su motor de descarte (habilitan la locura de Fiery Temper). Conservadora por dos lados: el descarte del motor es al azar (peor que elegir) y en Madness descartar es un beneficio que el motor no cobra. Sin efecto secundario en la decision de lanzar: E_LOOT_TOKEN no puntua en defscore(), asi que no infla el orden de juego de ninguna carta. En Voldaren Epicure cae en eff2 (eff ya es BURN_FACE) y apply() lee eff2. OJO: sim.c ignora p1 en E_LOOT_TOKEN, siempre es un loot aunque la carta haga dos fichas.",
+   "cartas": "8x Voldaren Epicure (4x pauper/Mono Red Madness, 4x pauper/Mono Red Rally) + 4x Blood Fountain (2x pauper/Jund Wildfire, 2x pauper/Grixis Affinity)",
+   "copias": 12
+  },
+  {
+   "nombre": "ficha_de_mapa",
+   "patron": "create a map token",
+   "efecto": "ETB_COUNTERS",
+   "p1": 1,
+   "p2": 0,
+   "tipo_linea": "",
+   "nota": "La ficha de Mapa es {1},{T},sacrificar: una criatura tuya explora. Explorar acaba en +1/+1 contador la mayoria de las veces (solo es carta si la de arriba es tierra), asi que E_ETB_COUNTERS 1 es la mitad conservadora; ejecutado en apply(), pone el contador en la criatura de mas fuerza. La alternativa E_ETB_DRAW 1 es la mitad generosa (roba con seleccion de 4) y sobrevalora un token que cuesta un mana y un sacrificio: si ETB_COUNTERS mide plano, probar ETB_DRAW 1 como segunda vuelta, no las dos a la vez. EFECTO LATERAL A VIGILAR: cast_phase penaliza -25 a E_ETB_COUNTERS cuando no controlas criaturas, y Spyglass Siren es el juego de turno 1 con mesa vacia. Con CAST_FLOOR=-20 igual se lanza (v=-14), pero si compite con otra carta de 1 mana se retrasa; si la regla sale peor, sospechar de esto antes que del contador. En Fanatical Offering cae en eff2 (eff ya es ETB_DRAW por 'draw two cards'), que apply() tambien lee, y ahi no hay penalizacion.",
+   "cartas": "4x Spyglass Siren (standard/Dimir Midrange) + 3x Fanatical Offering (pauper/Jund Wildfire)",
+   "copias": 7
+  },
+  {
+   "nombre": "moonshadow_crece",
+   "patron": "remove a -1/-1 counter from this creature",
+   "efecto": "COND_BUFF",
+   "p1": 2,
+   "p2": 2,
+   "tipo_linea": "Creature",
+   "nota": "Moonshadow es un 7/7 menace por {B} que entra con seis contadores -1/-1: extract.py ya lo baja bien a 1/1 con entering_counters(), pero no lee la mitad que los quita (cada vez que un permanente va a tu cementerio). Hoy el motor lo juega como un 1/1 vainilla con menace toda la partida. E_COND_BUFF es la ranura correcta —bono estatico sobre esa criatura, leido en combat() en las tres pasadas (eleccion de atacantes, orden y dano)— y sim.c lo ejecuta. LA MAS DEBIL DE LAS TRES, y hay que decirlo: el +2/+2 es un juicio, no una lectura del texto (un 3/3 por {B} es lo que suele acabar siendo en un mazo que descarta); solo engancha 4 copias de UN mazo, Mardu Discard, que es Standard y por tanto se mide contra dato pre-13-bans; y su hermana de mecanica y de mazo, contadores_por_descarte (Marauding Mako), ya midio +0,009, o sea peor pero por debajo del ruido. Medirla SOLA, nunca junto a contadores_por_descarte: las dos empujan al mismo arquetipo y sumadas dejan de ser una aproximacion y pasan a ser un parche. Nota menor: COND_BUFF solo se aplica atacando, no bloqueando; para una criatura con menace eso es casi todo su uso.",
+   "cartas": "4x Moonshadow (standard/Mardu Discard)",
+   "copias": 4
+  }
+ ],
+ "razonamiento": [
+  "De las 12 BLANCAS mas copiadas, 14 copias (Restless Reef 6, Great Hall 4, Undercity Sewers 4) son TIERRAS y ninguna regla sobre ellas puede funcionar: addbf() manda las tierras a p->lands[] y nadie lee D[lands[i]].eff — ni apply(), ni upkeep(), ni lordbonus(), ni combat(). Es la trampa de E_RECURSIVE aplicada a un tipo de carta entero.",
+  "Otras 5 (Deep-Cavern Bat, Eddymurk Crab, Sunderflock, Masked Vandal, Marauding Mako) ya estan en reglas_extra.json y las 5 ya se midieron en out/laboratorio.json: dos empeoran de verdad (+0,149 Masked Vandal, +0,050 el Bat) y tres son irrelevantes (+0,009, +0,009, +0,000). Volver a proponerlas seria repetir trabajo hecho. Superior Spider-Man solo mapearia a E_REANIMATE, que esta declarado en el enum y NO se ejecuta en ningun sitio de sim.c: es codigo muerto, igual que lo era E_RECURSIVE.",
+  "Quedan tres. Solo la primera —ficha de Sangre, 12 copias, cuatro mazos de Pauper, el unico formato con dato fresco— tiene tamano para superar el ruido de +-0,02; las otras dos son honestas y baratas de medir pero de 7 y 4 copias, asi que lo esperable es que salgan 'irrelevante' como sus vecinas."
+ ]
+}
