@@ -1,0 +1,24 @@
+{
+  "_lee_esto": [
+    "Reglas del extractor guardadas como datos. src/extract.py las aplica al final de",
+    "parse_card, sobre las ranuras de efecto que hayan quedado libres.",
+    "",
+    "Existen para que src/laboratorio.py pueda proponer, encender, medir y descartar",
+    "reglas nuevas sin que nadie escriba Python. Escribir la regla a partir del texto de",
+    "una carta sigue necesitando criterio (o sea, tokens); medirla y validarla no.",
+    "",
+    "Campos:",
+    "  nombre      identificador unico, es la clave del registro del laboratorio",
+    "  patron      regex sobre el oracle_text en minusculas, sin texto recordatorio",
+    "  efecto      clave del enum E de extract.py (LORD, ETB_DRAIN, BURN_FACE...)",
+    "  p1, p2      parametros del efecto. Si p1 falta y el patron captura un grupo,",
+    "              se usa ese numero",
+    "  tipo_linea  opcional: exige que type_line contenga esa cadena (Creature, Land...)",
+    "  activo      false mientras se mide, true una vez adoptada",
+    "  nota        que mecanica es y que midio",
+    "",
+    "Reglas: REGLAS_OFF=1 apaga todas. REGLA_SOLO=<nombre> deja solo esa activa.",
+    "NUNCA marques activo:true sin haberla pasado por src/valida_semillas.py."
+  ],
+  "reglas": []
+}

@@ -1,6 +1,33 @@
 """Convierte texto oracle de Scryfall -> codigos de efecto para el motor en C."""
 import json, re, sys, os
 
+_REGLAS = None
+def reglas_extra(ruta='data/reglas_extra.json'):
+    """Reglas del extractor guardadas como DATOS, no como codigo.
+
+    Cada entrada: {nombre, patron, efecto, p1, p2, tipo_linea, activo, nota}.
+    Si p1 falta y el patron tiene un grupo, se usa el numero capturado. El laboratorio
+    las enciende y apaga para medirlas, asi que el motor puede ganar reglas nuevas sin
+    que nadie escriba Python. REGLAS_OFF=1 las desactiva todas de golpe.
+    """
+    global _REGLAS
+    if _REGLAS is None:
+        if os.environ.get('REGLAS_OFF') == '1':
+            _REGLAS = []
+        else:
+            try:
+                with open(ruta, encoding='utf-8') as f:
+                    _REGLAS = json.load(f).get('reglas', [])
+            except (OSError, ValueError):
+                _REGLAS = []
+            for r in _REGLAS:
+                r['_rx'] = re.compile(r['patron'], re.I)
+            solo = os.environ.get('REGLA_SOLO')      # medir una sola, por nombre
+            if solo:
+                for r in _REGLAS: r['activo'] = (r.get('nombre') == solo)
+    return _REGLAS
+
+
 # coste alternativo: "You may [hacer X] rather than pay this spell's mana cost".
 # Cobrar estas cartas a su coste nominal hace que el motor no las lance NUNCA:
 # Fireblast se veia a 6 mana en un mazo que juega 4 tierras. Devuelve (tipo, cantidad),
@@ -409,6 +436,19 @@ def parse_card(c):
     # sagas y planeswalkers: valor recurrente aproximado
     if 'saga' in tl.lower(): setp(E['ENGINE'], 1)
     if 'planeswalker' in tl.lower(): setp(E['ENGINE'], 1)
+    # ---- reglas de datos (data/reglas_extra.json) ----
+    # Se aplican al final, sobre las ranuras que hayan quedado libres. Estan en un JSON y
+    # no en codigo para que src/laboratorio.py pueda proponerlas, activarlas y medirlas
+    # sin tocar Python: es el mecanismo por el que el motor puede mejorarse solo.
+    for _r in reglas_extra():
+        if not _r.get('activo'): continue
+        if _r.get('tipo_linea') and _r['tipo_linea'].lower() not in tl.lower(): continue
+        _mm = _r['_rx'].search(low)
+        if not _mm: continue
+        _v = _r.get('p1')
+        if _v is None and _mm.groups():
+            _v = num(_mm.group(1), 1)
+        setp(E[_r['efecto']], _v if _v is not None else 1, _r.get('p2', 0))
     return out
 
 def color_mask(cols):
