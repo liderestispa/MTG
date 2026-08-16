@@ -77,7 +77,7 @@
    "efecto": "DMG_ANY",
    "p1": 1,
    "p2": 0,
-   "activo": false,
+   "activo": true,
    "nota": "MEDIR ESTA PRIMERA. 4 copias, todas en pauper/Mono Red Madness, que es el arquetipo con MEJOR direccion del banco (-0,069 de objetivo por +2 puntos, 3,5x el ruido) y el que CLAUDE.md manda arreglar antes que Rally. Es lectura exacta, no aproximacion: la retrospectiva es un segundo Lava Dart de 1 de dano, y por eso mata dos x/1. Verificado el guion: extract.py normaliza la raya larga a guion (linea 86, txt.lower().replace('-','-')), asi que el patron casa el texto real 'Flashback[raya]Sacrifice a Mountain'; casa 1 sola carta en el banco y 0 en la coleccion de Ricardo. Cae en eff2 (eff ya es DMG_ANY) y apply() despacha E_DMG_ANY en cualquier ranura (sim.c:492), tanto al lanzar como en defender_instants. Sesgos conocidos, los dos conservadores en direccion contraria: el motor aplica los dos disparos a la vez (sobrevalora tempo) y no cobra el sacrificio de la Montana; en cambio defscore() y el bonus de remate (+60 si opp->life <= d->p1) solo miran eff, o sea que el motor sigue valorando la carta como 1 de dano al decidir lanzarla."
   },
   {
@@ -96,7 +96,7 @@
    "efecto": "LIFEGAIN",
    "p1": 2,
    "p2": 0,
-   "activo": false,
+   "activo": true,
    "nota": "4x Reckoner's Bargain en pauper/Grixis Affinity, segunda mejor direccion del banco (-0,059 por +2 puntos). Hoy la carta se lee solo como 'roba dos' (eff=ETB_DRAW) y pierde entera la mitad de vida; la regla cae en eff2, que apply() ejecuta (sim.c:607, me->life+=q1). p1=2 aproxima el valor manico de lo sacrificado en un mazo de afinidad (Ichor Wellspring, Blood Fountain, Chromatic Star: 1-2). No colisiona con la regla hermana ya presente: 'you gain life equal to its power' casa Boulderbranch Golem y esta casa solo Reckoner's Bargain (verificado sobre el banco entero y sobre pool.json). Sesgo conocido: el coste adicional (sacrificar artefacto o criatura) sigue sin cobrarse, asi que la carta queda todavia mas barata de lo que es; si mide muy bien, sospechar de eso antes de celebrar."
   },
   {

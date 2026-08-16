@@ -1,0 +1,6 @@
+formato       motor calibrado   modelo tonto   gana el motor?
+standard                0.14%          2.44%        SI  +2.30
+pauper                  1.61%          4.40%        SI  +2.79
+
+GLOBAL                  1.14%          3.56%
+El motor aporta informacion: baja el error un 68% sobre no saber nada.

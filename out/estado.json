@@ -1,10 +1,10 @@
 {
- "inicio": "2026-08-16T06:06:43",
+ "inicio": "2026-08-16T16:43:24",
  "horas": 6.0,
  "fase": "entrenando (ciclo 1)",
  "ciclo": 1,
  "avisos": [],
- "actualizado": "2026-08-16T06:21:45",
+ "actualizado": "2026-08-16T16:43:36",
  "objetivo_control": 1.547,
  "cobertura": {
   "blancas": 70,
@@ -22,17 +22,41 @@
  },
  "minutos_restantes": 360,
  "laboratorio": {
-  "probadas": 25,
+  "probadas": 23,
   "veredictos": {
-   "irrelevante": 8,
-   "empeora": 9,
-   "ruido": 7,
-   "MEJORA": 1
+   "irrelevante": 3,
+   "empeora": 7,
+   "ruido": 6,
+   "MEJORA": 7
   },
   "mejoras": [
    {
     "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
     "media": -0.0656
+   },
+   {
+    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+    "media": -0.0656
+   },
+   {
+    "spec": "REGLA_SOLO=retro_lava_dart",
+    "media": -0.1329
+   },
+   {
+    "spec": "REGLA_SOLO=vida_por_permanente_sacrificado",
+    "media": -0.0541
+   },
+   {
+    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+    "media": -0.0451
+   },
+   {
+    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+    "media": -0.0479
+   },
+   {
+    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+    "media": -0.0417
    }
   ]
  }
