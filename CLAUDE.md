@@ -34,17 +34,17 @@ Todo lo de abajo está **medido sobre este árbol** y es reproducible. `out/obj_
 
 ```
 $ python3 src/obj_real.py 2000
-sta cal 0.01 (r=+1.00 x3.3) | pau cal 1.64 (r=+0.90 x2.4) | bra resid  2.27
-OBJETIVO 1.547
+sta cal 0.02 (r=+1.00 x3.3) | pau cal 1.24 (r=+0.94 x2.4) | bra resid  2.06
+OBJETIVO 1.270
 ```
 
 | Formato | Correlación de orden | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,90 (n=6) | **sí** — 2,18% vs 4,40% | el orden es utilizable |
-| Standard | r=+1,00 (n=4) | sí — 0,14% vs 2,44% | **no te lo creas, lee abajo** |
+| Pauper | r=+0,94 (n=6) | **sí** — 1,59% vs 4,40% | el orden es utilizable |
+| Standard | r=+1,00 (n=4) | sí — 0,11% vs 2,44% | **no te lo creas, lee abajo** |
 | Standard Brawl | 2 datos reales | sin datos suficientes | solo desplazamiento |
 
-`loocv.py 2500` global: 1,54% el motor contra 3,56% el modelo tonto, y por primera vez
+`loocv.py 2500` global: 1,12% el motor contra 3,56% el modelo tonto, y por primera vez
 imprime *"el motor aporta información"* en lugar del aviso de que no le gana a nada.
 
 > **El 0,14% de Standard no es una validación.** Son **n=4** puntos: una recta que pasa por
@@ -60,9 +60,9 @@ codiciosa (no hay que rehacer búsquedas):
 
 | Formato | Mazo | Semilla | Delta | Índice bruto |
 |---|---|---|---|---|
-| Standard WBG | 83,94 | 73,22 | +10,72 | 88,3% |
-| Pauper BR | 68,33 | 57,35 | +10,98 | 74,3% |
-| Brawl Dáin | 59,63 | — | — | 61,5% |
+| Standard WBG | 81,43 | 68,30 | +13,13 | 85,8% |
+| Pauper BR | 65,94 | 54,70 | +11,25 | 69,6% |
+| Brawl Dáin | 58,74 | — | — | 60,6% |
 
 ## El suelo de ruido de Pauper, y por qué no es un muro
 
@@ -72,7 +72,7 @@ Sobre las series de `REAL_SEMANAL`: dispersión semana a semana **4,68 puntos** 
 binomial equivale a N≈114 partidas no-espejo por semana. O sea, es muestreo, no metajuego.
 De ahí sale un suelo de **3,25 puntos** (2,21 descartando la serie más volátil).
 
-**El motor está hoy en 1,73%, por debajo de esa estimación.** No lo tomes como que está
+**El motor está hoy en 1,59%, por debajo de esa estimación.** No lo tomes como que está
 sobreajustado ni como que el suelo se "superó": lo que dice es que **el suelo era una cota
 superior**, por tres motivos que conviene tener presentes al volver a usarlo:
 
@@ -94,12 +94,11 @@ una recta devolvería 90% para cualquier cosa.
 
 | Arquetipo | Motor | Real | Error |
 |---|---|---|---|
-| Mono Red Rally (Pauper) | 33,3% | 46,4% | **−13,1** |
+| Mono Red Rally (Pauper) | 32,1% | 46,4% | **−14,3** |
+| Blue Terror (Pauper) | 43,5% | 52,0% | −8,5 |
 | Mardu Discard (Standard) | 41,2% | 49,9% | −8,7 |
-| Mono Red Madness (Pauper) | 45,3% | 53,0% | −7,7 |
-| Blue Terror (Pauper) | 44,6% | 52,0% | −7,4 |
 | Izzet Spellementals (Standard) | 45,2% | 51,1% | −5,9 |
-| Elves (Pauper) | 59,7% | 56,1% | +3,6 |
+| Mono Red Madness (Pauper) | 48,1% | 53,0% | −4,9 |
 
 Ojo con leer esta tabla como una lista de tareas. El objetivo mide **orden**, no error
 absoluto, y un análisis de la recta real=f(motor) mostró que varios de estos residuos son
