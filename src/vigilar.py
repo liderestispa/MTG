@@ -66,12 +66,19 @@ def foto():
     try:
         h = json.load(io.open('out/politica_hist.json', encoding='utf-8'))
         hist, base = h['hist'], h['base'] * 100
-        g = len(hist)
         ult = hist[-1]
         mejor = h['mejor'] * 100
+        # La generacion buena esta en el estado CEM, no aqui: politica_hist.json solo
+        # tiene las de ESTE bloque, asi que al trocear el entrenamiento en ciclos decia
+        # 26 cuando la real era 236. Un monitor que engana es peor que no tenerlo.
+        cem = json.load(io.open('out/politica_cem.json', encoding='utf-8')) \
+              if os.path.exists('out/politica_cem.json') else {}
+        g = cem.get('gen_total', len(hist))
+        rein = cem.get('reinicios', 0)
         ed = edad('out/politica_hist.json')
-        L.append(f"politica     gen {g}   base {base:.3f}%   mejor {mejor:.3f}%   "
-                 f"({mejor-base:+.3f})   ultima hace {hhmm(ed)}")
+        L.append(f"politica     gen {g} ({len(hist)} en este bloque, {rein} reinicios)   "
+                 f"base {base:.3f}%   mejor {mejor:.3f}%   ({mejor-base:+.3f})   "
+                 f"hace {hhmm(ed)}")
         L.append(f"             ultima gen: elite {ult['mejor_pob']*100:.3f}%  "
                  f"mu {ult['media_dist']*100:.3f}%  sigma {ult['sigma']:.3f}")
 
