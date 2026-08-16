@@ -32,14 +32,18 @@ REAL_FIELD = {
    # 'Orzhov Lifegain'  -> sin dato publicado
    # 'Dimir Midrange'   -> solo Arena Bo1 (poblacion distinta), no se usa
  },
- 'pauper': {            # MTGGoldfish, media de las semanas de MTGO jun-ago 2026
-   'Blue Terror':      0.520,   # 50.7 53.7 50.0 50.9 54.6
-   'Mono Red Madness': 0.530,   # 52.0 54.3 56.4 49.3   (papel Paupergeddon: 45.2)
-   'Mono Red Rally':   0.464,   # 34.6 51.8 47.7 51.5
-   'Jund Wildfire':    0.497,   # 52.6 51.5 51.0 50.7 42.5
-   'Grixis Affinity':  0.572,   # una sola medicion (abr 2026)
-   'Elves':            0.561,   # una sola medicion (jun 2026)
-   # 'Tron' -> sin dato publicado en ningun periodo de 2026
+ 'pauper': {   # mtgdecks.net, 2026-02-18 a 2026-08-17, SIN ESPEJO, ~28.000 partidas
+   # Sustituye a las medias semanales de MTGGoldfish (180-640 listas por semana). El
+   # cambio no es cosmetico: la dispersion pasa de 3,66 puntos a 1,04, y con ella la r
+   # del motor de +0,99 a +0,68. Aquel +0,99 era correlacion contra ruido de muestreo.
+   # El comentario de cada linea son las partidas no-espejo y el error al 95%.
+   'Mono Red Madness': 0.5111,  # 7.315 partidas, +-1,15
+   'Grixis Affinity':  0.5219,  # 5.526 partidas, +-1,32
+   'Blue Terror':      0.4894,  # 4.014 partidas, +-1,55
+   'Jund Wildfire':    0.5000,  # 3.949 partidas, +-1,56
+   'Elves':            0.5107,  # 3.884 partidas, +-1,57
+   'Mono Red Rally':   0.5000,  # 3.398 partidas, +-1,68
+   # 'Tron' -> el sitio lo separa en Monster/Altar/Flicker Tron, no cuadra con el banco
  },
  'brawl': {             # winrates de ladder reportados
    'Elspeth Storm Slayer':   0.77,

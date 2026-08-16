@@ -6,68 +6,33 @@
   ],
   "cname": "BG",
   "nland": 24,
-  "obj": 0.847631,
+  "obj": 0.850988,
   "counts": {
    "Giant's Boulder": 2,
    "Gollum, Riddle Master": 1,
    "The Sackville-Bagginses": 1,
    "Ravening Warg": 4,
-   "Warg Tactics": 3,
+   "Warg Tactics": 4,
    "Mirkwood Pathmaker": 2,
    "The Great Goblin": 1,
-   "Hog-Monkey": 1,
    "Walltop Sentries": 1,
    "Head of the Hunt": 2,
-   "Ordinary Bear": 1,
    "Large Bear": 2,
    "Old Fat Spider": 1,
+   "Boughside Wanderers": 1,
    "Gigantic Big Bear": 3,
-   "The Arkenstone // Seek the Heart": 1,
    "Stony-Voiced Goblins": 4,
-   "Pretending Poxbearers": 2,
-   "Crude Bent Blade": 1,
-   "Attercop": 1,
+   "Thrór's Map": 1,
+   "The Arkenstone // Seek the Heart": 1,
+   "Corrupt Court Official": 1,
    "Reverent Howl": 1,
-   "Old Thrush": 1
+   "Dreaded Bat-Cloud": 1,
+   "Attercop": 1,
+   "Gollum the Abandoned": 1
   },
   "util": [
    "Mirkwood",
    "Foggy Bottom Swamp"
-  ]
- },
- "pauper": {
-  "colors": [
-   "B",
-   "R"
-  ],
-  "cname": "BR",
-  "nland": 23,
-  "obj": 0.710025,
-  "counts": {
-   "Stir Up Trouble": 3,
-   "Giant's Boulder": 2,
-   "Ravening Warg": 4,
-   "Óin the Brave": 1,
-   "Old Thrush": 2,
-   "Pretending Poxbearers": 2,
-   "Dori, Bearer of Friends": 3,
-   "Hog-Monkey": 1,
-   "Vindictive Warden": 1,
-   "Duskwatch Hunter": 1,
-   "Gundabad Opportunist": 3,
-   "Mongoose Lizard": 1,
-   "Ragged Short Spear": 1,
-   "Cunning Maneuver": 1,
-   "Reverent Howl": 1,
-   "Stony-Voiced Goblins": 2,
-   "Crude Bent Blade": 4,
-   "Goblin-town Flunkies": 2,
-   "Corrupt Court Official": 1,
-   "Smaug's Fury": 1
-  },
-  "util": [
-   "Goblin-town",
-   "Boiling Rock Prison"
   ]
  }
 }

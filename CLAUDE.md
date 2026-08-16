@@ -27,42 +27,52 @@ Presupuesto declarado para mejorar: US$200-600.
 6. **Mide con semillas independientes.** Las búsquedas mienten con su propia semilla: la de Brawl
    decía +2,75 y con semillas nuevas era +0,35.
 
-## Estado actual del motor
+## Estado actual del motor — LEE ESTO ANTES QUE NADA
 
-Todo lo de abajo está **medido sobre este árbol** y es reproducible. `out/obj_eff2.txt`,
-`out/loocv_eff2.txt`.
+El 17-ago-2026 se cambio el banco de Pauper por dato de **77.000 partidas**
+(mtgdecks.net, sin espejo, `data/wr_mtgdecks_sin_espejo.json`) en lugar de medias de
+4-6 semanas de 180-640 listas. Eso reescribio lo que sabiamos:
 
 ```
 $ python3 src/obj_real.py 2000
-sta cal 0.02 (r=+1.00 x3.3) | pau cal 0.58 (r=+0.99 x2.4) | bra resid  2.06
-OBJETIVO 0.978
+sta cal 0.02 (r=+1.00 x3.3) | pau cal 0.83 (r=+0.68 x8.4) | bra resid  2.06
+OBJETIVO 1.072
 ```
 
-| Formato | Correlación de orden | ¿Le gana al modelo tonto? | Veredicto |
+| Formato | Correlación | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,99 (n=6) | **sí** — 0,95% vs 4,40% | el orden es utilizable |
-| Standard | r=+1,00 (n=4) | sí — 0,11% vs 2,44% | **no te lo creas, lee abajo** |
-| Standard Brawl | 2 datos reales | sin datos suficientes | solo desplazamiento |
+| Pauper | r=+0,68 (n=6) | **NO** — 1,31% contra 1,25% | **no aporta informacion** |
+| Standard | r=+1,00 (n=4) | sí — 0,11% contra 2,44% | n=4 y dato pre-ban: no vale |
+| Standard Brawl | 2 datos | sin muestra | solo desplazamiento |
 
-`loocv.py 2500` global: 0,67% el motor contra 3,56% el modelo tonto, y por primera vez
-imprime *"el motor aporta información"* en lugar del aviso de que no le gana a nada.
+**Pauper es un formato casi plano.** La dispersion real entre arquetipos es de **1,04
+puntos** y el error de medir cada uno es de ±1,2 a ±1,7 al 95%: la separacion es del
+mismo tamanio que el error. Con eso, "predice 50% para todos" es casi optimo, y el motor
+no le gana. Es exactamente el caso que `docs/metodologia.md` llama formato imposible.
 
-> **El 0,14% de Standard no es una validación.** Son **n=4** puntos: una recta que pasa por
-> cuatro puntos no demuestra casi nada, y r=+1,00 con esa muestra se saca por azar con más
-> frecuencia de la que parece. Encima el dato es de mayo 2026, **pre-13-bans**, así que ni
-> siquiera mide el formato que se juega hoy. Lo que sí dice el número es que se corrigió un
-> error de modelado grande y real (Four-Color Control estaba en −19,8 por una rama de regex
-> que faltaba). Standard sigue **sin validar** hasta que existan winrates posteriores a los
-> bans.
+El suelo de ruido, ahora calculable en binomial directo, es **0,76 puntos**. El modelo
+tonto esta en 1,25% y el motor en 1,31%.
 
-Los tres mazos revalidados con `revalidar.py 2500`, los tres siguen ganándole a su semilla
-codiciosa (no hay que rehacer búsquedas):
+**Lo que esto invalida.** Todo lo que se adopto contra el banco viejo se midio contra
+ruido. Revalidado contra el nuevo:
 
-| Formato | Mazo | Semilla | Delta | Índice bruto |
-|---|---|---|---|---|
-| Standard WBG | 81,43 | 68,30 | +13,13 | 85,8% |
-| Pauper BR | 65,94 | 54,70 | +11,25 | 69,6% |
-| Brawl Dáin | 58,74 | — | — | 60,6% |
+| cambio | contra banco nuevo |
+|---|---|
+| Arreglo de combate (`BLOQ_LIBRE`) | **ayuda**, +0,074 al quitarlo |
+| Las dos reglas del extractor (`REGLAS_OFF`) | **ayuda**, +0,054 al quitarlo |
+| Ranura de cementerio (`MUERTE_ON`) | irrelevante, −0,004 |
+| Habilidades activadas (`ACTIVADAS_ON`) | irrelevante, +0,003 |
+
+Las dos primeras se sostienen. Las dos ranuras nuevas quedan encendidas porque son
+modelos mas correctos y no cuestan nada, pero **su gran mejora aparente era ruido**: la
+de cementerio parecia llevar el error de 1,32 a 0,58 contra el banco viejo.
+
+**Lo que NO invalida, y conviene no perder de vista.** Que el motor no ordene bien seis
+arquetipos separados por un punto NO significa que no sirva para lo que se construyo.
+Comparar listas propias entre si —que es lo que hace `run_all.py`— es otro problema:
+ahi las diferencias son de 10-13 puntos contra la semilla codiciosa, no de uno. El
+indice bruto sigue valiendo para eso. Lo que hay que dejar de afirmar es que el motor
+predice el metajuego de Pauper.
 
 ## El suelo de ruido de Pauper, y por qué no es un muro
 
