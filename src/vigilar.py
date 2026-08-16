@@ -126,8 +126,14 @@ def foto():
                                capture_output=True, text=True)
             n = r.stdout.count('bin_sim.exe')
             L.append(f"motor        {n} procesos bin_sim vivos")
-            if n == 0:
-                avisos.append("NINGUN proceso del motor vivo. O termino, o se cayo.")
+            # Ver cero procesos NO significa nada por si solo: entre generaciones hay una
+            # pausa, y la evaluacion de la media corre en un solo proceso. Solo es un
+            # problema si ademas hace rato que no llega una generacion. Un monitor que
+            # grita en falso acaba ignorandose, que es peor que no tenerlo.
+            ed_gen = edad('out/politica_hist.json')
+            if n == 0 and (ed_gen is None or ed_gen > 180):
+                avisos.append("NINGUN proceso del motor vivo y sin generaciones nuevas: "
+                              "o termino, o se cayo.")
         except OSError:
             pass
 
