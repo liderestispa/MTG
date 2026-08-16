@@ -1,10 +1,10 @@
 {
  "inicio": "2026-08-16T18:47:58",
  "horas": 6.0,
- "fase": "entrenando (ciclo 1)",
- "ciclo": 1,
+ "fase": "entrenando (ciclo 2)",
+ "ciclo": 2,
  "avisos": [],
- "actualizado": "2026-08-16T18:48:10",
+ "actualizado": "2026-08-16T18:59:29",
  "objetivo_control": 0.978,
  "cobertura": {
   "blancas": 71,
@@ -20,12 +20,12 @@
    "4x Sunderflock"
   ]
  },
- "minutos_restantes": 360,
+ "minutos_restantes": 348,
  "laboratorio": {
-  "probadas": 28,
+  "probadas": 29,
   "veredictos": {
    "irrelevante": 3,
-   "empeora": 12,
+   "empeora": 13,
    "ruido": 6,
    "MEJORA": 7
   },
@@ -59,5 +59,18 @@
     "media": -0.0417
    }
   ]
+ },
+ "politica": {
+  "gen": 40,
+  "base": 0.46055523809523813,
+  "mejor": 0.4704758095238095,
+  "reinicios": 0,
+  "sigma": 0.1054,
+  "ganancia_autojuego": 0.992,
+  "contra_dato_real": {
+   "media": 0.1002,
+   "veredicto": "empeora",
+   "motivo": "+0.100 significativo"
+  }
  }
 }

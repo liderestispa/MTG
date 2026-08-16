@@ -1,5 +1,5 @@
 {
- "probadas": 28,
+ "probadas": 29,
  "entradas": [
   {
    "spec": "REGLA_SOLO=tapdown_multiple",
@@ -867,6 +867,39 @@
     0.544,
     0.953,
     0.97
+   ]
+  },
+  {
+   "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+   "media": 0.1002,
+   "sd": 0.0509,
+   "se": 0.017,
+   "z_exigido": 3.134,
+   "n_probadas": 29,
+   "confirmacion": null,
+   "veredicto": "empeora",
+   "motivo": "+0.100 significativo",
+   "base": [
+    0.978,
+    0.995,
+    1.034,
+    1.054,
+    0.865,
+    1.055,
+    0.516,
+    0.922,
+    0.939
+   ],
+   "variante": [
+    1.121,
+    1.105,
+    1.113,
+    1.139,
+    1.007,
+    1.114,
+    0.671,
+    1.053,
+    0.936
    ]
   }
  ]

@@ -70,6 +70,41 @@ REAL_FIELD = {
 # metodologia.md llama "formato imposible": si los winrates reales varian menos de 2
 # puntos, la senal es mas chica que el ruido y ningun modelo gana.
 #
+# YA SE SACO LA MATRIZ Y SE CALCULO SIN ESPEJO (data/wr_mtgdecks_sin_espejo.json).
+# Excluir espejos apenas mueve nada, ~0,1 puntos: el espejo es el 5-10% de las partidas
+# y esta al 50%. La compresion es REAL.
+#
+#   arquetipo           banco   sin espejo   partidas   error 95%
+#   Mono Red Madness    53,0%     51,11%       7.315     +-1,15
+#   Grixis Affinity     57,2%     52,19%       5.526     +-1,32
+#   Blue Terror         52,0%     48,94%       4.014     +-1,55
+#   Jund Wildfire       49,7%     50,00%       3.949     +-1,56
+#   Elves               56,1%     51,07%       3.884     +-1,57
+#   Mono Red Rally      46,4%     50,00%       3.398     +-1,68
+#
+#   dispersion real: 1,04 puntos. Error de medicion de cada punto: +-1,2 a +-1,7.
+#   La separacion entre arquetipos es del MISMO TAMANIO que el error con que se mide.
+#
+# Y LO QUE ESO LE HACE AL MOTOR, medido:
+#
+#   contra el banco viejo    r=+0,987   error calibrado 0,58
+#   contra mtgdecks (77k)    r=+0,677   error calibrado 0,83
+#
+# El r=+0,99 que el motor presumia era correlacion contra el RUIDO de muestras chicas.
+#
+# Revalidacion de lo adoptado el 17-ago contra el dato bueno (error calibrado de Pauper):
+#
+#   motor de hoy                    0,83
+#   sin las dos reglas de datos     0,96   <- unico cambio con efecto claro
+#   sin ranura de cementerio        0,81   <- su gran mejora era ruido: DESAPARECE
+#   sin habilidades activadas       0,84   <- dentro del ruido
+#   sin arreglo de combate          0,83   <- sin efecto en Pauper (ayudaba a Brawl)
+#
+# O sea: de todo lo adoptado ese dia, lo unico que se sostiene contra dato solido son las
+# dos reglas del extractor (retroceso de Lava Dart y vida de Reckoner's Bargain). El
+# resto cae dentro del ruido. Ojo igual: n=6, asi que diferencias de r de 0,02 no
+# significan nada tampoco en esta tabla.
+#
 # NO se ha cambiado REAL_FIELD todavia, por dos motivos honestos:
 #   1. Son poblaciones distintas. mtgdecks mezcla MTGO y papel y todos los tamanios de
 #      evento; el banco usa Challenge de MTGO, no-espejo. La pagina tiene filtros
