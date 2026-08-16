@@ -96,3 +96,56 @@ En **Standard y Pauper la identidad de color no existe**. Solo importa poder pag
 que un híbrido `{B/G}` entra en un mazo mono-negro. En **Brawl y Commander sí aplica** y ese
 mismo híbrido queda fuera de un mono-negro. Confundirlo produce listas ilegales o pools
 artificialmente pequeños.
+
+**Caso límite verificado:** The Arkenstone // Seek the Heart cuesta `{5}` el artefacto y `{2}{W}`
+la aventura. Su identidad de color es **blanca** por la mitad que nunca vas a lanzar, pero en
+Standard basta con poder pagar la mitad que sí lanzas, así que entra en cualquier mazo. Auditada
+la colección completa: **28 cartas con cara frontal incolora e identidad de color**; las otras 27
+son híbridas o tierras duales y esas sí se filtran bien.
+
+## 10. Fichas y art series en el bulk de Scryfall
+
+**Síntoma:** cartas reales que salen `not_legal` y con estadísticas que no son las suyas.
+
+**Causa:** el bulk trae **910 entradas de ficha y 2.243 de art series**, y **88 nombres existen a
+la vez como ficha y como carta real** — Starscape Cleric, Darkstar Augur, Ajani's Pridemate. Un
+índice por nombre que se queda con la primera coincidencia se puede quedar con la ficha.
+
+**Arreglo:** la carta real siempre pisa a la ficha al construir el índice
+(`src/driver.py::oracle()`). Dos mazos del banco de calibración estaban marcados como ilegales
+por esto.
+
+## 11. Ramas de texto que faltan: el robo recurrente
+
+**Síntoma:** una carta buena rinde como si le faltara la mitad del texto, y no hay ningún error.
+
+**Causa:** la regla de robo recurrente leía únicamente `at the beginning of your upkeep ... draw`.
+The Arkenstone roba **al comienzo de tu paso final**, y esa rama no existía: el motor la tenía
+como un lord pelado de 5 maná.
+
+**Arreglo:** cubrir todos los pasos en que la habilidad puede dispararse — mantenimiento, paso
+final, paso de robo y ambas fases principales. Cada vez que agregues un patrón de disparo,
+enumerá los pasos antes de darlo por cerrado.
+
+## 12. Keywords parseadas que nadie lee
+
+Antimaleficio y vigilia estaban parseadas y **ningún camino del código las leía**: toda la
+remoción dirigida mataba criaturas con antimaleficio. Por cada keyword que parsees, comprueba que
+exista al menos un camino que la consulte. Un test que cuente usos por keyword lo detecta solo.
+
+## 13. `untap target creature` contiene `tap target creature`
+
+Quirion Ranger, que *endereza*, se leía como carta que gira. Faltaba un `\b`. Esta clase de error
+no da excepción: da números.
+
+## 14. `sacrifice a land` casi siempre es un coste propio
+
+Crop Rotation y Highway Robbery sacrifican **tu** tierra para pagar. Hasta `destroy target land`
+se usa a menudo sobre tierra propia (Cleansing Wildfire, que da nombre a Jund Wildfire).
+Modelarlo como ataque al rival empeoró el ajuste.
+
+## 15. Lo correcto según las reglas puede empeorar el ajuste
+
+El bloqueo en grupo se implementó bien y **empeoró el residuo de 4,0 a 8,0**: los errores que
+quedaban se estaban compensando entre sí. Quedó en el código, apagado y comentado. Regla general:
+"es más correcto según las reglas" no es evidencia. Mide con `src/obj_real.py` antes de adoptar.

@@ -17,15 +17,18 @@ Juego control de prisión: negarle el juego al rival.
 
 ## Dónde quedó
 
-- Motor: objetivo 2,56 contra dato real. En **Pauper el motor le gana a no simular nada**
-  (3,93% de error contra 4,40% del modelo tonto) — es el único formato validado, r=+0,72.
-  En Standard no está validado (r=+0,12) y hay una razón de fondo: el único dato real disponible
+- Motor: **objetivo 2,540** contra dato real. En **Pauper el motor le gana a no simular nada**
+  (3,93% de error contra 4,40% del modelo tonto) — es el único formato validado, r=+0,74.
+  En Standard no está validado (r=+0,15) y hay una razón de fondo: el único dato real disponible
   es de mayo 2026 y **hubo bans después**, así que estaríamos comparando listas de hoy contra
   winrates de otro formato.
 - Mis tres mazos actuales: Brawl mono-blanco con Dáin Lord of the Iron Hills, Standard BG,
   Pauper BR. Los tres legales y armables con mis 371 cartas.
-- Última corrección: el índice de Scryfall resolvía 88 nombres a su versión **ficha** en vez de
-  a la carta real.
+- Las dos últimas correcciones, las dos de motor: el índice de Scryfall resolvía 88 nombres a su
+  versión **ficha** en vez de a la carta real, y el robo recurrente solo se leía en el
+  mantenimiento (se perdía el que dispara en el paso final, como The Arkenstone).
+- **Ojo con esto:** el `3,93% vs 4,40%` y las cifras de `out/report_v6.json` se calcularon *antes*
+  de esas dos correcciones. Están pendientes de refrescar.
 
 ## Lo primero que quiero que verifiques
 
@@ -34,24 +37,34 @@ bash scripts/bootstrap.sh
 gcc -O3 -w -o bin_sim src/sim.c -lm
 python3 src/gen_brawl.py && sed -i 's/^static int CMD_A, CMD_B;$/static int CMD_A=-1, CMD_B=-1;/' src/sim_brawl.c
 gcc -O3 -w -o bin_brawl src/sim_brawl.c -lm
-python3 src/obj_real.py 2000     # esperado: ~2,56
-python3 src/loocv.py 2500        # esperado: Pauper 3,93% vs 4,40% del modelo tonto
+python3 src/obj_real.py 2000     # esperado: OBJETIVO 2.540, sta r=+0.15, pau r=+0.74
+python3 src/loocv.py 2500        # NO hay valor esperado: hay que re-medirlo, ver abajo
+python3 src/revalidar.py 2500    # ídem: los mazos no se revalidaron tras los dos fixes
 ```
 
-Si esos números no salen, algo se rompió en el camino y hay que arreglarlo antes de seguir.
+`obj_real.py` sí es un control duro: si no da **2,540**, algo se rompió en el camino y hay que
+arreglarlo antes de seguir.
+
+`loocv.py` y `revalidar.py` **no**. La última vez que se corrieron fue antes de los dos fixes de
+motor, así que lo que salga ahora es la línea base nueva, no una señal de que algo falla. El
+`3,93% vs 4,40%` que aparece en `CLAUDE.md` es el valor viejo: reemplazalo por el que midas.
+Si algún mazo dejó de ganarle a su semilla codiciosa, hay que rehacer la búsqueda.
 
 ## Lo que quiero hacer a continuación, en orden
 
-1. **Calcular el suelo de ruido de Pauper.** Los recaps semanales de MTGGoldfish dan medidas
+1. **Refrescar la línea base.** `loocv.py` y `revalidar.py` quedaron sin correr después de los dos
+   fixes de motor. Corrélos, anotá los números nuevos en `CLAUDE.md` y, si algún mazo dejó de
+   ganarle a su semilla, rehacé la búsqueda. Es corto y desbloquea todo lo demás.
+2. **Calcular el suelo de ruido de Pauper.** Los recaps semanales de MTGGoldfish dan medidas
    repetidas del mismo arquetipo (Mono Red Madness: 47,4 / 47,3 / 49,6 / 50,8 / 49,3 / 56,4 / 52).
    Esa variación semana a semana es ruido de muestreo puro. Quiero saber **cuánto margen real
    queda** antes de seguir invirtiendo: si el suelo es 2,5% y el motor está en 3,93%, queda poco.
-2. **Ampliar el banco de Pauper** con Dimir Faeries y Gruul Ponza (listas ya validadas a 60 cartas
+3. **Ampliar el banco de Pauper** con Dimir Faeries y Gruul Ponza (listas ya validadas a 60 cartas
    en `data/nuevos/listas.txt`) y sus winrates semanales. Pasar de n=6 a n=8 mejora todo:
    la estimación de k, la de r, y el objetivo de ajuste.
-3. **Cuatro Colores Control** marca 33,9% contra 53% real — el peor error que queda. Trazalo con
+4. **Cuatro Colores Control** marca 33,9% contra 53% real — el peor error que queda. Trazalo con
    `python3 src/trazar.py standard "Four-Color" "Mardu"` y mirá qué hace turno a turno.
-4. **Costes alternativos**: Fireblast se juega sacrificando dos montañas, el motor lo ve a 6 maná
+5. **Costes alternativos**: Fireblast se juega sacrificando dos montañas, el motor lo ve a 6 maná
    y no lo lanza nunca.
 
 ## Reglas que no se negocian
