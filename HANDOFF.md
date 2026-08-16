@@ -1,12 +1,12 @@
 # Transcript de continuación — proyecto MTG
 
-Pegá esto como primer mensaje en Claude Code (o dejá que lea `CLAUDE.md`, que tiene lo mismo
+Pega esto como primer mensaje en Claude Code (o deja que lea `CLAUDE.md`, que tiene lo mismo
 en formato de contexto permanente).
 
 ---
 
 Estoy retomando un proyecto de optimización de mazos de Magic por simulación. Está en este repo
-y ya tiene cuatro campañas de calibración encima. **Leé `CLAUDE.md` antes de tocar nada** — trae
+y ya tiene cuatro campañas de calibración encima. **Lee `CLAUDE.md` antes de tocar nada** — trae
 las reglas de trabajo y las trampas que ya costaron caro.
 
 ## Contexto de una línea
@@ -31,8 +31,11 @@ Juego control de prisión: negarle el juego al rival.
   ranura `eff`, así que las cartas que traen el motor de robo en `eff2` quedaban etiquetadas pero
   nunca disparaban. Esa última mitad se había medido pero **no se había commiteado**, y por eso
   la documentación decía 2,540 mientras el repo daba 2,557.
-- Lo que **no** se regeneró es `out/report_v6.json`: los índices brutos de mis tres mazos que
-  aparecen ahí y en Notion son de antes de los fixes.
+- Ya está todo regenerado con el motor nuevo: `data/escala.json`, `out/report_v6.json` y el
+  gráfico `out/avance.html`. Índices brutos vigentes: Standard 88,3%, Pauper 76,0%, Brawl 61,5%.
+- El tuning (regla 4) se corrió y **no adoptó nada**. El único candidato, `SWEEP_MIN=3`, resultó
+  ser ruido de semilla: parecía bajar el objetivo a 2,534 pero con 5 semillas queda peor que el
+  default. El objetivo tiene un ruido de ±0,014, así que 2,543 hay que leerlo como 2,53 ± 0,01.
 
 ## Lo primero que quiero que verifiques
 
@@ -49,26 +52,22 @@ python3 src/revalidar.py 2500    # esperado: sta +10,72 | pau +10,94 | brawl wr 
 Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_eff2.txt` y
 `out/loocv_eff2.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
 
-En **Windows** poné `PYTHONUTF8=1` delante de cada `python3` o vas a ver `UnicodeDecodeError` y
+En **Windows** pon `PYTHONUTF8=1` delante de cada `python3` o vas a ver `UnicodeDecodeError` y
 `KeyError: "Thrór's Map"`: hay 45 `open()` sin `encoding` declarado en 27 archivos. Y para
 compilar sirve MinGW, porque `sim.c` no usa nada de POSIX.
 
 ## Lo que quiero hacer a continuación, en orden
 
-1. **Re-tunear y regenerar el informe.** El fix de `eff2` es un cambio de modelo, así que por la
-   regla 4 hay que volver a correr `src/tune_real.py`. Y `out/report_v6.json` sigue teniendo los
-   índices brutos viejos de mis tres mazos: regeneralo con `src/build_report_v6.py`. Es corto y
-   desbloquea lo demás.
-2. **Calcular el suelo de ruido de Pauper.** Los recaps semanales de MTGGoldfish dan medidas
+1. **Calcular el suelo de ruido de Pauper.** Los recaps semanales de MTGGoldfish dan medidas
    repetidas del mismo arquetipo (Mono Red Madness: 47,4 / 47,3 / 49,6 / 50,8 / 49,3 / 56,4 / 52).
    Esa variación semana a semana es ruido de muestreo puro. Quiero saber **cuánto margen real
    queda** antes de seguir invirtiendo: si el suelo es 2,5% y el motor está en 3,93%, queda poco.
-3. **Ampliar el banco de Pauper** con Dimir Faeries y Gruul Ponza (listas ya validadas a 60 cartas
+2. **Ampliar el banco de Pauper** con Dimir Faeries y Gruul Ponza (listas ya validadas a 60 cartas
    en `data/nuevos/listas.txt`) y sus winrates semanales. Pasar de n=6 a n=8 mejora todo:
    la estimación de k, la de r, y el objetivo de ajuste.
-4. **Cuatro Colores Control** marca 33,9% contra 53% real — el peor error que queda. Trazalo con
-   `python3 src/trazar.py standard "Four-Color" "Mardu"` y mirá qué hace turno a turno.
-5. **Costes alternativos**: Fireblast se juega sacrificando dos montañas, el motor lo ve a 6 maná
+3. **Cuatro Colores Control** marca 33,9% contra 53% real — el peor error que queda. Trázalo con
+   `python3 src/trazar.py standard "Four-Color" "Mardu"` y mira qué hace turno a turno.
+4. **Costes alternativos**: Fireblast se juega sacrificando dos montañas, el motor lo ve a 6 maná
    y no lo lanza nunca.
 
 ## Reglas que no se negocian
@@ -80,4 +79,4 @@ compilar sirve MinGW, porque `sim.c` no usa nada de POSIX.
 - Un cambio de modelo reabre el espacio de parámetros: volver a correr `src/tune_real.py`.
 - Nunca me des un winrate del motor como predicción. Dame el índice bruto **y** la estimación
   comprimida por `src/escala.py`.
-- Medí con semillas independientes: las búsquedas mienten con la suya.
+- Mide con semillas independientes: las búsquedas mienten con la suya.

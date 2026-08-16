@@ -173,10 +173,10 @@
   },
   "nl": 24,
   "ns": 36,
-  "gain": "+8,81",
-  "obj": 84.77380000000001,
-  "wr": 89.0507,
-  "cal": 59.879881843248725,
+  "gain": "+8,94",
+  "obj": 84.01389999999999,
+  "wr": 88.291,
+  "cal": 59.66163680791382,
   "legal": true,
   "errs": [],
   "mm": [
@@ -193,12 +193,12 @@
    [
     "Dimir Excruciator",
     15.9,
-    79.75
+    78.5833
    ],
    [
     "Orzhov Lifegain",
     6.5,
-    90.6666
+    86.6666
    ],
    [
     "Dimir Midrange",
@@ -210,7 +210,23 @@
     2.7,
     82.41659999999999
    ]
-  ]
+  ],
+  "st": {
+   "firstplay": 2.03,
+   "gamelen": 7.5085,
+   "noplay14": 1.4057,
+   "screw": 0.3351,
+   "manascrew": 0.0089,
+   "cast": 6.5775,
+   "removal": 3.6348,
+   "timeout": 0.0006,
+   "hA3": 3.8448,
+   "hA6": 1.8854,
+   "hA9": 0.9668,
+   "hB3": 4.7635,
+   "hB6": 2.7942,
+   "hB9": 1.9623
+  }
  },
  "pauper": {
   "t": "Pauper",
@@ -354,7 +370,7 @@
   "gain": "+13,06",
   "obj": 72.151,
   "wr": 75.96549999999999,
-  "cal": 61.723218028152424,
+  "cal": 61.67517846912525,
   "legal": true,
   "errs": [],
   "mm": [
@@ -393,7 +409,23 @@
     4.3,
     65.5
    ]
-  ]
+  ],
+  "st": {
+   "firstplay": 1.6909,
+   "gamelen": 6.9594,
+   "noplay14": 1.2715,
+   "screw": 0.5294,
+   "manascrew": 0.013,
+   "cast": 6.6734,
+   "removal": 3.7015,
+   "timeout": 0.0002,
+   "hA3": 3.5182,
+   "hA6": 1.5289,
+   "hA9": 0.7428,
+   "hB3": 4.7713,
+   "hB6": 2.8115,
+   "hB9": 2.2343
+  }
  },
  "brawl": {
   "t": "Standard Brawl",
@@ -652,9 +684,9 @@
   },
   "nl": 24,
   "ns": 35,
-  "gain": "+0,35",
-  "obj": 59.186099999999996,
-  "wr": 61.0158,
+  "gain": "n/d",
+  "obj": 59.629200000000004,
+  "wr": 61.456500000000005,
   "cal": null,
   "legal": true,
   "errs": [],
@@ -662,34 +694,49 @@
    [
     "Elspeth Storm Slayer",
     23.0,
-    68.58330000000001
+    68.75
    ],
    [
     "Tifa Lockhart",
     9.5,
-    78.3333
+    78.8333
    ],
    [
     "Sephiroth Fabled SOLDIER",
     9.5,
-    43.5
+    43.4166
    ],
    [
     "Ketramose the New Dawn",
     7.0,
-    13.0
+    13.1666
    ],
    [
     "Eluge the Shoreless Sea",
     6.2,
-    74.9166
+    76.0833
    ],
    [
     "Kona Rescue Beastie",
     5.0,
-    67.8333
+    68.0
    ]
   ],
-  "nota": "la busqueda por haz apenas aporto aqui: la construccion simple ya estaba casi igual de bien"
+  "st": {
+   "firstplay": 1.4113,
+   "gamelen": 7.658,
+   "noplay14": 0.6091,
+   "screw": 0.1189,
+   "manascrew": 0.0058,
+   "cast": 8.1417,
+   "removal": 1.9459,
+   "timeout": 0.0022,
+   "hA3": 4.1373,
+   "hA6": 1.4795,
+   "hA9": 0.4907,
+   "hB3": 6.2365,
+   "hB6": 4.029,
+   "hB9": 2.2261
+  }
  }
 }

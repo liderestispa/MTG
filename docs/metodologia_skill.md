@@ -26,8 +26,12 @@ La mayoría de los análisis de mazos fallan por tres razones, y este flujo las 
 El CSV del usuario trae nombres (posiblemente en varios idiomas) y a veces Scryfall IDs.
 **Si trae Scryfall ID, úsalo**: elimina toda ambigüedad de idioma y de edición.
 
+> **Rutas.** En el repo de referencia los scripts están en `src/` y los documentos largos en
+> `docs/`. Si estás leyendo esto como skill empaquetada, los documentos te llegan bajo
+> `references/` con el mismo nombre. Los comandos de abajo usan las rutas del repo.
+
 ```bash
-python3 scripts/build_pool.py --csv coleccion.csv --cards ricardo_cards.json --out pool.json
+python3 src/build_pool.py     # lee data/collection.csv + data/ricardo_sets2.json -> data/pool.json
 ```
 
 Colapsa por `oracle_id`: la misma carta en inglés y en español es **una carta con N copias**,
@@ -63,38 +67,58 @@ Filtra por `legalities[formato] == "legal"` de Scryfall. Cuidado con:
 
 ### Paso 4 — Simular
 
-`scripts/sim.c` es un motor en C (~70.000 partidas/s) que modela maná con colores reales,
+`src/sim.c` es un motor en C (~70.000 partidas/s) que modela maná con colores reales,
 mulligan, curva, combate evaluado, contrahechizos e interacción a velocidad de instantáneo.
 
 ```bash
-gcc -O3 -w -o bin_sim scripts/sim.c -lm
-python3 scripts/search.py --fmt standard --pool pool.json --meta meta.json
+gcc -O3 -w -o bin_sim src/sim.c -lm
+python3 src/run_all.py        # búsqueda de mazos (Standard + Pauper)
 ```
 
-**Calibra contra dato REAL, no contra el 50%.** Corre primero `scripts/calibrate.py` (round-robin
+Es C puro —solo `stdio/stdlib/string/stdint`— así que compila con MinGW en Windows sin tocar
+nada. En Windows corre todo con `PYTHONUTF8=1` por delante: los `open()` sin `encoding` toman
+la codificación local y revientan con los nombres acentuados de las cartas.
+
+**Calibra contra dato REAL, no contra el 50%.** Corre primero `src/calibrate.py` (round-robin
 del meta, mide desviación respecto al 50%) para detectar sesgos gruesos. Pero **esa vara esconde los
 errores que se compensan entre sí**: en un caso real daba 9,56 puntos de error cuando el error contra
 enfrentamientos reales publicados era 20,66. Busca los winrates que se publican —magic.gg para papel,
 los recaps semanales de MTGGoldfish para MTGO, los agregadores de enfrentamientos— cárgalos en
-`data/real_wr.py` y calibra con `scripts/calib_real.py`. Media hora de búsqueda vale más que otra
-semana de código.
+`data/real_wr.py` y calibra con `src/calib_real.py`. Media hora de búsqueda vale más que otra
+semana de código. En el repo el objetivo único vive en `src/obj_real.py` y es lo que se minimiza.
 
 **Da por hecho que tu motor sobredispersa, y mídelo.** Un simulador hecho a mano no modela sideboard,
 ni segunda y tercera partida, ni la habilidad del jugador — y todo eso comprime los resultados hacia
-el 50%. Medido: ×2,2 en Pauper, ×4,5 en Standard, ×7 en enfrentamientos directos. `scripts/escala.py`
+el 50%. Medido: ×2,9 en Pauper, ×5,3 en Standard, ×7 en enfrentamientos directos. `src/escala.py`
 ajusta el factor de compresión por igualación de varianza y **se niega a calibrar** cuando la muestra
-real no es representativa.
+real no es representativa. Ojo: `data/escala.json` se queda viejo en cuanto tocas el motor, y el
+informe lo usa para la estimación honesta. Regenéralo antes de publicar números.
 
-**Declara la confianza por formato, no en global.** El mismo motor dio r=+0,70 en Pauper (el orden es
-utilizable) y r=−0,03 en Standard (no validado). Pauper es comunes, cuerpos y combate: lo que un motor
+**Declara la confianza por formato, no en global.** El mismo motor dio r=+0,73 en Pauper (el orden es
+utilizable) y r=+0,16 en Standard (no validado). Pauper es comunes, cuerpos y combate: lo que un motor
 así modela bien. Standard es raras con texto largo, modos y sideboard. Ver `references/calibracion.md`
 — trae el banco, el detector de cartas mal modeladas, y las cuatro campañas de bugs.
 
+**Cuidado con el peso que le das a un formato con pocos datos.** El objetivo compuesto pondera los
+formatos, y un formato con 2 winrates reales aporta un *residuo*, no una correlación. En una corrida
+real un cambio bajó el objetivo global de 2,543 a 2,534 —parecía mejora— pero la ganancia entera
+venía del residuo de Brawl, calculado sobre 2 puntos, mientras la correlación de Standard caía de
++0,16 a +0,07. Mira siempre los componentes, no el número agregado.
+
 **Ajusta la política de juego de la IA por barrido, no a ojo.** Los umbrales que deciden cuándo
-bloquear, intercambiar o reservar maná son parte del modelo. `scripts/tune.py` hace descenso
-coordenada a coordenada contra el banco de calibración: en un caso real bajó el RMSE global de
-11,07 a 10,35 solo con eso. Después de ajustar, **revalida los mazos** (Paso 6): si dejaron de
-ganarle a su semilla greedy, ajustaste al banco y no al juego.
+bloquear, intercambiar o reservar maná son parte del modelo. `src/tune_real.py` hace descenso
+coordenada a coordenada contra el dato real: en un caso bajó el RMSE global de 11,07 a 10,35 solo
+con eso. Los parámetros viajan al motor por variables de entorno, y **nada los lee de vuelta**: el
+resultado queda en `out/tuned_real.json` y hay que hornearlo a mano como default en `sim.c`. Si no
+lo horneas, la próxima medición no los usa.
+
+**Y valida el resultado del tuning con semillas independientes.** El descenso mide todo con la
+misma semilla, así que una ganancia de milésimas puede ser ruido de esa corrida.
+`src/valida_semillas.py` vuelve a medir cada variante con cinco semillas y compara la ventaja
+contra la dispersión: si la diferencia cabe dentro del ruido, no se adopta.
+
+Después de ajustar, **revalida los mazos** (Paso 6): si dejaron de ganarle a su semilla greedy,
+ajustaste al banco y no al juego.
 
 **Una regla más fiel no siempre da un motor más fiel.** Los errores restantes se compensan entre
 sí, así que añadir realismo en un punto puede desbalancear lo que ya estaba cuadrado. Mide toda
@@ -105,9 +129,9 @@ en grupo, implementado correctamente, empeoró el residuo de 4,0 a 8,0 puntos.
 **Valida contra un modelo tonto, o no has validado nada.** Haz validación cruzada dejando un mazo
 fuera y compara contra "predecir siempre la media real, sin simular". Si tu motor no le gana a eso,
 no aporta información. Y acepta que hay formatos imposibles: si los winrates reales del formato
-varían menos de 2 puntos, la señal es más chica que el ruido y ningún modelo gana. `scripts/loocv.py`.
+varían menos de 2 puntos, la señal es más chica que el ruido y ningún modelo gana. `src/loocv.py`.
 
-**Revisa cómo quedó modelada cada carta, no solo los agregados.** `scripts/xray.py` imprime la lista
+**Revisa cómo quedó modelada cada carta, no solo los agregados.** `src/xray.py` imprime la lista
 con el efecto, el coste y las keywords que le asignó el extractor. Los errores más caros no dan
 excepción, dan números: `deals N damage to any target` mandado a "quemar a la cara" deja a todos los
 mazos rojos sin interacción; `untap target creature` contiene la subcadena `tap target creature`.
@@ -157,12 +181,12 @@ más jugado del formato no es el más caro.
 
 ## Auditoría de cartas
 
-`scripts/audit_cards.py` marca cartas cuyo modelado es implausible (estadísticas imposibles para
+`src/audit_cards.py` marca cartas cuyo modelado es implausible (estadísticas imposibles para
 el coste, keywords de más, reducciones agresivas, hechizos sin efecto). Córrelo cada vez que
 amplíes el extractor: cada carta marcada es un bug potencial, y uno solo puede inflar un
 arquetipo entero veinte puntos.
 
-`scripts/check_legal.py` verifica que una lista sea legal **y armable** con la colección real:
+`src/check_legal.py` verifica que una lista sea legal **y armable** con la colección real:
 tamaño, legalidad por formato, límite de copias, identidad de color, y cantidades poseídas.
 
 ## Trampas verificadas
@@ -178,6 +202,22 @@ Están en `references/trampas.md` con el detalle. Las que más daño hacen:
   Filtra por `produced_mana` no vacío antes de contarlas como fuente.
 - **Verifica que el mazo propuesto sea armable** carta por carta contra la colección, incluyendo
   cantidades. Es el error más caro y el más fácil de cometer.
+- **Fichas y art series en el bulk de Scryfall**: trae ~910 entradas de ficha y ~2.243 de art
+  series, y hay nombres que existen a la vez como ficha y como carta real (88 en una medición).
+  Un índice por nombre que se queda con la primera coincidencia puede quedarse con la ficha, y
+  entonces la carta sale `not_legal` y con estadísticas que no son suyas. La carta real manda.
+- **Un disparo recurrente no siempre es en el mantenimiento.** Si tu regla busca solo
+  `at the beginning of your upkeep`, se te escapan las que disparan en el paso final, en el de
+  robo o en las fases principales. Enumera los pasos antes de dar por cerrado un patrón.
+- **Si tu motor tiene varias ranuras de efecto por carta, comprueba que las lea todas.** Una carta
+  con dos habilidades pone la segunda en la ranura secundaria; si el bucle que ejecuta el efecto
+  solo mira la primaria, el extractor etiqueta y el simulador ignora. Pasó con el robo recurrente:
+  `LORD` ocupaba la ranura primaria, el motor de robo caía en la secundaria y no disparaba nunca.
+  Es la versión estructural de "keywords parseadas que nadie lee".
+- **Un arreglo repartido entre dos lenguajes hay que commitearlo entero, o no existe.** Si la mitad
+  en Python entra y la mitad en C se queda fuera, no hay error: hay un número documentado que ya no
+  se reproduce. Corre el objetivo **justo después de commitear**, sobre el árbol limpio, y confirma
+  que da lo que dice la documentación. Un `git status` limpio no prueba que midieras lo commiteado.
 
 ## Reglas de formato
 

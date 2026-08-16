@@ -286,8 +286,8 @@ Ese trabajo no podía mover el RMSE. Una consulta de diez minutos ahorró un dí
 ## 4. Un diagnóstico correcto no garantiza que el arreglo obvio sirva
 
 La traza mostró que un mazo de control llegaba al turno 7 con la mesa vacía: guardaba maná para
-instantáneos que nunca usaba. Diagnóstico correcto. El arreglo obvio — si no tenés nada en mesa,
-ignorá la reserva y jugá algo — dio **11,06 → 11,42**. Peor. Revertido.
+instantáneos que nunca usaba. Diagnóstico correcto. El arreglo obvio — si no tienes nada en mesa,
+ignora la reserva y juega algo — dio **11,06 → 11,42**. Peor. Revertido.
 
 **Anota los intentos fallidos con su número.** Sin una bitácora vas a volver a intentar lo mismo
 en la campaña siguiente, y va a volver a fallar.

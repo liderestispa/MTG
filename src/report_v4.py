@@ -164,7 +164,7 @@ estaban compensándose entre sí. Añadir realismo por un lado desbalancea lo qu
 <div class="box bad">
 <h3>Segundo intento de lanzamiento cuando la reserva paraliza <span class="tag">descartado</span></h3>
 <p>Rastreé a Eluge y encontré que llega al turno 7 con el campo vacío: guarda maná para instantáneos
-que nunca llega a usar. Probé una regla de segunda pasada — si no tenés nada en mesa, ignorá la reserva y jugá algo.</p>
+que nunca llega a usar. Probé una regla de segunda pasada — si no tienes nada en mesa, ignora la reserva y juega algo.</p>
 <p style="margin-bottom:0">Global pasó de 11,06 a <b>11,42</b>. Peor. Revertido.</p>
 </div>
 
@@ -181,7 +181,7 @@ contra el banco de calibración.</p>
 
 <div class="box info">
 <h3>Lo que descarté antes de gastar tiempo</h3>
-<p style="margin-bottom:0">Medí qué porcentaje del meta usa tipos de carta que el motor no modela:
+<p style="margin-bottom:0">Mide qué porcentaje del meta usa tipos de carta que el motor no modela:
 planeswalkers <b>1,7%</b>, sagas <b>0,7%</b>, equipo <b>0,3%</b>, auras <b>0,6%</b>. Suman menos del 4%.
 No es ahí donde está el error, así que no toqué eso.</p>
 </div>
@@ -212,7 +212,7 @@ pagan en cuerpo y las de Construido se pagan en habilidad.</p>
 contra mazos que en la tienda te ganarían. <b>Los índices sirven para comparar tus propias listas entre sí,
 no para predecir la mesa.</b></p>
 <p style="margin-bottom:0">Lo que sí es fiable: el orden relativo, las curvas de maná, el conteo de tierras,
-y que cada lista es legal y armable con las cartas que tenés físicamente.</p>
+y que cada lista es legal y armable con las cartas que tienes físicamente.</p>
 </div>
 
 <h2>Lo que sigue roto — y es justo tu estilo</h2>
@@ -222,7 +222,7 @@ cuando en la vida real ronda el <b>55%</b>. Cuatro Colores Control se queda en <
 Orzhov Lifegain en <b>39,6%</b>, Tifa en <b>31,2%</b> y Eluge en <b>30,6%</b>.</p>
 <p style="margin-bottom:0">El patrón es claro: el motor no sabe valorar <em>negarle el juego al rival</em>.
 Sabe contar daño y cuerpos. Un mazo que gana por asfixia le parece un mazo que no hace nada.
-Y eso es precisamente lo que vos querés jugar — así que ese es el siguiente frente de trabajo,
+Y eso es precisamente lo que tú quieres jugar — así que ese es el siguiente frente de trabajo,
 no un detalle.</p>
 </div>
 

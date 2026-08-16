@@ -55,8 +55,19 @@ codiciosa (no hay que rehacer búsquedas):
 | Pauper BR | 70,03 | 59,09 | +10,94 | 73,7% |
 | Brawl Dáin | 59,63 | — | — | 61,5% |
 
-> **Pendiente de la regla 4:** el fix de `eff2` es un cambio de modelo, así que reabre el espacio
-> de parámetros. Falta correr `src/tune_real.py`.
+Informe regenerado (`build_report_v6.py`) y capa de escala también (`escala.py 2000`, k de
+Standard 0,193 → 0,188). Índices brutos vigentes: **Standard 88,3% · Pauper 76,0% · Brawl 61,5%**.
+
+**Regla 4 cumplida, y no cambió nada.** Se corrió `tune_real.py` con NG=2000 después del fix de
+`eff2`. El único candidato fue `SWEEP_MIN=3` (2,534 contra 2,543), y `valida_semillas.py` lo
+rechazó: con 5 semillas independientes da 2,533 de media contra 2,531 de los defaults —peor— y la
+diferencia es ocho veces menor que la dispersión entre semillas (sd 0,014-0,017). Los defaults
+compilados se quedan.
+
+> **El objetivo tiene ruido de semilla de ±0,014.** El 2,543 es el valor en la semilla canónica
+> 1234567 y sirve como control de reproducibilidad, pero como estimación de calidad del motor
+> hay que leerlo como 2,53 ± 0,01. Cualquier "mejora" menor que eso es ruido: pásala por
+> `src/valida_semillas.py` antes de adoptarla.
 
 ## Trampas ya encontradas (no las repitas)
 
@@ -76,6 +87,15 @@ esto es el resumen.
   2,540. **Es la misma trampa de "keywords parseadas que nadie lee", una campaña después.**
   Al tocar una ranura, revisa si el motor la lee en `eff`, `eff2` y `eff3` — `E_LORD` y `E_TAX`
   se leen en dos, `E_UPKEEP_DRAW` se leía en una sola.
+- **El descenso mide con una sola semilla, así que encuentra mejoras que no existen.**
+  `SWEEP_MIN=3` bajaba el objetivo de 2,543 a 2,534 y era ruido: con 5 semillas queda peor que
+  el default. Peor todavía, la "ganancia" venía entera del residuo de Brawl —2 datos reales—
+  mientras la correlación de Standard caía de +0,16 a +0,07. **Mira los componentes, no el
+  agregado, y pasa todo candidato por `src/valida_semillas.py`.**
+- **`out/tuned_real.json` guardaba solo los overrides, y se autoborraba.** Como el descenso deja
+  `None` cuando se queda con el default compilado, en cuanto horneas un valor en `sim.c` la
+  corrida siguiente lo saca del archivo: pasó de seis parámetros a uno. Ahora guarda el set
+  **efectivo** además del override, leyendo los defaults de `sim.c`.
 - **Verifica que el número documentado se reproduzca desde el árbol limpio.** Un `git status`
   limpio no garantiza que lo medido sea lo commiteado: si mediste con el working tree sucio y
   después commiteaste solo una parte, el número queda huérfano. Corre `obj_real.py` justo
@@ -101,10 +121,10 @@ esto es el resumen.
 
 ## Lo que sigue pendiente
 
-1. **Re-tunear, regla 4.** El fix de `eff2` es un cambio de modelo y reabre el espacio de
-   parámetros: falta `src/tune_real.py`. Los mazos ya están revalidados y los tres le ganan a su
-   semilla; lo que **no** se regeneró es `out/report_v6.json`, así que los índices brutos que
-   aparecen ahí y en la página de Notion siguen siendo los de antes del fix.
+1. **Estimar el suelo de ruido del dato real.** Los recaps semanales de Pauper dan medidas
+   repetidas del mismo arquetipo, y esa variación es ruido de muestreo puro. Ya sabemos que el
+   ruido *del motor* es ±0,014 en el objetivo; falta el del dato contra el que se mide. Sigue
+   siendo lo más valioso que queda por hacer, y está detallado en el punto siguiente.
 2. **Estimar el suelo de ruido.** Los recaps semanales de Pauper dan medidas repetidas del mismo
    arquetipo (Mono Red Madness: 47,4 / 47,3 / 49,6 / 50,8 / 49,3 / 56,4 / 52). La desviación
    semana a semana es ruido de muestreo puro: ~2-3 puntos. **Ningún modelo puede bajar de ahí.**
@@ -147,7 +167,11 @@ python3 src/calib_real.py 2000      # informe detallado por formato
 python3 src/xray.py "Mono Red"      # cómo quedó modelada cada carta de un mazo
 python3 src/trazar.py standard "Four-Color" "Mardu"   # traza una partida turno a turno
 python3 src/revalidar.py 2500       # mazos vs su semilla codiciosa
-python3 src/tune_real.py            # descenso coordenada a coordenada
+python3 src/tune_real.py            # descenso coordenada a coordenada (NG=2000 recomendado)
+python3 src/valida_semillas.py 2000 "" "SWEEP_MIN=3"   # ¿sobrevive a semillas nuevas?
+python3 src/escala.py 2000          # regenera data/escala.json (hazlo tras tocar el motor)
+python3 src/build_report_v6.py      # regenera out/report_v6.json
+python3 src/grafico.py              # out/avance.html: vista referencial del informe
 python3 src/run_all.py              # búsqueda de mazos (Standard + Pauper)
 python3 src/run_brawl.py            # búsqueda de Brawl
 ```

@@ -45,5 +45,31 @@ for ronda in range(2):
         print(f"  -> {var} = {local[1]}   (mejor {mejor*100:.3f})", flush=True)
     if not cambio: break
 print(f"\nFINAL {mejor*100:.3f}")
-print(json.dumps({k:v for k,v in estado.items() if v is not None}, indent=1))
-json.dump({k:v for k,v in estado.items() if v is not None}, open('out/tuned_real.json','w'), indent=1)
+
+def defaults_compilados():
+    """Lee los defaults que estan horneados en sim.c.
+
+    Si no se leen, el registro queda incompleto: estado[k] es None cuando el descenso
+    se queda con el default, asi que guardar solo los no-None borra del archivo todo lo
+    que se horneo en campanas anteriores. Paso de verdad: out/tuned_real.json tenia seis
+    parametros y una corrida posterior lo dejo con uno.
+    """
+    import re
+    try: src=open('src/sim.c', encoding='utf-8').read()
+    except OSError: return {}
+    out={}
+    for k in REJILLA:
+        m=re.search(r'\b'+k+r'\s*=\s*(-?\d+)', src)
+        if m: out[k]=int(m.group(1))
+    return out
+
+base_c=defaults_compilados()
+efectivo={k:(int(v) if v is not None else base_c.get(k)) for k,v in estado.items()}
+registro={'objetivo': round(mejor*100, 3), 'ngames': NG,
+          'efectivo': efectivo,
+          'override': {k:int(v) for k,v in estado.items() if v is not None},
+          '_nota': 'efectivo = lo que hay que reproducir. override = lo que difiere del '
+                   'default compilado en sim.c; si adoptas un override, horneálo como default '
+                   'y valida antes con src/valida_semillas.py, que el descenso usa una sola semilla.'}
+print(json.dumps(registro, indent=1, ensure_ascii=False))
+json.dump(registro, open('out/tuned_real.json','w'), indent=1, ensure_ascii=False)

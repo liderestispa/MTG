@@ -68,9 +68,9 @@ H=f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Mis mazos MTG — v6</title>
 <style>{CSS}</style></head><body><div class="wrap">
 <h1>Tus tres mazos — versión 6</h1>
-<p class="sub">16 ago 2026 · las tres mejores listas armables con las 371 cartas que tenés · recalculadas con el motor mejorado (−27% de error)</p>
+<p class="sub">16 ago 2026 · las tres mejores listas armables con las 371 cartas que tienes · recalculadas con el motor mejorado (−27% de error)</p>
 <div class="box good"><p style="margin:0">Las tres listas están <b>verificadas</b>: legales en su formato y armables con
-tus cartas físicas, sin exceder copias. Las podés escribir tal cual y llevarlas a la tienda.</p></div>
+tus cartas físicas, sin exceder copias. Las puedes escribir tal cual y llevarlas a la tienda.</p></div>
 <h2>Standard Brawl <span class="pill">tu prioridad — es lo que se juega en tu tienda</span></h2>
 <div class="box warn2"><p style="margin:0"><b>Cambió el comandante.</b> Con el motor viejo salía Thorin
 Oakenshield (rojo-blanco); con el motor corregido gana <b>Dáin, Lord of the Iron Hills</b> en mono-blanco.
@@ -91,12 +91,12 @@ que se midió contra winrates realmente publicados. En Pauper la compresión es 
 demostró que ordena bien; en Standard es a un cuarto y el orden no está validado; en Brawl no se calibra
 porque el dato real disponible no da.</p>
 <p style="margin-bottom:0">El bruto sirve para <b>comparar tus propias listas entre sí</b> — a la búsqueda
-solo le importa el orden. La estimación honesta es la que podés decir en voz alta.</p>
+solo le importa el orden. La estimación honesta es la que puedes decir en voz alta.</p>
 </div>
 <h2>Lo que viene</h2>
 <div class="box info">
-<p>Estos mazos son tu piso: lo mejor posible con lo que ya tenés, mientras aprendés. Ninguno es tu estilo —
-vos jugás prisión, negarle el juego al rival, y eso no se puede armar todavía con estas cartas.</p>
+<p>Estos mazos son tu piso: lo mejor posible con lo que ya tienes, mientras aprendes. Ninguno es tu estilo —
+tú juegas prisión, negarle el juego al rival, y eso no se puede armar todavía con estas cartas.</p>
 <p><b>Novedad:</b> el motor ya sabe leer efectos de prisión —edicto, inmovilizar, impuesto sobre los
 hechizos del rival—. En el banco del meta no cambió casi nada porque ningún mazo del meta los usa,
 pero es justo la pieza que hacía falta para poder evaluar un mazo de tu estilo.</p>

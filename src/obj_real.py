@@ -4,10 +4,10 @@ import sys, math, statistics; sys.path.insert(0,'src'); sys.path.insert(0,'data'
 from calibrate import rr
 from real_wr import REAL_FIELD, REAL_H2H
 
-def medir(ng=900, fmts=('standard','pauper','brawl')):
+def medir(ng=900, fmts=('standard','pauper','brawl'), seed=1234567):
     d={}
     for f in fmts:
-        names,ws,M=rr(f,ngames=ng,life=25 if f=='brawl' else 20)
+        names,ws,M=rr(f,ngames=ng,life=25 if f=='brawl' else 20,seed=seed)
         idx={n:i for i,n in enumerate(names)}; tot=sum(ws)
         field=[sum(M[i][j]*ws[j] for j in range(len(names)))/tot for i in range(len(names))]
         real=REAL_FIELD.get(f,{})

@@ -161,7 +161,7 @@ semilla simple. Con el motor nuevo:</p>
 <h2>Matrices completas</h2>
 <div class="box">{mtx('standard')}{mtx('pauper')}{mtx('brawl')}</div>
 
-<h2>Qué significa esto para vos, en concreto</h2>
+<h2>Qué significa esto para ti, en concreto</h2>
 <div class="box warn2">
 <ul>
 <li><b>Tu mazo de Pauper es el que tiene respaldo.</b> Es el formato donde el motor demostró que ordena

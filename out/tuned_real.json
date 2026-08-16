@@ -1,8 +1,18 @@
 {
- "W_TARGET": 50,
- "TH_TRADE": -4,
- "TH_BADBLOCK": -14,
- "RESERVE_MAX": 1,
- "PEN_NOTARGET": 15,
- "WARD_COST": 3
+ "objetivo": 2.543,
+ "ngames": 2000,
+ "efectivo": {
+  "W_PRESSURE": 70,
+  "W_TARGET": 50,
+  "TH_TRADE": -4,
+  "TH_PERFECT": 24,
+  "TH_WALL": 0,
+  "TH_BADBLOCK": -14,
+  "RESERVE_MAX": 1,
+  "SWEEP_MIN": 2,
+  "PEN_NOTARGET": 15,
+  "WARD_COST": 3
+ },
+ "override": {},
+ "_nota": "Descenso corrido tras el fix de eff2: no adopto ningun cambio. El unico candidato fue SWEEP_MIN=3 (2.534 contra 2.543) y src/valida_semillas.py lo rechazo: con 5 semillas independientes da 2.533 de media contra 2.531 de los defaults, o sea peor, y la diferencia cabe holgada dentro de sd 0.014-0.017. El 2.543 es el valor en la semilla canonica 1234567; la media sobre 5 semillas es 2.531."
 }

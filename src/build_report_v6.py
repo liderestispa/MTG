@@ -15,6 +15,12 @@ BR=json.load(open('out/brawl_result.json'))
 TIT={'standard':'Standard','pauper':'Pauper','brawl':'Standard Brawl'}
 OUT={}
 
+# metricas de como avanza la partida, para el grafico de src/grafico.py.
+# hA* / hB* son cartas en mano en ese turno (propias / del rival), no vidas.
+TRAZA=['firstplay','gamelen','noplay14','screw','manascrew','cast','removal','timeout',
+       'hA3','hA6','hA9','hB3','hB6','hB9']
+def traza(r): return {k: r.get(k) for k in TRAZA if r.get(k) is not None}
+
 def ficha(nm, n):
     c=lookup(nm); e=convert(c)
     mc=(c.get('mana_cost') or '')
@@ -56,7 +62,7 @@ for fmt in ('standard','pauper'):
                   gain=f"{(objective(r)-objective(rg))*100:+.2f}".replace('.',','),
                   obj=objective(r)*100, wr=r['wr']*100,
                   cal=(cal*100 if cal else None), legal=(not errs), errs=errs[:3],
-                  mm=sorted(mm, key=lambda x:-x[1]))
+                  mm=sorted(mm, key=lambda x:-x[1]), st=traza(r))
     print(f"{fmt}: {''.join(cols)} {ns}+{nl}={ns+nl} obj {objective(r)*100:.2f} wr {r['wr']*100:.1f}% "
           f"gain {OUT[fmt]['gain']} legal={not errs}", flush=True)
 
@@ -77,7 +83,7 @@ OUT['brawl']=dict(t=TIT['brawl'], col=''.join(BR['ci']) if isinstance(BR['ci'],(
                   sp=sorted([ficha(nm,n) for nm,n in sc.items()], key=lambda x:(x['cmc'],x['name'])),
                   la=dict(la), nl=len(BR['lands']), ns=len(BR['spells']),
                   gain='n/d', obj=objective(r)*100, wr=r['wr']*100, cal=None,
-                  legal=(not errs), errs=errs[:3], mm=sorted(mm,key=lambda x:-x[1]))
+                  legal=(not errs), errs=errs[:3], mm=sorted(mm,key=lambda x:-x[1]), st=traza(r))
 print(f"brawl: {BR['commander']} {len(BR['spells'])}+{len(BR['lands'])} obj {objective(r)*100:.2f} "
       f"wr {r['wr']*100:.1f}% legal={not errs}")
 json.dump(OUT, open('out/report_v6.json','w'), ensure_ascii=False, indent=1)
