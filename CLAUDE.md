@@ -34,17 +34,26 @@ Todo lo de abajo está **medido sobre este árbol** y es reproducible. `out/obj_
 
 ```
 $ python3 src/obj_real.py 2000
-sta cal 2.37 (r=+0.16 x5.3) | pau cal 1.22 (r=+0.94 x2.4) | bra resid  2.31
-OBJETIVO 1.823
+sta cal 0.01 (r=+1.00 x3.3) | pau cal 1.64 (r=+0.90 x2.4) | bra resid  2.27
+OBJETIVO 1.547
 ```
 
 | Formato | Correlación de orden | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,94 (n=6) | **sí** — 1,73% vs 4,40% | el orden es utilizable |
-| Standard | r=+0,16 (n=4) | no — 5,50% vs 2,44% | no validado |
+| Pauper | r=+0,90 (n=6) | **sí** — 2,18% vs 4,40% | el orden es utilizable |
+| Standard | r=+1,00 (n=4) | sí — 0,14% vs 2,44% | **no te lo creas, lee abajo** |
 | Standard Brawl | 2 datos reales | sin datos suficientes | solo desplazamiento |
 
-`loocv.py 2500` global: 4,08% el motor contra 3,56% el modelo tonto.
+`loocv.py 2500` global: 1,54% el motor contra 3,56% el modelo tonto, y por primera vez
+imprime *"el motor aporta información"* en lugar del aviso de que no le gana a nada.
+
+> **El 0,14% de Standard no es una validación.** Son **n=4** puntos: una recta que pasa por
+> cuatro puntos no demuestra casi nada, y r=+1,00 con esa muestra se saca por azar con más
+> frecuencia de la que parece. Encima el dato es de mayo 2026, **pre-13-bans**, así que ni
+> siquiera mide el formato que se juega hoy. Lo que sí dice el número es que se corrigió un
+> error de modelado grande y real (Four-Color Control estaba en −19,8 por una rama de regex
+> que faltaba). Standard sigue **sin validar** hasta que existan winrates posteriores a los
+> bans.
 
 Los tres mazos revalidados con `revalidar.py 2500`, los tres siguen ganándole a su semilla
 codiciosa (no hay que rehacer búsquedas):
@@ -85,15 +94,19 @@ una recta devolvería 90% para cualquier cosa.
 
 | Arquetipo | Motor | Real | Error |
 |---|---|---|---|
-| Four-Color Control (Standard) | 33,2% | 53,0% | **−19,8** |
-| Mono Red Rally (Pauper) | 35,1% | 46,4% | **−11,3** |
-| Blue Terror (Pauper) | 44,1% | 52,0% | −7,9 |
-| Mono Red Madness (Pauper) | 47,7% | 53,0% | −5,3 |
-| Elves (Pauper) | 60,6% | 56,1% | +4,5 |
+| Mono Red Rally (Pauper) | 33,3% | 46,4% | **−13,1** |
+| Mardu Discard (Standard) | 41,2% | 49,9% | −8,7 |
+| Mono Red Madness (Pauper) | 45,3% | 53,0% | −7,7 |
+| Blue Terror (Pauper) | 44,6% | 52,0% | −7,4 |
+| Izzet Spellementals (Standard) | 45,2% | 51,1% | −5,9 |
+| Elves (Pauper) | 59,7% | 56,1% | +3,6 |
 
-Four-Color Control sigue siendo el peor error del proyecto y está intacto: el motor no sabe que
-acumular cartas es un plan de victoria. Mono Red Rally es el siguiente, y sus tres agujeros
-están diagnosticados más abajo.
+Ojo con leer esta tabla como una lista de tareas. El objetivo mide **orden**, no error
+absoluto, y un análisis de la recta real=f(motor) mostró que varios de estos residuos son
+compresión, no desorden: con el motor anterior, Mono Red Rally ya estaba en su posición
+relativa correcta (−0,3 respecto de la recta) y Jund Wildfire era en realidad el mazo más
+*sobre*valorado del banco. Antes de atacar un arquetipo, comprueba si su residuo rompe el
+orden o solo refleja la sobredispersión que la escala ya perdona.
 
 **Regla 4: el descenso no ha encontrado nada en dos campañas.** `tune_real.py` propone siempre
 `SWEEP_MIN=3` y siempre se cae en la validación (+0,002 y +0,003 con sd de 0,015-0,029). Es un
@@ -109,6 +122,22 @@ fantasma de la semilla canónica. Los defaults compilados se quedan.
 La lista larga, con síntoma y arreglo de cada una, está en `docs/trampas.md`. Ese archivo manda;
 esto es el resumen.
 
+- **"Its controller loses N life" no lo cubría nadie, y ahí estaba el peor error del proyecto.**
+  La regla de pérdida de vida leía `each opponent loses` y `target player/opponent loses`, pero
+  no la forma que usan las remociones con drenaje. Inevitable Defeat —*"Exile target nonland
+  permanent. Its controller loses 3 life and you gain 3 life"*— se modelaba como exilio a secas:
+  cuatro copias, 24 puntos de swing de vida invisibles. **Four-Color Control pasó de 33,2% a
+  51,5%.** Ablación: `DRAIN_CTRL=0`.
+- **Un candado `if out['eff']==NONE` esconde efectos en cartas multimodo.** La ganancia de vida
+  solo se leía en cartas que no hicieran nada más, cuando `setp` ya elige la primera de tres
+  ranuras libres. Jeskai Revelation e Inevitable Defeat perdían su mitad de vida por eso.
+  Cuando veas ese candado, pregúntate si está protegiendo algo o solo tapando efectos.
+  Ablación: `LIFEGAIN_ANY=0`. Ojo aparte: Jeskai Revelation tiene **cinco** modos y solo hay
+  tres ranuras, así que sigue perdiendo el rebote. Ese es un límite del formato, no un bug.
+- **Las listas del banco también pueden estar mal, y eso no da ningún error.** Mono Red Madness
+  llevaba 4 Sneaky Snacker, un Hada `{U}{B}`, en una lista con 19 Montañas: cuatro cartas que el
+  motor no puede lanzar jamás y que hunden al arquetipo en silencio. No es colisión de nombres,
+  la lista está mal. Corre `src/chk_castable.py` cada vez que toques `data/meta_decks.py`.
 - **Una regla de daño que no cubre "each opponent" borra medio hechizo.** La regla general
   cubría `target creature`, `any target` y `target player`, pero no `each opponent`. Grab the
   Prize —*"discard a card. Draw two cards. If the discarded card wasn't a land, deals 2 damage

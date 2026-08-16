@@ -17,11 +17,18 @@ Juego control de prisión: negarle el juego al rival.
 
 ## Dónde quedó
 
-- Motor: **objetivo 1,823** contra dato real, medido sobre el árbol limpio. En **Pauper el motor
-  le gana a no simular nada** (1,73% de error contra 4,40% del modelo tonto) — es el único formato
-  validado, r=+0,94. En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
+- Motor: **objetivo 1,547** contra dato real, medido sobre el árbol limpio. Le gana al modelo
+  tonto en los **dos** formatos con dato: Pauper 2,18% contra 4,40% (r=+0,90) y Standard 0,14%
+  contra 2,44% (r=+1,00). En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
   y hay una razón de fondo: el único dato real disponible es de mayo 2026 y **hubo bans después**,
   así que estaríamos comparando listas de hoy contra winrates de otro formato.
+- **Pero Standard NO está validado**, por mucho que el número lo parezca: son n=4 puntos y el
+  dato es de mayo 2026, pre-13-bans. Una recta que pasa por cuatro puntos no demuestra nada.
+  Lo que sí pasó es que se arregló un error grande y real: Four-Color Control estaba en −19,8
+  porque la regla de pérdida de vida no cubría "its controller loses".
+- Hay un bug de datos sin corregir: Mono Red Madness lleva 4 Sneaky Snacker, un Hada {U}{B}, en
+  una lista con 19 Montañas. Son cuatro cartas inlanzables. Hace falta una fuente verificada de
+  la lista real para arreglarlo; `src/chk_castable.py` lo detecta.
 - El suelo de ruido estimado del banco de Pauper es 3,25% (`src/suelo_ruido.py`) y el motor está
   en 1,73%, o sea **por debajo**. Eso no significa que se haya superado un límite: significa que
   esa estimación es una cota superior, con pocos grados de libertad y muy sensible a una serie
@@ -49,13 +56,13 @@ bash scripts/bootstrap.sh
 gcc -O3 -w -o bin_sim src/sim.c -lm
 python3 src/gen_brawl.py && sed -i 's/^static int CMD_A, CMD_B;$/static int CMD_A=-1, CMD_B=-1;/' src/sim_brawl.c
 gcc -O3 -w -o bin_brawl src/sim_brawl.c -lm
-python3 src/obj_real.py 2000     # esperado: OBJETIVO 1.823, sta r=+0.16, pau r=+0.94
-python3 src/loocv.py 2500        # esperado: pauper 1,73% vs 4,40% | standard 5,50% vs 2,44%
-python3 src/revalidar.py 2500    # esperado: sta +10,72 | pau +10,98 | brawl wr 61,5%
+python3 src/obj_real.py 2000     # esperado: OBJETIVO 1.547, sta r=+1.00, pau r=+0.90
+python3 src/loocv.py 2500        # esperado: pauper 2,18% vs 4,40% | standard 0,14% vs 2,44%
+python3 src/revalidar.py 2500    # esperado: sta +12,87 | pau +11,27 | brawl wr 61,2%
 ```
 
-Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_madness.txt` y
-`out/loocv_madness.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
+Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_drain.txt` y
+`out/loocv_drain.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
 
 En **Windows** pon `PYTHONUTF8=1` delante de cada `python3` o vas a ver `UnicodeDecodeError` y
 `KeyError: "Thrór's Map"`: hay 45 `open()` sin `encoding` declarado en 27 archivos. Y para
