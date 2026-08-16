@@ -21,7 +21,7 @@ def oracle():
             return ('token' in lay or lay=='art_series' or lay=='vanguard'
                     or (c.get('type_line') or '').startswith('Token'))
         buenas={}; fichas={}
-        for line in open('data/oracle.jsonl'):
+        for line in open('data/oracle.jsonl', encoding='utf-8'):
             c=json.loads(line)
             (fichas if _es_basura(c) else buenas).setdefault(norm(c['name']), c)
             if '//' in c['name'] and not _es_basura(c):

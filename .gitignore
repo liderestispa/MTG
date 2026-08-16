@@ -6,5 +6,6 @@ data/*.tmp
 __pycache__/
 bin_sim
 bin_brawl
+*.exe
 out/*.log
 out/*.out

@@ -17,18 +17,22 @@ Juego control de prisión: negarle el juego al rival.
 
 ## Dónde quedó
 
-- Motor: **objetivo 2,540** contra dato real. En **Pauper el motor le gana a no simular nada**
-  (3,93% de error contra 4,40% del modelo tonto) — es el único formato validado, r=+0,74.
-  En Standard no está validado (r=+0,15) y hay una razón de fondo: el único dato real disponible
-  es de mayo 2026 y **hubo bans después**, así que estaríamos comparando listas de hoy contra
-  winrates de otro formato.
+- Motor: **objetivo 2,543** contra dato real, medido sobre el árbol limpio. En **Pauper el motor
+  le gana a no simular nada** (3,93% de error contra 4,40% del modelo tonto) — es el único formato
+  validado, r=+0,73. En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
+  y hay una razón de fondo: el único dato real disponible es de mayo 2026 y **hubo bans después**,
+  así que estaríamos comparando listas de hoy contra winrates de otro formato.
 - Mis tres mazos actuales: Brawl mono-blanco con Dáin Lord of the Iron Hills, Standard BG,
-  Pauper BR. Los tres legales y armables con mis 371 cartas.
-- Las dos últimas correcciones, las dos de motor: el índice de Scryfall resolvía 88 nombres a su
-  versión **ficha** en vez de a la carta real, y el robo recurrente solo se leía en el
-  mantenimiento (se perdía el que dispara en el paso final, como The Arkenstone).
-- **Ojo con esto:** el `3,93% vs 4,40%` y las cifras de `out/report_v6.json` se calcularon *antes*
-  de esas dos correcciones. Están pendientes de refrescar.
+  Pauper BR. Los tres legales y armables con mis 371 cartas, los tres revalidados y ganándole
+  a su semilla codiciosa.
+- Las tres últimas correcciones son de motor: el índice de Scryfall resolvía 88 nombres a su
+  versión **ficha** en vez de a la carta real; el robo recurrente solo se leía en el mantenimiento
+  (se perdía el del paso final, como The Arkenstone); y `upkeep()` en `sim.c` solo miraba la
+  ranura `eff`, así que las cartas que traen el motor de robo en `eff2` quedaban etiquetadas pero
+  nunca disparaban. Esa última mitad se había medido pero **no se había commiteado**, y por eso
+  la documentación decía 2,540 mientras el repo daba 2,557.
+- Lo que **no** se regeneró es `out/report_v6.json`: los índices brutos de mis tres mazos que
+  aparecen ahí y en Notion son de antes de los fixes.
 
 ## Lo primero que quiero que verifiques
 
@@ -37,24 +41,24 @@ bash scripts/bootstrap.sh
 gcc -O3 -w -o bin_sim src/sim.c -lm
 python3 src/gen_brawl.py && sed -i 's/^static int CMD_A, CMD_B;$/static int CMD_A=-1, CMD_B=-1;/' src/sim_brawl.c
 gcc -O3 -w -o bin_brawl src/sim_brawl.c -lm
-python3 src/obj_real.py 2000     # esperado: OBJETIVO 2.540, sta r=+0.15, pau r=+0.74
-python3 src/loocv.py 2500        # NO hay valor esperado: hay que re-medirlo, ver abajo
-python3 src/revalidar.py 2500    # ídem: los mazos no se revalidaron tras los dos fixes
+python3 src/obj_real.py 2000     # esperado: OBJETIVO 2.543, sta r=+0.16, pau r=+0.73
+python3 src/loocv.py 2500        # esperado: pauper 3,93% vs 4,40% | standard 5,50% vs 2,44%
+python3 src/revalidar.py 2500    # esperado: sta +10,72 | pau +10,94 | brawl wr 61,5%
 ```
 
-`obj_real.py` sí es un control duro: si no da **2,540**, algo se rompió en el camino y hay que
-arreglarlo antes de seguir.
+Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_eff2.txt` y
+`out/loocv_eff2.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
 
-`loocv.py` y `revalidar.py` **no**. La última vez que se corrieron fue antes de los dos fixes de
-motor, así que lo que salga ahora es la línea base nueva, no una señal de que algo falla. El
-`3,93% vs 4,40%` que aparece en `CLAUDE.md` es el valor viejo: reemplazalo por el que midas.
-Si algún mazo dejó de ganarle a su semilla codiciosa, hay que rehacer la búsqueda.
+En **Windows** poné `PYTHONUTF8=1` delante de cada `python3` o vas a ver `UnicodeDecodeError` y
+`KeyError: "Thrór's Map"`: hay 45 `open()` sin `encoding` declarado en 27 archivos. Y para
+compilar sirve MinGW, porque `sim.c` no usa nada de POSIX.
 
 ## Lo que quiero hacer a continuación, en orden
 
-1. **Refrescar la línea base.** `loocv.py` y `revalidar.py` quedaron sin correr después de los dos
-   fixes de motor. Corrélos, anotá los números nuevos en `CLAUDE.md` y, si algún mazo dejó de
-   ganarle a su semilla, rehacé la búsqueda. Es corto y desbloquea todo lo demás.
+1. **Re-tunear y regenerar el informe.** El fix de `eff2` es un cambio de modelo, así que por la
+   regla 4 hay que volver a correr `src/tune_real.py`. Y `out/report_v6.json` sigue teniendo los
+   índices brutos viejos de mis tres mazos: regeneralo con `src/build_report_v6.py`. Es corto y
+   desbloquea lo demás.
 2. **Calcular el suelo de ruido de Pauper.** Los recaps semanales de MTGGoldfish dan medidas
    repetidas del mismo arquetipo (Mono Red Madness: 47,4 / 47,3 / 49,6 / 50,8 / 49,3 / 56,4 / 52).
    Esa variación semana a semana es ruido de muestreo puro. Quiero saber **cuánto margen real

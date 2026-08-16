@@ -29,25 +29,34 @@ Presupuesto declarado para mejorar: US$200-600.
 
 ## Estado actual del motor
 
-Última medición, `python3 src/obj_real.py 2000`, después del fix de robo recurrente
-(`out/obj_ark.txt`):
+Todo lo de abajo está **medido sobre este árbol** y es reproducible. `out/obj_eff2.txt`,
+`out/loocv_eff2.txt`.
 
 ```
-sta cal 2.38 (r=+0.15 x5.4) | pau cal 2.66 (r=+0.74 x2.9) | bra resid  2.40
-OBJETIVO 2.540
+$ python3 src/obj_real.py 2000
+sta cal 2.37 (r=+0.16 x5.3) | pau cal 2.69 (r=+0.73 x2.9) | bra resid  2.31
+OBJETIVO 2.543
 ```
 
 | Formato | Correlación de orden | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,74 (n=6) | **sí** (3,93% vs 4,40%) † | el orden es utilizable |
-| Standard | r=+0,15 (n=4) | no (5,94% vs 2,44%) † | no validado |
+| Pauper | r=+0,73 (n=6) | **sí** — 3,93% vs 4,40% | el orden es utilizable |
+| Standard | r=+0,16 (n=4) | no — 5,50% vs 2,44% | no validado |
 | Standard Brawl | 2 datos reales | sin datos suficientes | solo desplazamiento |
 
-> † **Las cifras marcadas son de un motor anterior.** `out/report_v6.json` y la última corrida
-> de `loocv.py` se generaron *antes* de corregir la colisión de fichas y el robo recurrente.
-> Eso alcanza también a los índices brutos de los tres mazos y a sus estimaciones honestas.
-> Antes de sacar cualquier conclusión nueva, corre `src/revalidar.py` y `src/loocv.py`:
-> es la regla 3 aplicada a este repo y está pendiente.
+`loocv.py 2500` global: 4,78% el motor contra 3,56% el modelo tonto.
+
+Los tres mazos revalidados con `revalidar.py 2500`, los tres siguen ganándole a su semilla
+codiciosa (no hay que rehacer búsquedas):
+
+| Formato | Mazo | Semilla | Delta | Índice bruto |
+|---|---|---|---|---|
+| Standard WBG | 83,94 | 73,22 | +10,72 | 88,3% |
+| Pauper BR | 70,03 | 59,09 | +10,94 | 73,7% |
+| Brawl Dáin | 59,63 | — | — | 61,5% |
+
+> **Pendiente de la regla 4:** el fix de `eff2` es un cambio de modelo, así que reabre el espacio
+> de parámetros. Falta correr `src/tune_real.py`.
 
 ## Trampas ya encontradas (no las repitas)
 
@@ -59,6 +68,18 @@ esto es el resumen.
   final**, así que quedaba modelada como un lord pelado de 5 maná, sin motor de robo. Corregido en
   `src/extract.py`: cubre mantenimiento, paso final, paso de robo y ambas fases principales.
   Cuando agregues una rama de texto, revisa **todos** los pasos en que puede dispararse.
+- **Un fix repartido entre Python y C hay que commitearlo entero, o no existe.** El arreglo
+  anterior tiene dos mitades: `extract.py` etiqueta la carta y `sim.c` tiene que leer la etiqueta.
+  `upkeep()` solo miraba `d->eff` y estas cartas traen el motor de robo en `d->eff2` (LORD ocupa
+  la ranura primaria), así que el extractor etiquetaba y el simulador ignoraba. Del commit
+  `8ac8adc` salió solo la mitad en Python: el árbol daba 2,557 mientras la documentación decía
+  2,540. **Es la misma trampa de "keywords parseadas que nadie lee", una campaña después.**
+  Al tocar una ranura, revisa si el motor la lee en `eff`, `eff2` y `eff3` — `E_LORD` y `E_TAX`
+  se leen en dos, `E_UPKEEP_DRAW` se leía en una sola.
+- **Verifica que el número documentado se reproduzca desde el árbol limpio.** Un `git status`
+  limpio no garantiza que lo medido sea lo commiteado: si mediste con el working tree sucio y
+  después commiteaste solo una parte, el número queda huérfano. Corre `obj_real.py` justo
+  después de commitear.
 - **Identidad de color donde no aplica.** En Standard y Pauper la identidad de color **no existe**:
   basta con poder pagar la mitad que lanzas. Solo aplica en Brawl y Commander. The Arkenstone
   cuesta `{5}` el artefacto y `{2}{W}` la aventura, así que su identidad es blanca y aun así entra
@@ -80,9 +101,10 @@ esto es el resumen.
 
 ## Lo que sigue pendiente
 
-1. **Revalidar, antes que nada.** Los dos últimos commits tocaron el motor y no se volvió a correr
-   `src/revalidar.py` ni `src/loocv.py`. Si algún mazo dejó de ganarle a su semilla codiciosa hay
-   que rehacer la búsqueda, y las cifras del informe v6 hay que regenerarlas.
+1. **Re-tunear, regla 4.** El fix de `eff2` es un cambio de modelo y reabre el espacio de
+   parámetros: falta `src/tune_real.py`. Los mazos ya están revalidados y los tres le ganan a su
+   semilla; lo que **no** se regeneró es `out/report_v6.json`, así que los índices brutos que
+   aparecen ahí y en la página de Notion siguen siendo los de antes del fix.
 2. **Estimar el suelo de ruido.** Los recaps semanales de Pauper dan medidas repetidas del mismo
    arquetipo (Mono Red Madness: 47,4 / 47,3 / 49,6 / 50,8 / 49,3 / 56,4 / 52). La desviación
    semana a semana es ruido de muestreo puro: ~2-3 puntos. **Ningún modelo puede bajar de ahí.**
@@ -105,6 +127,13 @@ esto es el resumen.
    juego. Explica buena parte de la sobredispersión que queda.
 
 ## Comandos
+
+En **Windows** hay dos cosas que saber. Una: `python3` usa la codificación local (cp1252) para
+`open()` y 45 llamadas en 27 archivos no declaran `encoding`, así que los nombres con acento
+—`Thrór's Map`, `Dáin`— revientan con `UnicodeDecodeError` o dan `KeyError`. Corre todo con
+**`PYTHONUTF8=1`** por delante y funciona. Dos: `sim.c` es C puro (solo `stdio/stdlib/string/
+stdint`, cero POSIX), así que compila con MinGW sin tocar nada; los binarios salen `.exe` y
+`subprocess.run(['./bin_sim'])` los resuelve igual.
 
 ```bash
 bash scripts/bootstrap.sh                     # bulk de Scryfall

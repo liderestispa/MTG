@@ -923,7 +923,12 @@ static void upkeep(P*me,P*opp){
   for(int i=0;i<me->nbf;i++){ Def*d=&D[me->bf[i]];
     if(d->eff==E_UPKEEP_DRAIN){ opp->life-=d->p1; me->life+=d->p1; }
     if(d->eff==E_ENGINE) draw(me,1);
-    if(d->eff==E_UPKEEP_DRAW){ draw(me,d->p1); me->life -= 1; } }
+    if(d->eff==E_UPKEEP_DRAW){ draw(me,d->p1); me->life -= 1; }
+    /* OJO: el robo recurrente tambien puede caer en la ranura secundaria (The Arkenstone,
+       Haliya: LORD en eff + motor de robo en eff2). Leer solo eff dejaba el motor muerto.
+       Sin perdida de vida: esa es la pega de Dark Confidant, no de estas cartas. Medido:
+       con perdida 2.566 (peor), sin perdida 2.542 (mejor). Ver out/obj_eff2.txt. */
+    if(d->eff2==E_UPKEEP_DRAW){ draw(me,d->q1); } }
 }
 
 static P *PA=0,*PB=0;
