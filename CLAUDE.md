@@ -149,6 +149,43 @@ como se LEE una carta o como se JUEGA.** Lo primero suele pagar. Lo segundo casi
 conviene medirlo con una ablacion desde el principio en vez de adoptarlo y descubrirlo
 despues.
 
+## Que hace Jund Wildfire que el motor no ve, y por que no se arreglo
+
+El nombre engaña: no es un mazo de tierras, es un **motor de sacrificar artefactos por
+valor**, y el motor le ve la mitad a cada carta.
+
+| carta | texto real | como lo lee el motor |
+|---|---|---|
+| Krark-Clan Shaman ×3 | sacrifica un artefacto: 1 daño a **cada** criatura sin volar | remoción de un objetivo |
+| Ichor Wellspring ×2 | roba al entrar **o al ir al cementerio** | un solo robo |
+| Nihil Spellbomb ×4 | roba **al morir**, no al entrar | robo al entrar |
+| Blood Fountain ×2 | ficha de Sangre y recursión desde el cementerio | nada |
+
+Las dos hipotesis obvias se probaron y las dos EMPEORAN (medido con `FICHAS_REALES=1`,
+que es el mundo donde el hueco de Jund existe; referencia 2,266):
+
+    krark_barredor_repetible    3,102   y Jund cae a 28,2%
+    robo_al_entrar_y_al_morir   2,412
+
+**Y el motivo es el mismo en las dos: la ranura, no la lectura.**
+
+- `E_SWEEPER` se dispara al entrar y sin eleccion. El Shaman es un 1/1, asi que se
+  suicida y arrasa su propio tablero, que lleva tres Shaman y una Nyxborn Hydra 1/2. En
+  la realidad el jugador elige cuando activar, y paga un artefacto por vez.
+- `E_ETB_DRAW` es inmediato. El segundo robo de Ichor Wellspring solo llega cuando el
+  artefacto muere; adelantarlo lo convierte en un cantrip de dos cartas por dos mana,
+  que no es la carta.
+
+**La leccion, que vale mas que Jund:** una habilidad ACTIVADA no se puede aproximar con
+un efecto de entrada. No es una aproximacion conservadora, es otro juego. Y un disparo
+DIFERIDO (al morir, al final del turno) tampoco: adelantarlo cambia el tempo, que es
+justo lo que el motor mide.
+
+Lo que haria falta de verdad son dos ranuras nuevas en `sim.c`: una para habilidades
+activadas, evaluadas en la fase de lanzamiento con su coste, y otra para disparos al ir
+al cementerio. Eso es trabajo de motor, no de extractor, y hasta que exista **Jund no se
+puede arreglar leyendo mejor las cartas**.
+
 ## Trampas ya encontradas (no las repitas)
 
 La lista larga, con síntoma y arreglo de cada una, está en `docs/trampas.md`. Ese archivo manda;

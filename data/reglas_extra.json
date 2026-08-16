@@ -137,6 +137,24 @@
    "activo": false,
    "nota": "NO MEDIR: inmedible por construccion: Standard entero mueve +0,002 a +0,006 por +2 puntos y el ruido es +/-0,02. NO MEDIR: es inmedible por construccion, no debil. 4x Moonshadow, un solo mazo, standard/Mardu Discard, y la sensibilidad de TODO Standard es +0,002 a +0,006 por +2 puntos de winrate: para superar el ruido de +/-0,02 haria falta mover el arquetipo +10 puntos. Ademas el signo es positivo (empeora). Es exactamente lo que ya paso con su hermana de mecanica y de mazo, contadores_por_descarte: midio +0,009, 'irrelevante'. La lectura mecanica si es correcta: extract.py baja bien el 7/7 a 1/1 con entering_counters() pero no lee la mitad que quita contadores, asi que hoy es un 1/1 vainilla con amenaza; E_COND_BUFF es la ranura correcta, cae en eff y combat() la lee en las tres pasadas (sim.c:902, 956, 1032; ojo, eff y eff2 nada mas, eff3 no). El +2/+2 es un juicio, no una lectura del texto. Si algun dia hay winrates de Standard posteriores a los 13 bans, medirla SOLA, nunca junto a contadores_por_descarte.",
    "medir": false
+  },
+  {
+   "nombre": "krark_barredor_repetible",
+   "patron": "sacrifice an artifact:\\s*this creature deals (\\d+) damage to each creature",
+   "efecto": "SWEEPER",
+   "p1": 1,
+   "activo": false,
+   "medir": false,
+   "nota": "NO MEDIR ASI. Medido: 2,266 -> 3,102 y Jund cae a 28,2%. El motivo no es la lectura sino la RANURA: E_SWEEPER se dispara al entrar y sin eleccion, y el Shaman es un 1/1, asi que se suicida y arrasa su propio tablero (Jund lleva 3 Shaman 1/1 y Nyxborn Hydra 1/2). En la realidad el jugador elige cuando activar y a cambio de un artefacto. Una habilidad ACTIVADA no se puede modelar como efecto de entrada: hace falta una ranura nueva en sim.c que la evalue en la fase de lanzamiento, con su coste. Krark-Clan Shaman, 3x en Jund Wildfire, en un mazo con 11 artefactos: es un barredor REPETIBLE de 1 danio a todo, y el motor lo lee como remocion de un objetivo. E_SWEEPER mata lo de resistencia <=p1 en ambos lados, que es el efecto exacto de una activacion. Aproximacion conservadora por dos lados: solo dispara una vez, al entrar, y el real ignora a los voladores."
+  },
+  {
+   "nombre": "robo_al_entrar_y_al_morir",
+   "patron": "enters or is put into a graveyard from the battlefield, draw",
+   "efecto": "ETB_DRAW",
+   "p1": 1,
+   "activo": false,
+   "medir": false,
+   "nota": "NO MEDIR ASI. Medido: 2,266 -> 2,412. El segundo robo llega al motor como si fuera inmediato, cuando en la realidad solo ocurre al morir el artefacto. Adelantarlo lo convierte en un cantrip de 2 cartas por 2 mana, que no es la carta. Ichor Wellspring, 2x en Jund. Una sola clausula cubre DOS eventos, asi que a lo largo de la partida roba dos veces y el motor le cuenta una. La regla anade el segundo robo en la ranura siguiente."
   }
  ]
 }
