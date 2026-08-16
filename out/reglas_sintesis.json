@@ -1,0 +1,67 @@
+[
+ {
+  "nombre": "ficha_de_sangre",
+  "patron": "create a blood token",
+  "efecto": "LOOT_TOKEN",
+  "p1": 1,
+  "p2": 0,
+  "tipo_linea": "Creature",
+  "activo": false,
+  "nota": "8 copias: 4x Voldaren Epicure en pauper/Mono Red Madness + 4x en pauper/Mono Red Rally. La ficha de Sangre es un loot literal y E_LOOT_TOKEN (sim.c:619) hace draw(me,1) + descarte al azar; ignora p1, asi que p1=1 es decorativo. Verificado: cae en eff2 (eff ya es BURN_FACE) y apply() ejecuta eff2 tanto en cast_phase (sim.c:879) como en defender_instants (sim.c:744). No puntua en defscore(), asi que no cambia el orden de juego. EL FILTRO Creature NO ES DECORATIVO: sin el, el patron casa tambien Blood Fountain (4x, Artifact), que reparte 2x a Jund Wildfire y 2x a Grixis Affinity, y Jund Wildfire es el arquetipo con PEOR direccion del banco (+0,155 de objetivo por cada +2 puntos de winrate, 7,7x el ruido). Con filtro casa 1 carta, sin filtro 2 (medido). Direccion neta buena: Madness -0,069 y Rally +0,026 por +2 puntos. Riesgo real de medir negativo: el descarte es al azar y en un mazo de locura descartar es upside; si sale peor, la lectura es que el efecto no modela la ficha, no que la ficha no valga. NUNCA convivir con una segunda regla del mismo patron: apply() leeria LOOT_TOKEN en eff2 y eff3 y haria doble loot."
+ },
+ {
+  "nombre": "ficha_de_mapa",
+  "patron": "create a map token",
+  "efecto": "ETB_COUNTERS",
+  "p1": 1,
+  "p2": 0,
+  "activo": false,
+  "nota": "NO MEDIR TODAVIA (direccion mala, no la carta). 7 copias: 4x Spyglass Siren (standard/Dimir Midrange) + 3x Fanatical Offering (pauper/Jund Wildfire). Problema de direccion medido, no opinado: Dimir Midrange NO tiene winrate real, asi que su mitad no puede mover el objetivo (+0,000); y la unica mitad medible es Jund Wildfire, +0,155 por +2 puntos, el peor arquetipo del banco para subir. Mecanicamente la regla esta bien: explorar acaba casi siempre en contador, E_ETB_COUNTERS 1 es la mitad conservadora y sim.c:608 lo pone en la criatura de mas fuerza. Efecto lateral verificado: cast_phase penaliza -25 a E_ETB_COUNTERS sin criaturas (sim.c:836, solo mira eff) y Spyglass Siren cae en eff con mesa vacia en turno 1: v=-13 contra CAST_FLOOR=-20, se lanza pero se retrasa si compite. En Fanatical Offering cae en eff2 y ahi no hay penalizacion. Si algun dia se mide, o se restringe con tipo_linea Creature (deja solo Spyglass Siren, inofensiva pero inmedible) o se espera a que Dimir Midrange tenga winrate real."
+ },
+ {
+  "nombre": "retro_lava_dart",
+  "patron": "flashback-sacrifice a mountain",
+  "efecto": "DMG_ANY",
+  "p1": 1,
+  "p2": 0,
+  "activo": false,
+  "nota": "MEDIR ESTA PRIMERA. 4 copias, todas en pauper/Mono Red Madness, que es el arquetipo con MEJOR direccion del banco (-0,069 de objetivo por +2 puntos, 3,5x el ruido) y el que CLAUDE.md manda arreglar antes que Rally. Es lectura exacta, no aproximacion: la retrospectiva es un segundo Lava Dart de 1 de dano, y por eso mata dos x/1. Verificado el guion: extract.py normaliza la raya larga a guion (linea 86, txt.lower().replace('-','-')), asi que el patron casa el texto real 'Flashback[raya]Sacrifice a Mountain'; casa 1 sola carta en el banco y 0 en la coleccion de Ricardo. Cae en eff2 (eff ya es DMG_ANY) y apply() despacha E_DMG_ANY en cualquier ranura (sim.c:492), tanto al lanzar como en defender_instants. Sesgos conocidos, los dos conservadores en direccion contraria: el motor aplica los dos disparos a la vez (sobrevalora tempo) y no cobra el sacrificio de la Montana; en cambio defscore() y el bonus de remate (+60 si opp->life <= d->p1) solo miran eff, o sea que el motor sigue valorando la carta como 1 de dano al decidir lanzarla."
+ },
+ {
+  "nombre": "vida_por_permanente_sacrificado",
+  "patron": "you gain life equal to the sacrificed permanent's mana value",
+  "efecto": "LIFEGAIN",
+  "p1": 2,
+  "p2": 0,
+  "activo": false,
+  "nota": "4x Reckoner's Bargain en pauper/Grixis Affinity, segunda mejor direccion del banco (-0,059 por +2 puntos). Hoy la carta se lee solo como 'roba dos' (eff=ETB_DRAW) y pierde entera la mitad de vida; la regla cae en eff2, que apply() ejecuta (sim.c:607, me->life+=q1). p1=2 aproxima el valor manico de lo sacrificado en un mazo de afinidad (Ichor Wellspring, Blood Fountain, Chromatic Star: 1-2). No colisiona con la regla hermana ya presente: 'you gain life equal to its power' casa Boulderbranch Golem y esta casa solo Reckoner's Bargain (verificado sobre el banco entero y sobre pool.json). Sesgo conocido: el coste adicional (sacrificar artefacto o criatura) sigue sin cobrarse, asi que la carta queda todavia mas barata de lo que es; si mide muy bien, sospechar de eso antes de celebrar."
+ },
+ {
+  "nombre": "moonshadow_crece",
+  "patron": "remove a -1/-1 counter from this creature",
+  "efecto": "COND_BUFF",
+  "p1": 2,
+  "p2": 2,
+  "tipo_linea": "Creature",
+  "activo": false,
+  "nota": "NO MEDIR: es inmedible por construccion, no debil. 4x Moonshadow, un solo mazo, standard/Mardu Discard, y la sensibilidad de TODO Standard es +0,002 a +0,006 por +2 puntos de winrate: para superar el ruido de +/-0,02 haria falta mover el arquetipo +10 puntos. Ademas el signo es positivo (empeora). Es exactamente lo que ya paso con su hermana de mecanica y de mazo, contadores_por_descarte: midio +0,009, 'irrelevante'. La lectura mecanica si es correcta: extract.py baja bien el 7/7 a 1/1 con entering_counters() pero no lee la mitad que quita contadores, asi que hoy es un 1/1 vainilla con amenaza; E_COND_BUFF es la ranura correcta, cae en eff y combat() la lee en las tres pasadas (sim.c:902, 956, 1032; ojo, eff y eff2 nada mas, eff3 no). El +2/+2 es un juicio, no una lectura del texto. Si algun dia hay winrates de Standard posteriores a los 13 bans, medirla SOLA, nunca junto a contadores_por_descarte."
+ },
+ {
+  "nombre": "bonus_por_artefacto",
+  "patron": "as long as you control an artifact, this creature gets \\+(\\d+)/\\+\\d+",
+  "efecto": "COND_BUFF",
+  "p1": 1,
+  "p2": 0,
+  "activo": false,
+  "nota": "LA ULTIMA, y solo como experimento de confirmacion. 4x Goblin Tomb Raider en pauper/Mono Red Rally, direccion mala y medida: +0,026 por +2 puntos, el mismo signo que hundio a Burning-Tree Emissary dos veces (ETBMANA_ON=1). Hallazgo aparte que conviene no perder: la carta NO aparece en out/cobertura_banco.json porque cobertura_texto.py exige un verbo de su lista y 'gets +1/+0 and has haste' no tiene ninguno, asi que las 4 copias son invisibles para la cola de trabajo aunque el motor las juegue como un 1/2 vainilla. Verificado: el texto real usa 'this creature' (no el nombre), el patron casa 1 carta en el banco y 0 en la coleccion, cae en eff y combat() lo lee; p1 explicito, el grupo (\\d+) queda sin usar. Rally lleva 11 artefactos contando Great Furnace, asi que el +1/+0 permanente es fiel; la prisa no se modela. Su valor es de informacion: si mide +0,03 confirma el modelo de prioridades y se puede dejar de proponer cartas de Rally, Elves y Jund."
+ },
+ {
+  "nombre": "tuck_segundo_desde_arriba",
+  "patron": "puts it into their library second from the top",
+  "efecto": "BOUNCE",
+  "p1": 0,
+  "p2": 0,
+  "activo": false,
+  "nota": "2 copias, la de menos masa del lote: 2x Deem Inferior en pauper/Blue Terror, direccion buena pero floja (-0,031 por +2 puntos). Hoy la carta sale COMPLETAMENTE en blanco y es la unica de Blue Terror que lo hace: la regla de BOUNCE pide 'return target ... to its owner' y la rama vecina pide 'on the top/bottom'. Verificado: casa 1 carta en el banco y cae en eff (tres ranuras libres); E_BOUNCE (sim.c:595) devuelve la mayor amenaza y no usa p1/p2, y cast_phase ya penaliza -35 el rebote sin objetivos, asi que no se tira al vacio. En pool.json casa ademas Lost Days (1 copia, hoy en blanco, mismo efecto): cobertura gratis, no falso positivo. Caveat que la hace aun mas probable de salir 'irrelevante': el coste de Deem Inferior baja {1} por cada carta robada este turno y eso no se modela, asi que el motor la paga siempre a 4."
+ }
+]

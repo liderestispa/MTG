@@ -135,7 +135,13 @@ def cola_de_reglas():
             reglas = json.load(f).get('reglas', [])
     except (OSError, ValueError):
         return []
-    return [f"REGLA_SOLO={r['nombre']}" for r in reglas if not r.get('activo')]
+    # medir=false marca las que el analisis ya descarto: o su arquetipo no tiene winrate
+    # real, o la sensibilidad del objetivo a ese formato es menor que el ruido. Medirlas
+    # gasta maquina y, peor, sube el umbral de Bonferroni para TODAS las demas.
+    # El ORDEN del archivo es el orden de medicion, y esta puesto a proposito: primero
+    # las que tocan arquetipos cuya subida baja el objetivo.
+    return [f"REGLA_SOLO={r['nombre']}" for r in reglas
+            if not r.get('activo') and r.get('medir', True)]
 
 
 def main():

@@ -88,7 +88,8 @@ def pendientes():
     reg = lee('out/laboratorio.json', {'entradas': []})
     ya = {x['spec'] for x in reg['entradas']}
     return [r['nombre'] for r in d.get('reglas', [])
-            if not r.get('activo') and f"REGLA_SOLO={r['nombre']}" not in ya]
+            if not r.get('activo') and r.get('medir', True)
+            and f"REGLA_SOLO={r['nombre']}" not in ya]
 
 
 def main():
