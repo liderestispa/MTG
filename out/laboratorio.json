@@ -1,5 +1,5 @@
 {
- "probadas": 14,
+ "probadas": 16,
  "entradas": [
   {
    "spec": "REGLA_SOLO=tapdown_multiple",
@@ -357,6 +357,72 @@
     1.33,
     1.527,
     1.384
+   ]
+  },
+  {
+   "spec": "REGLA_SOLO=tapdown_multiple",
+   "media": 0.0111,
+   "sd": 0.0034,
+   "se": 0.0011,
+   "z_exigido": 2.935,
+   "n_probadas": 15,
+   "confirmacion": null,
+   "veredicto": "irrelevante",
+   "motivo": "+0.011 real pero por debajo de 0.02",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532,
+    1.567,
+    1.374,
+    1.547,
+    1.515
+   ],
+   "variante": [
+    1.553,
+    1.627,
+    1.604,
+    1.553,
+    1.539,
+    1.585,
+    1.388,
+    1.557,
+    1.528
+   ]
+  },
+  {
+   "spec": "REGLA_SOLO=rebote_masivo_no_tipo",
+   "media": 0.0003,
+   "sd": 0.0006,
+   "se": 0.0002,
+   "z_exigido": 2.955,
+   "n_probadas": 16,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|+0.000| no supera 2.96·0.000=0.001",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532,
+    1.567,
+    1.374,
+    1.547,
+    1.515
+   ],
+   "variante": [
+    1.547,
+    1.617,
+    1.593,
+    1.544,
+    1.532,
+    1.569,
+    1.374,
+    1.547,
+    1.515
    ]
   }
  ]
