@@ -64,6 +64,25 @@ static int GANG_BASE=10, GANG_ON=0;
 /* el atacante cuenta cuantos bloqueadores quedan LIBRES, en vez de suponer que el
    defensor puede bloquear a todos a la vez. Ablacion: BLOQ_LIBRE=0. */
 static int BLOQ_LIBRE=1;
+/* APAGADO POR DEFECTO: FICHAS_REALES=1 para activarlo.
+   Las fichas como criaturas de verdad es lo CORRECTO segun las reglas, y aun asi hunde
+   el ajuste. Medido, y no es interaccion con BLOQ_LIBRE, es por si mismo:
+
+       FICHAS_REALES=0 BLOQ_LIBRE=0   1,332
+       FICHAS_REALES=0 BLOQ_LIBRE=1   1,270   <- el motor de hoy
+       FICHAS_REALES=1 BLOQ_LIBRE=0   2,274
+       FICHAS_REALES=1 BLOQ_LIBRE=1   2,354
+
+   La codificacion NO es el problema: se comprobo que las fichas salen con la
+   fuerza/resistencia correcta (1/1 -> 17, 2/2 -> 34). El problema es que meter dos
+   cuerpos mas por partida en los mazos de fichas mueve ncreat(), y de ahi cuelgan el
+   umbral de los barredores, la eleccion de objetivos de la remocion y la logica de
+   carrera. Todo eso se calibro con las fichas inertes.
+
+   Hipotesis sin comprobar, y cara de comprobar: puede que el arreglo sea bueno y lo que
+   falte sea re-tunear el motor entero encima (regla 4). Hasta que alguien lo mida, se
+   queda apagado, como el bloqueo en grupo. */
+static int FICHAS_REALES=0;
 /* Umbrales de la politica de bloqueo, ajustados por descenso coordenada-a-coordenada
    contra la calibracion del meta (11.07 -> 10.35). No son "juego optimo": son los
    valores que reproducen mejor los resultados reales. */
@@ -470,11 +489,47 @@ static int token_mult(P*p){
   for(int i=0;i<p->nbf;i++) if(D[p->bf[i]].eff==E_TOKEN_DOUBLE) m*=2;
   return m>8?8:m;
 }
+static int16_t defscore(Def*d);      /* definida mas abajo */
+
+/* ---- fichas de verdad, no clones de la carta que las crea ----
+   mk_tokens ignoraba pwr y tou y metia en la mesa el Def de la carta generadora. Si esa
+   carta era un conjuro o un artefacto, la "ficha" entraba con typ de conjuro y 0/0: no
+   contaba como criatura, no atacaba, no bloqueaba, no recibia bonos de lord y no moria
+   nunca. Solo inflaba el contador de permanentes.
+
+   Medido en sintetico: 20 conjuros "crea dos fichas 2/2" contra un rival vacio ganaban
+   el 0,0% y no hacian danio jamas; el mismo mana en criaturas 2/2 de verdad, la mitad de
+   cuerpos, ganaba el 76,2%.
+
+   Y fallaba al reves tambien: si la fuente SI era criatura, la ficha salia copia
+   completa de ella (Writhing Chrysalis 2/3 regalaba dos 2/3 en vez de fichas chicas).
+
+   Se cachean por fuerza/resistencia al final de D[]. pwr<0 pide clonar la fuente a
+   proposito, que es lo correcto en Hare Apparent. Ablacion: FICHAS_REALES=0. */
+static int TOKDEF[16][16];
+static int token_def(int pwr,int tou){
+  if(pwr<0) pwr=0;  if(pwr>15) pwr=15;
+  if(tou<1) tou=1;  if(tou>15) tou=15;
+  if(TOKDEF[pwr][tou]) return TOKDEF[pwr][tou];
+  if(NDEF>=MAXDEF) return -1;
+  int i=NDEF++;
+  memset(&D[i],0,sizeof(Def));
+  D[i].typ=T_CREA; D[i].power=(int16_t)pwr; D[i].tough=(int16_t)tou;
+  D[i].score=defscore(&D[i]);
+  TOKDEF[pwr][tou]=i;
+  return i;
+}
 static void mk_tokens(P*me,int proto,int count,int pwr,int tou){
   int m=token_mult(me); count*=m;
+  int td = proto;
+  if(FICHAS_REALES && pwr>=0){
+    if(pwr==0 && tou==0){ pwr=1; tou=1; }   /* sin p/t en el texto: ficha 1/1 */
+    int t=token_def(pwr,tou);
+    if(t>=0) td=t;
+  }
   for(int k=0;k<count && me->nbf<BFMAX;k++){
     int i=me->nbf++;
-    me->bf[i]=proto; me->tap[i]=0; me->sick[i]=1; me->ctr[i]=0; me->eqp[i]=0;
+    me->bf[i]=td; me->tap[i]=0; me->sick[i]=1; me->ctr[i]=0; me->eqp[i]=0;
   }
 }
 static void apply(P*me,P*opp,int def,int which){
@@ -525,7 +580,8 @@ static void apply(P*me,P*opp,int def,int which){
     case E_TOKEN_SCALE: {
       /* Hare Apparent: fichas = numero de copias propias ya en mesa */
       int same=0; for(int i=0;i<me->nbf;i++) if(me->bf[i]==def) same++;
-      if(same>1) mk_tokens(me,def,same-1,1,1);
+      /* aqui la ficha SI es copia de la carta, asi que se clona a proposito */
+      if(same>1) mk_tokens(me,def,same-1,-1,-1);
     } break;
     case E_TOKEN_DOUBLE: break;   /* estatico, se lee en token_mult */
     case E_EXILE_ENGINE: break;   /* estatico, se dispara al exiliar */
@@ -1290,6 +1346,7 @@ int main(void){
     const char*e2=getenv("W_TARGET"); if(e2) W_TARGET=atoi(e2);
     const char*e3=getenv("DISABLE_EFF"); if(e3) DISABLE_EFF=atoi(e3);
     const char*bl=getenv("BLOQ_LIBRE"); if(bl) BLOQ_LIBRE=atoi(bl);
+    const char*fr=getenv("FICHAS_REALES"); if(fr) FICHAS_REALES=atoi(fr);
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
     const char*e6=getenv("HEXWARD_ON"); if(e6) HEXWARD_ON=atoi(e6);
