@@ -27,16 +27,9 @@
    {
     "cmc": 2,
     "name": "Warg Tactics",
-    "n": 3,
+    "n": 4,
     "mc": "{1}{G}",
     "pt": "Instant"
-   },
-   {
-    "cmc": 2,
-    "name": "Pretending Poxbearers",
-    "n": 2,
-    "mc": "{1}{W/B}",
-    "pt": "2/1"
    },
    {
     "cmc": 2,
@@ -47,17 +40,24 @@
    },
    {
     "cmc": 2,
+    "name": "Corrupt Court Official",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Gollum the Abandoned",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 2,
     "name": "Gollum, Riddle Master",
     "n": 1,
     "mc": "{1}{B}",
     "pt": "3/1"
-   },
-   {
-    "cmc": 2,
-    "name": "Old Thrush",
-    "n": 1,
-    "mc": "{2}",
-    "pt": "1/2"
    },
    {
     "cmc": 2,
@@ -67,25 +67,18 @@
     "pt": "2/2"
    },
    {
+    "cmc": 2,
+    "name": "Thrór's Map",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "Legendary Arti"
+   },
+   {
     "cmc": 3,
     "name": "Mirkwood Pathmaker",
     "n": 2,
     "mc": "{2}{G}",
     "pt": "*/*"
-   },
-   {
-    "cmc": 3,
-    "name": "Crude Bent Blade",
-    "n": 1,
-    "mc": "{2}{B}",
-    "pt": "Artifact"
-   },
-   {
-    "cmc": 3,
-    "name": "Hog-Monkey",
-    "n": 1,
-    "mc": "{2}{B}",
-    "pt": "3/2"
    },
    {
     "cmc": 3,
@@ -116,13 +109,6 @@
     "pt": "4/3"
    },
    {
-    "cmc": 4,
-    "name": "Ordinary Bear",
-    "n": 1,
-    "mc": "{3}{G}",
-    "pt": "4/5"
-   },
-   {
     "cmc": 5,
     "name": "Large Bear",
     "n": 2,
@@ -131,10 +117,24 @@
    },
    {
     "cmc": 5,
+    "name": "Dreaded Bat-Cloud",
+    "n": 1,
+    "mc": "{4}{B}",
+    "pt": "4/2"
+   },
+   {
+    "cmc": 5,
     "name": "The Arkenstone // Seek the Heart",
     "n": 1,
     "mc": "{5}",
     "pt": "Legendary Arti"
+   },
+   {
+    "cmc": 6,
+    "name": "Boughside Wanderers",
+    "n": 1,
+    "mc": "{4}{G}{G}",
+    "pt": "4/4"
    },
    {
     "cmc": 6,
@@ -159,59 +159,59 @@
   },
   "nl": 24,
   "ns": 36,
-  "gain": "+14,47",
-  "obj": 83.684,
-  "wr": 87.9389,
-  "cal": 59.59533142250676,
+  "gain": "+14,55",
+  "obj": 83.5459,
+  "wr": 87.8878,
+  "cal": 64.13596519630093,
   "legal": true,
   "errs": [],
   "mm": [
    [
     "Izzet Spellementals",
     20.0,
-    90.25
+    89.6666
    ],
    [
     "Four-Color Control",
     16.4,
-    91.8333
+    91.6666
    ],
    [
     "Dimir Excruciator",
     15.9,
-    83.75
+    83.1666
    ],
    [
     "Orzhov Lifegain",
     6.5,
-    89.9166
+    87.83330000000001
    ],
    [
     "Dimir Midrange",
     3.4,
-    87.9166
+    87.5833
    ],
    [
     "Mardu Discard",
     2.7,
-    81.3333
+    81.0
    ]
   ],
   "st": {
-   "firstplay": 1.9947,
-   "gamelen": 7.5934,
-   "noplay14": 1.4183,
-   "screw": 0.3455,
-   "manascrew": 0.0094,
-   "cast": 6.8156,
-   "removal": 3.6524,
-   "timeout": 0.0015,
-   "hA3": 3.8007,
-   "hA6": 1.8636,
-   "hA9": 1.0498,
-   "hB3": 4.6254,
-   "hB6": 2.4722,
-   "hB9": 1.7482
+   "firstplay": 1.9977,
+   "gamelen": 7.6991,
+   "noplay14": 1.4473,
+   "screw": 0.3615,
+   "manascrew": 0.008,
+   "cast": 6.72,
+   "removal": 3.9281,
+   "timeout": 0.0013,
+   "hA3": 3.8469,
+   "hA6": 1.9453,
+   "hA9": 1.0872,
+   "hB3": 4.5508,
+   "hB6": 2.3266,
+   "hB9": 1.6162
   }
  },
  "pauper": {
@@ -242,7 +242,7 @@
    {
     "cmc": 2,
     "name": "Goblin-town Flunkies",
-    "n": 2,
+    "n": 3,
     "mc": "{1}{R}",
     "pt": "1/1"
    },
@@ -276,13 +276,6 @@
    },
    {
     "cmc": 2,
-    "name": "Cunning Maneuver",
-    "n": 1,
-    "mc": "{1}{R}",
-    "pt": "Instant"
-   },
-   {
-    "cmc": 2,
     "name": "Ragged Short Spear",
     "n": 1,
     "mc": "{1}{R}",
@@ -294,13 +287,6 @@
     "n": 1,
     "mc": "{1}{R}",
     "pt": "Instant"
-   },
-   {
-    "cmc": 2,
-    "name": "Óin the Brave",
-    "n": 1,
-    "mc": "{1}{R}",
-    "pt": "1/3"
    },
    {
     "cmc": 3,
@@ -338,13 +324,6 @@
     "pt": "Instant"
    },
    {
-    "cmc": 3,
-    "name": "Vindictive Warden",
-    "n": 1,
-    "mc": "{2}{B/R}",
-    "pt": "2/3"
-   },
-   {
     "cmc": 4,
     "name": "Gundabad Opportunist",
     "n": 3,
@@ -352,11 +331,25 @@
     "pt": "4/2"
    },
    {
+    "cmc": 5,
+    "name": "Iron Hills Stalwart",
+    "n": 1,
+    "mc": "{4}{R}",
+    "pt": "4/5"
+   },
+   {
     "cmc": 6,
     "name": "Mongoose Lizard",
     "n": 1,
     "mc": "{4}{R}{R}",
     "pt": "5/6"
+   },
+   {
+    "cmc": 7,
+    "name": "Smaug, the Great Calamity // Spew Flame",
+    "n": 1,
+    "mc": "{5}{R}{R}",
+    "pt": "5/5"
    }
   ],
   "la": {
@@ -367,64 +360,64 @@
   },
   "nl": 23,
   "ns": 37,
-  "gain": "+13,17",
-  "obj": 69.1111,
-  "wr": 72.7648,
-  "cal": 62.624961612660165,
+  "gain": "+13,02",
+  "obj": 69.1496,
+  "wr": 72.8921,
+  "cal": 53.606874294343676,
   "legal": true,
   "errs": [],
   "mm": [
    [
     "Blue Terror",
     10.9,
-    82.75
+    82.25
    ],
    [
     "Mono Red Madness",
     8.5,
-    78.5
+    74.6666
    ],
    [
     "Tron",
     6.5,
-    70.3333
+    70.0
    ],
    [
     "Mono Red Rally",
     6.5,
-    77.0833
+    78.5
    ],
    [
     "Jund Wildfire",
     5.8,
-    68.4166
+    75.5
    ],
    [
     "Grixis Affinity",
     5.8,
-    59.0
+    59.75
    ],
    [
     "Elves",
     4.3,
-    63.666599999999995
+    65.5833
    ]
   ],
   "st": {
-   "firstplay": 1.6945,
-   "gamelen": 6.7676,
-   "noplay14": 1.2179,
-   "screw": 0.4707,
+   "firstplay": 1.6906,
+   "gamelen": 6.7716,
+   "noplay14": 1.2475,
+   "screw": 0.4767,
    "manascrew": 0.0147,
-   "cast": 6.719,
-   "removal": 3.4341,
-   "timeout": 0.0,
-   "hA3": 3.4744,
-   "hA6": 1.3107,
-   "hA9": 0.6114,
-   "hB3": 4.7049,
-   "hB6": 2.7626,
-   "hB9": 2.3535
+   "cast": 6.5843,
+   "removal": 3.5592,
+   "timeout": 0.0003,
+   "hA3": 3.5019,
+   "hA6": 1.4662,
+   "hA9": 0.7606,
+   "hB3": 4.6056,
+   "hB6": 2.632,
+   "hB9": 2.2401
   }
  },
  "brawl": {
@@ -449,13 +442,6 @@
    {
     "cmc": 1,
     "name": "Giant's Boulder",
-    "n": 1,
-    "mc": "{1}",
-    "pt": "Artifact"
-   },
-   {
-    "cmc": 1,
-    "name": "Key to the Side-Door",
     "n": 1,
     "mc": "{1}",
     "pt": "Artifact"
@@ -538,13 +524,6 @@
     "pt": "Legendary Arti"
    },
    {
-    "cmc": 2,
-    "name": "Troop of Ponies",
-    "n": 1,
-    "mc": "{2}",
-    "pt": "2/1"
-   },
-   {
     "cmc": 3,
     "name": "Airbending Lesson",
     "n": 1,
@@ -606,6 +585,20 @@
     "n": 1,
     "mc": "{3}{W}",
     "pt": "3/2"
+   },
+   {
+    "cmc": 4,
+    "name": "Avatar's Wrath",
+    "n": 1,
+    "mc": "{2}{W}{W}",
+    "pt": "Sorcery"
+   },
+   {
+    "cmc": 4,
+    "name": "Celebrate the Mountain-king",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "Enchantment"
    },
    {
     "cmc": 4,
@@ -685,8 +678,8 @@
   "nl": 24,
   "ns": 35,
   "gain": "n/d",
-  "obj": 59.32920000000001,
-  "wr": 61.1565,
+  "obj": 58.71999999999999,
+  "wr": 60.7861,
   "cal": null,
   "legal": true,
   "errs": [],
@@ -694,49 +687,49 @@
    [
     "Elspeth Storm Slayer",
     23.0,
-    68.8333
+    69.8333
    ],
    [
     "Tifa Lockhart",
     9.5,
-    78.1666
+    78.0
    ],
    [
     "Sephiroth Fabled SOLDIER",
     9.5,
-    42.6666
+    42.0833
    ],
    [
     "Ketramose the New Dawn",
     7.0,
-    13.25
+    10.25
    ],
    [
     "Eluge the Shoreless Sea",
     6.2,
-    75.5833
+    72.5833
    ],
    [
     "Kona Rescue Beastie",
     5.0,
-    67.25
+    66.5
    ]
   ],
   "st": {
-   "firstplay": 1.4113,
-   "gamelen": 7.6936,
-   "noplay14": 0.6091,
-   "screw": 0.1191,
-   "manascrew": 0.0058,
-   "cast": 8.1724,
-   "removal": 1.9565,
-   "timeout": 0.0023,
-   "hA3": 4.1373,
-   "hA6": 1.4787,
-   "hA9": 0.4903,
-   "hB3": 6.2365,
-   "hB6": 4.0282,
-   "hB9": 2.2148
+   "firstplay": 1.4743,
+   "gamelen": 7.6791,
+   "noplay14": 0.6887,
+   "screw": 0.1303,
+   "manascrew": 0.0085,
+   "cast": 7.9695,
+   "removal": 1.9636,
+   "timeout": 0.0031,
+   "hA3": 4.1919,
+   "hA6": 1.6268,
+   "hA9": 0.578,
+   "hB3": 6.2354,
+   "hB6": 4.0063,
+   "hB9": 2.1997
   }
  }
 }
