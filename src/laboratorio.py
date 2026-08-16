@@ -140,8 +140,15 @@ def cola_de_reglas():
     # gasta maquina y, peor, sube el umbral de Bonferroni para TODAS las demas.
     # El ORDEN del archivo es el orden de medicion, y esta puesto a proposito: primero
     # las que tocan arquetipos cuya subida baja el objetivo.
+    # y tampoco se repiten las que ya estan en el registro: volver a medirlas gasta
+    # maquina y vuelve a subir el umbral de Bonferroni sin aportar informacion nueva.
+    try:
+        ya = {x['spec'] for x in json.load(io.open(REGISTRO, encoding='utf-8'))['entradas']}
+    except (OSError, ValueError, KeyError):
+        ya = set()
     return [f"REGLA_SOLO={r['nombre']}" for r in reglas
-            if not r.get('activo') and r.get('medir', True)]
+            if not r.get('activo') and r.get('medir', True)
+            and f"REGLA_SOLO={r['nombre']}" not in ya]
 
 
 def main():
