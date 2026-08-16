@@ -70,7 +70,8 @@ class Registry:
             e['p1'],e['p2'],e['p3'],e['q1'],e['q2'], e['power'], e['tough'],
             e.get('mana_out', 0), e.get('dyn', 0), e.get('no_untap', 0),
             e.get('eff3', 0), e.get('r1', 0), e.get('r2', 0),
-            e.get('alt', 0), e.get('altn', 0)])
+            e.get('alt', 0), e.get('altn', 0),
+            e.get('die_eff', 0), e.get('die_p1', 0)])
 
 def build(fmt):
     R=Registry()

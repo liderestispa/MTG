@@ -41,6 +41,8 @@ typedef struct {
   int16_t cmc, power, tough;
   uint8_t typ, colors, produces, gen, hybrid, mana_out, dyn, no_untap;
   uint8_t alt, altn;   /* coste alternativo: 1=sacrificar altn tierras, 2=pagar altn vidas */
+  uint8_t die_eff;     /* disparo AL IR AL CEMENTERIO: efecto y parametro */
+  int16_t die_p1;
   uint8_t pip[5];
   uint32_t kw;
   uint8_t eff, eff2, eff3;
@@ -120,6 +122,8 @@ static int NOTARGET_DURO=0;
    es un cambio que descubre otro hueco. El desbloqueo es averiguar que hace Jund Wildfire
    que el motor no ve, no seguir tocando las fichas. */
 static int FICHAS_REALES=0;
+/* disparos al ir al cementerio. Ablacion: MUERTE_ON=0. */
+static int MUERTE_ON=1;
 /* Umbrales de la politica de bloqueo, ajustados por descenso coordenada-a-coordenada
    contra la calibracion del meta (11.07 -> 10.35). No son "juego optimo": son los
    valores que reproducen mejor los resultados reales. */
@@ -435,9 +439,17 @@ static void addbf(P*p,int def){
   p->sick[i] = (D[def].typ==T_CREA && !(D[def].kw&K_HAS)) ? 1 : 0;
 }
 static P *OPP_OF_A=0, *OPP_OF_B=0;
+static void apply(P*me,P*opp,int def,int which);
+static void apply_die(P*me,P*opp,int def);
 static int CMD_OF(P*p);
 static void rmbf(P*p,int i){
   tj_ev("sale", p, p->bf[i]);
+  /* disparo al ir al cementerio (Ichor Wellspring, Nihil Spellbomb, Lembas). Antes no
+     existia: el motor solo leia la mitad de entrada de esas cartas. */
+  if(MUERTE_ON && D[p->bf[i]].die_eff){
+    P*o = (p==OPP_OF_A)? OPP_OF_B : OPP_OF_A;
+    apply_die(p, (o&&o!=p)?o:p, p->bf[i]);
+  }
   { Def*dd=&D[p->bf[i]];
     if(dd->eff==E_DEATH_DMG || dd->eff2==E_DEATH_DMG){
       int amt = (dd->eff==E_DEATH_DMG)? dd->p1 : dd->q1;
@@ -573,6 +585,17 @@ static void mk_tokens(P*me,int proto,int count,int pwr,int tou,int mana){
     int i=me->nbf++;
     me->bf[i]=td; me->tap[i]=0; me->sick[i]=1; me->ctr[i]=0; me->eqp[i]=0;
   }
+}
+/* Ejecuta el disparo de cementerio reutilizando el switch de apply. Se copia el Def a
+   una entrada temporal con el efecto de muerte en la ranura primaria: asi no hay que
+   duplicar los cincuenta casos del switch ni tocar su firma. */
+static void apply_die(P*me,P*opp,int def){
+  if(NDEF>=MAXDEF) return;
+  int t=NDEF;                      /* temporal: NO se incrementa NDEF, se reusa siempre */
+  D[t]=D[def];
+  D[t].eff=D[def].die_eff; D[t].p1=D[def].die_p1; D[t].p2=0;
+  D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0;
+  apply(me,opp,t,0);
 }
 static void apply(P*me,P*opp,int def,int which){
   Def*d=&D[def];
@@ -1398,11 +1421,12 @@ int main(void){
     scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
-    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0;
-    scanf("%d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_);
+    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0;
+    scanf("%d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,&de_,&dp_);
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
     d->eff3=(uint8_t)e3_; d->r1=(int16_t)r1_; d->r2=(int16_t)r2_;
     d->alt=(uint8_t)al_; d->altn=(uint8_t)an_;
+    d->die_eff=(uint8_t)de_; d->die_p1=(int16_t)dp_;
     d->cmc=cmc; d->typ=typ; d->colors=col; d->produces=prod; d->gen=gen; d->hybrid=hyb;
     d->pip[0]=p0;d->pip[1]=p1_;d->pip[2]=p2_;d->pip[3]=p3_;d->pip[4]=p4_;
     d->kw=kw; d->eff=eff; d->eff2=eff2; d->p1=a; d->p2=b; d->p3=c; d->q1=q1; d->q2=q2;
@@ -1421,6 +1445,7 @@ int main(void){
     const char*e3=getenv("DISABLE_EFF"); if(e3) DISABLE_EFF=atoi(e3);
     const char*bl=getenv("BLOQ_LIBRE"); if(bl) BLOQ_LIBRE=atoi(bl);
     const char*nd=getenv("NOTARGET_DURO"); if(nd) NOTARGET_DURO=atoi(nd);
+    const char*mo=getenv("MUERTE_ON"); if(mo) MUERTE_ON=atoi(mo);
     const char*fr=getenv("FICHAS_REALES"); if(fr) FICHAS_REALES=atoi(fr);
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);

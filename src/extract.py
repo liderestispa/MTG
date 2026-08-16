@@ -445,6 +445,39 @@ def parse_card(c):
     # sagas y planeswalkers: valor recurrente aproximado
     if 'saga' in tl.lower(): setp(E['ENGINE'], 1)
     if 'planeswalker' in tl.lower(): setp(E['ENGINE'], 1)
+    # ---- disparo AL IR AL CEMENTERIO ----
+    # Ranura propia (die_eff/die_p1), porque adelantarlo a la entrada no es una
+    # aproximacion: cambia el tempo, que es justo lo que el motor mide. Medido: dar el
+    # segundo robo de Ichor Wellspring al entrar empeoraba de 2,266 a 2,412.
+    # Dos casos distintos y hay que separarlos:
+    #   "enters OR is put into a graveyard"  -> dispara las DOS veces (Ichor Wellspring)
+    #   "is put into a graveyard"            -> SOLO al morir (Nihil Spellbomb), y
+    #      entonces el robo que la regla generica le dio al entrar esta MAL puesto y hay
+    #      que quitarselo, no sumarle otro.
+    # Ablacion: MUERTE_OFF=1.
+    if os.environ.get('MUERTE_OFF') != '1':
+        # se busca en la LINEA entera, no hasta el primer punto: Nihil Spellbomb parte el
+        # efecto en dos frases ("you may pay {B}. If you do, draw a card").
+        _cl, _tambien_al_entrar = None, False
+        for _lin in low.split('\n'):
+            if 'is put into a graveyard from the battlefield' not in _lin: continue
+            _tambien_al_entrar = 'enters or is put into a graveyard' in _lin
+            _cl = _lin
+            break
+        if _cl:
+            _d = re.search(r'draw (\w+) cards?', _cl)
+            if _d:
+                out['die_eff'] = E['ETB_DRAW']; out['die_p1'] = num(_d.group(1), 1)
+                if not _tambien_al_entrar:
+                    # el robo era de muerte y estaba contado como de entrada: se mueve
+                    for _s, _p in (('eff', 'p1'), ('eff2', 'q1'), ('eff3', 'r1')):
+                        if out[_s] == E['ETB_DRAW']:
+                            out[_s] = E['NONE']; out[_p] = 0
+                            break
+            _g = re.search(r'you gain (\w+) life', _cl)
+            if _g and not out.get('die_eff'):
+                out['die_eff'] = E['LIFEGAIN']; out['die_p1'] = num(_g.group(1), 2)
+
     # ---- reglas de datos (data/reglas_extra.json) ----
     # Se aplican al final, sobre las ranuras que hayan quedado libres. Estan en un JSON y
     # no en codigo para que src/laboratorio.py pueda proponerlas, activarlas y medirlas
