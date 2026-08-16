@@ -221,7 +221,13 @@ def parse_card(c):
     if m:
         p, tg = m.group(2), m.group(3)
         if p.isdigit() and tg.isdigit():
-            setp(E['ETB_TOKEN'], num(m.group(1), 1), (int(p) << 4) | int(tg))
+            # bit 8: la ficha produce mana al sacrificarse (Eldrazi Spawn/Scion,
+            # "Sacrifice this token: Add {C}"). Sin esto la ficha es un 0/1 vainilla y
+            # se pierde su valor entero, que es rampa, no cuerpo. Es lo que hundia a
+            # Jund Wildfire al activar FICHAS_REALES.
+            mana = 0x100 if re.search(
+                r'sacrifice this (?:token|creature)[^.]*:\s*add', low) else 0
+            setp(E['ETB_TOKEN'], num(m.group(1), 1), (int(p) << 4) | int(tg) | mana)
     # El candado 'out[eff]==NONE' hacia que la ganancia de vida solo existiera en cartas
     # que no hicieran nada mas. Jeskai Revelation gana 4 vidas y las perdia por tener el
     # slot ocupado por el dano; Inevitable Defeat igual. setp ya elige la primera ranura

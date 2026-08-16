@@ -97,9 +97,28 @@ static int NOTARGET_DURO=0;
    umbral de los barredores, la eleccion de objetivos de la remocion y la logica de
    carrera. Todo eso se calibro con las fichas inertes.
 
-   Hipotesis sin comprobar, y cara de comprobar: puede que el arreglo sea bueno y lo que
-   falte sea re-tunear el motor entero encima (regla 4). Hasta que alguien lo mida, se
-   queda apagado, como el bloqueo en grupo. */
+   HIPOTESIS DEL RE-TUNEO: REFUTADA. Descenso completo con las fichas encendidas recupera
+   2,354 -> 2,230, o sea el 11% de lo que cuesta. El danio no esta en los diez umbrales.
+
+   LO QUE SI SE AVERIGUO, y cambia como hay que leer todo esto. Desglose por arquetipo al
+   encender las fichas:
+
+       Mono Red Rally     32,6% -> 46,9%   real 46,4%   QUEDA CLAVADO
+       Four-Color Control 51,4% -> 58,0%   real 53,0%   se pasa
+       Jund Wildfire      47,6% -> 38,1%   real 49,7%   se hunde
+
+   Rally era el peor arquetipo del banco toda la sesion (-13,8) y este arreglo lo resuelve
+   solo. Y Jund no se rompe: se DESTAPA. Sus unicas fichas son 4 Writhing Chrysalis, que
+   con el bug clonaban la carta y le regalaban ocho cuerpos 2/3 con alcance inexistentes.
+   Su 47,6% se sostenia sobre eso. Al modelarlas bien aparece un hueco de -11,6 que
+   llevaba ahi desde el principio, tapado.
+
+   Se anadio tambien que las fichas que se sacrifican por mana (Eldrazi Spawn/Scion) ramp
+   de verdad, que antes eran 0/1 vainilla: 2,354 -> 2,266.
+
+   Sigue apagado porque el objetivo empeora, que es la regla. Pero NO es un cambio malo:
+   es un cambio que descubre otro hueco. El desbloqueo es averiguar que hace Jund Wildfire
+   que el motor no ve, no seguir tocando las fichas. */
 static int FICHAS_REALES=0;
 /* Umbrales de la politica de bloqueo, ajustados por descenso coordenada-a-coordenada
    contra la calibracion del meta (11.07 -> 10.35). No son "juego optimo": son los
@@ -525,25 +544,29 @@ static int16_t defscore(Def*d);      /* definida mas abajo */
 
    Se cachean por fuerza/resistencia al final de D[]. pwr<0 pide clonar la fuente a
    proposito, que es lo correcto en Hare Apparent. Ablacion: FICHAS_REALES=0. */
-static int TOKDEF[16][16];
-static int token_def(int pwr,int tou){
+static int TOKDEF[16][16][2];
+static int token_def(int pwr,int tou,int mana){
   if(pwr<0) pwr=0;  if(pwr>15) pwr=15;
   if(tou<1) tou=1;  if(tou>15) tou=15;
-  if(TOKDEF[pwr][tou]) return TOKDEF[pwr][tou];
+  mana = mana?1:0;
+  if(TOKDEF[pwr][tou][mana]) return TOKDEF[pwr][tou][mana];
   if(NDEF>=MAXDEF) return -1;
   int i=NDEF++;
   memset(&D[i],0,sizeof(Def));
   D[i].typ=T_CREA; D[i].power=(int16_t)pwr; D[i].tough=(int16_t)tou;
+  /* fichas que se sacrifican por mana (Eldrazi Spawn/Scion). Sin esto son 0/1 vainilla
+     y se pierde su valor entero, que es rampa y no cuerpo. */
+  if(mana){ D[i].mana_out=1; D[i].produces=31; }
   D[i].score=defscore(&D[i]);
-  TOKDEF[pwr][tou]=i;
+  TOKDEF[pwr][tou][mana]=i;
   return i;
 }
-static void mk_tokens(P*me,int proto,int count,int pwr,int tou){
+static void mk_tokens(P*me,int proto,int count,int pwr,int tou,int mana){
   int m=token_mult(me); count*=m;
   int td = proto;
   if(FICHAS_REALES && pwr>=0){
     if(pwr==0 && tou==0){ pwr=1; tou=1; }   /* sin p/t en el texto: ficha 1/1 */
-    int t=token_def(pwr,tou);
+    int t=token_def(pwr,tou,mana);
     if(t>=0) td=t;
   }
   for(int k=0;k<count && me->nbf<BFMAX;k++){
@@ -595,12 +618,12 @@ static void apply(P*me,P*opp,int def,int which){
         opp->nh--;
       }
     } break;
-    case E_ETB_TOKEN: mk_tokens(me,def,a,(b>>4)&15,b&15); break;
+    case E_ETB_TOKEN: mk_tokens(me,def,a,(b>>4)&15,b&15,(b>>8)&1); break;
     case E_TOKEN_SCALE: {
       /* Hare Apparent: fichas = numero de copias propias ya en mesa */
       int same=0; for(int i=0;i<me->nbf;i++) if(me->bf[i]==def) same++;
       /* aqui la ficha SI es copia de la carta, asi que se clona a proposito */
-      if(same>1) mk_tokens(me,def,same-1,-1,-1);
+      if(same>1) mk_tokens(me,def,same-1,-1,-1,0);
     } break;
     case E_TOKEN_DOUBLE: break;   /* estatico, se lee en token_mult */
     case E_EXILE_ENGINE: break;   /* estatico, se dispara al exiliar */
@@ -654,7 +677,7 @@ static void apply(P*me,P*opp,int def,int which){
       for(int i=opp->nbf-1;i>=0;i--) if(D[opp->bf[i]].typ==T_CREA && opp->tap[i]){
         opp->hand[opp->nh++]=opp->bf[i]; rmbf(opp,i); }
     } break;
-    case E_MOBILIZE: mk_tokens(me,def,a,1,1); break;
+    case E_MOBILIZE: mk_tokens(me,def,a,1,1,0); break;
     case E_MASS_CHEAT: {          /* baja criaturas de la mano gratis */
       int put=0;
       for(int i=me->nh-1;i>=0 && put<a;i--) if(D[me->hand[i]].typ==T_CREA){

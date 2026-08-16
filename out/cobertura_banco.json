@@ -1434,12 +1434,12 @@
   ],
   "categoria": "PARCIAL",
   "frases": 3,
-  "ranuras": 1,
+  "ranuras": 2,
   "tipo": "Instant",
   "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature. | You gain life equal to the sacrificed permanent's mana value. | Draw two cards.",
   "efectos": [
    3,
-   0,
+   17,
    0
   ]
  },
@@ -1575,23 +1575,6 @@
   "texto": "You may discard a card or sacrifice a land. | If you do, draw two cards.",
   "efectos": [
    3,
-   0,
-   0
-  ]
- },
- {
-  "carta": "Lava Dart",
-  "copias": 4,
-  "donde": [
-   "pauper/Mono Red Madness"
-  ],
-  "categoria": "PARCIAL",
-  "frases": 2,
-  "ranuras": 1,
-  "tipo": "Instant",
-  "texto": "Lava Dart deals 1 damage to any target. | Flashback—Sacrifice a Mountain.",
-  "efectos": [
-   48,
    0,
    0
   ]
