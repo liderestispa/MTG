@@ -36,6 +36,7 @@ enum { E_NONE=0, E_ETB_DMG=1, E_ETB_DRAIN=2, E_ETB_DRAW=3, E_ETB_DISCARD=4, E_ET
 typedef struct {
   int16_t cmc, power, tough;
   uint8_t typ, colors, produces, gen, hybrid, mana_out, dyn, no_untap;
+  uint8_t alt, altn;   /* coste alternativo: 1=sacrificar altn tierras, 2=pagar altn vidas */
   uint8_t pip[5];
   uint32_t kw;
   uint8_t eff, eff2, eff3;
@@ -71,7 +72,17 @@ static int DMG_ANY_FACE=0;
 static int NEG_ON=1;   /* bloque de negacion: edicto, inmovilizar, impuesto, tierras, rebote */
 static int TRACE=0;      /* 1 = imprime la primera partida turno a turno */
 static int TRACE_ON=0;
+static int TJ=0, TJ_ON=0; /* TRACE_JSON=N: traza las N primeras partidas, para src/tablero.py */
+static int TJ_TURN=0; static long long TJ_GAME=0;
+/* eventos dentro del turno: sin esto el tablero solo muestra fotos de fin de turno y las
+   partidas parecen vacias, porque lo que entra y muere en el mismo turno no se ve nunca. */
+static void tj_ev(const char*ev, void*jug, int id);
 static void*PLAYER_A=0;
+static void tj_ev(const char*ev, void*jug, int id){
+  if(!TJ_ON) return;
+  fprintf(stderr,"@J {\"t\":%d,\"ev\":\"%s\",\"p\":\"%s\",\"id\":%d}\n",
+          TJ_TURN, ev, jug==PLAYER_A?"A":"B", id);
+}
 static Def D[MAXDEF];
 static int NDEF = 0;
 
@@ -131,7 +142,46 @@ static void lordbonus(P*p,int*bp,int*bt){
 /* ---------- mana: comprueba si se puede pagar coste con tierras destapadas ---------- */
 /* asignacion por backtracking pequeno: pips de color primero (los mas restringidos) */
 static int pay_gen(P*p,Def*d){ return d->gen + (p->taxed>0 && d->typ!=T_LAND ? p->taxed : 0); }
+
+/* ---- costes alternativos ("rather than pay this spell's mana cost") ----
+   alt=1 sacrificar altn tierras (Fireblast), alt=2 pagar altn vidas (Snuff Out).
+   Son hechizos que en la practica se juegan SIEMPRE por la via alternativa: cobrarlos
+   a su coste nominal hacia que el motor no los lanzara nunca. La politica es
+   conservadora: solo se recurre a la alternativa cuando el mana no alcanza, y nunca
+   si la contrapartida deja al jugador sin tierras o al borde de morir. */
+static P* ALT_OPP = 0;   /* rival del jugador que esta lanzando; lo fijan cast_phase y
+                            defender_instants. Hace falta para saber si un remate mata. */
+static int alt_ok(P*p,Def*d){
+  if(!d->alt) return 0;
+  if(d->alt==1){
+    /* Sacrificar tierras es carisimo: dejarlo suelto hace que el motor se mutile la
+       base de mana en el turno 3. Fireblast se juega para REMATAR, asi que solo se
+       permite cuando el dano mata al rival. Medido: sin esta condicion 2.580 (peor
+       que no tenerlo), con ella 2.4xx. */
+    if(p->nl <= d->altn) return 0;              /* que sobreviva al menos una tierra */
+    return ALT_OPP && ALT_OPP->life <= d->p1;
+  }
+  if(d->alt==2) return p->life > d->altn + 4;   /* no suicidarse por un hechizo */
+  return 0;
+}
+static void alt_pay(P*p,Def*d){
+  if(d->alt==1){
+    for(int k=0;k<d->altn && p->nl>0;k++){      /* sacrifica las ya giradas primero */
+      int q=-1;
+      for(int i=p->nl-1;i>=0;i--) if(p->ltap[i]){ q=i; break; }
+      if(q<0) q=p->nl-1;
+      for(int i=q;i<p->nl-1;i++){ p->lands[i]=p->lands[i+1]; p->ltap[i]=p->ltap[i+1]; }
+      p->nl--;
+    }
+  } else if(d->alt==2) p->life -= d->altn;
+}
+
+static int payable_mana(P*p,Def*d,int extra_any);
 static int payable(P*p,Def*d,int extra_any){
+  if(payable_mana(p,d,extra_any)) return 1;
+  return alt_ok(p,d);
+}
+static int payable_mana(P*p,Def*d,int extra_any){
   uint8_t col[BFMAX]; uint8_t amt[BFMAX]; int na=0;
   for(int i=0;i<p->nl;i++) if(!p->ltap[i]){
     col[na]=D[p->lands[i]].produces;
@@ -171,6 +221,8 @@ static int payable(P*p,Def*d,int extra_any){
   return libre>=gen_real;
 }
 static void paycost(P*p,Def*d,int*treas){
+  /* si el mana no alcanza pero hay via alternativa, se paga por ahi */
+  if(d->alt && !payable_mana(p,d,*treas) && alt_ok(p,d)){ alt_pay(p,d); return; }
   int idx[BFMAX]; int amt[BFMAX]; int spent[BFMAX]; int na=0;
   for(int i=0;i<p->nl;i++) if(!p->ltap[i]){
     idx[na]=i; amt[na]=D[p->lands[i]].mana_out? D[p->lands[i]].mana_out : 1; spent[na]=0; na++;
@@ -229,6 +281,7 @@ static void draw(P*p,int n){
 static void shuffle(P*p){ for(int i=p->nd-1;i>0;i--){ int j=ri(i+1); int t=p->deck[i];p->deck[i]=p->deck[j];p->deck[j]=t; } }
 
 static void addbf(P*p,int def){
+  tj_ev("entra", p, def);
   if(D[def].typ==T_LAND){ if(p->nl<BFMAX){ p->lands[p->nl]=def; p->ltap[p->nl]=0; p->nl++; } return; }
   if(p->nbf>=BFMAX) return;
   int i=p->nbf++;
@@ -237,6 +290,7 @@ static void addbf(P*p,int def){
 }
 static P *OPP_OF_A=0, *OPP_OF_B=0;
 static void rmbf(P*p,int i){
+  tj_ev("sale", p, p->bf[i]);
   { Def*dd=&D[p->bf[i]];
     if(dd->eff==E_DEATH_DMG || dd->eff2==E_DEATH_DMG){
       int amt = (dd->eff==E_DEATH_DMG)? dd->p1 : dd->q1;
@@ -575,6 +629,7 @@ static int has_counter_in_hand(P*p){
   return 0;
 }
 static void defender_instants(P*def,P*act){
+  ALT_OPP = act;
   int keep = has_counter_in_hand(def);
   for(int guard=0;guard<3;guard++){
     int best=-1,bv=0;
@@ -599,6 +654,7 @@ static void defender_instants(P*def,P*act){
 }
 
 static void cast_phase(P*me,P*opp,int main2){
+  ALT_OPP = opp;
   /* impuesto que me cobra el rival (Ghostly Prison y familia): encarece todo lo mio */
   me->taxed=0;
   for(int i=0;i<opp->nbf;i++){
@@ -711,6 +767,7 @@ static void cast_phase(P*me,P*opp,int main2){
     int def=me->hand[best];
     for(int k=best;k<me->nh-1;k++) me->hand[k]=me->hand[k+1]; me->nh--;
     paycost(me,&D[def],&me->treasures);
+    tj_ev("lanza", me, def);
     SPARE_MANA = untapped_count(me);
     Def*d=&D[def];
     if(try_counter(opp,d)) continue;                 /* contrarrestado: se va al cementerio */
@@ -918,6 +975,26 @@ static void combat(P*me,P*opp){
   for(int i=me->nbf-1;i>=0;i--)  if(deadA[i]) rmbf(me,i);
 }
 
+/* ---- traza de tablero en JSON (TRACE_JSON=1) ----
+   Emite el estado completo al final de cada turno para que src/tablero.py lo reproduzca.
+   Solo van indices de def: los nombres los pone Python desde R.meta. Va a stderr con
+   prefijo @J para no mezclarse con la salida normal del motor. */
+static void tj_lado(P*p, const char*n){
+  fprintf(stderr,"\"%s\":{\"life\":%d,\"hand\":%d,\"deck\":%d,\"lands\":[",
+          n, p->life, p->nh, p->nd);
+  for(int i=0;i<p->nl;i++)
+    fprintf(stderr,"%s[%d,%d]", i?",":"", p->lands[i], p->ltap[i]?1:0);
+  fprintf(stderr,"],\"bf\":[");
+  for(int i=0;i<p->nbf;i++)
+    fprintf(stderr,"%s[%d,%d,%d,%d,%d]", i?",":"", p->bf[i], p->tap[i]?1:0,
+            pw(p,i), th(p,i), p->sick[i]?1:0);
+  fprintf(stderr,"]}");
+}
+static void tj_turno(int turn, const char*act, P*a, P*b){
+  fprintf(stderr,"@J {\"t\":%d,\"act\":\"%s\",", turn, act);
+  tj_lado(a,"A"); fprintf(stderr,","); tj_lado(b,"B"); fprintf(stderr,"}\n");
+}
+
 static void upkeep(P*me,P*opp){
   for(int i=0;i<me->nbf;i++){ Def*d=&D[me->bf[i]];
     if(d->eff==E_UPKEEP_DRAIN){ opp->life-=d->p1; me->life+=d->p1; }
@@ -972,6 +1049,11 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
   P*cur=onplay?&A:&B, *oth=onplay?&B:&A;
   ST_games++;
   if(TRACE && ST_games==1) TRACE_ON=1; else TRACE_ON=0;
+  /* TRACE_JSON=N traza las N primeras partidas, no solo la primera */
+  if(TJ && ST_games<=TJ) TJ_ON=1; else TJ_ON=0;
+  TJ_GAME = ST_games;
+  if(TJ_ON) fprintf(stderr,"@J {\"juego\":%lld,\"salida\":\"%s\"}\n",
+                    TJ_GAME, onplay?"A":"B");
   if(TRACE_ON) fprintf(stderr,"\n=== TRAZA (A juega %s) ===\n", onplay?"primero":"segundo");
   int myturn=0, firstplay=0, spells6=0, screwed=0;
   #define ACC() do{ ST_screw+=screwed; ST_spells6+=spells6; \
@@ -979,6 +1061,7 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
       ST_gamelen+=myturn; ST_handend+=A.nh; ST_lifeend+=(A.life>0?A.life:0); \
       if(A.nl>=8) ST_manaflood++; if(A.nl<=2) ST_manascrew++; }while(0)
   for(int turn=1;turn<=maxturn*2;turn++){
+    TJ_TURN = turn;
     /* untap */
     for(int i=0;i<cur->nl;i++) cur->ltap[i]=0;
     for(int i=0;i<cur->nbf;i++){
@@ -1022,8 +1105,11 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
                      "B vida %3d mano %2d tierras %2d cri %d(%d pod) perm %2d\n",
         turn, cur==&A?"A":"B", A.life,A.nh,A.nl,ca,pa2,A.nbf, B.life,B.nh,B.nl,cb,pb2,B.nbf);
     }
+    if(TJ_ON) tj_turno(turn, cur==&A?"A":"B", &A, &B);
     (void)before;
-    if(oth->life<=0){ ACC(); if(oth==&B) ST_win_dmg++; else ST_lose_dmg++; return (oth==&B); }
+    if(oth->life<=0){ ACC(); if(oth==&B) ST_win_dmg++; else ST_lose_dmg++;
+      if(TJ_ON) fprintf(stderr,"@J {\"fin\":\"%s\",\"turno\":%d}\n", oth==&B?"A":"B", turn);
+      return (oth==&B); }
     P*t=cur;cur=oth;oth=t;
   }
   ACC(); ST_timeout++;
@@ -1064,10 +1150,11 @@ int main(void){
     scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
-    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0;
-    scanf("%d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_);
+    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0;
+    scanf("%d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_);
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
     d->eff3=(uint8_t)e3_; d->r1=(int16_t)r1_; d->r2=(int16_t)r2_;
+    d->alt=(uint8_t)al_; d->altn=(uint8_t)an_;
     d->cmc=cmc; d->typ=typ; d->colors=col; d->produces=prod; d->gen=gen; d->hybrid=hyb;
     d->pip[0]=p0;d->pip[1]=p1_;d->pip[2]=p2_;d->pip[3]=p3_;d->pip[4]=p4_;
     d->kw=kw; d->eff=eff; d->eff2=eff2; d->p1=a; d->p2=b; d->p3=c; d->q1=q1; d->q2=q2;
@@ -1088,6 +1175,7 @@ int main(void){
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
     const char*e6=getenv("HEXWARD_ON"); if(e6) HEXWARD_ON=atoi(e6);
     const char*et=getenv("TRACE"); if(et) TRACE=atoi(et);
+    const char*ej=getenv("TRACE_JSON"); if(ej) TJ=atoi(ej);
     const char*ef=getenv("DMG_ANY_FACE"); if(ef) DMG_ANY_FACE=atoi(ef);
     const char*en=getenv("NEG_ON"); if(en) NEG_ON=atoi(en);
     const char*ep=getenv("W_PRESSURE"); if(ep) W_PRESSURE=atoi(ep);

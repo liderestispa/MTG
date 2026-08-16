@@ -47,6 +47,29 @@ REAL_FIELD = {
  },
 }
 
+# --- mediciones SEMANALES del mismo arquetipo -------------------------------------
+# Cada lista son winrates del mismo mazo en semanas distintas de MTGO. Estaban solo como
+# comentario al lado de REAL_FIELD, y sin ellas no se puede estimar el suelo de ruido:
+# la dispersion semana a semana es la vara contra la que hay que juzgar el error del motor.
+# Ojo: 'n' es el numero de semanas, no de partidas. Las muestras semanales son de 180-640
+# listas, lo que da un error binomial de 2,5 a 5 puntos por semana.
+REAL_SEMANAL = {
+ 'pauper': {
+   'Blue Terror':      [50.7, 53.7, 50.0, 50.9, 54.6],
+   'Mono Red Madness': [52.0, 54.3, 56.4, 49.3],
+   'Mono Red Rally':   [34.6, 51.8, 47.7, 51.5],
+   'Jund Wildfire':    [52.6, 51.5, 51.0, 50.7, 42.5],
+   'Grixis Affinity':  [57.2],              # una sola medicion (abr 2026)
+   'Elves':            [56.1],              # una sola medicion (jun 2026)
+ },
+ # Brawl no tiene series: los dos winrates publicados son medidas unicas de ladder,
+ # no hay recap semanal equivalente al "Power of Pauper". Por eso su suelo no se puede
+ # estimar con este metodo.
+ 'brawl': {},
+ # Standard tampoco: el dato es de los Regional Championships, un evento unico.
+ 'standard': {},
+}
+
 # --- enfrentamientos directos (fila gana a columna) ---
 # MTG Nexus. Muestras chicas: usar para detectar errores GRANDES, no para afinar 2 puntos.
 REAL_H2H = {

@@ -34,17 +34,17 @@ Todo lo de abajo está **medido sobre este árbol** y es reproducible. `out/obj_
 
 ```
 $ python3 src/obj_real.py 2000
-sta cal 2.37 (r=+0.16 x5.3) | pau cal 2.69 (r=+0.73 x2.9) | bra resid  2.31
-OBJETIVO 2.543
+sta cal 2.37 (r=+0.16 x5.3) | pau cal 2.20 (r=+0.82 x2.7) | bra resid  2.31
+OBJETIVO 2.271
 ```
 
 | Formato | Correlación de orden | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,73 (n=6) | **sí** — 3,93% vs 4,40% | el orden es utilizable |
+| Pauper | r=+0,82 (n=6) | **sí** — 3,13% vs 4,40% | el orden es utilizable |
 | Standard | r=+0,16 (n=4) | no — 5,50% vs 2,44% | no validado |
 | Standard Brawl | 2 datos reales | sin datos suficientes | solo desplazamiento |
 
-`loocv.py 2500` global: 4,78% el motor contra 3,56% el modelo tonto.
+`loocv.py 2500` global: 4,48% el motor contra 3,56% el modelo tonto.
 
 Los tres mazos revalidados con `revalidar.py 2500`, los tres siguen ganándole a su semilla
 codiciosa (no hay que rehacer búsquedas):
@@ -52,8 +52,32 @@ codiciosa (no hay que rehacer búsquedas):
 | Formato | Mazo | Semilla | Delta | Índice bruto |
 |---|---|---|---|---|
 | Standard WBG | 83,94 | 73,22 | +10,72 | 88,3% |
-| Pauper BR | 70,03 | 59,09 | +10,94 | 73,7% |
+| Pauper BR | 69,85 | 58,88 | +10,97 | 75,8% |
 | Brawl Dáin | 59,63 | — | — | 61,5% |
+
+## Pauper está terminado: el motor llegó al suelo de ruido
+
+`src/suelo_ruido.py` estima cuánto margen queda de verdad. Los winrates reales contra los que
+se mide el motor no son la verdad: son medias de unas pocas semanas de MTGO, cada una con su
+propio ruido de muestreo. Medido sobre las series semanales de `REAL_SEMANAL`:
+
+| | |
+|---|---|
+| Dispersión semana a semana (pooled, 14 g.l.) | **4,68 puntos** |
+| Equivalente binomial | N≈114 partidas no-espejo por semana — o sea, es muestreo, no metajuego |
+| **Suelo de ruido del banco** | **3,25 puntos** (2,21 si se descarta la serie más volátil) |
+| Modelo tonto | 4,40% |
+| **Motor** | **3,13%** |
+
+**El motor ya está en el suelo.** Seguir ajustándolo contra este banco es ajustar al ruido.
+Y el 69% de ese suelo lo aportan los dos arquetipos con **una sola medición** (Grixis Affinity,
+Elves): la forma barata de bajarlo es conseguirles más semanas de dato, no tocar el modelo.
+
+Standard y Brawl **no son calculables**: el suelo necesita mediciones repetidas del mismo
+arquetipo, y ninguno de los dos las tiene. Standard viene de un evento único (los Regional
+Championships) y Brawl solo tiene dos winrates sueltos de ladder. Es el mismo motivo por el que
+`escala.py` se niega a calibrar el nivel de Brawl: con n=2, y siendo los dos del 73-77%, ajustar
+una recta devolvería 90% para cualquier cosa.
 
 Informe regenerado (`build_report_v6.py`) y capa de escala también (`escala.py 2000`, k de
 Standard 0,193 → 0,188). Índices brutos vigentes: **Standard 88,3% · Pauper 76,0% · Brawl 61,5%**.
@@ -74,6 +98,14 @@ compilados se quedan.
 La lista larga, con síntoma y arreglo de cada una, está en `docs/trampas.md`. Ese archivo manda;
 esto es el resumen.
 
+- **Los costes alternativos no son un detalle: son el hechizo entero.** Fireblast se juega
+  sacrificando dos Montañas y Snuff Out pagando 4 vidas. Cobrarlos a 6 y a 4 de maná hacía que el
+  motor **no los lanzara nunca**, y eso solo dejaba a Mono Red Madness 17,7 puntos por debajo de
+  su winrate real. Modelado en `extract.py::alt_cost` + `sim.c::alt_ok/alt_pay`, el objetivo bajó
+  de 2,543 a 2,271 y la r de Pauper subió de +0,73 a +0,82. Ablación: `ALTCOST=0`.
+  **Pero la política importa tanto como el coste:** dejar que sacrifique tierras cuando quiera da
+  2,580 —peor que no tenerlo— porque se mutila la base de maná en el turno 3. Fireblast se lanza
+  para rematar, así que solo se permite si el daño mata. Medir la regla, no solo la carta.
 - **El robo recurrente no dispara solo en el mantenimiento.** La regla leía únicamente
   `at the beginning of your upkeep ... draw`. The Arkenstone // Seek the Heart roba en el **paso
   final**, así que quedaba modelada como un lord pelado de 5 maná, sin motor de robo. Corregido en
@@ -121,10 +153,12 @@ esto es el resumen.
 
 ## Lo que sigue pendiente
 
-1. **Estimar el suelo de ruido del dato real.** Los recaps semanales de Pauper dan medidas
-   repetidas del mismo arquetipo, y esa variación es ruido de muestreo puro. Ya sabemos que el
-   ruido *del motor* es ±0,014 en el objetivo; falta el del dato contra el que se mide. Sigue
-   siendo lo más valioso que queda por hacer, y está detallado en el punto siguiente.
+1. **Conseguir más dato de Pauper, que ahora vale más que cualquier cambio de modelo.** El motor
+   está en el suelo (3,13% contra 3,25%), así que lo único que mueve la aguja es bajar el suelo.
+   Dos vías, en orden de rentabilidad: **(a)** más semanas para Grixis Affinity y Elves, que
+   tienen una sola medición y aportan el 69% del ruido; **(b)** integrar Dimir Faeries y Gruul
+   Ponza al banco (listas ya validadas en `data/nuevos/listas.txt`), que sube n de 6 a 8.
+   Las series semanales van en `REAL_SEMANAL` de `data/real_wr.py`, no en un comentario.
 2. **Estimar el suelo de ruido.** Los recaps semanales de Pauper dan medidas repetidas del mismo
    arquetipo (Mono Red Madness: 47,4 / 47,3 / 49,6 / 50,8 / 49,3 / 56,4 / 52). La desviación
    semana a semana es ruido de muestreo puro: ~2-3 puntos. **Ningún modelo puede bajar de ahí.**
@@ -172,6 +206,8 @@ python3 src/valida_semillas.py 2000 "" "SWEEP_MIN=3"   # ¿sobrevive a semillas 
 python3 src/escala.py 2000          # regenera data/escala.json (hazlo tras tocar el motor)
 python3 src/build_report_v6.py      # regenera out/report_v6.json
 python3 src/grafico.py              # out/avance.html: vista referencial del informe
+python3 src/suelo_ruido.py 3.13 4.40                       # ¿cuánto margen queda de verdad?
+python3 src/tablero.py pauper "Mono Red" "Blue Terror" 8 12 # out/tablero.html: mira las partidas
 python3 src/run_all.py              # búsqueda de mazos (Standard + Pauper)
 python3 src/run_brawl.py            # búsqueda de Brawl
 ```

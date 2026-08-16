@@ -31,6 +31,8 @@ def oracle():
 def lookup(name):
     O,F=oracle(); k=norm(name); return O.get(k) or F.get(k)
 
+LAST_STDERR = ''   # stderr del ultimo run(): lo consume src/tablero.py
+
 URZA = {"Urza's Mine","Urza's Power Plant","Urza's Tower"}
 
 class Registry:
@@ -56,7 +58,8 @@ class Registry:
             P['W'],P['U'],P['B'],P['R'],P['G'], e['kw'], e['eff'], e['eff2'],
             e['p1'],e['p2'],e['p3'],e['q1'],e['q2'], e['power'], e['tough'],
             e.get('mana_out', 0), e.get('dyn', 0), e.get('no_untap', 0),
-            e.get('eff3', 0), e.get('r1', 0), e.get('r2', 0)])
+            e.get('eff3', 0), e.get('r1', 0), e.get('r2', 0),
+            e.get('alt', 0), e.get('altn', 0)])
 
 def build(fmt):
     R=Registry()
@@ -81,6 +84,8 @@ def run(R, opps, variants, ngames=200, life=20, maxturn=14, seed=12345):
         inp.append(f"{len(v)} " + ' '.join(map(str,v)))
     import os as _os
     out = subprocess.run(['./bin_sim'], input='\n'.join(inp), capture_output=True, text=True, env=dict(_os.environ))
+    global LAST_STDERR
+    LAST_STDERR = out.stderr          # lo usa src/tablero.py para leer la traza JSON
     if out.returncode!=0:
         raise RuntimeError(out.stderr[:500])
     if _os.environ.get('TRACE') and out.stderr:

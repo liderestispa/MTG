@@ -1,0 +1,6 @@
+formato       motor calibrado   modelo tonto   gana el motor?
+standard                5.50%          2.44%        NO  -3.06
+pauper                  3.13%          4.40%        SI  +1.26
+
+GLOBAL                  4.48%          3.56%
+AVISO: el motor NO le gana a predecir la media. No aporta informacion.

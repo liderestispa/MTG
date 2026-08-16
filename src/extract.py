@@ -1,5 +1,26 @@
 """Convierte texto oracle de Scryfall -> codigos de efecto para el motor en C."""
-import json, re, sys
+import json, re, sys, os
+
+# coste alternativo: "You may [hacer X] rather than pay this spell's mana cost".
+# Cobrar estas cartas a su coste nominal hace que el motor no las lance NUNCA:
+# Fireblast se veia a 6 mana en un mazo que juega 4 tierras. Devuelve (tipo, cantidad),
+# con tipo 1 = sacrificar N tierras y tipo 2 = pagar N vidas.
+_ALT_COST = re.compile(r"rather than pay (?:this spell's|its) mana cost", re.I)
+_ALT_SAC  = re.compile(r"sacrific(?:e|ing) (a|an|one|two|three|four|\d+) ", re.I)
+_ALT_LIFE = re.compile(r"pay (\d+) life", re.I)
+_NUM = {'a': 1, 'an': 1, 'one': 1, 'two': 2, 'three': 3, 'four': 4}
+
+def alt_cost(txt):
+    if not txt: return 0, 0
+    for linea in txt.split('\n'):
+        if not _ALT_COST.search(linea): continue
+        m = _ALT_SAC.search(linea)
+        if m:
+            v = m.group(1).lower()
+            return 1, _NUM.get(v, int(v) if v.isdigit() else 1)
+        m = _ALT_LIFE.search(linea)
+        if m: return 2, int(m.group(1))
+    return 0, 0
 
 KW = ['Flying','Deathtouch','Lifelink','Trample','Vigilance','Haste','Menace','Reach',
       'First strike','Double strike','Defender','Flash','Hexproof','Indestructible',
@@ -437,9 +458,13 @@ def convert(c):
     _txt = (c.get('oracle_text') or '').strip() or ((ff.get('oracle_text') if ff else '') or '')
     _red = cost_reduction(c, _txt)
     if _red: gen = max(0, gen - _red)
+    _cmc = int(c.get('cmc') or ff.get('cmc') or 0)
+    _alt, _altn = alt_cost(_txt)
+    if os.environ.get('ALTCOST') == '0': _alt = _altn = 0   # ablacion
     return dict(
+        alt=_alt, altn=_altn,
         name=c['name'], oracle_id=c.get('oracle_id'),
-        cmc=int(c.get('cmc') or ff.get('cmc') or 0),
+        cmc=_cmc,
         typ=type_code(tl if 'land' in tl.lower() or not faces else (ff.get('type_line') or tl)),
         colors=color_mask(c.get('colors') or ff.get('colors')),
         ci=color_mask(c.get('color_identity')),
