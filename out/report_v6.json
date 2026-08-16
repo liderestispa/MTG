@@ -1,0 +1,695 @@
+{
+ "standard": {
+  "t": "Standard",
+  "col": "BG",
+  "sp": [
+   {
+    "cmc": 1,
+    "name": "Giant's Boulder",
+    "n": 2,
+    "mc": "{1}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Ravening Warg",
+    "n": 4,
+    "mc": "{1}{B}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Warg Tactics",
+    "n": 3,
+    "mc": "{1}{G}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 2,
+    "name": "Stony-Voiced Goblins",
+    "n": 2,
+    "mc": "{1}{B}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Attercop",
+    "n": 1,
+    "mc": "{1}{G}",
+    "pt": "2/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Gollum, Riddle Master",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "3/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Old Thrush",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "1/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Pretending Poxbearers",
+    "n": 1,
+    "mc": "{1}{W/B}",
+    "pt": "2/1"
+   },
+   {
+    "cmc": 2,
+    "name": "The Sackville-Bagginses",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 3,
+    "name": "Duskwatch Hunter",
+    "n": 2,
+    "mc": "{2}{B/G}",
+    "pt": "3/1"
+   },
+   {
+    "cmc": 3,
+    "name": "Mirkwood Pathmaker",
+    "n": 2,
+    "mc": "{2}{G}",
+    "pt": "*/*"
+   },
+   {
+    "cmc": 3,
+    "name": "Crude Bent Blade",
+    "n": 1,
+    "mc": "{2}{B}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 3,
+    "name": "Long-Bodied Grey Dog",
+    "n": 1,
+    "mc": "{3}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 3,
+    "name": "Reverent Howl",
+    "n": 1,
+    "mc": "{2}{B}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 3,
+    "name": "The Great Goblin",
+    "n": 1,
+    "mc": "{1}{B/R}{B/R}",
+    "pt": "3/2"
+   },
+   {
+    "cmc": 3,
+    "name": "Walltop Sentries",
+    "n": 1,
+    "mc": "{2}{G}",
+    "pt": "2/3"
+   },
+   {
+    "cmc": 4,
+    "name": "Head of the Hunt",
+    "n": 2,
+    "mc": "{2}{B}{B}",
+    "pt": "4/3"
+   },
+   {
+    "cmc": 4,
+    "name": "Ordinary Bear",
+    "n": 1,
+    "mc": "{3}{G}",
+    "pt": "4/5"
+   },
+   {
+    "cmc": 4,
+    "name": "Zhao, Ruthless Admiral",
+    "n": 1,
+    "mc": "{2}{B/R}{B/R}",
+    "pt": "3/4"
+   },
+   {
+    "cmc": 5,
+    "name": "Large Bear",
+    "n": 2,
+    "mc": "{3}{B/G}{B/G}",
+    "pt": "5/5"
+   },
+   {
+    "cmc": 5,
+    "name": "Dreaded Bat-Cloud",
+    "n": 1,
+    "mc": "{4}{B}",
+    "pt": "4/2"
+   },
+   {
+    "cmc": 6,
+    "name": "Old Fat Spider",
+    "n": 1,
+    "mc": "{4}{G}{G}",
+    "pt": "6/7"
+   },
+   {
+    "cmc": 7,
+    "name": "Gigantic Big Bear",
+    "n": 3,
+    "mc": "{5}{G}{G}",
+    "pt": "10/7"
+   }
+  ],
+  "la": {
+   "Mirkwood": 2,
+   "Foggy Bottom Swamp": 1,
+   "Swamp": 11,
+   "Forest": 10
+  },
+  "nl": 24,
+  "ns": 36,
+  "gain": "+8,81",
+  "obj": 84.77380000000001,
+  "wr": 89.0507,
+  "cal": 59.879881843248725,
+  "legal": true,
+  "errs": [],
+  "mm": [
+   [
+    "Izzet Spellementals",
+    20.0,
+    88.0833
+   ],
+   [
+    "Four-Color Control",
+    16.4,
+    96.6666
+   ],
+   [
+    "Dimir Excruciator",
+    15.9,
+    79.75
+   ],
+   [
+    "Orzhov Lifegain",
+    6.5,
+    90.6666
+   ],
+   [
+    "Dimir Midrange",
+    3.4,
+    86.9166
+   ],
+   [
+    "Mardu Discard",
+    2.7,
+    82.41659999999999
+   ]
+  ]
+ },
+ "pauper": {
+  "t": "Pauper",
+  "col": "BR",
+  "sp": [
+   {
+    "cmc": 1,
+    "name": "Stir Up Trouble",
+    "n": 3,
+    "mc": "{B}",
+    "pt": "Sorcery"
+   },
+   {
+    "cmc": 1,
+    "name": "Giant's Boulder",
+    "n": 2,
+    "mc": "{1}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Ravening Warg",
+    "n": 4,
+    "mc": "{1}{B}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Goblin-town Flunkies",
+    "n": 3,
+    "mc": "{1}{R}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Old Thrush",
+    "n": 2,
+    "mc": "{2}",
+    "pt": "1/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Pretending Poxbearers",
+    "n": 2,
+    "mc": "{1}{W/B}",
+    "pt": "2/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Stony-Voiced Goblins",
+    "n": 2,
+    "mc": "{1}{B}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Corrupt Court Official",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Ragged Short Spear",
+    "n": 1,
+    "mc": "{1}{R}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 3,
+    "name": "Crude Bent Blade",
+    "n": 4,
+    "mc": "{2}{B}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 3,
+    "name": "Dori, Bearer of Friends",
+    "n": 3,
+    "mc": "{2}{R}",
+    "pt": "3/2"
+   },
+   {
+    "cmc": 3,
+    "name": "Bilbo's Deadly Slice",
+    "n": 1,
+    "mc": "{1}{B}{B}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 3,
+    "name": "Duskwatch Hunter",
+    "n": 1,
+    "mc": "{2}{B/G}",
+    "pt": "3/1"
+   },
+   {
+    "cmc": 3,
+    "name": "Hog-Monkey",
+    "n": 1,
+    "mc": "{2}{B}",
+    "pt": "3/2"
+   },
+   {
+    "cmc": 3,
+    "name": "Reverent Howl",
+    "n": 1,
+    "mc": "{2}{B}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 4,
+    "name": "Gundabad Opportunist",
+    "n": 4,
+    "mc": "{3}{R}",
+    "pt": "4/2"
+   },
+   {
+    "cmc": 5,
+    "name": "Iron Hills Stalwart",
+    "n": 1,
+    "mc": "{4}{R}",
+    "pt": "4/5"
+   },
+   {
+    "cmc": 6,
+    "name": "Mongoose Lizard",
+    "n": 1,
+    "mc": "{4}{R}{R}",
+    "pt": "5/6"
+   }
+  ],
+  "la": {
+   "Goblin-town": 3,
+   "Boiling Rock Prison": 1,
+   "Swamp": 10,
+   "Mountain": 9
+  },
+  "nl": 23,
+  "ns": 37,
+  "gain": "+13,06",
+  "obj": 72.151,
+  "wr": 75.96549999999999,
+  "cal": 61.723218028152424,
+  "legal": true,
+  "errs": [],
+  "mm": [
+   [
+    "Blue Terror",
+    10.9,
+    82.3333
+   ],
+   [
+    "Mono Red Madness",
+    8.5,
+    86.5833
+   ],
+   [
+    "Tron",
+    6.5,
+    76.33330000000001
+   ],
+   [
+    "Mono Red Rally",
+    6.5,
+    78.0
+   ],
+   [
+    "Jund Wildfire",
+    5.8,
+    70.4166
+   ],
+   [
+    "Grixis Affinity",
+    5.8,
+    58.8333
+   ],
+   [
+    "Elves",
+    4.3,
+    65.5
+   ]
+  ]
+ },
+ "brawl": {
+  "t": "Standard Brawl",
+  "col": "W",
+  "cmd": "Dáin, Lord of the Iron Hills",
+  "sp": [
+   {
+    "cmc": 1,
+    "name": "Bofur, Reliable Guardian // Concerted Care",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 1,
+    "name": "Curious Farm Animals",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 1,
+    "name": "Giant's Boulder",
+    "n": 1,
+    "mc": "{1}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 1,
+    "name": "Key to the Side-Door",
+    "n": 1,
+    "mc": "{1}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 1,
+    "name": "Lake-town Lookout",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 1,
+    "name": "Moment of Glory",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "Sorcery"
+   },
+   {
+    "cmc": 1,
+    "name": "Momo, Playful Pet",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 2,
+    "name": "Airbender's Reversal",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 2,
+    "name": "Belladonna Took",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Compassionate Healer",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Dwarven Mattock",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Dwarven Provisioner",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Jeong Jeong's Deserters",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "1/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Old Thrush",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "1/2"
+   },
+   {
+    "cmc": 2,
+    "name": "Thrór's Map",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "Legendary Arti"
+   },
+   {
+    "cmc": 2,
+    "name": "Troop of Ponies",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "2/1"
+   },
+   {
+    "cmc": 3,
+    "name": "Airbending Lesson",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 3,
+    "name": "Avatar Enthusiasts",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 3,
+    "name": "Earth Kingdom Jailer",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "3/3"
+   },
+   {
+    "cmc": 3,
+    "name": "Glider Kids",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "2/3"
+   },
+   {
+    "cmc": 3,
+    "name": "Glider Staff",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 3,
+    "name": "Long-Bodied Grey Dog",
+    "n": 1,
+    "mc": "{3}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 3,
+    "name": "Ori, Keeper of Songs",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "3/3"
+   },
+   {
+    "cmc": 3,
+    "name": "Velvetwing Butterflies // Gaze in Wonder",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "2/2"
+   },
+   {
+    "cmc": 4,
+    "name": "Aang, the Last Airbender",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "3/2"
+   },
+   {
+    "cmc": 4,
+    "name": "Dwarven Shortsword",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 4,
+    "name": "Kyoshi Warriors",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "3/3"
+   },
+   {
+    "cmc": 4,
+    "name": "Lake-town Toymaker",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "3/4"
+   },
+   {
+    "cmc": 4,
+    "name": "Sandbenders' Storm",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 4,
+    "name": "Vengeful Villagers",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "3/3"
+   },
+   {
+    "cmc": 5,
+    "name": "Eagle of the Great Shelf",
+    "n": 1,
+    "mc": "{4}{W}",
+    "pt": "2/5"
+   },
+   {
+    "cmc": 5,
+    "name": "Esgaroth Garrison",
+    "n": 1,
+    "mc": "{4}{W}",
+    "pt": "*/5"
+   },
+   {
+    "cmc": 5,
+    "name": "Magnificent End",
+    "n": 1,
+    "mc": "{4}{W}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 5,
+    "name": "Rabaroo Troop",
+    "n": 1,
+    "mc": "{3}{W}{W}",
+    "pt": "3/5"
+   },
+   {
+    "cmc": 5,
+    "name": "The Arkenstone // Seek the Heart",
+    "n": 1,
+    "mc": "{5}",
+    "pt": "Legendary Arti"
+   }
+  ],
+  "la": {
+   "Jasmine Dragon Tea Shop": 1,
+   "Plains": 23
+  },
+  "nl": 24,
+  "ns": 35,
+  "gain": "+0,35",
+  "obj": 59.186099999999996,
+  "wr": 61.0158,
+  "cal": null,
+  "legal": true,
+  "errs": [],
+  "mm": [
+   [
+    "Elspeth Storm Slayer",
+    23.0,
+    68.58330000000001
+   ],
+   [
+    "Tifa Lockhart",
+    9.5,
+    78.3333
+   ],
+   [
+    "Sephiroth Fabled SOLDIER",
+    9.5,
+    43.5
+   ],
+   [
+    "Ketramose the New Dawn",
+    7.0,
+    13.0
+   ],
+   [
+    "Eluge the Shoreless Sea",
+    6.2,
+    74.9166
+   ],
+   [
+    "Kona Rescue Beastie",
+    5.0,
+    67.8333
+   ]
+  ],
+  "nota": "la busqueda por haz apenas aporto aqui: la construccion simple ya estaba casi igual de bien"
+ }
+}

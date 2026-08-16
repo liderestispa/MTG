@@ -1,0 +1,10 @@
+# datos pesados: se reconstruyen con scripts/bootstrap.sh
+data/oracle.jsonl
+data/ricardo_sets*.json
+data/*.tmp
+*.pyc
+__pycache__/
+bin_sim
+bin_brawl
+out/*.log
+out/*.out

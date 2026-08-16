@@ -1,0 +1,73 @@
+{
+ "standard": {
+  "colors": [
+   "B",
+   "G"
+  ],
+  "cname": "BG",
+  "nland": 24,
+  "obj": 0.862338,
+  "counts": {
+   "Giant's Boulder": 2,
+   "Gollum, Riddle Master": 1,
+   "The Sackville-Bagginses": 1,
+   "Ravening Warg": 4,
+   "Warg Tactics": 3,
+   "Mirkwood Pathmaker": 2,
+   "The Great Goblin": 1,
+   "Walltop Sentries": 1,
+   "Duskwatch Hunter": 2,
+   "Zhao, Ruthless Admiral": 1,
+   "Head of the Hunt": 2,
+   "Ordinary Bear": 1,
+   "Large Bear": 2,
+   "Old Fat Spider": 1,
+   "Gigantic Big Bear": 3,
+   "Stony-Voiced Goblins": 2,
+   "Reverent Howl": 1,
+   "Long-Bodied Grey Dog": 1,
+   "Old Thrush": 1,
+   "Crude Bent Blade": 1,
+   "Attercop": 1,
+   "Pretending Poxbearers": 1,
+   "Dreaded Bat-Cloud": 1
+  },
+  "util": [
+   "Mirkwood",
+   "Foggy Bottom Swamp"
+  ]
+ },
+ "pauper": {
+  "colors": [
+   "B",
+   "R"
+  ],
+  "cname": "BR",
+  "nland": 23,
+  "obj": 0.7328410000000001,
+  "counts": {
+   "Stir Up Trouble": 3,
+   "Giant's Boulder": 2,
+   "Ravening Warg": 4,
+   "Old Thrush": 2,
+   "Pretending Poxbearers": 2,
+   "Dori, Bearer of Friends": 3,
+   "Hog-Monkey": 1,
+   "Duskwatch Hunter": 1,
+   "Gundabad Opportunist": 4,
+   "Iron Hills Stalwart": 1,
+   "Mongoose Lizard": 1,
+   "Crude Bent Blade": 4,
+   "Ragged Short Spear": 1,
+   "Reverent Howl": 1,
+   "Goblin-town Flunkies": 3,
+   "Stony-Voiced Goblins": 2,
+   "Corrupt Court Official": 1,
+   "Bilbo's Deadly Slice": 1
+  },
+  "util": [
+   "Goblin-town",
+   "Boiling Rock Prison"
+  ]
+ }
+}

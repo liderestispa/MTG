@@ -1,0 +1,54 @@
+### standard | Izzet Prowess
+4 Boomerang Basics / 4 Burst Lightning / 3 Eddymurk Crab / 3 Elusive Otter / 2 Into the Flood Maw
+4 Opt / 1 Roaring Furnace / 1 Sear / 4 Sleight of Hand / 4 Slickshot Show-Off / 4 Stock Up
+4 Stormchaser's Talent / 1 Wild Ride / 4 Riverpyre Verge / 4 Spirebluff Canal / 4 Steam Vents
+1 Willowrush Verge / 2 Multiversal Passage / 6 Island
+### standard | Selesnya Landfall
+4 Sazh's Chocobo / 4 Llanowar Elves / 4 Badgermole Cub / 2 Dyadrine, Synthesis Amalgam
+3 Mossborn Hydra / 4 Mightform Harmonizer / 3 Icetill Explorer / 4 Erode / 2 Lumbering Worldwagon
+4 Earthbender Ascension / 8 Forest / 1 Plains / 4 Escape Tunnel / 4 Fabled Passage / 3 Ba Sing Se
+4 Hushwood Verge / 2 Temple Garden
+### standard | Jeskai Lessons
+4 Gran-Gran / 2 Thor, God of Thunder / 2 Three Steps Ahead / 4 Firebending Lesson / 2 It'll Quench Ya!
+4 Accumulate Wisdom / 4 Combustion Technique / 4 Jeskai Revelation / 3 Iroh's Demonstration
+4 Stock Up / 4 Tablet of Discovery / 3 Island / 1 Mistrise Village / 3 Riverpyre Verge
+4 Great Hall of the Biblioplex / 3 Spirebluff Canal / 4 Steam Vents / 2 Sacred Foundry / 3 Hallowed Fountain
+### standard | Izzet Lessons
+4 Abandon Attachments / 4 Accumulate Wisdom / 4 Artist's Talent / 4 Boomerang Basics
+4 Combustion Technique / 4 Firebending Lesson / 4 Gran-Gran / 2 It'll Quench Ya!
+4 Monument to Endurance / 4 Stormchaser's Talent / 2 Agna Qel'a / 4 Riverpyre Verge
+4 Spirebluff Canal / 4 Steam Vents / 6 Island / 2 Mountain
+### standard | Azorius Momo
+4 Momo, Friendly Flier / 4 Quantum Riddler / 4 Sage of the Skies / 3 Starfield Shepherd
+3 Haliya, Guided by Light / 3 Cosmogrand Zenith / 2 Nurturing Pixie / 1 Novice Inspector
+1 Curious Farm Animals / 4 Seam Rip / 4 Springleaf Drum / 2 Bounce Off / 2 Get Lost
+1 Into the Flood Maw / 4 Floodfarm Verge / 4 Hallowed Fountain / 4 Multiversal Passage
+2 Abandoned Air Temple / 8 Plains
+### standard | Jeskai Control
+4 Consult the Star Charts / 2 Day of Judgment / 1 Fire Magic / 4 Get Lost / 3 Jeskai Revelation
+4 Lightning Helix / 1 Marang River Regent / 4 No More Lies / 2 Seam Rip / 2 Shiko, Paragon of the Way
+3 Stock Up / 2 Three Steps Ahead / 1 Ultima / 1 Wan Shi Tong, Librarian / 1 Cori Mountain Monastery
+1 Elegant Parlor / 4 Floodfarm Verge / 2 Meticulous Archive / 2 Mistrise Village / 2 Riverpyre Verge
+1 Restless Anchorage / 3 Sacred Foundry / 1 Steam Vents / 2 Sunbillow Verge / 3 Hallowed Fountain
+2 Thundering Falls / 1 Island / 1 Plains
+### standard | Selesnya Ouroboroid
+4 Pawpatch Recruit / 4 Llanowar Elves / 4 Badgermole Cub / 2 Spider Manifestation
+2 Titania, Rugged Rumbler / 3 Surrak, Elusive Hunter / 4 Leatherhead, Swamp Stalker / 2 Ouroboroid
+4 Brightglass Gearhulk / 1 Jennifer Walters // The Sensational She-Hulk / 2 Seam Rip
+1 Meltstrider's Resolve / 4 Practiced Offense / 2 Abandoned Air Temple / 1 Ba Sing Se
+2 Multiversal Passage / 1 Starting Town / 4 Hushwood Verge / 4 Temple Garden / 6 Forest / 3 Plains
+### pauper | Dimir Faeries
+4 Faerie Seer / 1 Moon-Circuit Hacker / 4 Augur of Bolas / 4 Spellstutter Sprite / 1 Mukotai Ambusher
+2 Thorn of the Black Rose / 2 Ninja of the Deep Hours / 1 Sewer-veillance Cam / 1 Extract a Confession
+4 Lorien Revealed / 4 Brainstorm / 2 Dispel / 2 Cast Down / 1 Agony Warp / 4 Counterspell
+1 Suffocating Fumes / 4 Snuff Out / 1 Foreboding Landscape / 4 Contaminated Aquifer
+1 Dimir Aqueduct / 1 Bojuka Bog / 10 Island / 1 Swamp
+### pauper | Snacker Gates
+4 Sacred Cat / 4 Sneaky Snacker / 4 Outlaw Medic / 4 Writhing Chrysalis / 2 Melded Moxite
+2 Bitter Reunion / 2 Journey to Nowhere / 4 Pursue the Past / 4 Malevolent Rumble / 3 Lightning Bolt
+3 Thraben Charm / 3 Prismatic Strands / 4 Basilisk Gate / 4 Citadel Gate / 4 Cliffgate
+3 Manor Gate / 3 Plains / 3 Mountain
+### pauper | Gruul Ponza
+4 Arbor Elf / 4 Eldrazi Repurposer / 4 Writhing Chrysalis / 3 Avenging Hunter / 2 Sagu Wildling
+4 Boarding Party / 4 Annoyed Altisaur / 1 Bonder's Ornament / 3 Wild Growth / 4 Utopia Sprawl
+4 Thermokarst / 2 Structural Distortion / 4 Mwonvuli Acid-Moss / 1 Wooded Ridgeline / 14 Forest / 2 Mountain

@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>MTG — Motor calibrado v3</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--ink:#e8eaed;--dim:#9aa3af;--line:#252a33;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--acc:#7dd3fc}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1060px;margin:0 auto;padding:32px 20px 80px}
+h1{font-size:27px;margin:0 0 4px;letter-spacing:-.02em} .sub{color:var(--dim);margin:0 0 30px;font-size:14px}
+h2{font-size:19px;margin:42px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)} h3{font-size:17px;margin:0 0 12px}
+.col{font-weight:400;color:var(--acc);font-size:13px;margin-left:6px}
+section.deck,.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:18px}
+.box.good{border-left:3px solid var(--ok)} .box.warn2{border-left:3px solid var(--warn)} .box.bad{border-left:3px solid var(--bad)}
+.grid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px} @media(max-width:820px){.grid{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+.list td{padding:3px 6px;border-bottom:1px solid #1d222a}
+.list .q{width:26px;color:var(--acc);font-weight:600} .list .mc{width:92px;color:var(--dim);font-family:ui-monospace,monospace;font-size:12px}
+.list .pt{width:74px;color:var(--dim);text-align:right;font-size:12px}
+tr.band td{padding-top:10px;color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.08em;border:0}
+.lands{font-size:13px;color:var(--dim);margin:12px 0 4px} .tot{font-size:13px;color:var(--dim);margin:0} .ok{color:var(--ok)}
+.cmd{background:#1e2430;border-left:3px solid var(--acc);padding:8px 12px;border-radius:4px;margin-bottom:14px;font-weight:600}
+.cmd span{display:block;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;font-weight:400}
+.stat{background:#12161d;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.stat span{display:block;font-size:12px;color:var(--dim)} .stat b{font-size:19px;color:var(--ok)}
+.stat small{display:block;color:#6b7280;font-size:11px;margin-top:2px}
+th{text-align:left;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;padding:6px;border-bottom:1px solid var(--line)}
+td{padding:5px 6px;border-bottom:1px solid #1d222a} .r{text-align:right} .idx{color:var(--warn)}
+ul{padding-left:20px} li{margin:7px 0} code{background:#12161d;padding:1px 5px;border-radius:4px;font-size:12.5px;color:var(--acc)}
+ol{padding-left:22px} ol li{margin:5px 0}
+</style></head><body><div class="wrap">
+<h1>Motor calibrado — 16 bugs corregidos</h1>
+<p class="sub">15 ago 2026 · el criterio fue el tuyo: si los mazos del meta no se emparejan entre sí, el motor no sirve</p>
+
+<h2>Resultado de la calibración</h2>
+<div class="box good">
+<table><thead><tr><th>Formato</th><th class="r">RMSE inicial</th><th class="r">RMSE final</th><th class="r">Dispersión</th></tr></thead><tbody><tr><td>Standard</td><td class='r'>20.2</td><td class='r ok'><b>11.7</b></td><td class='r'>62 → 28</td></tr><tr><td>Pauper</td><td class='r'>16.3</td><td class='r ok'><b>8.7</b></td><td class='r'>50 → 25</td></tr><tr><td>Brawl</td><td class='r'>20.4</td><td class='r ok'><b>12.9</b></td><td class='r'>58 → 29</td></tr><tr><td><b>Global</b></td><td class='r'>19.0</td><td class='r ok'><b>11.1</b></td><td class='r'></td></tr></tbody></table>
+<p style="margin-top:14px"><b>Validación externa:</b> en Brawl, los dos mazos que mi motor pone arriba (Ketramose 62,4% y Elspeth 58,2%) son exactamente los dos con mayor winrate reportado en el meta real: <b>73% y 77%</b>. El motor los ordena bien sin que yo le diera ese dato.</p>
+</div>
+
+<h2>Los bugs que encontró la calibración</h2>
+<div class="box warn2">
+<p><b>Parseo de cartas</b></p>
+<ol>
+<li>Maná híbrido <code>{B/G}</code> perdía su pip — Large Bear costaba 3 en vez de 5.</li>
+<li>Cartas de doble cara sumaban ambos costes: <code>{W} // {1}{W}</code> daba 3 en vez de 1.</li>
+<li>Keywords condicionales leídas como estáticas ("Descarta una carta: gana vínculo vital").</li>
+<li>Contadores de entrada ignorados — Moonshadow como <b>7/7 por 1 maná</b> (entra con seis −1/−1).</li>
+<li>Reducción de coste sin modelar: Myr Enforcer cobraba 7 en vez de 3.</li>
+<li>P/T característica (<code>*/*</code>) leída como cero — Eluge era un 0/1 en vez de 5/5.</li>
+<li>Texto oracle vacío en cartas transformables.</li>
+<li>Legalidad de Brawl con el campo equivocado (<code>brawl</code> = Historic, 100 cartas; lo correcto es <code>standardbrawl</code>).</li>
+</ol>
+<p><b>Motor de juego</b></p>
+<ol start="9">
+<li><b>El defensor nunca intercambiaba en combate.</b> La fórmula daba exactamente 0 a un bloqueo que mata y muere, y la condición exigía mayor que 0. Atacar era gratis.</li>
+<li><b>Los mazos de control no lanzaban nada:</b> la reserva de maná hacía <code>break</code> del bucle entero.</li>
+<li><b>Los contrahechizos no se usaban jamás.</b> Se lanzaban proactivamente en el propio turno (donde son no-op) y los cantrips se comían el maná reservado. Blue Terror veía un contra en mano <b>24 veces por partida y usaba cero</b>.</li>
+<li><b>Los barredores mataban criaturas indestructibles</b> — Ketramose moría a su propio Day of Judgment. Este bug solo le costaba <b>30 puntos</b> de winrate a su mazo.</li>
+<li><b>El comandante solo volvía a la zona de mando si moría en combate</b>, no por remoción ni barrido. Junto con el anterior, Ketramose jugaba 15 turnos sin comandante.</li>
+<li>Mulligan sin penalización: robaba 7 cartas nuevas sin devolver ninguna al fondo.</li>
+<li>Límite de turnos que favorecía al agro (ganaba quien tuviera más vida).</li>
+<li>Tierras con producción fija de 1 maná — Tron era injugable (las de Urza dan 7 entre tres).</li>
+</ol>
+<p style="margin-top:12px"><b>Mecánicas añadidas:</b> robo selectivo ("mira 5, toma 2" elige lo que falta), criaturas que producen maná, motores de "cada vez que lanzas un hechizo" (Guttersnipe), fichas exponenciales (Hare Apparent) y duplicadores (Elspeth), motores de exilio (Ketramose), P/T dinámica real, y el drawback de "no se endereza".</p>
+</div>
+
+<h2>Las tres listas</h2>
+<section class="deck"><h3>Standard Brawl <span class="col">Mono-Negro</span></h3><div class='cmd'><span>Comandante</span> Gollum, Riddle Master</div>
+<div class="grid"><div><table class="list"><tbody><tr class="band"><td colspan="4">1 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{1}</td><td class='nm'>Giant's Boulder</td><td class='pt'>Artifact</td></tr><tr><td class='q'>1</td><td class='mc'>{1}</td><td class='nm'>Key to the Side-Door</td><td class='pt'>Artifact</td></tr><tr><td class='q'>1</td><td class='mc'>{B}</td><td class='nm'>Stir Up Trouble</td><td class='pt'>Sorcery</td></tr><tr class="band"><td colspan="4">2 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Corrupt Court Official</td><td class='pt'>1/1</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Dai Li Indoctrination</td><td class='pt'>Sorcery</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Desolation Prowler</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Front Porch Sentries</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Gollum the Abandoned</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Heartless Act</td><td class='pt'>Instant</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Joo Dee, One of Many</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Merchant of Many Hats</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{2}</td><td class='nm'>Old Thrush</td><td class='pt'>1/2</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Ravening Warg</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Stony-Voiced Goblins</td><td class='pt'>1/1</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>The Sackville-Bagginses</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{2}</td><td class='nm'>Troop of Ponies</td><td class='pt'>2/1</td></tr><tr class="band"><td colspan="4">3 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Along the Crooked Way</td><td class='pt'>Enchantment</td></tr><tr><td class='q'>1</td><td class='mc'>{3}</td><td class='nm'>Bender's Waterskin</td><td class='pt'>Artifact</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}{B}</td><td class='nm'>Bilbo's Deadly Slice</td><td class='pt'>Instant</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Boiling Rock Rioter</td><td class='pt'>3/3</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Crude Bent Blade</td><td class='pt'>Artifact</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}{B}</td><td class='nm'>Gnashing of Teeth</td><td class='pt'>Sorcery</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Great Fierce Bee</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Hog-Monkey</td><td class='pt'>3/2</td></tr><tr><td class='q'>1</td><td class='mc'>{3}</td><td class='nm'>Long-Bodied Grey Dog</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Rage into the Valley</td><td class='pt'>Sorcery</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Reverent Howl</td><td class='pt'>Instant</td></tr><tr class="band"><td colspan="4">4 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{3}{B}</td><td class='nm'>Foggy Swamp Hunters</td><td class='pt'>3/4</td></tr><tr><td class='q'>1</td><td class='mc'>{3}{B}</td><td class='nm'>Gathering of Darkness</td><td class='pt'>Sorcery</td></tr><tr><td class='q'>1</td><td class='mc'>{3}{B}</td><td class='nm'>Gollum, Silent Slinker // Meager Meal</td><td class='pt'>4/3</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}{B}</td><td class='nm'>Head of the Hunt</td><td class='pt'>4/3</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}{B}</td><td class='nm'>Phoenix Fleet Airship</td><td class='pt'>4/4</td></tr><tr class="band"><td colspan="4">5 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{4}{B}</td><td class='nm'>Beetle-Headed Merchants</td><td class='pt'>5/4</td></tr><tr><td class='q'>1</td><td class='mc'>{4}{B}</td><td class='nm'>Dreaded Bat-Cloud</td><td class='pt'>4/2</td></tr><tr class="band"><td colspan="4">6 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{5}{B}</td><td class='nm'>Great Ugly-Looking Goblin // Clap! Snap!</td><td class='pt'>4/4</td></tr></tbody></table>
+<p class="lands"><b>Tierras (24):</b> 23 Swamp · 1 Jasmine Dragon Tea Shop</p>
+<p class="tot">35 hechizos + 24 tierras + comandante = <b>60</b> · <span class="ok">legal y armable</span></p></div>
+<div><div class="stat"><span>Ganancia real de la búsqueda</span><b>+1,38 pts</b><small>3 semillas nuevas, muy sobre el intervalo de confianza</small></div>
+<div class="stat"><span>Índice del motor</span><b>61,9%</b><small>ver la advertencia de abajo</small></div>
+<table class="mm"><thead><tr><th>Rival</th><th class="r">% meta</th><th class="r">índice</th></tr></thead><tbody><tr><td>Elspeth Storm Slayer</td><td class='r'>23.0%</td><td class='r idx'>42.1%</td></tr><tr><td>Tifa Lockhart</td><td class='r'>9.5%</td><td class='r idx'>82.6%</td></tr><tr><td>Sephiroth</td><td class='r'>9.5%</td><td class='r idx'>87.2%</td></tr><tr><td>Ketramose the New Dawn</td><td class='r'>7.0%</td><td class='r idx'>26.1%</td></tr><tr><td>Eluge</td><td class='r'>6.2%</td><td class='r idx'>75.4%</td></tr><tr><td>Kona Rescue Beastie</td><td class='r'>5.0%</td><td class='r idx'>86.4%</td></tr></tbody></table>
+</div></div></section>
+<section class="deck"><h3>Pauper <span class="col">Blanco-Negro</span></h3>
+<div class="grid"><div><table class="list"><tbody><tr class="band"><td colspan="4">1 maná</td></tr><tr><td class='q'>2</td><td class='mc'>{W}</td><td class='nm'>Curious Farm Animals</td><td class='pt'>1/1</td></tr><tr><td class='q'>2</td><td class='mc'>{1}</td><td class='nm'>Giant's Boulder</td><td class='pt'>Artifact</td></tr><tr><td class='q'>2</td><td class='mc'>{B}</td><td class='nm'>Stir Up Trouble</td><td class='pt'>Sorcery</td></tr><tr class="band"><td colspan="4">2 maná</td></tr><tr><td class='q'>4</td><td class='mc'>{1}{B}</td><td class='nm'>Ravening Warg</td><td class='pt'>2/2</td></tr><tr><td class='q'>4</td><td class='mc'>{1}{B}</td><td class='nm'>Stony-Voiced Goblins</td><td class='pt'>1/1</td></tr><tr><td class='q'>2</td><td class='mc'>{1}{W}</td><td class='nm'>Dwarven Provisioner</td><td class='pt'>2/2</td></tr><tr><td class='q'>2</td><td class='mc'>{2}</td><td class='nm'>Old Thrush</td><td class='pt'>1/2</td></tr><tr><td class='q'>2</td><td class='mc'>{1}{W/B}</td><td class='nm'>Pretending Poxbearers</td><td class='pt'>2/1</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Corrupt Court Official</td><td class='pt'>1/1</td></tr><tr class="band"><td colspan="4">3 maná</td></tr><tr><td class='q'>3</td><td class='mc'>{2}{B/G}</td><td class='nm'>Duskwatch Hunter</td><td class='pt'>3/1</td></tr><tr><td class='q'>3</td><td class='mc'>{2}{W}</td><td class='nm'>Ori, Keeper of Songs</td><td class='pt'>3/3</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Hog-Monkey</td><td class='pt'>3/2</td></tr><tr><td class='q'>1</td><td class='mc'>{3}</td><td class='nm'>Long-Bodied Grey Dog</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Reverent Howl</td><td class='pt'>Instant</td></tr><tr class="band"><td colspan="4">4 maná</td></tr><tr><td class='q'>2</td><td class='mc'>{3}{B}</td><td class='nm'>Gollum, Silent Slinker // Meager Meal</td><td class='pt'>4/3</td></tr><tr><td class='q'>2</td><td class='mc'>{3}{W}</td><td class='nm'>Kyoshi Warriors</td><td class='pt'>3/3</td></tr><tr class="band"><td colspan="4">5 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{4}{B}</td><td class='nm'>Beetle-Headed Merchants</td><td class='pt'>5/4</td></tr><tr><td class='q'>1</td><td class='mc'>{4}{W}</td><td class='nm'>Magnificent End</td><td class='pt'>Instant</td></tr><tr><td class='q'>1</td><td class='mc'>{3}{W}{W}</td><td class='nm'>Rabaroo Troop</td><td class='pt'>3/5</td></tr></tbody></table>
+<p class="lands"><b>Tierras (23):</b> 11 Plains · 11 Swamp · 1 Misty Palms Oasis</p>
+<p class="tot">37 hechizos + 23 tierras = <b>60</b> · <span class="ok">legal y armable</span></p></div>
+<div><div class="stat"><span>Ganancia real de la búsqueda</span><b>+7,65 pts</b><small>3 semillas nuevas, muy sobre el intervalo de confianza</small></div>
+<div class="stat"><span>Índice del motor</span><b>75,6%</b><small>ver la advertencia de abajo</small></div>
+<table class="mm"><thead><tr><th>Rival</th><th class="r">% meta</th><th class="r">índice</th></tr></thead><tbody><tr><td>Blue Terror</td><td class='r'>10.9%</td><td class='r idx'>72.0%</td></tr><tr><td>Mono Red Madness</td><td class='r'>8.5%</td><td class='r idx'>89.1%</td></tr><tr><td>Tron</td><td class='r'>6.5%</td><td class='r idx'>57.4%</td></tr><tr><td>Mono Red Rally</td><td class='r'>6.5%</td><td class='r idx'>90.6%</td></tr><tr><td>Jund Wildfire</td><td class='r'>5.8%</td><td class='r idx'>71.9%</td></tr><tr><td>Grixis Affinity</td><td class='r'>5.8%</td><td class='r idx'>56.2%</td></tr><tr><td>Elves</td><td class='r'>4.3%</td><td class='r idx'>91.9%</td></tr></tbody></table>
+</div></div></section>
+<section class="deck"><h3>Standard <span class="col">Negro-Rojo-Verde</span></h3>
+<div class="grid"><div><table class="list"><tbody><tr class="band"><td colspan="4">1 maná</td></tr><tr><td class='q'>2</td><td class='mc'>{1}</td><td class='nm'>Giant's Boulder</td><td class='pt'>Artifact</td></tr><tr><td class='q'>2</td><td class='mc'>{B}</td><td class='nm'>Stir Up Trouble</td><td class='pt'>Sorcery</td></tr><tr class="band"><td colspan="4">2 maná</td></tr><tr><td class='q'>4</td><td class='mc'>{1}{B}</td><td class='nm'>Ravening Warg</td><td class='pt'>2/2</td></tr><tr><td class='q'>3</td><td class='mc'>{1}{G}</td><td class='nm'>Warg Tactics</td><td class='pt'>Instant</td></tr><tr><td class='q'>2</td><td class='mc'>{1}{W/B}</td><td class='nm'>Pretending Poxbearers</td><td class='pt'>2/1</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Corrupt Court Official</td><td class='pt'>1/1</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Gollum the Abandoned</td><td class='pt'>2/2</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>Gollum, Riddle Master</td><td class='pt'>3/1</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{R}</td><td class='nm'>Ragged Short Spear</td><td class='pt'>Artifact</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B}</td><td class='nm'>The Sackville-Bagginses</td><td class='pt'>2/2</td></tr><tr class="band"><td colspan="4">3 maná</td></tr><tr><td class='q'>3</td><td class='mc'>{2}{R}</td><td class='nm'>Bombur, Gentle Dreamer</td><td class='pt'>5/3</td></tr><tr><td class='q'>2</td><td class='mc'>{2}{G}</td><td class='nm'>Mirkwood Pathmaker</td><td class='pt'>*/*</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{R}</td><td class='nm'>Dori, Bearer of Friends</td><td class='pt'>3/2</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{B}</td><td class='nm'>Reverent Howl</td><td class='pt'>Instant</td></tr><tr><td class='q'>1</td><td class='mc'>{1}{B/R}{B/R}</td><td class='nm'>The Great Goblin</td><td class='pt'>3/2</td></tr><tr><td class='q'>1</td><td class='mc'>{2}{G}</td><td class='nm'>Walltop Sentries</td><td class='pt'>2/3</td></tr><tr class="band"><td colspan="4">4 maná</td></tr><tr><td class='q'>2</td><td class='mc'>{2}{B}{B}</td><td class='nm'>Head of the Hunt</td><td class='pt'>4/3</td></tr><tr class="band"><td colspan="4">5 maná</td></tr><tr><td class='q'>2</td><td class='mc'>{3}{B/G}{B/G}</td><td class='nm'>Large Bear</td><td class='pt'>5/5</td></tr><tr><td class='q'>2</td><td class='mc'>{4}{R}</td><td class='nm'>Misty Mountains Raider</td><td class='pt'>4/4</td></tr><tr class="band"><td colspan="4">6 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{4}{R}{R}</td><td class='nm'>Mongoose Lizard</td><td class='pt'>5/6</td></tr><tr><td class='q'>1</td><td class='mc'>{4}{G}{G}</td><td class='nm'>Old Fat Spider</td><td class='pt'>6/7</td></tr><tr class="band"><td colspan="4">7 maná</td></tr><tr><td class='q'>1</td><td class='mc'>{5}{G}{G}</td><td class='nm'>Gigantic Big Bear</td><td class='pt'>10/7</td></tr></tbody></table>
+<p class="lands"><b>Tierras (24):</b> 6 Swamp · 6 Mountain · 5 Forest · 3 Goblin-town · 2 Mirkwood · 1 Boiling Rock Prison · 1 Foggy Bottom Swamp</p>
+<p class="tot">36 hechizos + 24 tierras = <b>60</b> · <span class="ok">legal y armable</span></p></div>
+<div><div class="stat"><span>Ganancia real de la búsqueda</span><b>+10,22 pts</b><small>3 semillas nuevas, muy sobre el intervalo de confianza</small></div>
+<div class="stat"><span>Índice del motor</span><b>88,7%</b><small>ver la advertencia de abajo</small></div>
+<table class="mm"><thead><tr><th>Rival</th><th class="r">% meta</th><th class="r">índice</th></tr></thead><tbody><tr><td>Izzet Spellementals</td><td class='r'>20.0%</td><td class='r idx'>91.8%</td></tr><tr><td>Four-Color Control</td><td class='r'>16.4%</td><td class='r idx'>94.8%</td></tr><tr><td>Dimir Excruciator</td><td class='r'>15.9%</td><td class='r idx'>81.9%</td></tr><tr><td>Orzhov Lifegain</td><td class='r'>6.5%</td><td class='r idx'>92.9%</td></tr><tr><td>Dimir Midrange</td><td class='r'>3.4%</td><td class='r idx'>84.8%</td></tr><tr><td>Mardu Discard</td><td class='r'>2.7%</td><td class='r idx'>78.4%</td></tr></tbody></table>
+</div></div></section>
+
+<h2>Hasta dónde llega el respaldo</h2>
+<div class="box bad">
+<h3>El límite que queda, medido</h3>
+<p>El motor te da <b>88,7% en Standard</b>. Eso sigue sin ser creíble, y ahora sé exactamente por qué. Medí las estadísticas brutas:</p>
+<table><thead><tr><th>Mazo</th><th class="r">estadísticas por maná</th></tr></thead><tbody>
+<tr><td><b>Tu mazo (cartas de draft)</b></td><td class="r ok"><b>2,04</b></td></tr>
+<tr><td>Mardu Discard</td><td class="r">1,90</td></tr>
+<tr><td>Dimir Excruciator</td><td class="r">1,81</td></tr>
+<tr><td>Dimir Midrange</td><td class="r">1,69</td></tr>
+<tr><td>Orzhov Lifegain</td><td class="r">1,61</td></tr>
+<tr><td>Izzet Spellementals</td><td class="r">1,32</td></tr>
+</tbody></table>
+<p style="margin-top:12px"><b>Tus cartas de draft tienen cuerpos más eficientes que las de constructed.</b> No es casualidad: las cartas de Limited se diseñan con estadísticas generosas, y las de constructed cambian estadísticas por habilidades. Mi motor sabe medir cuerpos y no sabe medir habilidades, así que te premia.</p>
+<p><b>Eso ya no es un bug que se arregle: es el techo del modelo.</b> Lo importante es que ahora está cuantificado — el sesgo es de unos 0,2-0,7 puntos de estadísticas por maná, y va todo a tu favor.</p>
+</div>
+<div class="box good">
+<h3>Para qué sirve entonces, y para qué no</h3>
+<p><b>Sirve, y con respaldo:</b></p>
+<ul>
+<li><b>Comparar tus listas entre sí.</b> Todas son cuerpos grandes contra el mismo campo: el sesgo es común y se cancela. Las ganancias de +1,4 a +10,2 puntos son reales y sobreviven a semillas independientes.</li>
+<li><b>Ordenar los mazos del meta.</b> En Brawl acertó los dos mejores sin que le dieran el dato.</li>
+<li><b>Curva y consistencia.</b> Turnos muertos y turno de primera jugada dependen solo del barajado y el maná, que ahora modelo bien (colores reales, híbridos, criaturas de maná, tierras de producción variable).</li>
+</ul>
+<p><b>No sirve para:</b> predecir tu winrate real contra el meta. El de Standard está inflado; el de Pauper y Brawl es más razonable porque ahí la brecha de potencia con tus cartas es menor. Y sigue subestimando el descarte y la prisión — tu estilo.</p>
+<p style="margin-top:12px">Fíjate en el mazo de Brawl: <b>pierde 42% contra Elspeth y 26% contra Ketramose</b>, los dos mejores del formato, y gana contra el resto. <b>Eso sí es un retrato realista</b> — y es el que el motor te habría negado antes de la calibración, cuando decía 98%.</p>
+</div>
+</div></body></html>

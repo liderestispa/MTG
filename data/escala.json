@@ -1,0 +1,47 @@
+{
+ "standard": {
+  "k": 0.19285714235509416,
+  "media_motor": 0.49099460708782744,
+  "media_real": 0.52175,
+  "sd_motor": 0.09486019627311192,
+  "sd_real": 0.018294466376475717,
+  "r": 0.11733311352560538,
+  "n": 4,
+  "rango_real": [
+   0.499,
+   0.547
+  ],
+  "usable": true,
+  "confianza": "el orden NO esta validado"
+ },
+ "pauper": {
+  "k": 0.34206696720292706,
+  "media_motor": 0.4870996549344376,
+  "media_real": 0.524,
+  "sd_motor": 0.10710729474277353,
+  "sd_real": 0.03663786747797056,
+  "r": 0.7187777113900539,
+  "n": 6,
+  "rango_real": [
+   0.464,
+   0.572
+  ],
+  "usable": true,
+  "confianza": "el orden es utilizable"
+ },
+ "brawl": {
+  "k": null,
+  "media_motor": 0.6250800664451828,
+  "media_real": 0.75,
+  "sd_motor": 0.0012395348837209164,
+  "sd_real": 0.020000000000000018,
+  "r": null,
+  "n": 2,
+  "rango_real": [
+   0.73,
+   0.77
+  ],
+  "usable": false,
+  "confianza": "solo desplazamiento (2 datos) — muestra no representativa: NO se calibra el nivel"
+ }
+}

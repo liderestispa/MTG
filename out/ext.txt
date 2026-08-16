@@ -1,0 +1,71 @@
+total 204  |  no-tierra 190  |  con efecto parseado 109 (57%)
+
+efectos detectados:
+   NONE           81
+   ETB_DRAW       16
+   COND_BUFF      13
+   ETB_COUNTERS   9
+   LIFEGAIN       8
+   DESTROY        8
+   ETB_TOKEN      6
+   EQUIP          6
+   LOOT_TOKEN     5
+   FIGHT          5
+   ETB_DISCARD    4
+   AMASS          4
+   DMG_SPELL      4
+   LORD           4
+   ETB_DRAIN      3
+   COUNTER        2
+   RAMP           2
+   DRAW_ON_DMG    2
+   TREASURE       2
+   ENGINE         2
+   PUMP           2
+   REANIMATE      1
+   BURN_FACE      1
+
+CRIATURAS SIN EFECTO parseado (revisar si alguna importa):
+   x5 Bofur, Reliable Guardian // Concer   1mv 1/1 kw=4
+   x5 Ordinary Bear                        4mv 4/5 kw=0
+   x4 Beorn, Reluctant Host // Till and    5mv 5/5 kw=8
+   x4 Great Fierce Bee                     3mv 2/2 kw=1
+   x4 Little Bear                          3mv 3/2 kw=2048
+   x4 Mirkwood Nurturer                    3mv 3/2 kw=0
+   x3 Elvenking's Harper                   2mv 2/2 kw=0
+   x3 Gandalf, Wandering Wizard            5mv 4/5 kw=16384
+   x3 Gigantic Big Bear                    7mv 10/7 kw=4128
+   x3 Lakeshore Apothecary                 2mv 1/2 kw=16
+   x3 Master's Councillors                 2mv 1/3 kw=16
+   x2 Eagle of the Great Shelf             5mv 2/5 kw=1
+   x2 Front Porch Sentries                 2mv 2/2 kw=0
+   x2 Galion, Elvenking's Butler           4mv 4/4 kw=0
+   x2 Gandalf, Spark Starter               6mv 4/3 kw=128
+   x2 Glóin the Mighty // Easy Pickings    4mv 4/3 kw=0
+   x2 Gollum, Silent Slinker // Meager M   4mv 4/3 kw=64
+   x2 Large Bear                           5mv 5/5 kw=168
+   x2 Mirkwood Pathmaker                   3mv 0/0 kw=0
+   x2 Smaug, the Great Calamity // Spew    7mv 5/5 kw=1
+   x2 Velvetwing Butterflies // Gaze in    3mv 2/2 kw=1
+   x2 Vengeful Villagers                   4mv 3/3 kw=0
+
+NO-CRIATURAS SIN EFECTO parseado:
+   x4 Enchanted River's Grasp              3mv typ=4
+   x4 Razor Rings                          2mv typ=2
+   x3 Vow to Erebor                        2mv typ=2
+   x2 Eagle's Rescue                       4mv typ=4
+   x2 Getaway Barrel                       4mv typ=7
+   x1 Avatar's Wrath                       4mv typ=3
+   x1 Bender's Waterskin                   3mv typ=7
+   x1 Ember Island Production              5mv typ=3
+   x1 Honest Work                          1mv typ=4
+   x1 How to Start a Riot                  3mv typ=2
+   x1 Key to the Side-Door                 1mv typ=7
+   x1 Lost Days                            5mv typ=2
+   x1 Octopus Form                         1mv typ=2
+   x1 Phoenix Fleet Airship                4mv typ=7
+   x1 Solstice Revelations                 3mv typ=2
+   x1 Team Avatar                          3mv typ=4
+   x1 Uneasy Partings                      4mv typ=2
+   x1 Watery Grasp                         1mv typ=4
+   x1 Yip Yip!                             1mv typ=2

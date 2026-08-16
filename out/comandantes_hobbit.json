@@ -1,0 +1,319 @@
+{
+ "referencia": {
+  "name": "Dáin, Lord of the Iron Hills",
+  "obj": 59.186099999999996,
+  "wr": 61.0158
+ },
+ "Thranduil, the Elvenking": {
+  "name": "Thranduil, the Elvenking",
+  "ci": "BGU",
+  "obj": 56.526900000000005,
+  "wr": 60.9405,
+  "seed_obj": 36.9198,
+  "gain": 19.607100000000003,
+  "precio": "0.91",
+  "spells": [
+   "Ravening Warg",
+   "Crude Bent Blade",
+   "Ordinary Bear",
+   "Warg Tactics",
+   "Beorn, Reluctant Host // Till and Tend",
+   "Duskwatch Hunter",
+   "Stir Up Trouble",
+   "Wargling",
+   "Elven Raft-Steerer",
+   "Galion, Elvenking's Butler",
+   "Giant's Boulder",
+   "Gollum, Silent Slinker // Meager Meal",
+   "Mirkwood Pathmaker",
+   "Old Thrush",
+   "Thranduil's Company",
+   "Thranduil, Sindarin Liege // Silvan Rally",
+   "Attercop",
+   "Beetle-Headed Merchants",
+   "Beifong's Bounty Hunters",
+   "Boughside Wanderers",
+   "Dai Li Indoctrination",
+   "Dreaded Bat-Cloud",
+   "Flexible Waterbender",
+   "Foggy Swamp Spirit Keeper",
+   "Gollum, Riddle Master",
+   "Heartless Act",
+   "Hog-Monkey",
+   "Honest Work",
+   "Long Lake Nuisance",
+   "Most Decrepit Old Bird // Speak Secrets",
+   "Platypus-Bear",
+   "The Sackville-Bagginses",
+   "Thrór's Map",
+   "Walltop Sentries",
+   "Wilderland Scrounger"
+  ],
+  "lands": [
+   "Mirkwood",
+   "Elvenking's Halls",
+   "Foggy Bottom Swamp",
+   "Jasmine Dragon Tea Shop",
+   "Swamp",
+   "Swamp",
+   "Swamp",
+   "Swamp",
+   "Swamp",
+   "Swamp",
+   "Swamp",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Island",
+   "Island",
+   "Island",
+   "Island",
+   "Island",
+   "Island"
+  ],
+  "mm": [
+   [
+    "Elspeth Storm Slayer",
+    23.0,
+    58.25
+   ],
+   [
+    "Tifa Lockhart",
+    9.5,
+    75.5833
+   ],
+   [
+    "Sephiroth Fabled SOLDIER",
+    9.5,
+    65.0833
+   ],
+   [
+    "Ketramose the New Dawn",
+    7.0,
+    24.5833
+   ],
+   [
+    "Eluge the Shoreless Sea",
+    6.2,
+    78.1666
+   ],
+   [
+    "Kona Rescue Beastie",
+    5.0,
+    68.6666
+   ]
+  ]
+ },
+ "Smaug the Magnificent": {
+  "name": "Smaug the Magnificent",
+  "ci": "R",
+  "obj": 37.3729,
+  "wr": 40.9342,
+  "seed_obj": 32.0224,
+  "gain": 5.350500000000004,
+  "precio": "26.45",
+  "spells": [
+   "Gundabad Opportunist",
+   "Bombur, Gentle Dreamer",
+   "Dori, Bearer of Friends",
+   "Goblin-town Flunkies",
+   "Long-Bodied Grey Dog",
+   "Misty Mountains Raider",
+   "Pinecone Strike",
+   "Óin the Brave",
+   "Gandalf, Spark Starter",
+   "Getaway Barrel",
+   "Giant's Boulder",
+   "Glóin the Mighty // Easy Pickings",
+   "Old Thrush",
+   "Smaug, the Great Calamity // Spew Flame",
+   "Bender's Waterskin",
+   "Cunning Maneuver",
+   "Desert Were-Worm",
+   "Dwarven Mattock",
+   "Dwarven Mauler",
+   "Fire Nation Raider",
+   "Fire Sages",
+   "Firebending Lesson",
+   "Firebending Student",
+   "Iron Hills Stalwart",
+   "Jeong Jeong, the Deserter",
+   "Mongoose Lizard",
+   "Ragged Short Spear",
+   "Smaug's Fury",
+   "Snowslope Hunter",
+   "Solstice Revelations",
+   "The Last Agni Kai",
+   "Thorin, Mountain-king",
+   "Thrór's Map",
+   "Troop of Ponies",
+   "Twin Blades"
+  ],
+  "lands": [
+   "Jasmine Dragon Tea Shop",
+   "The Lonely Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain"
+  ],
+  "mm": [
+   [
+    "Elspeth Storm Slayer",
+    23.0,
+    37.0833
+   ],
+   [
+    "Tifa Lockhart",
+    9.5,
+    54.75
+   ],
+   [
+    "Sephiroth Fabled SOLDIER",
+    9.5,
+    36.5
+   ],
+   [
+    "Ketramose the New Dawn",
+    7.0,
+    10.8333
+   ],
+   [
+    "Eluge the Shoreless Sea",
+    6.2,
+    58.75
+   ],
+   [
+    "Kona Rescue Beastie",
+    5.0,
+    55.50000000000001
+   ]
+  ]
+ },
+ "Beorn the Fierce": {
+  "name": "Beorn the Fierce",
+  "ci": "G",
+  "obj": 37.1434,
+  "wr": 40.0009,
+  "seed_obj": 36.740300000000005,
+  "gain": 0.4030999999999949,
+  "precio": "6.07",
+  "spells": [
+   "Shared Roots",
+   "Origin of Metalbending",
+   "Ordinary Bear",
+   "Warg Tactics",
+   "Beorn, Reluctant Host // Till and Tend",
+   "Little Bear",
+   "Gigantic Big Bear",
+   "Long-Bodied Grey Dog",
+   "Wargling",
+   "Galion, Elvenking's Butler",
+   "Giant's Boulder",
+   "Mirkwood Pathmaker",
+   "Old Thrush",
+   "Quarrel",
+   "Wood Elves",
+   "Attercop",
+   "Bender's Waterskin",
+   "Beorn's Hospitality",
+   "Boughside Wanderers",
+   "Dwarven Mattock",
+   "Earth Rumble",
+   "Flopsie, Bumi's Buddy",
+   "Guardian of the Halls",
+   "Key to the Side-Door",
+   "Leaves from the Vine",
+   "Old Fat Spider",
+   "Rebellious Captives",
+   "Rocky Rebuke",
+   "Through the Forest Gate",
+   "Thrór's Map",
+   "Troll Negotiations",
+   "Troop of Ponies",
+   "Turtle-Duck",
+   "Walltop Sentries",
+   "Wilderland Scrounger"
+  ],
+  "lands": [
+   "Jasmine Dragon Tea Shop",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest"
+  ],
+  "mm": [
+   [
+    "Elspeth Storm Slayer",
+    23.0,
+    32.8333
+   ],
+   [
+    "Tifa Lockhart",
+    9.5,
+    59.25
+   ],
+   [
+    "Sephiroth Fabled SOLDIER",
+    9.5,
+    33.4166
+   ],
+   [
+    "Ketramose the New Dawn",
+    7.0,
+    18.0
+   ],
+   [
+    "Eluge the Shoreless Sea",
+    6.2,
+    56.833299999999994
+   ],
+   [
+    "Kona Rescue Beastie",
+    5.0,
+    53.0
+   ]
+  ]
+ }
+}

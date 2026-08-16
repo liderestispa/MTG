@@ -1,0 +1,46 @@
+PRECIO DE CADA MAZO DEL META (USD de mercado, via Scryfall)
+
+
+===== STANDARD =====
+  US$  123.27  Dimir Midrange               (3.4% meta)  [4 sin precio]
+             4x Gloomlake Verge $10.53, 4x Kaito, Bane of Nightmares $7.82, 3x Enduring Curiosity $6.30, 4x Hidden Lair $2.58, 2x Restless Reef $2.02
+  US$  127.86  Izzet Spellementals          (20.0% meta)  [4 sin precio]
+             4x Riverpyre Verge $17.72, 4x Spirebluff Canal $5.31, 4x Sunderflock $1.65, 1x Multiversal Passage $6.40, 3x Flow State $1.59
+  US$  143.29  Orzhov Lifegain              (6.5% meta)  [6 sin precio]
+             2x Voice of Victory $17.51, 3x Starting Town $8.48, 2x Bleachbone Verge $9.72, 3x Erode $5.74, 2x Multiversal Passage $6.40
+  US$  185.38  Mardu Discard                (2.7% meta)  [10 sin precio]
+             4x Moonshadow $11.39, 4x Starting Town $8.48, 4x Cool but Rude $8.25, 3x Blazemire Verge $10.13, 2x Erode $5.74
+  US$  190.03  Dimir Excruciator            (15.9% meta)  [4 sin precio]
+             1x Cavern of Souls $49.39, 4x Gloomlake Verge $10.53, 2x Undercity Sewers $12.96, 4x Deceit $3.34, 2x Emeritus of Ideation $5.40
+  US$  219.00  Four-Color Control           (16.4% meta)  [7 sin precio]
+             3x Riverpyre Verge $17.72, 4x Jeskai Revelation $8.75, 3x Bleachbone Verge $9.72, 2x Undercity Sewers $12.96, 2x Starting Town $8.48
+
+===== PAUPER =====
+  US$   33.43  Mono Red Madness             (8.5% meta)  [3 sin precio]
+             4x Kessig Flamebreather $3.62, 3x Fireblast $1.27, 4x Lava Dart $0.87, 4x Lightning Bolt $0.81, 4x Grab the Prize $0.49
+  US$   36.92  Mono Red Rally               (6.5% meta)  [4 sin precio]
+             4x Great Furnace $2.36, 4x Galvanic Blast $2.29, 4x Goblin Bushwhacker $1.69, 4x Lightning Bolt $0.81, 1x End the Festivities $1.33
+  US$   52.32  Tron                         (6.5% meta)
+             4x Urza's Power Plant $2.12, 4x Urza's Mine $1.81, 2x Crop Rotation $3.48, 2x Generous Ent $3.21, 4x Candy Trail $1.27
+  US$   75.65  Blue Terror                  (10.9% meta)  [4 sin precio]
+             4x Mental Note $7.88, 4x Counterspell $3.84, 4x Ponder $1.76, 4x Brainstorm $1.50, 4x Cryptic Serpent $1.33
+  US$   84.66  Jund Wildfire                (5.8% meta)
+             3x Krark-Clan Shaman $8.68, 1x Snuff Out $10.73, 2x Vault of Whispers $5.04, 4x Nihil Spellbomb $2.32, 3x Fanatical Offering $2.02
+  US$  104.08  Elves                        (4.3% meta)
+             4x Avenging Hunter $5.18, 4x Elvish Mystic $4.81, 4x Winding Way $4.04, 4x Generous Ent $3.21, 4x Quirion Ranger $2.50
+  US$  124.40  Grixis Affinity              (5.8% meta)
+             3x Krark-Clan Shaman $8.68, 4x Vault of Whispers $5.04, 3x Utrom Monitor $5.32, 4x Thoughtcast $2.90, 4x Galvanic Blast $2.29
+
+===== BRAWL =====
+  US$  132.76  Elspeth Storm Slayer         (23.0% meta)
+             31x Hare Apparent $2.94, 1x Elspeth, Storm Slayer $41.62
+  US$  138.96  Sephiroth Fabled SOLDIER     (9.5% meta)  [1 sin precio]
+             1x Cavern of Souls $49.39, 1x Sephiroth, Fabled SOLDIER $31.84, 1x Bitterbloom Bearer $16.35, 1x Liliana, Dreadhorde General $7.78, 1x Unstoppable Slasher $5.28
+  US$  171.44  Tifa Lockhart                (9.5% meta)
+             1x Badgermole Cub $45.91, 1x Bristly Bill, Spine Sower $40.42, 1x Traveling Chocobo $19.08, 1x Icetill Explorer $16.32, 1x Mossborn Hydra $9.16
+  US$  215.66  Eluge the Shoreless Sea      (6.2% meta)  [1 sin precio]
+             1x Cavern of Souls $49.39, 1x Ugin, Eye of the Storms $42.76, 1x Wan Shi Tong, Librarian $37.05, 1x Quantum Riddler $34.12, 1x Mistrise Village $9.15
+  US$  223.86  Ketramose the New Dawn       (7.0% meta)  [2 sin precio]
+             1x Cavern of Souls $49.39, 1x Ugin, Eye of the Storms $42.76, 1x Agatha's Soul Cauldron $37.48, 1x The Aetherspark $23.15, 1x Shadowy Backstreet $9.86
+  US$  338.21  Kona Rescue Beastie          (5.0% meta)
+             1x Badgermole Cub $45.91, 1x Ugin, Eye of the Storms $42.76, 1x Vaultborn Tyrant $34.22, 1x Ghalta, Stampede Tyrant $28.75, 1x Lumra, Bellow of the Woods $22.70

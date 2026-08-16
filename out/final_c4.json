@@ -1,0 +1,439 @@
+{
+ "fmts": {
+  "standard": {
+   "fmt": "standard",
+   "campo_off": -0.03466660246533132,
+   "campo_resid": 0.08421467815118928,
+   "campo_rows": [
+    [
+     "Izzet Spellementals",
+     0.49937057010785824,
+     0.511
+    ],
+    [
+     "Four-Color Control",
+     0.3519653312788906,
+     0.53
+    ],
+    [
+     "Dimir Excruciator",
+     0.5678312788906008,
+     0.547
+    ],
+    [
+     "Mardu Discard",
+     0.5291664098613251,
+     0.499
+    ]
+   ],
+   "h2h_rmse": 0.20662768449556798,
+   "h2h_bias": -0.14250000000000002,
+   "h2h_max": 0.30699999999999994,
+   "h2h_rows": [
+    [
+     "Izzet Spellementals",
+     "Dimir Excruciator",
+     0.368,
+     0.538,
+     87
+    ],
+    [
+     "Izzet Spellementals",
+     "Four-Color Control",
+     0.6785,
+     0.526,
+     95
+    ],
+    [
+     "Izzet Spellementals",
+     "Dimir Midrange",
+     0.2805,
+     0.542,
+     55
+    ],
+    [
+     "Four-Color Control",
+     "Dimir Excruciator",
+     0.3265,
+     0.512,
+     71
+    ],
+    [
+     "Four-Color Control",
+     "Mardu Discard",
+     0.271,
+     0.578,
+     75
+    ],
+    [
+     "Dimir Excruciator",
+     "Dimir Midrange",
+     0.4685,
+     0.552,
+     61
+    ]
+   ],
+   "rmse50": 0.09564669620751527,
+   "field": [
+    0.49937057010785824,
+    0.3519653312788906,
+    0.5678312788906008,
+    0.3852141756548536,
+    0.6197812018489984,
+    0.5291664098613251
+   ],
+   "names": [
+    "Izzet Spellementals",
+    "Four-Color Control",
+    "Dimir Excruciator",
+    "Orzhov Lifegain",
+    "Dimir Midrange",
+    "Mardu Discard"
+   ],
+   "matrix": [
+    [
+     0.5,
+     0.6785,
+     0.368,
+     0.5525,
+     0.2805,
+     0.328
+    ],
+    [
+     0.2695,
+     0.5,
+     0.3265,
+     0.405,
+     0.205,
+     0.271
+    ],
+    [
+     0.5565,
+     0.606,
+     0.5,
+     0.7105,
+     0.4685,
+     0.601
+    ],
+    [
+     0.3475,
+     0.5545,
+     0.235,
+     0.5,
+     0.2475,
+     0.418
+    ],
+    [
+     0.6485,
+     0.7575,
+     0.4555,
+     0.698,
+     0.5,
+     0.5005
+    ],
+    [
+     0.61,
+     0.683,
+     0.3115,
+     0.4945,
+     0.419,
+     0.5
+    ]
+   ],
+   "weights": [
+    200,
+    164,
+    159,
+    65,
+    34,
+    27
+   ],
+   "ngames": 2000,
+   "disp": 4.46579001460318,
+   "r": -0.027651344969422103
+  },
+  "pauper": {
+   "fmt": "pauper",
+   "campo_off": -0.033354037267080756,
+   "campo_resid": 0.0650107580110664,
+   "campo_rows": [
+    [
+     "Blue Terror",
+     0.45088716356107655,
+     0.52
+    ],
+    [
+     "Mono Red Madness",
+     0.38177122153209114,
+     0.53
+    ],
+    [
+     "Mono Red Rally",
+     0.4172670807453416,
+     0.464
+    ],
+    [
+     "Jund Wildfire",
+     0.49172981366459634,
+     0.497
+    ],
+    [
+     "Grixis Affinity",
+     0.5882049689440993,
+     0.572
+    ],
+    [
+     "Elves",
+     0.6140155279503106,
+     0.561
+    ]
+   ],
+   "rmse50": 0.08183269064801575,
+   "field": [
+    0.45088716356107655,
+    0.38177122153209114,
+    0.44714906832298135,
+    0.4172670807453416,
+    0.49172981366459634,
+    0.5882049689440993,
+    0.6140155279503106
+   ],
+   "names": [
+    "Blue Terror",
+    "Mono Red Madness",
+    "Tron",
+    "Mono Red Rally",
+    "Jund Wildfire",
+    "Grixis Affinity",
+    "Elves"
+   ],
+   "matrix": [
+    [
+     0.5,
+     0.5215,
+     0.631,
+     0.387,
+     0.4265,
+     0.3345,
+     0.201
+    ],
+    [
+     0.4065,
+     0.5,
+     0.366,
+     0.3855,
+     0.383,
+     0.2605,
+     0.2655
+    ],
+    [
+     0.302,
+     0.578,
+     0.5,
+     0.573,
+     0.376,
+     0.477,
+     0.342
+    ],
+    [
+     0.571,
+     0.522,
+     0.3525,
+     0.5,
+     0.3205,
+     0.187,
+     0.2345
+    ],
+    [
+     0.4995,
+     0.529,
+     0.543,
+     0.614,
+     0.5,
+     0.3315,
+     0.341
+    ],
+    [
+     0.616,
+     0.6595,
+     0.449,
+     0.7435,
+     0.593,
+     0.5,
+     0.465
+    ],
+    [
+     0.7345,
+     0.6505,
+     0.592,
+     0.6625,
+     0.574,
+     0.429,
+     0.5
+    ]
+   ],
+   "weights": [
+    109,
+    85,
+    65,
+    65,
+    58,
+    58,
+    43
+   ],
+   "ngames": 2000,
+   "disp": 2.3255609840017,
+   "r": 0.7008389819523648
+  },
+  "brawl": {
+   "fmt": "brawl",
+   "campo_off": -0.13223380398671092,
+   "campo_resid": 0.043528654485049834,
+   "campo_rows": [
+    [
+     "Elspeth Storm Slayer",
+     0.5942375415282393,
+     0.77
+    ],
+    [
+     "Ketramose the New Dawn",
+     0.6412948504983389,
+     0.73
+    ]
+   ],
+   "rmse50": 0.1403075290866391,
+   "field": [
+    0.5942375415282393,
+    0.30754734219269103,
+    0.39669601328903653,
+    0.6412948504983389,
+    0.3077948504983389,
+    0.43203156146179394
+   ],
+   "names": [
+    "Elspeth Storm Slayer",
+    "Tifa Lockhart",
+    "Sephiroth Fabled SOLDIER",
+    "Ketramose the New Dawn",
+    "Eluge the Shoreless Sea",
+    "Kona Rescue Beastie"
+   ],
+   "matrix": [
+    [
+     0.5,
+     0.7085,
+     0.7965,
+     0.401,
+     0.7905,
+     0.4535
+    ],
+    [
+     0.262,
+     0.5,
+     0.2265,
+     0.095,
+     0.493,
+     0.373
+    ],
+    [
+     0.173,
+     0.706,
+     0.5,
+     0.1915,
+     0.708,
+     0.543
+    ],
+    [
+     0.523,
+     0.862,
+     0.7965,
+     0.5,
+     0.476,
+     0.874
+    ],
+    [
+     0.1515,
+     0.4485,
+     0.227,
+     0.46,
+     0.5,
+     0.4615
+    ],
+    [
+     0.4975,
+     0.552,
+     0.357,
+     0.0835,
+     0.459,
+     0.5
+    ]
+   ],
+   "weights": [
+    230,
+    95,
+    95,
+    70,
+    62,
+    50
+   ],
+   "ngames": 2000
+  }
+ },
+ "escala": {
+  "standard": {
+   "k": 0.22392454565261452,
+   "media_motor": 0.48708339753466867,
+   "media_real": 0.52175,
+   "sd_motor": 0.08169924526655889,
+   "sd_real": 0.018294466376475717,
+   "r": -0.027651344969422103,
+   "n": 4,
+   "rango_real": [
+    0.499,
+    0.547
+   ],
+   "usable": true,
+   "confianza": "el orden NO esta validado"
+  },
+  "pauper": {
+   "k": 0.4300037740912104,
+   "media_motor": 0.49064596273291927,
+   "media_real": 0.524,
+   "sd_motor": 0.0852035951437931,
+   "sd_real": 0.03663786747797056,
+   "r": 0.7008389819523648,
+   "n": 6,
+   "rango_real": [
+    0.464,
+    0.572
+   ],
+   "usable": true,
+   "confianza": "el orden es utilizable"
+  },
+  "brawl": {
+   "k": null,
+   "media_motor": 0.6177661960132891,
+   "media_real": 0.75,
+   "sd_motor": 0.023528654485049816,
+   "sd_real": 0.020000000000000018,
+   "r": null,
+   "n": 2,
+   "rango_real": [
+    0.73,
+    0.77
+   ],
+   "usable": false,
+   "confianza": "solo desplazamiento (2 datos) — muestra no representativa: NO se calibra el nivel"
+  }
+ },
+ "objetivo": 0.06770538820636703,
+ "fuentes": {
+  "std_rc": "https://www.magic.gg/news/metagame-mentor-nineteen-standard-archetypes-deliver-players-to-the-pro-tour",
+  "std_pt": "https://magic.gg/news/metagame-mentor-standard-win-rates-and-lessons-from-pro-tour-secrets-of-strixhaven",
+  "nexus": "https://mtg-nexus.com/meta/standard",
+  "pauper": "https://www.mtggoldfish.com/articles/the-power-of-pauper-common-july-2026-review",
+  "gf_std": "https://www.mtggoldfish.com/metagame/standard",
+  "gf_pau": "https://www.mtggoldfish.com/metagame/pauper"
+ },
+ "ngames": 2000
+}

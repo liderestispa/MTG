@@ -1,0 +1,8 @@
+{
+ "W_TARGET": 50,
+ "TH_TRADE": -4,
+ "TH_BADBLOCK": -14,
+ "RESERVE_MAX": 1,
+ "PEN_NOTARGET": 15,
+ "WARD_COST": 3
+}

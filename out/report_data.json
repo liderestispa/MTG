@@ -1,0 +1,786 @@
+{
+ "standard": {
+  "colors": "Negro-Rojo",
+  "spells": [
+   {
+    "cmc": 1,
+    "name": "Stir Up Trouble",
+    "n": 3,
+    "mc": "{B}",
+    "pt": "",
+    "tl": "Sorcery"
+   },
+   {
+    "cmc": 1,
+    "name": "Giant's Boulder",
+    "n": 1,
+    "mc": "{1}",
+    "pt": "",
+    "tl": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Ravening Warg",
+    "n": 4,
+    "mc": "{1}{B}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Goblin-town Flunkies",
+    "n": 3,
+    "mc": "{1}{R}",
+    "pt": "1/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Gollum the Abandoned",
+    "n": 2,
+    "mc": "{1}{B}",
+    "pt": "2/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Pretending Poxbearers",
+    "n": 2,
+    "mc": "{1}{W/B}",
+    "pt": "2/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Corrupt Court Official",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "1/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Gollum, Riddle Master",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "3/1",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Old Thrush",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "1/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Ragged Short Spear",
+    "n": 1,
+    "mc": "{1}{R}",
+    "pt": "",
+    "tl": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Stony-Voiced Goblins",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "1/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "The Sackville-Bagginses",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "2/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Bombur, Gentle Dreamer",
+    "n": 3,
+    "mc": "{2}{R}",
+    "pt": "5/3",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Dori, Bearer of Friends",
+    "n": 1,
+    "mc": "{2}{R}",
+    "pt": "3/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Duskwatch Hunter",
+    "n": 1,
+    "mc": "{2}{B/G}",
+    "pt": "3/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Hog-Monkey",
+    "n": 1,
+    "mc": "{2}{B}",
+    "pt": "3/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "The Great Goblin",
+    "n": 1,
+    "mc": "{1}{B/R}{B/R}",
+    "pt": "3/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Head of the Hunt",
+    "n": 2,
+    "mc": "{2}{B}{B}",
+    "pt": "4/3",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Glóin the Mighty // Easy Pickings",
+    "n": 1,
+    "mc": "{3}{R}",
+    "pt": "4/3",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Zhao, Ruthless Admiral",
+    "n": 1,
+    "mc": "{2}{B/R}{B/R}",
+    "pt": "3/4",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 5,
+    "name": "Large Bear",
+    "n": 2,
+    "mc": "{3}{B/G}{B/G}",
+    "pt": "5/5",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 5,
+    "name": "Misty Mountains Raider",
+    "n": 2,
+    "mc": "{4}{R}",
+    "pt": "4/4",
+    "tl": "Creature"
+   }
+  ],
+  "lands": {
+   "Goblin-town": 3,
+   "Boiling Rock Prison": 1,
+   "Swamp": 10,
+   "Mountain": 10
+  },
+  "nspell": 36,
+  "nland": 24,
+  "opt": 91.13,
+  "seed": 87.7,
+  "gain": 3.42,
+  "noplay": [
+   1.62,
+   1.22
+  ],
+  "first": [
+   2.0,
+   1.88
+  ],
+  "mm": [
+   [
+    "Izzet Spellementals",
+    20.0,
+    99.5
+   ],
+   [
+    "Four-Color Control",
+    16.4,
+    99.8
+   ],
+   [
+    "Dimir Excruciator",
+    15.9,
+    83.9
+   ],
+   [
+    "Orzhov Lifegain",
+    6.5,
+    91.4
+   ],
+   [
+    "Dimir Midrange",
+    3.4,
+    82.3
+   ],
+   [
+    "Mardu Discard",
+    2.7,
+    21.8
+   ]
+  ]
+ },
+ "pauper": {
+  "colors": "Blanco-Negro-Rojo",
+  "spells": [
+   {
+    "cmc": 1,
+    "name": "Stir Up Trouble",
+    "n": 3,
+    "mc": "{B}",
+    "pt": "",
+    "tl": "Sorcery"
+   },
+   {
+    "cmc": 1,
+    "name": "Curious Farm Animals",
+    "n": 2,
+    "mc": "{W}",
+    "pt": "1/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 1,
+    "name": "Giant's Boulder",
+    "n": 2,
+    "mc": "{1}",
+    "pt": "",
+    "tl": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Ravening Warg",
+    "n": 4,
+    "mc": "{1}{B}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Goblin-town Flunkies",
+    "n": 3,
+    "mc": "{1}{R}",
+    "pt": "1/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Dwarven Provisioner",
+    "n": 2,
+    "mc": "{1}{W}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Old Thrush",
+    "n": 2,
+    "mc": "{2}",
+    "pt": "1/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Pretending Poxbearers",
+    "n": 2,
+    "mc": "{1}{W/B}",
+    "pt": "2/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Jeong Jeong's Deserters",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "1/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Merchant of Many Hats",
+    "n": 1,
+    "mc": "{1}{B}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Dori, Bearer of Friends",
+    "n": 3,
+    "mc": "{2}{R}",
+    "pt": "3/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Duskwatch Hunter",
+    "n": 3,
+    "mc": "{2}{B/G}",
+    "pt": "3/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Ori, Keeper of Songs",
+    "n": 2,
+    "mc": "{2}{W}",
+    "pt": "3/3",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Hog-Monkey",
+    "n": 1,
+    "mc": "{2}{B}",
+    "pt": "3/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Vindictive Warden",
+    "n": 1,
+    "mc": "{2}{B/R}",
+    "pt": "2/3",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Gollum, Silent Slinker // Meager Meal",
+    "n": 2,
+    "mc": "{3}{B}",
+    "pt": "4/3",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Foggy Swamp Hunters",
+    "n": 1,
+    "mc": "{3}{B}",
+    "pt": "3/4",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 5,
+    "name": "Rabaroo Troop",
+    "n": 1,
+    "mc": "{3}{W}{W}",
+    "pt": "3/5",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 6,
+    "name": "Mongoose Lizard",
+    "n": 1,
+    "mc": "{4}{R}{R}",
+    "pt": "5/6",
+    "tl": "Creature"
+   }
+  ],
+  "lands": {
+   "Goblin-town": 3,
+   "Boiling Rock Prison": 1,
+   "Misty Palms Oasis": 1,
+   "Plains": 6,
+   "Swamp": 6,
+   "Mountain": 6
+  },
+  "nspell": 37,
+  "nland": 23,
+  "opt": 94.17,
+  "seed": 90.58,
+  "gain": 3.6,
+  "noplay": [
+   1.33,
+   0.75
+  ],
+  "first": [
+   1.86,
+   1.62
+  ],
+  "mm": [
+   [
+    "Blue Terror",
+    10.9,
+    98.9
+   ],
+   [
+    "Mono Red Madness",
+    8.5,
+    98.9
+   ],
+   [
+    "Tron",
+    6.5,
+    98.0
+   ],
+   [
+    "Mono Red Rally",
+    6.5,
+    72.8
+   ],
+   [
+    "Jund Wildfire",
+    5.8,
+    91.1
+   ],
+   [
+    "Grixis Affinity",
+    5.8,
+    97.3
+   ],
+   [
+    "Elves",
+    4.3,
+    98.4
+   ]
+  ]
+ },
+ "brawl": {
+  "colors": "Rojo-Blanco",
+  "commander": "Nori, Teller of Tales",
+  "spells": [
+   {
+    "cmc": 1,
+    "name": "Bofur, Reliable Guardian // Concerted Care",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "1/1",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 1,
+    "name": "Curious Farm Animals",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "1/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 1,
+    "name": "Dwarven Mauler",
+    "n": 1,
+    "mc": "{R}",
+    "pt": "2/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 1,
+    "name": "Giant's Boulder",
+    "n": 1,
+    "mc": "{1}",
+    "pt": "",
+    "tl": "Artifact"
+   },
+   {
+    "cmc": 1,
+    "name": "Momo, Playful Pet",
+    "n": 1,
+    "mc": "{W}",
+    "pt": "1/1",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Belladonna Took",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "2/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Compassionate Healer",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Dwarven Provisioner",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Dáin's Company",
+    "n": 1,
+    "mc": "{R}{W}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Goblin-town Flunkies",
+    "n": 1,
+    "mc": "{1}{R}",
+    "pt": "1/1",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Jeong Jeong's Deserters",
+    "n": 1,
+    "mc": "{1}{W}",
+    "pt": "1/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Old Thrush",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "1/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Ragged Short Spear",
+    "n": 1,
+    "mc": "{1}{R}",
+    "pt": "",
+    "tl": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Thorin Oakenshield",
+    "n": 1,
+    "mc": "{R}{W}",
+    "pt": "3/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 2,
+    "name": "Thrór's Map",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "",
+    "tl": "Legendary Artifact"
+   },
+   {
+    "cmc": 3,
+    "name": "Airbending Lesson",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "",
+    "tl": "Instant"
+   },
+   {
+    "cmc": 3,
+    "name": "Bombur, Gentle Dreamer",
+    "n": 1,
+    "mc": "{2}{R}",
+    "pt": "5/3",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Dori, Bearer of Friends",
+    "n": 1,
+    "mc": "{2}{R}",
+    "pt": "3/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Earth Kingdom Jailer",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "3/3",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Glider Kids",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "2/3",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Long-Bodied Grey Dog",
+    "n": 1,
+    "mc": "{3}",
+    "pt": "2/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Ori, Keeper of Songs",
+    "n": 1,
+    "mc": "{2}{W}",
+    "pt": "3/3",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 3,
+    "name": "Snowslope Hunter",
+    "n": 1,
+    "mc": "{2}{R}",
+    "pt": "2/3",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Aang, the Last Airbender",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "3/2",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Burn, Burn, Tree and Fern",
+    "n": 1,
+    "mc": "{3}{R}",
+    "pt": "",
+    "tl": "Enchantment"
+   },
+   {
+    "cmc": 4,
+    "name": "Fire Nation Raider",
+    "n": 1,
+    "mc": "{3}{R}",
+    "pt": "4/2",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Glóin the Mighty // Easy Pickings",
+    "n": 1,
+    "mc": "{3}{R}",
+    "pt": "4/3",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Kyoshi Warriors",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "3/3",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 4,
+    "name": "Lake-town Toymaker",
+    "n": 1,
+    "mc": "{3}{W}",
+    "pt": "3/4",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 5,
+    "name": "Iron Hills Stalwart",
+    "n": 1,
+    "mc": "{4}{R}",
+    "pt": "4/5",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 5,
+    "name": "Misty Mountains Raider",
+    "n": 1,
+    "mc": "{4}{R}",
+    "pt": "4/4",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 5,
+    "name": "Rabaroo Troop",
+    "n": 1,
+    "mc": "{3}{W}{W}",
+    "pt": "3/5",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 6,
+    "name": "Bifur, Melodic Rider",
+    "n": 1,
+    "mc": "{4}{R/W}{R/W}",
+    "pt": "4/5",
+    "tl": "Legendary Creature"
+   },
+   {
+    "cmc": 6,
+    "name": "Mongoose Lizard",
+    "n": 1,
+    "mc": "{4}{R}{R}",
+    "pt": "5/6",
+    "tl": "Creature"
+   },
+   {
+    "cmc": 7,
+    "name": "Smaug, the Great Calamity // Spew Flame",
+    "n": 1,
+    "mc": "{5}{R}{R}",
+    "pt": "5/5",
+    "tl": "Legendary Creature"
+   }
+  ],
+  "lands": {
+   "Jasmine Dragon Tea Shop": 1,
+   "The Lonely Mountain": 1,
+   "Mountain": 11,
+   "Plains": 11
+  },
+  "nspell": 35,
+  "nland": 24,
+  "opt": 87.09,
+  "seed": 82.69,
+  "gain": 4.39,
+  "noplay": [
+   1.74,
+   1.16
+  ],
+  "first": [
+   2.37,
+   1.76
+  ],
+  "mm": [
+   [
+    "Elspeth Storm Slayer",
+    23.0,
+    94.2
+   ],
+   [
+    "Tifa Lockhart",
+    9.5,
+    97.5
+   ],
+   [
+    "Sephiroth",
+    9.5,
+    61.4
+   ],
+   [
+    "Ketramose",
+    7.0,
+    78.5
+   ],
+   [
+    "Eluge",
+    6.2,
+    95.7
+   ],
+   [
+    "Kona Rescue Beastie",
+    5.0,
+    79.7
+   ]
+  ]
+ }
+}

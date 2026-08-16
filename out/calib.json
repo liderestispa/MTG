@@ -1,0 +1,44 @@
+{
+ "standard": {
+  "names": [
+   "Izzet Spellementals",
+   "Four-Color Control",
+   "Dimir Excruciator",
+   "Orzhov Lifegain",
+   "Dimir Midrange",
+   "Mardu Discard"
+  ],
+  "field": [
+   0.4725747303543913,
+   0.2570231124807396,
+   0.6587673343605547,
+   0.42692141756548535,
+   0.6613004622496148,
+   0.8788628659476116
+  ],
+  "rmse": 0.20812350871147534,
+  "spread": 0.621839753466872
+ },
+ "pauper": {
+  "names": [
+   "Blue Terror",
+   "Mono Red Madness",
+   "Tron",
+   "Mono Red Rally",
+   "Jund Wildfire",
+   "Grixis Affinity",
+   "Elves"
+  ],
+  "field": [
+   0.5173271221532092,
+   0.3809316770186335,
+   0.24992753623188407,
+   0.5513209109730848,
+   0.5971325051759834,
+   0.7096086956521739,
+   0.346296066252588
+  ],
+  "rmse": 0.1495913461219633,
+  "spread": 0.4596811594202898
+ }
+}

@@ -1,0 +1,437 @@
+"""Convierte texto oracle de Scryfall -> codigos de efecto para el motor en C."""
+import json, re, sys
+
+KW = ['Flying','Deathtouch','Lifelink','Trample','Vigilance','Haste','Menace','Reach',
+      'First strike','Double strike','Defender','Flash','Hexproof','Indestructible',
+      'Ward','Protection','Prowess','Skulk','Intimidate','Shadow','Horsemanship','Fear']
+KWBIT = {k: 1 << i for i, k in enumerate(KW)}
+
+E = dict(NONE=0, ETB_DMG=1, ETB_DRAIN=2, ETB_DRAW=3, ETB_DISCARD=4, ETB_TOKEN=5,
+         DESTROY=7, DMG_SPELL=8, SWEEPER=9, LORD=10, EQUIP=11, DRAW_ON_DMG=12,
+         UPKEEP_DRAIN=13, RAMP=14, COUNTER=15, BURN_FACE=16, LIFEGAIN=17, PUMP=18,
+         REANIMATE=19, ENGINE=20, EXILE=21, BOUNCE=22, FIGHT=23, ETB_COUNTERS=24,
+         COND_BUFF=25, LOOT_TOKEN=26, AMASS=27, TREASURE=28, SAGA=29, PW_TICK=30,
+         SPELL_DMG=31, PROWESS_ENG=32, TOKEN_SCALE=33, TOKEN_DOUBLE=34, EXILE_ENGINE=35,
+         UPKEEP_DRAW=36, REPEAT_PUMP=37, TEAM_PUMP=38, FOG_BOUNCE=39, MOBILIZE=40,
+         MASS_CHEAT=41, DEATH_DMG=42, ATTACK_DRAW=43, RECURSIVE=44, TEAM_MANA=45,
+         ATTACK_DMG=46, PROTECT=47)
+
+NUMW = {'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'X':1}
+def num(s, d=1):
+    s = (s or '').strip()
+    if s.isdigit(): return int(s)
+    return NUMW.get(s.lower(), d)
+
+def parse_card(c):
+    t = (c.get('type_line') or '')
+    txt = (c.get('oracle_text') or '')
+    # cara frontal para adventure/mdfc/transformables
+    faces = c.get('card_faces') or []
+    if faces and not txt.strip():
+        txt = faces[0].get('oracle_text') or ''
+        t = faces[0].get('type_line') or t
+    tl = t.lower()
+    low = txt.lower().replace('—', '-')
+    # quitar texto recordatorio
+    low = re.sub(r'\([^)]*\)', '', low)
+
+    out = {'eff': E['NONE'], 'p1': 0, 'p2': 0, 'p3': 0, 'eff2': E['NONE'], 'q1': 0, 'q2': 0,
+           'eff3': E['NONE'], 'r1': 0, 'r2': 0}
+    # Las palabras clave estaticas viven en su propia linea al principio del texto
+    # ("Flying, lifelink"). Si aparecen dentro de una frase con ':' , 'when', 'whenever',
+    # 'gains' o 'until end of turn', son CONDICIONALES y no deben aplicarse como estaticas.
+    kw = 0
+    raw = txt or ''
+    for line in raw.split('\n'):
+        ln = re.sub(r'\([^)]*\)', '', line).strip().rstrip('.')
+        if not ln: continue
+        toks = [t.strip().lower() for t in ln.split(',')]
+        # una linea de keywords es solo keywords (permite "ward {2}", "protection from X")
+        okline = True
+        for t in toks:
+            base = re.sub(r'\s*\{.*', '', t)
+            base = re.sub(r'^(protection from|ward).*', lambda m: m.group(0).split()[0], base)
+            if base not in [k.lower() for k in KW] and base not in ('ward','protection'):
+                okline = False; break
+        if not okline: continue
+        for k in KW:
+            if re.search(r'\b' + k.lower() + r'\b', ln.lower()): kw |= KWBIT[k]
+    out['kw'] = kw
+
+    def setp(code, p1=0, p2=0, p3=0):
+        if out['eff'] == E['NONE']:
+            out.update(eff=code, p1=p1, p2=p2, p3=p3)
+        elif out['eff2'] == E['NONE']:
+            out.update(eff2=code, q1=p1, q2=p2)
+        elif out['eff3'] == E['NONE']:
+            out.update(eff3=code, r1=p1, r2=p2)
+
+    # ---- REMOCION ----
+    if re.search(r'destroy target [\w-]*\s?(creature|permanent)', low) or re.search(r'destroy those creatures', low):
+        cond = 0
+        if 'without' in low or "can't" in low or 'unless' in low or 'with mana value' in low: cond = 1
+        setp(E['DESTROY'], cond)
+    if re.search(r'exile target [\w-]*\s?(creature|permanent|nonland)', low) or re.search(r'exiles? a creature they control', low):
+        setp(E['EXILE'], 0)
+    m = re.search(r'deals? (\w+) damage to (?:up to \w+ )?(target creature|any target|target player|target creature or planeswalker|each creature)', low)
+    if m:
+        d = num(m.group(1), 2)
+        setp(E['DMG_SPELL'] if 'creature' in m.group(2) else E['BURN_FACE'], d)
+    if re.search(r'(destroy all creatures|each creature gets -|destroy all other creatures)', low):
+        mm = re.search(r'gets -\d+/-(\d+)', low)
+        setp(E['SWEEPER'], int(mm.group(1)) if mm else 99)
+    if re.search(r'return target (creature|nonland permanent) .*to (its owner|their owner)', low):
+        setp(E['BOUNCE'], 0)
+    if 'fights' in low: setp(E['FIGHT'], 0)
+    if re.search(r'counter target', low): setp(E['COUNTER'], 0)
+
+    # ---- ETB / disparos ----
+    trig = 'enters' in low or 'when' in low or 'whenever' in low
+    m = re.search(r'(?:each opponent loses|target (?:player|opponent) loses) (\w+) life', low)
+    if m: setp(E['ETB_DRAIN'], num(m.group(1), 2))
+    m = re.search(r'draws? (\w+) cards?', low)
+    if m and 'opponent draws' not in low:
+        if re.search(r'whenever .*(deals combat damage|attacks)', low): setp(E['DRAW_ON_DMG'], 1)
+        elif trig or 'sorcery' in tl or 'instant' in tl: setp(E['ETB_DRAW'], num(m.group(1), 1))
+    m = re.search(r'(?:target player|each opponent|target opponent) discards? (\w+) cards?', low)
+    if m: setp(E['ETB_DISCARD'], num(m.group(1), 1))
+    m = re.search(r'creates? (\w+) ([\dx]+)/([\dx]+) .*?(?:creature )?tokens?', low)
+    if m:
+        p, tg = m.group(2), m.group(3)
+        if p.isdigit() and tg.isdigit():
+            setp(E['ETB_TOKEN'], num(m.group(1), 1), (int(p) << 4) | int(tg))
+    m = re.search(r'you gain (\w+) life', low)
+    if m and out['eff'] == E['NONE']: setp(E['LIFEGAIN'], num(m.group(1), 2))
+    if re.search(r'at the beginning of (your|each) upkeep', low) and re.search(r'lose[s]? \d+ life', low):
+        mm = re.search(r'lose[s]? (\d+) life', low); setp(E['UPKEEP_DRAIN'], int(mm.group(1)))
+    if re.search(r'search your library for a .*land', low): setp(E['RAMP'], 1)
+    if re.search(r'return target creature card from your graveyard', low): setp(E['REANIMATE'], 0)
+
+    # ---- estaticos ----
+    m = re.search(r'(?:other )?creatures you control get \+(\d+)/\+(\d+)', low)
+    if m: setp(E['LORD'], int(m.group(1)), int(m.group(2)))
+    if 'aura' in tl or 'enchant creature' in low:
+        m = re.search(r'enchanted creature gets \+(\d+)/\+(\d+)', low)
+        if m: setp(E['EQUIP'], int(m.group(1)), int(m.group(2)), 0)
+        elif re.search(r'enchanted creature gets \+x/\+x', low): setp(E['EQUIP'], 4, 4, 0)
+        elif re.search(r'enchanted creature gets \+1/\+1 for each', low): setp(E['EQUIP'], 5, 5, 0)
+    if 'equipment' in tl:
+        m = re.search(r'equipped creature gets \+(\d+)/\+(\d+)', low)
+        eq = re.search(r'equip \{?(\d+)', low)
+        setp(E['EQUIP'], int(m.group(1)) if m else 1, int(m.group(2)) if m else 1,
+             int(eq.group(1)) if eq else 2)
+    m = re.search(r'target creature gets \+(\d+)/\+(\d+)', low)
+    if m and ('instant' in tl or 'sorcery' in tl): setp(E['PUMP'], int(m.group(1)), int(m.group(2)))
+    m = re.search(r'(?:enters|with) (\w+) \+1/\+1 counters?', low)
+    if m: setp(E['ETB_COUNTERS'], num(m.group(1), 1))
+    # motores de robo persistentes
+    if re.search(r'whenever .*(you draw|creature you control (deals combat damage|enters))', low) and 'draw a card' in low:
+        setp(E['ENGINE'], 1)
+
+
+
+
+
+
+
+
+    # ---- hechizos de proteccion: responden a la remocion ----
+    if re.search(r'(gains?|gain) (hexproof|indestructible|protection from)', low) and \
+       ('target creature you control' in low or 'this creature' in low):
+        out.update(eff=E['PROTECT'], p1=1)
+    if re.search(r'gains? (deathtouch and )?indestructible until end of turn', low):
+        out.update(eff=E['PROTECT'], p1=1)
+    # ---- disparos al morir ----
+    m = re.search(r'when(ever)? this creature dies,? .*deals? (\w+) damage', low)
+    if m: setp(E['DEATH_DMG'], num(m.group(2),1))
+    m = re.search(r'when(ever)? this creature dies,? .*(each opponent loses|target player loses) (\w+) life', low)
+    if m: setp(E['DEATH_DMG'], num(m.group(3),1))
+    # ---- disparos al atacar que dan cartas ----
+    if re.search(r'whenever this creature attacks,? .*(reveal the top card of your library and put it into your hand|draw a card)', low):
+        setp(E['ATTACK_DRAW'], 1)
+    m = re.search(r'whenever this creature attacks,? .*deals? (\w+) damage to (each opponent|any target)', low)
+    if m: setp(E['ATTACK_DMG'], num(m.group(1),1))
+    # ---- recursion desde el cementerio: valor extra ----
+    # (la recursion desde el cementerio se descarto: creaba bucles de valor irreales)
+    # ---- todo el equipo produce mana ----
+    if re.search(r'creatures you control have ["“]?\{t\}: add', low):
+        setp(E['TEAM_MANA'], 1)
+    # ---- pierde la mitad de la vida ----
+    if re.search(r'they lose half their life', low):
+        setp(E['DEATH_DMG'], 6)
+    # ---- motores de robo por mantenimiento (Dark Confidant y similares) ----
+    if re.search(r'at the beginning of your upkeep.*(put that card into your hand|draw)', low):
+        setp(E['UPKEEP_DRAW'], 1)
+    # ---- habilidad activada repetible de pump (Timberwatch Elf) ----
+    if re.search(r'\{t\}:\s*target creature gets \+', low):
+        m = re.search(r'gets \+(\w+)/\+(\w+)', low)
+        v = 3 if (m and not m.group(1).isdigit()) else (int(m.group(1)) if m else 2)
+        setp(E['REPEAT_PUMP'], v)
+    # ---- remate masivo (Craterhoof): todo el equipo +X/+X ----
+    if re.search(r'creatures you control (gain|get) .*\+x/\+x', low) or \
+       re.search(r'creatures you control get \+x/\+x', low):
+        setp(E['TEAM_PUMP'], 4)
+    # ---- fog / rebote masivo de atacantes ----
+    if re.search(r'return all attacking creatures to their owners? hand', low):
+        setp(E['FOG_BOUNCE'], 0)
+    if re.search(r'return up to two .*nonland permanents? to (their|its) owners?', low):
+        setp(E['BOUNCE'], 2)
+    # ---- mobilize: fichas atacantes ----
+    m = re.search(r'mobilize (\d+)', low)
+    if m: setp(E['MOBILIZE'], int(m.group(1)))
+    # ---- poner criaturas de la mano al campo ----
+    if re.search(r'put any number of creature cards from your hand onto the battlefield', low):
+        setp(E['MASS_CHEAT'], 2)
+    # ---- comida / vida menor ----
+    if re.search(r'create a food token', low) and out['eff']==E['NONE']:
+        setp(E['LIFEGAIN'], 3)
+    # ---- motores que se disparan al exiliar (Ketramose y similares) ----
+    if re.search(r'whenever one or more cards? (are|is) put into exile', low) and 'draw' in low:
+        out.update(eff=E['EXILE_ENGINE'], p1=1)
+    if re.search(r'whenever .* exiled? .*, draw a card', low) and out['eff']==E['NONE']:
+        out.update(eff=E['EXILE_ENGINE'], p1=1)
+    # ---- fichas que escalan con copias propias, y duplicadores ----
+    if re.search(r'create a number of .*tokens? equal to the number of other creatures you control named', low):
+        setp(E['TOKEN_SCALE'], 1)
+    if re.search(r'if one or more tokens would be created under your control, twice that many', low):
+        out.update(eff=E['TOKEN_DOUBLE'], p1=2, p2=0)   # sobrescribe: es su funcion principal
+    # ---- motores de "cada vez que lanzas un hechizo" ----
+    m = re.search(r'whenever you cast (?:an? )?(?:instant or sorcery|noncreature|instant|sorcery)[^.]*?deals? (\w+) damage to each opponent', low)
+    if m: setp(E['SPELL_DMG'], num(m.group(1),1))
+    m = re.search(r'deals? (\w+) damage to each opponent', low)
+    if m and out['eff']==E['NONE'] and 'whenever' not in low: setp(E['BURN_FACE'], num(m.group(1),1))
+    if re.search(r'whenever you cast a noncreature spell.*(\+1/\+1|\+2/\+0)', low):
+        setp(E['COND_BUFF'], 1, 1)
+    # ---- seleccion de cartas = robo efectivo ----
+    m = re.search(r'look at the top \w+ cards? of your library\.? (?:you may reveal|put) (\w+)', low)
+    if m and out['eff']==E['NONE']:
+        setp(E['ETB_DRAW'], num(m.group(1),1))
+    if re.search(r'(surveil|scry|mill) \w+,? (then )?draw', low) and out['eff']==E['NONE']:
+        setp(E['ETB_DRAW'], 1)
+    if re.search(r'that player discards that card', low) and out['eff']==E['NONE']:
+        setp(E['ETB_DISCARD'], 1)
+    if re.search(r'each creature .* loses all abilities.*destroy', low):
+        setp(E['SWEEPER'], 99)
+    if re.search(r'mill a card\. you may play that card', low) and out['eff']==E['NONE']:
+        setp(E['ETB_DRAW'], 1)
+
+    # ---- patrones adicionales (auditoria de cartas del meta) ----
+    if re.search(r'destroy all (tapped |untapped )?(artifacts and )?creatures', low):
+        setp(E['SWEEPER'], 99)
+    if re.search(r'return all nonland permanents target player controls', low):
+        setp(E['SWEEPER'], 99)
+    if re.search(r'exile target [\w, ]*(artifact|enchantment|creature)[\w, ]*with power', low):
+        setp(E['EXILE'], 0)
+    m = re.search(r'deals (\w+) damage to each opponent and each creature', low)
+    if m: setp(E['SWEEPER'], num(m.group(1),1))
+    if re.search(r'exile the top (\w+) cards? of your library.*you may play', low):
+        mm=re.search(r'exile the top (\w+) cards?', low); setp(E['ETB_DRAW'], num(mm.group(1),1))
+    if re.search(r'reveal the top \w+ cards of your library', low) and out['eff']==E['NONE']:
+        setp(E['ETB_DRAW'], 2)
+    if re.search(r'target creature you control gets \+\d+/\+\d+ and gains hexproof', low):
+        setp(E['PUMP'], 1, 1)
+    if re.search(r'each player discards|each player loses \d+ life|each player sacrifices', low):
+        mm=re.search(r'each player loses (\d+) life', low)
+        setp(E['ETB_DRAIN'], int(mm.group(1)) if mm else 2)
+    if re.search(r'you choose an? [\w ]*card from it\. exile that card', low):
+        setp(E['ETB_DISCARD'], 1)
+    if re.search(r'target creature gains deathtouch and lifelink', low):
+        setp(E['PUMP'], 1, 0)
+    if re.search(r"tap target creature\. it doesn't untap", low):
+        setp(E['BOUNCE'], 0)
+    if re.search(r'puts? (it|them) on (their|the) (choice of the )?(top|bottom)', low) and out['eff']==E['NONE']:
+        setp(E['BOUNCE'], 0)
+    if 'kicker' in low and out['eff']==E['NONE']:
+        setp(E['ETB_DRAW'], 2)
+    # ---- mecanicas de set (HOB / TLA) ----
+    if 'recruit' in low and ('enters' in low or 'dies' in low):
+        setp(E['LOOT_TOKEN'], 1)
+    m = re.search(r'amass \w+ (\d+)', low)
+    if m: setp(E['AMASS'], int(m.group(1)))
+    if re.search(r'creates? (a|one|two|\d+) .*treasure token', low) or 'create a treasure token' in low:
+        mm = re.search(r'creates? (\w+) .*treasure', low)
+        setp(E['TREASURE'], num(mm.group(1),1) if mm else 1)
+    if 'ferocious' in low:                      # +1/+0 y trample condicional
+        setp(E['COND_BUFF'], 1, 0)
+    if 'storied' in low:
+        mm = re.search(r'gets \+(\d+)/\+(\d+)', low)
+        setp(E['COND_BUFF'], int(mm.group(1)) if mm else 1, int(mm.group(2)) if mm else 0)
+    if 'landfall' in low:
+        if re.search(r'double .*power', low): setp(E['COND_BUFF'], 5, 0)   # duplicar poder
+        else: setp(E['COND_BUFF'], 1, 1)
+    m = re.search(r'put (\w+) \+1/\+1 counters? on (target|each|up to one)', low)
+    if m: setp(E['ETB_COUNTERS'], num(m.group(1),1))
+    m = re.search(r'deals damage equal to its power to target creature', low)
+    if m: setp(E['FIGHT'], 0)
+    m = re.search(r'gets? -(\d+)/-(\d+)', low)
+    if m and ('target creature' in low) and int(m.group(2))>=3: setp(E['DESTROY'], 0)
+    if re.search(r'exile the top card of your library.*you may (play|cast)', low):
+        setp(E['ETB_DRAW'], 1)
+    if re.search(r'search your library for a (forest|island|swamp|mountain|plains|basic land)', low):
+        setp(E['RAMP'], 1)
+    if 'prowess' in low: out['kw'] |= KWBIT.get('Prowess',0)
+    m = re.search(r"creates? (\w+) \d+/\d+ .*?token", low)
+    if m and out['eff']==E['NONE']: setp(E['ETB_TOKEN'], num(m.group(1),1), (1<<4)|1)
+    if re.search(r'whenever .* attacks?, .*(add \{r\}|draw)', low) and out['eff']==E['NONE']:
+        setp(E['COND_BUFF'], 1, 0)
+    # sagas y planeswalkers: valor recurrente aproximado
+    if 'saga' in tl.lower(): setp(E['ENGINE'], 1)
+    if 'planeswalker' in tl.lower(): setp(E['ENGINE'], 1)
+    return out
+
+def color_mask(cols):
+    B = {'W':1,'U':2,'B':4,'R':8,'G':16}
+    return sum(B.get(x, 0) for x in (cols or []))
+
+def type_code(tl):
+    tl = tl.lower()
+    if 'land' in tl: return 6
+    if 'creature' in tl: return 1
+    if 'instant' in tl: return 2
+    if 'sorcery' in tl: return 3
+    if 'planeswalker' in tl: return 5
+    if 'battle' in tl: return 8
+    if 'enchantment' in tl and 'artifact' not in tl: return 4
+    if 'artifact' in tl: return 7
+    return 0
+
+def dyn_pt(v, txt=''):
+    """1 = poder/resistencia = numero de tierras; 2 = numero de criaturas;
+       3 = cartas en cementerio. 0 = fijo."""
+    if v is None or '*' not in str(v): return 0
+    low = (txt or '').lower()
+    if re.search(r'equal to the number of (islands|swamps|mountains|forests|plains|lands)', low): return 1
+    if re.search(r'equal to the number of creatures', low): return 2
+    if re.search(r'equal to the number of cards in (your|a) graveyard', low): return 3
+    return 0
+
+def pt(v, txt='', default_star=4):
+    """Las P/T definidas por caracteristica ('*') valen 0 si se leen literal.
+    Se estiman por lo que cuentan: tierras, criaturas, cartas en cementerio..."""
+    if v is None: return 0
+    sv = str(v)
+    if '*' in sv:
+        low = (txt or '').lower()
+        if re.search(r'equal to the number of (islands|swamps|mountains|forests|plains|lands)', low):
+            return 5
+        if re.search(r'equal to the number of creatures', low): return 4
+        if re.search(r'equal to the number of cards in (your|a) graveyard', low): return 5
+        return default_star
+    try: return int(sv)
+    except: return 0
+
+def mana_pips(mc):
+    """(generico, {color: pips}, mascaras de hibridos).
+    Un hibrido {B/G} cuesta 1 mana que DEBE ser B o G: se suma al generico para que el
+    coste TOTAL cuadre con el cmc de Scryfall, y su mascara se guarda aparte para
+    filtrar elegibilidad segun los colores del mazo."""
+    mc = mc or ''
+    gen = 0; pips = {'W':0,'U':0,'B':0,'R':0,'G':0}; hyb = []
+    for sym in re.findall(r'\{([^}]+)\}', mc):
+        if sym.isdigit(): gen += int(sym)
+        elif sym in pips: pips[sym] += 1
+        elif sym == 'X': gen += 1
+        elif '/' in sym:
+            parts = [q for q in sym.split('/') if q in pips]
+            if 'P' in sym.split('/') and len(parts) == 1:
+                pips[parts[0]] += 1                  # mana phyrexiano
+            elif len(parts) >= 2:
+                gen += 1; hyb.append(set(parts))     # hibrido de dos colores
+            elif len(parts) == 1:
+                gen += 1; hyb.append({parts[0]})     # {2/B} y similares
+            else:
+                gen += 1
+        else: gen += 1
+    return gen, pips, hyb
+
+
+def entering_counters(txt):
+    """'enters with N -1/-1 counters' o '+1/+1 counters' cambian la P/T real."""
+    low = re.sub(r'\([^)]*\)', '', (txt or '').lower())
+    m = re.search(r'enters with (\w+) ([+-])1/[+-]1 counters?', low)
+    if not m: return 0
+    n = num(m.group(1), 1)
+    return n if m.group(2) == '+' else -n
+
+def cost_reduction(c, txt):
+    """Estima cuanto se abarata la carta en el mazo para el que fue disenada."""
+    low = (txt or '').lower()
+    tl  = (c.get('type_line') or '').lower()
+    red = 0
+    if 'affinity for artifacts' in low: red = max(red, 3)
+    elif 'affinity for' in low:         red = max(red, 3)
+    if re.search(r'\bdelve\b', low):    red = max(red, 3)
+    if re.search(r'\bconvoke\b', low):  red = max(red, 3)
+    if re.search(r'\bimprovise\b', low):red = max(red, 3)
+    m = re.search(r'costs? \{(\d+)\} less to cast for each', low)
+    if m: red = max(red, min(int(m.group(1))*4, 5))
+    m = re.search(r'costs? \{(\d+)\} less to cast if', low)
+    if m: red = max(red, int(round(int(m.group(1))*0.6)))
+    m = re.search(r'this spell costs? \{(\d+)\} less to cast', low)
+    if m and not re.search(r'for each|if ', low): red = max(red, int(m.group(1)))
+    return red
+
+def mana_ability(c, txt):
+    """Criaturas y artefactos que producen mana. Devuelve cuanto (aprox)."""
+    low = re.sub(r'\([^)]*\)', '', (txt or '').lower())
+    tl = (c.get('type_line') or '').lower()
+    if 'land' in tl: return 0
+    if not re.search(r'\{t\}[^.]*:\s*add', low): return 0
+    m = re.search(r'add \{[wubrgc]\}\{[wubrgc]\}', low)
+    if m: return 2
+    if re.search(r'add \{[wubrgc]\} for each', low): return 3
+    if re.search(r'add [x\w]+ mana', low) or 'equal to the number' in low: return 2
+    return 1
+
+def convert(c):
+    tl = c.get('type_line') or ''
+    faces = c.get('card_faces') or []
+    ff = faces[0] if faces else {}
+    mc = c.get('mana_cost') or ff.get('mana_cost') or ''
+    if '//' in mc: mc = mc.split('//')[0].strip()   # Adventure/MDFC: solo la cara frontal
+    e = parse_card(c)
+    hybrid = bool(re.search(r'\{[WUBRG]/[WUBRG]\}', mc))
+    gen, pips, hyb = mana_pips(mc)
+    _txt = (c.get('oracle_text') or '').strip() or ((ff.get('oracle_text') if ff else '') or '')
+    _red = cost_reduction(c, _txt)
+    if _red: gen = max(0, gen - _red)
+    return dict(
+        name=c['name'], oracle_id=c.get('oracle_id'),
+        cmc=int(c.get('cmc') or ff.get('cmc') or 0),
+        typ=type_code(tl if 'land' in tl.lower() or not faces else (ff.get('type_line') or tl)),
+        colors=color_mask(c.get('colors') or ff.get('colors')),
+        ci=color_mask(c.get('color_identity')),
+        power=max(0, pt(c.get('power') or ff.get('power'), _txt) + entering_counters(_txt)),
+        tough=max(1, pt(c.get('toughness') or ff.get('toughness'), _txt) + entering_counters(_txt))
+               if (c.get('toughness') or ff.get('toughness')) is not None else 0,
+        gen=gen, pips=pips, hybrid=hybrid, hyb=[sorted(h) for h in hyb],
+        mana_out=mana_ability(c, _txt),
+        produces=color_mask(c.get('produced_mana')),
+        rarity=c.get('rarity'), usd=c.get('usd'),
+        dyn=dyn_pt(c.get('power') or ff.get('power'), _txt),
+        no_untap=1 if re.search(r"doesn't untap during (your|its controller's) untap step", (_txt or '').lower()) else 0,
+        legal_std=(c.get('legalities') or {}).get('standard') == 'legal',
+        legal_pau=(c.get('legalities') or {}).get('pauper') == 'legal',
+        legal_brawl=(c.get('legalities') or {}).get('standardbrawl') == 'legal',
+        **e)
+
+if __name__ == '__main__':
+    pool = json.load(open('data/pool.json'))
+    conv = [dict(convert(c), qty=c['qty']) for c in pool]
+    json.dump(conv, open('data/pool_eng.json','w'), ensure_ascii=False, indent=0)
+    nonland = [c for c in conv if c['typ'] != 6]
+    withfx = [c for c in nonland if c['eff'] != 0]
+    print(f"total {len(conv)}  |  no-tierra {len(nonland)}  |  con efecto parseado {len(withfx)} ({100*len(withfx)/len(nonland):.0f}%)")
+    import collections
+    inv = {v:k for k,v in E.items()}
+    print("\nefectos detectados:")
+    for k,v in collections.Counter(inv[c['eff']] for c in nonland).most_common():
+        print(f"   {k:<14} {v}")
+    print("\nCRIATURAS SIN EFECTO parseado (revisar si alguna importa):")
+    vanilla = [c for c in nonland if c['eff']==0 and c['typ']==1 and c['qty']>=2]
+    for c in sorted(vanilla, key=lambda x:-x['qty'])[:25]:
+        print(f"   x{c['qty']} {c['name'][:34]:<36} {c['cmc']}mv {c['power']}/{c['tough']} kw={c['kw']}")
+    print("\nNO-CRIATURAS SIN EFECTO parseado:")
+    nc = [c for c in nonland if c['eff']==0 and c['typ']!=1]
+    for c in sorted(nc, key=lambda x:-x['qty'])[:25]:
+        print(f"   x{c['qty']} {c['name'][:34]:<36} {c['cmc']}mv typ={c['typ']}")
