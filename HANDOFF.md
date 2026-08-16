@@ -17,9 +17,9 @@ Juego control de prisión: negarle el juego al rival.
 
 ## Dónde quedó
 
-- Motor: **objetivo 1,547** contra dato real, medido sobre el árbol limpio. Le gana al modelo
-  tonto en los **dos** formatos con dato: Pauper 2,18% contra 4,40% (r=+0,90) y Standard 0,14%
-  contra 2,44% (r=+1,00). En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
+- Motor: **objetivo 0,978** contra dato real, medido sobre el árbol limpio. Le gana al modelo
+  tonto en los **dos** formatos con dato: Pauper 0,95% contra 4,40% (r=+0,99) y Standard 0,11%
+  contra 2,44% (r=+1,00). Global 0,67% contra 3,56%: baja el error un 81%. En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
   y hay una razón de fondo: el único dato real disponible es de mayo 2026 y **hubo bans después**,
   así que estaríamos comparando listas de hoy contra winrates de otro formato.
 - **Pero Standard NO está validado**, por mucho que el número lo parezca: son n=4 puntos y el
@@ -56,17 +56,31 @@ bash scripts/bootstrap.sh
 gcc -O3 -w -o bin_sim src/sim.c -lm
 python3 src/gen_brawl.py && sed -i 's/^static int CMD_A, CMD_B;$/static int CMD_A=-1, CMD_B=-1;/' src/sim_brawl.c
 gcc -O3 -w -o bin_brawl src/sim_brawl.c -lm
-python3 src/obj_real.py 2000     # esperado: OBJETIVO 1.547, sta r=+1.00, pau r=+0.90
-python3 src/loocv.py 2500        # esperado: pauper 2,18% vs 4,40% | standard 0,14% vs 2,44%
-python3 src/revalidar.py 2500    # esperado: sta +12,87 | pau +11,27 | brawl wr 61,2%
+python3 src/obj_real.py 2000     # esperado: OBJETIVO 0.978, sta r=+1.00, pau r=+0.99
+python3 src/loocv.py 2500        # esperado: pauper 0,95% vs 4,40% | standard 0,11% vs 2,44%
+python3 src/revalidar.py 2500    # esperado: sta +13,13 | pau +11,08 | brawl wr 60,6%
 ```
 
-Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_drain.txt` y
-`out/loocv_drain.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
+Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_activadas.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
 
 En **Windows** pon `PYTHONUTF8=1` delante de cada `python3` o vas a ver `UnicodeDecodeError` y
 `KeyError: "Thrór's Map"`: hay 45 `open()` sin `encoding` declarado en 27 archivos. Y para
 compilar sirve MinGW, porque `sim.c` no usa nada de POSIX.
+
+## Herramientas que hay que conocer antes de tocar nada
+
+    python src/sensibilidad.py      cuanto cambia el objetivo si sube cada arquetipo. El
+                                    objetivo mide ORDEN, asi que el residuo crudo NO dice
+                                    si conviene subir un mazo. Recalcularlo tras cada
+                                    cambio de motor.
+    python src/laboratorio.py       mide hipotesis con semillas emparejadas, correccion
+                                    por comparaciones multiples y semillas de
+                                    confirmacion. Nada se adopta sin pasar por aqui.
+    python src/cobertura_texto.py   cola de cartas cuyo texto el motor no lee.
+    python src/chk_castable.py      que ninguna carta del banco sea inlanzable.
+    python src/tablero.py           reproduce partidas en 2D: para ver POR QUE pierde.
+    python src/orquestador.py       encadena todo y escribe out/informe_dia.md.
+    python src/vigilar.py --seguir  mira como va sin esperar a que acabe.
 
 ## Lo que quiero hacer a continuación, en orden
 

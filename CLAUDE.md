@@ -34,17 +34,17 @@ Todo lo de abajo está **medido sobre este árbol** y es reproducible. `out/obj_
 
 ```
 $ python3 src/obj_real.py 2000
-sta cal 0.02 (r=+1.00 x3.3) | pau cal 1.24 (r=+0.94 x2.4) | bra resid  2.06
-OBJETIVO 1.270
+sta cal 0.02 (r=+1.00 x3.3) | pau cal 0.58 (r=+0.99 x2.4) | bra resid  2.06
+OBJETIVO 0.978
 ```
 
 | Formato | Correlación de orden | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,94 (n=6) | **sí** — 1,59% vs 4,40% | el orden es utilizable |
+| Pauper | r=+0,99 (n=6) | **sí** — 0,95% vs 4,40% | el orden es utilizable |
 | Standard | r=+1,00 (n=4) | sí — 0,11% vs 2,44% | **no te lo creas, lee abajo** |
 | Standard Brawl | 2 datos reales | sin datos suficientes | solo desplazamiento |
 
-`loocv.py 2500` global: 1,12% el motor contra 3,56% el modelo tonto, y por primera vez
+`loocv.py 2500` global: 0,67% el motor contra 3,56% el modelo tonto, y por primera vez
 imprime *"el motor aporta información"* en lugar del aviso de que no le gana a nada.
 
 > **El 0,14% de Standard no es una validación.** Son **n=4** puntos: una recta que pasa por
@@ -72,7 +72,7 @@ Sobre las series de `REAL_SEMANAL`: dispersión semana a semana **4,68 puntos** 
 binomial equivale a N≈114 partidas no-espejo por semana. O sea, es muestreo, no metajuego.
 De ahí sale un suelo de **3,25 puntos** (2,21 descartando la serie más volátil).
 
-**El motor está hoy en 1,59%, por debajo de esa estimación.** No lo tomes como que está
+**El motor está hoy en 0,95%, por debajo de esa estimación.** No lo tomes como que está
 sobreajustado ni como que el suelo se "superó": lo que dice es que **el suelo era una cota
 superior**, por tres motivos que conviene tener presentes al volver a usarlo:
 
@@ -177,14 +177,37 @@ que es el mundo donde el hueco de Jund existe; referencia 2,266):
   que no es la carta.
 
 **La leccion, que vale mas que Jund:** una habilidad ACTIVADA no se puede aproximar con
-un efecto de entrada. No es una aproximacion conservadora, es otro juego. Y un disparo
-DIFERIDO (al morir, al final del turno) tampoco: adelantarlo cambia el tempo, que es
-justo lo que el motor mide.
+un efecto de entrada, y un disparo DIFERIDO tampoco. No son aproximaciones conservadoras:
+cambian el tempo, que es justo lo que el motor mide.
 
-Lo que haria falta de verdad son dos ranuras nuevas en `sim.c`: una para habilidades
-activadas, evaluadas en la fase de lanzamiento con su coste, y otra para disparos al ir
-al cementerio. Eso es trabajo de motor, no de extractor, y hasta que exista **Jund no se
-puede arreglar leyendo mejor las cartas**.
+### Desenlace: las dos ranuras se construyeron, y funcionan
+
+| ranura | campos | ablacion | efecto |
+|---|---|---|---|
+| Disparo al ir al cementerio | `die_eff`/`die_p1`, disparo en `rmbf()` | `MUERTE_ON=0` | 1,270 → **1,022** |
+| Habilidad activada con coste | `act_eff`/`act_p1`/`act_cost`, `activar_habilidades()` | `ACTIVADAS_ON=0` | 1,022 → **0,978** |
+
+La prueba de que el diagnostico era correcto: Krark-Clan Shaman, **la misma carta con la
+misma lectura**, midio 3,102 como barredor de entrada y 0,978 como habilidad activada.
+Lo que cambiaba era la ranura, no el texto.
+
+Detalles que importan al ampliarlas:
+
+- `apply_die` reutiliza el switch de `apply` copiando el `Def` a una entrada temporal con
+  el efecto en la ranura primaria. No dupliques los cincuenta casos.
+- El extractor separa *"enters **or** is put into a graveyard"* (dispara dos veces) de
+  *"is put into a graveyard"* (solo al morir). En el segundo caso el robo que la regla
+  generica daba al entrar estaba **mal puesto** y hay que MOVERLO, no sumar otro.
+- Busca en la linea entera y no hasta el primer punto: Nihil Spellbomb parte el efecto en
+  dos frases.
+- Al pagar un coste de sacrificio el tablero se reordena, asi que hay que re-localizar la
+  carta por su `Def` antes de aplicar el efecto.
+- La ranura de activadas hoy solo cubre *"sacrifica un artefacto: N danio a cada
+  criatura"*. Faltan costes de mana, girar y sacrificarse, que es media Pauper.
+
+**Lo que NO desbloquearon.** Se reprobo `FICHAS_REALES` con las dos ranuras puestas y
+sigue sin pagar: 0,978 → 2,488, con Jund todavia en −18,7. Su hueco es mayor que lo que
+arreglan estas dos ranuras.
 
 ## Trampas ya encontradas (no las repitas)
 

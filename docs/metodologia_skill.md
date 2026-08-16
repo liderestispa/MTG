@@ -120,11 +120,40 @@ contra la dispersión: si la diferencia cabe dentro del ruido, no se adopta.
 Después de ajustar, **revalida los mazos** (Paso 6): si dejaron de ganarle a su semilla greedy,
 ajustaste al banco y no al juego.
 
-**Una regla más fiel no siempre da un motor más fiel.** Los errores restantes se compensan entre
-sí, así que añadir realismo en un punto puede desbalancear lo que ya estaba cuadrado. Mide toda
-mejora de reglas contra el banco antes de adoptarla, y si no ayuda, déjala tras un flag apagado
-con un comentario que diga qué midió. Caso documentado en `references/calibracion.md`: el bloqueo
-en grupo, implementado correctamente, empeoró el residuo de 4,0 a 8,0 puntos.
+**Una regla más fiel no siempre da un motor más fiel, y hay un patrón detrás.** Sobre un
+motor real, ocho cambios más fieles a las reglas se midieron y **todos empeoraron el
+ajuste**: bloqueo en grupo, criaturas que se pagan solas, recursión de cementerio, fichas
+como criaturas de verdad, "sin objetivo legal no se lanza" (regla 601.2c), y una política
+de juego aprendida por autojuego. En cambio, **todo lo que sí pagó fueron lecturas de
+texto que faltaban**: costes alternativos, locura, daño a cada oponente, drenaje de vida,
+el retroceso de una carta con flashback.
+
+La regla práctica que sale de ahí, y que ahorra días: **antes de implementar, pregúntate
+si el cambio toca cómo se LEE una carta o cómo se JUEGA.** Lo primero suele pagar. Lo
+segundo casi nunca, porque las heurísticas de juego del motor están ajustadas encima de
+sus propios errores y el ajuste global se sostiene por compensación mutua. La salida
+obvia —"pues re-tuneo encima"— también se midió: recuperó el 11%.
+
+**Pero el sitio donde pones un efecto importa tanto como leerlo.** Este es el matiz que
+convierte lo anterior en algo accionable. Un mismo texto, leído igual, medido en dos
+ranuras distintas:
+
+| Krark-Clan Shaman, "sacrifica un artefacto: 1 daño a cada criatura" | objetivo |
+|---|---|
+| como efecto de entrada | 3,102 — es un 1/1, se suicida y arrasa su propio tablero |
+| como habilidad **activada** con su coste y su decisión | 0,978 |
+
+Una habilidad **activada** no se aproxima con un efecto de entrada, y un disparo
+**diferido** (al morir, al final del turno) tampoco: adelantarlo cambia el *tempo*, que es
+justo lo que el motor mide. Si tu motor no tiene ranura para eso, construirla paga: las
+dos juntas bajaron el objetivo de 1,270 a 0,978.
+
+**Mide la sensibilidad del objetivo a cada arquetipo antes de elegir qué arreglar.** Si tu
+objetivo mide correlación de orden, el residuo crudo de un mazo NO dice si conviene
+subirlo: puede estar 13 puntos por debajo y aun así en su sitio relativo, y subirlo
+entonces rompe el orden. Perturba el campo medido de a un arquetipo por vez, suma cero, y
+mira el signo. En un caso real, tres arreglos correctos fracasaron por atacar arquetipos
+cuya subida empeoraba el ajuste.
 
 **Valida contra un modelo tonto, o no has validado nada.** Haz validación cruzada dejando un mazo
 fuera y compara contra "predecir siempre la media real, sin simular". Si tu motor no le gana a eso,
