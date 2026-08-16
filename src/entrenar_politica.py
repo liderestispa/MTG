@@ -83,6 +83,24 @@ def evalua(args):
         except OSError: pass
 
 
+ESTADO_CEM = 'out/politica_cem.json'
+
+
+def guarda_cem(mu, sigma, mejor_v, mejor_f, base, reinicios, gen_total, hist):
+    json.dump(dict(mu=mu, sigma=sigma, mejor_v=mejor_v, mejor_f=mejor_f, base=base,
+                   reinicios=reinicios, gen_total=gen_total, hist=hist[-300:]),
+              io.open(ESTADO_CEM, 'w', encoding='utf-8'))
+
+
+def carga_cem():
+    try:
+        d = json.load(io.open(ESTADO_CEM, encoding='utf-8'))
+        if len(d['mu']) == NPAR: return d
+    except (OSError, ValueError, KeyError):
+        pass
+    return None
+
+
 def main():
     gens  = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 30
     horas = float(sys.argv[sys.argv.index('--horas') + 1]) if '--horas' in sys.argv else None
@@ -92,15 +110,47 @@ def main():
     mu    = [0.0] * NPAR                       # arranca en la heuristica pura
     sigma = [SIGMA0] * NPAR
     hist  = []
+    gen_previas = 0
+    # --reanudar continua desde donde quedo la corrida anterior. Sin esto, cada bloque
+    # del orquestador empezaria otra vez desde la heuristica y no acumularia nada.
+    reanudado = None
+    if '--reanudar' in sys.argv:
+        reanudado = carga_cem()
+        if reanudado:
+            mu, sigma = reanudado['mu'], reanudado['sigma']
+            hist = reanudado.get('hist', [])
+            gen_previas = reanudado.get('gen_total', len(hist))
+        else:
+            print("--reanudar pedido pero no hay estado en out/politica_cem.json: "
+                  "se empieza de cero.", flush=True)
+    else:
+        # SEGURO ANTICLOBBER. Empezar de cero teniendo una politica mejor guardada
+        # sobreescribe out/politica.txt con una peor y se pierde el entrenamiento.
+        # Paso de verdad: una corrida nueva piso 208 generaciones con 2.
+        viejo = carga_cem()
+        if viejo and viejo.get('mejor_f'):
+            print(f"HAY una politica guardada de la generacion {viejo.get('gen_total')} "
+                  f"con {viejo['mejor_f']*100:.3f}%.\n"
+                  f"Empezar de cero la sobreescribiria. Usa --reanudar, o borra "
+                  f"out/politica_cem.json si de verdad quieres reiniciar.", flush=True)
+            return
     nucleos = cuantos_nucleos(sys.argv)
     respiro = float(sys.argv[sys.argv.index('--respiro') + 1]) if '--respiro' in sys.argv else 1.0
 
-    base = evalua(([0.0] * NPAR, 1234567))     # la heuristica de siempre, como referencia
-    print(f"heuristica actual (pesos a cero): {base*100:.3f}%   "
-          f"| poblacion {POB}, elite {ELITE}, {NGAMES} partidas, {nucleos} nucleos", flush=True)
+    if reanudado:
+        base = reanudado['base']
+        mejor_v, mejor_f = reanudado['mejor_v'], reanudado['mejor_f']
+        reinicios = reanudado.get('reinicios', 0)
+        print(f"reanudando en la generacion {gen_previas}: mejor {mejor_f*100:.3f}% contra "
+              f"{base*100:.3f}% de base, {reinicios} reinicios, sigma "
+              f"{sum(sigma)/NPAR:.3f}", flush=True)
+    else:
+        base = evalua(([0.0] * NPAR, 1234567))   # la heuristica de siempre, de referencia
+        mejor_v, mejor_f, reinicios = [0.0] * NPAR, base, 0
+        print(f"heuristica actual (pesos a cero): {base*100:.3f}%", flush=True)
+    print(f"poblacion {POB}, elite {ELITE}, {NGAMES} partidas, {nucleos} nucleos", flush=True)
 
-    mejor_v, mejor_f, reinicios = [0.0] * NPAR, base, 0
-    for g in range(1, gens + 1):
+    for g in range(gen_previas + 1, gen_previas + gens + 1):
         if limite and time.time() > limite:
             print("tiempo agotado"); break
         semilla = 900000 + g * 7919            # semilla NUEVA cada generacion: si no,
@@ -138,8 +188,9 @@ def main():
               f"mu {fmu*100:6.3f}%  (base {base*100:.3f}%)  sigma {sum(sigma)/NPAR:.3f}",
               flush=True)
         escribe_pesos(mejor_v, 'out/politica.txt')
-        json.dump(dict(base=base, mejor=mejor_f, gens=len(hist), hist=hist),
+        json.dump(dict(base=base, mejor=mejor_f, gens=len(hist), hist=hist[-300:]),
                   io.open('out/politica_hist.json', 'w', encoding='utf-8'), indent=1)
+        guarda_cem(mu, sigma, mejor_v, mejor_f, base, reinicios, g, hist)
         if respiro: time.sleep(respiro)   # deja respirar al sistema entre generaciones
 
     print(f"\nmejor politica {mejor_f*100:.3f}% contra {base*100:.3f}% de la heuristica "

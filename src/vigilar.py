@@ -36,6 +36,18 @@ def foto():
     L.append(f"=== {ahora:%H:%M:%S} ===")
     avisos = []
 
+    # ---- estado del orquestador ----
+    try:
+        e = json.load(io.open('out/estado.json', encoding='utf-8'))
+        L.append(f"orquestador  ciclo {e.get('ciclo', 0)}  fase: {e.get('fase')}  "
+                 f"quedan {e.get('minutos_restantes', '?')} min")
+        for a in e.get('avisos', []): avisos.append(a)
+        ed = edad('out/estado.json')
+        if ed is not None and ed > 3600:
+            avisos.append(f"el estado no se actualiza desde hace {hhmm(ed)}")
+    except (OSError, ValueError):
+        L.append("orquestador  (sin estado; puede que no este corriendo)")
+
     # ---- laboratorio ----
     try:
         reg = json.load(io.open('out/laboratorio.json', encoding='utf-8'))
