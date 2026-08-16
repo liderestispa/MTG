@@ -8,6 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <math.h>   /* tanhf, para la politica aprendida (POLNET) */
 
 #define MAXDEF   16384
 #define DECKMAX  70
@@ -81,6 +82,7 @@ static int TJ_TURN=0; static long long TJ_GAME=0;
    partidas parecen vacias, porque lo que entra y muere en el mismo turno no se ve nunca. */
 static void tj_ev(const char*ev, void*jug, int id);
 static void*PLAYER_A=0;
+
 static void tj_ev(const char*ev, void*jug, int id){
   if(!TJ_ON) return;
   fprintf(stderr,"@J {\"t\":%d,\"ev\":\"%s\",\"p\":\"%s\",\"id\":%d}\n",
@@ -121,6 +123,87 @@ typedef struct {
   int cards_drawn_turn;
   int lost;
 } P;
+
+/* ---------- POLNET: politica de lanzamiento aprendida por autojuego ----------
+   Una MLP diminuta (NIN -> NH -> 1, tanh) que CORRIGE la puntuacion heuristica en vez
+   de reemplazarla: v_final = v_heuristico + PN_ESCALA * red(rasgos). Con los pesos a
+   cero el motor se comporta exactamente igual que sin ella, asi que el entrenamiento
+   arranca desde el motor actual y solo puede mejorar desde ahi.
+
+   Los pesos se cargan de un archivo de texto (POLNET=ruta). Sin archivo, PN_ON=0 y no
+   se ejecuta ni una multiplicacion. El entrenador es src/entrenar_politica.py.
+
+   Va en C y no en Python porque el entrenamiento es evolutivo: solo necesita la pasada
+   hacia delante y el resultado de la partida, que es justo lo que esta maquina hace a
+   70.000 partidas por segundo. */
+#define PN_NIN 17
+#define PN_NH  12
+static int   PN_ON = 0;
+/* PN_LADO=0 (por defecto): la red pilota SOLO al jugador A y el rival sigue con la
+   heuristica. Es lo que hace falta para entrenar: si pilotara a los dos, el round-robin
+   no se moveria y no habria senal que medir. PN_LADO=1 la pone en ambos lados, que es
+   como se despliega una vez adoptada. */
+static int   PN_LADO = 0;
+static float PN_ESCALA = 6.0f;
+static float PN_W1[PN_NH][PN_NIN], PN_B1[PN_NH], PN_W2[PN_NH], PN_B2;
+static int   turno_actual = 0;
+
+static void pn_cargar(const char*ruta){
+  FILE*f = fopen(ruta, "r");
+  if(!f) return;
+  int nin=0, nh=0;
+  if(fscanf(f, "POLNET %d %d", &nin, &nh) != 2 || nin != PN_NIN || nh != PN_NH){
+    fprintf(stderr, "POLNET: cabecera incompatible (%d,%d), esperaba (%d,%d)\n",
+            nin, nh, PN_NIN, PN_NH);
+    fclose(f); return;
+  }
+  for(int j=0;j<PN_NH;j++) for(int i=0;i<PN_NIN;i++)
+    if(fscanf(f,"%f",&PN_W1[j][i])!=1){ fclose(f); return; }
+  for(int j=0;j<PN_NH;j++) if(fscanf(f,"%f",&PN_B1[j])!=1){ fclose(f); return; }
+  for(int j=0;j<PN_NH;j++) if(fscanf(f,"%f",&PN_W2[j])!=1){ fclose(f); return; }
+  if(fscanf(f,"%f",&PN_B2)!=1){ fclose(f); return; }
+  fclose(f); PN_ON = 1;
+}
+
+static int ncreat(P*p);              /* definidas mas abajo */
+static int untapped_count(P*p);
+static inline int pw(P*p,int i);
+/* poder total en mesa: no existia como helper, solo maxpower y board_pressure */
+static int board_power(P*p){
+  int s=0; for(int i=0;i<p->nbf;i++) if(D[p->bf[i]].typ==T_CREA) s+=pw(p,i);
+  return s;
+}
+
+static float pn_correccion(Def*d, P*me, P*opp, int turno){
+  float x[PN_NIN];
+  int e = d->eff, e2 = d->eff2;
+  int rem = (e==E_DESTROY||e==E_EXILE||e==E_DMG_SPELL||e==E_DMG_ANY||e==E_EDICT);
+  int rob = (e==E_ETB_DRAW||e==E_ENGINE||e2==E_ETB_DRAW||e==E_UPKEEP_DRAW||e2==E_UPKEEP_DRAW);
+  int que = (e==E_BURN_FACE||e==E_DMG_ANY||e==E_ETB_DRAIN||e2==E_ETB_DRAIN);
+  x[0]  = d->cmc / 6.0f;
+  x[1]  = d->typ==T_CREA;
+  x[2]  = d->power / 6.0f;
+  x[3]  = d->tough / 6.0f;
+  x[4]  = (d->typ==T_INST || d->typ==T_SORC);
+  x[5]  = rem; x[6] = rob; x[7] = que;
+  x[8]  = me->life  / 20.0f;
+  x[9]  = opp->life / 20.0f;
+  x[10] = ncreat(me)  / 5.0f;
+  x[11] = ncreat(opp) / 5.0f;
+  x[12] = board_power(me)  / 10.0f;
+  x[13] = board_power(opp) / 10.0f;
+  x[14] = turno / 12.0f;
+  x[15] = me->nh / 7.0f;
+  x[16] = untapped_count(me) / 6.0f;
+  float s = PN_B2;
+  for(int j=0;j<PN_NH;j++){
+    float h = PN_B1[j];
+    for(int i=0;i<PN_NIN;i++) h += PN_W1[j][i]*x[i];
+    h = tanhf(h);
+    s += PN_W2[j]*h;
+  }
+  return PN_ESCALA * tanhf(s);
+}
 
 static int ncreat_fwd(P*p);
 static inline int dynbase(P*p,int i){
@@ -763,6 +846,10 @@ static void cast_phase(P*me,P*opp,int main2){
         }
       }
       if(d->typ==T_CREA) v+=3;
+      /* correccion aprendida (POLNET). Con pesos en cero no cambia nada, asi que el
+         punto de partida del entrenamiento es exactamente esta heuristica. */
+      if(PN_ON && (PN_LADO || me==(P*)PLAYER_A))
+        v += pn_correccion(d, me, opp, turno_actual);
       dbg_v[i]=v;
       if(v>bv){bv=v;best=i;} }
     if(TRACE_ON && me==(P*)PLAYER_A){
@@ -1079,7 +1166,7 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
       ST_gamelen+=myturn; ST_handend+=A.nh; ST_lifeend+=(A.life>0?A.life:0); \
       if(A.nl>=8) ST_manaflood++; if(A.nl<=2) ST_manascrew++; }while(0)
   for(int turn=1;turn<=maxturn*2;turn++){
-    TJ_TURN = turn;
+    TJ_TURN = turn; turno_actual = turn;
     /* untap */
     for(int i=0;i<cur->nl;i++) cur->ltap[i]=0;
     for(int i=0;i<cur->nbf;i++){
@@ -1196,6 +1283,9 @@ int main(void){
     const char*e6=getenv("HEXWARD_ON"); if(e6) HEXWARD_ON=atoi(e6);
     const char*et=getenv("TRACE"); if(et) TRACE=atoi(et);
     const char*ej=getenv("TRACE_JSON"); if(ej) TJ=atoi(ej);
+    const char*pn=getenv("POLNET"); if(pn && *pn) pn_cargar(pn);
+    const char*pe=getenv("POLNET_ESCALA"); if(pe) PN_ESCALA=(float)atof(pe);
+    const char*pl=getenv("POLNET_LADO"); if(pl) PN_LADO=atoi(pl);
     const char*ef=getenv("DMG_ANY_FACE"); if(ef) DMG_ANY_FACE=atoi(ef);
     const char*en=getenv("NEG_ON"); if(en) NEG_ON=atoi(en);
     const char*ep=getenv("W_PRESSURE"); if(ep) W_PRESSURE=atoi(ep);

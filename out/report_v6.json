@@ -19,6 +19,13 @@
    },
    {
     "cmc": 2,
+    "name": "Stony-Voiced Goblins",
+    "n": 4,
+    "mc": "{1}{B}",
+    "pt": "1/1"
+   },
+   {
+    "cmc": 2,
     "name": "Warg Tactics",
     "n": 3,
     "mc": "{1}{G}",
@@ -26,10 +33,10 @@
    },
    {
     "cmc": 2,
-    "name": "Stony-Voiced Goblins",
+    "name": "Pretending Poxbearers",
     "n": 2,
-    "mc": "{1}{B}",
-    "pt": "1/1"
+    "mc": "{1}{W/B}",
+    "pt": "2/1"
    },
    {
     "cmc": 2,
@@ -54,24 +61,10 @@
    },
    {
     "cmc": 2,
-    "name": "Pretending Poxbearers",
-    "n": 1,
-    "mc": "{1}{W/B}",
-    "pt": "2/1"
-   },
-   {
-    "cmc": 2,
     "name": "The Sackville-Bagginses",
     "n": 1,
     "mc": "{1}{B}",
     "pt": "2/2"
-   },
-   {
-    "cmc": 3,
-    "name": "Duskwatch Hunter",
-    "n": 2,
-    "mc": "{2}{B/G}",
-    "pt": "3/1"
    },
    {
     "cmc": 3,
@@ -89,10 +82,10 @@
    },
    {
     "cmc": 3,
-    "name": "Long-Bodied Grey Dog",
+    "name": "Hog-Monkey",
     "n": 1,
-    "mc": "{3}",
-    "pt": "2/2"
+    "mc": "{2}{B}",
+    "pt": "3/2"
    },
    {
     "cmc": 3,
@@ -130,13 +123,6 @@
     "pt": "4/5"
    },
    {
-    "cmc": 4,
-    "name": "Zhao, Ruthless Admiral",
-    "n": 1,
-    "mc": "{2}{B/R}{B/R}",
-    "pt": "3/4"
-   },
-   {
     "cmc": 5,
     "name": "Large Bear",
     "n": 2,
@@ -145,10 +131,10 @@
    },
    {
     "cmc": 5,
-    "name": "Dreaded Bat-Cloud",
+    "name": "The Arkenstone // Seek the Heart",
     "n": 1,
-    "mc": "{4}{B}",
-    "pt": "4/2"
+    "mc": "{5}",
+    "pt": "Legendary Arti"
    },
    {
     "cmc": 6,
@@ -173,59 +159,59 @@
   },
   "nl": 24,
   "ns": 36,
-  "gain": "+8,94",
-  "obj": 84.01389999999999,
-  "wr": 88.291,
-  "cal": 59.66163680791382,
+  "gain": "+14,47",
+  "obj": 83.684,
+  "wr": 87.9389,
+  "cal": 59.59533142250676,
   "legal": true,
   "errs": [],
   "mm": [
    [
     "Izzet Spellementals",
     20.0,
-    88.0833
+    90.25
    ],
    [
     "Four-Color Control",
     16.4,
-    96.6666
+    91.8333
    ],
    [
     "Dimir Excruciator",
     15.9,
-    78.5833
+    83.75
    ],
    [
     "Orzhov Lifegain",
     6.5,
-    86.6666
+    89.9166
    ],
    [
     "Dimir Midrange",
     3.4,
-    86.9166
+    87.9166
    ],
    [
     "Mardu Discard",
     2.7,
-    82.41659999999999
+    81.3333
    ]
   ],
   "st": {
-   "firstplay": 2.03,
-   "gamelen": 7.5085,
-   "noplay14": 1.4057,
-   "screw": 0.3351,
-   "manascrew": 0.0089,
-   "cast": 6.5775,
-   "removal": 3.6348,
-   "timeout": 0.0006,
-   "hA3": 3.8448,
-   "hA6": 1.8854,
-   "hA9": 0.9668,
-   "hB3": 4.7635,
-   "hB6": 2.7942,
-   "hB9": 1.9623
+   "firstplay": 1.9947,
+   "gamelen": 7.5934,
+   "noplay14": 1.4183,
+   "screw": 0.3455,
+   "manascrew": 0.0094,
+   "cast": 6.8156,
+   "removal": 3.6524,
+   "timeout": 0.0015,
+   "hA3": 3.8007,
+   "hA6": 1.8636,
+   "hA9": 1.0498,
+   "hB3": 4.6254,
+   "hB6": 2.4722,
+   "hB9": 1.7482
   }
  },
  "pauper": {
@@ -256,7 +242,7 @@
    {
     "cmc": 2,
     "name": "Goblin-town Flunkies",
-    "n": 3,
+    "n": 2,
     "mc": "{1}{R}",
     "pt": "1/1"
    },
@@ -290,10 +276,31 @@
    },
    {
     "cmc": 2,
+    "name": "Cunning Maneuver",
+    "n": 1,
+    "mc": "{1}{R}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 2,
     "name": "Ragged Short Spear",
     "n": 1,
     "mc": "{1}{R}",
     "pt": "Artifact"
+   },
+   {
+    "cmc": 2,
+    "name": "Smaug's Fury",
+    "n": 1,
+    "mc": "{1}{R}",
+    "pt": "Instant"
+   },
+   {
+    "cmc": 2,
+    "name": "Óin the Brave",
+    "n": 1,
+    "mc": "{1}{R}",
+    "pt": "1/3"
    },
    {
     "cmc": 3,
@@ -308,13 +315,6 @@
     "n": 3,
     "mc": "{2}{R}",
     "pt": "3/2"
-   },
-   {
-    "cmc": 3,
-    "name": "Bilbo's Deadly Slice",
-    "n": 1,
-    "mc": "{1}{B}{B}",
-    "pt": "Instant"
    },
    {
     "cmc": 3,
@@ -338,18 +338,18 @@
     "pt": "Instant"
    },
    {
-    "cmc": 4,
-    "name": "Gundabad Opportunist",
-    "n": 4,
-    "mc": "{3}{R}",
-    "pt": "4/2"
+    "cmc": 3,
+    "name": "Vindictive Warden",
+    "n": 1,
+    "mc": "{2}{B/R}",
+    "pt": "2/3"
    },
    {
-    "cmc": 5,
-    "name": "Iron Hills Stalwart",
-    "n": 1,
-    "mc": "{4}{R}",
-    "pt": "4/5"
+    "cmc": 4,
+    "name": "Gundabad Opportunist",
+    "n": 3,
+    "mc": "{3}{R}",
+    "pt": "4/2"
    },
    {
     "cmc": 6,
@@ -367,64 +367,64 @@
   },
   "nl": 23,
   "ns": 37,
-  "gain": "+13,11",
-  "obj": 70.4568,
-  "wr": 74.2713,
-  "cal": 63.26503149584307,
+  "gain": "+13,17",
+  "obj": 69.1111,
+  "wr": 72.7648,
+  "cal": 62.624961612660165,
   "legal": true,
   "errs": [],
   "mm": [
    [
     "Blue Terror",
     10.9,
-    82.3333
+    82.75
    ],
    [
     "Mono Red Madness",
     8.5,
-    77.25
+    78.5
    ],
    [
     "Tron",
     6.5,
-    76.33330000000001
+    70.3333
    ],
    [
     "Mono Red Rally",
     6.5,
-    78.0
+    77.0833
    ],
    [
     "Jund Wildfire",
     5.8,
-    72.5
+    68.4166
    ],
    [
     "Grixis Affinity",
     5.8,
-    58.8333
+    59.0
    ],
    [
     "Elves",
     4.3,
-    65.5
+    63.666599999999995
    ]
   ],
   "st": {
-   "firstplay": 1.6911,
-   "gamelen": 6.9062,
-   "noplay14": 1.2715,
-   "screw": 0.5253,
-   "manascrew": 0.0134,
-   "cast": 6.6239,
-   "removal": 3.7447,
-   "timeout": 0.0002,
-   "hA3": 3.5177,
-   "hA6": 1.5113,
-   "hA9": 0.7387,
-   "hB3": 4.7019,
-   "hB6": 2.7373,
-   "hB9": 2.1889
+   "firstplay": 1.6945,
+   "gamelen": 6.7676,
+   "noplay14": 1.2179,
+   "screw": 0.4707,
+   "manascrew": 0.0147,
+   "cast": 6.719,
+   "removal": 3.4341,
+   "timeout": 0.0,
+   "hA3": 3.4744,
+   "hA6": 1.3107,
+   "hA9": 0.6114,
+   "hB3": 4.7049,
+   "hB6": 2.7626,
+   "hB9": 2.3535
   }
  },
  "brawl": {
@@ -685,8 +685,8 @@
   "nl": 24,
   "ns": 35,
   "gain": "n/d",
-  "obj": 59.629200000000004,
-  "wr": 61.456500000000005,
+  "obj": 59.32920000000001,
+  "wr": 61.1565,
   "cal": null,
   "legal": true,
   "errs": [],
@@ -694,49 +694,49 @@
    [
     "Elspeth Storm Slayer",
     23.0,
-    68.75
+    68.8333
    ],
    [
     "Tifa Lockhart",
     9.5,
-    78.8333
+    78.1666
    ],
    [
     "Sephiroth Fabled SOLDIER",
     9.5,
-    43.4166
+    42.6666
    ],
    [
     "Ketramose the New Dawn",
     7.0,
-    13.1666
+    13.25
    ],
    [
     "Eluge the Shoreless Sea",
     6.2,
-    76.0833
+    75.5833
    ],
    [
     "Kona Rescue Beastie",
     5.0,
-    68.0
+    67.25
    ]
   ],
   "st": {
    "firstplay": 1.4113,
-   "gamelen": 7.658,
+   "gamelen": 7.6936,
    "noplay14": 0.6091,
-   "screw": 0.1189,
+   "screw": 0.1191,
    "manascrew": 0.0058,
-   "cast": 8.1417,
-   "removal": 1.9459,
-   "timeout": 0.0022,
+   "cast": 8.1724,
+   "removal": 1.9565,
+   "timeout": 0.0023,
    "hA3": 4.1373,
-   "hA6": 1.4795,
-   "hA9": 0.4907,
+   "hA6": 1.4787,
+   "hA9": 0.4903,
    "hB3": 6.2365,
-   "hB6": 4.029,
-   "hB9": 2.2261
+   "hB6": 4.0282,
+   "hB9": 2.2148
   }
  }
 }

@@ -1,0 +1,2932 @@
+[
+ {
+  "carta": "Restless Reef",
+  "copias": 6,
+  "donde": [
+   "standard/Dimir Excruciator",
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "Whenever this land attacks, target player mills four cards.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Deep-Cavern Bat",
+  "copias": 5,
+  "donde": [
+   "brawl/Ketramose the New Dawn",
+   "brawl/Sephiroth Fabled SOLDIER",
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Bat",
+  "texto": "When this creature enters, look at target opponent's hand. | You may exile a nonland card from it until this creature leaves the battlefield.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Superior Spider-Man",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Excruciator"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Spider Human Hero",
+  "texto": "Mind Swap — You may have Superior Spider-Man enter as a copy of any creature card in a graveyard, except his name is Superior Spider-Man and he's a 4/4 Spider Human Hero in addition to his other types. | When you do, exi",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Blood Fountain",
+  "copias": 4,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Artifact",
+  "texto": "When this artifact enters, create a Blood token. | {3}{B}, {T}, Sacrifice this artifact: Return up to two target creature cards from your graveyard to your hand.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Masked Vandal",
+  "copias": 4,
+  "donde": [
+   "pauper/Elves"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Shapeshifter",
+  "texto": "When this creature enters, you may exile a creature card from your graveyard. | If you do, exile target artifact or enchantment an opponent controls.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Eddymurk Crab",
+  "copias": 4,
+  "donde": [
+   "standard/Izzet Spellementals"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Elemental Crab",
+  "texto": "When this creature enters, tap up to two target creatures.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Sunderflock",
+  "copias": 4,
+  "donde": [
+   "standard/Izzet Spellementals"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Elemental",
+  "texto": "When this creature enters, if you cast it, return all non-Elemental creatures to their owners' hands.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Great Hall of the Biblioplex",
+  "copias": 4,
+  "donde": [
+   "standard/Four-Color Control"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{5}: If this land isn't a creature, it becomes a 2/4 Wizard creature with \"Whenever you cast an instant or sorcery spell, this creature gets +1/+0 until end of turn.\" It's still a land.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Undercity Sewers",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Excruciator",
+   "standard/Four-Color Control"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Island Swamp",
+  "texto": "When this land enters, surveil 1.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Spyglass Siren",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Siren Pirate",
+  "texto": "When this creature enters, create a Map token.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Marauding Mako",
+  "copias": 4,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Shark Pirate",
+  "texto": "Whenever you discard one or more cards, put that many +1/+1 counters on this creature.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Moonshadow",
+  "copias": 4,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Elemental",
+  "texto": "Whenever one or more permanent cards are put into your graveyard from anywhere while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Sneaky Snacker",
+  "copias": 4,
+  "donde": [
+   "pauper/Mono Red Madness"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Faerie Rogue",
+  "texto": "When you draw your third card in a turn, return this card from your graveyard to the battlefield tapped.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Urza's Mine",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Urza's Mine",
+  "texto": "If you control an Urza's Power-Plant and an Urza's Tower, add {C}{C} instead.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Urza's Power Plant",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Urza's Power-Plant",
+  "texto": "If you control an Urza's Mine and an Urza's Tower, add {C}{C} instead.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Urza's Tower",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Urza's Tower",
+  "texto": "If you control an Urza's Mine and an Urza's Power-Plant, add {C}{C}{C} instead.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Burning-Tree Emissary",
+  "copias": 4,
+  "donde": [
+   "pauper/Mono Red Rally"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Shaman",
+  "texto": "When this creature enters, add {R}{G}.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Twisted Landscape",
+  "copias": 4,
+  "donde": [
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{T}, Sacrifice this land: Search your library for a basic Swamp, Mountain, or Forest card, put it onto the battlefield tapped, then shuffle.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Avenging Hunter",
+  "copias": 4,
+  "donde": [
+   "pauper/Elves"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Dragon Ranger",
+  "texto": "When this creature enters, you take the initiative.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Quirion Ranger",
+  "copias": 4,
+  "donde": [
+   "pauper/Elves"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Elf Ranger",
+  "texto": "Return a Forest you control to its owner's hand: Untap target creature.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Boulderbranch Golem",
+  "copias": 3,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Artifact Creature — Golem",
+  "texto": "When this creature enters, you gain life equal to its power.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Emptiness",
+  "copias": 2,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Elemental Incarnation",
+  "texto": "When this creature enters, if {W}{W} was spent to cast it, return target creature card with mana value 3 or less from your graveyard to the battlefield. | When this creature enters, if {B}{B} was spent to cast it, put th",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Carnage, Crimson Chaos",
+  "copias": 2,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Symbiote Villain",
+  "texto": "When Carnage enters, return target creature card with mana value 3 or less from your graveyard to the battlefield. | It gains \"This creature attacks each combat if able\" and \"When this creature deals combat damage to a p",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Conduit Pylons",
+  "copias": 2,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Land — Desert",
+  "texto": "When this land enters, surveil 1. | {1}, {T}: Add one mana of any color.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Badgermole Cub",
+  "copias": 2,
+  "donde": [
+   "brawl/Kona Rescue Beastie",
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Badger Mole",
+  "texto": "When this creature enters, earthbend 1. | Whenever you tap a creature for mana, add an additional {G}.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Larval Scoutlander",
+  "copias": 2,
+  "donde": [
+   "brawl/Kona Rescue Beastie",
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Artifact — Spacecraft",
+  "texto": "When this Spacecraft enters, you may sacrifice a land or Lander. | If you do, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Flashback",
+  "copias": 2,
+  "donde": [
+   "standard/Four-Color Control"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Instant",
+  "texto": "Target instant or sorcery card in your graveyard gains flashback until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Wondrous Wasp",
+  "copias": 2,
+  "donde": [
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Human Hero",
+  "texto": "Wasp's Sting — When The Wondrous Wasp enters, tap up to one target creature.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Tishana's Tidebinder",
+  "copias": 2,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea",
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Merfolk Wizard",
+  "texto": "When this creature enters, counter up to one target activated or triggered ability.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Deem Inferior",
+  "copias": 2,
+  "donde": [
+   "pauper/Blue Terror"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Sorcery",
+  "texto": "The owner of target nonland permanent puts it into their library second from the top or on the bottom.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Amonkhet Raceway",
+  "copias": 2,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER",
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "Max speed — {T}: Target creature gains haste until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Ordeal of Nylea",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Enchantment — Aura",
+  "texto": "Whenever enchanted creature attacks, put a +1/+1 counter on it. | Then if it has three or more +1/+1 counters on it, sacrifice this Aura. | When you sacrifice this Aura, search your library for up to two basic land cards",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Aang's Iceberg",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Enchantment",
+  "texto": "When this enchantment enters, exile up to one other target nonland permanent until this enchantment leaves the battlefield. | Waterbend {3}: Sacrifice this enchantment. | If you do, scry 2.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Eluge, the Shoreless Sea",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Elemental Fish",
+  "texto": "Whenever Eluge enters or attacks, put a flood counter on target land. | It's an Island in addition to its other types for as long as it has a flood counter on it. | The first instant or sorcery spell you cast each turn c",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Formidable Speaker",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Creature — Elf Druid",
+  "texto": "When this creature enters, you may discard a card. | If you do, search your library for a creature card, reveal it, put it into your hand, then shuffle. | {1}, {T}: Untap another target permanent.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Tersa Lightshatter",
+  "copias": 1,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Orc Wizard",
+  "texto": "When Tersa Lightshatter enters, discard up to two cards, then draw that many cards. | Whenever Tersa Lightshatter attacks, if there are seven or more cards in your graveyard, exile a card at random from your graveyard.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Seedship Impact",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Instant",
+  "texto": "Destroy target artifact or enchantment. | If its mana value was 2 or less, create a Lander token.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Planar Engineering",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Sorcery",
+  "texto": "Sacrifice two lands. | Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Forsaken Miner",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Skeleton Rogue",
+  "texto": "Whenever you commit a crime, you may pay {B}. | If you do, return this card from your graveyard to the battlefield.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Ghost Vacuum",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Artifact",
+  "texto": "{T}: Exile target card from a graveyard. | {6}, {T}, Sacrifice this artifact: Put each creature card exiled with this artifact onto the battlefield under your control with a flying counter on it.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lumra, Bellow of the Woods",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Elemental Bear",
+  "texto": "When Lumra enters, mill four cards. | Then return all land cards from your graveyard to the battlefield tapped.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Gruff Triplets",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Satyr Warrior",
+  "texto": "When this creature enters, if it isn't a token, create two tokens that are copies of it. | When this creature dies, put a number of +1/+1 counters equal to its power on each creature you control named Gruff Triplets.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Glimpse the Core",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Sorcery",
+  "texto": "• Search your library for a basic Forest card, put that card onto the battlefield tapped, then shuffle. | • Return target Cave card from your graveyard to the battlefield tapped.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "North Wind Avatar",
+  "copias": 1,
+  "donde": [
+   "standard/Four-Color Control"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Dragon Spirit Avatar",
+  "texto": "When this creature enters, if you cast it, you may put a card you own from outside the game into your hand.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Bojuka Bog",
+  "copias": 1,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "When this land enters, exile target player's graveyard.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Rogue's Passage",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{4}, {T}: Target creature can't be blocked this turn.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Sinkhole Surveyor",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Bird Scout",
+  "texto": "Whenever this creature attacks, you lose 1 life and this creature endures 1.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Snarling Gorehound",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Dog",
+  "texto": "Whenever another creature you control with power 2 or less enters, surveil 1.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Umbral Collar Zealot",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Cleric",
+  "texto": "Sacrifice another creature or artifact: Surveil 1.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Nine-Lives Familiar",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Cat",
+  "texto": "When this creature dies, if it had a revival counter on it, return it to the battlefield with one fewer revival counter on it at the beginning of the next end step.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Tragic Trajectory",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Sorcery",
+  "texto": "Target creature gets -2/-2 until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Avishkar Raceway",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "Max speed — {3}, {T}, Discard a card: Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Muraganda Raceway",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "Max speed — {T}: Add {C}{C}.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Trapped in the Screen",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Enchantment",
+  "texto": "When this enchantment enters, exile target artifact, creature, or enchantment an opponent controls until this enchantment leaves the battlefield.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Pit of Offerings",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Cave",
+  "texto": "When this land enters, exile up to three target cards from graveyards.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Shadowy Backstreet",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Plains Swamp",
+  "texto": "When this land enters, surveil 1.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Temple of Silence",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "When this land enters, scry 1.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Waterbending Scroll",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Artifact",
+  "texto": "{6}, {T}: Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Sphinx of Forgotten Lore",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Sphinx",
+  "texto": "Whenever this creature attacks, target instant or sorcery card in your graveyard gains flashback until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Unagi of Kyoshi Island",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Serpent",
+  "texto": "Whenever an opponent draws their second card each turn, you draw two cards.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Kona, Rescue Beastie",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Beast Survivor",
+  "texto": "Survival — At the beginning of your second main phase, if Kona is tapped, you may put a permanent card from your hand onto the battlefield.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Overlord of the Hauntwoods",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Enchantment Creature — Avatar Horror",
+  "texto": "Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Diamond Weapon",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Artifact Creature — Elemental",
+  "texto": "Immune — Prevent all combat damage that would be dealt to Diamond Weapon.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Quilled Greatwurm",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Wurm",
+  "texto": "Whenever a creature you control deals combat damage during your turn, put that many +1/+1 counters on it.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Railway Brawler",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Rhino Warrior",
+  "texto": "Whenever another creature you control enters, put X +1/+1 counters on it, where X is its power.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Eternity Elevator",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Artifact — Spacecraft",
+  "texto": "20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Wurmwall Sweeper",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Artifact — Spacecraft",
+  "texto": "When this Spacecraft enters, surveil 2.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Chimil, the Inner Sun",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Artifact",
+  "texto": "At the beginning of your end step, discover 5.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Sledge-Class Seedship",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Artifact — Spacecraft",
+  "texto": "Whenever this Spacecraft attacks, you may put a creature card from your hand onto the battlefield.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Evendo, Waking Haven",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Planet",
+  "texto": "12+ | {G}, {T}: Add {G} for each creature you control.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Voldaren Epicure",
+  "copias": 8,
+  "donde": [
+   "pauper/Mono Red Madness",
+   "pauper/Mono Red Rally"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Vampire",
+  "texto": "When this creature enters, it deals 1 damage to each opponent. | Create a Blood token.",
+  "efectos": [
+   16,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Galvanic Blast",
+  "copias": 8,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Mono Red Rally"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Galvanic Blast deals 2 damage to any target. | Metalcraft — Galvanic Blast deals 4 damage instead if you control three or more artifacts.",
+  "efectos": [
+   48,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Nihil Spellbomb",
+  "copias": 6,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Artifact",
+  "texto": "{T}, Sacrifice this artifact: Exile target player's graveyard. | When this artifact is put into a graveyard from the battlefield, you may pay {B}. | If you do, draw a card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Bitter Triumph",
+  "copias": 6,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER",
+   "standard/Dimir Excruciator",
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "As an additional cost to cast this spell, discard a card or pay 3 life. | Destroy target creature or planeswalker.",
+  "efectos": [
+   7,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Erode",
+  "copias": 5,
+  "donde": [
+   "standard/Mardu Discard",
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Destroy target creature or planeswalker. | Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "efectos": [
+   7,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Kaito, Bane of Nightmares",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 4,
+  "ranuras": 2,
+  "tipo": "Legendary Planeswalker — Kaito",
+  "texto": "0: Surveil 2. | Then draw a card for each opponent who lost life this turn. | −2: Tap target creature. | Put two stun counters on it.",
+  "efectos": [
+   50,
+   20,
+   0
+  ]
+ },
+ {
+  "carta": "Cool but Rude",
+  "copias": 4,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 4,
+  "ranuras": 1,
+  "tipo": "Enchantment — Class",
+  "texto": "Whenever you attack, you may discard a card. | If you do, draw a card. | Whenever you discard a card, this Class deals 2 damage to each opponent. | When this Class becomes level 3, search your library for a card, put it ",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Prismari Charm",
+  "copias": 4,
+  "donde": [
+   "standard/Izzet Spellementals"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Instant",
+  "texto": "• Surveil 2, then draw a card. | • Prismari Charm deals 1 damage to each of one or two targets. | • Return target nonland permanent to its owner's hand.",
+  "efectos": [
+   22,
+   3,
+   0
+  ]
+ },
+ {
+  "carta": "Consult the Star Charts",
+  "copias": 4,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea",
+   "standard/Four-Color Control"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Put one of those cards into your hand. | If this spell was kicked, put two of those cards into your hand instead. | Put the rest on the bottom of your library in a random order.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lunar Convocation",
+  "copias": 4,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Enchantment",
+  "texto": "At the beginning of your end step, if you gained life this turn, each opponent loses 1 life. | At the beginning of your end step, if you gained and lost life this turn, create a 1/1 black Bat creature token with flying. ",
+  "efectos": [
+   2,
+   5,
+   0
+  ]
+ },
+ {
+  "carta": "Ponder",
+  "copias": 4,
+  "donde": [
+   "pauper/Blue Terror"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Look at the top three cards of your library, then put them back in any order. | You may shuffle. | Draw a card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Grab the Prize",
+  "copias": 4,
+  "donde": [
+   "pauper/Mono Red Madness"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Sorcery",
+  "texto": "As an additional cost to cast this spell, discard a card. | Draw two cards. | If the discarded card wasn't a land card, Grab the Prize deals 2 damage to each opponent.",
+  "efectos": [
+   16,
+   3,
+   0
+  ]
+ },
+ {
+  "carta": "Cleansing Wildfire",
+  "copias": 4,
+  "donde": [
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Destroy target land. | Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle. | Draw a card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Reckoner's Bargain",
+  "copias": 4,
+  "donde": [
+   "pauper/Grixis Affinity"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature. | You gain life equal to the sacrificed permanent's mana value. | Draw two cards.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Deceit",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Excruciator"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Elemental Incarnation",
+  "texto": "When this creature enters, if {U}{U} was spent to cast it, return up to one other target nonland permanent to its owner's hand. | When this creature enters, if {B}{B} was spent to cast it, target opponent reveals their h",
+  "efectos": [
+   4,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Case of the Uneaten Feast",
+  "copias": 4,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Enchantment — Case",
+  "texto": "Whenever a creature you control enters, you gain 1 life. | Solved — Sacrifice this Case: Creature cards in your graveyard gain \"You may cast this card from your graveyard\" until end of turn.",
+  "efectos": [
+   17,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Amalia Benavides Aguirre",
+  "copias": 4,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Vampire Scout",
+  "texto": "Whenever you gain life, Amalia Benavides Aguirre explores. | Then destroy all other creatures if its power is exactly 20.",
+  "efectos": [
+   9,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Floodpits Drowner",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Merfolk",
+  "texto": "When this creature enters, tap target creature an opponent controls and put a stun counter on it. | {1}{U}, {T}: Shuffle this creature and target creature with a stun counter on it into their owners' libraries.",
+  "efectos": [
+   50,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Hardened Academic",
+  "copias": 4,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Bird Cleric",
+  "texto": "Discard a card: This creature gains lifelink until end of turn. | Whenever one or more cards leave your graveyard, put a +1/+1 counter on target creature you control.",
+  "efectos": [
+   24,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Mental Note",
+  "copias": 4,
+  "donde": [
+   "pauper/Blue Terror"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Mill two cards. | Draw a card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Thought Scour",
+  "copias": 4,
+  "donde": [
+   "pauper/Blue Terror"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Target player mills two cards. | Draw a card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Highway Robbery",
+  "copias": 4,
+  "donde": [
+   "pauper/Mono Red Madness"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "You may discard a card or sacrifice a land. | If you do, draw two cards.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lava Dart",
+  "copias": 4,
+  "donde": [
+   "pauper/Mono Red Madness"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Lava Dart deals 1 damage to any target. | Flashback—Sacrifice a Mountain.",
+  "efectos": [
+   48,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Bramble Wurm",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Wurm",
+  "texto": "When this creature enters, you gain 5 life. | {2}{G}, Exile this card from your graveyard: You gain 5 life.",
+  "efectos": [
+   17,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Ancient Stirrings",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "You may reveal a colorless card from among them and put it into your hand. | Then put the rest on the bottom of your library in any order.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Barrels of Blasting Jelly",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Artifact",
+  "texto": "{1}: Add one mana of any color. | {5}, {T}, Sacrifice this artifact: It deals 5 damage to target creature.",
+  "efectos": [
+   8,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Rally at the Hornburg",
+  "copias": 4,
+  "donde": [
+   "pauper/Mono Red Rally"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Create two 1/1 white Human Soldier creature tokens. | Humans you control gain haste until end of turn.",
+  "efectos": [
+   5,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Writhing Chrysalis",
+  "copias": 4,
+  "donde": [
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Eldrazi Drone",
+  "texto": "When you cast this spell, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this token: Add {C}.\" | Whenever you sacrifice another Eldrazi, put a +1/+1 counter on this creature.",
+  "efectos": [
+   5,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lead the Stampede",
+  "copias": 4,
+  "donde": [
+   "pauper/Elves"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "You may reveal any number of creature cards from among them and put the revealed cards into your hand. | Put the rest on the bottom of your library in any order.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Winding Way",
+  "copias": 4,
+  "donde": [
+   "pauper/Elves"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Reveal the top four cards of your library. | Put all cards of the chosen type revealed this way into your hand and the rest into your graveyard.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Fountainport",
+  "copias": 3,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea",
+   "brawl/Ketramose the New Dawn",
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Land",
+  "texto": "{2}, {T}, Sacrifice a token: Draw a card. | {3}, {T}, Pay 1 life: Create a 1/1 blue Fish creature token. | {4}, {T}: Create a Treasure token.",
+  "efectos": [
+   5,
+   28,
+   0
+  ]
+ },
+ {
+  "carta": "Burst Lightning",
+  "copias": 3,
+  "donde": [
+   "standard/Izzet Spellementals"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Burst Lightning deals 2 damage to any target. | If this spell was kicked, it deals 4 damage instead.",
+  "efectos": [
+   48,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Flow State",
+  "copias": 3,
+  "donde": [
+   "standard/Izzet Spellementals"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Put one of them into your hand and the rest on the bottom of your library in any order. | If there is an instant card and a sorcery card in your graveyard, instead put two of them into your hand and the rest on the botto",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Get Out",
+  "copias": 3,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea",
+   "standard/Izzet Spellementals"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Counter target creature or enchantment spell. | • Return one or two target creatures and/or enchantments you own to your hand.",
+  "efectos": [
+   15,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Winternight Stories",
+  "copias": 3,
+  "donde": [
+   "standard/Dimir Excruciator",
+   "standard/Izzet Spellementals"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Draw three cards. | Then discard two cards unless you discard a creature card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Firebending Lesson",
+  "copias": 3,
+  "donde": [
+   "standard/Four-Color Control"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant — Lesson",
+  "texto": "Firebending Lesson deals 2 damage to target creature. | If this spell was kicked, it deals 5 damage to that creature instead.",
+  "efectos": [
+   8,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Practiced Offense",
+  "copias": 3,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Put a +1/+1 counter on each creature target player controls. | Target creature gains your choice of double strike or lifelink until end of turn.",
+  "efectos": [
+   24,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Fireblast",
+  "copias": 3,
+  "donde": [
+   "pauper/Mono Red Madness"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "You may sacrifice two Mountains rather than pay this spell's mana cost. | Fireblast deals 4 damage to any target.",
+  "efectos": [
+   48,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Fanatical Offering",
+  "copias": 3,
+  "donde": [
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature. | Draw two cards and create a Map token.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Sleep of the Dead",
+  "copias": 2,
+  "donde": [
+   "pauper/Blue Terror"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Sorcery",
+  "texto": "Tap target creature. | It doesn't untap during its controller's next untap step. | Escape—{2}{U}, Exile three other cards from your graveyard.",
+  "efectos": [
+   50,
+   22,
+   0
+  ]
+ },
+ {
+  "carta": "Lembas",
+  "copias": 2,
+  "donde": [
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Artifact — Food",
+  "texto": "When this artifact enters, scry 1, then draw a card. | {2}, {T}, Sacrifice this artifact: You gain 3 life. | When this artifact is put into a graveyard from the battlefield, its owner shuffles it into their library.",
+  "efectos": [
+   3,
+   17,
+   0
+  ]
+ },
+ {
+  "carta": "Torch the Tower",
+  "copias": 2,
+  "donde": [
+   "pauper/Grixis Affinity"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Torch the Tower deals 2 damage to target creature or planeswalker. | If this spell was bargained, instead it deals 3 damage to that permanent and you scry 1. | If a permanent dealt damage by Torch the Tower would die thi",
+  "efectos": [
+   8,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "We Say Thee Nay!",
+  "copias": 2,
+  "donde": [
+   "standard/Dimir Midrange"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant — Arcane",
+  "texto": "Counter target spell unless its controller pays {2}. | Counter that spell unless its controller pays {4} instead if this spell was cast using teamwork.",
+  "efectos": [
+   15,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Casey Jones, Vigilante",
+  "copias": 2,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Human Berserker",
+  "texto": "When Casey Jones enters, draw three cards. | At the beginning of your next upkeep, discard three cards at random.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Crop Rotation",
+  "copias": 2,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "As an additional cost to cast this spell, sacrifice a land. | Search your library for a land card, put that card onto the battlefield, then shuffle.",
+  "efectos": [
+   14,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Chain Lightning",
+  "copias": 2,
+  "donde": [
+   "pauper/Mono Red Rally"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Chain Lightning deals 3 damage to any target. | If the player does, they may copy this spell and may choose a new target for that copy.",
+  "efectos": [
+   48,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Eviscerator's Insight",
+  "copias": 2,
+  "donde": [
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature. | Draw two cards.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Intimidation Tactics",
+  "copias": 2,
+  "donde": [
+   "brawl/Ketramose the New Dawn",
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Target opponent reveals their hand. | Exile that card.",
+  "efectos": [
+   4,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Charming Prince",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 5,
+  "ranuras": 1,
+  "tipo": "Creature — Human Noble",
+  "texto": "When this creature enters, choose one — | • Scry 2. | • You gain 3 life. | • Exile another target creature you own. | Return it to the battlefield under your control at the beginning of the next end step.",
+  "efectos": [
+   17,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Zoraline, Cosmos Caller",
+  "copias": 1,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Bat Cleric",
+  "texto": "Whenever a Bat you control attacks, you gain 1 life. | Whenever Zoraline enters or attacks, you may pay {W}{B} and 2 life. | When you do, return target nonland permanent card with mana value 3 or less from your graveyard",
+  "efectos": [
+   17,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Chocobo Kick",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Sorcery",
+  "texto": "Kicker—Return a land you control to its owner's hand. | Target creature you control deals damage equal to its power to target creature an opponent controls. | If this spell was kicked, the creature you control deals twic",
+  "efectos": [
+   3,
+   23,
+   0
+  ]
+ },
+ {
+  "carta": "Tifa's Limit Break",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Somersault — {0} — Target creature gets +2/+2 until end of turn. | • Meteor Strikes — {2} — Double target creature's power and toughness until end of turn. | • Final Heaven — {6}{G} — Triple target creature's power and",
+  "efectos": [
+   18,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Princess Takes Flight",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Enchantment — Saga",
+  "texto": "I — Exile up to one target creature. | II — Target creature you control gets +2/+2 and gains flying until end of turn. | III — Return the exiled card to the battlefield under its owner's control.",
+  "efectos": [
+   20,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Ooze",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Legendary Artifact",
+  "texto": "Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. | {T}: Exile target card from a graveyard. | Create a Mutagen token.",
+  "efectos": [
+   24,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Stormchaser's Talent",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Enchantment — Class",
+  "texto": "When this Class enters, create a 1/1 blue and red Otter creature token with prowess. | When this Class becomes level 2, return target instant or sorcery card from your graveyard to your hand. | Whenever you cast an insta",
+  "efectos": [
+   5,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Three Steps Ahead",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Instant",
+  "texto": "+ {1}{U} — Counter target spell. | + {3} — Create a token that's a copy of target artifact or creature you control. | + {2} — Draw two cards, then discard a card.",
+  "efectos": [
+   15,
+   3,
+   0
+  ]
+ },
+ {
+  "carta": "Wan Shi Tong, Librarian",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Bird Spirit",
+  "texto": "When Wan Shi Tong enters, put X +1/+1 counters on him. | Then draw half X cards, rounded down. | Whenever an opponent searches their library, put a +1/+1 counter on Wan Shi Tong and draw a card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Spirit Water Revival",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Draw two cards. | If this spell's additional cost was paid, instead shuffle your graveyard into your library, draw seven cards, and you have no maximum hand size for the rest of the game. | Exile Spirit Water Revival.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Season of Weaving",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "{P} — Draw a card. | Create a token that's a copy of it. | {P}{P}{P} — Return each nonland, nontoken permanent to its owner's hand.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Demolition Field",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Land",
+  "texto": "{2}, {T}, Sacrifice this land: Destroy target nonbasic land an opponent controls. | That land's controller may search their library for a basic land card, put it onto the battlefield, then shuffle. | You may search your ",
+  "efectos": [
+   14,
+   14,
+   0
+  ]
+ },
+ {
+  "carta": "Volatile Fault",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Land — Cave",
+  "texto": "{1}, {T}, Sacrifice this land: Destroy target nonbasic land an opponent controls. | That player may search their library for a basic land card, put it onto the battlefield, then shuffle. | You create a Treasure token.",
+  "efectos": [
+   28,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "District Mascot",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Creature — Dog Mount",
+  "texto": "This creature enters with a +1/+1 counter on it. | {1}{G}, Remove two +1/+1 counters from this creature: Destroy target artifact. | Whenever this creature attacks while saddled, put a +1/+1 counter on it.",
+  "efectos": [
+   24,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Summon: Bahamut",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Enchantment Creature — Saga Dragon",
+  "texto": "I, II — Destroy up to one target nonland permanent. | III — Draw two cards. | IV — Mega Flare — This creature deals damage equal to the total mana value of other permanents you control to each opponent.",
+  "efectos": [
+   20,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Summon: Titan",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Enchantment Creature — Saga Giant",
+  "texto": "I — Mill five cards. | II — Return all land cards from your graveyard to the battlefield tapped. | III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands",
+  "efectos": [
+   20,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Exemplar of Light",
+  "copias": 1,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Angel",
+  "texto": "Whenever you gain life, put a +1/+1 counter on this creature. | Whenever you put one or more +1/+1 counters on this creature, draw a card.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Aunt May",
+  "copias": 1,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Human Citizen",
+  "texto": "Whenever another creature you control enters, you gain 1 life. | If it's a Spider, put a +1/+1 counter on it.",
+  "efectos": [
+   17,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Deprive",
+  "copias": 1,
+  "donde": [
+   "pauper/Blue Terror"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "As an additional cost to cast this spell, return a land you control to its owner's hand. | Counter target spell.",
+  "efectos": [
+   15,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Sewer-veillance Cam",
+  "copias": 1,
+  "donde": [
+   "pauper/Grixis Affinity"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Artifact",
+  "texto": "When this artifact enters or leaves the battlefield, you may tap or untap target creature. | {3}{U}, Sacrifice this artifact: Draw two cards.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Loot, Exuberant Explorer",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Beast Noble",
+  "texto": "You may reveal a creature card with mana value less than or equal to the number of lands you control from among them and put it onto the battlefield. | Put the rest on the bottom in a random order.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Royal Treatment",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Target creature you control gains hexproof until end of turn. | Create a Royal Role token attached to that creature.",
+  "efectos": [
+   47,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Defend the Rider",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Target permanent you control gains hexproof and indestructible until end of turn. | • Create a 1/1 colorless Pilot creature token with \"This token saddles Mounts and crews Vehicles as though its power were 2 greater.\"",
+  "efectos": [
+   5,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Innkeeper's Talent",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Enchantment — Class",
+  "texto": "At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. | If you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on tha",
+  "efectos": [
+   24,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Unstoppable Slasher",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Zombie Assassin",
+  "texto": "Whenever this creature deals combat damage to a player, they lose half their life, rounded up. | When this creature dies, if it had no counters on it, return it to the battlefield tapped under its owner's control with tw",
+  "efectos": [
+   42,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Callous Inspector",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Human Soldier",
+  "texto": "When this creature dies, it deals 1 damage to you. | Create a Clue token.",
+  "efectos": [
+   42,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Dark Confidant",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Human Wizard",
+  "texto": "At the beginning of your upkeep, reveal the top card of your library and put that card into your hand. | You lose life equal to its mana value.",
+  "efectos": [
+   36,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Darkstar Augur",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Bat Warlock",
+  "texto": "At the beginning of your upkeep, reveal the top card of your library and put that card into your hand. | You lose life equal to its mana value.",
+  "efectos": [
+   36,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lord Skitter, Sewer King",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Rat Noble",
+  "texto": "Whenever another Rat you control enters, exile up to one target card from an opponent's graveyard. | At the beginning of combat on your turn, create a 1/1 black Rat creature token with \"This token can't block.\"",
+  "efectos": [
+   5,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Caustic Bronco",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Snake Horse Mount",
+  "texto": "Whenever this creature attacks, reveal the top card of your library and put it into your hand. | You lose life equal to that card's mana value if this creature isn't saddled.",
+  "efectos": [
+   43,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Corrupted Conviction",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "As an additional cost to cast this spell, sacrifice a creature. | Draw two cards.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Deadly Precision",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "As an additional cost to cast this spell, pay {4} or sacrifice an artifact or creature. | Destroy target creature.",
+  "efectos": [
+   7,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Eaten Alive",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "As an additional cost to cast this spell, sacrifice a creature or pay {3}{B}. | Exile target creature or planeswalker.",
+  "efectos": [
+   21,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Worthy Cost",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "As an additional cost to cast this spell, sacrifice a creature. | Exile target creature or planeswalker.",
+  "efectos": [
+   21,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Split Up",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "• Destroy all tapped creatures. | • Destroy all untapped creatures.",
+  "efectos": [
+   9,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Withering Torment",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Destroy target creature or enchantment. | You lose 2 life.",
+  "efectos": [
+   7,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Agatha's Soul Cauldron",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Artifact",
+  "texto": "{T}: Exile target card from a graveyard. | When a creature card is exiled this way, put a +1/+1 counter on target creature you control.",
+  "efectos": [
+   24,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Feed the Swarm",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Destroy target creature or enchantment an opponent controls. | You lose life equal to that permanent's mana value.",
+  "efectos": [
+   7,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Into the Flood Maw",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Return target creature an opponent controls to its owner's hand. | If the gift was promised, instead return target nonland permanent an opponent controls to its owner's hand.",
+  "efectos": [
+   22,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Long River's Pull",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Counter target creature spell. | If the gift was promised, instead counter target spell.",
+  "efectos": [
+   15,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Malcolm, Alluring Scoundrel",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Siren Pirate",
+  "texto": "Whenever Malcolm deals combat damage to a player, put a chorus counter on it. | Draw a card, then discard a card.",
+  "efectos": [
+   12,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Confounding Riddle",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Put one of them into your hand and the rest into your graveyard. | • Counter target spell unless its controller pays {4}.",
+  "efectos": [
+   15,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Amazing Acrobatics",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Counter target spell. | • Tap one or two target creatures.",
+  "efectos": [
+   15,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Quantum Riddler",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Sphinx",
+  "texto": "When this creature enters, draw a card. | As long as you have one or fewer cards in hand, if you would draw one or more cards, you draw that many cards plus one instead.",
+  "efectos": [
+   3,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Ornery Tumblewagg",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Brushwagg Mount",
+  "texto": "At the beginning of combat on your turn, put a +1/+1 counter on target creature. | Whenever this creature attacks while saddled, double the number of +1/+1 counters on target creature.",
+  "efectos": [
+   24,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Enduring Vitality",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Enchantment Creature — Elk Glimmer",
+  "texto": "Creatures you control have \"{T}: Add one mana of any color.\" | When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control.",
+  "efectos": [
+   45,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Jeskai Revelation",
+  "copias": 4,
+  "donde": [
+   "standard/Four-Color Control"
+  ],
+  "categoria": "RANURAS",
+  "frases": 5,
+  "ranuras": 3,
+  "tipo": "Instant",
+  "texto": "Return target spell or permanent to its owner's hand. | Jeskai Revelation deals 4 damage to any target. | Create two 1/1 white Monk creature tokens with prowess. | Draw two cards. | You gain 4 life.",
+  "efectos": [
+   48,
+   3,
+   5
+  ]
+ },
+ {
+  "carta": "Ugin, Eye of the Storms",
+  "copias": 3,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea",
+   "brawl/Ketramose the New Dawn",
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "RANURAS",
+  "frases": 5,
+  "ranuras": 3,
+  "tipo": "Legendary Planeswalker — Ugin",
+  "texto": "When you cast this spell, exile up to one target permanent that's one or more colors. | Whenever you cast a colorless spell, exile up to one target permanent that's one or more colors. | +2: You gain 3 life and draw a ca",
+  "efectos": [
+   3,
+   17,
+   20
+  ]
+ },
+ {
+  "carta": "Archdruid's Charm",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "categoria": "RANURAS",
+  "frases": 7,
+  "ranuras": 3,
+  "tipo": "Instant",
+  "texto": "• Search your library for a creature or land card and reveal it. | Put it onto the battlefield tapped if it's a land card. | Otherwise, put it into your hand. | Then shuffle. | • Put a +1/+1 counter on target creature yo",
+  "efectos": [
+   14,
+   24,
+   23
+  ]
+ },
+ {
+  "carta": "Kaya, Spirits' Justice",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "RANURAS",
+  "frases": 6,
+  "ranuras": 3,
+  "tipo": "Legendary Planeswalker — Kaya",
+  "texto": "Whenever one or more creatures you control and/or creature cards in your graveyard are put into exile, you may choose a creature card from among them. | Until end of turn, target token you control becomes a copy of it, e",
+  "efectos": [
+   21,
+   5,
+   20
+  ]
+ },
+ {
+  "carta": "The Aetherspark",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "categoria": "RANURAS",
+  "frases": 5,
+  "ranuras": 3,
+  "tipo": "Legendary Artifact Planeswalker — Equipment",
+  "texto": "As long as The Aetherspark is attached to a creature, The Aetherspark can't be attacked and has \"Whenever equipped creature deals combat damage during your turn, put that many loyalty counters on The Aetherspark.\" | +1: ",
+  "efectos": [
+   12,
+   11,
+   20
+  ]
+ },
+ {
+  "carta": "Elspeth, Storm Slayer",
+  "copias": 1,
+  "donde": [
+   "brawl/Elspeth Storm Slayer"
+  ],
+  "categoria": "RANURAS",
+  "frases": 4,
+  "ranuras": 3,
+  "tipo": "Legendary Planeswalker — Elspeth",
+  "texto": "+1: Create a 1/1 white Soldier creature token. | 0: Put a +1/+1 counter on each creature you control. | Those creatures gain flying until your next turn. | −3: Destroy target creature an opponent controls with mana value",
+  "efectos": [
+   34,
+   5,
+   24
+  ]
+ },
+ {
+  "carta": "Earthbender Ascension",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "categoria": "RANURAS",
+  "frases": 4,
+  "ranuras": 3,
+  "tipo": "Enchantment",
+  "texto": "When this enchantment enters, earthbend 2. | Then search your library for a basic land card, put it onto the battlefield tapped, then shuffle. | Landfall — Whenever a land you control enters, put a quest counter on this ",
+  "efectos": [
+   14,
+   25,
+   24
+  ]
+ }
+]
