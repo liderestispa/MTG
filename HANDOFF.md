@@ -17,15 +17,15 @@ Juego control de prisión: negarle el juego al rival.
 
 ## Dónde quedó
 
-- Motor: **objetivo 2,271** contra dato real, medido sobre el árbol limpio. En **Pauper el motor
-  le gana a no simular nada** (3,13% de error contra 4,40% del modelo tonto) — es el único formato
-  validado, r=+0,82. En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
+- Motor: **objetivo 1,823** contra dato real, medido sobre el árbol limpio. En **Pauper el motor
+  le gana a no simular nada** (1,73% de error contra 4,40% del modelo tonto) — es el único formato
+  validado, r=+0,94. En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
   y hay una razón de fondo: el único dato real disponible es de mayo 2026 y **hubo bans después**,
   así que estaríamos comparando listas de hoy contra winrates de otro formato.
-- **Pauper está terminado.** El suelo de ruido del banco es 3,25% (`src/suelo_ruido.py`) y el
-  motor está en 3,13%: ya no queda señal que extraer con estos datos. Lo que mueve la aguja ahora
-  es conseguir más semanas de dato, sobre todo para Grixis Affinity y Elves, que tienen una sola
-  medición y aportan el 69% del ruido. Standard y Brawl no tienen suelo calculable: hace falta
+- El suelo de ruido estimado del banco de Pauper es 3,25% (`src/suelo_ruido.py`) y el motor está
+  en 1,73%, o sea **por debajo**. Eso no significa que se haya superado un límite: significa que
+  esa estimación es una cota superior, con pocos grados de libertad y muy sensible a una serie
+  volátil. Úsala como orden de magnitud. Standard y Brawl no tienen suelo calculable: hace falta
   medir el mismo arquetipo varias veces y ninguno de los dos tiene series.
 - Mis tres mazos actuales: Brawl mono-blanco con Dáin Lord of the Iron Hills, Standard BG,
   Pauper BR. Los tres legales y armables con mis 371 cartas, los tres revalidados y ganándole
@@ -37,7 +37,7 @@ Juego control de prisión: negarle el juego al rival.
   nunca disparaban. Esa última mitad se había medido pero **no se había commiteado**, y por eso
   la documentación decía 2,540 mientras el repo daba 2,557.
 - Ya está todo regenerado con el motor nuevo: `data/escala.json`, `out/report_v6.json` y el
-  gráfico `out/avance.html`. Índices brutos vigentes: Standard 88,3%, Pauper 75,8%, Brawl 61,5%.
+  gráfico `out/avance.html`. Índices brutos vigentes: Standard 88,3%, Pauper 74,3%, Brawl 61,5%.
 - El tuning (regla 4) se corrió y **no adoptó nada**. El único candidato, `SWEEP_MIN=3`, resultó
   ser ruido de semilla: parecía bajar el objetivo a 2,534 pero con 5 semillas queda peor que el
   default. El objetivo tiene un ruido de ±0,014, así que 2,543 hay que leerlo como 2,53 ± 0,01.
@@ -49,13 +49,13 @@ bash scripts/bootstrap.sh
 gcc -O3 -w -o bin_sim src/sim.c -lm
 python3 src/gen_brawl.py && sed -i 's/^static int CMD_A, CMD_B;$/static int CMD_A=-1, CMD_B=-1;/' src/sim_brawl.c
 gcc -O3 -w -o bin_brawl src/sim_brawl.c -lm
-python3 src/obj_real.py 2000     # esperado: OBJETIVO 2.271, sta r=+0.16, pau r=+0.82
-python3 src/loocv.py 2500        # esperado: pauper 3,13% vs 4,40% | standard 5,50% vs 2,44%
-python3 src/revalidar.py 2500    # esperado: sta +10,72 | pau +10,97 | brawl wr 61,5%
+python3 src/obj_real.py 2000     # esperado: OBJETIVO 1.823, sta r=+0.16, pau r=+0.94
+python3 src/loocv.py 2500        # esperado: pauper 1,73% vs 4,40% | standard 5,50% vs 2,44%
+python3 src/revalidar.py 2500    # esperado: sta +10,72 | pau +10,98 | brawl wr 61,5%
 ```
 
-Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_alt.txt` y
-`out/loocv_alt.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
+Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_madness.txt` y
+`out/loocv_madness.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
 
 En **Windows** pon `PYTHONUTF8=1` delante de cada `python3` o vas a ver `UnicodeDecodeError` y
 `KeyError: "Thrór's Map"`: hay 45 `open()` sin `encoding` declarado en 27 archivos. Y para

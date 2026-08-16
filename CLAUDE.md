@@ -34,17 +34,17 @@ Todo lo de abajo está **medido sobre este árbol** y es reproducible. `out/obj_
 
 ```
 $ python3 src/obj_real.py 2000
-sta cal 2.37 (r=+0.16 x5.3) | pau cal 2.20 (r=+0.82 x2.7) | bra resid  2.31
-OBJETIVO 2.271
+sta cal 2.37 (r=+0.16 x5.3) | pau cal 1.22 (r=+0.94 x2.4) | bra resid  2.31
+OBJETIVO 1.823
 ```
 
 | Formato | Correlación de orden | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,82 (n=6) | **sí** — 3,13% vs 4,40% | el orden es utilizable |
+| Pauper | r=+0,94 (n=6) | **sí** — 1,73% vs 4,40% | el orden es utilizable |
 | Standard | r=+0,16 (n=4) | no — 5,50% vs 2,44% | no validado |
 | Standard Brawl | 2 datos reales | sin datos suficientes | solo desplazamiento |
 
-`loocv.py 2500` global: 4,48% el motor contra 3,56% el modelo tonto.
+`loocv.py 2500` global: 4,08% el motor contra 3,56% el modelo tonto.
 
 Los tres mazos revalidados con `revalidar.py 2500`, los tres siguen ganándole a su semilla
 codiciosa (no hay que rehacer búsquedas):
@@ -52,41 +52,28 @@ codiciosa (no hay que rehacer búsquedas):
 | Formato | Mazo | Semilla | Delta | Índice bruto |
 |---|---|---|---|---|
 | Standard WBG | 83,94 | 73,22 | +10,72 | 88,3% |
-| Pauper BR | 69,85 | 58,88 | +10,97 | 75,8% |
+| Pauper BR | 68,33 | 57,35 | +10,98 | 74,3% |
 | Brawl Dáin | 59,63 | — | — | 61,5% |
 
-## Pauper está terminado: el motor llegó al suelo de ruido
+## El suelo de ruido de Pauper, y por qué no es un muro
 
-`src/suelo_ruido.py` estima cuánto margen queda de verdad. Los winrates reales contra los que
-se mide el motor no son la verdad: son medias de unas pocas semanas de MTGO, cada una con su
-propio ruido de muestreo. Medido sobre las series semanales de `REAL_SEMANAL`:
+`src/suelo_ruido.py` estima cuánto margen queda. Los winrates contra los que se mide el motor
+no son la verdad: son medias de unas pocas semanas de MTGO, cada una con su ruido de muestreo.
+Sobre las series de `REAL_SEMANAL`: dispersión semana a semana **4,68 puntos** (14 g.l.), que en
+binomial equivale a N≈114 partidas no-espejo por semana. O sea, es muestreo, no metajuego.
+De ahí sale un suelo de **3,25 puntos** (2,21 descartando la serie más volátil).
 
-| | |
-|---|---|
-| Dispersión semana a semana (pooled, 14 g.l.) | **4,68 puntos** |
-| Equivalente binomial | N≈114 partidas no-espejo por semana — o sea, es muestreo, no metajuego |
-| **Suelo de ruido del banco** | **3,25 puntos** (2,21 si se descarta la serie más volátil) |
-| Modelo tonto | 4,40% |
-| **Motor** | **3,13%** |
+**El motor está hoy en 1,73%, por debajo de esa estimación.** No lo tomes como que está
+sobreajustado ni como que el suelo se "superó": lo que dice es que **el suelo era una cota
+superior**, por tres motivos que conviene tener presentes al volver a usarlo:
 
-**El motor ya está en el suelo.** Seguir ajustándolo contra este banco es ajustar al ruido.
-Y el 69% de ese suelo lo aportan los dos arquetipos con **una sola medición** (Grixis Affinity,
-Elves): la forma barata de bajarlo es conseguirles más semanas de dato, no tocar el modelo.
+- la dispersión semanal mezcla ruido de muestreo con deriva real del metajuego;
+- se calcula con muy pocos grados de libertad, y una sola serie volátil la domina;
+- a los arquetipos con una sola medición se les asigna la sd entera, que es su error
+  *esperado*, no el que realmente tienen. Aportan el 69% del total.
 
-**Cuidado con leer esto como "el motor ya está bien".** El agregado está en el suelo, pero por
-arquetipo siguen quedando errores muy por encima de él, y se están compensando entre sí:
-
-| Arquetipo | Motor | Real | Error |
-|---|---|---|---|
-| Four-Color Control (Standard) | 33,2% | 53,0% | **−19,8** |
-| Mono Red Madness (Pauper) | 39,0% | 53,0% | **−14,0** |
-| Mono Red Rally (Pauper) | 36,4% | 46,4% | **−10,0** |
-| Elves (Pauper) | 62,3% | 56,1% | +6,2 |
-
-Los dos mono-rojos siguen 10-14 puntos infravalorados: tres o cuatro veces el suelo. O sea que
-el modelo sigue equivocándose de forma identificable. Lo que ya no se puede con este banco es
-**demostrar** que un arreglo ayudó, porque la mejora medible queda por debajo del ruido. La
-restricción es de dato, no de ideas.
+Y una advertencia que sí se sostiene: `loocv.py` deja un mazo fuera, pero **no** protege de
+haber elegido los cambios mirando el banco entero. Contra eso solo sirve dato nuevo.
 
 Standard y Brawl **no son calculables**: el suelo necesita mediciones repetidas del mismo
 arquetipo, y ninguno de los dos las tiene. Standard viene de un evento único (los Regional
@@ -94,25 +81,52 @@ Championships) y Brawl solo tiene dos winrates sueltos de ladder. Es el mismo mo
 `escala.py` se niega a calibrar el nivel de Brawl: con n=2, y siendo los dos del 73-77%, ajustar
 una recta devolvería 90% para cualquier cosa.
 
-Informe regenerado (`build_report_v6.py`) y capa de escala también (`escala.py 2000`, k de
-Standard 0,193 → 0,188). Índices brutos vigentes: **Standard 88,3% · Pauper 76,0% · Brawl 61,5%**.
+### Dónde sigue equivocándose
 
-**Regla 4 cumplida, y no cambió nada.** Se corrió `tune_real.py` con NG=2000 después del fix de
-`eff2`. El único candidato fue `SWEEP_MIN=3` (2,534 contra 2,543), y `valida_semillas.py` lo
-rechazó: con 5 semillas independientes da 2,533 de media contra 2,531 de los defaults —peor— y la
-diferencia es ocho veces menor que la dispersión entre semillas (sd 0,014-0,017). Los defaults
-compilados se quedan.
+| Arquetipo | Motor | Real | Error |
+|---|---|---|---|
+| Four-Color Control (Standard) | 33,2% | 53,0% | **−19,8** |
+| Mono Red Rally (Pauper) | 35,1% | 46,4% | **−11,3** |
+| Blue Terror (Pauper) | 44,1% | 52,0% | −7,9 |
+| Mono Red Madness (Pauper) | 47,7% | 53,0% | −5,3 |
+| Elves (Pauper) | 60,6% | 56,1% | +4,5 |
 
-> **El objetivo tiene ruido de semilla de ±0,014.** El 2,543 es el valor en la semilla canónica
-> 1234567 y sirve como control de reproducibilidad, pero como estimación de calidad del motor
-> hay que leerlo como 2,53 ± 0,01. Cualquier "mejora" menor que eso es ruido: pásala por
-> `src/valida_semillas.py` antes de adoptarla.
+Four-Color Control sigue siendo el peor error del proyecto y está intacto: el motor no sabe que
+acumular cartas es un plan de victoria. Mono Red Rally es el siguiente, y sus tres agujeros
+están diagnosticados más abajo.
+
+**Regla 4: el descenso no ha encontrado nada en dos campañas.** `tune_real.py` propone siempre
+`SWEEP_MIN=3` y siempre se cae en la validación (+0,002 y +0,003 con sd de 0,015-0,029). Es un
+fantasma de la semilla canónica. Los defaults compilados se quedan.
+
+> **El objetivo tiene ruido de semilla de ±0,02.** El valor que imprime `obj_real.py` es el de
+> la semilla canónica 1234567 y sirve como control de reproducibilidad, no como medida fina.
+> Cualquier "mejora" menor que eso es ruido: pásala por `src/valida_semillas.py` antes de
+> adoptarla. Ahí se han caído tres cambios que eran más correctos según las reglas.
 
 ## Trampas ya encontradas (no las repitas)
 
 La lista larga, con síntoma y arreglo de cada una, está en `docs/trampas.md`. Ese archivo manda;
 esto es el resumen.
 
+- **Una regla de daño que no cubre "each opponent" borra medio hechizo.** La regla general
+  cubría `target creature`, `any target` y `target player`, pero no `each opponent`. Grab the
+  Prize —*"discard a card. Draw two cards. If the discarded card wasn't a land, deals 2 damage
+  to each opponent"*— se modelaba como robar dos cartas y nada más. Añadir la rama bajó el
+  objetivo de 2,256 a 1,959, doce veces el ruido. Ablación: `BURNEACH=0`. Ojo al añadirla: hay
+  que excluir las líneas que empiezan por `when`/`whenever` o se cuentan dos veces las criaturas
+  con disparo (Guttersnipe, Kessig Flamebreather, Voldaren Epicure).
+- **La locura es un coste alternativo con otro nombre.** Fiery Temper vale `{1}{R}{R}` y se lanza
+  por `{R}` al descartarla; Mono Red Madness lleva once formas de descartar, así que en la
+  práctica es un Rayo de un maná. Cobrarla a 3 es el mismo error que cobrar Fireblast a 6.
+  Reescribir su coste al de locura bajó el objetivo de 1,959 a 1,799. Ablación: `MADNESS=0`.
+  Se asume que hay descarte disponible: si algún día entra una carta con locura en un mazo sin
+  descarte, hay que condicionarlo.
+- **Arreglar un arquetipo aislado puede empeorar el ajuste, aunque el arreglo sea correcto.**
+  El objetivo mide correlación de ORDEN. Modelar bien a Burning-Tree Emissary sube a Mono Red
+  Rally y aun así empeora el total, porque lo comprime contra su vecino en la tabla. Se probó
+  tres veces —antes y después de arreglar Madness— y las tres empeoró. Mira siempre el desglose
+  por arquetipo antes de culpar al cambio. Apagados: `ETBMANA_ON=1`, `RECUR_ON=1`.
 - **Los costes alternativos no son un detalle: son el hechizo entero.** Fireblast se juega
   sacrificando dos Montañas y Snuff Out pagando 4 vidas. Cobrarlos a 6 y a 4 de maná hacía que el
   motor **no los lanzara nunca**, y eso solo dejaba a Mono Red Madness 17,7 puntos por debajo de

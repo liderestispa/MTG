@@ -104,6 +104,20 @@ def parse_card(c):
         if 'any target' in m.group(2):        setp(E['DMG_ANY'], d)
         elif 'creature' in m.group(2):        setp(E['DMG_SPELL'], d)
         else:                                 setp(E['BURN_FACE'], d)
+    # ---- el hechizo quema a cada oponente por si mismo (Grab the Prize) ----
+    # La regla de dano de arriba cubre "target creature", "any target" y "target player",
+    # pero no "each opponent", asi que estos hechizos perdian entera su mitad agresiva:
+    # Grab the Prize se modelaba como robar dos cartas y nada mas.
+    # Se excluyen las lineas con disparo, que ya las cogen las reglas de SPELL_DMG
+    # (Guttersnipe, Kessig Flamebreather) y de ETB (Voldaren Epicure). Sin esa exclusion
+    # se contaria dos veces.
+    # Ablacion: BURNEACH=0.
+    if os.environ.get('BURNEACH') != '0':
+        for _lin in low.split('\n'):
+            if re.match(r'\s*(when|whenever)\b', _lin): continue
+            _m = re.search(r'deals? (\w+) damage to each opponent', _lin)
+            if _m:
+                setp(E['BURN_FACE'], num(_m.group(1), 1)); break
     if re.search(r'(destroy all creatures|each creature gets -|destroy all other creatures)', low):
         mm = re.search(r'gets -\d+/-(\d+)', low)
         setp(E['SWEEPER'], int(mm.group(1)) if mm else 99)
@@ -489,6 +503,19 @@ def convert(c):
     _red = cost_reduction(c, _txt)
     if _red: gen = max(0, gen - _red)
     _cmc = int(c.get('cmc') or ff.get('cmc') or 0)
+    # ---- locura: el coste que importa es el de locura, no el nominal ----
+    # Fiery Temper vale {1}{R}{R} pero se lanza por {R} al descartarla, y Mono Red Madness
+    # lleva once formas de descartar (Faithless Looting, Grab the Prize, Highway Robbery,
+    # las fichas de Sangre del Epicure). Cobrarla a 3 es el mismo error que cobrar
+    # Fireblast a 6. Ablacion: MADNESS=0.
+    # Se asume que hay descarte disponible, que en este mazo es cierto por construccion.
+    # Si algun dia entra al banco una carta con locura en un mazo SIN descarte, hay que
+    # condicionarlo en vez de aplicarlo siempre.
+    _mad = re.search(r'madness ((?:\{[^}]+\})+)', _txt or '', re.I)
+    if _mad and os.environ.get('MADNESS') != '0':
+        _g, _p, _h = mana_pips(_mad.group(1))
+        gen, pips = _g, _p
+        _cmc = _g + sum(_p.values())
     _alt, _altn = alt_cost(_txt)
     if os.environ.get('ALTCOST') == '0': _alt = _altn = 0   # ablacion
     return dict(

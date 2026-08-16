@@ -121,8 +121,17 @@ def analiza(fmt, err_motor=None, err_tonto=None):
             print(f"  Le quedan {err_motor - suelo:.2f} puntos de margen teorico"
                   f"{' — y eso si el suelo esta bien estimado.' if err_motor > suelo else ''}")
         if err_motor <= suelo:
-            print("\n  El motor YA esta en el suelo o por debajo: seguir ajustandolo contra")
-            print("  este banco es ajustar al ruido. Lo que falta es mas dato, no mas modelo.")
+            print("\n  OJO: el motor esta POR DEBAJO del suelo estimado. Eso no demuestra que")
+            print("  este sobreajustado: lo mas probable es que el suelo este sobreestimado.")
+            print("  Este numero es una COTA SUPERIOR, por tres motivos:")
+            print("    - la dispersion semanal mezcla ruido de muestreo con deriva real del meta;")
+            print("    - se calcula con muy pocos grados de libertad y una sola serie volatil")
+            print("      puede dominarla;")
+            print("    - a los arquetipos con una sola medicion se les asigna la sd entera, que")
+            print("      es su error ESPERADO, no el que realmente tienen.")
+            print("  Tomalo como orden de magnitud, no como un muro. Y recuerda que loocv deja")
+            print("  un mazo fuera, pero NO protege de haber elegido los cambios mirando el banco")
+            print("  entero: contra eso solo sirve dato nuevo.")
     return suelo
 
 
