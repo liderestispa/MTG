@@ -12,10 +12,21 @@ def oracle():
     global _ORACLE,_FRONT
     if _ORACLE is None:
         _ORACLE={}; _FRONT={}
+        # BUG CORREGIDO: el bulk trae 910 entradas de FICHA y 2.243 de art series.
+        # 88 nombres existen a la vez como ficha y como carta real (Starscape Cleric,
+        # Darkstar Augur, Ajani's Pridemate...). Si gana la ficha, la carta queda con
+        # legalidad 'not_legal' y estadisticas de ficha. La carta real manda siempre.
+        def _es_basura(c):
+            lay=(c.get('layout') or '')
+            return ('token' in lay or lay=='art_series' or lay=='vanguard'
+                    or (c.get('type_line') or '').startswith('Token'))
+        buenas={}; fichas={}
         for line in open('data/oracle.jsonl'):
             c=json.loads(line)
-            _ORACLE.setdefault(norm(c['name']),c)
-            if '//' in c['name']: _FRONT.setdefault(norm(c['name'].split('//')[0]),c)
+            (fichas if _es_basura(c) else buenas).setdefault(norm(c['name']), c)
+            if '//' in c['name'] and not _es_basura(c):
+                _FRONT.setdefault(norm(c['name'].split('//')[0]), c)
+        _ORACLE=dict(fichas); _ORACLE.update(buenas)   # la carta real pisa a la ficha
     return _ORACLE,_FRONT
 def lookup(name):
     O,F=oracle(); k=norm(name); return O.get(k) or F.get(k)
