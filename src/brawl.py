@@ -30,7 +30,9 @@ def run_brawl(R,opps,variants,ngames=250,life=25,maxturn=16,seed=555):
     for cmd,v in variants:
         inp.append(f"{cmd} {len(v)} " + ' '.join(map(str,v)))
     import os as _os
-    o=subprocess.run(['./bin_brawl'],input='\n'.join(inp),capture_output=True,text=True,env=dict(_os.environ))
+    from driver import _FLAGS          # misma prioridad IDLE que bin_sim
+    o=subprocess.run(['./bin_brawl'],input='\n'.join(inp),capture_output=True,text=True,
+                     env=dict(_os.environ),creationflags=_FLAGS)
     if o.returncode!=0: raise RuntimeError(o.stderr[:400])
     rows=[l.split() for l in o.stdout.strip().split('\n') if l.strip()]
     K=['wr','noplay14','screw','spells6','firstplay','gamelen','cast','removal','kills',

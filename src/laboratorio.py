@@ -39,6 +39,7 @@ SEMILLAS_DECISION    = [1234567, 777001, 20260816, 424242, 99881177]
 SEMILLAS_CONFIRMACION = [31337, 606060, 8112024]
 NGAMES = 2000
 ALFA = 0.05
+MINIMO = 0.02        # efecto minimo que merece llamarse asi: el ruido de semilla
 
 
 def inv_normal(p):
@@ -88,7 +89,12 @@ def prueba(spec, reg):
 
     n_probadas = reg['probadas'] + 1
     z = inv_normal(1 - ALFA / (2 * n_probadas))          # Bonferroni sobre toda la historia
-    significativa = abs(media) > z * se
+    # Significancia ESTADISTICA y significancia PRACTICA son cosas distintas. Con
+    # numeros aleatorios comunes la varianza emparejada es diminuta, asi que una
+    # diferencia de milesimas sale "significativa" y no significa nada: el ruido de
+    # semilla del objetivo es +-0,02. Todo lo que no llegue a MINIMO se llama ruido
+    # aunque el contraste pase.
+    significativa = abs(media) > z * se and abs(media) >= MINIMO
 
     confirma = None
     if significativa and media < 0:                      # solo si parece mejora
@@ -98,7 +104,10 @@ def prueba(spec, reg):
         confirma = statistics.mean(dc)
 
     if not significativa:
-        veredicto, motivo = 'ruido', f"|{media:+.3f}| no supera {z:.2f}·{se:.3f}={z*se:.3f}"
+        if abs(media) < MINIMO and abs(media) > z * se:
+            veredicto, motivo = 'irrelevante', f"{media:+.3f} real pero por debajo de {MINIMO}"
+        else:
+            veredicto, motivo = 'ruido', f"|{media:+.3f}| no supera {z:.2f}·{se:.3f}={z*se:.3f}"
     elif media > 0:
         veredicto, motivo = 'empeora', f"{media:+.3f} significativo"
     elif confirma is not None and confirma >= 0:
@@ -141,7 +150,13 @@ def main():
     specs = cola_de_reglas() if '--reglas' in sys.argv else \
             [a for a in sys.argv[1:] if not a.startswith('--') and not a.replace('.', '').isdigit()]
     if not specs:
-        print("nada que probar. Usa --lista, --reglas, o pasa specs tipo \"FLAG=1\".")
+        if '--reglas' in sys.argv:
+            print("No hay reglas candidatas apagadas en data/reglas_extra.json.\n"
+                  "La cola de trabajo la genera:  python src/cobertura_texto.py\n"
+                  "Despues hay que leer esas cartas y escribir la regla en el JSON con\n"
+                  "activo:false. Eso es lo unico del bucle que necesita criterio.")
+        else:
+            print("nada que probar. Usa --lista, --reglas, o pasa specs tipo \"FLAG=1\".")
         return
 
     print(f"{len(specs)} hipotesis. Umbral con Bonferroni sobre {reg['probadas']} ya probadas.\n")

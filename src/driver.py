@@ -3,6 +3,17 @@ sys.path.insert(0,'src'); sys.path.insert(0,'data')
 from extract import convert
 from meta_decks import DECKS
 
+# ---- prioridad de los procesos del simulador ----
+# Sin esto, lanzar el motor en muchos nucleos deja la maquina inusable: Windows reparte
+# CPU por igual y el escritorio se queda sin turno. Con prioridad IDLE el sistema solo
+# les da los ciclos que nadie mas quiere, asi que puedes seguir trabajando mientras
+# corre. Cuesta muy poco rendimiento cuando la maquina esta libre, porque entonces
+# "los ciclos que nadie quiere" son todos.
+# PRIORIDAD_NORMAL=1 lo desactiva.
+_FLAGS = 0
+if os.name == 'nt' and os.environ.get('PRIORIDAD_NORMAL') != '1':
+    _FLAGS = getattr(subprocess, 'IDLE_PRIORITY_CLASS', 0x00000040)
+
 def norm(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii','ignore').decode().lower()
     return ''.join(ch for ch in s if ch.isalnum())
@@ -83,7 +94,8 @@ def run(R, opps, variants, ngames=200, life=20, maxturn=14, seed=12345):
     for v in variants:
         inp.append(f"{len(v)} " + ' '.join(map(str,v)))
     import os as _os
-    out = subprocess.run(['./bin_sim'], input='\n'.join(inp), capture_output=True, text=True, env=dict(_os.environ))
+    out = subprocess.run(['./bin_sim'], input='\n'.join(inp), capture_output=True,
+                         text=True, env=dict(_os.environ), creationflags=_FLAGS)
     global LAST_STDERR
     LAST_STDERR = out.stderr          # lo usa src/tablero.py para leer la traza JSON
     if out.returncode!=0:

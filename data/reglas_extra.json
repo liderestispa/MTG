@@ -18,7 +18,58 @@
     "  nota        que mecanica es y que midio",
     "",
     "Reglas: REGLAS_OFF=1 apaga todas. REGLA_SOLO=<nombre> deja solo esa activa.",
-    "NUNCA marques activo:true sin haberla pasado por src/valida_semillas.py."
+    "NUNCA marques activo:true sin haberla pasado por src/laboratorio.py.",
+    "",
+    "Las de abajo salieron de src/cobertura_texto.py: son cartas del banco cuyo texto el",
+    "motor no lee, y cuya mecanica ya tiene un efecto implementado en sim.c. Estan",
+    "apagadas a la espera de medicion."
   ],
-  "reglas": []
+  "reglas": [
+    {
+      "nombre": "tapdown_multiple",
+      "patron": "tap up to (\\w+) target creatures?",
+      "efecto": "TAPDOWN",
+      "activo": false,
+      "nota": "Eddymurk Crab (4x Izzet Spellementals) y Floodpits Drowner (4x Dimir Midrange). El efecto TAPDOWN ya existe; falta la rama 'up to N'."
+    },
+    {
+      "nombre": "rebote_masivo_no_tipo",
+      "patron": "return all (?:non-\\w+ )?creatures to their owners' hands",
+      "efecto": "MASS_BOUNCE",
+      "activo": false,
+      "nota": "Sunderflock (4x Izzet Spellementals). La regla actual de MASS_BOUNCE no cubre la forma 'all non-X creatures'."
+    },
+    {
+      "nombre": "exilia_artefacto_rival",
+      "patron": "exile target (?:artifact or enchantment|artifact|enchantment) an opponent controls",
+      "efecto": "EXILE",
+      "activo": false,
+      "nota": "Masked Vandal (4x Elves). Hoy sale en blanco: la regla de EXILE pide 'creature|permanent|nonland'."
+    },
+    {
+      "nombre": "vida_igual_a_su_fuerza",
+      "patron": "you gain life equal to its power",
+      "efecto": "LIFEGAIN",
+      "p1": 4,
+      "activo": false,
+      "nota": "Boulderbranch Golem (3x Tron), que es un 4/5. p1=4 aproxima 'su fuerza'; si la regla paga, conviene hacerlo dinamico."
+    },
+    {
+      "nombre": "mirar_y_exiliar_de_la_mano",
+      "patron": "look at target opponent's hand",
+      "efecto": "ETB_DISCARD",
+      "p1": 1,
+      "activo": false,
+      "nota": "Deep-Cavern Bat (5x, dos mazos de Brawl). Exiliar una carta no-tierra de la mano rival es descarte con otro nombre, que es como ya se modela en otras cartas."
+    },
+    {
+      "nombre": "contadores_por_descarte",
+      "patron": "whenever you discard one or more cards, put that many \\+1/\\+1 counters",
+      "efecto": "COND_BUFF",
+      "p1": 1,
+      "p2": 1,
+      "activo": false,
+      "nota": "Marauding Mako (4x Mardu Discard) en un mazo cuyo plan es descartar. Aproximado como bono condicional."
+    }
+  ]
 }

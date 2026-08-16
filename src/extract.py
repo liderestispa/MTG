@@ -11,20 +11,23 @@ def reglas_extra(ruta='data/reglas_extra.json'):
     que nadie escriba Python. REGLAS_OFF=1 las desactiva todas de golpe.
     """
     global _REGLAS
-    if _REGLAS is None:
-        if os.environ.get('REGLAS_OFF') == '1':
+    if _REGLAS is None:                       # el archivo se lee y compila una sola vez
+        try:
+            with open(ruta, encoding='utf-8') as f:
+                _REGLAS = json.load(f).get('reglas', [])
+        except (OSError, ValueError):
             _REGLAS = []
-        else:
-            try:
-                with open(ruta, encoding='utf-8') as f:
-                    _REGLAS = json.load(f).get('reglas', [])
-            except (OSError, ValueError):
-                _REGLAS = []
-            for r in _REGLAS:
-                r['_rx'] = re.compile(r['patron'], re.I)
-            solo = os.environ.get('REGLA_SOLO')      # medir una sola, por nombre
-            if solo:
-                for r in _REGLAS: r['activo'] = (r.get('nombre') == solo)
+        for r in _REGLAS:
+            r['_rx'] = re.compile(r['patron'], re.I)
+            r['_activo_archivo'] = bool(r.get('activo'))
+    # OJO: el filtro se aplica en CADA llamada, no al cachear. Cachearlo hacia que
+    # REGLA_SOLO no tuviera efecto si el modulo ya se habia usado antes de fijarlo, que
+    # es justo lo que hace el laboratorio al medir: las seis primeras candidatas dieron
+    # +0,000 exacto por esto.
+    if os.environ.get('REGLAS_OFF') == '1': return []
+    solo = os.environ.get('REGLA_SOLO')
+    for r in _REGLAS:
+        r['activo'] = (r['nombre'] == solo) if solo else r['_activo_archivo']
     return _REGLAS
 
 

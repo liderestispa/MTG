@@ -1,16 +1,91 @@
 {
- "probadas": 4,
+ "probadas": 6,
  "entradas": [
   {
-   "spec": "ETBMANA_ON=1",
-   "media": 0.015,
-   "sd": 0.0031,
-   "se": 0.0014,
+   "spec": "REGLA_SOLO=tapdown_multiple",
+   "media": 0.0091,
+   "sd": 0.0023,
+   "se": 0.001,
    "z_exigido": 1.96,
    "n_probadas": 1,
    "confirmacion": null,
+   "veredicto": "irrelevante",
+   "motivo": "+0.009 real pero por debajo de 0.02",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.553,
+    1.627,
+    1.604,
+    1.553,
+    1.539
+   ]
+  },
+  {
+   "spec": "REGLA_SOLO=rebote_masivo_no_tipo",
+   "media": 0.0003,
+   "sd": 0.0003,
+   "se": 0.0001,
+   "z_exigido": 2.241,
+   "n_probadas": 2,
+   "confirmacion": null,
+   "veredicto": "irrelevante",
+   "motivo": "+0.000 real pero por debajo de 0.02",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.547,
+    1.617,
+    1.593,
+    1.544,
+    1.532
+   ]
+  },
+  {
+   "spec": "REGLA_SOLO=exilia_artefacto_rival",
+   "media": 0.1487,
+   "sd": 0.0204,
+   "se": 0.0091,
+   "z_exigido": 2.394,
+   "n_probadas": 3,
+   "confirmacion": null,
    "veredicto": "empeora",
-   "motivo": "+0.015 significativo",
+   "motivo": "+0.149 significativo",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.713,
+    1.742,
+    1.739,
+    1.716,
+    1.664
+   ]
+  },
+  {
+   "spec": "REGLA_SOLO=vida_igual_a_su_fuerza",
+   "media": -0.0014,
+   "sd": 0.0087,
+   "se": 0.0039,
+   "z_exigido": 2.498,
+   "n_probadas": 4,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|-0.001| no supera 2.50·0.004=0.010",
    "base": [
     1.547,
     1.617,
@@ -20,72 +95,22 @@
    ],
    "variante": [
     1.558,
-    1.631,
-    1.606,
-    1.56,
-    1.551
+    1.609,
+    1.58,
+    1.545,
+    1.531
    ]
   },
   {
-   "spec": "RECUR_ON=1",
-   "media": -0.0019,
-   "sd": 0.0037,
-   "se": 0.0016,
-   "z_exigido": 2.241,
-   "n_probadas": 2,
-   "confirmacion": null,
-   "veredicto": "ruido",
-   "motivo": "|-0.002| no supera 2.24·0.002=0.004",
-   "base": [
-    1.547,
-    1.617,
-    1.592,
-    1.544,
-    1.532
-   ],
-   "variante": [
-    1.549,
-    1.619,
-    1.588,
-    1.538,
-    1.528
-   ]
-  },
-  {
-   "spec": "CMCRED=1",
-   "media": 0.0267,
-   "sd": 0.0338,
-   "se": 0.0151,
-   "z_exigido": 2.394,
-   "n_probadas": 3,
-   "confirmacion": null,
-   "veredicto": "ruido",
-   "motivo": "|+0.027| no supera 2.39·0.015=0.036",
-   "base": [
-    1.547,
-    1.617,
-    1.592,
-    1.544,
-    1.532
-   ],
-   "variante": [
-    1.575,
-    1.686,
-    1.594,
-    1.592,
-    1.518
-   ]
-  },
-  {
-   "spec": "NETDRAW=1",
-   "media": 0.2886,
-   "sd": 0.0117,
-   "se": 0.0052,
-   "z_exigido": 2.498,
-   "n_probadas": 4,
+   "spec": "REGLA_SOLO=mirar_y_exiliar_de_la_mano",
+   "media": 0.0503,
+   "sd": 0.0123,
+   "se": 0.0055,
+   "z_exigido": 2.576,
+   "n_probadas": 5,
    "confirmacion": null,
    "veredicto": "empeora",
-   "motivo": "+0.289 significativo",
+   "motivo": "+0.050 significativo",
    "base": [
     1.547,
     1.617,
@@ -94,11 +119,36 @@
     1.532
    ],
    "variante": [
-    1.84,
-    1.893,
-    1.868,
-    1.841,
-    1.832
+    1.6,
+    1.662,
+    1.655,
+    1.575,
+    1.591
+   ]
+  },
+  {
+   "spec": "REGLA_SOLO=contadores_por_descarte",
+   "media": 0.0095,
+   "sd": 0.0054,
+   "se": 0.0024,
+   "z_exigido": 2.638,
+   "n_probadas": 6,
+   "confirmacion": null,
+   "veredicto": "irrelevante",
+   "motivo": "+0.009 real pero por debajo de 0.02",
+   "base": [
+    1.547,
+    1.617,
+    1.592,
+    1.544,
+    1.532
+   ],
+   "variante": [
+    1.565,
+    1.621,
+    1.601,
+    1.55,
+    1.542
    ]
   }
  ]

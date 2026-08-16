@@ -39,6 +39,15 @@ SIGMA0   = 0.35
 SUAVE    = 0.30      # cuanto se mueve la media hacia la elite
 FMT      = 'pauper'  # formato de entrenamiento: es el unico validado
 
+# Cuanta maquina se usa. Por defecto un TERCIO de los nucleos, no todos: esto esta
+# pensado para correr mientras trabajas. Ademas driver.py lanza el simulador con
+# prioridad IDLE, asi que el escritorio manda siempre. --nucleos N para forzarlo.
+def cuantos_nucleos(argv):
+    if '--nucleos' in argv:
+        return max(1, int(argv[argv.index('--nucleos') + 1]))
+    n = os.cpu_count() or 4
+    return max(1, min(n - 2, int(n * 0.34)))
+
 
 def escribe_pesos(v, ruta):
     with io.open(ruta, 'w', encoding='utf-8') as f:
@@ -82,7 +91,8 @@ def main():
     mu    = [0.0] * NPAR                       # arranca en la heuristica pura
     sigma = [SIGMA0] * NPAR
     hist  = []
-    nucleos = max(1, (os.cpu_count() or 4) - 2)
+    nucleos = cuantos_nucleos(sys.argv)
+    respiro = float(sys.argv[sys.argv.index('--respiro') + 1]) if '--respiro' in sys.argv else 1.0
 
     base = evalua(([0.0] * NPAR, 1234567))     # la heuristica de siempre, como referencia
     print(f"heuristica actual (pesos a cero): {base*100:.3f}%   "
@@ -117,6 +127,7 @@ def main():
         escribe_pesos(mejor_v, 'out/politica.txt')
         json.dump(dict(base=base, mejor=mejor_f, gens=len(hist), hist=hist),
                   io.open('out/politica_hist.json', 'w', encoding='utf-8'), indent=1)
+        if respiro: time.sleep(respiro)   # deja respirar al sistema entre generaciones
 
     print(f"\nmejor politica {mejor_f*100:.3f}% contra {base*100:.3f}% de la heuristica "
           f"({(mejor_f-base)*100:+.3f} puntos), escrita en out/politica.txt")
