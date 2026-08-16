@@ -28,7 +28,7 @@ romper la tabla. Ya paso tres veces.
 """
 import sys, os, io, json, time, subprocess, datetime
 
-OBJETIVO_ESPERADO = 1.022     # actualizalo cuando adoptes un cambio de motor
+OBJETIVO_ESPERADO = 0.978     # actualizalo cuando adoptes un cambio de motor
 TOLERANCIA = 0.02             # ruido de semilla del objetivo
 BLOQUE_GENS = 40              # generaciones por vuelta
 LOG = 'out/orquestador.log'

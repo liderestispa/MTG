@@ -478,6 +478,19 @@ def parse_card(c):
             if _g and not out.get('die_eff'):
                 out['die_eff'] = E['LIFEGAIN']; out['die_p1'] = num(_g.group(1), 2)
 
+    # ---- habilidad ACTIVADA con coste de sacrificio ----
+    # Ranura propia (act_eff/act_p1/act_cost) porque el jugador ELIGE cuando activarla y
+    # paga cada vez. Meterlo como efecto de entrada hacia que Krark-Clan Shaman, que es
+    # un 1/1, se suicidara al entrar arrasando su propio tablero: medido, 2,266 -> 3,102.
+    # Hoy solo se cubre el caso "sacrifica un artefacto: N danio a cada criatura", que es
+    # el motor de Jund Wildfire. Ablacion: ACTIVADAS_OFF=1.
+    if os.environ.get('ACTIVADAS_OFF') != '1':
+        _a = re.search(r'sacrifice an artifact:[^.]*deals? (\w+) damage to each creature', low)
+        if _a:
+            out['act_eff'] = E['SWEEPER']
+            out['act_p1'] = num(_a.group(1), 1)
+            out['act_cost'] = 1          # 1 = sacrificar un artefacto
+
     # ---- reglas de datos (data/reglas_extra.json) ----
     # Se aplican al final, sobre las ranuras que hayan quedado libres. Estan en un JSON y
     # no en codigo para que src/laboratorio.py pueda proponerlas, activarlas y medirlas

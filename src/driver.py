@@ -71,7 +71,8 @@ class Registry:
             e.get('mana_out', 0), e.get('dyn', 0), e.get('no_untap', 0),
             e.get('eff3', 0), e.get('r1', 0), e.get('r2', 0),
             e.get('alt', 0), e.get('altn', 0),
-            e.get('die_eff', 0), e.get('die_p1', 0)])
+            e.get('die_eff', 0), e.get('die_p1', 0),
+            e.get('act_eff', 0), e.get('act_p1', 0), e.get('act_cost', 0)])
 
 def build(fmt):
     R=Registry()

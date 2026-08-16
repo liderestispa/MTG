@@ -43,6 +43,9 @@ typedef struct {
   uint8_t alt, altn;   /* coste alternativo: 1=sacrificar altn tierras, 2=pagar altn vidas */
   uint8_t die_eff;     /* disparo AL IR AL CEMENTERIO: efecto y parametro */
   int16_t die_p1;
+  uint8_t act_eff, act_cost;  /* habilidad ACTIVADA: efecto y coste (1=sacrificar un
+                                 artefacto). La decision de activarla es del jugador. */
+  int16_t act_p1;
   uint8_t pip[5];
   uint32_t kw;
   uint8_t eff, eff2, eff3;
@@ -124,6 +127,8 @@ static int NOTARGET_DURO=0;
 static int FICHAS_REALES=0;
 /* disparos al ir al cementerio. Ablacion: MUERTE_ON=0. */
 static int MUERTE_ON=1;
+/* habilidades activadas, evaluadas con su coste. Ablacion: ACTIVADAS_ON=0. */
+static int ACTIVADAS_ON=1;
 /* Umbrales de la politica de bloqueo, ajustados por descenso coordenada-a-coordenada
    contra la calibracion del meta (11.07 -> 10.35). No son "juego optimo": son los
    valores que reproducen mejor los resultados reales. */
@@ -869,8 +874,57 @@ static void defender_instants(P*def,P*act){
   }
 }
 
+/* ---- habilidades ACTIVADAS ----
+   La diferencia con un efecto de entrada es TODA la carta: el jugador elige cuando, y
+   paga un coste cada vez. Modelar Krark-Clan Shaman como barredor de entrada lo hacia
+   suicidarse al entrar (es un 1/1 y su barrido mata resistencia <=1 en los dos lados):
+   medido, 2,266 -> 3,102. Con eleccion y coste, la misma carta es el plan del mazo.
+
+   Se evalua una vez por turno, en la primera fase principal, y se repite mientras siga
+   siendo favorable y quede con que pagar. Ablacion: ACTIVADAS_ON=0. */
+static int cuenta_artefactos(P*p){
+  int n=0; for(int i=0;i<p->nbf;i++) if(D[p->bf[i]].typ==T_ART) n++;
+  return n;
+}
+static void activar_habilidades(P*me,P*opp){
+  if(!ACTIVADAS_ON) return;
+  for(int vuelta=0; vuelta<4; vuelta++){
+    int hecho=0;
+    for(int i=0;i<me->nbf;i++){
+      Def*d=&D[me->bf[i]];
+      if(!d->act_eff) continue;
+      if(d->act_cost==1 && cuenta_artefactos(me)<1) continue;   /* nada que sacrificar */
+      /* ¿conviene? Para un barrido, solo si mata mas suyas que mias. */
+      if(d->act_eff==E_SWEEPER){
+        int suyas=0,mias=0;
+        for(int j=0;j<opp->nbf;j++)
+          if(D[opp->bf[j]].typ==T_CREA && th(opp,j)<=d->act_p1 && !(D[opp->bf[j]].kw&K_IND)) suyas++;
+        for(int j=0;j<me->nbf;j++)
+          if(D[me->bf[j]].typ==T_CREA && th(me,j)<=d->act_p1 && !(D[me->bf[j]].kw&K_IND)) mias++;
+        if(suyas<=mias) continue;          /* regalar el tablero propio no es un plan */
+      }
+      /* pagar el coste */
+      if(d->act_cost==1){
+        for(int j=me->nbf-1;j>=0;j--) if(D[me->bf[j]].typ==T_ART){ rmbf(me,j); break; }
+      }
+      /* la carta puede haberse movido al sacrificar: se re-localiza por indice de Def */
+      int def=-1;
+      for(int j=0;j<me->nbf;j++) if(D[me->bf[j]].act_eff==d->act_eff &&
+                                    D[me->bf[j]].act_p1==d->act_p1){ def=me->bf[j]; break; }
+      if(def<0) break;
+      int t=NDEF; if(t>=MAXDEF) return;
+      D[t]=D[def]; D[t].eff=D[def].act_eff; D[t].p1=D[def].act_p1; D[t].p2=0;
+      D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0; D[t].act_eff=0;
+      apply(me,opp,t,0);
+      hecho=1; break;                      /* el tablero cambio: reevaluar desde cero */
+    }
+    if(!hecho) break;
+  }
+}
+
 static void cast_phase(P*me,P*opp,int main2){
   ALT_OPP = opp;
+  if(!main2) activar_habilidades(me,opp);
   /* impuesto que me cobra el rival (Ghostly Prison y familia): encarece todo lo mio */
   me->taxed=0;
   for(int i=0;i<opp->nbf;i++){
@@ -1421,12 +1475,14 @@ int main(void){
     scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
-    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0;
-    scanf("%d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,&de_,&dp_);
+    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0;
+    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,
+          &de_,&dp_,&ae_,&ap_,&ac_);
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
     d->eff3=(uint8_t)e3_; d->r1=(int16_t)r1_; d->r2=(int16_t)r2_;
     d->alt=(uint8_t)al_; d->altn=(uint8_t)an_;
     d->die_eff=(uint8_t)de_; d->die_p1=(int16_t)dp_;
+    d->act_eff=(uint8_t)ae_; d->act_p1=(int16_t)ap_; d->act_cost=(uint8_t)ac_;
     d->cmc=cmc; d->typ=typ; d->colors=col; d->produces=prod; d->gen=gen; d->hybrid=hyb;
     d->pip[0]=p0;d->pip[1]=p1_;d->pip[2]=p2_;d->pip[3]=p3_;d->pip[4]=p4_;
     d->kw=kw; d->eff=eff; d->eff2=eff2; d->p1=a; d->p2=b; d->p3=c; d->q1=q1; d->q2=q2;
@@ -1446,6 +1502,7 @@ int main(void){
     const char*bl=getenv("BLOQ_LIBRE"); if(bl) BLOQ_LIBRE=atoi(bl);
     const char*nd=getenv("NOTARGET_DURO"); if(nd) NOTARGET_DURO=atoi(nd);
     const char*mo=getenv("MUERTE_ON"); if(mo) MUERTE_ON=atoi(mo);
+    const char*ao=getenv("ACTIVADAS_ON"); if(ao) ACTIVADAS_ON=atoi(ao);
     const char*fr=getenv("FICHAS_REALES"); if(fr) FICHAS_REALES=atoi(fr);
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
