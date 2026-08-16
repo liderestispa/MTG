@@ -36,7 +36,7 @@ E = dict(NONE=0, ETB_DMG=1, ETB_DRAIN=2, ETB_DRAW=3, ETB_DISCARD=4, ETB_TOKEN=5,
          UPKEEP_DRAW=36, REPEAT_PUMP=37, TEAM_PUMP=38, FOG_BOUNCE=39, MOBILIZE=40,
          MASS_CHEAT=41, DEATH_DMG=42, ATTACK_DRAW=43, RECURSIVE=44, TEAM_MANA=45,
          ATTACK_DMG=46, PROTECT=47, DMG_ANY=48,
-         EDICT=49, TAPDOWN=50, TAX=51, LAND_KILL=52, MASS_BOUNCE=53)
+         EDICT=49, TAPDOWN=50, TAX=51, LAND_KILL=52, MASS_BOUNCE=53, ETB_MANA=54)
 
 NUMW = {'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'X':1}
 def num(s, d=1):
@@ -314,6 +314,36 @@ def parse_card(c):
     if re.search(r'creates? (a|one|two|\d+) .*treasure token', low) or 'create a treasure token' in low:
         mm = re.search(r'creates? (\w+) .*treasure', low)
         setp(E['TREASURE'], num(mm.group(1),1) if mm else 1)
+    # ---- vuelve sola del cementerio (Sneaky Snacker, Bloodghast, Forsaken Miner) ----
+    # APAGADO POR DEFECTO: RECUR_ON=1 para activarlo. E_RECURSIVE estaba implementado en
+    # sim.c y ninguna regla lo activaba nunca, o sea codigo muerto — la trampa de
+    # "keywords parseadas que nadie lee", al reves.
+    #
+    # Medido: 2,271 -> 2,296. Pero el desglose importa mas que el total. En PAUPER no
+    # cambia nada (2,20 y r=+0,82, identico), asi que las 4 Sneaky Snacker de Mono Red
+    # Madness no explican su -14. Toda la degradacion esta en STANDARD, donde r cae de
+    # +0,16 a +0,08 por Bloodghast en Mardu Discard — y el dato de Standard es pre-ban,
+    # o sea que empeorar contra el no significa gran cosa. Queda apagado porque la regla
+    # es no adoptar lo que no se puede demostrar, no porque este claro que sea peor.
+    if os.environ.get('RECUR_ON') == '1' and \
+       re.search(r'return (this card|it) from your graveyard to (the battlefield|your hand)', low):
+        setp(E['RECURSIVE'], 1)
+    # ---- al entrar produce mana (Burning-Tree Emissary) ----
+    # APAGADO POR DEFECTO: ETBMANA_ON=1 para activarlo.
+    # "When this creature enters, add {R}{G}": la criatura se paga sola y deja encadenar
+    # otra el mismo turno; sin esto es un 2/2 vainilla. Modelarla bien sube a Mono Red
+    # Rally de 36,4% a 37,5% (su real es 46,4%) y aun asi EMPEORA el objetivo global,
+    # 2,256 -> 2,311, el doble del ruido.
+    #
+    # El motivo es de orden, no de la carta. El objetivo mide correlacion de orden, y
+    # Rally ya estaba correctamente ultimo. Subirlo lo comprime contra Mono Red Madness,
+    # que esta MAS infravalorado (-14) y deberia ir por encima. Arreglar un arquetipo
+    # aislado, cuando su vecino en la tabla esta peor modelado, rompe el orden.
+    # Para que esto pague hay que arreglar antes a Madness, cuyo motor de valor
+    # —descartar y sacar provecho de lo descartado: locura, cementerio— no esta modelado.
+    m = re.search(r'(?:when|whenever) [^.]*enters[^.]*?,\s*add ((?:\{[^}]+\}\s*)+)', low)
+    if m and os.environ.get('ETBMANA_ON') == '1':
+        setp(E['ETB_MANA'], len(re.findall(r'\{[^}]+\}', m.group(1))))
     if 'ferocious' in low:                      # +1/+0 y trample condicional
         setp(E['COND_BUFF'], 1, 0)
     if 'storied' in low:

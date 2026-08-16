@@ -31,7 +31,10 @@ enum { E_NONE=0, E_ETB_DMG=1, E_ETB_DRAIN=2, E_ETB_DRAW=3, E_ETB_DISCARD=4, E_ET
        E_MOBILIZE=40, E_MASS_CHEAT=41, E_DEATH_DMG=42, E_ATTACK_DRAW=43,
        E_RECURSIVE=44, E_TEAM_MANA=45, E_ATTACK_DMG=46, E_PROTECT=47,
        E_DMG_ANY=48, E_EDICT=49, E_TAPDOWN=50, E_TAX=51,
-       E_LAND_KILL=52, E_MASS_BOUNCE=53 };
+       E_LAND_KILL=52, E_MASS_BOUNCE=53,
+       /* al entrar produce mana que dura solo este turno (Burning-Tree Emissary).
+          No es un Tesoro: si sobra, se pierde al acabar el turno. */
+       E_ETB_MANA=54 };
 
 typedef struct {
   int16_t cmc, power, tough;
@@ -72,8 +75,17 @@ static int DMG_ANY_FACE=0;
 static int NEG_ON=1;   /* bloque de negacion: edicto, inmovilizar, impuesto, tierras, rebote */
 static int TRACE=0;      /* 1 = imprime la primera partida turno a turno */
 static int TRACE_ON=0;
-static int TJ=0, TJ_ON=0; /* TRACE_JSON: estado del tablero en JSON, para src/tablero.py */
+static int TJ=0, TJ_ON=0; /* TRACE_JSON=N: traza las N primeras partidas, para src/tablero.py */
+static int TJ_TURN=0; static long long TJ_GAME=0;
+/* eventos dentro del turno: sin esto el tablero solo muestra fotos de fin de turno y las
+   partidas parecen vacias, porque lo que entra y muere en el mismo turno no se ve nunca. */
+static void tj_ev(const char*ev, void*jug, int id);
 static void*PLAYER_A=0;
+static void tj_ev(const char*ev, void*jug, int id){
+  if(!TJ_ON) return;
+  fprintf(stderr,"@J {\"t\":%d,\"ev\":\"%s\",\"p\":\"%s\",\"id\":%d}\n",
+          TJ_TURN, ev, jug==PLAYER_A?"A":"B", id);
+}
 static Def D[MAXDEF];
 static int NDEF = 0;
 
@@ -104,6 +116,7 @@ typedef struct {
   uint8_t ltap[BFMAX];
   int army;               /* indice bf del Army de amass, -1 */
   int treasures;
+  int flot;               /* mana flotante de este turno (E_ETB_MANA); se pierde al acabar */
   int played_land;
   int cards_drawn_turn;
   int lost;
@@ -272,6 +285,7 @@ static void draw(P*p,int n){
 static void shuffle(P*p){ for(int i=p->nd-1;i>0;i--){ int j=ri(i+1); int t=p->deck[i];p->deck[i]=p->deck[j];p->deck[j]=t; } }
 
 static void addbf(P*p,int def){
+  tj_ev("entra", p, def);
   if(D[def].typ==T_LAND){ if(p->nl<BFMAX){ p->lands[p->nl]=def; p->ltap[p->nl]=0; p->nl++; } return; }
   if(p->nbf>=BFMAX) return;
   int i=p->nbf++;
@@ -281,6 +295,7 @@ static void addbf(P*p,int def){
 static P *OPP_OF_A=0, *OPP_OF_B=0;
 static int CMD_OF(P*p);
 static void rmbf(P*p,int i){
+  tj_ev("sale", p, p->bf[i]);
   { Def*dd=&D[p->bf[i]];
     if(dd->eff==E_DEATH_DMG || dd->eff2==E_DEATH_DMG){
       int amt = (dd->eff==E_DEATH_DMG)? dd->p1 : dd->q1;
@@ -511,6 +526,11 @@ static void apply(P*me,P*opp,int def,int which){
     case E_ETB_COUNTERS: { int m=-1,mv=-1; for(int i=0;i<me->nbf;i++) if(D[me->bf[i]].typ==T_CREA&&pw(me,i)>mv){mv=pw(me,i);m=i;}
         if(m>=0) me->ctr[m]+=a; } break;
     case E_TREASURE: me->treasures+=(a?a:1); break;
+    /* Burning-Tree Emissary se paga sola: entra, devuelve su mana y permite encadenar
+       otra criatura el mismo turno. Modelarla como un 2/2 vainilla dejaba al arquetipo
+       10 puntos por debajo de su winrate real. El mana va al pozo flotante, que se
+       vacia al final del turno: no es un Tesoro. */
+    case E_ETB_MANA: { int q=(a?a:1); me->treasures+=q; me->flot+=q; } break;
     case E_AMASS: { if(me->army<0){ if(me->nbf<BFMAX){ int i=me->nbf++; me->bf[i]=def; me->tap[i]=0;
             me->sick[i]=1; me->ctr[i]=0; me->eqp[i]=0; me->army=i; } }
         if(me->army>=0) me->ctr[me->army]+=a; } break;
@@ -757,6 +777,7 @@ static void cast_phase(P*me,P*opp,int main2){
     int def=me->hand[best];
     for(int k=best;k<me->nh-1;k++) me->hand[k]=me->hand[k+1]; me->nh--;
     paycost(me,&D[def],&me->treasures);
+    tj_ev("lanza", me, def);
     SPARE_MANA = untapped_count(me);
     Def*d=&D[def];
     if(try_counter(opp,d)) continue;                 /* contrarrestado: se va al cementerio */
@@ -1046,7 +1067,11 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
   P*cur=onplay?&A:&B, *oth=onplay?&B:&A;
   ST_games++;
   if(TRACE && ST_games==1) TRACE_ON=1; else TRACE_ON=0;
-  if(TJ && ST_games==1) TJ_ON=1; else TJ_ON=0;
+  /* TRACE_JSON=N traza las N primeras partidas, no solo la primera */
+  if(TJ && ST_games<=TJ) TJ_ON=1; else TJ_ON=0;
+  TJ_GAME = ST_games;
+  if(TJ_ON) fprintf(stderr,"@J {\"juego\":%lld,\"salida\":\"%s\"}\n",
+                    TJ_GAME, onplay?"A":"B");
   if(TRACE_ON) fprintf(stderr,"\n=== TRAZA (A juega %s) ===\n", onplay?"primero":"segundo");
   int myturn=0, firstplay=0, spells6=0, screwed=0;
   #define ACC() do{ ST_screw+=screwed; ST_spells6+=spells6; \
@@ -1054,6 +1079,7 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
       ST_gamelen+=myturn; ST_handend+=A.nh; ST_lifeend+=(A.life>0?A.life:0); \
       if(A.nl>=8) ST_manaflood++; if(A.nl<=2) ST_manascrew++; }while(0)
   for(int turn=1;turn<=maxturn*2;turn++){
+    TJ_TURN = turn;
     /* untap */
     for(int i=0;i<cur->nl;i++) cur->ltap[i]=0;
     for(int i=0;i<cur->nbf;i++){
@@ -1102,6 +1128,8 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
     if(oth->life<=0){ ACC(); if(oth==&B) ST_win_dmg++; else ST_lose_dmg++;
       if(TJ_ON) fprintf(stderr,"@J {\"fin\":\"%s\",\"turno\":%d}\n", oth==&B?"A":"B", turn);
       return (oth==&B); }
+    /* el mana flotante no sobrevive al turno; los Tesoros si */
+    if(cur->flot){ cur->treasures -= cur->flot; if(cur->treasures<0) cur->treasures=0; cur->flot=0; }
     P*t=cur;cur=oth;oth=t;
   }
   ACC(); ST_timeout++;

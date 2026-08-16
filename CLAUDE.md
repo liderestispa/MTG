@@ -230,4 +230,32 @@ python3 src/run_brawl.py            # búsqueda de Brawl
 ```
 
 Variables de ablación (para medir un cambio con y sin él):
-`DISABLE_EFF=<codigo>`, `NEG_ON=0`, `DMG_ANY_FACE=1`, `HEXWARD_ON=0`, `GANG_ON=1`, `TRACE=1`.
+`DISABLE_EFF=<codigo>`, `NEG_ON=0`, `DMG_ANY_FACE=1`, `HEXWARD_ON=0`, `GANG_ON=1`, `TRACE=1`,
+`ALTCOST=0`, `ETBMANA_ON=1`, `RECUR_ON=1`, `TRACE_JSON=<n>`.
+
+## Mono Red Rally: por qué no se puede arreglar solo
+
+Rally marca 36,4% contra 46,4% real. Tiene tres agujeros de modelado reales y verificados:
+**Burning-Tree Emissary** (al entrar añade `{R}{G}`, se paga sola y encadena — el motor la ve
+como un 2/2 vainilla), **Goblin Tomb Raider** (+1/+0 y prisa si controlas un artefacto, y el
+mazo lleva 11 contando las tierras-artefacto) y **Galvanic Blast** (4 de daño con metalcraft,
+el motor siempre le pone 2).
+
+Se implementó el primero, que es el que define el arquetipo. Sube a Rally de 36,4% a 37,5%
+y **empeora el objetivo global de 2,271 a 2,311**, el doble del ruido. Queda apagado
+(`ETBMANA_ON=1`).
+
+El motivo no es la carta, es el orden. El objetivo mide correlación de orden, y Rally **ya
+estaba correctamente último** en el motor y en la realidad. Subirlo lo comprime contra Mono Red
+Madness, que está infravalorado en −14 y debería quedar por encima:
+
+| | Real | Motor |
+|---|---|---|
+| Mono Red Madness | 53,0% | 39,0% |
+| Mono Red Rally | 46,4% | 36,4% |
+
+**Para que arreglar Rally pague, hay que arreglar antes a Madness**, y su hueco es más grande:
+todo su motor de valor es descartar y sacar provecho de lo descartado —locura, cementerio— y
+eso no está modelado. Ojo: la recursión de cementerio ya se probó (`RECUR_ON=1`) y en Pauper
+**no mueve nada**, así que las 4 Sneaky Snacker no son la explicación. El candidato que queda
+es la locura (Fiery Temper) y el valor de los efectos de descarte.

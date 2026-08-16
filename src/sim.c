@@ -31,7 +31,10 @@ enum { E_NONE=0, E_ETB_DMG=1, E_ETB_DRAIN=2, E_ETB_DRAW=3, E_ETB_DISCARD=4, E_ET
        E_MOBILIZE=40, E_MASS_CHEAT=41, E_DEATH_DMG=42, E_ATTACK_DRAW=43,
        E_RECURSIVE=44, E_TEAM_MANA=45, E_ATTACK_DMG=46, E_PROTECT=47,
        E_DMG_ANY=48, E_EDICT=49, E_TAPDOWN=50, E_TAX=51,
-       E_LAND_KILL=52, E_MASS_BOUNCE=53 };
+       E_LAND_KILL=52, E_MASS_BOUNCE=53,
+       /* al entrar produce mana que dura solo este turno (Burning-Tree Emissary).
+          No es un Tesoro: si sobra, se pierde al acabar el turno. */
+       E_ETB_MANA=54 };
 
 typedef struct {
   int16_t cmc, power, tough;
@@ -113,6 +116,7 @@ typedef struct {
   uint8_t ltap[BFMAX];
   int army;               /* indice bf del Army de amass, -1 */
   int treasures;
+  int flot;               /* mana flotante de este turno (E_ETB_MANA); se pierde al acabar */
   int played_land;
   int cards_drawn_turn;
   int lost;
@@ -521,6 +525,11 @@ static void apply(P*me,P*opp,int def,int which){
     case E_ETB_COUNTERS: { int m=-1,mv=-1; for(int i=0;i<me->nbf;i++) if(D[me->bf[i]].typ==T_CREA&&pw(me,i)>mv){mv=pw(me,i);m=i;}
         if(m>=0) me->ctr[m]+=a; } break;
     case E_TREASURE: me->treasures+=(a?a:1); break;
+    /* Burning-Tree Emissary se paga sola: entra, devuelve su mana y permite encadenar
+       otra criatura el mismo turno. Modelarla como un 2/2 vainilla dejaba al arquetipo
+       10 puntos por debajo de su winrate real. El mana va al pozo flotante, que se
+       vacia al final del turno: no es un Tesoro. */
+    case E_ETB_MANA: { int q=(a?a:1); me->treasures+=q; me->flot+=q; } break;
     case E_AMASS: { if(me->army<0){ if(me->nbf<BFMAX){ int i=me->nbf++; me->bf[i]=def; me->tap[i]=0;
             me->sick[i]=1; me->ctr[i]=0; me->eqp[i]=0; me->army=i; } }
         if(me->army>=0) me->ctr[me->army]+=a; } break;
@@ -1110,6 +1119,8 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
     if(oth->life<=0){ ACC(); if(oth==&B) ST_win_dmg++; else ST_lose_dmg++;
       if(TJ_ON) fprintf(stderr,"@J {\"fin\":\"%s\",\"turno\":%d}\n", oth==&B?"A":"B", turn);
       return (oth==&B); }
+    /* el mana flotante no sobrevive al turno; los Tesoros si */
+    if(cur->flot){ cur->treasures -= cur->flot; if(cur->treasures<0) cur->treasures=0; cur->flot=0; }
     P*t=cur;cur=oth;oth=t;
   }
   ACC(); ST_timeout++;
