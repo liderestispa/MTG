@@ -100,6 +100,37 @@
    "p1": 2,
    "p2": 2,
    "tipo_linea": "Creature"
+  },
+  {
+   "nombre": "retro_lava_dart",
+   "patron": "flashback-sacrifice a mountain",
+   "efecto": "DMG_ANY",
+   "activo": false,
+   "nota": "La retrospectiva de Lava Dart es literalmente un segundo Lava Dart: sacrificas una Montana y vuelves a hacer 1 de dano. Dos instancias de 1 es la lectura EXACTA de la carta (por eso mata dos x/1), no una aproximacion. Cae en eff2 y apply() despacha E_DMG_ANY en cualquier ranura (sim.c:479), asi que el motor la lee. Es la mejor apuesta del lote por direccion: Mono Red Madness es el mazo que mas des [agente B; 4 copias: Lava Dart 4x (pauper/Mono Red Madness)]",
+   "p1": 1
+  },
+  {
+   "nombre": "vida_por_permanente_sacrificado",
+   "patron": "you gain life equal to the sacrificed permanent's mana value",
+   "efecto": "LIFEGAIN",
+   "activo": false,
+   "nota": "Reckoner's Bargain se lee hoy como 'roba dos' y se deja la ganancia de vida entera. p1=2 aproxima el valor manico del permanente sacrificado en un mazo de afinidad (Ichor Wellspring, Blood Fountain, Chromatic Star: 1-2). Es la hermana del patron 'vida_igual_a_su_fuerza' que ya esta en el archivo, y no colisiona con el: probado contra el banco, el patron generico 'gain life equal to' casa 2 cartas  [agente B; 4 copias: Reckoner's Bargain 4x (pauper/Grixis Affinity)]",
+   "p1": 2
+  },
+  {
+   "nombre": "tuck_segundo_desde_arriba",
+   "patron": "puts it into their library second from the top",
+   "efecto": "BOUNCE",
+   "activo": false,
+   "nota": "Deem Inferior sale hoy completamente EN BLANCO y es la unica carta de Blue Terror que lo hace: 'the owner of target nonland permanent puts it into their library second from the top or on the bottom' es un rebote mejorado, y la regla de BOUNCE actual pide 'return target ... to its owner', que no casa. Existe una rama vecina ('puts it on the top/bottom') que tampoco llega. Direccion correcta (Blue T [agente B; 2 copias: Deem Inferior 2x (pauper/Blue Terror)]"
+  },
+  {
+   "nombre": "bonus_por_artefacto",
+   "patron": "as long as you control an artifact, this creature gets \\+(\\d+)/\\+\\d+",
+   "efecto": "COND_BUFF",
+   "activo": false,
+   "nota": "MIDELA LA ULTIMA, DESPUES de las dos de Madness, y no te sorprendas si empeora. Hallazgo aparte del que hay que dejar constancia: esta carta NO aparece en out/cobertura_banco.json. cobertura_texto.py exige que la frase tenga un verbo de su lista VERBO y 'gets +1/+0 and has haste' no tiene ninguno, asi que las 4 copias son invisibles para la cola de trabajo aunque el motor las juegue como un 1/2 va [agente B; 4 copias: Goblin Tomb Raider 4x (pauper/Mono Red Rally)]",
+   "p1": 1
   }
  ]
 }
