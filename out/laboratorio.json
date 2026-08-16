@@ -1,5 +1,5 @@
 {
- "probadas": 25,
+ "probadas": 26,
  "entradas": [
   {
    "spec": "REGLA_SOLO=tapdown_multiple",
@@ -768,6 +768,39 @@
     1.171,
     1.373,
     1.283
+   ]
+  },
+  {
+   "spec": "BLOQ_LIBRE=0",
+   "media": 0.0501,
+   "sd": 0.0141,
+   "se": 0.0047,
+   "z_exigido": 3.102,
+   "n_probadas": 26,
+   "confirmacion": null,
+   "veredicto": "empeora",
+   "motivo": "+0.050 significativo",
+   "base": [
+    1.27,
+    1.358,
+    1.302,
+    1.299,
+    1.246,
+    1.346,
+    1.074,
+    1.291,
+    1.253
+   ],
+   "variante": [
+    1.332,
+    1.422,
+    1.375,
+    1.338,
+    1.299,
+    1.378,
+    1.123,
+    1.334,
+    1.29
    ]
   }
  ]

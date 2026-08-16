@@ -61,6 +61,9 @@ static int PEN_NOTARGET=15, W_TARGET=50;
    Con el activado el ajuste a los winrates reales empeora (residuo 4.0 -> 8.0):
    el reparto de dano y la IA de ataque no son lo bastante finos para aprovecharlo. */
 static int GANG_BASE=10, GANG_ON=0;
+/* el atacante cuenta cuantos bloqueadores quedan LIBRES, en vez de suponer que el
+   defensor puede bloquear a todos a la vez. Ablacion: BLOQ_LIBRE=0. */
+static int BLOQ_LIBRE=1;
 /* Umbrales de la politica de bloqueo, ajustados por descenso coordenada-a-coordenada
    contra la calibracion del meta (11.07 -> 10.35). No son "juego optimo": son los
    valores que reproducen mejor los resultados reales. */
@@ -931,8 +934,25 @@ static void combat(P*me,P*opp){
     }
     int racing  = (opp->life <= P_*2) || (ncreat(opp)==0);
     int behind  = (me->life < opp->life - 6);
-    if(lethalblk>0 && !racing) continue;              /* no regalar criaturas */
-    if(tradeblk>0 && !racing && !behind && d->cmc >= 4) continue; /* no cambiar mi bomba por su 2-drop */
+    /* CADA criatura bloquea a UN atacante. Si ya declare tantos atacantes como
+       bloqueadores pueden pararme, este pasa si o si y da igual que lo maten: no queda
+       nadie libre para bloquearlo.
+
+       Sin esto, cada criatura decidia por su cuenta mirando si EXISTE un bloqueador que
+       la mate, o sea razonando como si el defensor pudiera bloquearlas a todas, y un
+       ejercito entero se quedaba en casa ante un solo bloqueador grande. Medido en
+       sintetico: 24 criaturas 1/1 con prisa contra 16 muros 3/3 con defensor daban 0%
+       de winrate y CERO danio en 20 turnos; contra muros 0/3, que no las matan, el
+       mismo mazo ganaba el 100% en 7,4 turnos.
+
+       n_disponibles ya respeta volar, asi que sirve mejor que def_untapped, que cuenta
+       a todos. Ablacion: BLOQ_LIBRE=0. */
+    int hay_bloqueador_libre = (na < n_disponibles);
+    if(BLOQ_LIBRE && !hay_bloqueador_libre) { /* pasa: no queda quien lo bloquee */ }
+    else {
+      if(lethalblk>0 && !racing) continue;              /* no regalar criaturas */
+      if(tradeblk>0 && !racing && !behind && d->cmc >= 4) continue; /* no cambiar mi bomba por su 2-drop */
+    }
     atk[na++]=i;
     if(!(d->kw&K_VIG)) me->tap[i]=1;
   }
@@ -1269,6 +1289,7 @@ int main(void){
   { const char*e1=getenv("PEN_NOTARGET"); if(e1) PEN_NOTARGET=atoi(e1);
     const char*e2=getenv("W_TARGET"); if(e2) W_TARGET=atoi(e2);
     const char*e3=getenv("DISABLE_EFF"); if(e3) DISABLE_EFF=atoi(e3);
+    const char*bl=getenv("BLOQ_LIBRE"); if(bl) BLOQ_LIBRE=atoi(bl);
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
     const char*e6=getenv("HEXWARD_ON"); if(e6) HEXWARD_ON=atoi(e6);
