@@ -117,6 +117,39 @@ fantasma de la semilla canónica. Los defaults compilados se quedan.
 > Cualquier "mejora" menor que eso es ruido: pásala por `src/valida_semillas.py` antes de
 > adoptarla. Ahí se han caído tres cambios que eran más correctos según las reglas.
 
+## Seis cambios correctos que ajustan peor: el patron
+
+Esto ya no es anecdota y conviene leerlo antes de proponer nada. Seis cambios que son
+mas fieles a las reglas de Magic que el motor, implementados y medidos, y los seis
+empeoran el ajuste contra dato real:
+
+| cambio | ablacion | efecto |
+|---|---|---|
+| Bloqueo en grupo | `GANG_ON=1` | residuo 4,0 → 8,0 |
+| Burning-Tree Emissary se paga sola | `ETBMANA_ON=1` | +0,015 |
+| Recursion de cementerio | `RECUR_ON=1` | neutro |
+| Politica aprendida por autojuego | `POLNET=…` | −0,066 antes de arreglar el motor, **+0,025 despues** |
+| Fichas como criaturas de verdad | `FICHAS_REALES=1` | +0,94, y re-tunear solo recupera 0,12 |
+| Sin objetivo legal no se lanza (601.2c) | `NOTARGET_DURO=1` | +1,54 |
+
+Y en el otro lado, lo que SI funciona son siempre lecturas de texto que faltaban: costes
+alternativos, locura, dano a cada oponente, drenaje de vida, el retroceso de Lava Dart.
+Ninguna toca la politica de juego.
+
+**La lectura, y es incomoda.** Cuando el motor deja de leer una carta a medias, gana. Cuando
+se le corrige *como juega*, pierde. Eso sugiere que sus heuristicas de juego estan
+ajustadas encima de sus propios errores, y que el ajuste global se sostiene por
+compensacion mutua, no porque cada pieza sea correcta.
+
+La hipotesis obvia —"basta con re-tunear encima"— se probo con el caso mas claro, las
+fichas, y **quedo refutada**: el descenso completo sobre los diez parametros recupero
+0,124 de 1,084, o sea el 11%.
+
+Consecuencia practica: **antes de implementar una mejora de reglas, pregunta si toca
+como se LEE una carta o como se JUEGA.** Lo primero suele pagar. Lo segundo casi nunca, y
+conviene medirlo con una ablacion desde el principio en vez de adoptarlo y descubrirlo
+despues.
+
 ## Trampas ya encontradas (no las repitas)
 
 La lista larga, con síntoma y arreglo de cada una, está en `docs/trampas.md`. Ese archivo manda;

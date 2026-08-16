@@ -64,6 +64,24 @@ static int GANG_BASE=10, GANG_ON=0;
 /* el atacante cuenta cuantos bloqueadores quedan LIBRES, en vez de suponer que el
    defensor puede bloquear a todos a la vez. Ablacion: BLOQ_LIBRE=0. */
 static int BLOQ_LIBRE=1;
+/* APAGADO POR DEFECTO: NOTARGET_DURO=1 para activarlo.
+   Por reglas (601.2c) un hechizo que exige objetivo no se puede lanzar sin objetivo
+   legal, y el motor los lanzaba: PEN_NOTARGET=15 no alcanza la distancia al suelo
+   CAST_FLOOR=-20, asi que una remocion que puntua 12-14 quedaba en -3 y pasaba. Medido
+   por el agente: 2,85 cartas por partida tiradas al vacio en Four-Color vs Mardu.
+
+   Impedirlo empeora muchisimo, y en los TRES formatos:
+       apagado (motor de hoy)                    1,270
+       bloqueando solo sin objetivo legal        2,808
+       bloqueando tambien lo que no mata         2,813
+   La distincion entre "no hay objetivo" y "hay pero no muere" resulto indiferente: el
+   danio viene de impedir el lanzamiento, no de cual se impide. El residuo de Brawl pasa
+   de 2,06 a 5,24.
+
+   Sin explicacion comprobada todavia. La sospecha es que el motor no sabe descartar ni
+   reordenar la mano, asi que la remocion retenida se queda ocupando sitio y desplaza
+   decisiones que si valian; pero es hipotesis, no medicion. */
+static int NOTARGET_DURO=0;
 /* APAGADO POR DEFECTO: FICHAS_REALES=1 para activarlo.
    Las fichas como criaturas de verdad es lo CORRECTO segun las reglas, y aun asi hunde
    el ajuste. Medido, y no es interaccion con BLOQ_LIBRE, es por si mismo:
@@ -840,6 +858,7 @@ static void cast_phase(P*me,P*opp,int main2){
       if(!payable(me,d,me->treasures)) continue;
       SPARE_MANA = untapped_count(me) - d->cmc; if(SPARE_MANA<0) SPARE_MANA=0;
       int v=d->score;
+      int imposible=0;   /* exige objetivo y no lo tiene: no se puede lanzar */
       if(d->typ==T_INST && !main2) v-=2;                  /* prefiere guardar instantaneos */
       /* RESERVA DURA de mana para interaccion instantanea.
          Se SALTA el candidato (no se rompe el bucle) para que el mazo pueda
@@ -873,7 +892,29 @@ static void cast_phase(P*me,P*opp,int main2){
         if(es_rem && d->typ!=T_CREA){
           int t = (d->eff==E_DESTROY||d->eff==E_EXILE) ? biggest_threat(opp)
                                                        : best_killable(opp,d->p1);
-          if(t<0) v -= PEN_NOTARGET;                        /* nada que matar */
+          /* Por reglas (601.2c) un hechizo que exige objetivo NO se puede lanzar sin
+             objetivo legal. Aqui se lanzaba igual: PEN_NOTARGET=15 es menor que la
+             distancia al suelo CAST_FLOOR=-20, asi que una remocion que puntua 12-14
+             quedaba en -3 y pasaba el corte. La carta se iba de la mano y apply() no
+             hacia nada porque biggest_threat devolvia -1.
+
+             Medido por el agente: 2,85 cartas por partida tiradas al vacio en
+             Four-Color vs Mardu, 2,27 en Izzet vs Dimir. En sintetico, 20 remociones
+             contra un rival sin criaturas se lanzaban 13,12 veces por partida y
+             vaciaban la mano matando cero.
+
+             Con NOTARGET_DURO se marca imposible en vez de penalizar, que es la regla
+             de verdad. Ablacion: NOTARGET_DURO=0 vuelve a la penalizacion blanda. */
+          if(t<0){
+            /* OJO a la diferencia, que la primera version se comio: t<0 significa "no
+               hay nada que MATAR", y eso pasa en dos casos muy distintos. Si el rival
+               no tiene criaturas, no hay objetivo legal y por 601.2c el hechizo no se
+               puede lanzar. Pero si tiene criaturas y solo pasa que no las mata, el
+               objetivo SI es legal y lanzarlo es una mala decision, no una ilegal.
+               Bloquear los dos casos disparo el objetivo de 1,270 a 2,813. */
+            if(NOTARGET_DURO && ncreat(opp)==0) imposible = 1;
+            else v -= PEN_NOTARGET;                         /* nada que matar */
+          }
           else {
             int val = pw(opp,t)*2 + th(opp,t);
             if(D[opp->bf[t]].kw&K_FLY) val+=3;
@@ -905,6 +946,7 @@ static void cast_phase(P*me,P*opp,int main2){
         }
       }
       if(d->typ==T_CREA) v+=3;
+      if(imposible) continue;      /* regla 601.2c */
       /* correccion aprendida (POLNET). Con pesos en cero no cambia nada, asi que el
          punto de partida del entrenamiento es exactamente esta heuristica. */
       if(PN_ON && (PN_LADO || me==(P*)PLAYER_A))
@@ -1355,6 +1397,7 @@ int main(void){
     const char*e2=getenv("W_TARGET"); if(e2) W_TARGET=atoi(e2);
     const char*e3=getenv("DISABLE_EFF"); if(e3) DISABLE_EFF=atoi(e3);
     const char*bl=getenv("BLOQ_LIBRE"); if(bl) BLOQ_LIBRE=atoi(bl);
+    const char*nd=getenv("NOTARGET_DURO"); if(nd) NOTARGET_DURO=atoi(nd);
     const char*fr=getenv("FICHAS_REALES"); if(fr) FICHAS_REALES=atoi(fr);
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
