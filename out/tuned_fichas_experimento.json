@@ -1,0 +1,24 @@
+{
+ "objetivo": 2.23,
+ "ngames": 2000,
+ "efectivo": {
+  "W_PRESSURE": 0,
+  "W_TARGET": 0,
+  "TH_TRADE": -4,
+  "TH_PERFECT": 24,
+  "TH_WALL": 0,
+  "TH_BADBLOCK": -14,
+  "RESERVE_MAX": 2,
+  "SWEEP_MIN": 3,
+  "PEN_NOTARGET": 15,
+  "WARD_COST": 1
+ },
+ "override": {
+  "W_PRESSURE": 0,
+  "W_TARGET": 0,
+  "RESERVE_MAX": 2,
+  "SWEEP_MIN": 3,
+  "WARD_COST": 1
+ },
+ "_nota": "efectivo = lo que hay que reproducir. override = lo que difiere del default compilado en sim.c; si adoptas un override, hornéalo como default. Valida ANTES con src/valida_semillas.py: el descenso mide con una sola semilla y propone SWEEP_MIN=3 en cada campaña, pero no sobrevive a semillas nuevas."
+}
