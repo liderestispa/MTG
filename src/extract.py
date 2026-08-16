@@ -196,8 +196,13 @@ def parse_card(c):
     # ---- pierde la mitad de la vida ----
     if re.search(r'they lose half their life', low):
         setp(E['DEATH_DMG'], 6)
-    # ---- motores de robo por mantenimiento (Dark Confidant y similares) ----
-    if re.search(r'at the beginning of your upkeep.*(put that card into your hand|draw)', low):
+    # ---- motores de robo recurrente (Dark Confidant, The Arkenstone y similares) ----
+    # OJO: no todos disparan en el mantenimiento. "al comienzo de tu paso final" es
+    # igual de bueno y se estaba perdiendo (The Arkenstone robaba una carta por turno
+    # y el motor no la veia).
+    if re.search(r'at the beginning of (?:your|each) (?:upkeep|end step|draw step|'
+                 r'precombat main phase|postcombat main phase)[^.]*?'
+                 r'(?:put that card into your hand|draw)', low):
         setp(E['UPKEEP_DRAW'], 1)
     # ---- habilidad activada repetible de pump (Timberwatch Elf) ----
     if re.search(r'\{t\}:\s*target creature gets \+', low):

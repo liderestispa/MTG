@@ -1,0 +1,2 @@
+sta cal 2.38 (r=+0.15 x5.4) | pau cal 2.66 (r=+0.74 x2.9) | bra resid  2.40
+OBJETIVO 2.540
