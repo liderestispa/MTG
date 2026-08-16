@@ -30,15 +30,35 @@ OBJETIVO_ESPERADO = 1.547     # actualizalo cuando adoptes un cambio de motor
 TOLERANCIA = 0.02             # ruido de semilla del objetivo
 
 
+LOG = 'out/orquestador.log'
+
+
 def ejecuta(args, minutos=None):
+    """Corre una fase VOLCANDO la salida al log segun sale.
+
+    Antes usaba capture_output, que retiene todo hasta que la fase acaba: con un
+    entrenamiento de ocho horas eso son ocho horas a ciegas. Ahora se puede seguir con
+    `Get-Content out/orquestador.log -Wait` o con `python src/vigilar.py --seguir`.
+    """
     t = time.time()
     env = dict(os.environ, PYTHONUTF8='1')
+    with io.open(LOG, 'a', encoding='utf-8', errors='replace') as f:
+        f.write(f"\n===== {datetime.datetime.now():%H:%M:%S}  {' '.join(args)}\n")
+        f.flush()
+        try:
+            p = subprocess.run([sys.executable, '-u'] + args, stdout=f,
+                               stderr=subprocess.STDOUT, env=env,
+                               timeout=minutos * 60 if minutos else None)
+            rc = p.returncode
+        except subprocess.TimeoutExpired:
+            f.write('\n[tiempo agotado]\n'); rc = -1
     try:
-        p = subprocess.run([sys.executable] + args, capture_output=True, text=True,
-                           env=env, timeout=minutos * 60 if minutos else None)
-        return p.stdout + p.stderr, time.time() - t, p.returncode
-    except subprocess.TimeoutExpired as e:
-        return (e.stdout or '') + '\n[tiempo agotado]', time.time() - t, -1
+        with io.open(LOG, encoding='utf-8', errors='replace') as f:
+            texto = f.read()
+        texto = texto[texto.rfind(f"===== ") if '=====' in texto else 0:]
+    except OSError:
+        texto = ''
+    return texto, time.time() - t, rc
 
 
 def objetivo_actual():

@@ -35,7 +35,11 @@ sys.path.insert(0, 'src'); sys.path.insert(0, 'data')
 from valida_semillas import con_variante
 
 REGISTRO = 'out/laboratorio.json'
-SEMILLAS_DECISION    = [1234567, 777001, 20260816, 424242, 99881177]
+# Nueve semillas y no cinco: con la correccion por comparaciones multiples, cinco no dan
+# potencia para nada por debajo de ~0,08, y la primera politica aprendida se quedo a las
+# puertas con -0,070. El error tipico baja con la raiz del numero de semillas.
+SEMILLAS_DECISION    = [1234567, 777001, 20260816, 424242, 99881177,
+                        13579, 246810, 55501, 909091]
 SEMILLAS_CONFIRMACION = [31337, 606060, 8112024]
 NGAMES = 2000
 ALFA = 0.05

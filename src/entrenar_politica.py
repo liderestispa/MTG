@@ -35,8 +35,9 @@ NPAR = NH * NIN + NH + NH + 1          # 229 pesos
 POB      = 40        # candidatos por generacion
 ELITE    = 8         # cuantos sobreviven
 NGAMES   = 300       # partidas por enfrentamiento
-SIGMA0   = 0.35
-SUAVE    = 0.30      # cuanto se mueve la media hacia la elite
+SIGMA0    = 0.35
+SIGMA_MIN = 0.03     # suelo; al tocarlo se reinicia en vez de quedarse ahi
+SUAVE     = 0.30     # cuanto se mueve la media hacia la elite
 FMT      = 'pauper'  # formato de entrenamiento: es el unico validado
 
 # Cuanta maquina se usa. Por defecto un TERCIO de los nucleos, no todos: esto esta
@@ -98,7 +99,7 @@ def main():
     print(f"heuristica actual (pesos a cero): {base*100:.3f}%   "
           f"| poblacion {POB}, elite {ELITE}, {NGAMES} partidas, {nucleos} nucleos", flush=True)
 
-    mejor_v, mejor_f = [0.0] * NPAR, base
+    mejor_v, mejor_f, reinicios = [0.0] * NPAR, base, 0
     for g in range(1, gens + 1):
         if limite and time.time() > limite:
             print("tiempo agotado"); break
@@ -115,7 +116,19 @@ def main():
             m = sum(col) / ELITE
             var = sum((x - m) ** 2 for x in col) / ELITE
             mu[k]    = (1 - SUAVE) * mu[k] + SUAVE * m
-            sigma[k] = max(0.03, (1 - SUAVE) * sigma[k] + SUAVE * math.sqrt(var))
+            sigma[k] = max(SIGMA_MIN, (1 - SUAVE) * sigma[k] + SUAVE * math.sqrt(var))
+
+        # ---- reinicio cuando la distribucion colapsa ----
+        # CEM converge y deja de explorar: en la primera corrida sigma toco el suelo
+        # hacia la generacion 193 y las siete horas siguientes no habrian aportado nada.
+        # Al detectarlo se vuelve a inflar sigma alrededor de la mu actual, que es un
+        # reinicio en caliente: se conserva lo aprendido y se recupera la exploracion.
+        if sum(sigma) / NPAR <= SIGMA_MIN * 1.15:
+            reinicios += 1
+            infla = SIGMA0 * (0.7 ** min(reinicios, 4))   # cada vez algo mas fino
+            sigma = [infla] * NPAR
+            print(f"  --- reinicio {reinicios}: sigma colapsada, reinflada a {infla:.3f} "
+                  f"alrededor de la mu actual ---", flush=True)
 
         fmu = evalua((mu, semilla + 1))        # la media, en semilla distinta a la elite
         if fmu > mejor_f: mejor_f, mejor_v = fmu, list(mu)
