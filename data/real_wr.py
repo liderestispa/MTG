@@ -47,6 +47,40 @@ REAL_FIELD = {
  },
 }
 
+# --- AVISO SERIO SOBRE REAL_FIELD DE PAUPER --------------------------------------
+# El 17-ago-2026 se encontro mtgdecks.net/Pauper/winrates, que agrega ~77.000 partidas
+# entre 2026-02-18 y 2026-08-17. Dos ordenes de magnitud mas que las 180-640 listas
+# semanales que se estan usando aqui. Sus numeros estan en data/wr_mtgdecks_ago2026.json.
+#
+#   arquetipo           banco    mtgdecks   partidas
+#   Grixis Affinity     57,2%     52,0%       6.042
+#   Elves               56,1%     51,0%       4.138
+#   Mono Red Rally      46,4%     50,0%       3.576
+#   Blue Terror         52,0%     49,0%       4.266
+#   Mono Red Madness    53,0%     51,0%       8.107
+#   Jund Wildfire       49,7%     50,0%       4.167
+#
+# Lo grave no son las diferencias: es que la DISPERSION cae de 3,66 puntos a 0,96.
+# Comprobado que no es artefacto de espejos: el espejo de Madness son 792 de 8.107
+# partidas, y al 50% arrastra el total de 51,1% a 51,0%, una decima.
+#
+# Si Pauper es de verdad un formato plano de +-1 punto, entonces el spread de este banco
+# es en buena parte RUIDO de muestras chicas, y la correlacion r=+0,99 que el motor
+# presume esta correlacionando contra ese ruido. Es exactamente el caso que docs/
+# metodologia.md llama "formato imposible": si los winrates reales varian menos de 2
+# puntos, la senal es mas chica que el ruido y ningun modelo gana.
+#
+# NO se ha cambiado REAL_FIELD todavia, por dos motivos honestos:
+#   1. Son poblaciones distintas. mtgdecks mezcla MTGO y papel y todos los tamanios de
+#      evento; el banco usa Challenge de MTGO, no-espejo. La pagina tiene filtros
+#      (MTGO/TABLETOP, 32+ jugadores, excluir baneadas) que hay que aplicar antes.
+#   2. Hay que sacar la matriz de enfrentamientos completa y calcular el winrate SIN
+#      espejo, que es lo que este banco define.
+#
+# Es probablemente el trabajo mas valioso que queda en todo el proyecto: si el dato nuevo
+# se sostiene, baja el suelo de ruido de 3,25 a menos de 1 punto Y obliga a revisar todo
+# lo que se adopto contra el banco viejo.
+
 # --- mediciones SEMANALES del mismo arquetipo -------------------------------------
 # Cada lista son winrates del mismo mazo en semanas distintas de MTGO. Estaban solo como
 # comentario al lado de REAL_FIELD, y sin ellas no se puede estimar el suelo de ruido:
