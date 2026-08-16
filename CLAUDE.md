@@ -73,6 +73,21 @@ propio ruido de muestreo. Medido sobre las series semanales de `REAL_SEMANAL`:
 Y el 69% de ese suelo lo aportan los dos arquetipos con **una sola medición** (Grixis Affinity,
 Elves): la forma barata de bajarlo es conseguirles más semanas de dato, no tocar el modelo.
 
+**Cuidado con leer esto como "el motor ya está bien".** El agregado está en el suelo, pero por
+arquetipo siguen quedando errores muy por encima de él, y se están compensando entre sí:
+
+| Arquetipo | Motor | Real | Error |
+|---|---|---|---|
+| Four-Color Control (Standard) | 33,2% | 53,0% | **−19,8** |
+| Mono Red Madness (Pauper) | 39,0% | 53,0% | **−14,0** |
+| Mono Red Rally (Pauper) | 36,4% | 46,4% | **−10,0** |
+| Elves (Pauper) | 62,3% | 56,1% | +6,2 |
+
+Los dos mono-rojos siguen 10-14 puntos infravalorados: tres o cuatro veces el suelo. O sea que
+el modelo sigue equivocándose de forma identificable. Lo que ya no se puede con este banco es
+**demostrar** que un arreglo ayudó, porque la mejora medible queda por debajo del ruido. La
+restricción es de dato, no de ideas.
+
 Standard y Brawl **no son calculables**: el suelo necesita mediciones repetidas del mismo
 arquetipo, y ninguno de los dos las tiene. Standard viene de un evento único (los Regional
 Championships) y Brawl solo tiene dos winrates sueltos de ladder. Es el mismo motivo por el que
@@ -121,7 +136,9 @@ esto es el resumen.
   se leen en dos, `E_UPKEEP_DRAW` se leía en una sola.
 - **El descenso mide con una sola semilla, así que encuentra mejoras que no existen.**
   `SWEEP_MIN=3` bajaba el objetivo de 2,543 a 2,534 y era ruido: con 5 semillas queda peor que
-  el default. Peor todavía, la "ganancia" venía entera del residuo de Brawl —2 datos reales—
+  el default. **Lo propuso otra vez en la campaña siguiente** (2,271 → 2,262) y volvió a caer
+  en la validación (+0,003, sd 0,029). Es un fantasma sistemático de la semilla canónica, no
+  un hallazgo: si `tune_real.py` te ofrece `SWEEP_MIN=3`, ya está descartado dos veces. Peor todavía, la "ganancia" venía entera del residuo de Brawl —2 datos reales—
   mientras la correlación de Standard caía de +0,16 a +0,07. **Mira los componentes, no el
   agregado, y pasa todo candidato por `src/valida_semillas.py`.**
 - **`out/tuned_real.json` guardaba solo los overrides, y se autoborraba.** Como el descenso deja

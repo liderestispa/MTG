@@ -68,8 +68,9 @@ efectivo={k:(int(v) if v is not None else base_c.get(k)) for k,v in estado.items
 registro={'objetivo': round(mejor*100, 3), 'ngames': NG,
           'efectivo': efectivo,
           'override': {k:int(v) for k,v in estado.items() if v is not None},
-          '_nota': 'efectivo = lo que hay que reproducir. override = lo que difiere del '
-                   'default compilado en sim.c; si adoptas un override, horneálo como default '
-                   'y valida antes con src/valida_semillas.py, que el descenso usa una sola semilla.'}
+          '_nota': 'efectivo = lo que hay que reproducir. override = lo que difiere del default '
+                   'compilado en sim.c; si adoptas un override, hornéalo como default. Valida '
+                   'ANTES con src/valida_semillas.py: el descenso mide con una sola semilla y '
+                   'propone SWEEP_MIN=3 en cada campaña, pero no sobrevive a semillas nuevas.'}
 print(json.dumps(registro, indent=1, ensure_ascii=False))
 json.dump(registro, open('out/tuned_real.json','w'), indent=1, ensure_ascii=False)
