@@ -128,9 +128,29 @@ def parse_card(c):
 
     # ---- ETB / disparos ----
     trig = 'enters' in low or 'when' in low or 'whenever' in low
-    m = re.search(r'(?:each opponent loses|target (?:player|opponent) loses) (\w+) life', low)
+    # "its controller loses N life" es la forma que usan las remociones con drenaje
+    # (Inevitable Defeat: exilia un permanente Y drena 3). Faltaba, y con ella se perdia
+    # el drenaje entero: el motor solo veia el exilio. Ablacion: DRAIN_CTRL=0.
+    _pat_drain = (r'(?:each opponent loses|target (?:player|opponent) loses) (\w+) life'
+                  if os.environ.get('DRAIN_CTRL') == '0' else
+                  r'(?:each opponent loses|target (?:player|opponent) loses|its controller loses) (\w+) life')
+    m = re.search(_pat_drain, low)
     if m: setp(E['ETB_DRAIN'], num(m.group(1), 2))
     m = re.search(r'draws? (\w+) cards?', low)
+    # "Roba 3, luego pon 2 de tu mano encima de tu biblioteca": la ventaja NETA es 1, no 3.
+    # Brainstorm es seleccion, no robo, y cobrarlo como tres cartas por un mana infla al
+    # arquetipo entero. Se deja en 1 y no en 0 porque la seleccion vale algo.
+    # APAGADO POR DEFECTO: NETDRAW=1 para activarlo. Medido +0,289, claramente peor.
+    # Tiene sentido: Blue Terror esta INFRAvalorado (-7,4), asi que quitarle valor a su
+    # motor de robo lo hunde mas. Seria el freno correcto solo si antes se sube el resto
+    # del mazo (coste efectivo de Cryptic Serpent y Tolarian Terror, ciclado de Lorien
+    # Revealed); suelto, empeora. Ablacion: NETDRAW=1.
+    if m and os.environ.get('NETDRAW') == '1':
+        _dev = re.search(r'put (\w+) cards? from your hand on top of your library', low)
+        if _dev:
+            _neto = max(1, num(m.group(1), 1) - num(_dev.group(1), 0))
+            low = re.sub(r'draws? \w+ cards?', f'draw {_neto} cards', low, count=1)
+            m = re.search(r'draws? (\w+) cards?', low)
     if m and 'opponent draws' not in low:
         if re.search(r'whenever .*(deals combat damage|attacks)', low): setp(E['DRAW_ON_DMG'], 1)
         elif trig or 'sorcery' in tl or 'instant' in tl: setp(E['ETB_DRAW'], num(m.group(1), 1))
@@ -172,8 +192,13 @@ def parse_card(c):
         p, tg = m.group(2), m.group(3)
         if p.isdigit() and tg.isdigit():
             setp(E['ETB_TOKEN'], num(m.group(1), 1), (int(p) << 4) | int(tg))
+    # El candado 'out[eff]==NONE' hacia que la ganancia de vida solo existiera en cartas
+    # que no hicieran nada mas. Jeskai Revelation gana 4 vidas y las perdia por tener el
+    # slot ocupado por el dano; Inevitable Defeat igual. setp ya elige la primera ranura
+    # libre de las tres, asi que el candado sobra. Ablacion: LIFEGAIN_ANY=0.
     m = re.search(r'you gain (\w+) life', low)
-    if m and out['eff'] == E['NONE']: setp(E['LIFEGAIN'], num(m.group(1), 2))
+    if m and (out['eff'] == E['NONE'] or os.environ.get('LIFEGAIN_ANY') != '0'):
+        setp(E['LIFEGAIN'], num(m.group(1), 2))
     if re.search(r'at the beginning of (your|each) upkeep', low) and re.search(r'lose[s]? \d+ life', low):
         mm = re.search(r'lose[s]? (\d+) life', low); setp(E['UPKEEP_DRAIN'], int(mm.group(1)))
     if re.search(r'search your library for a .*land', low): setp(E['RAMP'], 1)
@@ -503,6 +528,15 @@ def convert(c):
     _red = cost_reduction(c, _txt)
     if _red: gen = max(0, gen - _red)
     _cmc = int(c.get('cmc') or ff.get('cmc') or 0)
+    # APAGADO POR DEFECTO: CMCRED=1 para activarlo.
+    # La reduccion baja 'gen' —lo que se paga— pero no 'cmc', que es lo que el motor usa
+    # para DECIDIR: Cryptic Serpent queda pagable por 3 y valorado como un hechizo de 7.
+    # Propagarlo es mas coherente y aun asi mide +0,027 (peor) y, lo que mas pesa,
+    # DUPLICA la varianza entre semillas: sd 0,036 -> 0,061. Tiene sentido, porque esos
+    # bichos enormes salen mucho antes y las partidas se vuelven mas extremas. Queda
+    # apagado por la regla de no adoptar lo que no se puede demostrar.
+    if _red and os.environ.get('CMCRED') == '1':
+        _cmc = gen + sum(pips.values())
     # ---- locura: el coste que importa es el de locura, no el nominal ----
     # Fiery Temper vale {1}{R}{R} pero se lanza por {R} al descartarla, y Mono Red Madness
     # lleva once formas de descartar (Faithless Looting, Grab the Prize, Highway Robbery,
