@@ -1,31 +1,31 @@
 {
- "inicio": "2026-08-16T16:43:24",
+ "inicio": "2026-08-16T18:47:58",
  "horas": 6.0,
- "fase": "contrastando politica con dato real",
+ "fase": "entrenando (ciclo 1)",
  "ciclo": 1,
  "avisos": [],
- "actualizado": "2026-08-16T16:52:23",
- "objetivo_control": 1.547,
+ "actualizado": "2026-08-16T18:48:10",
+ "objetivo_control": 0.978,
  "cobertura": {
-  "blancas": 70,
-  "copias": 145,
+  "blancas": 71,
+  "copias": 151,
   "top": [
+   "6x Nihil Spellbomb",
    "6x Restless Reef",
    "5x Deep-Cavern Bat",
    "4x Superior Spider-Man",
    "4x Blood Fountain",
    "4x Masked Vandal",
    "4x Eddymurk Crab",
-   "4x Sunderflock",
-   "4x Great Hall of the Biblioplex"
+   "4x Sunderflock"
   ]
  },
  "minutos_restantes": 360,
  "laboratorio": {
-  "probadas": 23,
+  "probadas": 28,
   "veredictos": {
    "irrelevante": 3,
-   "empeora": 7,
+   "empeora": 12,
    "ruido": 6,
    "MEJORA": 7
   },
@@ -59,13 +59,5 @@
     "media": -0.0417
    }
   ]
- },
- "politica": {
-  "gen": 1850,
-  "base": 0.45754,
-  "mejor": 0.4803964761904763,
-  "reinicios": 41,
-  "sigma": 0.0404,
-  "ganancia_autojuego": 2.286
  }
 }

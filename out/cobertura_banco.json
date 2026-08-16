@@ -1,5 +1,23 @@
 [
  {
+  "carta": "Nihil Spellbomb",
+  "copias": 6,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Artifact",
+  "texto": "{T}, Sacrifice this artifact: Exile target player's graveyard. | When this artifact is put into a graveyard from the battlefield, you may pay {B}. | If you do, draw a card.",
+  "efectos": [
+   0,
+   0,
+   0
+  ]
+ },
+ {
   "carta": "Restless Reef",
   "copias": 6,
   "donde": [
@@ -1230,24 +1248,6 @@
   "texto": "Galvanic Blast deals 2 damage to any target. | Metalcraft — Galvanic Blast deals 4 damage instead if you control three or more artifacts.",
   "efectos": [
    48,
-   0,
-   0
-  ]
- },
- {
-  "carta": "Nihil Spellbomb",
-  "copias": 6,
-  "donde": [
-   "pauper/Grixis Affinity",
-   "pauper/Jund Wildfire"
-  ],
-  "categoria": "PARCIAL",
-  "frases": 3,
-  "ranuras": 1,
-  "tipo": "Artifact",
-  "texto": "{T}, Sacrifice this artifact: Exile target player's graveyard. | When this artifact is put into a graveyard from the battlefield, you may pay {B}. | If you do, draw a card.",
-  "efectos": [
-   3,
    0,
    0
   ]

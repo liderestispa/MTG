@@ -155,6 +155,15 @@
    "activo": false,
    "medir": false,
    "nota": "NO MEDIR ASI. Medido: 2,266 -> 2,412. El segundo robo llega al motor como si fuera inmediato, cuando en la realidad solo ocurre al morir el artefacto. Adelantarlo lo convierte en un cantrip de 2 cartas por 2 mana, que no es la carta. Ichor Wellspring, 2x en Jund. Una sola clausula cubre DOS eventos, asi que a lo largo de la partida roba dos veces y el motor le cuenta una. La regla anade el segundo robo en la ranura siguiente."
+  },
+  {
+   "nombre": "wildfire_rampa",
+   "patron": "destroy target land\\.\\s*its controller may search their library for a basic land card",
+   "efecto": "RAMP",
+   "p1": 1,
+   "activo": false,
+   "medir": false,
+   "nota": "NO MEDIR: la lectura es correcta pero el ARQUETIPO es el equivocado. Cleansing Wildfire esta solo en Jund Wildfire, y src/sensibilidad.py da Jund +0,186 por +2 puntos: subirlo EMPEORA el objetivo. Medido bien (sumada a las adoptadas, no en lugar de ellas): 0,978 -> 1,096. Comprobar la sensibilidad ANTES de implementar habria ahorrado el trabajo entero. Cleansing Wildfire, 4x en Jund Wildfire. El primer de Moxfield lo explica: se lanza sobre TUS PROPIAS tierras-artefacto indestructibles (Jund lleva 8, 4 Drossforge Bridge y 4 Slagwoods Bridge), asi que la tierra sobrevive, buscas una basica y ademas robas. Es Rampant Growth con cantrip por 2 mana y le da nombre al mazo. El motor solo veia el robo. E_RAMP es aproximacion conservadora: da un Tesoro de un uso, no una tierra permanente."
   }
  ]
 }

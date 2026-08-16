@@ -25,9 +25,13 @@ def reglas_extra(ruta='data/reglas_extra.json'):
     # es justo lo que hace el laboratorio al medir: las seis primeras candidatas dieron
     # +0,000 exacto por esto.
     if os.environ.get('REGLAS_OFF') == '1': return []
+    # REGLA_SOLO ANADE la regla nombrada a las que ya estan activas en el archivo; NO
+    # apaga las demas. Apagarlas era inofensivo cuando ninguna estaba adoptada, pero en
+    # cuanto hay reglas encendidas convierte cada medicion en "esta regla contra un motor
+    # distinto del real", y el numero deja de ser comparable con el objetivo vigente.
     solo = os.environ.get('REGLA_SOLO')
     for r in _REGLAS:
-        r['activo'] = (r['nombre'] == solo) if solo else r['_activo_archivo']
+        r['activo'] = r['_activo_archivo'] or (r['nombre'] == solo)
     return _REGLAS
 
 
