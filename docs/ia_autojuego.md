@@ -38,6 +38,44 @@ partidas.** Se adopta si y solo si baja el objetivo contra dato real, medido con
 El autojuego propone; el dato real dispone. Si la politica gana un 60% contra la
 heuristica y empeora el objetivo, se descarta.
 
+## Lo que midio la primera campana, y que cambia el diseno
+
+Seis horas de maquina, 1810 generaciones, cero intervencion. Dos resultados y el segundo
+importa mas que el primero.
+
+**Uno: el autojuego SI transfiere, y bastante.** La politica llego a +2,29 puntos de
+winrate sobre la heuristica y, medida contra dato real, dio negativo NUEVE veces
+seguidas, de -0,035 a -0,070, con las semillas de confirmacion acompanando. Eso no es
+casualidad: aprender a jugar mejor mejoraba el ajuste.
+
+**Dos: y aun asi no se adopto, porque cambio de signo.** En la misma sesion el
+laboratorio encontro dos reglas de extractor que si valian —el retroceso de Lava Dart y
+la ganancia de vida de Reckoner's Bargain, juntas -0,216—, y una vez adoptadas se
+remidio la politica contra el motor corregido: **+0,025, empeora**.
+
+La lectura es la que incomoda: **la politica no estaba jugando mejor, estaba compensando
+errores del modelo.** Lava Dart valia el doble de lo que el motor creia y la mitad de
+vida de Reckoner's Bargain no se contaba; la red aprendio a jugar alrededor de esos
+huecos y eso mejoraba el ajuste. Tapados los huecos como corresponde, su compensacion
+sobra y estorba.
+
+Consecuencias practicas, que no son opinables:
+
+- **Una politica aprendida caduca cada vez que se toca el modelo.** No es como una regla
+  de extractor, que se mide una vez y queda. Hay que remedirla despues de CADA cambio de
+  motor, y la respuesta puede invertirse.
+- **El orden correcto es: primero las reglas, despues la politica.** Entrenar sobre un
+  motor con huecos ensena a explotar los huecos. Cada regla adoptada invalida el
+  entrenamiento anterior.
+- **Ganar mas partidas de autojuego dejo de correlacionar con ajustar mejor.** Mientras
+  el autojuego subia de +1,76 a +2,29, el beneficio contra dato real se encogia de -0,070
+  a -0,042 y acabo en +0,025. La divergencia que este documento avisaba como riesgo esta
+  ahora medida.
+
+Por eso la regla de no adoptar por winrate de autojuego no era prudencia excesiva: era
+exactamente el filtro que hacia falta. Sin ella se habria desplegado una politica que
+hoy empeora el motor.
+
 ## Arquitectura
 
 No hay numpy ni torch en la maquina y no hacen falta. La red vive **en C, dentro de
