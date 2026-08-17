@@ -1,0 +1,2016 @@
+[
+ {
+  "carta": "Lake-town",
+  "copias": 6,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{2}{W}{U}, {T}, Sacrifice this land: Put two +1/+1 counters on target Human you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Hobbit Hole",
+  "copias": 5,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Enchanted River's Grasp",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Enchantment — Aura",
+  "texto": "When this Aura enters, tap enchanted creature and remove all counters from it. | Enchanted creature loses all abilities and doesn't untap during its controller's untap step.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Little Bear",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Bear",
+  "texto": "When this creature enters, untap another target creature you control. | If that creature is a Bear, put a +1/+1 counter on it.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Mirkwood Nurturer",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Elf Ranger",
+  "texto": "When this creature enters, return up to one other target permanent you control to its owner's hand. | If you do, put a +1/+1 counter on this creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Razor Rings",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Instant",
+  "texto": "Razor Rings deals 4 damage to target attacking or blocking creature. | You gain life equal to the excess damage dealt this way.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Great Fierce Bee",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Insect",
+  "texto": "Whenever one or more other creatures die, scry 1.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Elvenking's Harper",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Elf Bard",
+  "texto": "{4}{U}: Target creature can't be blocked this turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Goblin-town",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{2}{B}{R}, {T}, Sacrifice this land: Put two +1/+1 counters on target Goblin or Orc you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lakeshore Apothecary",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Cleric",
+  "texto": "Whenever you draw your second card each turn, put a +1/+1 counter on this creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Master's Councillors",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Advisor",
+  "texto": "Whenever you draw your second card each turn, target player mills three cards.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Vow to Erebor",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Instant",
+  "texto": "Untap target creature you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Giant's Boulder",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Artifact",
+  "texto": "When this artifact enters, scry 2. | {1}, {T}: Add one mana of any color. | {7}, {T}, Sacrifice this artifact: Destroy target permanent.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Vengeful Villagers",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Creature — Human Citizen",
+  "texto": "Whenever this creature attacks, choose target creature an opponent controls. | Tap it, then you may sacrifice an artifact or creature. | If you do, put a stun counter on the chosen creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Eagle of the Great Shelf",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Bird Soldier",
+  "texto": "Whenever this creature attacks, it gets +1/+1 until end of turn for each other creature you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Front Porch Sentries",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Goblin Soldier",
+  "texto": "When this creature dies, target creature an opponent controls gets -1/-1 until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Galion, Elvenking's Butler",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Elf Advisor",
+  "texto": "Whenever Galion attacks, choose up to one other target creature you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Gandalf, Spark Starter",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Avatar Wizard",
+  "texto": "When Gandalf enters, he deals 3 damage divided as you choose among one, two, or three targets.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Mirkwood",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{2}{B}{G}, {T}, Sacrifice this land: Put two +1/+1 counters on target Bear, Spider, or Wolf you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Gollum, Riddle Master",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 4,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Halfling Horror",
+  "texto": "Whenever an opponent casts a spell with mana value of the chosen quality, choose one that hasn't been chosen — | • Put a +1/+1 counter on Gollum. | • Each opponent loses 2 life and you gain 2 life. | • Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Lord of Pain",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 3,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Human Assassin",
+  "texto": "Your opponents can't gain life. | Whenever a player casts their first spell each turn, choose another target player. | The Lord of Pain deals damage equal to that spell's mana value to the chosen player.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Aang, the Last Airbender",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Human Avatar Ally",
+  "texto": "When Aang enters, airbend up to one other target nonland permanent. | Whenever you cast a Lesson spell, Aang gains lifelink until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Avatar's Wrath",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Sorcery",
+  "texto": "Choose up to one target creature, then airbend all other creatures. | Exile Avatar's Wrath.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Bilbo, Thief in the Night",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Halfling Rogue",
+  "texto": "Whenever Bilbo attacks, you may cast an artifact, instant, or sorcery spell from your graveyard. | If an instant or sorcery spell cast this way would be put into your graveyard, exile it instead.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Boiling Rock Rioter",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Human Rogue Ally",
+  "texto": "Tap an untapped Ally you control: Exile target card from a graveyard. | Whenever this creature attacks, you may cast an Ally spell from among cards you own exiled with this creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Bolg of the North",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Goblin Soldier",
+  "texto": "When Bolg enters, you may sacrifice another creature. | When you do, Bolg deals damage equal to that creature's power to another target creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Ember Island Production",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Sorcery",
+  "texto": "• Create a token that's a copy of target creature you control, except it's not legendary and it's a 4/4 Hero in addition to its other types. | • Create a token that's a copy of target creature an opponent controls, excep",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Honest Work",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Enchantment — Aura",
+  "texto": "When this Aura enters, tap enchanted creature and remove all counters from it. | Enchanted creature loses all abilities and is a Citizen with base power and toughness 1/1 and \"{T}: Add {C}\" named Humble Merchant.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "How to Start a Riot",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Instant — Lesson",
+  "texto": "Target creature gains menace until end of turn. | Creatures target player controls get +2/+0 until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Jeong Jeong, the Deserter",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Human Rebel Ally",
+  "texto": "Exhaust — {3}: Put a +1/+1 counter on Jeong Jeong. | When you next cast a Lesson spell this turn, copy it and you may choose new targets for the copy.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Joo Dee, One of Many",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Creature — Human Advisor",
+  "texto": "{B}, {T}: Surveil 1. | Create a token that's a copy of this creature, then sacrifice an artifact or creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Key to the Side-Door",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Artifact",
+  "texto": "{2}, {T}: Target creature can't be blocked this turn. | {1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lost Days",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Instant — Lesson",
+  "texto": "The owner of target creature or enchantment puts it into their library second from the top or on the bottom. | You create a Clue token.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Origin of Metalbending",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Instant — Lesson",
+  "texto": "• Destroy target artifact or enchantment. | • Put a +1/+1 counter on target creature you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Solstice Revelations",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Instant — Lesson",
+  "texto": "Exile cards from the top of your library until you exile a nonland card. | If you don't cast that card this way, put it into your hand.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Team Avatar",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Enchantment",
+  "texto": "Whenever a creature you control attacks alone, it gets +X/+X until end of turn, where X is the number of creatures you control. | {2}{W}, Discard this card: It deals damage equal to the number of creatures you control to",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Thorin, Mountain-king",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Dwarf Noble",
+  "texto": "When Thorin enters, attach any number of target Equipment you control to target creature you control. | When one or more Equipment become attached to that creature this way, that creature deals damage equal to its power ",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Tom, Bert, and William",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 2,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Troll",
+  "texto": "{1}, Sacrifice another creature: Draw cards equal to the sacrificed creature's power, then discard a card. | When Tom, Bert, and William die, if they were a creature, return them to the battlefield.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Avatar Enthusiasts",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Peasant Ally",
+  "texto": "Whenever another Ally you control enters, put a +1/+1 counter on this creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Beifong's Bounty Hunters",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Mercenary",
+  "texto": "Whenever a nonland creature you control dies, earthbend X, where X is that creature's power.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Bender's Waterskin",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Artifact",
+  "texto": "Untap this artifact during each other player's untap step.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Boiling Rock Prison",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{4}, {T}, Sacrifice this land: Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Desert Were-Worm",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Dragon Wurm",
+  "texto": "Whenever you attack with creatures with total power 12 or greater for the first time each turn, untap all attacking creatures.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Dragon-Cursed Halls",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{1}, {T}: Until end of turn, target creature gains \"Whenever this creature deals combat damage to a player, create a Treasure token.\"",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Dwalin, Weaponmaster",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Dwarf Warrior",
+  "texto": "Whenever Dwalin enters or attacks, put a hone counter on each Equipment you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Dwarven Mauler",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Dwarf Warrior",
+  "texto": "Equip abilities you activate that target this creature cost {2} less to activate.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Earth Kingdom Jailer",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Soldier Ally",
+  "texto": "When this creature enters, exile up to one target artifact, creature, or enchantment an opponent controls with mana value 3 or greater until this creature leaves the battlefield.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Earth Village Ruffians",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Soldier Rogue",
+  "texto": "When this creature dies, earthbend 2.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Elvenking's Halls",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{2}{G}{U}, {T}, Sacrifice this land: Put two +1/+1 counters on target Elf you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Fire Nation Raider",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Soldier",
+  "texto": "Raid — When this creature enters, if you attacked this turn, create a Clue token.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Fire Sages",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Cleric",
+  "texto": "{1}{R}{R}: Put a +1/+1 counter on this creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Foggy Bottom Swamp",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{4}, {T}, Sacrifice this land: Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Glider Kids",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Pilot Ally",
+  "texto": "When this creature enters, scry 1.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Guardian of the Halls",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Elf Soldier",
+  "texto": "{5}{G}{G}: Put three +1/+1 counters on this creature.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Iron Hills Stalwart",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Dwarf Warrior",
+  "texto": "When this creature enters, attach target Equipment you control to up to one target creature you control.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Jasmine Dragon Tea Shop",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{5}, {T}: Create a 1/1 white Ally creature token.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Kyoshi Village",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{4}, {T}, Sacrifice this land: Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Lake-town Toymaker",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Artificer",
+  "texto": "At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Merchant of Many Hats",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Peasant Ally",
+  "texto": "{2}{B}: Return this card from your graveyard to your hand.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Misty Palms Oasis",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{4}, {T}, Sacrifice this land: Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Nori, Teller of Tales",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Legendary Creature — Dwarf Bard",
+  "texto": "Whenever Nori attacks, target attacking creature gains first strike until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "North Pole Gates",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land",
+  "texto": "{4}, {T}, Sacrifice this land: Draw a card.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Phoenix Fleet Airship",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Artifact — Vehicle",
+  "texto": "At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Platypus-Bear",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Platypus Bear",
+  "texto": "When this creature enters, mill two cards.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Rebellious Captives",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Peasant Ally",
+  "texto": "Exhaust — {6}: Put two +1/+1 counters on this creature, then earthbend 2.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Secret Tunnel",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Cave",
+  "texto": "{4}, {T}: Two target creatures you control that share a creature type can't be blocked this turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Snowslope Hunter",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Goblin Ranger",
+  "texto": "Sacrifice another creature or artifact: Exile the top card of your library.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Lonely Mountain",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Land — Mountain",
+  "texto": "{4}{R}, {T}: Create a 2/2 red Dwarf creature token.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Troop of Ponies",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Horse",
+  "texto": "{2}, {T}, Sacrifice this creature: Search your library for up to two basic land cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Vindictive Warden",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Creature — Human Soldier",
+  "texto": "{3}: This creature deals 1 damage to each opponent.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Watery Grasp",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Enchantment — Aura",
+  "texto": "Enchanted creature doesn't untap during its controller's untap step.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Yip Yip!",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "BLANCA",
+  "frases": 1,
+  "ranuras": 0,
+  "tipo": "Instant — Lesson",
+  "texto": "Target creature you control gets +2/+2 until end of turn.",
+  "efectos": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Warg Tactics",
+  "copias": 5,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Destroy target creature with flying. | • Put a +1/+1 counter on target creature you control.",
+  "efectos": [
+   7,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Confusticate and Bebother",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Counter target spell unless its controller pays {4}. | • Draw two cards, then discard a card.",
+  "efectos": [
+   15,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Moment of Glory",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Put a +1/+1 counter on target creature you control. | If this spell was cast from a graveyard, also put a +1/+1 counter on each other creature you control.",
+  "efectos": [
+   24,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Pinecone Strike",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Pinecone Strike deals 3 damage to target creature. | If that creature would die this turn, exile it instead. | • Destroy target artifact token.",
+  "efectos": [
+   8,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Plunder the Trollshaws",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Draw a card. | If this spell was cast from a graveyard, draw two cards instead.",
+  "efectos": [
+   3,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Stir Up Trouble",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature or pay {4}. | Destroy target creature.",
+  "efectos": [
+   7,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Burn, Burn, Tree and Fern",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Enchantment — Saga",
+  "texto": "I — This Saga deals 6 damage to target creature an opponent controls. | II — Destroy target artifact an opponent controls. | III, IV — Add {R}.",
+  "efectos": [
+   8,
+   20,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Dáin's Company",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Creature — Dwarf Warrior",
+  "texto": "When this creature enters, look at the top four cards of your library. | You may reveal a Dwarf or Equipment card from among them and put it into your hand. | Put the rest on the bottom of your library in a random order.",
+  "efectos": [
+   3,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Elven Raft-Steerer",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Creature — Elf Pilot",
+  "texto": "Landfall — Whenever a land you control enters, choose one — | • Tap target creature an opponent controls. | • Untap target creature you control.",
+  "efectos": [
+   50,
+   25,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Getaway Barrel",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Artifact",
+  "texto": "When this artifact is put into a graveyard from the battlefield, reveal the top thirteen cards of your library. | Put a random creature card from among them onto the battlefield. | Put the rest on the bottom of your libr",
+  "efectos": [
+   3,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Old Fat Spider Can't See Me",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Enchantment — Saga",
+  "texto": "I — Target creature you control gains hexproof for as long as this Saga remains on the battlefield. | II — Prevent all damage that would be dealt by up to one target creature for as long as this Saga remains on the battl",
+  "efectos": [
+   47,
+   20,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Curious Farm Animals",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Boar Elk Bird Ox",
+  "texto": "When this creature dies, you gain 3 life. | {2}, Sacrifice this creature: Destroy up to one target artifact or enchantment.",
+  "efectos": [
+   0,
+   0,
+   0,
+   17,
+   0
+  ]
+ },
+ {
+  "carta": "Gollum the Abandoned",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Halfling Horror",
+  "texto": "When Gollum enters, exile up to one target card from an opponent's graveyard. | {2}, Sacrifice an artifact or creature: Return this card from your graveyard to your hand.",
+  "efectos": [
+   2,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Head of the Hunt",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Wolf",
+  "texto": "If a creature an opponent controls would die, exile it instead. | When you do, create a 2/2 green Wolf creature token.",
+  "efectos": [
+   5,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Thorin's Last Stand",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Destroy target artifact or enchantment. | You gain 2 life.",
+  "efectos": [
+   10,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Boughside Wanderers",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 4,
+  "ranuras": 2,
+  "tipo": "Creature — Elf Scout",
+  "texto": "When this creature enters, look at the top four cards of your library. | You may reveal a permanent card from among them and put it into your hand. | Put the rest on the bottom of your library in a random order. | Landfa",
+  "efectos": [
+   3,
+   25,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Momo, Playful Pet",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 4,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Lemur Bat Ally",
+  "texto": "When Momo leaves the battlefield, choose one — | • Create a Food token. | • Put a +1/+1 counter on target creature you control. | • Scry 2.",
+  "efectos": [
+   17,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Silvan Reveler",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 4,
+  "ranuras": 2,
+  "tipo": "Creature — Elf Citizen",
+  "texto": "When this creature enters, draw a card, then discard a card. | If you discard a land card this way, put it from your graveyard onto the battlefield tapped. | Landfall — Whenever a land you control enters, you may pay {1}",
+  "efectos": [
+   3,
+   25,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Along the Crooked Way",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 2,
+  "tipo": "Enchantment",
+  "texto": "When this enchantment enters, return target creature card from your graveyard to your hand. | Whenever a creature card leaves your graveyard, amass Goblins 1. | {1}{B}: Goblins and Orcs you control gain menace until end ",
+  "efectos": [
+   19,
+   27,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Gnashing of Teeth",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "• Target creature gets -5/-5 until end of turn. | If that creature would die this turn, exile it instead. | • Creatures target player controls get -1/-1 until end of turn.",
+  "efectos": [
+   7,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Last Agni Kai",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Target creature you control fights target creature an opponent controls. | If the creature the opponent controls is dealt excess damage this way, add that much {R}. | Until end of turn, you don't lose unspent red mana as",
+  "efectos": [
+   23,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Airbender's Reversal",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant — Lesson",
+  "texto": "• Destroy target attacking creature. | • Airbend target creature you control.",
+  "efectos": [
+   7,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Airbending Lesson",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant — Lesson",
+  "texto": "Airbend target nonland permanent. | Draw a card.",
+  "efectos": [
+   3,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Celebrate the Mountain-king",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Enchantment",
+  "texto": "When this enchantment enters, for each opponent, exile up to one target nonland permanent that player controls until this enchantment leaves the battlefield. | When this enchantment enters, recruit.",
+  "efectos": [
+   26,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Cunning Maneuver",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Target creature gets +3/+1 until end of turn. | Create a Clue token.",
+  "efectos": [
+   18,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Firebending Lesson",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant — Lesson",
+  "texto": "Firebending Lesson deals 2 damage to target creature. | If this spell was kicked, it deals 5 damage to that creature instead.",
+  "efectos": [
+   8,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Heartless Act",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Destroy target creature with no counters on it. | • Remove up to three counters from target creature.",
+  "efectos": [
+   7,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Hog-Monkey",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Creature — Boar Monkey",
+  "texto": "At the beginning of combat on your turn, target creature you control with a +1/+1 counter on it gains menace until end of turn. | Exhaust — {5}: Put two +1/+1 counters on this creature.",
+  "efectos": [
+   24,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Reverent Howl",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "• Target player draws two cards and loses 2 life. | • Target creature gets +2/+2 and gains lifelink until end of turn.",
+  "efectos": [
+   3,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Roll-Roll-Roll-Roll",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Enchantment — Saga",
+  "texto": "I, II, III, IV — Exile up to one target creature or land you control. | If you do, return it to the battlefield under its owner's control at the beginning of the next end step.",
+  "efectos": [
+   20,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "The Great Goblin",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Legendary Creature — Goblin Noble",
+  "texto": "Whenever you put one or more counters on a Goblin, Orc, or Army you control, The Great Goblin deals 2 damage to target opponent. | Whenever another Goblin, Orc, or Army you control dies, exile the top card of your librar",
+  "efectos": [
+   3,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Thranduil's Decree",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Instant",
+  "texto": "Counter target spell. | If a permanent spell is countered this way, exile it instead of putting it into its owner's graveyard.",
+  "efectos": [
+   15,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Through the Forest Gate",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery",
+  "texto": "Look at the top twenty cards of your library, put any number of land cards from among them onto the battlefield tapped, then shuffle. | You gain 8 life.",
+  "efectos": [
+   17,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Waterbending Lesson",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 2,
+  "ranuras": 1,
+  "tipo": "Sorcery — Lesson",
+  "texto": "Draw three cards. | Then discard a card unless you waterbend {2}.",
+  "efectos": [
+   3,
+   0,
+   0,
+   0,
+   0
+  ]
+ }
+]

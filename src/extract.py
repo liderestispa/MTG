@@ -619,6 +619,13 @@ def parse_card(c):
     if re.search(r"can't attack .{0,40}unless|attacks? .{0,30}unless .{0,25}pays?", low):
         out['tax_atk'] = 1
 
+    # "This land enters tapped": medio turno de coste que el motor no cobraba.
+    # Solo la forma INCONDICIONAL. Las que dicen "unless you control dos o menos
+    # tierras" o "unless you pay 3 life" dependen del estado y se dejan fuera a
+    # proposito: modelarlas como giradas siempre seria pasarse al otro lado.
+    if re.search(r'enters tapped\.|enters the battlefield tapped\.', low)             and not re.search(r'enters tapped unless|enters the battlefield tapped unless', low):
+        out['entra_girada'] = 1
+
     # Legendaria o Saga: lo unico que Storied necesita contar.
     if 'legendary' in tl: out['es_leg'] = 1
     if 'saga' in tl:      out['es_leg'] = 1
