@@ -187,26 +187,6 @@
   "texto": "As Gollum enters, choose odd or even. (Zero is even.) | Whenever an opponent casts a spell with mana value of the chosen quality, choose one that hasn't been chosen — | • Put a +1/+1 counter on Gollum. | • Each opponent loses 2 life and you gain 2 life. | • Draw a card."
  },
  {
-  "carta": "Key to the Side-Door",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{1}",
-  "tipo": "Artifact",
-  "pt": "",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "{2}, {T}: Target creature can't be blocked this turn. | {1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards."
- },
- {
   "carta": "Merchant of Many Hats",
   "copias": 1,
   "estado": "MUDA",
@@ -227,24 +207,6 @@
   "texto": "{2}{B}: Return this card from your graveyard to your hand."
  },
  {
-  "carta": "Elvenking's Harper",
-  "copias": 3,
-  "estado": "MUDA",
-  "coste": "{1}{U}",
-  "tipo": "Creature — Elf Bard",
-  "pt": "2/2",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "{4}{U}: Target creature can't be blocked this turn."
- },
- {
   "carta": "Galion, Elvenking's Butler",
   "copias": 2,
   "estado": "MUDA",
@@ -261,42 +223,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Whenever Galion attacks, choose up to one other target creature you control. Its base power and toughness become equal to Galion's power and toughness until end of turn."
- },
- {
-  "carta": "Glóin the Mighty // Easy Pickings",
-  "copias": 2,
-  "estado": "MUDA",
-  "coste": "{3}{R} // {2}{R}",
-  "tipo": "Legendary Creature — Dwarf Warrior // Sorcery — Adventure",
-  "pt": "4/3",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "At the beginning of your first main phase, add {R}{R}. | Easy Pickings deals 1 damage to each creature your opponents control. (Then exile this card. You may cast the creature later from exile.)"
- },
- {
-  "carta": "Vengeful Villagers",
-  "copias": 2,
-  "estado": "MUDA",
-  "coste": "{3}{W}",
-  "tipo": "Creature — Human Citizen",
-  "pt": "3/3",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Whenever this creature attacks, choose target creature an opponent controls. Tap it, then you may sacrifice an artifact or creature. If you do, put a stun counter on the chosen creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)"
  },
  {
   "carta": "Avatar Enthusiasts",
@@ -587,24 +513,6 @@
   "texto": "Exhaust — {6}: Put two +1/+1 counters on this creature, then earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped. Activate each exhaust ability only once.)"
  },
  {
-  "carta": "Secret Tunnel",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "",
-  "tipo": "Land — Cave",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 3,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "This land can't be blocked. | {T}: Add {C}. | {4}, {T}: Two target creatures you control that share a creature type can't be blocked this turn."
- },
- {
   "carta": "Snowslope Hunter",
   "copias": 1,
   "estado": "MUDA",
@@ -763,26 +671,6 @@
   "texto": "Gollum can't block. | When Gollum enters, exile up to one target card from an opponent's graveyard. Each opponent loses 2 life. | {2}, Sacrifice an artifact or creature: Return this card from your graveyard to your hand. Activate only as a sorcery."
  },
  {
-  "carta": "Great Ugly-Looking Goblin // Clap! Snap!",
-  "copias": 2,
-  "estado": "A_MEDIAS",
-  "coste": "{5}{B} // {1}{B}",
-  "tipo": "Creature — Goblin Soldier // Sorcery — Adventure",
-  "pt": "4/4",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "ETB_COUNTERS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.) | Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.)"
- },
- {
   "carta": "Along the Crooked Way",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -841,6 +729,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "When this Equipment enters, attach it to target Dwarf you control. | Equipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.) | Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
+ },
+ {
+  "carta": "Gathering of Darkness",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{3}{B}",
+  "tipo": "Sorcery",
+  "pt": "",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "AMASS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Return up to one target creature card from your graveyard to your hand. | Amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
  },
  {
   "carta": "Gnashing of Teeth",
@@ -902,6 +810,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "At the beginning of combat on your turn, target creature you control with a +1/+1 counter on it gains menace until end of turn. (It can't be blocked except by two or more creatures.) | Exhaust — {5}: Put two +1/+1 counters on this creature. (Activate each exhaust ability only once.)"
+ },
+ {
+  "carta": "Key to the Side-Door",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{1}",
+  "tipo": "Artifact",
+  "pt": "",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "act_eff=UNBLOCK",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "{2}, {T}: Target creature can't be blocked this turn. | {1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards."
  },
  {
   "carta": "Phoenix Fleet Airship",
@@ -1254,9 +1182,9 @@
   "pt": "",
   "en_mazo": [],
   "frases": 3,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "SAGA",
-  "motor_extra": "",
+  "motor_extra": "saga_n=ETB_DISCARD",
   "kw": [],
   "cond": 0,
   "tax_atk": 0,
@@ -1300,24 +1228,6 @@
   "texto": "Target player discards two cards. | Fuse (You may cast one or both halves of this card from your hand.) | Return target card from your graveyard to your hand. | Fuse (You may cast one or both halves of this card from your hand.)"
  },
  {
-  "carta": "Dáin's Company",
-  "copias": 2,
-  "estado": "A_MEDIAS",
-  "coste": "{R}{W}",
-  "tipo": "Creature — Dwarf Warrior",
-  "pt": "2/2",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "ETB_DRAW",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 4,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "This creature has lifelink as long as you control another Dwarf. | When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order."
- },
- {
   "carta": "Eagle's Rescue",
   "copias": 2,
   "estado": "A_MEDIAS",
@@ -1334,6 +1244,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Enchant creature | Enchanted creature gets +2/+2 and has flying. | {2}{W/U}{W/U}: Return this card from your graveyard to the battlefield attached to target creature you control with power 1 or less. Activate only as a sorcery."
+ },
+ {
+  "carta": "Glóin the Mighty // Easy Pickings",
+  "copias": 2,
+  "estado": "A_MEDIAS",
+  "coste": "{3}{R} // {2}{R}",
+  "tipo": "Legendary Creature — Dwarf Warrior // Sorcery — Adventure",
+  "pt": "4/3",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "adv_eff=DMG_SPELL",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "At the beginning of your first main phase, add {R}{R}. | Easy Pickings deals 1 damage to each creature your opponents control. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
   "carta": "Magnificent End",
@@ -1380,9 +1308,9 @@
   "pt": "",
   "en_mazo": [],
   "frases": 3,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "SAGA",
-  "motor_extra": "",
+  "motor_extra": "saga_n=ETB_DISCARD",
   "kw": [],
   "cond": 0,
   "tax_atk": 0,
@@ -1516,24 +1444,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Choose up to one target creature, then airbend all other creatures. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.) | Until your next turn, your opponents can't cast spells from anywhere other than their hands. | Exile Avatar's Wrath."
- },
- {
-  "carta": "Bifur, Melodic Rider",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{4}{R/W}{R/W}",
-  "tipo": "Legendary Creature — Dwarf Bard",
-  "pt": "4/5",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "COND_BUFF",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 1,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Whenever Bifur enters or attacks, put a +1/+1 counter on target creature. | As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time."
  },
  {
   "carta": "Bilbo Baggins, Burglar // Take a Glance",
@@ -1680,24 +1590,6 @@
   "texto": "This land enters tapped. | {T}: Add {B} or {G}. | {4}, {T}, Sacrifice this land: Draw a card."
  },
  {
-  "carta": "Gathering of Darkness",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "AMASS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Return up to one target creature card from your graveyard to your hand. | Amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
- },
- {
   "carta": "Glider Staff",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -1835,9 +1727,9 @@
   "pt": "",
   "en_mazo": [],
   "frases": 3,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "SAGA",
-  "motor_extra": "",
+  "motor_extra": "saga_n=ETB_DRAW",
   "kw": [],
   "cond": 0,
   "tax_atk": 0,
@@ -1929,14 +1821,32 @@
   "pt": "",
   "en_mazo": [],
   "frases": 3,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "DESTROY",
-  "motor_extra": "",
+  "motor_extra": "cond=ETB_DRAIN",
   "kw": [],
   "cond": 2,
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Choose one — | • Destroy target creature with power 4 or greater. | • Earthbend 3. (Target land you control becomes a 0/0 creature with haste that's still a land. Put three +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)"
+ },
+ {
+  "carta": "Secret Tunnel",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "",
+  "tipo": "Land — Cave",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 3,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "act_eff=UNBLOCK",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "This land can't be blocked. | {T}: Add {C}. | {4}, {T}: Two target creatures you control that share a creature type can't be blocked this turn."
  },
  {
   "carta": "The Last Agni Kai",
@@ -2101,9 +2011,9 @@
    "brawl"
   ],
   "frases": 1,
-  "ranuras": 2,
+  "ranuras": 4,
   "motor": "COND_BUFF",
-  "motor_extra": "kw=ETB_DRAIN",
+  "motor_extra": "atk_eff=LIFEGAIN,cond=ETB_DRAIN,kw=ETB_DRAIN",
   "kw": [
    "Deathtouch"
   ],
@@ -2153,28 +2063,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "You draw a card and lose 1 life. | Amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
- },
- {
-  "carta": "Great Fierce Bee",
-  "copias": 4,
-  "estado": "ok",
-  "coste": "{2}{B}",
-  "tipo": "Creature — Insect",
-  "pt": "2/2",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "NADA",
-  "motor_extra": "kw=ETB_DMG",
-  "kw": [
-   "Flying"
-  ],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Flying | Whenever one or more other creatures die, scry 1. (Look at the top card of your library. You may put that card on the bottom.)"
  },
  {
   "carta": "Gundabad Opportunist",
@@ -2337,9 +2225,9 @@
    "brawl"
   ],
   "frases": 1,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "NADA",
-  "motor_extra": "kw=?",
+  "motor_extra": "adv_eff=ETB_COUNTERS,kw=?",
   "kw": [
    "Menace"
   ],
@@ -2347,6 +2235,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Menace (This creature can't be blocked except by two or more creatures.) | Put a +1/+1 counter on up to one target creature. Target player gains 2 life. (Then exile this card. You may cast the creature later from exile.)"
+ },
+ {
+  "carta": "Great Ugly-Looking Goblin // Clap! Snap!",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{5}{B} // {1}{B}",
+  "tipo": "Creature — Goblin Soldier // Sorcery — Adventure",
+  "pt": "4/4",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 2,
+  "ranuras": 2,
+  "motor": "ETB_COUNTERS",
+  "motor_extra": "adv_eff=AMASS",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.) | Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
   "carta": "Head of the Hunt",
@@ -2469,9 +2377,9 @@
    "pauper"
   ],
   "frases": 1,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "NADA",
-  "motor_extra": "kw=ETB_DMG",
+  "motor_extra": "adv_eff=DMG_SPELL,kw=ETB_DMG",
   "kw": [
    "Flying"
   ],
@@ -2514,9 +2422,9 @@
    "brawl"
   ],
   "frases": 1,
-  "ranuras": 2,
+  "ranuras": 3,
   "motor": "DRAW_ON_DMG/ATTACK_DRAW",
-  "motor_extra": "",
+  "motor_extra": "atk_eff=ETB_DRAW",
   "kw": [],
   "cond": 0,
   "tax_atk": 0,
@@ -2860,6 +2768,26 @@
   "texto": "Trample | You may play an additional land this turn. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
+  "carta": "Great Fierce Bee",
+  "copias": 4,
+  "estado": "ok",
+  "coste": "{2}{B}",
+  "tipo": "Creature — Insect",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "kw=ETB_DMG",
+  "kw": [
+   "Flying"
+  ],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Flying | Whenever one or more other creatures die, scry 1. (Look at the top card of your library. You may put that card on the bottom.)"
+ },
+ {
   "carta": "Jeong Jeong's Deserters",
   "copias": 4,
   "estado": "ok",
@@ -2960,14 +2888,32 @@
   "pt": "5/3",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "COND_BUFF",
-  "motor_extra": "",
+  "motor_extra": "cond=ETB_DMG",
   "kw": [],
   "cond": 1,
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Bombur doesn't untap during your untap step unless you have an enduring story."
+ },
+ {
+  "carta": "Elvenking's Harper",
+  "copias": 3,
+  "estado": "ok",
+  "coste": "{1}{U}",
+  "tipo": "Creature — Elf Bard",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "act_eff=UNBLOCK",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "{4}{U}: Target creature can't be blocked this turn."
  },
  {
   "carta": "Lake-town Lookout",
@@ -3052,9 +2998,9 @@
   "pt": "3/3",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "COND_BUFF",
-  "motor_extra": "",
+  "motor_extra": "cond=ETB_DMG",
   "kw": [],
   "cond": 1,
   "tax_atk": 0,
@@ -3088,9 +3034,9 @@
   "pt": "2/2",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "COND_BUFF",
-  "motor_extra": "",
+  "motor_extra": "cond=ETB_DRAIN",
   "kw": [],
   "cond": 2,
   "tax_atk": 0,
@@ -3106,9 +3052,9 @@
   "pt": "1/3",
   "en_mazo": [],
   "frases": 2,
-  "ranuras": 2,
+  "ranuras": 3,
   "motor": "COND_BUFF",
-  "motor_extra": "act_eff=ETB_DRAW",
+  "motor_extra": "act_eff=ETB_DRAW,cond=ETB_DMG",
   "kw": [],
   "cond": 1,
   "tax_atk": 0,
@@ -3134,6 +3080,24 @@
   "texto": "{3}{W}: Creatures you control get +1/+1 until end of turn."
  },
  {
+  "carta": "Dáin's Company",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{R}{W}",
+  "tipo": "Creature — Dwarf Warrior",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 2,
+  "motor": "ETB_DRAW",
+  "motor_extra": "cond=ETB_DISCARD",
+  "kw": [],
+  "cond": 4,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "This creature has lifelink as long as you control another Dwarf. | When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order."
+ },
+ {
   "carta": "Dáin, Lord of the Iron Hills",
   "copias": 2,
   "estado": "ok",
@@ -3142,9 +3106,9 @@
   "pt": "2/2",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 3,
+  "ranuras": 4,
   "motor": "TAX/COND_BUFF",
-  "motor_extra": "kw=BURN_FACE",
+  "motor_extra": "cond=ETB_DMG,kw=BURN_FACE",
   "kw": [
    "Vigilance"
   ],
@@ -3274,9 +3238,9 @@
   "pt": "3/2",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 2,
+  "ranuras": 3,
   "motor": "COND_BUFF",
-  "motor_extra": "kw=DMG_SPELL",
+  "motor_extra": "cond=ETB_DMG,kw=DMG_SPELL",
   "kw": [
    "Trample"
   ],
@@ -3304,6 +3268,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Flying | Tap one or two target creatures. (Then exile this card. You may cast the creature later from exile.)"
+ },
+ {
+  "carta": "Vengeful Villagers",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{3}{W}",
+  "tipo": "Creature — Human Citizen",
+  "pt": "3/3",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "atk_eff=TAPDOWN",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Whenever this creature attacks, choose target creature an opponent controls. Tap it, then you may sacrifice an artifact or creature. If you do, put a stun counter on the chosen creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)"
  },
  {
   "carta": "Wood Elves",
@@ -3340,6 +3322,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control. | {5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains \"This creature's power and toughness are each equal to the number of lands you control.\" (This effect doesn't end.)"
+ },
+ {
+  "carta": "Bifur, Melodic Rider",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{4}{R/W}{R/W}",
+  "tipo": "Legendary Creature — Dwarf Bard",
+  "pt": "4/5",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 3,
+  "motor": "COND_BUFF",
+  "motor_extra": "atk_eff=ETB_COUNTERS,cond=ETB_DMG",
+  "kw": [],
+  "cond": 1,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Whenever Bifur enters or attacks, put a +1/+1 counter on target creature. | As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time."
  },
  {
   "carta": "Compassionate Healer",
@@ -3678,9 +3678,9 @@
   "pt": "",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 1,
+  "ranuras": 2,
   "motor": "SAGA",
-  "motor_extra": "",
+  "motor_extra": "saga_n=ETB_DISCARD",
   "kw": [],
   "cond": 0,
   "tax_atk": 0,
@@ -3880,9 +3880,9 @@
   "pt": "3/6",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 1,
+  "ranuras": 3,
   "motor": "COND_BUFF",
-  "motor_extra": "",
+  "motor_extra": "atk_eff=ETB_COUNTERS,cond=ETB_DRAIN",
   "kw": [],
   "cond": 2,
   "tax_atk": 0,

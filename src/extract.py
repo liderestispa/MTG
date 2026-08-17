@@ -71,7 +71,7 @@ E = dict(NONE=0, ETB_DMG=1, ETB_DRAIN=2, ETB_DRAW=3, ETB_DISCARD=4, ETB_TOKEN=5,
          MASS_CHEAT=41, DEATH_DMG=42, ATTACK_DRAW=43, RECURSIVE=44, TEAM_MANA=45,
          ATTACK_DMG=46, PROTECT=47, DMG_ANY=48,
          EDICT=49, TAPDOWN=50, TAX=51, LAND_KILL=52, MASS_BOUNCE=53, ETB_MANA=54,
-         TMP_PUMP=55)
+         TMP_PUMP=55, UNBLOCK=56)
 
 NUMW = {'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'X':1}
 def num(s, d=1):
@@ -657,6 +657,13 @@ def parse_card(c):
                     out['act_cost'] = _cost; out['act_mana'] = _gen
                     break
 
+                # imbloqueable por un turno: las cinco cartas que lo hacen son
+                # activadas, asi que va aqui y no como palabra clave estatica
+                if re.search(r"can't be blocked this turn", _cuerpo):
+                    out['act_eff'] = E['UNBLOCK']; out['act_p1'] = 1
+                    out['act_cost'] = _cost; out['act_mana'] = _gen
+                    break
+
                 # que hace
                 _ef = _p1 = None
                 _m2 = re.search(r'draw cards equal to', _cuerpo)
@@ -756,7 +763,8 @@ def parse_card(c):
             (r'create (\w+) .{0,40}token',                    'ETB_TOKEN',    1),
             (r'deals? (\w+) damage to (?:any target|target player|each opponent)',
                                                               'BURN_FACE',    1),
-            (r'tap it|tap target creature',               'TAPDOWN',      1),
+            (r'\btap it\b|tap target creature|tap up to \w+ target creature',
+                                                              'TAPDOWN',      1),
             (r'(?:target player|each opponent) (?:discards?|loses)', 'ETB_DISCARD', 1),
         ]:
             _m = re.search(_rx, _al)

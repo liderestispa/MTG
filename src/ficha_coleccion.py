@@ -67,7 +67,11 @@ def ficha(nombre, copias, dentro):
     # dyn (fuerza variable), alt (coste alternativo), cred, kw y las dos ranuras nuevas.
     # Sin esto, Mirkwood Pathmaker —cuya fuerza SI esta modelada con dyn— salia "muda",
     # y Gigantic Big Bear tambien pese a tener antimaleficio y prisa bien leidos.
-    extra = [k for k in ('die_eff', 'act_eff', 'dyn', 'alt', 'cred', 'entra_girada')
+    # TODAS las ranuras, no solo las que existian cuando se escribio esto. Cada vez que
+    # el motor gana una —aventura, ataque, saga, condicion— hay que anadirla aqui o la
+    # ficha llama MUDA a una carta que si esta modelada. Ya paso dos veces.
+    extra = [k for k in ('die_eff', 'act_eff', 'atk_eff', 'adv_eff', 'saga_n', 'dyn',
+                         'alt', 'cred', 'cond', 'entra_girada', 'lord_sub')
              if e.get(k)]
     if e['kw']: extra.append('kw')
     nf = frases_de_juego(t)
