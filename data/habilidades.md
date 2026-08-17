@@ -33,12 +33,34 @@ activada — la misma carta, la misma lectura, distinta ranura.
 | `when ~ enters` | `eff` | LEÍDA |
 | `when ~ dies` · `is put into a graveyard` · `leaves the battlefield` | `die_eff` | LEÍDA |
 | `whenever ~ attacks` | `atk_eff` | LEÍDA |
-| `{coste}: efecto` | `act_eff` (o se descarta) | LEÍDA |
+| `{coste}: efecto` | `act_eff` + `act_mana` + `act_cost` | LEÍDA |
 | `at the beginning of your upkeep/end step/draw step` | `eff` (UPKEEP_DRAW) | LEÍDA |
 | `whenever you cast` · `whenever an opponent casts` | — | NO MODELABLE |
 | `at the beginning of combat on your turn` | — | NO MODELABLE — *Lake-town Toymaker, Hog-Monkey* |
 | `whenever another ~ you control enters` | — | NO MODELABLE — *Avatar Enthusiasts, Belladonna Took* |
 | `whenever a nonland creature you control dies` | — | NO MODELABLE — *Beifong's Bounty Hunters, Great Fierce Bee* |
+
+### Costes de activación que sabe cobrar
+
+| coste | `act_cost` | nota |
+|---|---|---|
+| solo maná | 0 | `act_mana` lleva el genérico |
+| sacrificar un artefacto | 1 | el caso de Krark-Clan Shaman |
+| sacrificar otra criatura | 2 | Tom, Bert, and William |
+| girar esta carta | 3 | limita a una vez por turno |
+| pagar 2 vidas | 4 | no se paga por debajo de 5 vidas |
+| **sacrificar ESTA carta** | **5** | de un solo uso. Faltaba, y era grave |
+
+> **Lo que costó no tener el 5.** Seis cartas del banco de Pauper —Barrels of Blasting
+> Jelly, Candy Trail, Expedition Map, Sewer-veillance Cam, Experimental Synthesizer,
+> Lembas— pagan su habilidad sacrificándose. Sin cobrarlo, y con `activar_habilidades`
+> corriendo hasta cuatro veces por turno, el motor tenía un Flame Slash **repetible** por
+> 5 maná todos los turnos. Pauper pasaba de ganarle al modelo tonto a perder.
+
+> **Y una trampa dentro de la trampa:** un efecto «hasta el final del turno» NO es un
+> contador +1/+1. El motor solo sabe sumar contadores de verdad, así que leer un pump
+> temporal como contador convierte a Timberwatch Elf en una bola de nieve. Esos se
+> descartan.
 
 ## Costes
 

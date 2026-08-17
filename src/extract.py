@@ -609,6 +609,64 @@ def parse_card(c):
             out['act_p1'] = num(_a.group(1), 1)
             out['act_cost'] = 1          # 1 = sacrificar un artefacto
 
+        # ---- habilidades activadas con coste de MANA ----
+        # La mitad de las cartas mudas que quedaban. Se lee el coste (generico; los pips
+        # se ignoran a proposito, porque el mazo ya es de esos colores) y el efecto.
+        # Ablacion: ACT_MANA_OFF=1.
+        if not out.get('act_eff') and os.environ.get('ACT_MANA_OFF') != '1':
+            for _l in low_todo.split('\n'):
+                _mc = re.match(r'\s*((?:\{[^}]+\}\s*)+|pay 2 life|sacrifice this[^,:]{0,20}|sacrifice another '
+                               r'creature|\{t\})((?:\s*,\s*[^:]{1,30})*)\s*:\s*(.+)', _l)
+                if not _mc: continue
+                _cabeza, _resto2, _cuerpo = _mc.group(1), _mc.group(2) or '', _mc.group(3)
+                if re.match(r'\s*add \{', _cuerpo): continue     # habilidad de mana
+                _gen = sum(int(x) for x in re.findall(r'\{(\d+)\}', _cabeza + _resto2))
+                _todo = _cabeza + _resto2
+                _cost = 0
+                # ORDEN IMPORTANTE: "sacrifica esta carta" manda sobre girar, porque
+                # es lo que la hace de UN SOLO USO. Detectarla como {t} dejaba a
+                # Barrels of Blasting Jelly como un Flame Slash repetible.
+                if re.search(r'sacrifice this|sacrifice it\b', _todo):  _cost = 5
+                elif 'sacrifice an artifact' in _todo:      _cost = 1
+                elif re.search(r'sacrifice another creature|sacrifice another', _todo): _cost = 2
+                elif '{t}' in _todo:                        _cost = 3
+                elif 'pay 2 life' in _todo:                 _cost = 4
+                # que hace
+                _ef = _p1 = None
+                _m2 = re.search(r'draw cards equal to', _cuerpo)
+                if _m2: _ef, _p1 = 'ETB_DRAW', 0        # 0 = igual a la fuerza sacrificada
+                if _ef is None:
+                    for _rx, _nm, _d in [
+                        (r'draw (\w+) cards?',                       'ETB_DRAW',     1),
+                        (r'creatures you control get \+(\d+)/',      'TEAM_PUMP',    1),
+                        (r'put (\w+) \+1/\+1 counters? on',          'ETB_COUNTERS', 1),
+                        (r'this creature gets \+(\d+)/',             'ETB_COUNTERS', 2),
+                        (r'base power (\d+)',                        'ETB_COUNTERS', 2),
+                        (r'you gain (\w+) life',                     'LIFEGAIN',     2),
+                        (r'deals? (\w+) damage to target creature',  'DMG_SPELL',    2),
+                        (r'destroy target',                          'DESTROY',      1),
+                        (r'search your library for[^.]*land',        'RAMP',         1),
+                        (r'create (\w+) .{0,30}token',               'ETB_TOKEN',    1),
+                    ]:
+                        _mm2 = re.search(_rx, _cuerpo)
+                        if not _mm2: continue
+                        _g2 = next((g for g in (_mm2.groups() or ()) if g), None)
+                        _ef, _p1 = _nm, (num(_g2, _d) if _g2 else _d)
+                        break
+                if _ef is None: continue
+                # HASTA EL FINAL DEL TURNO no es un contador permanente. El motor solo
+                # sabe sumar contadores de verdad (me->ctr), y activar_habilidades corre
+                # hasta 4 veces por turno, TODOS los turnos: leer asi un pump temporal
+                # convierte a Timberwatch Elf en una bola de nieve infinita. Medido:
+                # Elves pasaba de -1,4 a +2,2 de error y Pauper perdia contra el modelo
+                # tonto. Si el efecto es temporal y no es un contador real, se descarta.
+                if 'until end of turn' in _cuerpo and not re.search(
+                        r'put \w+ \+1/\+1 counters? on', _cuerpo):
+                    continue
+                out['act_eff'] = E[_ef]; out['act_p1'] = _p1
+                out['act_cost'] = _cost; out['act_mana'] = _gen
+                break
+
     # ---- coste que baja con el tablero, DE VERDAD y no de media ----
     # Ojo: cost_reduction() ya abarata estas cartas, pero con un numero FIJO estimado a
     # ojo ("costs {N} less for each" -> N*4, tope 5). Eso tiene dos problemas:

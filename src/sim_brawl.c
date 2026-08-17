@@ -46,6 +46,9 @@ typedef struct {
   uint8_t act_eff, act_cost;  /* habilidad ACTIVADA: efecto y coste (1=sacrificar un
                                  artefacto). La decision de activarla es del jugador. */
   int16_t act_p1;
+  uint8_t act_mana;    /* coste generico de la habilidad activada. Antes
+                          solo se sabia cobrar 'sacrifica un artefacto', asi
+                          que todo lo que pedia mana quedaba mudo. */
   /* CONDICION que exige un efecto estatico antes de aplicarse. Sin esto, E_COND_BUFF
      —que se llama condicional— y E_TAX se sumaban SIEMPRE. src/auditoria_lectura.py
      encontro 12 cartas asi, entre ellas el comandante que el buscador elegia para
@@ -1151,6 +1154,20 @@ static void activar_habilidades(P*me,P*opp){
       Def*d=&D[me->bf[i]];
       if(!d->act_eff) continue;
       if(d->act_cost==1 && cuenta_artefactos(me)<1) continue;   /* nada que sacrificar */
+      if(d->act_cost==2 && ncreat(me)<2) continue;   /* hace falta OTRA criatura */
+      if(d->act_cost==3 && me->tap[i]) continue;     /* ya esta girada */
+      if(d->act_cost==4 && me->life<=4) continue;    /* pagar vidas al borde no */
+      /* act_cost==5 se sacrifica a si misma: siempre se puede, pero es de un
+         solo uso, que es justo lo que faltaba modelar. */
+      /* coste de mana: se arma un Def temporal y se usa el mismo payable de siempre */
+      int tm=NDEF+3;
+      if(d->act_mana){
+        if(tm>=MAXDEF) return;
+        D[tm]=*d; D[tm].gen=d->act_mana; D[tm].typ=T_SORC; D[tm].alt=0;
+        D[tm].coste_extra=0; D[tm].cred=0;
+        for(int k=0;k<5;k++) D[tm].pip[k]=0;
+        if(!payable(me,&D[tm],me->treasures)) continue;
+      }
       /* ¿conviene? Para un barrido, solo si mata mas suyas que mias. */
       if(d->act_eff==E_SWEEPER){
         int suyas=0,mias=0;
@@ -1161,13 +1178,49 @@ static void activar_habilidades(P*me,P*opp){
         if(suyas<=mias) continue;          /* regalar el tablero propio no es un plan */
       }
       /* pagar el coste */
+      if(d->act_mana) paycost(me,&D[tm],&me->treasures);
       if(d->act_cost==1){
         for(int j=me->nbf-1;j>=0;j--) if(D[me->bf[j]].typ==T_ART){ rmbf(me,j); break; }
+      } else if(d->act_cost==2){
+        /* se sacrifica la criatura mas chica que NO sea esta */
+        int peor=-1,pv=1<<30;
+        for(int j=0;j<me->nbf;j++){ if(j==i) continue;
+          if(D[me->bf[j]].typ!=T_CREA) continue;
+          int v=pw(me,j)*2+th(me,j); if(v<pv){pv=v;peor=j;} }
+        if(peor<0) continue;
+        /* el valor del efecto suele escalar con lo sacrificado (Tom, Bert y William
+           roba cartas igual a su fuerza), asi que se guarda antes de quitarla */
+        int fuerza=pw(me,peor);
+        rmbf(me,peor);
+        if(d->act_eff==E_ETB_DRAW && d->act_p1==0){
+          /* p1=0 significa "igual a la fuerza de lo sacrificado" */
+          int tt=NDEF+4; if(tt<MAXDEF){
+            D[tt]=*d; D[tt].eff=E_ETB_DRAW; D[tt].p1=fuerza>0?fuerza:1;
+            D[tt].eff2=0; D[tt].eff3=0; D[tt].die_eff=0; D[tt].act_eff=0;
+            apply(me,opp,tt,0);
+          }
+          hecho=1; break;
+        }
+      } else if(d->act_cost==3){
+        me->tap[i]=1;
+      } else if(d->act_cost==4){
+        me->life -= 2;
+      } else if(d->act_cost==5){
+        /* el coste se paga antes de resolver: la carta se va, y de paso dispara su
+           propio efecto de cementerio si lo tiene */
+        int guardado = me->bf[i];
+        rmbf(me,i);
+        int ts=NDEF+5; if(ts>=MAXDEF) return;
+        D[ts]=D[guardado]; D[ts].eff=D[guardado].act_eff; D[ts].p1=D[guardado].act_p1;
+        D[ts].p2=0; D[ts].eff2=0; D[ts].eff3=0; D[ts].die_eff=0; D[ts].act_eff=0;
+        apply(me,opp,ts,0);
+        hecho=1; break;
       }
       /* la carta puede haberse movido al sacrificar: se re-localiza por indice de Def */
       int def=-1;
       for(int j=0;j<me->nbf;j++) if(D[me->bf[j]].act_eff==d->act_eff &&
-                                    D[me->bf[j]].act_p1==d->act_p1){ def=me->bf[j]; break; }
+                                    D[me->bf[j]].act_p1==d->act_p1 &&
+                                    D[me->bf[j]].act_cost==d->act_cost){ def=me->bf[j]; break; }
       if(def<0) break;
       int t=NDEF; if(t>=MAXDEF) return;
       D[t]=D[def]; D[t].eff=D[def].act_eff; D[t].p1=D[def].act_p1; D[t].p2=0;
@@ -1861,8 +1914,9 @@ int main(void){
           &e3_,&r1_,&r2_,&al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_,&eg_,&ke_,
           &kp_,&cx_);
     scanf("%d %d %d %d %d %d %d %d",&av_,&ag_,&avp_,&ap0_,&ap1_,&ap2_,&ap3_,&ap4_);
-    unsigned int sb_=0,ls_=0,cs_=0;
-    scanf("%u %u %u",&sb_,&ls_,&cs_);
+    unsigned int sb_=0,ls_=0,cs_=0; int am_=0;
+    scanf("%u %u %u %d",&sb_,&ls_,&cs_,&am_);
+    d->act_mana=(uint8_t)am_;
     d->sub=sb_; d->lord_sub=ls_; d->cond_sub=cs_;
     d->atk_eff=(uint8_t)ke_; d->atk_p1=(int16_t)kp_; d->coste_extra=(uint8_t)cx_;
     d->adv_eff=(uint8_t)av_; d->adv_gen=(uint8_t)ag_; d->adv_p1=(int16_t)avp_;
