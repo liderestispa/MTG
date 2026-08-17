@@ -1100,6 +1100,56 @@ def entering_counters(txt):
     n = num(m.group(1), 1)
     return n if m.group(2) == '+' else -n
 
+def _frases_de_juego(txt):
+    """Lineas con verbo de juego, sin recordatorios ni lineas de palabras clave."""
+    t = re.sub(r'\([^)]*\)', '', txt or '')
+    n = 0
+    for l in t.split('\n'):
+        l = l.strip()
+        if not l: continue
+        if re.match(r"^[\w\s,'-]+$", l) and len(l.split()) <= 6 and ':' not in l: continue
+        if re.match(r'^(flashback|equip|cycling|\w+cycling|crew|plot|escape)\b', l, re.I):
+            continue
+        n += 1
+    return n
+
+
+def coste_flashback(txt, out=None):
+    """(generico, pips) del coste de flashback, o (0, ceros).
+
+    OJO: devuelve 0 si la carta NO se lee entera. Un mecanismo que repite un efecto solo
+    puede aplicarse cuando el efecto esta completo; si no, multiplica el error en vez de
+    anadir valor. Medido: con Faithless Looting —"roba dos, descarta dos", y el motor solo
+    lee el robo— el flashback llevaba a Mono Red Madness de +4,5 a +7,2 de error."""
+    vacio = {'W': 0, 'U': 0, 'B': 0, 'R': 0, 'G': 0}
+    if not txt:
+        return 0, vacio
+    if out is not None:
+        _ranuras = sum(1 for k in ('eff', 'eff2', 'eff3') if out.get(k))
+        if _frases_de_juego(txt) > _ranuras:
+            return 0, vacio
+        # Y el caso que el conteo por LINEAS no ve: una sola frase con dos efectos, uno
+        # bueno y otro malo. Faithless Looting es "roba dos cartas, LUEGO DESCARTA DOS":
+        # una linea, una ranura, y el motor solo lee la mitad buena. Repetirla por
+        # flashback duplicaba una ventaja inventada.
+        _bajo = re.sub(r'\([^)]*\)', '', txt).lower()
+        _CONTRA = (r'then discard|discard (?:a|one|two|three|\d+) cards?',
+                   r'you lose \d+ life', r'sacrifice (?:a|an|another|two)',
+                   r'exile (?:the top )?\w* ?cards? from your (?:library|graveyard)')
+        for _rx in _CONTRA:
+            if re.search(_rx, _bajo):
+                return 0, vacio
+    for linea in txt.split('\n'):
+        l = linea.strip()
+        if not l.lower().startswith('flashback'):
+            continue
+        coste = l.split('(')[0]
+        gen, pips, _ = mana_pips(coste)
+        if gen or any(pips.values()):
+            return gen, pips
+    return 0, vacio
+
+
 def coste_equipar(txt):
     """Cuanto cuesta ENGANCHAR el equipo. El motor lo aplica al entrar y sin pagar, asi
     que un Equipo de {1} con Equip {4} daba su bono por un mana en vez de por cinco.
@@ -1158,6 +1208,8 @@ def convert(c):
     hybrid = bool(re.search(r'\{[WUBRG]/[WUBRG]\}', mc))
     gen, pips, hyb = mana_pips(mc)
     _txt = (c.get('oracle_text') or '').strip() or ((ff.get('oracle_text') if ff else '') or '')
+    _fb_gen, _fb_pips = coste_flashback(_txt, e) \
+        if os.environ.get('FLASHBACK_OFF') != '1' else (0, {'W':0,'U':0,'B':0,'R':0,'G':0})
     _sg = capitulos_saga(c) if os.environ.get('SAGAS_OFF') != '1' else None
     _sg_n, _sg_ef, _sg_p1 = _sg if _sg else (0, [0, 0, 0, 0], [0, 0, 0, 0])
     _adv = cara_aventura(c)
@@ -1227,6 +1279,7 @@ def convert(c):
         adv_eff=_adv_eff, adv_p1=_adv_p1, adv_gen=_adv_gen, adv_pips=_adv_pips,
         sub=subtipos_mask(c),
         saga_n=_sg_n, saga_ef=_sg_ef, saga_p1s=_sg_p1,
+        fb_gen=_fb_gen, fb_pips=_fb_pips,
         **e)
 
 if __name__ == '__main__':

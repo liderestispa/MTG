@@ -72,6 +72,9 @@ typedef struct {
   uint32_t sub;        /* subtipos de criatura, mascara */
   uint32_t lord_sub;   /* si el lord solo sube a una tribu, cual */
   uint32_t cond_sub;   /* tribu que exige cond=4 */
+  uint8_t fb_gen;      /* FLASHBACK: coste generico de lanzarlo desde el
+                          cementerio. 0 = no tiene. */
+  uint8_t fb_pip[5];
   uint8_t saga_n;      /* cuantos capitulos tiene la Saga */
   uint8_t saga_eff[4]; /* efecto de cada capitulo */
   int16_t saga_p1[4];
@@ -1343,6 +1346,14 @@ static void activar_habilidades(P*me,P*opp){
    sirve AHORA: remocion con objetivo, robo o rampa. Sin ese filtro el motor quemaba la
    mitad barata de Smaug en el turno 2 contra una mesa vacia. */
 static int AVENTURA_ON = 1;
+static int aventura_util_eff(P*me,P*opp,int e){
+  if(e==E_DESTROY||e==E_EXILE||e==E_DMG_SPELL||e==E_EDICT||e==E_TAPDOWN||e==E_BOUNCE)
+    return ncreat(opp)>0;
+  if(e==E_DMG_ANY||e==E_BURN_FACE||e==E_ETB_DRAIN) return 1;
+  if(e==E_ETB_DRAW||e==E_RAMP||e==E_ETB_TOKEN||e==E_LIFEGAIN||e==E_ETB_COUNTERS) return 1;
+  if(e==E_SWEEPER) return ncreat(opp)>ncreat(me);
+  return 0;
+}
 static int aventura_util(P*me,P*opp,Def*d){
   int e=d->adv_eff;
   if(e==E_DESTROY||e==E_EXILE||e==E_DMG_SPELL||e==E_EDICT||e==E_TAPDOWN||e==E_BOUNCE)
@@ -1374,9 +1385,40 @@ static void lanzar_aventuras(P*me,P*opp){
   }
 }
 
+/* ---- FLASHBACK ----
+   Primer lector de la zona de cementerio. Misma forma que lanzar_aventuras: una pasada
+   propia, una por turno, y solo si el efecto sirve AHORA. La carta se exilia al usarla,
+   que es la regla y de paso impide el bucle. Ablacion: FLASHBACK_OFF=1. */
+static int FLASHBACK_ON = 1;
+static void lanzar_flashback(P*me,P*opp){
+  if(!FLASHBACK_ON) return;
+  for(int q=0;q<me->ngy;q++){
+    Def*d=&D[me->gy[q]];
+    if(!d->fb_gen && !d->fb_pip[0] && !d->fb_pip[1] && !d->fb_pip[2]
+       && !d->fb_pip[3] && !d->fb_pip[4]) continue;
+    if(!d->eff) continue;
+    if(!aventura_util(me,opp,d) && !aventura_util_eff(me,opp,d->eff)) continue;
+    if(NDEF+7>=MAXDEF) return;
+    int t=NDEF+7;
+    D[t]=*d;
+    D[t].gen=d->fb_gen; D[t].typ=T_SORC; D[t].alt=0; D[t].coste_extra=0; D[t].cred=0;
+    for(int k=0;k<5;k++) D[t].pip[k]=d->fb_pip[k];
+    if(!payable(me,&D[t],me->treasures)) continue;
+    paycost(me,&D[t],&me->treasures);
+    D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0; D[t].atk_eff=0; D[t].act_eff=0;
+    D[t].saga_n=0; D[t].fb_gen=0;
+    apply(me,opp,t,0);
+    /* se exilia: sale del cementerio y no vuelve */
+    for(int k=q;k<me->ngy-1;k++) me->gy[k]=me->gy[k+1];
+    me->ngy--;
+    return;                       /* uno por turno */
+  }
+}
+
 static void cast_phase(P*me,P*opp,int main2){
   ALT_OPP = opp;
-  if(!main2){ activar_habilidades(me,opp); lanzar_aventuras(me,opp); }
+  if(!main2){ activar_habilidades(me,opp); lanzar_aventuras(me,opp);
+              lanzar_flashback(me,opp); }
   /* impuesto que me cobra el rival (Ghostly Prison y familia): encarece todo lo mio */
   me->taxed=0; me->tax_atk=0;
   for(int i=0;i<opp->nbf;i++){
@@ -2032,6 +2074,10 @@ int main(void){
     scanf("%u %u %u %d",&sb_,&ls_,&cs_,&am_);
     d->act_mana=(uint8_t)am_;
     int actp2_=0; scanf("%d",&actp2_); d->act_p2=(int16_t)actp2_;
+    int fg_=0,fp0=0,fp1=0,fp2=0,fp3=0,fp4=0;
+    scanf("%d %d %d %d %d %d",&fg_,&fp0,&fp1,&fp2,&fp3,&fp4);
+    d->fb_gen=(uint8_t)fg_; d->fb_pip[0]=(uint8_t)fp0; d->fb_pip[1]=(uint8_t)fp1;
+    d->fb_pip[2]=(uint8_t)fp2; d->fb_pip[3]=(uint8_t)fp3; d->fb_pip[4]=(uint8_t)fp4;
     int sn_=0,se0=0,se1=0,se2=0,se3=0,sp0=0,sp1=0,sp2=0,sp3=0;
     scanf("%d %d %d %d %d %d %d %d %d",&sn_,&se0,&se1,&se2,&se3,
           &sp0,&sp1,&sp2,&sp3);
@@ -2084,6 +2130,7 @@ int main(void){
     const char*av=getenv("AVENTURA_OFF"); if(av&&atoi(av)) AVENTURA_ON=0;
     const char*st=getenv("SAC_TONTO"); if(st) SAC_TONTO=atoi(st);
     const char*sg=getenv("SAGAS_OFF"); if(sg&&atoi(sg)) SAGAS_ON=0;
+    const char*fb=getenv("FLASHBACK_OFF"); if(fb&&atoi(fb)) FLASHBACK_ON=0;
     const char*cv=getenv("CARTA_VAL"); if(cv) CARTA_VAL=atoi(cv);
 
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
