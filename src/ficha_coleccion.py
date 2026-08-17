@@ -63,7 +63,13 @@ def ficha(nombre, copias, dentro):
     except Exception as ex: return dict(carta=nombre, copias=copias, estado='ERROR', nota=str(ex))
     t = texto(c)
     ranuras = [x for x in (e['eff'], e['eff2'], e.get('eff3', 0)) if x]
-    extra = [k for k in ('die_eff', 'act_eff') if e.get(k)]
+    # Cuentan TODAS las formas de estar modelada, no solo las tres ranuras de efecto:
+    # dyn (fuerza variable), alt (coste alternativo), cred, kw y las dos ranuras nuevas.
+    # Sin esto, Mirkwood Pathmaker —cuya fuerza SI esta modelada con dyn— salia "muda",
+    # y Gigantic Big Bear tambien pese a tener antimaleficio y prisa bien leidos.
+    extra = [k for k in ('die_eff', 'act_eff', 'dyn', 'alt', 'cred', 'entra_girada')
+             if e.get(k)]
+    if e['kw']: extra.append('kw')
     nf = frases_de_juego(t)
     sos = sospechas(c, e)
     if sos:                                   estado = 'MAL_LEIDA'

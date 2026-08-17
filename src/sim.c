@@ -54,6 +54,13 @@ typedef struct {
   uint8_t cond;
   uint8_t es_leg;      /* legendaria (bit 0) o Saga (bit 1): las cuenta Storied */
   uint8_t tax_atk;     /* el impuesto grava ATACAR y no LANZAR (Dain, Ghostly Prison) */
+  uint8_t atk_eff;     /* DISPARO AL ATACAR, con su condicion en cond. Existian
+                          E_ATTACK_DMG y E_ATTACK_DRAW y nada mas, asi que "al atacar
+                          gana 2 vidas", "al atacar pon un +1/+1" o "al atacar tapea una
+                          criatura" no se leian, o peor: caian en una ranura de ENTRADA y
+                          se disparaban al bajar la criatura. Misma solucion que la
+                          ranura de cementerio: se reutiliza apply(). */
+  int16_t atk_p1;
   uint8_t entra_girada;/* "This land enters tapped". El motor las metia TODAS destapadas,
                           y en el banco de Standard eso es el 52% de las tierras: medio
                           turno de ventaja regalado a cada mazo, en todos los mazos. */
@@ -632,6 +639,7 @@ static void addbf(P*p,int def){
 static P *OPP_OF_A=0, *OPP_OF_B=0;
 static void apply(P*me,P*opp,int def,int which);
 static void apply_die(P*me,P*opp,int def);
+static void apply_atk(P*me,P*opp,int def);
 static void rmbf(P*p,int i){
   tj_ev("sale", p, p->bf[i]);
   /* disparo al ir al cementerio (Ichor Wellspring, Nihil Spellbomb, Lembas). Antes no
@@ -776,6 +784,22 @@ static void mk_tokens(P*me,int proto,int count,int pwr,int tou,int mana){
     me->bf[i]=td; me->tap[i]=0; me->sick[i]=1; me->ctr[i]=0; me->eqp[i]=0;
   }
 }
+/* Disparo AL ATACAR. Mismo truco que apply_die: se copia el Def a una entrada temporal
+   con el efecto en la ranura primaria y se reutiliza el switch de apply, en vez de
+   duplicar los cincuenta casos. Ablacion: ATAQUE_OFF=1. */
+static int ATAQUE_ON = 1;
+static int cumple_cond(P*p, Def*d);
+static void apply_atk(P*me,P*opp,int def){
+  if(!ATAQUE_ON || !D[def].atk_eff) return;
+  if(!cumple_cond(me,&D[def])) return;
+  if(NDEF+1>=MAXDEF) return;
+  int t = NDEF+1;        /* temporal propio: NDEF ya lo usa apply_die */
+  D[t] = D[def];
+  D[t].eff = D[def].atk_eff; D[t].p1 = D[def].atk_p1;
+  D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0; D[t].atk_eff=0;
+  apply(me,opp,t,0);
+}
+
 /* Ejecuta el disparo de cementerio reutilizando el switch de apply. Se copia el Def a
    una entrada temporal con el efecto de muerte en la ranura primaria: asi no hay que
    duplicar los cincuenta casos del switch ni tocar su firma. */
@@ -1517,6 +1541,7 @@ static void combat(P*me,P*opp){
       if(d->eff==E_ATTACK_DMG) opp->life -= d->p1;
       if(d->eff2==E_ATTACK_DMG) opp->life -= d->q1;
       if(d->eff==E_ATTACK_DRAW||d->eff2==E_ATTACK_DRAW){ draw(me,1); me->life--; }
+      apply_atk(me,opp,me->bf[atk[k]]);
       int dmg=P_; if(d->kw&K_DS) dmg*=2;
       opp->life-=dmg;
       if(d->kw&K_LL) me->life+=dmg;
@@ -1525,6 +1550,7 @@ static void combat(P*me,P*opp){
       if(d->eff==E_ATTACK_DMG) opp->life -= d->p1;
       if(d->eff2==E_ATTACK_DMG) opp->life -= d->q1;
       if(d->eff==E_ATTACK_DRAW||d->eff2==E_ATTACK_DRAW){ draw(me,1); me->life--; }
+      apply_atk(me,opp,me->bf[atk[k]]);
       int resto=P_, total_bloq=0, ll=0;
       for(int q=0;q<nblk[k];q++){
         int j=blk[k][q]; Def*o=&D[opp->bf[j]];
@@ -1731,9 +1757,10 @@ int main(void){
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
     int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0,cr_=0;
-    int co_=0,lg_=0,ta_=0,eg_=0;
-    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,
-          &r2_,&al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_,&eg_);
+    int co_=0,lg_=0,ta_=0,eg_=0,ke_=0,kp_=0;
+    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,
+          &r1_,&r2_,&al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_,&eg_,&ke_,&kp_);
+    d->atk_eff=(uint8_t)ke_; d->atk_p1=(int16_t)kp_;
     d->cred=(uint8_t)cr_; d->cond=(uint8_t)co_; d->es_leg=(uint8_t)lg_;
     d->tax_atk=(uint8_t)ta_; d->entra_girada=(uint8_t)eg_;
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
@@ -1768,6 +1795,7 @@ int main(void){
     const char*lv=getenv("LORD_VE");      if(lv) LORD_VE=atoi(lv);
     const char*co=getenv("CONDICIONES_OFF"); if(co&&atoi(co)) CONDICIONES_ON=0;
     const char*tg=getenv("TIERRA_GIRADA"); if(tg) TIERRA_GIRADA=atoi(tg);
+    const char*aq=getenv("ATAQUE_OFF"); if(aq&&atoi(aq)) ATAQUE_ON=0;
 
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);

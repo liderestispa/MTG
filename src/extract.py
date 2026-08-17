@@ -607,6 +607,41 @@ def parse_card(c):
         elif re.search(r'less to cast,? where x is the greatest mana value among', low):
             if _solo in (None, '2'): out['cred'] = 2
 
+    # ---- disparo AL ATACAR ----
+    # Existian E_ATTACK_DMG y E_ATTACK_DRAW y nada mas. El resto de "whenever this
+    # creature attacks..." o no se leia o —peor— caia en una ranura de ENTRADA y se
+    # disparaba al bajar la criatura, que es media carta distinta: Ravening Warg ganaba
+    # 2 vidas al entrar cuando la carta las gana al atacar y solo con Feroz activo.
+    # Ranura propia (atk_eff/atk_p1) por el mismo motivo que la de cementerio.
+    # Ablacion en el motor: ATAQUE_OFF=1.
+    _al = None
+    _RX_ATK = re.compile(r"\s*(?:ferocious\s*-\s*)?whenever "
+                         r"(?:this creature|this|[\w' ]{1,24}) attacks")
+    for _l in low.split('\n'):
+        if _RX_ATK.match(_l):
+            _al = _l; break
+    if _al:
+        for _rx, _ef, _d in [
+            (r'you gain (\w+) life',                          'LIFEGAIN',     2),
+            (r'draw (\w+) cards?',                            'ETB_DRAW',     1),
+            (r'put (\w+) \+1/\+1 counters? on',               'ETB_COUNTERS', 1),
+            (r'create (\w+) .{0,40}token',                    'ETB_TOKEN',    1),
+            (r'deals? (\w+) damage to (?:any target|target player|each opponent)',
+                                                              'BURN_FACE',    1),
+            (r'tap it|tap target creature',               'TAPDOWN',      1),
+            (r'(?:target player|each opponent) (?:discards?|loses)', 'ETB_DISCARD', 1),
+        ]:
+            _m = re.search(_rx, _al)
+            if not _m: continue
+            _g = next((g for g in (_m.groups() or ()) if g), None)
+            out['atk_eff'] = E[_ef]; out['atk_p1'] = num(_g, _d) if _g else _d
+            # si ese mismo efecto habia caido en una ranura de ENTRADA, se MUEVE
+            for _s2, _p2 in (('eff','p1'), ('eff2','q1'), ('eff3','r1')):
+                if out[_s2] == E[_ef]:
+                    out[_s2] = E['NONE']; out[_p2] = 0
+                    break
+            break
+
     # ---- CONDICION de los efectos estaticos ----
     # E_COND_BUFF, E_TAX y E_LORD se aplicaban siempre. Ahora llevan un codigo de
     # condicion que el motor cobra en cumple_cond(). Sin esto, Dain daba su prision
