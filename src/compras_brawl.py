@@ -101,11 +101,18 @@ def bien_leida(c):
     ranuras = sum(1 for k in ('eff', 'eff2', 'eff3') if e.get(k))
     ranuras += sum(1 for k in ('die_eff', 'act_eff', 'atk_eff', 'adv_eff', 'saga_n',
                                'dyn', 'alt', 'cred', 'cond', 'mana_out') if e.get(k))
+    # Las lineas que son un COSTE de palabra clave no son efectos sin leer: son la
+    # etiqueta de precio de un efecto que ya esta modelado. 'Equip {4}' rechazaba 42
+    # candidatas de equipo cuyo bono el motor SI lee (y ahora ademas cobra).
+    COSTES_KW = _re.compile(r'^(equip|cycling|\w+cycling|crew|plot|offspring|bargain|'
+                            r'flashback|escape|channel|disturb|reconfigure|unearth|'
+                            r'exhaust|prototype|blitz|casualty|freerunning)\b')
     frases = 0
     for l in t.split('\n'):
         l = l.strip()
         if not l: continue
         if _re.match(r"^[\w\s,'-]+$", l) and len(l.split()) <= 6 and ':' not in l: continue
+        if COSTES_KW.match(l): continue
         frases += 1
     if frases > ranuras:
         return False, f'{frases} frases y {ranuras} ranuras: se lee a medias'

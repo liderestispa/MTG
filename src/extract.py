@@ -1100,6 +1100,24 @@ def entering_counters(txt):
     n = num(m.group(1), 1)
     return n if m.group(2) == '+' else -n
 
+def coste_equipar(txt):
+    """Cuanto cuesta ENGANCHAR el equipo. El motor lo aplica al entrar y sin pagar, asi
+    que un Equipo de {1} con Equip {4} daba su bono por un mana en vez de por cinco.
+    Se suma al coste generico: pagarlo todo junto por adelantado es aproximado, pero
+    infinitamente mas cerca que regalarlo."""
+    if not txt:
+        return 0
+    for linea in txt.split('\n'):
+        l = linea.strip().lower()
+        if not l.startswith('equip'):
+            continue
+        # "Equip {4}", "Equip—Pay {3} or discard a card", "Equip Dwarf {1}"
+        m = re.search(r'\{(\d+)\}', l)
+        if m:
+            return int(m.group(1))
+    return 0
+
+
 def cost_reduction(c, txt):
     """Estima cuanto se abarata la carta en el mazo para el que fue disenada."""
     low = (txt or '').lower()
@@ -1145,6 +1163,10 @@ def convert(c):
     _adv = cara_aventura(c)
     _adv_eff, _adv_p1, _adv_gen, _adv_pips = _adv if _adv else (0, 0, 0,
                                                                 {'W':0,'U':0,'B':0,'R':0,'G':0})
+    # el coste de equipar se cobra por adelantado: ver coste_equipar().
+    # Ablacion: EQUIP_GRATIS=1.
+    if os.environ.get('EQUIP_GRATIS') != '1':
+        gen += coste_equipar(_txt)
     _red = cost_reduction(c, _txt)
     # Si la carta tiene rebaja DINAMICA, esa manda y la estimacion plana no se aplica:
     # son dos modelos del mismo coste, no dos rebajas distintas.

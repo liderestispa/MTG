@@ -31,7 +31,7 @@ enum { E_NONE=0, E_ETB_DMG=1, E_ETB_DRAIN=2, E_ETB_DRAW=3, E_ETB_DISCARD=4, E_ET
        E_UPKEEP_DRAW=36, E_REPEAT_PUMP=37, E_TEAM_PUMP=38, E_FOG_BOUNCE=39,
        E_MOBILIZE=40, E_MASS_CHEAT=41, E_DEATH_DMG=42, E_ATTACK_DRAW=43,
        E_RECURSIVE=44, E_TEAM_MANA=45, E_ATTACK_DMG=46, E_PROTECT=47,
-       E_DMG_ANY=48, E_EDICT=49, E_TAPDOWN=50, E_TAX=51, E_TMP_PUMP=55,
+       E_DMG_ANY=48, E_EDICT=49, E_TAPDOWN=50, E_TAX=51, E_TMP_PUMP=55, E_UNBLOCK=56,
        E_LAND_KILL=52, E_MASS_BOUNCE=53,
        /* al entrar produce mana que dura solo este turno (Burning-Tree Emissary).
           No es un Tesoro: si sobra, se pierde al acabar el turno. */
@@ -291,6 +291,7 @@ typedef struct {
   int16_t ctr[BFMAX];     /* contadores +1/+1 */
   int16_t eqp[BFMAX];     /* bono de equipo acumulado (p<<8|t) */
   int16_t tmp_p[BFMAX], tmp_t[BFMAX];  /* bono HASTA EL FINAL DEL TURNO */
+  uint8_t tmp_unb[BFMAX];  /* no puede ser bloqueada, solo este turno */
   int lands[BFMAX], nl;   /* indices de def de tierras en juego */
   uint8_t ltap[BFMAX];
   int army;               /* indice bf del Army de amass, -1 */
@@ -691,7 +692,7 @@ static void addbf(P*p,int def){
   if(p->nbf>=BFMAX) return;
   int i=p->nbf++;
   p->bf[i]=def; p->tap[i]=0; p->ctr[i]=0; p->eqp[i]=0;
-  p->tmp_p[i]=0; p->tmp_t[i]=0;
+  p->tmp_p[i]=0; p->tmp_t[i]=0; p->tmp_unb[i]=0;
   p->sick[i] = (D[def].typ==T_CREA && !(D[def].kw&K_HAS)) ? 1 : 0;
 }
 static P *OPP_OF_A=0, *OPP_OF_B=0;
@@ -728,7 +729,7 @@ static void rmbf(P*p,int i){
   p->nbf--;
   for(int k=i;k<p->nbf;k++){ p->bf[k]=p->bf[k+1];p->tap[k]=p->tap[k+1];p->sick[k]=p->sick[k+1];
                              p->ctr[k]=p->ctr[k+1];p->eqp[k]=p->eqp[k+1]; p->tmp_p[k]=p->tmp_p[k+1];
-    p->tmp_t[k]=p->tmp_t[k+1]; }
+    p->tmp_t[k]=p->tmp_t[k+1]; p->tmp_unb[k]=p->tmp_unb[k+1]; }
   if(p->army==i) p->army=-1; else if(p->army>i) p->army--;
 }
 /* La mejor criatura que este dano SI puede matar. Un hechizo de 2 dano no debe
@@ -982,6 +983,14 @@ static void apply(P*me,P*opp,int def,int which){
         opp->tap[t]=1;
         if(a>=2) opp->frz[t]=(uint8_t)(a-1);      /* y tampoco se endereza */
       }
+    } break;
+    case E_UNBLOCK: {
+      /* La mejor criatura propia pasa este turno. No es una palabra clave estatica: las
+         cinco cartas de la coleccion que lo hacen son habilidades ACTIVADAS. */
+      int m2=-1,mv=-1;
+      for(int q=0;q<me->nbf;q++) if(D[me->bf[q]].typ==T_CREA && !me->sick[q] && pw(me,q)>mv){
+        mv=pw(me,q); m2=q; }
+      if(m2>=0) me->tmp_unb[m2]=1;
     } break;
     case E_TMP_PUMP: {
       /* +a/+a hasta el final del turno. p2=1 lo aplica a TODO el equipo (Dwarven
@@ -1659,8 +1668,8 @@ static void combat(P*me,P*opp){
        ataque no puede salir mal. Y con GANG_ON=0 el bloqueo en grupo ni siquiera existe
        —la rama de bloqueo simple exige minb==1—, asi que en este motor una criatura con
        amenaza es literalmente imbloqueable... y aun asi se quedaba en casa. */
-    int imbloqueable = KW_ATAQUE &&
-                       (n_disponibles < minb_atk || (!GANG_ON && minb_atk > 1));
+    int imbloqueable = me->tmp_unb[i] || (KW_ATAQUE &&
+                       (n_disponibles < minb_atk || (!GANG_ON && minb_atk > 1)));
     /* CADA criatura bloquea a UN atacante. Si ya declare tantos atacantes como
        bloqueadores pueden pararme, este pasa si o si y da igual que lo maten: no queda
        nadie libre para bloquearlo.
@@ -1708,6 +1717,7 @@ static void combat(P*me,P*opp){
 
     /* candidatos legales */
     int cand[BFMAX], nc=0;
+    if(!me->tmp_unb[i])                 /* imbloqueable: no se le asigna bloqueador */
     for(int j=0;j<opp->nbf;j++){ Def*o=&D[opp->bf[j]];
       if(o->typ!=T_CREA||opp->tap[j]||usedb[j]) continue;
       if((d->kw&K_FLY) && !((o->kw&K_FLY)||(o->kw&K_REA))) continue;
@@ -1978,7 +1988,8 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
     /* el mana flotante no sobrevive al turno; los Tesoros si */
     if(cur->flot){ cur->treasures -= cur->flot; if(cur->treasures<0) cur->treasures=0; cur->flot=0; }
     /* el bono temporal dura un turno, igual que el mana flotante */
-    for(int q=0;q<cur->nbf;q++){ cur->tmp_p[q]=0; cur->tmp_t[q]=0; }
+    for(int q=0;q<cur->nbf;q++){ cur->tmp_p[q]=0; cur->tmp_t[q]=0;
+      cur->tmp_unb[q]=0; }
     P*t=cur;cur=oth;oth=t;
   }
   ACC(); ST_timeout++;
