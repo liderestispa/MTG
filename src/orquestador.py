@@ -28,7 +28,7 @@ romper la tabla. Ya paso tres veces.
 """
 import sys, os, io, json, time, subprocess, datetime
 
-OBJETIVO_ESPERADO = 1.072     # banco nuevo de 77k partidas, 17-ago-2026
+OBJETIVO_ESPERADO = 1.069     # banco de 77k partidas + los cuatro hallazgos del detector
 TOLERANCIA = 0.02             # ruido de semilla del objetivo
 BLOQUE_GENS = 40              # generaciones por vuelta
 LOG = 'out/orquestador.log'
@@ -78,9 +78,24 @@ def resumen_lab():
     reg = lee('out/laboratorio.json', {'probadas': 0, 'entradas': []})
     c = {}
     for x in reg['entradas']: c[x['veredicto']] = c.get(x['veredicto'], 0) + 1
-    return dict(probadas=reg['probadas'], veredictos=c,
-                mejoras=[dict(spec=x['spec'], media=x['media'])
-                         for x in reg['entradas'] if x['veredicto'] == 'MEJORA'])
+    # Las mejoras se muestran UNA VEZ por spec, quedandose con la mas reciente. El
+    # registro tenia siete entradas con el mismo spec —la politica, con nombre de archivo
+    # fijo, medida en checkpoints distintos— y el informe las listaba como siete
+    # victorias. Ademas se marca la huella del banco: las que no coinciden con el banco
+    # de hoy se midieron contra otro dato y no son comparables.
+    try:
+        from laboratorio import huella_banco
+        hoy = huella_banco()
+    except Exception:
+        hoy = '?'
+    ultima = {}
+    for x in reg['entradas']:
+        if x['veredicto'] == 'MEJORA': ultima[x['spec']] = x
+    return dict(probadas=reg['probadas'], veredictos=c, banco=hoy,
+                mejoras=[dict(spec=x['spec'], media=x['media'],
+                              banco=x.get('banco', 'sin marcar'),
+                              vigente=(x.get('banco') == hoy))
+                         for x in ultima.values()])
 
 
 def pendientes():
@@ -130,6 +145,9 @@ def main():
     print(f"cobertura: {len(blancas)} cartas en blanco")
 
     # ---- ciclos ----
+    # El resumen del laboratorio se calcula ANTES del bucle: con --solo el bucle no
+    # corre y el informe salia diciendo "0 hipotesis" con 43 en el registro.
+    est['laboratorio'] = resumen_lab()
     ultimo_mejor = None
     ciclo = 0
     while queda() > 3 and solo is None:
@@ -155,19 +173,39 @@ def main():
             est['politica'] = dict(gen=h.get('gen_total'), base=h.get('base'),
                                    mejor=h.get('mejor_f'), reinicios=h.get('reinicios'),
                                    sigma=round(sum(h.get('sigma', [0])) / max(1, len(h.get('sigma', [1]))), 4))
-            delta = (h.get('mejor_f', 0) - h.get('base', 0)) * 100
-            est['politica']['ganancia_autojuego'] = round(delta, 3)
-            print(f"ciclo {ciclo}: gen {h.get('gen_total')}, autojuego {delta:+.3f}, "
+            # DOS numeros, y solo uno es una medida.
+            #   inflado = mejor_f - base, o sea el MAXIMO de una evaluacion por generacion
+            #             contra UNA sola de referencia. Sube solo con dejarlo corriendo.
+            #             En una corrida real dijo +2,135 cuando lo cierto era +1,25.
+            #   honesto = mu contra la heuristica en semillas que no seleccionan nada, y
+            #             emparejadas. Lo escribe entrenar_politica.py cada 20 generaciones.
+            inflado = (h.get('mejor_f', 0) - h.get('base', 0)) * 100
+            honesto = (lee('out/politica_hist.json', {}) or {}).get('validacion')
+            est['politica']['ganancia_autojuego'] = round(honesto, 3) if honesto is not None \
+                                                    else None
+            est['politica']['ganancia_inflada'] = round(inflado, 3)
+            txt = f"{honesto:+.3f} real" if honesto is not None else "sin validar aun"
+            print(f"ciclo {ciclo}: gen {h.get('gen_total')}, autojuego {txt} "
+                  f"(el maximo dice {inflado:+.3f}), "
                   f"sigma {est['politica']['sigma']:.3f} ({seg/60:.0f} min)")
 
-            # contrastar contra DATO REAL solo si mejoro desde la ultima vez
-            if h.get('mejor_f') and h['mejor_f'] != ultimo_mejor and queda() > 8:
-                ultimo_mejor = h['mejor_f']
+            # Contrastar contra DATO REAL cuando cambie CUALQUIERA de los dos. Antes el
+            # disparador era solo mejor_f, que es un maximo: en una corrida se congelo en
+            # el ciclo 18 y los 22 ciclos siguientes no contrastaron nada, aunque mu si
+            # se estaba moviendo.
+            marca = (h.get('mejor_f'), honesto)
+            if h.get('mejor_f') and marca != ultimo_mejor and queda() > 8:
+                ultimo_mejor = marca
                 est['fase'] = 'contrastando politica con dato real'; escribe_estado(est)
                 import shutil
-                shutil.copy('out/politica.txt', 'out/politica_probando.txt')
+                # Nombre UNICO por generacion. Con un nombre fijo el registro acumulaba
+                # siete entradas con el mismo spec, indistinguibles entre si: no se podia
+                # saber a que punto del entrenamiento correspondia cada una, y --reglas no
+                # las podia filtrar. Son hipotesis distintas y tienen que llamarse distinto.
+                probando = f"out/politica_g{h.get('gen_total')}.txt"
+                shutil.copy('out/politica.txt', probando)
                 ejecuta(['src/laboratorio.py',
-                         'POLNET=out/politica_probando.txt POLNET_LADO=1'],
+                         f'POLNET={probando} POLNET_LADO=1'],
                         minutos=min(20, queda()))
                 reg = lee('out/laboratorio.json', {'entradas': []})
                 pol = [x for x in reg['entradas'] if 'POLNET' in x['spec']]
@@ -195,13 +233,23 @@ def main():
             f"{lab.get('probadas', 0)} hipotesis en total: " +
             ', '.join(f"{k} {v}" for k, v in sorted(lab.get('veredictos', {}).items())), ""]
     for m in lab.get('mejoras', []):
-        inf.append(f"- **MEJORA** `{m['spec']}` {m['media']:+.3f}")
+        # Ojo con leer esto como "el cambio es malo": lo que no vale es el NUMERO. Las
+        # dos reglas del extractor se midieron contra el banco viejo y despues se
+        # revalidaron contra el nuevo, y siguen en pie.
+        aviso = '' if m.get('vigente') else \
+                f"  ← el numero es de otro banco (`{m.get('banco')}`): hay que revalidarlo"
+        inf.append(f"- **MEJORA** `{m['spec']}` {m['media']:+.3f}{aviso}")
     p = est.get('politica')
     if p:
+        g = p.get('ganancia_autojuego')
         inf += ["", "## Politica de juego", "",
                 f"- generacion **{p.get('gen')}**, {p.get('reinicios')} reinicios, "
                 f"sigma {p.get('sigma')}",
-                f"- autojuego: **{p.get('ganancia_autojuego'):+.3f}** puntos sobre la heuristica"]
+                f"- autojuego, medido en semillas limpias y emparejadas: "
+                f"**{g:+.3f}** puntos sobre la heuristica" if g is not None else
+                "- autojuego: sin validar todavia en esta corrida",
+                f"- (el maximo historico dice {p.get('ganancia_inflada'):+.3f}, y esta "
+                f"inflado por ser un maximo: no lo uses para decidir nada)"]
         cdr = p.get('contra_dato_real')
         if cdr:
             inf += [f"- contra dato real: **{cdr['media']:+.3f}** → **{cdr['veredicto']}** "

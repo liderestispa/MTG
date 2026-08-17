@@ -1,0 +1,24 @@
+﻿estado: generacion 1584, mejor_f 48.190%, base guardada 46.056%
+o sea el entrenador reporta +2.135 puntos.
+
+Re-midiendo en 12 semillas nuevas, emparejadas:
+
+   semilla  par?  heuristica        mu   guardada   mu-heu  guar-heu
+   1234567 impar     46.135%   47.341%    47.429%   +1.206    +1.294
+   1234568   par     45.460%   46.905%    46.857%   +1.444    +1.397
+    777001 impar     46.175%   47.309%    47.198%   +1.135    +1.024
+    777002   par     45.698%   46.849%    46.881%   +1.151    +1.183
+    424243 impar     46.119%   47.373%    47.206%   +1.254    +1.087
+    424244   par     46.675%   47.698%    47.849%   +1.024    +1.175
+  99881177 impar     46.794%   47.929%    47.889%   +1.135    +1.095
+  99881178   par     45.913%   47.032%    47.135%   +1.119    +1.222
+     31337 impar     45.984%   47.190%    47.262%   +1.206    +1.278
+     31338   par     46.000%   47.365%    47.524%   +1.365    +1.524
+    606060   par     46.040%   47.294%    47.429%   +1.254    +1.389
+    606061 impar     45.754%   47.405%    47.460%   +1.651    +1.706
+
+mu (centro de lo aprendido): +1.245 puntos  (sd 0.171, error tipico 0.049)
+
+politica guardada: +1.281 puntos  (sd 0.197, error tipico 0.057)
+
+efecto de paridad de la semilla sobre la MISMA heuristica: pares 45.964% vs impares 46.160%  (diferencia -0.196)

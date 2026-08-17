@@ -1,11 +1,11 @@
 {
- "inicio": "2026-08-16T18:47:58",
- "horas": 6.0,
- "fase": "entrenando (ciclo 27)",
- "ciclo": 27,
+ "inicio": "2026-08-17T00:55:05",
+ "horas": 4.0,
+ "fase": "terminado",
+ "ciclo": 0,
  "avisos": [],
- "actualizado": "2026-08-16T22:49:34",
- "objetivo_control": 0.978,
+ "actualizado": "2026-08-17T00:55:15",
+ "objetivo_control": 1.069,
  "cobertura": {
   "blancas": 71,
   "copias": 151,
@@ -20,7 +20,6 @@
    "4x Sunderflock"
   ]
  },
- "minutos_restantes": 118,
  "laboratorio": {
   "probadas": 43,
   "veredictos": {
@@ -29,51 +28,26 @@
    "ruido": 13,
    "MEJORA": 9
   },
+  "banco": "30bce821",
   "mejoras": [
    {
     "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
-    "media": -0.0656
-   },
-   {
-    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
-    "media": -0.0656
+    "media": -0.0543,
+    "banco": "sin marcar",
+    "vigente": false
    },
    {
     "spec": "REGLA_SOLO=retro_lava_dart",
-    "media": -0.1329
+    "media": -0.1329,
+    "banco": "sin marcar",
+    "vigente": false
    },
    {
     "spec": "REGLA_SOLO=vida_por_permanente_sacrificado",
-    "media": -0.0541
-   },
-   {
-    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
-    "media": -0.0451
-   },
-   {
-    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
-    "media": -0.0479
-   },
-   {
-    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
-    "media": -0.0417
-   },
-   {
-    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
-    "media": -0.0891
-   },
-   {
-    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
-    "media": -0.0543
+    "media": -0.0541,
+    "banco": "sin marcar",
+    "vigente": false
    }
   ]
- },
- "politica": {
-  "gen": 1040,
-  "base": 0.46055523809523813,
-  "mejor": 0.48190449999999996,
-  "reinicios": 23,
-  "sigma": 0.0807,
-  "ganancia_autojuego": 2.135
  }
 }

@@ -30,9 +30,25 @@ Cuatro guardas, y ninguna es opcional:
     python3 src/laboratorio.py --reglas                   # las de reglas_extra.json
     python3 src/laboratorio.py --reglas --horas 6         # dejarlo trabajando
 """
-import sys, os, io, json, math, time, statistics
+import sys, os, io, json, math, time, statistics, hashlib, datetime
 sys.path.insert(0, 'src'); sys.path.insert(0, 'data')
 from valida_semillas import con_variante
+
+
+def huella_banco():
+    """Identifica CONTRA QUE dato se midio una entrada.
+
+    El 17-ago se cambio el banco de Pauper a media corrida del orquestador, y las
+    entradas de antes y de despues quedaron mezcladas en el mismo registro sin forma de
+    distinguirlas. Siete entradas MEJORA de la politica resultaron ser del banco viejo, o
+    sea del ruido de muestras chicas, y el informe las mostraba como victorias. Una
+    comparacion entre dos entradas con huella distinta NO SIGNIFICA NADA."""
+    try:
+        from real_wr import REAL_FIELD
+        crudo = json.dumps(REAL_FIELD, sort_keys=True).encode()
+        return hashlib.sha1(crudo).hexdigest()[:8]
+    except Exception:
+        return '?'
 
 REGISTRO = 'out/laboratorio.json'
 # Nueve semillas y no cinco: con la correccion por comparaciones multiples, cinco no dan
@@ -122,6 +138,8 @@ def prueba(spec, reg):
     ent = dict(spec=spec, media=round(media, 4), sd=round(sd, 4), se=round(se, 4),
                z_exigido=round(z, 3), n_probadas=n_probadas, confirmacion=confirma,
                veredicto=veredicto, motivo=motivo,
+               fecha=datetime.datetime.now().isoformat(timespec='seconds'),
+               banco=huella_banco(),
                base=[round(x, 3) for x in base_d], variante=[round(x, 3) for x in var_d])
     reg['probadas'] = n_probadas
     reg['entradas'].append(ent)
