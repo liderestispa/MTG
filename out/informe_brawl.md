@@ -4,7 +4,7 @@
 
 35 hechizos + 24 tierras + comandante = 60
 
-Indice bruto del motor: **38.3%** contra el campo. Partida media 7.6 turnos.
+Indice bruto del motor: **38.6%** contra el campo. Partida media 7.4 turnos.
 
 ## Donde cae contra el metajuego
 
@@ -12,22 +12,22 @@ Indice bruto del motor: **38.3%** contra el campo. Partida media 7.6 turnos.
 |---|---|
 | Elspeth Storm Slayer | 66.4% |
 | Ketramose the New Dawn | 62.2% |
-| Sephiroth Fabled SOLDIER | 44.5% |
-| **TU MAZO (The Sackville-Bagginses)** | **38.3%** |
+| Sephiroth Fabled SOLDIER | 44.4% |
+| **TU MAZO (The Sackville-Bagginses)** | **38.6%** |
 | Tifa Lockhart | 28.8% |
-| Eluge the Shoreless Sea | 24.5% |
-| Kona Rescue Beastie | 24.1% |
+| Eluge the Shoreless Sea | 24.4% |
+| Kona Rescue Beastie | 24.2% |
 
 ## Enfrentamiento por enfrentamiento
 
 | contra | ganas |
 |---|---|
-| Eluge the Shoreless Sea | 77.8% |
-| Tifa Lockhart | 74.1% |
-| Kona Rescue Beastie | 60.9% |
-| Sephiroth Fabled SOLDIER | 39.2% |
-| Ketramose the New Dawn | 27.4% |
-| Elspeth Storm Slayer | 11.7% |
+| Eluge the Shoreless Sea | 78.2% |
+| Tifa Lockhart | 74.3% |
+| Kona Rescue Beastie | 62.1% |
+| Sephiroth Fabled SOLDIER | 36.9% |
+| Ketramose the New Dawn | 29.2% |
+| Elspeth Storm Slayer | 12.3% |
 
 ## Legalidad y armabilidad: OK
 
@@ -67,7 +67,6 @@ Legal en Standard Brawl y armable con la coleccion, carta por carta.
 - Boiling Rock Rioter — `{2}{B}` 3/3
 - Crude Bent Blade — `{2}{B}` Artifact
 - Gnashing of Teeth — `{1}{B}{B}` Sorcery
-- Great Fierce Bee — `{2}{B}` 2/2
 - Hog-Monkey — `{2}{B}` 3/2
 - Long-Bodied Grey Dog — `{3}` 2/2
 - Rage into the Valley — `{2}{B}` Sorcery
@@ -76,6 +75,7 @@ Legal en Standard Brawl y armable con la coleccion, carta por carta.
 **4 mana**
 
 - Foggy Swamp Hunters — `{3}{B}` 3/4
+- Gathering of Darkness — `{3}{B}` Sorcery
 - Gollum, Silent Slinker // Meager Meal — `{3}{B} // {B}` 4/3
 - Head of the Hunt — `{2}{B}{B}` 4/3
 - Phoenix Fleet Airship — `{2}{B}{B}` 4/4
@@ -98,4 +98,4 @@ Legal en Standard Brawl y armable con la coleccion, carta por carta.
 
 - El **porcentaje bruto no es una prediccion**. `src/escala.py` se niega a calibrar el nivel de Brawl: solo hay dos winrates reales publicados y los dos estan entre 73% y 77%, asi que ajustar una recta con n=2 devuelve 90% para cualquier cosa.
 - Lo que **si** vale es la posicion relativa y los enfrentamientos: son comparaciones dentro del mismo motor, con semillas independientes.
-- El motor lee bien 88 de las 204 cartas de la coleccion, a medias 76, mudas 35 y mal leidas 5. Los mazos se buscan sobre esa lectura, asi que las mudas estan INFRAvaloradas y pueden ser mejores de lo que el motor cree.
+- El motor lee bien 93 de las 204 cartas de la coleccion, a medias 76, mudas 30 y mal leidas 5. Los mazos se buscan sobre esa lectura, asi que las mudas estan INFRAvaloradas y pueden ser mejores de lo que el motor cree.
