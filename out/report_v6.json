@@ -159,10 +159,10 @@
   },
   "nl": 24,
   "ns": 36,
-  "gain": "+14,31",
-  "obj": 83.48780000000001,
-  "wr": 87.8297,
-  "cal": 64.70955189200511,
+  "gain": "+14,43",
+  "obj": 83.5178,
+  "wr": 87.85969999999999,
+  "cal": 64.23129126156955,
   "legal": true,
   "errs": [],
   "mm": [
@@ -194,24 +194,24 @@
    [
     "Mardu Discard",
     2.7,
-    79.8333
+    81.0
    ]
   ],
   "st": {
    "firstplay": 1.9977,
-   "gamelen": 7.665,
+   "gamelen": 7.6821,
    "noplay14": 1.4473,
-   "screw": 0.3599,
-   "manascrew": 0.0079,
-   "cast": 6.6897,
-   "removal": 3.9171,
+   "screw": 0.3611,
+   "manascrew": 0.008,
+   "cast": 6.7051,
+   "removal": 3.9208,
    "timeout": 0.0013,
    "hA3": 3.8469,
-   "hA6": 1.9467,
-   "hA9": 1.0885,
+   "hA6": 1.9458,
+   "hA9": 1.0897,
    "hB3": 4.5508,
-   "hB6": 2.3285,
-   "hB9": 1.6209
+   "hB6": 2.3256,
+   "hB9": 1.6165
   }
  },
  "pauper": {
@@ -360,10 +360,10 @@
   },
   "nl": 23,
   "ns": 37,
-  "gain": "+12,36",
-  "obj": 69.15570000000001,
-  "wr": 72.8979,
-  "cal": 53.645671497031444,
+  "gain": "+13,09",
+  "obj": 69.118,
+  "wr": 72.86019999999999,
+  "cal": 53.641081992831474,
   "legal": true,
   "errs": [],
   "mm": [
@@ -380,7 +380,7 @@
    [
     "Tron",
     6.5,
-    70.6666
+    70.3333
    ],
    [
     "Mono Red Rally",
@@ -405,19 +405,19 @@
   ],
   "st": {
    "firstplay": 1.6906,
-   "gamelen": 6.752,
+   "gamelen": 6.7537,
    "noplay14": 1.2474,
    "screw": 0.4761,
    "manascrew": 0.0147,
-   "cast": 6.5663,
-   "removal": 3.5527,
+   "cast": 6.5675,
+   "removal": 3.5533,
    "timeout": 0.0003,
    "hA3": 3.5018,
    "hA6": 1.4679,
-   "hA9": 0.7584,
+   "hA9": 0.7573,
    "hB3": 4.6056,
    "hB6": 2.6346,
-   "hB9": 2.2364
+   "hB9": 2.2316
   }
  },
  "brawl": {
@@ -524,6 +524,13 @@
     "pt": "Legendary Arti"
    },
    {
+    "cmc": 2,
+    "name": "Troop of Ponies",
+    "n": 1,
+    "mc": "{2}",
+    "pt": "2/1"
+   },
+   {
     "cmc": 3,
     "name": "Airbending Lesson",
     "n": 1,
@@ -539,6 +546,13 @@
    },
    {
     "cmc": 3,
+    "name": "Bender's Waterskin",
+    "n": 1,
+    "mc": "{3}",
+    "pt": "Artifact"
+   },
+   {
+    "cmc": 3,
     "name": "Earth Kingdom Jailer",
     "n": 1,
     "mc": "{2}{W}",
@@ -550,13 +564,6 @@
     "n": 1,
     "mc": "{2}{W}",
     "pt": "2/3"
-   },
-   {
-    "cmc": 3,
-    "name": "Glider Staff",
-    "n": 1,
-    "mc": "{2}{W}",
-    "pt": "Artifact"
    },
    {
     "cmc": 3,
@@ -592,13 +599,6 @@
     "n": 1,
     "mc": "{2}{W}{W}",
     "pt": "Sorcery"
-   },
-   {
-    "cmc": 4,
-    "name": "Celebrate the Mountain-king",
-    "n": 1,
-    "mc": "{3}{W}",
-    "pt": "Enchantment"
    },
    {
     "cmc": 4,
@@ -678,8 +678,8 @@
   "nl": 24,
   "ns": 35,
   "gain": "n/d",
-  "obj": 58.71999999999999,
-  "wr": 60.7861,
+  "obj": 49.348800000000004,
+  "wr": 51.3888,
   "cal": null,
   "legal": true,
   "errs": [],
@@ -687,49 +687,49 @@
    [
     "Elspeth Storm Slayer",
     23.0,
-    69.8333
+    43.1666
    ],
    [
     "Tifa Lockhart",
     9.5,
-    78.0
+    77.33330000000001
    ],
    [
     "Sephiroth Fabled SOLDIER",
     9.5,
-    42.0833
+    44.083299999999994
    ],
    [
     "Ketramose the New Dawn",
     7.0,
-    10.25
+    12.5
    ],
    [
     "Eluge the Shoreless Sea",
     6.2,
-    72.5833
+    75.33330000000001
    ],
    [
     "Kona Rescue Beastie",
     5.0,
-    66.5
+    69.1666
    ]
   ],
   "st": {
-   "firstplay": 1.4743,
-   "gamelen": 7.6791,
-   "noplay14": 0.6887,
-   "screw": 0.1303,
-   "manascrew": 0.0085,
-   "cast": 7.9695,
-   "removal": 1.9636,
-   "timeout": 0.0031,
-   "hA3": 4.1919,
-   "hA6": 1.6268,
-   "hA9": 0.578,
-   "hB3": 6.2354,
-   "hB6": 4.0063,
-   "hB9": 2.1997
+   "firstplay": 1.4777,
+   "gamelen": 7.4602,
+   "noplay14": 0.68,
+   "screw": 0.1131,
+   "manascrew": 0.0077,
+   "cast": 7.9226,
+   "removal": 1.9344,
+   "timeout": 0.0009,
+   "hA3": 4.1855,
+   "hA6": 1.4993,
+   "hA9": 0.4902,
+   "hB3": 6.2345,
+   "hB6": 4.0492,
+   "hB9": 2.2799
   }
  }
 }
