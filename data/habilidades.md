@@ -53,17 +53,19 @@ Son las dos mecánicas que la gente mezcla, y el motor las trata de forma distin
 | repetir | no | sí: `III, IV — Add {R}`, `I, II — Destroy…` |
 | ranura | `adv_eff` + `adv_gen` | `saga_eff[4]` + `saga_n` |
 
- estuvo en el enum **sin implementación** hasta el 18-ago: no se ejecutaba nunca,
-y el extractor metía los capítulos como efectos de entrada sueltos.  disparaba sus 6 de daño **al bajar** en vez de al turno siguiente, y
- no leía su capítulo de exilio.
+`E_SAGA` estuvo en el enum **sin implementación** hasta el 18-ago: no se ejecutaba nunca,
+y el extractor metía los capítulos como efectos de entrada sueltos. *Burn, Burn, Tree and
+Fern* disparaba sus 6 de daño **al bajar** en vez de al turno siguiente, y *The Princess
+Takes Flight* no leía su capítulo de exilio.
 
 Dos detalles al ampliarlo:
 
 - **Cuenta los capítulos que TIENE, no los que sepas traducir.** Si el II no se entiende
   pero existe, la Saga tiene que durar sus dos turnos igual — el tempo es lo que el motor
   mide, y una Saga que se sacrifica un turno antes es otra carta.
-- **Los capítulos repetidos se expanden.**  pone el mismo efecto en las
-  dos posiciones. Summon: Bahamut destruye dos turnos seguidos.
+- **Los capítulos repetidos se expanden.** `I, II — Destroy…` pone el mismo efecto en
+  las dos posiciones. *Summon: Bahamut* destruye dos turnos seguidos y
+  *Roll-Roll-Roll-Roll* exilia los cuatro.
 
 ## Costes de activación que sabe cobrar
 
