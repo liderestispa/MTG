@@ -72,6 +72,9 @@ typedef struct {
   uint32_t sub;        /* subtipos de criatura, mascara */
   uint32_t lord_sub;   /* si el lord solo sube a una tribu, cual */
   uint32_t cond_sub;   /* tribu que exige cond=4 */
+  uint8_t saga_n;      /* cuantos capitulos tiene la Saga */
+  uint8_t saga_eff[4]; /* efecto de cada capitulo */
+  int16_t saga_p1[4];
   uint8_t entra_girada;/* "This land enters tapped". El motor las metia TODAS destapadas,
                           y en el banco de Standard eso es el 52% de las tierras: medio
                           turno de ventaja regalado a cada mazo, en todos los mazos. */
@@ -162,6 +165,11 @@ static int FICHAS_REALES=0;
 static int MUERTE_ON=1;
 /* habilidades activadas, evaluadas con su coste. Ablacion: ACTIVADAS_ON=0. */
 static int ACTIVADAS_ON=1;
+/* Cuanto vale una carta robada en 'puntos de tablero'. Un 2/2 vale 6 con la
+   formula pw*2+th, asi que 3 por carta deja el cambio 2-por-1 en el limite. */
+static int CARTA_VAL = 3;
+static int SAC_TONTO = 0;      /* 1 = volver a sacrificar siempre lo mas chico */
+
 
 /* ---- los tres hallazgos que quedaban de data/errores_juego.md ----
    Los tres son INFORMACION QUE LE FALTA AL MOTOR PARA DECIDIR, no restricciones
@@ -683,6 +691,7 @@ static P *OPP_OF_A=0, *OPP_OF_B=0;
 static void apply(P*me,P*opp,int def,int which);
 static void apply_die(P*me,P*opp,int def);
 static void apply_atk(P*me,P*opp,int def);
+static void saga_capitulo(P*me,P*opp,int def,int cap);
 static int CMD_OF(P*p);
 static void rmbf(P*p,int i){
   tj_ev("sale", p, p->bf[i]);
@@ -855,6 +864,22 @@ static void apply_die(P*me,P*opp,int def){
   D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0;
   apply(me,opp,t,0);
 }
+/* Ejecuta UN capitulo de Saga reutilizando el switch de apply, igual que apply_die y
+   apply_atk. Ablacion: SAGAS_OFF=1. */
+static int SAGAS_ON = 1;
+static void saga_capitulo(P*me,P*opp,int def,int cap){
+  if(!SAGAS_ON) return;
+  Def*d=&D[def];
+  if(cap>=d->saga_n || !d->saga_eff[cap]) return;
+  if(NDEF+6>=MAXDEF) return;
+  int t=NDEF+6;
+  D[t]=*d;
+  D[t].eff=d->saga_eff[cap]; D[t].p1=d->saga_p1[cap]; D[t].p2=0;
+  D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0; D[t].atk_eff=0; D[t].act_eff=0;
+  D[t].saga_n=0;
+  apply(me,opp,t,0);
+}
+
 static void apply(P*me,P*opp,int def,int which){
   Def*d=&D[def];
   int e = (which==0)? d->eff : (which==1? d->eff2 : d->eff3);
@@ -943,6 +968,13 @@ static void apply(P*me,P*opp,int def,int which){
       }
     } break;
     case E_TAX: break;         /* estatico: lo lee cast_phase via ->taxed */
+    case E_SAGA: {
+      /* El capitulo I dispara AL ENTRAR: "as this Saga enters, add a lore counter".
+         Los siguientes los lleva upkeep(). Antes E_SAGA no hacia absolutamente nada. */
+      if(!SAGAS_ON || !d->saga_n) break;
+      for(int q=0;q<me->nbf;q++) if(me->bf[q]==def){ me->ctr[q]=1; break; }
+      if(d->saga_eff[0]) saga_capitulo(me,opp,def,0);
+    } break;
     case E_LAND_KILL: { if(!NEG_ON) break;  /* le quita una tierra: se lleva su turno */
       for(int rep=0; rep<(a>0?a:1); rep++){
         if(opp->nl<=0) break;
@@ -1182,11 +1214,28 @@ static void activar_habilidades(P*me,P*opp){
       if(d->act_cost==1){
         for(int j=me->nbf-1;j>=0;j--) if(D[me->bf[j]].typ==T_ART){ rmbf(me,j); break; }
       } else if(d->act_cost==2){
-        /* se sacrifica la criatura mas chica que NO sea esta */
-        int peor=-1,pv=1<<30;
-        for(int j=0;j<me->nbf;j++){ if(j==i) continue;
-          if(D[me->bf[j]].typ!=T_CREA) continue;
-          int v=pw(me,j)*2+th(me,j); if(v<pv){pv=v;peor=j;} }
+        /* QUE se sacrifica. Antes era siempre la mas chica, que para un coste puro esta
+           bien pero es al reves cuando el pago escala con lo sacrificado: Tom, Bert, and
+           William roba cartas igual a la fuerza, asi que el motor robaba el minimo.
+           Ahora se elige por valor neto, descontando a la mitad lo que esta girado o con
+           invocacion, que en ese momento no aporta nada. Ablacion: SAC_TONTO=1. */
+        int peor=-1;
+        if(SAC_TONTO){
+          int pv=1<<30;
+          for(int j=0;j<me->nbf;j++){ if(j==i) continue;
+            if(D[me->bf[j]].typ!=T_CREA) continue;
+            int v=pw(me,j)*2+th(me,j); if(v<pv){pv=v;peor=j;} }
+        } else {
+          int mejorv=0;                       /* si nada da valor positivo, no se activa */
+          for(int j=0;j<me->nbf;j++){ if(j==i) continue;
+            if(D[me->bf[j]].typ!=T_CREA) continue;
+            int cartas = (d->act_eff==E_ETB_DRAW && d->act_p1==0) ? pw(me,j)
+                       : (d->act_eff==E_ETB_DRAW ? d->act_p1 : 1);
+            int mesa = pw(me,j)*2 + th(me,j);
+            if(me->tap[j] || me->sick[j]) mesa /= 2;     /* ahora mismo no hace nada */
+            int v = CARTA_VAL*cartas - mesa;
+            if(v>mejorv){ mejorv=v; peor=j; } }
+        }
         if(peor<0) continue;
         /* el valor del efecto suele escalar con lo sacrificado (Tom, Bert y William
            roba cartas igual a su fuerza), asi que se guarda antes de quitarla */
@@ -1752,6 +1801,18 @@ static void upkeep(P*me,P*opp){
        Sin perdida de vida: esa es la pega de Dark Confidant, no de estas cartas. Medido:
        con perdida 2.566 (peor), sin perdida 2.542 (mejor). Ver out/obj_eff2.txt. */
     if(d->eff2==E_UPKEEP_DRAW){ draw(me,d->q1); } }
+  /* ---- capitulos de Saga ----
+     Un contador de lore por turno; al pasar el ultimo, la Saga se sacrifica. Se recorre
+     hacia atras porque rmbf() reordena el campo de batalla. El contador vive en ctr[],
+     que en una Saga esta libre: no es criatura y no lleva +1/+1. */
+  if(SAGAS_ON) for(int i=me->nbf-1;i>=0;i--){
+    Def*d=&D[me->bf[i]];
+    if(!d->saga_n) continue;
+    me->ctr[i]++;
+    int cap = me->ctr[i] - 1;                 /* capitulo 0 ya disparo al entrar */
+    if(cap < d->saga_n) saga_capitulo(me,opp,me->bf[i],cap);
+    if(me->ctr[i] >= d->saga_n) rmbf(me,i);   /* "sacrifice after N" */
+  }
 }
 
 static P *PA=0,*PB=0;
@@ -1917,6 +1978,14 @@ int main(void){
     unsigned int sb_=0,ls_=0,cs_=0; int am_=0;
     scanf("%u %u %u %d",&sb_,&ls_,&cs_,&am_);
     d->act_mana=(uint8_t)am_;
+    int sn_=0,se0=0,se1=0,se2=0,se3=0,sp0=0,sp1=0,sp2=0,sp3=0;
+    scanf("%d %d %d %d %d %d %d %d %d",&sn_,&se0,&se1,&se2,&se3,
+          &sp0,&sp1,&sp2,&sp3);
+    d->saga_n=(uint8_t)sn_;
+    d->saga_eff[0]=(uint8_t)se0; d->saga_eff[1]=(uint8_t)se1;
+    d->saga_eff[2]=(uint8_t)se2; d->saga_eff[3]=(uint8_t)se3;
+    d->saga_p1[0]=(int16_t)sp0; d->saga_p1[1]=(int16_t)sp1;
+    d->saga_p1[2]=(int16_t)sp2; d->saga_p1[3]=(int16_t)sp3;
     d->sub=sb_; d->lord_sub=ls_; d->cond_sub=cs_;
     d->atk_eff=(uint8_t)ke_; d->atk_p1=(int16_t)kp_; d->coste_extra=(uint8_t)cx_;
     d->adv_eff=(uint8_t)av_; d->adv_gen=(uint8_t)ag_; d->adv_p1=(int16_t)avp_;
@@ -1959,6 +2028,9 @@ int main(void){
     const char*aq=getenv("ATAQUE_OFF"); if(aq&&atoi(aq)) ATAQUE_ON=0;
     const char*ce=getenv("COSTE_EXTRA_ON"); if(ce) COSTE_EXTRA_ON=atoi(ce);
     const char*av=getenv("AVENTURA_OFF"); if(av&&atoi(av)) AVENTURA_ON=0;
+    const char*st=getenv("SAC_TONTO"); if(st) SAC_TONTO=atoi(st);
+    const char*sg=getenv("SAGAS_OFF"); if(sg&&atoi(sg)) SAGAS_ON=0;
+    const char*cv=getenv("CARTA_VAL"); if(cv) CARTA_VAL=atoi(cv);
 
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);

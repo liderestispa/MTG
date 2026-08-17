@@ -895,6 +895,67 @@ def parse_card(c):
         setp(E[_r['efecto']], _v if _v is not None else 1, _r.get('p2', 0))
     return out
 
+ROMANO = {'i': 1, 'ii': 2, 'iii': 3, 'iv': 4}
+
+
+def capitulos_saga(c):
+    """(n_capitulos, [efecto por capitulo], [p1 por capitulo]) o None.
+
+    Los capitulos repetidos se EXPANDEN: "III, IV - Add {R}" pone el mismo efecto en las
+    dos posiciones, y "I, II - Destroy..." tambien. Es justo lo que hace la carta y lo que
+    el motor no sabia leer: antes los capitulos caian como efectos de entrada sueltos y
+    Burn, Burn, Tree and Fern disparaba sus 6 de dano al bajar."""
+    tl = (c.get('type_line') or '')
+    if 'Saga' not in tl:
+        return None
+    txt = (c.get('oracle_text') or '')
+    # Formas que solo aparecen en texto de capitulo. Las reglas generales estan escritas
+    # para hechizos sueltos y no las cubren.
+    PROPIAS = [
+        (r'exile up to one target creature',                    'EXILE',     1),
+        (r'exile up to one target|exile target',                'EXILE',     1),
+        (r'destroy up to one target nonland permanent',         'DESTROY',   1),
+        (r'destroy target artifact|destroy up to one target',   'DESTROY',   1),
+        (r'deals? (\d+) damage to target creature',             'DMG_SPELL', 3),
+        (r'creates? (\w+) .{0,30}token',                        'ETB_TOKEN', 1),
+        (r'return .{0,40}from your graveyard to the battlefield', 'REANIMATE', 1),
+        (r'each opponent loses (\w+) life',                     'ETB_DRAIN', 2),
+    ]
+    caps = {}
+    vistos = []
+    for linea in txt.split('\n'):
+        m = re.match(r'\s*([IVX]+(?:\s*,\s*[IVX]+)*)\s*[-\u2014]\s*(.+)', linea)
+        if not m:
+            continue
+        nums = [ROMANO.get(x.strip().lower()) for x in m.group(1).split(',')]
+        vistos += [x for x in nums if x]
+        cuerpo = m.group(2)
+        falso = {'name': c.get('name'), 'type_line': 'Sorcery',
+                 'oracle_text': cuerpo, 'mana_cost': '', 'cmc': 0}
+        sub = parse_card(falso)
+        ef, p1 = (sub['eff'], sub['p1']) if sub['eff'] else (0, 0)
+        if not ef:
+            bajo = re.sub(r'\([^)]*\)', '', cuerpo.lower())
+            for rx, nm, d in PROPIAS:
+                mm = re.search(rx, bajo)
+                if not mm: continue
+                g = next((x for x in (mm.groups() or ()) if x), None)
+                ef, p1 = E[nm], (num(g, d) if g else d)
+                break
+        for n in nums:
+            if n and ef:
+                caps[n] = (ef, p1)
+    if not vistos:
+        return None
+    # cuantos capitulos TIENE, no cuantos supimos leer: si el II no se entiende pero
+    # existe, la Saga dura igual sus dos turnos.
+    n = max(vistos)
+    ef = [caps.get(k, (0, 0))[0] for k in range(1, n + 1)][:4]
+    p1 = [caps.get(k, (0, 0))[1] for k in range(1, n + 1)][:4]
+    while len(ef) < 4: ef.append(0); p1.append(0)
+    return min(n, 4), ef, p1
+
+
 def cara_aventura(c):
     """(efecto, p1, generico, pips) de la cara de Aventura, o None.
 
@@ -1031,6 +1092,8 @@ def convert(c):
     hybrid = bool(re.search(r'\{[WUBRG]/[WUBRG]\}', mc))
     gen, pips, hyb = mana_pips(mc)
     _txt = (c.get('oracle_text') or '').strip() or ((ff.get('oracle_text') if ff else '') or '')
+    _sg = capitulos_saga(c) if os.environ.get('SAGAS_OFF') != '1' else None
+    _sg_n, _sg_ef, _sg_p1 = _sg if _sg else (0, [0, 0, 0, 0], [0, 0, 0, 0])
     _adv = cara_aventura(c)
     _adv_eff, _adv_p1, _adv_gen, _adv_pips = _adv if _adv else (0, 0, 0,
                                                                 {'W':0,'U':0,'B':0,'R':0,'G':0})
@@ -1062,6 +1125,14 @@ def convert(c):
         _g, _p, _h = mana_pips(_mad.group(1))
         gen, pips = _g, _p
         _cmc = _g + sum(_p.values())
+    if _sg_n:
+        # La Saga ocupa la ranura primaria con E_SAGA para que apply() la reconozca y
+        # dispare el capitulo I. Los capitulos sueltos que las reglas generales hubieran
+        # metido en eff/eff2/eff3 se limpian: ahora viven en saga_eff y se disparan uno
+        # por turno, que es lo que hace la carta.
+        e['eff'] = E['SAGA']; e['p1'] = 0
+        e['eff2'] = E['NONE']; e['q1'] = 0
+        e['eff3'] = E['NONE']; e['r1'] = 0
     _alt, _altn = alt_cost(_txt)
     if os.environ.get('ALTCOST') == '0': _alt = _altn = 0   # ablacion
     return dict(
@@ -1085,6 +1156,7 @@ def convert(c):
         legal_brawl=(c.get('legalities') or {}).get('standardbrawl') == 'legal',
         adv_eff=_adv_eff, adv_p1=_adv_p1, adv_gen=_adv_gen, adv_pips=_adv_pips,
         sub=subtipos_mask(c),
+        saga_n=_sg_n, saga_ef=_sg_ef, saga_p1s=_sg_p1,
         **e)
 
 if __name__ == '__main__':

@@ -88,7 +88,9 @@ class Registry:
             e.get('adv_eff', 0), e.get('adv_gen', 0), e.get('adv_p1', 0)]
             + [e.get('adv_pips', {}).get(k, 0) for k in 'WUBRG']
             + [e.get('sub', 0), e.get('lord_sub', 0), e.get('cond_sub', 0),
-               e.get('act_mana', 0)])
+               e.get('act_mana', 0), e.get('saga_n', 0)]
+            + list(e.get('saga_ef', [0, 0, 0, 0]))
+            + list(e.get('saga_p1s', [0, 0, 0, 0])))
 
 def build(fmt):
     R=Registry()

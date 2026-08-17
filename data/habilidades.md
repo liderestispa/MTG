@@ -35,12 +35,37 @@ activada — la misma carta, la misma lectura, distinta ranura.
 | `whenever ~ attacks` | `atk_eff` | LEÍDA |
 | `{coste}: efecto` | `act_eff` + `act_mana` + `act_cost` | LEÍDA |
 | `at the beginning of your upkeep/end step/draw step` | `eff` (UPKEEP_DRAW) | LEÍDA |
+| **Saga: capítulos I / II / III / IV** | `saga_eff[]` + contador de lore | LEÍDA |
 | `whenever you cast` · `whenever an opponent casts` | — | NO MODELABLE |
 | `at the beginning of combat on your turn` | — | NO MODELABLE — *Lake-town Toymaker, Hog-Monkey* |
 | `whenever another ~ you control enters` | — | NO MODELABLE — *Avatar Enthusiasts, Belladonna Took* |
 | `whenever a nonland creature you control dies` | — | NO MODELABLE — *Beifong's Bounty Hunters, Great Fierce Bee* |
 
-### Costes de activación que sabe cobrar
+#### Sagas: no las confundas con Aventuras
+
+Son las dos mecánicas que la gente mezcla, y el motor las trata de forma distinta:
+
+| | Aventura | Saga |
+|---|---|---|
+| qué es | una carta con **dos mitades**: un hechizo barato y una criatura | un encantamiento con **capítulos** que avanzan solos |
+| cuándo | eliges cuándo lanzar cada mitad | uno por turno, automático |
+| niveles | **no tiene** | I, II, III y a veces IV |
+| repetir | no | sí: `III, IV — Add {R}`, `I, II — Destroy…` |
+| ranura | `adv_eff` + `adv_gen` | `saga_eff[4]` + `saga_n` |
+
+ estuvo en el enum **sin implementación** hasta el 18-ago: no se ejecutaba nunca,
+y el extractor metía los capítulos como efectos de entrada sueltos.  disparaba sus 6 de daño **al bajar** en vez de al turno siguiente, y
+ no leía su capítulo de exilio.
+
+Dos detalles al ampliarlo:
+
+- **Cuenta los capítulos que TIENE, no los que sepas traducir.** Si el II no se entiende
+  pero existe, la Saga tiene que durar sus dos turnos igual — el tempo es lo que el motor
+  mide, y una Saga que se sacrifica un turno antes es otra carta.
+- **Los capítulos repetidos se expanden.**  pone el mismo efecto en las
+  dos posiciones. Summon: Bahamut destruye dos turnos seguidos.
+
+## Costes de activación que sabe cobrar
 
 | coste | `act_cost` | nota |
 |---|---|---|
