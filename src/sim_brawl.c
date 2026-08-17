@@ -46,6 +46,14 @@ typedef struct {
   uint8_t act_eff, act_cost;  /* habilidad ACTIVADA: efecto y coste (1=sacrificar un
                                  artefacto). La decision de activarla es del jugador. */
   int16_t act_p1;
+  /* CONDICION que exige un efecto estatico antes de aplicarse. Sin esto, E_COND_BUFF
+     —que se llama condicional— y E_TAX se sumaban SIEMPRE. src/auditoria_lectura.py
+     encontro 12 cartas asi, entre ellas el comandante que el buscador elegia para
+     Brawl. 1=Storied (3+ artefactos/legendarias/Sagas tuyos, y una vez logrado NO se
+     pierde), 2=Feroz (controlas una criatura de fuerza 4+), 3=Metalcraft (3+ artefactos). */
+  uint8_t cond;
+  uint8_t es_leg;      /* legendaria (bit 0) o Saga (bit 1): las cuenta Storied */
+  uint8_t tax_atk;     /* el impuesto grava ATACAR y no LANZAR (Dain, Ghostly Prison) */
   uint8_t cred;        /* COSTE QUE BAJA SEGUN EL TABLERO. 1 = {1} menos por cada
                           instantaneo/conjuro en tu cementerio (Eddymurk Crab).
                           2 = {X} menos, X = el mayor coste convertido entre tus
@@ -257,6 +265,8 @@ typedef struct {
   int army;               /* indice bf del Army de amass, -1 */
   int treasures;
   int flot;               /* mana flotante de este turno (E_ETB_MANA); se pierde al acabar */
+  int storied;            /* "enduring story": una vez conseguido, no se pierde */
+  int tax_atk;            /* {N} que hay que pagar POR CRIATURA para atacarme */
   int gy_is;              /* instantaneos y conjuros que han ido al cementerio.
                              El motor NO tiene cementerio: un hechizo lanzado se resuelve
                              y desaparece. Esto es lo minimo que hace falta para los
@@ -361,10 +371,40 @@ static inline int pw(P*p,int i){ int b=dynbase(p,i);
 static inline int th(P*p,int i){ int b=dynbase(p,i);
   return (b>=0?b:D[p->bf[i]].tough) + p->ctr[i] + (p->eqp[i]&0xFF); }
 
+/* ---- condiciones de los efectos estaticos ----
+   E_COND_BUFF se llamaba condicional y se sumaba siempre; E_TAX igual. Doce cartas del
+   banco y de la coleccion regalaban su bono, entre ellas Dain, el comandante que el
+   buscador elegia para Brawl. Ablacion: CONDICIONES_OFF=1. */
+static int CONDICIONES_ON = 1;
+
+static int cumple_cond(P*p, Def*d){
+  if(!CONDICIONES_ON || !d->cond) return 1;
+  if(d->cond==1){                      /* Storied: 3+ artefactos/legendarias/Sagas */
+    if(p->storied) return 1;           /* "enduring": logrado una vez, ya no se pierde */
+    int n=0;
+    for(int i=0;i<p->nbf;i++){ Def*x=&D[p->bf[i]];
+      if(x->typ==T_ART || x->es_leg) n++; }
+    for(int i=0;i<p->nl;i++) if(D[p->lands[i]].es_leg) n++;
+    if(n>=3){ p->storied=1; return 1; }
+    return 0;
+  }
+  if(d->cond==2){                      /* Feroz: controlas una criatura de fuerza 4+ */
+    for(int i=0;i<p->nbf;i++)
+      if(D[p->bf[i]].typ==T_CREA && D[p->bf[i]].power>=4) return 1;
+    return 0;
+  }
+  if(d->cond==3){                      /* Metalcraft: 3+ artefactos */
+    int n=0; for(int i=0;i<p->nbf;i++) if(D[p->bf[i]].typ==T_ART) n++;
+    return n>=3;
+  }
+  return 1;
+}
+
 /* lord estatico: suma bonos de todas las criaturas/artefactos con E_LORD */
 static void lordbonus(P*p,int*bp,int*bt){
   *bp=0;*bt=0;
   for(int i=0;i<p->nbf;i++){ Def*d=&D[p->bf[i]];
+    if(!cumple_cond(p,d)) continue;
     if(d->eff==E_LORD){*bp+=d->p1;*bt+=d->p2;}
     if(d->eff2==E_LORD){*bp+=d->q1;*bt+=d->q2;} }
 }
@@ -1055,11 +1095,17 @@ static void cast_phase(P*me,P*opp,int main2){
   ALT_OPP = opp;
   if(!main2) activar_habilidades(me,opp);
   /* impuesto que me cobra el rival (Ghostly Prison y familia): encarece todo lo mio */
-  me->taxed=0;
+  me->taxed=0; me->tax_atk=0;
   for(int i=0;i<opp->nbf;i++){
     if(!NEG_ON) break;
-    if(D[opp->bf[i]].eff ==E_TAX) me->taxed += D[opp->bf[i]].p1;
-    if(D[opp->bf[i]].eff2==E_TAX) me->taxed += D[opp->bf[i]].q1;
+    /* tax_atk grava ATACAR, no lanzar: son efectos distintos y confundirlos inflaba
+       a Dain 17 puntos. El de ataque lo cobra combat(), no pay_gen(). */
+    { Def*dx=&D[opp->bf[i]];
+      if(dx->eff==E_TAX || dx->eff2==E_TAX){
+        if(!cumple_cond(opp,dx)) continue;
+        int q = (dx->eff==E_TAX)? dx->p1 : dx->q1;
+        if(dx->tax_atk) me->tax_atk += q; else me->taxed += q;
+      } }
   }
   /* jugar tierra */
   if(!me->played_land){
@@ -1254,8 +1300,8 @@ static void combat(P*me,P*opp){
     for(int i=0;i<me->nbf;i++){ Def*d2=&D[me->bf[i]];
       if(d2->typ!=T_CREA||me->sick[i]||me->tap[i]||(d2->kw&K_DEF)) continue;
       int p2=pw(me,i)+bp;
-      if(d2->eff ==E_COND_BUFF) p2+=d2->p1;
-      if(d2->eff2==E_COND_BUFF) p2+=d2->q1;
+      if(d2->eff ==E_COND_BUFF && cumple_cond(me,d2)) p2+=d2->p1;
+      if(d2->eff2==E_COND_BUFF && cumple_cond(me,d2)) p2+=d2->q1;
       if(p2>0) pot[np++]=p2;
     }
     for(int a2=0;a2<np;a2++) for(int b2=a2+1;b2<np;b2++)
@@ -1265,12 +1311,23 @@ static void combat(P*me,P*opp){
     letal_agregado = (pasa>0 && pasa >= opp->life);
   }
 
+  /* ---- impuesto por atacar (Dain, Ghostly Prison) ----
+     Es distinto de encarecer los hechizos: solo castiga al que quiere atacar, y por eso
+     un mazo de control no lo nota. Se modela como lo que es: un tope al numero de
+     atacantes segun el mana que quede sin gastar. El combate va despues de la primera
+     fase principal, asi que reservar mana para atacar tiene un coste real. */
+  int cupo_atacantes = BFMAX;
+  if(opp->tax_atk > 0){
+    cupo_atacantes = untapped_count(me) / opp->tax_atk;
+    if(cupo_atacantes < 0) cupo_atacantes = 0;
+  }
   for(int i=0;i<me->nbf;i++){
     Def*d=&D[me->bf[i]];
+    if(na >= cupo_atacantes) break;             /* no alcanza para pagar mas ataques */
     if(d->typ!=T_CREA||me->sick[i]||me->tap[i]||(d->kw&K_DEF)) continue;
     int P_=pw(me,i)+bp, T_=th(me,i)+bt;
-    if(d->eff==E_COND_BUFF){ P_+=d->p1; T_+=d->p2; }
-    if(d->eff2==E_COND_BUFF){ P_+=d->q1; T_+=d->q2; }
+    if(d->eff==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->p1; T_+=d->p2; }
+    if(d->eff2==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->q1; T_+=d->q2; }
     if(P_<=0) continue;
     /* cuenta bloqueadores que me matan sin morir, y los que intercambian */
     int lethalblk=0, tradeblk=0, poder_disponible=0, n_disponibles=0;
@@ -1355,8 +1412,8 @@ static void combat(P*me,P*opp){
     int k=order[oi];
     int i=atk[k]; Def*d=&D[me->bf[i]];
     int P_=pw(me,i)+bp, T_=th(me,i)+bt;
-    if(d->eff==E_COND_BUFF){ P_+=d->p1; T_+=d->p2; }
-    if(d->eff2==E_COND_BUFF){ P_+=d->q1; T_+=d->q2; }
+    if(d->eff==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->p1; T_+=d->p2; }
+    if(d->eff2==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->q1; T_+=d->q2; }
     int lethal_now = (incoming >= opp->life);
     int pressure = 0;
     if(opp->life<=5) pressure=14; else if(opp->life<=10) pressure=8; else if(opp->life<=15) pressure=4;
@@ -1431,8 +1488,8 @@ static void combat(P*me,P*opp){
   for(int k=0;k<na;k++){
     int i=atk[k]; Def*d=&D[me->bf[i]];
     int P_=pw(me,i)+bp, T_=th(me,i)+bt;
-    if(d->eff==E_COND_BUFF){ P_+=d->p1; T_+=d->p2; }
-    if(d->eff2==E_COND_BUFF){ P_+=d->q1; T_+=d->q2; }
+    if(d->eff==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->p1; T_+=d->p2; }
+    if(d->eff2==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->q1; T_+=d->q2; }
     if(nblk[k]==0){
       if(d->eff==E_ATTACK_DMG) opp->life -= d->p1;
       if(d->eff2==E_ATTACK_DMG) opp->life -= d->q1;
@@ -1659,9 +1716,11 @@ int main(void){
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
     int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0,cr_=0;
-    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,
-          &de_,&dp_,&ae_,&ap_,&ac_,&cr_);
-    d->cred=(uint8_t)cr_;
+    int co_=0,lg_=0,ta_=0;
+    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,
+          &al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_);
+    d->cred=(uint8_t)cr_; d->cond=(uint8_t)co_; d->es_leg=(uint8_t)lg_;
+    d->tax_atk=(uint8_t)ta_;
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
     d->eff3=(uint8_t)e3_; d->r1=(int16_t)r1_; d->r2=(int16_t)r2_;
     d->alt=(uint8_t)al_; d->altn=(uint8_t)an_;
@@ -1692,6 +1751,7 @@ int main(void){
     const char*al=getenv("ATAQUE_LETAL"); if(al) ATAQUE_LETAL=atoi(al);
     const char*ka=getenv("KW_ATAQUE");    if(ka) KW_ATAQUE=atoi(ka);
     const char*lv=getenv("LORD_VE");      if(lv) LORD_VE=atoi(lv);
+    const char*co=getenv("CONDICIONES_OFF"); if(co&&atoi(co)) CONDICIONES_ON=0;
 
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);

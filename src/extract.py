@@ -607,6 +607,22 @@ def parse_card(c):
         elif re.search(r'less to cast,? where x is the greatest mana value among', low):
             if _solo in (None, '2'): out['cred'] = 2
 
+    # ---- CONDICION de los efectos estaticos ----
+    # E_COND_BUFF, E_TAX y E_LORD se aplicaban siempre. Ahora llevan un codigo de
+    # condicion que el motor cobra en cumple_cond(). Sin esto, Dain daba su prision
+    # desde el turno 2 sin cumplir Storied, y el buscador de Brawl lo elegia por eso.
+    if re.search(r'\bstoried\b', low):                    out['cond'] = 1
+    elif re.search(r'ferocious|creature with power 4 or greater', low): out['cond'] = 2
+    elif re.search(r'\bmetalcraft\b', low):               out['cond'] = 3
+
+    # El impuesto: ¿grava ATACAR o LANZAR? Confundirlos inflaba a Dain 17 puntos.
+    if re.search(r"can't attack .{0,40}unless|attacks? .{0,30}unless .{0,25}pays?", low):
+        out['tax_atk'] = 1
+
+    # Legendaria o Saga: lo unico que Storied necesita contar.
+    if 'legendary' in tl: out['es_leg'] = 1
+    if 'saga' in tl:      out['es_leg'] = 1
+
     # ---- reglas de datos (data/reglas_extra.json) ----
     # Se aplican al final, sobre las ranuras que hayan quedado libres. Estan en un JSON y
     # no en codigo para que src/laboratorio.py pueda proponerlas, activarlas y medirlas

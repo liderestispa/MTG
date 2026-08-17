@@ -81,7 +81,8 @@ class Registry:
             e.get('alt', 0), e.get('altn', 0),
             e.get('die_eff', 0), e.get('die_p1', 0),
             e.get('act_eff', 0), e.get('act_p1', 0), e.get('act_cost', 0),
-            e.get('cred', 0)])
+            e.get('cred', 0), e.get('cond', 0), e.get('es_leg', 0),
+            e.get('tax_atk', 0)])
 
 def build(fmt):
     R=Registry()
