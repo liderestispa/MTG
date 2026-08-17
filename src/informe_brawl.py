@@ -45,6 +45,12 @@ def main():
     campo = sorted(((n, sum(M[i][j] * ws[j] for j in range(len(names))) / tot * 100)
                     for i, n in enumerate(names)), key=lambda x: -x[1])
 
+    from collections import Counter
+    try:
+        _cta = Counter(r['estado'] for r in
+                       json.load(io.open('out/ficha_coleccion.json', encoding='utf-8')))
+    except (OSError, ValueError):
+        _cta = Counter()
     L = ["# Standard Brawl — el mazo para armar", ""]
     L += [f"**Comandante: {b['commander']}**  ({b['ci'] or 'incoloro'})", "",
           f"{len(b['spells'])} hechizos + {len(b['lands'])} tierras + comandante = 60", "",
@@ -100,9 +106,10 @@ def main():
           "cualquier cosa.",
           "- Lo que **si** vale es la posicion relativa y los enfrentamientos: son "
           "comparaciones dentro del mismo motor, con semillas independientes.",
-          "- El motor lee bien 77 de las 204 cartas de la coleccion, a medias 61 y mal 15. "
-          "Los mazos se buscan sobre esa lectura, asi que las cartas mudas estan "
-          "INFRAvaloradas y pueden ser mejores de lo que el motor cree."]
+          f"- El motor lee bien {_cta['ok']} de las {sum(_cta.values())} cartas de la "
+          f"coleccion, a medias {_cta['A_MEDIAS']}, mudas {_cta['MUDA']} y mal leidas "
+          f"{_cta['MAL_LEIDA']}. Los mazos se buscan sobre esa lectura, asi que las mudas "
+          f"estan INFRAvaloradas y pueden ser mejores de lo que el motor cree."]
 
     txt = '\n'.join(L)
     io.open('out/informe_brawl.md', 'w', encoding='utf-8').write(txt)
