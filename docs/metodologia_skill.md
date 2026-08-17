@@ -262,6 +262,13 @@ separados**, porque responden cosas distintas y ninguno sustituye al otro.
   números aleatorios comunes, corrección por comparaciones múltiples y semillas de
   confirmación.
 
+**Y pregúntale al modelo antes de tocarlo.** Si tienes una forma barata de estimar *qué
+pasaría si esta parte del sistema mejorara* —un análisis de sensibilidad, una perturbación
+de suma cero—, córrela **antes** de implementar, no después de que el resultado te
+sorprenda. Dos veces se implementó un arreglo correcto cuyo fracaso el análisis de
+sensibilidad ya predecía, y las dos veces el número estaba escrito en un archivo del propio
+repositorio. Media hora de lectura contra medio día de trabajo tirado.
+
 **Cuenta la materia antes de medir.** Un cambio correcto sobre material que tu banco no
 tiene mide exactamente cero, y ese cero se lee como "no sirve" cuando en realidad es "no
 medible". Pasó con tres arreglos verificados: el banco de 19 mazos tenía 8 criaturas con
@@ -271,6 +278,33 @@ de material *antes* de escribir el experimento: es media hora y te ahorra interp
 el resultado. Además, cada hipótesis medida endurece el umbral de Bonferroni para todas las
 demás, así que gastar medidas en preguntas que el banco no puede responder tiene un coste
 real sobre las que sí puede.
+
+## Un artefacto generado que se queda viejo no da error: da números
+
+Si una parte de tu sistema se **genera** de otra —código transpilado, un binario derivado,
+un índice, una caché— y la regeneración es un paso manual, ese paso se va a olvidar. Y el
+fallo no se parece a un fallo: todo corre, todo devuelve resultados, y los resultados son
+de una versión anterior del código.
+
+Costó medio día. Un simulador tenía dos binarios: uno compilado directamente del fuente y
+otro compilado de un fuente **generado** a partir del mismo archivo. Recompilar el primero
+y olvidar el segundo dejó medio sistema corriendo con el motor de la semana pasada. Cuatro
+mejoras se midieron contra ese estado, dieron cero las cuatro, y se documentó media página
+explicando por qué no se podían medir. Al regenerar el binario por otro motivo, una de las
+cuatro resultó ser la mejora más grande del proyecto: la métrica pasó de 1,072 a 0,608.
+
+Tres cosas, y la tercera es la que de verdad protege:
+
+1. **Un solo comando de compilación** que construya todo, nunca los pasos sueltos.
+2. **Una comprobación de frescura** que compare fechas de cada artefacto contra sus
+   fuentes, incluidas las indirectas (el binario derivado depende también del fuente
+   original, no solo del generado).
+3. **Que la comprobación bloquee la medición, no que avise.** Un aviso por stderr se pierde
+   entre la salida normal. El punto de entrada que produce los números es el que tiene que
+   negarse a producirlos.
+
+Es la misma familia que "un arreglo repartido entre dos lenguajes hay que commitearlo
+entero": un eslabón de la cadena que no se movió con los demás.
 
 ## Un máximo sobre una serie ruidosa no es una medida
 
