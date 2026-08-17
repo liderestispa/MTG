@@ -1,6428 +1,2466 @@
 [
  {
-  "delta": 10.363499999999995,
-  "usd": 0.3,
-  "carta": "Hunted Bonebrute",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 5.494,
-  "usd": 12.82,
-  "carta": "Mox Jasper",
-  "coste": "{0}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 5.480099999999993,
-  "usd": 5.84,
-  "carta": "Rottenmouth Viper",
-  "coste": "{5}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 5.295000000000002,
+  "delta": 7.531033333333333,
   "usd": 0.33,
   "carta": "Springleaf Drum",
   "coste": "{1}",
   "tipo": "Artifact"
  },
  {
-  "delta": 4.818400000000004,
+  "delta": 6.621633333333335,
   "usd": 0.21,
   "carta": "Prophetic Prism",
   "coste": "{2}",
   "tipo": "Artifact"
  },
  {
-  "delta": 4.463299999999997,
+  "delta": 6.24593333333334,
   "usd": 0.5,
   "carta": "Pulse Tracker",
   "coste": "{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 4.428399999999996,
-  "usd": 0.35,
-  "carta": "Elegy Acolyte",
-  "coste": "{2}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 4.4047999999999945,
-  "usd": 0.46,
-  "carta": "Weather Maker",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 4.235799999999998,
-  "usd": 2.17,
-  "carta": "Rot-Curse Rakshasa",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 4.228999999999992,
-  "usd": 0.27,
-  "carta": "Gatekeeper of Malakir",
-  "coste": "{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 4.1947000000000045,
-  "usd": 0.16,
-  "carta": "Whiplash, Vengeful Engineer",
-  "coste": "{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 4.131399999999999,
-  "usd": 0.22,
-  "carta": "Ruthless Negotiation",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 4.016699999999993,
-  "usd": 0.27,
-  "carta": "Gaius van Baelsar",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 3.988100000000003,
-  "usd": 0.31,
-  "carta": "Sunset Saboteur",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.8850999999999942,
-  "usd": 0.27,
-  "carta": "Mudbutton Cursetosser",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.799599999999998,
-  "usd": 1.29,
-  "carta": "Preacher of the Schism",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.742199999999997,
-  "usd": 0.36,
-  "carta": "Hopeless Nightmare",
-  "coste": "{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 3.7034999999999982,
-  "usd": 0.31,
-  "carta": "Intimidation Tactics",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 3.7034999999999982,
+  "delta": 5.764133333333341,
   "usd": 0.13,
   "carta": "Ego Drain",
   "coste": "{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 3.7034999999999982,
+  "delta": 5.764133333333341,
   "usd": 0.09,
   "carta": "Duress",
   "coste": "{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 3.6240000000000023,
-  "usd": 0.12,
-  "carta": "Qutrub Forayer",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.600999999999999,
+  "delta": 5.477333333333341,
   "usd": 0.26,
   "carta": "Raven Eagle",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 3.5607999999999933,
-  "usd": 1.2,
-  "carta": "Lotus Ring",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 3.5245999999999995,
-  "usd": 0.18,
-  "carta": "Spiteful Hexmage",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.3554999999999993,
-  "usd": 0.11,
-  "carta": "Rooftop Assassin",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.3448000000000064,
+  "delta": 5.176533333333339,
   "usd": 0.42,
   "carta": "Caustic Bronco",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 3.3181999999999974,
-  "usd": 0.14,
-  "carta": "Poisoner's Apprentice",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
+  "delta": 5.16823333333334,
+  "usd": 1.2,
+  "carta": "Lotus Ring",
+  "coste": "{3}",
+  "tipo": "Artifact"
  },
  {
-  "delta": 3.2976000000000028,
-  "usd": 0.18,
-  "carta": "High Fae Negotiator",
-  "coste": "{3}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.2915000000000063,
-  "usd": 0.28,
-  "carta": "Tragedy Feaster",
-  "coste": "{2}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.2635000000000005,
-  "usd": 0.31,
-  "carta": "Bandit's Talent",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 3.255900000000004,
-  "usd": 0.21,
-  "carta": "Stingblade Assassin",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.160199999999996,
-  "usd": 0.59,
-  "carta": "Zodiark, Umbral God",
-  "coste": "{B}{B}{B}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 3.151199999999996,
-  "usd": 2.27,
-  "carta": "Qarsi Revenant",
-  "coste": "{1}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 3.0319000000000074,
+  "delta": 5.079033333333335,
   "usd": 0.18,
   "carta": "Desecration Demon",
   "coste": "{2}{B}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 3.0137999999999963,
-  "usd": 0.16,
-  "carta": "Delta Bloodflies",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.9602999999999966,
-  "usd": 0.35,
-  "carta": "Tonberry",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.9480999999999966,
-  "usd": 1.39,
-  "carta": "Forsaken Miner",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.9480999999999966,
-  "usd": 0.22,
-  "carta": "Diregraf Ghoul",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.938200000000002,
-  "usd": 1.42,
-  "carta": "Iridescent Vinelasher",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.914200000000001,
-  "usd": 0.07,
-  "carta": "Alley Assailant",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.9100000000000037,
+  "delta": 5.051033333333336,
   "usd": 0.29,
   "carta": "Huskburster Swarm",
   "coste": "{7}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.8096999999999994,
-  "usd": 0.25,
-  "carta": "Gas Guzzler",
-  "coste": "{B}",
+  "delta": 4.976933333333335,
+  "usd": 0.21,
+  "carta": "Stingblade Assassin",
+  "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.8049999999999997,
-  "usd": 0.78,
-  "carta": "Requiting Hex",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.7729,
-  "usd": 0.22,
-  "carta": "Pit Automaton",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 2.7634999999999934,
+  "delta": 4.8687333333333385,
   "usd": 0.16,
   "carta": "Omni-Cheese Pizza",
   "coste": "{2}",
   "tipo": "Artifact"
  },
  {
-  "delta": 2.7594999999999956,
-  "usd": 0.16,
-  "carta": "Shimmercreep",
-  "coste": "{4}{B}",
+  "delta": 4.86493333333334,
+  "usd": 0.11,
+  "carta": "Rooftop Assassin",
+  "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.757499999999993,
+  "delta": 4.807033333333337,
+  "usd": 0.14,
+  "carta": "Poisoner's Apprentice",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.6875333333333415,
+  "usd": 0.16,
+  "carta": "Delta Bloodflies",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.631733333333337,
+  "usd": 0.59,
+  "carta": "Zodiark, Umbral God",
+  "coste": "{B}{B}{B}{B}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 4.523833333333336,
   "usd": 0.32,
   "carta": "Interdimensional Web Watch",
   "coste": "{4}",
   "tipo": "Artifact"
  },
  {
-  "delta": 2.753399999999999,
-  "usd": 0.3,
-  "carta": "Elektra, Daughter of the Hand",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.7213999999999956,
-  "usd": 0.49,
-  "carta": "Greedy Freebooter",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.706699999999998,
-  "usd": 0.3,
-  "carta": "Extract a Confession",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.692999999999998,
-  "usd": 0.49,
-  "carta": "Tithing Blade // Consuming Sepulcher",
-  "coste": "",
-  "tipo": "Artifact // Artifact"
- },
- {
-  "delta": 2.692999999999998,
-  "usd": 0.31,
-  "carta": "Momentum Breaker",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 2.692999999999998,
-  "usd": 0.21,
-  "carta": "Sporogenic Infection",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 2.6385999999999967,
-  "usd": 0.22,
-  "carta": "Bandit's Haul",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 2.630200000000002,
-  "usd": 7.18,
-  "carta": "Vein Ripper",
-  "coste": "{3}{B}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.6182000000000016,
-  "usd": 4.68,
-  "carta": "Lord Skitter, Sewer King",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.5993999999999957,
-  "usd": 22.24,
-  "carta": "Maha, Its Feathers Night",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.595099999999995,
-  "usd": 4.91,
-  "carta": "Insatiable Avarice",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.5819999999999936,
-  "usd": 0.16,
-  "carta": "Hellish Sideswipe",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.562599999999996,
-  "usd": 0.15,
-  "carta": "Mintstrosity",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.5441000000000003,
-  "usd": 0.21,
-  "carta": "Glidedive Duo",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.5441000000000003,
-  "usd": 0.08,
-  "carta": "Sneering Shadewriter",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.5368999999999957,
-  "usd": 0.3,
-  "carta": "Dream Beavers",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.5223000000000013,
-  "usd": 0.12,
-  "carta": "Fear of Lost Teeth",
-  "coste": "{B}",
-  "tipo": "Enchantment Creature"
- },
- {
-  "delta": 2.5156999999999954,
-  "usd": 0.25,
-  "carta": "Broodrage Mycoid",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.5156999999999954,
-  "usd": 0.14,
-  "carta": "Rictus Robber",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.5053999999999945,
-  "usd": 0.24,
-  "carta": "Bonecache Overseer",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.504899999999992,
-  "usd": 0.12,
-  "carta": "Cruel Alliance",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.4986000000000033,
+  "delta": 4.522833333333338,
   "usd": 0.18,
-  "carta": "Dawnhand Eulogist",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.4887999999999977,
-  "usd": 0.23,
-  "carta": "Risen Necroregent",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.4771,
-  "usd": 0.78,
-  "carta": "The Speed Demon",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.4665999999999997,
-  "usd": 0.24,
-  "carta": "Consumed by Greed",
-  "coste": "{1}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.4664999999999964,
-  "usd": 0.36,
-  "carta": "Venerated Stormsinger",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.465199999999996,
-  "usd": 0.13,
-  "carta": "Ninja of the Hand",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.439,
-  "usd": 1.57,
-  "carta": "Chrome Dome",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 2.4350999999999985,
-  "usd": 1.52,
-  "carta": "Doomsday Excruciator",
-  "coste": "{B}{B}{B}{B}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.4298999999999964,
-  "usd": 0.16,
-  "carta": "Undercity Eliminator",
+  "carta": "High Fae Negotiator",
   "coste": "{3}{B}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.426399999999994,
-  "usd": 0.18,
-  "carta": "Foot Mystic",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.4217000000000013,
-  "usd": 0.29,
-  "carta": "High-Society Hunter",
-  "coste": "{3}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.4166000000000025,
-  "usd": 0.22,
-  "carta": "Arbiter of Woe",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.3950999999999993,
+  "delta": 4.496833333333335,
   "usd": 0.09,
   "carta": "Gargantuan Leech",
   "coste": "{7}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.3885999999999967,
-  "usd": 6.33,
-  "carta": "Tinybones, the Pickpocket",
-  "coste": "{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.3885999999999967,
-  "usd": 0.31,
-  "carta": "Engine Rat",
+  "delta": 4.424333333333344,
+  "usd": 0.24,
+  "carta": "Bonecache Overseer",
   "coste": "{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.3885999999999967,
-  "usd": 0.17,
-  "carta": "Hullcarver",
+  "delta": 4.415633333333346,
+  "usd": 0.3,
+  "carta": "Dream Beavers",
   "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.397133333333343,
+  "usd": 0.22,
+  "carta": "Pit Automaton",
+  "coste": "{2}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 2.3885999999999967,
+  "delta": 4.282833333333336,
   "usd": 0.15,
-  "carta": "Squirrelanoids",
+  "carta": "Mintstrosity",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.278933333333342,
+  "usd": 0.49,
+  "carta": "Greedy Freebooter",
   "coste": "{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.3870000000000005,
-  "usd": 0.18,
-  "carta": "Nighthowl Pursuer",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.3607000000000014,
-  "usd": 0.16,
-  "carta": "Henchbots",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 2.3419999999999916,
+  "delta": 4.277633333333341,
   "usd": 0.07,
   "carta": "Blacksnag Buzzard",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.3249999999999957,
-  "usd": 0.28,
-  "carta": "Vampire Gourmand",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
+  "delta": 4.264733333333339,
+  "usd": 0.78,
+  "carta": "The Speed Demon",
+  "coste": "{3}{B}{B}",
+  "tipo": "Legendary Creature"
  },
  {
-  "delta": 2.3188999999999993,
-  "usd": 0.28,
-  "carta": "Infestation Sage",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.3188999999999993,
-  "usd": 0.26,
-  "carta": "Nezumi Linkbreaker",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.3188999999999993,
-  "usd": 0.19,
-  "carta": "Warehouse Tabby",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.3145000000000024,
+  "delta": 4.247933333333336,
   "usd": 0.34,
   "carta": "Morlun, Devourer of Spiders",
   "coste": "{X}{B}{B}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 2.3130999999999986,
-  "usd": 2.15,
-  "carta": "Technodrome",
-  "coste": "{2}",
+  "delta": 4.214733333333328,
+  "usd": 0.29,
+  "carta": "High-Society Hunter",
+  "coste": "{3}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.189133333333338,
+  "usd": 6.33,
+  "carta": "Tinybones, the Pickpocket",
+  "coste": "{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 4.189133333333338,
+  "usd": 0.31,
+  "carta": "Engine Rat",
+  "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.189133333333338,
+  "usd": 0.17,
+  "carta": "Hullcarver",
+  "coste": "{B}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 2.3100000000000023,
-  "usd": 0.45,
-  "carta": "Deadly Cover-Up",
-  "coste": "{3}{B}{B}",
-  "tipo": "Sorcery"
+  "delta": 4.189133333333338,
+  "usd": 0.15,
+  "carta": "Squirrelanoids",
+  "coste": "{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 2.298499999999997,
-  "usd": 0.32,
-  "carta": "Souls of the Lost",
+  "delta": 4.154033333333338,
+  "usd": 0.28,
+  "carta": "Vampire Gourmand",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.2804,
-  "usd": 0.25,
-  "carta": "Nullpriest of Oblivion",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.2779999999999987,
+  "delta": 4.147633333333339,
   "usd": 0.16,
   "carta": "Dream Seizer",
   "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.2723000000000013,
-  "usd": 0.11,
-  "carta": "Callous Inspector",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.2706000000000017,
-  "usd": 0.25,
-  "carta": "Kalastria Highborn",
-  "coste": "{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.2626999999999953,
-  "usd": 0.37,
-  "carta": "The End",
-  "coste": "{2}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.2516999999999925,
-  "usd": 0.22,
-  "carta": "Unfortunate Accident",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.2516999999999925,
-  "usd": 0.1,
-  "carta": "Caustic Exhale",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.2460999999999984,
-  "usd": 0.25,
-  "carta": "The Witch's Vanity",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 2.242600000000003,
-  "usd": 0.39,
-  "carta": "Old Flitterfang",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.239399999999989,
-  "usd": 3.07,
-  "carta": "Valley Rotcaller",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.228499999999997,
-  "usd": 0.22,
-  "carta": "Final Vengeance",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.228499999999997,
-  "usd": 0.2,
-  "carta": "Eaten Alive",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.228499999999997,
+  "delta": 4.139033333333337,
   "usd": 0.18,
-  "carta": "Embrace Oblivion",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.228499999999997,
-  "usd": 0.17,
-  "carta": "Worthy Cost",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.228499999999997,
-  "usd": 0.17,
-  "carta": "Deadly Precision",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.227399999999996,
-  "usd": 0.39,
-  "carta": "Hostile Investigator",
+  "carta": "Foot Mystic",
   "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.2211,
-  "usd": 0.06,
-  "carta": "Roxxon Brutes",
+  "delta": 4.123333333333335,
+  "usd": 0.16,
+  "carta": "Shimmercreep",
   "coste": "{4}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.2105999999999995,
-  "usd": 0.14,
-  "carta": "Cryptex",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 2.1865000000000023,
-  "usd": 0.56,
-  "carta": "Massacre Girl, Known Killer",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.164999999999999,
-  "usd": 0.19,
-  "carta": "Summon: Anima",
-  "coste": "{4}{B}{B}",
-  "tipo": "Enchantment Creature"
- },
- {
-  "delta": 2.152000000000001,
-  "usd": 0.18,
-  "carta": "Monoist Sentry",
-  "coste": "{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 2.1473999999999975,
-  "usd": 0.34,
-  "carta": "Super-Adaptoid",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 2.1455999999999946,
-  "usd": 1.96,
-  "carta": "Season of Loss",
-  "coste": "{3}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.143499999999996,
-  "usd": 0.27,
-  "carta": "Northern Air Temple",
-  "coste": "{B}",
-  "tipo": "Legendary Enchantment"
- },
- {
-  "delta": 2.1409999999999982,
-  "usd": 2.18,
-  "carta": "Harvester of Misery",
-  "coste": "{3}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.1409999999999982,
-  "usd": 0.15,
-  "carta": "Bebop, Warthog Warrior",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 2.1387999999999963,
-  "usd": 0.2,
-  "carta": "Fountainport Bell",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 2.1376999999999953,
-  "usd": 0.34,
-  "carta": "Doc Ock's Tentacles",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 2.124299999999998,
-  "usd": 0.25,
-  "carta": "Chitin Gravestalker",
-  "coste": "{5}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.1241999999999948,
+  "delta": 4.118333333333332,
   "usd": 0.15,
   "carta": "Vote Out",
   "coste": "{3}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 2.1205,
-  "usd": 0.21,
-  "carta": "Vampire Nighthawk",
-  "coste": "{1}{B}{B}",
+  "delta": 4.116733333333336,
+  "usd": 0.13,
+  "carta": "Ninja of the Hand",
+  "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.118699999999997,
+  "delta": 4.088533333333338,
+  "usd": 0.2,
+  "carta": "Fountainport Bell",
+  "coste": "{1}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 4.084233333333337,
+  "usd": 0.16,
+  "carta": "Undercity Eliminator",
+  "coste": "{3}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.0821333333333385,
+  "usd": 0.18,
+  "carta": "Dawnhand Eulogist",
+  "coste": "{3}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.076233333333342,
+  "usd": 0.56,
+  "carta": "Massacre Girl, Known Killer",
+  "coste": "{2}{B}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 4.059733333333334,
+  "usd": 0.18,
+  "carta": "Nighthowl Pursuer",
+  "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 4.053333333333335,
   "usd": 0.13,
   "carta": "Hollow Marauder",
   "coste": "{6}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 2.101699999999994,
-  "usd": 1.07,
-  "carta": "Strategic Betrayal",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.101699999999994,
-  "usd": 0.3,
-  "carta": "Fell",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.101699999999994,
-  "usd": 0.19,
-  "carta": "Epic Downfall",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.101699999999994,
-  "usd": 0.18,
-  "carta": "Bogslither's Embrace",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.101699999999994,
-  "usd": 0.15,
-  "carta": "Feed the Swarm",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 2.0918999999999954,
-  "usd": 0.41,
-  "carta": "Corrupted Conviction",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0918999999999954,
-  "usd": 0.31,
-  "carta": "Desperate Measures",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.086199999999998,
-  "usd": 0.55,
-  "carta": "Nowhere to Run",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 2.0774000000000044,
-  "usd": 0.18,
-  "carta": "Lunatic Pandora",
-  "coste": "{1}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 2.0698000000000008,
-  "usd": 0.2,
-  "carta": "Sugar Rush",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.043700000000001,
-  "usd": 0.15,
-  "carta": "Oasis Gardener",
-  "coste": "{3}",
+  "delta": 4.04473333333334,
+  "usd": 2.15,
+  "carta": "Technodrome",
+  "coste": "{2}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 2.0408999999999935,
-  "usd": 0.37,
-  "carta": "Shoot the Sheriff",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0408999999999935,
-  "usd": 0.33,
-  "carta": "Bitter Triumph",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0408999999999935,
-  "usd": 0.27,
-  "carta": "Feed the Cycle",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0408999999999935,
-  "usd": 0.26,
-  "carta": "Long Goodbye",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0408999999999935,
-  "usd": 0.21,
-  "carta": "Dark Deed",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0408999999999935,
-  "usd": 0.2,
-  "carta": "Death in the Family",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0408999999999935,
-  "usd": 0.2,
-  "carta": "Candy Grapple",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0408999999999935,
+  "delta": 4.024233333333335,
   "usd": 0.12,
-  "carta": "Scorpion's Sting",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 2.0352999999999994,
-  "usd": 1.08,
-  "carta": "Tangled Colony",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.027699999999996,
-  "usd": 0.17,
-  "carta": "Synapse Necromage",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 2.0152,
-  "usd": 6.76,
-  "carta": "Scrawling Crawler",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.9931999999999945,
-  "usd": 0.25,
-  "carta": "Faerie Dreamthief",
+  "carta": "Fear of Lost Teeth",
   "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.9919000000000011,
-  "usd": 0.2,
-  "carta": "Thornplate Intimidator",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.9917000000000016,
-  "usd": 1.21,
-  "carta": "Moseo, Vein's New Dean",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.974499999999999,
-  "usd": 0.25,
-  "carta": "Spider-Man Noir",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.9738999999999933,
-  "usd": 0.26,
-  "carta": "Starving Revenant",
-  "coste": "{2}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.9707000000000008,
-  "usd": 3.03,
-  "carta": "Doctor Doom",
-  "coste": "{4}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.9638000000000062,
-  "usd": 0.19,
-  "carta": "Rooftop Percher",
-  "coste": "{5}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.9619999999999962,
-  "usd": 0.25,
-  "carta": "Bloodtithe Collector",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.947099999999999,
-  "usd": 0.32,
-  "carta": "Arnyn, Deathbloom Botanist",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.9301999999999992,
-  "usd": 0.21,
-  "carta": "Scream Puff",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.920499999999997,
-  "usd": 11.39,
-  "carta": "Moonshadow",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.920499999999997,
-  "usd": 0.3,
-  "carta": "Stalactite Stalker",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.920499999999997,
-  "usd": 0.23,
-  "carta": "Snarling Gorehound",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.9173999999999936,
-  "usd": 0.22,
-  "carta": "Dissection Practice",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.9010000000000034,
-  "usd": 1.33,
-  "carta": "Summon: Primal Odin",
-  "coste": "{4}{B}{B}",
   "tipo": "Enchantment Creature"
  },
  {
-  "delta": 1.9002000000000052,
-  "usd": 0.54,
-  "carta": "Scavenger Regent // Exude Toxin",
-  "coste": "{3}{B} // {X}{B}{B}",
-  "tipo": "Creature"
+  "delta": 4.015933333333344,
+  "usd": 0.22,
+  "carta": "Unfortunate Accident",
+  "coste": "{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 1.8851999999999975,
-  "usd": 0.11,
-  "carta": "Gate Colossus",
-  "coste": "{8}",
+  "delta": 3.971433333333337,
+  "usd": 1.57,
+  "carta": "Chrome Dome",
+  "coste": "{2}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 1.8573000000000022,
-  "usd": 0.14,
-  "carta": "Decode Transmissions",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
+  "delta": 3.9697333333333376,
+  "usd": 0.37,
+  "carta": "The End",
+  "coste": "{2}{B}{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 1.8357000000000028,
-  "usd": 1.83,
-  "carta": "Dragonfire Blade",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.8357000000000028,
-  "usd": 0.29,
-  "carta": "Adventuring Gear",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.8357000000000028,
-  "usd": 0.21,
-  "carta": "Spider-Suit",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.8357000000000028,
-  "usd": 0.13,
-  "carta": "Vibranium Energy Daggers",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.8337000000000003,
-  "usd": 0.29,
-  "carta": "Valgavoth's Faithful",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.8337000000000003,
-  "usd": 0.15,
-  "carta": "Lecturing Scornmage",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.8337000000000003,
-  "usd": 0.12,
-  "carta": "Bile-Vial Boggart",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.8262,
-  "usd": 0.4,
-  "carta": "Dawnhand Dissident",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.8262,
-  "usd": 0.14,
-  "carta": "Project Deathlok Soldier",
-  "coste": "{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.8148999999999944,
-  "usd": 0.27,
-  "carta": "Dubious Delicacy",
-  "coste": "{2}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.809599999999996,
-  "usd": 0.28,
-  "carta": "Azula, On the Hunt",
-  "coste": "{3}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.795099999999998,
-  "usd": 5.33,
-  "carta": "Gwenom, Remorseless",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.7808999999999955,
+  "delta": 3.9582333333333324,
   "usd": 0.19,
   "carta": "Tribute to Hunger",
   "coste": "{2}{B}",
   "tipo": "Instant"
  },
  {
-  "delta": 1.7734999999999914,
+  "delta": 3.9508333333333354,
+  "usd": 0.12,
+  "carta": "Cruel Alliance",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.93513333333334,
+  "usd": 0.22,
+  "carta": "Dissection Practice",
+  "coste": "{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.9246333333333396,
+  "usd": 0.06,
+  "carta": "Roxxon Brutes",
+  "coste": "{4}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.9156333333333393,
+  "usd": 0.16,
+  "carta": "Henchbots",
+  "coste": "{4}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.9006333333333387,
+  "usd": 0.18,
+  "carta": "Monoist Sentry",
+  "coste": "{B}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.900033333333333,
+  "usd": 0.21,
+  "carta": "Glidedive Duo",
+  "coste": "{4}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.900033333333333,
+  "usd": 0.08,
+  "carta": "Sneering Shadewriter",
+  "coste": "{4}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.8987333333333396,
+  "usd": 0.27,
+  "carta": "Northern Air Temple",
+  "coste": "{B}",
+  "tipo": "Legendary Enchantment"
+ },
+ {
+  "delta": 3.8965333333333376,
+  "usd": 0.28,
+  "carta": "Infestation Sage",
+  "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.8965333333333376,
+  "usd": 0.26,
+  "carta": "Nezumi Linkbreaker",
+  "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.879233333333339,
+  "usd": 0.11,
+  "carta": "Callous Inspector",
+  "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.8710333333333367,
+  "usd": 0.36,
+  "carta": "Venerated Stormsinger",
+  "coste": "{3}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.828233333333344,
+  "usd": 3.07,
+  "carta": "Valley Rotcaller",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.821233333333339,
+  "usd": 1.52,
+  "carta": "Doomsday Excruciator",
+  "coste": "{B}{B}{B}{B}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.811933333333336,
+  "usd": 0.25,
+  "carta": "Bloodtithe Collector",
+  "coste": "{4}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.80093333333334,
+  "usd": 6.76,
+  "carta": "Scrawling Crawler",
+  "coste": "{3}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.758733333333332,
   "usd": 1.09,
   "carta": "Ultima, Origin of Oblivion",
   "coste": "{5}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 1.7719999999999985,
-  "usd": 0.19,
-  "carta": "Sundering Archaic",
-  "coste": "{6}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.7693000000000012,
-  "usd": 18.11,
-  "carta": "Sire of Seven Deaths",
-  "coste": "{7}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.7635999999999967,
-  "usd": 0.13,
-  "carta": "Adorned Crocodile",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.7610000000000028,
-  "usd": 0.32,
-  "carta": "Bloodthorn Flail",
-  "coste": "{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.759999999999998,
-  "usd": 0.3,
-  "carta": "Twisted Sewer-Witch",
-  "coste": "{3}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.735599999999998,
-  "usd": 0.35,
-  "carta": "Obsessive Pursuit",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.7348999999999961,
-  "usd": 0.17,
-  "carta": "Hylderblade",
-  "coste": "{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.7310000000000016,
-  "usd": 0.42,
-  "carta": "Come Back Wrong",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.7310000000000016,
-  "usd": 0.29,
-  "carta": "Shredder's Technique",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.728500000000004,
-  "usd": 0.15,
-  "carta": "Fell Horseman // Deathly Ride",
-  "coste": "{3}{B} // {1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.7239000000000004,
-  "usd": 0.34,
-  "carta": "Osteomancer Adept",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.722999999999999,
-  "usd": 1.16,
-  "carta": "Starscape Cleric",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.7177999999999969,
-  "usd": 0.22,
-  "carta": "Risky Shortcut",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.7149,
-  "usd": 0.31,
-  "carta": "Demonic Pact",
-  "coste": "{2}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.67,
-  "carta": "Archenemy's Charm",
-  "coste": "{B}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.66,
-  "carta": "Withering Torment",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.32,
-  "carta": "Overkill",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.31,
-  "carta": "Hero's Downfall",
-  "coste": "{1}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.27,
-  "carta": "Feed the Cauldron",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.19,
-  "carta": "Murder",
-  "coste": "{1}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.19,
-  "carta": "Foolish Fate",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.18,
-  "carta": "Spin Out",
-  "coste": "{1}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.18,
-  "carta": "Nocturnal Hunger",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.17,
-  "carta": "Join the Dead",
-  "coste": "{1}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7124999999999986,
-  "usd": 0.13,
-  "carta": "Dragon's Prey",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7072000000000003,
-  "usd": 4.12,
-  "carta": "Phyrexian Arena",
-  "coste": "{1}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.7054000000000045,
-  "usd": 0.18,
-  "carta": "Sephiroth's Intervention",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.7025999999999968,
-  "usd": 0.16,
-  "carta": "Venom's Hunger",
-  "coste": "{4}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.697099999999999,
-  "usd": 0.15,
-  "carta": "Abyssal Gorestalker",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.6888999999999967,
-  "usd": 0.16,
-  "carta": "Scales of Shale",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.6669999999999945,
-  "usd": 0.24,
-  "carta": "Virus Beetle",
-  "coste": "{1}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.6669999999999945,
-  "usd": 0.23,
-  "carta": "Burglar Rat",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.6669999999999945,
-  "usd": 0.22,
-  "carta": "Hecteyes",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.6669999999999945,
-  "usd": 0.17,
-  "carta": "Skullcap Snail",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.6669999999999945,
-  "usd": 0.13,
-  "carta": "Unscrupulous Agent",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.6621000000000024,
-  "usd": 0.16,
-  "carta": "Canyon Crawler",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.636099999999999,
+  "delta": 3.735133333333337,
   "usd": 0.25,
-  "carta": "Vampire Spawn",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.624299999999998,
-  "usd": 0.13,
-  "carta": "Gurmag Rakshasa",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.6199999999999974,
-  "usd": 0.35,
-  "carta": "Steel Hellkite",
-  "coste": "{6}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.6096000000000004,
-  "usd": 0.15,
-  "carta": "Anchovy & Banana Pizza",
-  "coste": "{2}{B}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.5984999999999943,
-  "usd": 0.29,
-  "carta": "Kalakscion, Hunger Tyrant",
-  "coste": "{1}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.591699999999996,
-  "usd": 0.27,
-  "carta": "Postmortem Professor",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.5808999999999926,
-  "usd": 0.31,
-  "carta": "Cornered by Black Mages",
-  "coste": "{1}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.5619999999999976,
-  "usd": 0.29,
-  "carta": "Savanti Romero, Time's Exile",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.5619000000000014,
-  "usd": 0.38,
-  "carta": "Malevolent Witchkite",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.5619000000000014,
-  "usd": 0.22,
-  "carta": "Miasma Demon",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.5469000000000008,
-  "usd": 0.16,
-  "carta": "Mazemind Tome",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.5439000000000007,
-  "usd": 0.14,
-  "carta": "Cackling Slasher",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.5283999999999978,
-  "usd": 1.06,
-  "carta": "Villainous Wrath",
-  "coste": "{3}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.5237999999999943,
-  "usd": 3.54,
-  "carta": "Dark Confidant",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.5189999999999984,
-  "usd": 0.12,
-  "carta": "Winter's Intervention",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.5176999999999978,
-  "usd": 0.31,
-  "carta": "Jecht, Reluctant Guardian // Braska's Final Aeon",
-  "coste": "",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.5112000000000023,
-  "usd": 0.13,
-  "carta": "Soul-Shackled Zombie",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.5082999999999984,
-  "usd": 0.11,
-  "carta": "Blighted Blackthorn",
+  "carta": "Spider-Man Noir",
   "coste": "{4}{B}",
-  "tipo": "Creature"
+  "tipo": "Legendary Creature"
  },
  {
-  "delta": 1.5063999999999993,
-  "usd": 0.27,
-  "carta": "Friendly Teddy",
+  "delta": 3.7341333333333395,
+  "usd": 0.14,
+  "carta": "Cryptex",
   "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.4969000000000037,
-  "usd": 0.18,
-  "carta": "Boulderborn Dragon",
-  "coste": "{5}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.496299999999998,
-  "usd": 0.17,
-  "carta": "Gastal Raider",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.485199999999999,
-  "usd": 0.17,
-  "carta": "Well-Worn Spatula",
-  "coste": "{1}",
   "tipo": "Artifact"
  },
  {
-  "delta": 1.4801999999999964,
+  "delta": 3.7327333333333357,
+  "usd": 0.15,
+  "carta": "Oasis Gardener",
+  "coste": "{3}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.7174333333333394,
+  "usd": 0.32,
+  "carta": "Arnyn, Deathbloom Botanist",
+  "coste": "{2}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 3.6946333333333357,
+  "usd": 1.07,
+  "carta": "Strategic Betrayal",
+  "coste": "{1}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.6946333333333357,
+  "usd": 0.3,
+  "carta": "Fell",
+  "coste": "{1}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.6946333333333357,
+  "usd": 0.19,
+  "carta": "Epic Downfall",
+  "coste": "{1}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.6946333333333357,
+  "usd": 0.15,
+  "carta": "Feed the Swarm",
+  "coste": "{1}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.693233333333339,
+  "usd": 0.25,
+  "carta": "Kalastria Highborn",
+  "coste": "{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.6720333333333386,
   "usd": 0.12,
   "carta": "Klaw, Sonic Subjugator",
   "coste": "{2}{B}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 1.4791000000000025,
-  "usd": 0.15,
-  "carta": "Melancholic Poet",
+  "delta": 3.6567333333333423,
+  "usd": 0.2,
+  "carta": "Sugar Rush",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.642633333333336,
+  "usd": 0.23,
+  "carta": "Snarling Gorehound",
+  "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.6372333333333415,
+  "usd": 0.21,
+  "carta": "Vampire Nighthawk",
+  "coste": "{1}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.61813333333334,
+  "usd": 0.24,
+  "carta": "Virus Beetle",
+  "coste": "{1}{B}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.61813333333334,
+  "usd": 0.23,
+  "carta": "Burglar Rat",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.4750000000000014,
-  "usd": 0.88,
-  "carta": "Scavenger's Talent",
-  "coste": "{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.4732000000000056,
-  "usd": 0.28,
-  "carta": "Soul Enervation",
-  "coste": "{3}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.4731000000000023,
-  "usd": 0.16,
-  "carta": "Malboro",
-  "coste": "{4}{B}{B}",
+  "delta": 3.61813333333334,
+  "usd": 0.22,
+  "carta": "Hecteyes",
+  "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.465600000000002,
-  "usd": 0.33,
-  "carta": "The Fire Nation Drill",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Artifact"
+  "delta": 3.61813333333334,
+  "usd": 0.17,
+  "carta": "Skullcap Snail",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 1.4613000000000014,
-  "usd": 10.0,
-  "carta": "Dawnsire, Sunstar Dreadnought",
-  "coste": "{5}",
-  "tipo": "Legendary Artifact"
+  "delta": 3.61813333333334,
+  "usd": 0.13,
+  "carta": "Unscrupulous Agent",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 1.4558999999999997,
-  "usd": 0.38,
-  "carta": "The Master of Lake-town",
-  "coste": "{1}{B}{B}",
+  "delta": 3.5881333333333387,
+  "usd": 3.03,
+  "carta": "Doctor Doom",
+  "coste": "{4}{B}{B}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 1.4512999999999963,
-  "usd": 0.08,
-  "carta": "Streaking Oilgorger",
+  "delta": 3.5840333333333376,
+  "usd": 0.37,
+  "carta": "Shoot the Sheriff",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.5840333333333376,
+  "usd": 0.21,
+  "carta": "Dark Deed",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.5840333333333376,
+  "usd": 0.2,
+  "carta": "Death in the Family",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.5840333333333376,
+  "usd": 0.2,
+  "carta": "Candy Grapple",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.5840333333333376,
+  "usd": 0.12,
+  "carta": "Scorpion's Sting",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.568233333333339,
+  "usd": 0.14,
+  "carta": "Cackling Slasher",
+  "coste": "{3}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.553933333333333,
+  "usd": 5.33,
+  "carta": "Gwenom, Remorseless",
+  "coste": "{3}{B}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 3.5502333333333382,
+  "usd": 0.18,
+  "carta": "Sephiroth's Intervention",
+  "coste": "{3}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.5315333333333356,
+  "usd": 0.16,
+  "carta": "Venom's Hunger",
+  "coste": "{4}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.518333333333338,
+  "usd": 0.31,
+  "carta": "Cornered by Black Mages",
+  "coste": "{1}{B}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.5003333333333373,
+  "usd": 0.29,
+  "carta": "Adventuring Gear",
+  "coste": "{1}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 3.5003333333333373,
+  "usd": 0.13,
+  "carta": "Vibranium Energy Daggers",
+  "coste": "{1}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 3.4837333333333405,
+  "usd": 0.21,
+  "carta": "Scream Puff",
   "coste": "{4}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.4439999999999955,
-  "usd": 0.16,
-  "carta": "Unscrupulous Contractor",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.4429999999999978,
-  "usd": 0.18,
-  "carta": "Fire Navy Trebuchet",
-  "coste": "{2}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.4420999999999964,
-  "usd": 1.18,
-  "carta": "The Dawning Archaic",
-  "coste": "{10}",
+  "delta": 3.4722333333333424,
+  "usd": 0.39,
+  "carta": "Old Flitterfang",
+  "coste": "{4}{B}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 1.4416999999999973,
+  "delta": 3.4615333333333425,
   "usd": 0.16,
-  "carta": "Monoist Circuit-Feeder",
-  "coste": "{4}{B}{B}",
-  "tipo": "Artifact Creature"
+  "carta": "Scales of Shale",
+  "coste": "{2}{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 1.4416999999999973,
-  "usd": 0.09,
-  "carta": "Malevolent Chandelier",
+  "delta": 3.4258333333333297,
+  "usd": 0.35,
+  "carta": "Steel Hellkite",
   "coste": "{6}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 1.4397999999999982,
-  "usd": 0.26,
-  "carta": "Common Crook",
-  "coste": "{1}{B}",
+  "delta": 3.4134333333333373,
+  "usd": 0.11,
+  "carta": "Blighted Blackthorn",
+  "coste": "{4}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.4296999999999969,
+  "delta": 3.412233333333333,
+  "usd": 0.27,
+  "carta": "Dubious Delicacy",
+  "coste": "{2}{B}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 3.393333333333345,
+  "usd": 0.22,
+  "carta": "Risky Shortcut",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.38933333333334,
+  "usd": 0.15,
+  "carta": "Anchovy & Banana Pizza",
+  "coste": "{2}{B}{B}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 3.3772333333333364,
   "usd": 0.26,
   "carta": "Deadly Embrace",
   "coste": "{3}{B}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 1.4247999999999976,
-  "usd": 0.28,
-  "carta": "Forum Necroscribe",
-  "coste": "{5}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.4159000000000006,
-  "usd": 0.19,
-  "carta": "Gleaming Barrier",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.4136999999999986,
-  "usd": 0.13,
-  "carta": "Salt Road Skirmish",
-  "coste": "{3}{B}",
+  "delta": 3.3676333333333375,
+  "usd": 0.42,
+  "carta": "Come Back Wrong",
+  "coste": "{2}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 1.4103999999999957,
-  "usd": 0.09,
-  "carta": "Maalfeld Twins",
-  "coste": "{5}{B}",
-  "tipo": "Creature"
+  "delta": 3.3520333333333454,
+  "usd": 0.29,
+  "carta": "Kalakscion, Hunger Tyrant",
+  "coste": "{1}{B}{B}",
+  "tipo": "Legendary Creature"
  },
  {
-  "delta": 1.3962000000000003,
-  "usd": 0.22,
-  "carta": "Infernal Vessel",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
+  "delta": 3.3483333333333434,
+  "usd": 0.38,
+  "carta": "The Master of Lake-town",
+  "coste": "{1}{B}{B}",
+  "tipo": "Legendary Creature"
  },
  {
-  "delta": 1.3950000000000031,
+  "delta": 3.3458333333333385,
+  "usd": 0.29,
+  "carta": "Savanti Romero, Time's Exile",
+  "coste": "{3}{B}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 3.3429333333333346,
   "usd": 0.16,
-  "carta": "Gutsplitter Gang",
-  "coste": "{3}{B}",
+  "carta": "Canyon Crawler",
+  "coste": "{4}{B}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.393500000000003,
-  "usd": 0.44,
-  "carta": "Deadly Plot",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.393500000000003,
-  "usd": 0.18,
-  "carta": "Bake into a Pie",
-  "coste": "{2}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.393500000000003,
-  "usd": 0.17,
-  "carta": "Taken by Nightmares",
-  "coste": "{2}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.393500000000003,
-  "usd": 0.17,
-  "carta": "Consuming Ashes",
-  "coste": "{2}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.393500000000003,
-  "usd": 0.13,
-  "carta": "Wander Off",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.393500000000003,
-  "usd": 0.13,
-  "carta": "Gravkill",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.393500000000003,
-  "usd": 0.1,
-  "carta": "Hour of Defeat",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.393500000000003,
-  "usd": 0.09,
-  "carta": "Sold Out",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.3795999999999964,
-  "usd": 0.19,
-  "carta": "Spider-Bot",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.3789000000000016,
-  "usd": 0.14,
-  "carta": "Viv Vision, Teen Synthezoid",
-  "coste": "{3}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 1.3776999999999973,
-  "usd": 0.18,
-  "carta": "Fake Your Own Death",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.3766000000000034,
-  "usd": 5.28,
-  "carta": "Unstoppable Slasher",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3765999999999963,
-  "usd": 0.2,
-  "carta": "Nightblade Brigade",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3762000000000043,
-  "usd": 8.2,
-  "carta": "Experimental Confectioner",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3762000000000043,
-  "usd": 0.34,
-  "carta": "Lord Skitter's Butcher",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3762000000000043,
-  "usd": 0.19,
-  "carta": "Ultron Drone",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.373199999999997,
+  "delta": 3.3418333333333408,
   "usd": 0.3,
   "carta": "Osseous Sticktwister",
   "coste": "{1}{B}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 1.373199999999997,
+  "delta": 3.3418333333333408,
   "usd": 0.21,
   "carta": "Desperate Bloodseeker",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.373199999999997,
+  "delta": 3.3418333333333408,
   "usd": 0.18,
   "carta": "Scarblade Scout",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.3710000000000022,
-  "usd": 0.18,
-  "carta": "Campus Guide",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.3710000000000022,
-  "usd": 0.16,
-  "carta": "Compass Gnome",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.3710000000000022,
-  "usd": 0.12,
-  "carta": "Embermouth Sentinel",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.3695999999999984,
-  "usd": 0.25,
-  "carta": "Stinging Cave Crawler",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3684999999999974,
-  "usd": 0.23,
-  "carta": "Wicked Visitor",
+  "delta": 3.339433333333332,
+  "usd": 3.54,
+  "carta": "Dark Confidant",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.3684999999999974,
-  "usd": 0.17,
-  "carta": "Balemurk Leech",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3637000000000015,
-  "usd": 1.44,
-  "carta": "Anticausal Vestige",
-  "coste": "{6}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3633000000000024,
-  "usd": 0.14,
-  "carta": "Iron Giant",
-  "coste": "{7}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.3598,
-  "usd": 0.09,
-  "carta": "Basilica Stalker",
-  "coste": "{5}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3537999999999997,
-  "usd": 1.25,
-  "carta": "Ninja Teen",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.339500000000001,
-  "usd": 0.16,
-  "carta": "Hot Dog Cart",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.3359000000000023,
-  "usd": 1.9,
-  "carta": "South Wind Avatar",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.335800000000006,
-  "usd": 0.29,
-  "carta": "Pactdoll Terror",
-  "coste": "{3}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.3336000000000041,
-  "usd": 0.09,
-  "carta": "Rancorous Archaic",
-  "coste": "{5}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3320000000000007,
-  "usd": 0.19,
-  "carta": "Transcendent Archaic",
-  "coste": "{7}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3284999999999982,
-  "usd": 0.17,
-  "carta": "Voidforged Titan",
-  "coste": "{4}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.3205999999999989,
-  "usd": 0.75,
-  "carta": "The Vision",
-  "coste": "{4}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 1.3168000000000006,
-  "usd": 0.44,
-  "carta": "Arcane Signet",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.3168000000000006,
-  "usd": 0.15,
-  "carta": "Buried Treasure",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.3151999999999973,
-  "usd": 0.25,
-  "carta": "Sweettooth Witch",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.314,
-  "usd": 0.19,
-  "carta": "Faller's Faithful",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.3049999999999997,
-  "usd": 0.05,
-  "carta": "Nightdrinker Moroii",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2982999999999976,
-  "usd": 20.45,
-  "carta": "Overlord of the Balemurk",
-  "coste": "{3}{B}{B}",
-  "tipo": "Enchantment Creature"
- },
- {
-  "delta": 1.2982999999999976,
-  "usd": 0.31,
-  "carta": "Seymour Flux",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.2982999999999976,
-  "usd": 0.21,
-  "carta": "Fear of the Dark",
-  "coste": "{4}{B}",
-  "tipo": "Enchantment Creature"
- },
- {
-  "delta": 1.295099999999998,
-  "usd": 0.19,
-  "carta": "Feral Deathgorger // Dusk Sight",
-  "coste": "{5}{B} // {1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2934999999999945,
-  "usd": 1.4,
-  "carta": "Day of Black Sun",
-  "coste": "{X}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.2899999999999991,
-  "usd": 0.27,
-  "carta": "Shredder, Unrelenting",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.285499999999999,
-  "usd": 0.27,
-  "carta": "Splinter, Hamato Yoshi",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.2853999999999957,
-  "usd": 0.28,
-  "carta": "Sinister Monolith",
-  "coste": "{3}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.2831000000000046,
-  "usd": 0.33,
-  "carta": "Voracious Vermin",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2652,
-  "usd": 0.11,
-  "carta": "Thaumaton Torpedo",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.2646999999999977,
-  "usd": 0.2,
-  "carta": "Bumbleflower's Sharepot",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.263699999999993,
-  "usd": 0.22,
-  "carta": "Send in the Pest",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.2603000000000009,
-  "usd": 0.18,
-  "carta": "Ravenous Amulet",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.259299999999996,
-  "usd": 0.29,
-  "carta": "Circle of Power",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.2586999999999975,
-  "usd": 0.3,
-  "carta": "Yathan Tombguard",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2586000000000013,
-  "usd": 0.27,
-  "carta": "Venom, Evil Unleashed",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.2483000000000004,
-  "usd": 0.18,
-  "carta": "Madame Masque",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.2410000000000068,
-  "usd": 0.25,
-  "carta": "Crossway Troublemakers",
-  "coste": "{5}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2394000000000034,
-  "usd": 0.14,
-  "carta": "Kingpin's Enforcers",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2394000000000034,
-  "usd": 0.11,
-  "carta": "Comet Crawler",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2381000000000029,
-  "usd": 0.31,
-  "carta": "Champion of the Weird",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.2379999999999924,
-  "usd": 0.19,
-  "carta": "Cost of Brilliance",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.228199999999994,
-  "usd": 0.26,
-  "carta": "Queen's Bay Paladin",
-  "coste": "{3}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.219699999999996,
-  "usd": 0.42,
-  "carta": "Koh, the Face Stealer",
-  "coste": "{4}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.2138999999999953,
-  "usd": 0.18,
-  "carta": "Potioner's Trove",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.2121999999999957,
+  "delta": 3.316833333333342,
   "usd": 0.12,
   "carta": "Camera Launcher",
   "coste": "{3}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 1.2099000000000046,
-  "usd": 0.22,
-  "carta": "Three Bowls of Porridge",
-  "coste": "{2}",
-  "tipo": "Artifact"
+  "delta": 3.3140333333333345,
+  "usd": 0.18,
+  "carta": "Boulderborn Dragon",
+  "coste": "{5}",
+  "tipo": "Artifact Creature"
  },
  {
-  "delta": 1.2088000000000036,
-  "usd": 0.19,
-  "carta": "Specter of Mortality",
-  "coste": "{3}{B}{B}",
+  "delta": 3.3066333333333446,
+  "usd": 0.25,
+  "carta": "Vampire Spawn",
+  "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.2079999999999984,
-  "usd": 0.28,
-  "carta": "Rowan's Grim Search",
+  "delta": 3.302333333333337,
+  "usd": 0.32,
+  "carta": "Overkill",
   "coste": "{2}{B}",
   "tipo": "Instant"
  },
  {
-  "delta": 1.2055000000000007,
-  "usd": 0.23,
-  "carta": "Vile Mutilator",
-  "coste": "{5}{B}{B}",
-  "tipo": "Creature"
+  "delta": 3.302333333333337,
+  "usd": 0.31,
+  "carta": "Hero's Downfall",
+  "coste": "{1}{B}{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 1.202299999999994,
+  "delta": 3.302333333333337,
+  "usd": 0.27,
+  "carta": "Feed the Cauldron",
+  "coste": "{2}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.302333333333337,
+  "usd": 0.19,
+  "carta": "Murder",
+  "coste": "{1}{B}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.302333333333337,
   "usd": 0.18,
-  "carta": "Derelict Attic // Widow's Walk",
-  "coste": "{2}{B} // {3}{B}",
-  "tipo": "Enchantment"
+  "carta": "Spin Out",
+  "coste": "{1}{B}{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 1.1959000000000017,
-  "usd": 0.79,
-  "carta": "Rune-Scarred Demon",
-  "coste": "{5}{B}{B}",
+  "delta": 3.301333333333332,
+  "usd": 0.19,
+  "carta": "Rooftop Percher",
+  "coste": "{5}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.191200000000002,
-  "usd": 0.3,
-  "carta": "Graveshifter",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1813999999999965,
-  "usd": 0.23,
-  "carta": "Scathing Shadelock // Venomous Words",
-  "coste": "{4}{B} // {B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1785999999999959,
-  "usd": 5.44,
-  "carta": "Ultima Weapon",
-  "coste": "{7}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 1.1754999999999924,
-  "usd": 1.27,
-  "carta": "Massacre Wurm",
-  "coste": "{3}{B}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1754999999999924,
-  "usd": 0.23,
-  "carta": "Relentless X-ATM092",
-  "coste": "{6}",
+  "delta": 3.29193333333334,
+  "usd": 0.19,
+  "carta": "Ultron Drone",
+  "coste": "{3}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 1.1754999999999924,
+  "delta": 3.281633333333339,
+  "usd": 0.19,
+  "carta": "Cost of Brilliance",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.2719333333333367,
+  "usd": 0.09,
+  "carta": "Rancorous Archaic",
+  "coste": "{5}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.264633333333336,
+  "usd": 0.28,
+  "carta": "Soul Enervation",
+  "coste": "{3}{B}",
+  "tipo": "Enchantment"
+ },
+ {
+  "delta": 3.2615333333333396,
   "usd": 0.13,
-  "carta": "Spectral Snatcher",
+  "carta": "Gurmag Rakshasa",
   "coste": "{4}{B}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.1750999999999934,
-  "usd": 1.11,
-  "carta": "Withering Curse",
-  "coste": "{1}{B}{B}",
+  "delta": 3.254633333333331,
+  "usd": 0.38,
+  "carta": "Malevolent Witchkite",
+  "coste": "{4}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.254633333333331,
+  "usd": 0.22,
+  "carta": "Miasma Demon",
+  "coste": "{4}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.252833333333335,
+  "usd": 0.15,
+  "carta": "Abyssal Gorestalker",
+  "coste": "{4}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.1975333333333396,
+  "usd": 0.18,
+  "carta": "Bake into a Pie",
+  "coste": "{2}{B}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.1975333333333396,
+  "usd": 0.17,
+  "carta": "Taken by Nightmares",
+  "coste": "{2}{B}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.1975333333333396,
+  "usd": 0.17,
+  "carta": "Consuming Ashes",
+  "coste": "{2}{B}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.1975333333333396,
+  "usd": 0.13,
+  "carta": "Wander Off",
+  "coste": "{3}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.1975333333333396,
+  "usd": 0.13,
+  "carta": "Gravkill",
+  "coste": "{3}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.1975333333333396,
+  "usd": 0.1,
+  "carta": "Hour of Defeat",
+  "coste": "{3}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.1975333333333396,
+  "usd": 0.09,
+  "carta": "Sold Out",
+  "coste": "{3}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 3.1409333333333365,
+  "usd": 0.13,
+  "carta": "Salt Road Skirmish",
+  "coste": "{3}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 1.1727999999999952,
-  "usd": 0.32,
-  "carta": "Together as One",
-  "coste": "{6}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.171199999999999,
-  "usd": 0.28,
-  "carta": "Meteor Golem",
-  "coste": "{7}",
+  "delta": 3.140833333333333,
+  "usd": 0.18,
+  "carta": "Fire Navy Trebuchet",
+  "coste": "{2}{B}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 1.170899999999996,
+  "delta": 3.1357333333333415,
+  "usd": 0.26,
+  "carta": "Common Crook",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.1347333333333367,
+  "usd": 0.11,
+  "carta": "Thaumaton Torpedo",
+  "coste": "{1}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 3.1320333333333394,
   "usd": 0.09,
   "carta": "Moonglove Extractor",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.1698000000000022,
-  "usd": 0.18,
-  "carta": "Lion Heart",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.1695999999999955,
-  "usd": 0.3,
-  "carta": "Cemetery Recruitment",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.168999999999997,
-  "usd": 0.22,
-  "carta": "The Masters of Evil",
-  "coste": "{5}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.168999999999997,
-  "usd": 0.21,
-  "carta": "Persuasive Interrogators",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1610000000000014,
-  "usd": 0.22,
-  "carta": "Alchemist's Assistant",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1610000000000014,
-  "usd": 0.17,
-  "carta": "Merciless Enforcers",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.159799999999997,
-  "usd": 16.35,
-  "carta": "Bitterbloom Bearer",
-  "coste": "{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1588999999999956,
-  "usd": 0.34,
-  "carta": "The Death of Gwen Stacy",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.1525000000000034,
-  "usd": 1.14,
-  "carta": "Scheming Silvertongue // Sign in Blood",
-  "coste": "{1}{B} // {B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1520999999999972,
-  "usd": 0.23,
-  "carta": "Barrels of Blasting Jelly",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.1504000000000048,
-  "usd": 0.15,
-  "carta": "Grim Reaper, Lethal Legionnaire",
-  "coste": "{3}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.1473999999999975,
-  "usd": 0.15,
-  "carta": "Fanatic of the Harrowing",
+  "delta": 3.11663333333334,
+  "usd": 0.13,
+  "carta": "Soul-Shackled Zombie",
   "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 1.1467000000000027,
-  "usd": 1.84,
-  "carta": "The Rise of Sozin // Fire Lord Sozin",
-  "coste": "",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.1458999999999975,
-  "usd": 0.18,
-  "carta": "Visions of Villainy",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.1450999999999993,
-  "usd": 0.2,
-  "carta": "Nightmare Sower",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1418000000000035,
-  "usd": 11.37,
-  "carta": "Emeritus of Woe // Demonic Tutor",
-  "coste": "{3}{B} // {1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1417999999999964,
-  "usd": 0.24,
-  "carta": "Deathcap Marionette",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.136099999999992,
-  "usd": 0.17,
-  "carta": "Tragic Banshee",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1302999999999983,
+  "delta": 3.091233333333335,
   "usd": 0.14,
   "carta": "Goblin Firebomb",
   "coste": "{1}",
   "tipo": "Artifact"
  },
  {
-  "delta": 1.1221000000000032,
-  "usd": 4.69,
-  "carta": "Gisa, the Hellraiser",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.1221000000000032,
-  "usd": 0.4,
-  "carta": "Zenos yae Galvus // Shinryu, Transcendent Rival",
-  "coste": "",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.1221000000000032,
-  "usd": 0.21,
-  "carta": "Gloom Ripper",
-  "coste": "{3}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1221000000000032,
-  "usd": 0.16,
-  "carta": "Magnetic Snuffler",
-  "coste": "{5}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.121699999999997,
-  "usd": 0.08,
-  "carta": "Crypt Feaster",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1199999999999974,
-  "usd": 0.2,
-  "carta": "Perigee Beckoner",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1199999999999974,
-  "usd": 0.09,
-  "carta": "Lumbering Laundry",
-  "coste": "{5}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.1135999999999981,
-  "usd": 0.15,
-  "carta": "Beamsaw Prospector",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1124999999999972,
-  "usd": 0.21,
-  "carta": "Corroding Dragonstorm",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.1108999999999938,
-  "usd": 0.15,
-  "carta": "Wreck Remover",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.1078999999999937,
-  "usd": 0.08,
-  "carta": "Thinking Cap",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.1044999999999945,
-  "usd": 0.33,
-  "carta": "Umbral Collar Zealot",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.1029999999999944,
-  "usd": 0.13,
-  "carta": "Cruel Truths",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.102799999999995,
-  "usd": 0.09,
-  "carta": "Lead Pipe",
-  "coste": "{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.0997999999999948,
-  "usd": 0.2,
-  "carta": "Zuko's Conviction",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.0970000000000013,
-  "usd": 20.43,
-  "carta": "Tezzeret, Cruel Captain",
-  "coste": "{3}",
-  "tipo": "Legendary Planeswalker"
- },
- {
-  "delta": 1.0936000000000021,
-  "usd": 0.58,
-  "carta": "Bringer of the Last Gift",
-  "coste": "{6}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.074300000000001,
-  "usd": 0.26,
-  "carta": "Presumed Dead",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.074300000000001,
-  "usd": 0.1,
-  "carta": "Give In to Violence",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.0716999999999999,
-  "usd": 0.28,
-  "carta": "Racers' Scoreboard",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.0679999999999978,
-  "usd": 0.1,
-  "carta": "Shinra Reinforcements",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.064399999999992,
-  "usd": 0.31,
-  "carta": "Cruelclaw's Heist",
-  "coste": "{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.064399999999992,
-  "usd": 0.23,
-  "carta": "Pilfer",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.064399999999992,
-  "usd": 0.12,
-  "carta": "Auntie's Sentence",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.063600000000001,
-  "usd": 0.21,
-  "carta": "Servant of the Stinger",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.054000000000002,
-  "usd": 0.21,
-  "carta": "Undercity Dire Rat",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.0499999999999972,
-  "usd": 0.35,
-  "carta": "Abyssal Harvester",
-  "coste": "{1}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.0459999999999994,
-  "usd": 0.18,
-  "carta": "Shefet Archfiend",
-  "coste": "{5}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.045499999999997,
-  "usd": 0.09,
-  "carta": "HYDRA Infiltration",
-  "coste": "{3}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 1.0386000000000024,
-  "usd": 0.46,
-  "carta": "Avenger of the Fallen",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.0373000000000019,
-  "usd": 0.3,
-  "carta": "Threefold Thunderhulk",
-  "coste": "{7}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.034399999999998,
-  "usd": 0.09,
-  "carta": "Temporal Intervention",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.033299999999997,
-  "usd": 0.24,
-  "carta": "Risky Research",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.033299999999997,
-  "usd": 0.14,
-  "carta": "Diresight",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.0313999999999979,
-  "usd": 0.15,
-  "carta": "Trusty Boomerang",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 1.030300000000004,
-  "usd": 2.02,
-  "carta": "Fanatical Offering",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.030300000000004,
-  "usd": 0.14,
-  "carta": "Stomped by the Foot",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.030300000000004,
-  "usd": 0.11,
-  "carta": "Vayne's Treachery",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.0204000000000022,
-  "usd": 0.31,
-  "carta": "Gumdrop Poisoner // Tempt with Treats",
-  "coste": "{2}{B} // {B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.0187999999999988,
-  "usd": 0.84,
-  "carta": "Darkstar Augur",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 1.017400000000002,
-  "usd": 0.15,
-  "carta": "Chrome Companion",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.0118999999999971,
-  "usd": 0.15,
-  "carta": "Watcher of the Wayside",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.0080999999999989,
-  "usd": 0.16,
-  "carta": "Shatter the Oath",
-  "coste": "{3}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.0080999999999989,
-  "usd": 0.11,
-  "carta": "Ray of Ruin",
-  "coste": "{4}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 1.0079000000000065,
-  "usd": 0.32,
-  "carta": "Solemn Simulacrum",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 1.0071000000000012,
-  "usd": 0.14,
-  "carta": "Early Winter",
-  "coste": "{4}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 1.0041999999999973,
-  "usd": 0.19,
-  "carta": "Visage of Dread // Dread Osseosaur",
-  "coste": "",
-  "tipo": "Artifact // Creature"
- },
- {
-  "delta": 1.0040000000000049,
-  "usd": 0.41,
-  "carta": "Shark Shredder, Killer Clone",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 1.001100000000001,
-  "usd": 2.04,
-  "carta": "Unholy Annex // Ritual Chamber",
-  "coste": "{2}{B} // {3}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.9936999999999969,
-  "usd": 0.09,
-  "carta": "Polygraph Orb",
-  "coste": "{4}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9930000000000021,
+  "delta": 3.0887333333333373,
   "usd": 0.19,
   "carta": "Stromkirk Bloodthief",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.9923000000000002,
-  "usd": 21.91,
-  "carta": "Krang, Utrom Warlord",
-  "coste": "{9}",
+  "delta": 3.0844333333333367,
+  "usd": 0.14,
+  "carta": "Iron Giant",
+  "coste": "{7}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.082733333333337,
+  "usd": 0.15,
+  "carta": "Melancholic Poet",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.0699333333333385,
+  "usd": 0.17,
+  "carta": "Merciless Enforcers",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.064133333333338,
+  "usd": 5.28,
+  "carta": "Unstoppable Slasher",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.0480333333333363,
+  "usd": 0.44,
+  "carta": "Arcane Signet",
+  "coste": "{2}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 3.0406333333333393,
+  "usd": 0.19,
+  "carta": "Spider-Bot",
+  "coste": "{2}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.0406333333333393,
+  "usd": 0.16,
+  "carta": "Monoist Circuit-Feeder",
+  "coste": "{4}{B}{B}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.0406333333333393,
+  "usd": 0.09,
+  "carta": "Malevolent Chandelier",
+  "coste": "{6}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 3.033033333333343,
+  "usd": 0.14,
+  "carta": "Viv Vision, Teen Synthezoid",
+  "coste": "{3}",
   "tipo": "Legendary Artifact Creature"
  },
  {
-  "delta": 0.9921000000000006,
-  "usd": 5.35,
-  "carta": "Decorum Dissertation",
-  "coste": "{3}{B}{B}",
+  "delta": 3.0262333333333302,
+  "usd": 0.79,
+  "carta": "Rune-Scarred Demon",
+  "coste": "{5}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.020133333333341,
+  "usd": 0.31,
+  "carta": "Cruelclaw's Heist",
+  "coste": "{B}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 0.9904000000000011,
+  "delta": 3.020133333333341,
+  "usd": 0.23,
+  "carta": "Pilfer",
+  "coste": "{1}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 3.014933333333339,
+  "usd": 0.19,
+  "carta": "Faller's Faithful",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.009033333333335,
+  "usd": 0.09,
+  "carta": "Maalfeld Twins",
+  "coste": "{5}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 3.002433333333343,
   "usd": 0.2,
   "carta": "Midnight Reaper",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.9879000000000033,
-  "usd": 0.27,
-  "carta": "Treasure Dredger",
+  "delta": 2.99913333333334,
+  "usd": 0.16,
+  "carta": "Shatter the Oath",
+  "coste": "{3}{B}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 2.99913333333334,
+  "usd": 0.11,
+  "carta": "Ray of Ruin",
+  "coste": "{4}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 2.9978333333333396,
+  "usd": 0.21,
+  "carta": "Servant of the Stinger",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.9857000000000085,
-  "usd": 0.28,
-  "carta": "Scampering Surveyor",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
+  "delta": 2.9970333333333343,
+  "usd": 0.12,
+  "carta": "Winter's Intervention",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 0.9857000000000014,
+  "delta": 2.9960333333333438,
   "usd": 0.18,
-  "carta": "Wick's Patrol",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9821999999999989,
-  "usd": 0.34,
-  "carta": "Undying Malice",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.9821999999999989,
-  "usd": 0.23,
-  "carta": "Toxin Analysis",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.9821999999999989,
-  "usd": 0.09,
-  "carta": "Skulduggery",
-  "coste": "{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.9740000000000038,
-  "usd": 0.07,
-  "carta": "Juggernaut",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.9739000000000004,
-  "usd": 0.21,
-  "carta": "Down, Down to Goblin-town",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.9697000000000031,
-  "usd": 0.23,
-  "carta": "Fishing Pole",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9667999999999921,
-  "usd": 0.8,
-  "carta": "Gonti, Night Minister",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.9667999999999921,
-  "usd": 0.07,
-  "carta": "Namazu Trader",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9634999999999962,
-  "usd": 0.2,
-  "carta": "Daggerfang Duo",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9634999999999962,
-  "usd": 0.15,
-  "carta": "Rattleback Apothecary",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9587000000000003,
-  "usd": 0.2,
-  "carta": "Starforged Sword",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9566999999999908,
-  "usd": 6.36,
-  "carta": "Basilisk Collar",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9566999999999908,
-  "usd": 5.54,
-  "carta": "Lost Jitte",
-  "coste": "{1}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.9566999999999908,
-  "usd": 3.69,
-  "carta": "Tarrian's Soulcleaver",
-  "coste": "{1}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.9566999999999908,
-  "usd": 0.63,
-  "carta": "Excalibur II",
-  "coste": "{1}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.9566999999999908,
-  "usd": 0.3,
-  "carta": "Hunter's Blowgun",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9566999999999908,
-  "usd": 0.24,
-  "carta": "Swashbuckler's Whip",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9558999999999997,
-  "usd": 0.13,
-  "carta": "Silver Deputy",
+  "carta": "Campus Guide",
   "coste": "{2}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.9446999999999974,
-  "usd": 2.16,
-  "carta": "Syr Ginger, the Meal Ender",
+  "delta": 2.9960333333333438,
+  "usd": 0.16,
+  "carta": "Compass Gnome",
   "coste": "{2}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 0.9446999999999974,
-  "usd": 0.33,
-  "carta": "Iron-Shield Elf",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9446999999999974,
-  "usd": 0.32,
-  "carta": "Persistent Marshstalker",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9446999999999974,
-  "usd": 0.28,
-  "carta": "Cynical Loner",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9446999999999974,
-  "usd": 0.14,
-  "carta": "Wretched Doll",
-  "coste": "{1}{B}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.943099999999994,
-  "usd": 0.26,
-  "carta": "Dark Knight's Greatsword",
-  "coste": "{2}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9384000000000015,
-  "usd": 4.53,
-  "carta": "M.O.D.O.K.",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 0.9172000000000011,
+  "delta": 2.9960333333333438,
   "usd": 0.12,
-  "carta": "Primordial Gnawer",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
+  "carta": "Embermouth Sentinel",
+  "coste": "{2}",
+  "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.9170999999999978,
-  "usd": 0.15,
-  "carta": "Raven of Fell Omens",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9168000000000021,
-  "usd": 0.37,
-  "carta": "Alpharael, Stonechosen",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.911999999999999,
-  "usd": 0.15,
-  "carta": "Retched Wretch",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.9072999999999993,
-  "usd": 0.13,
-  "carta": "Syphon Fuel",
-  "coste": "{4}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.900500000000001,
-  "usd": 20.16,
-  "carta": "Sword of Wealth and Power",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.900500000000001,
-  "usd": 17.37,
-  "carta": "Orcrist, Goblin-cleaver",
-  "coste": "{3}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.9003000000000014,
-  "usd": 1.56,
-  "carta": "Lavaspur Boots",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9003000000000014,
+  "delta": 2.970933333333342,
   "usd": 0.29,
-  "carta": "Skateboard",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.9000999999999948,
-  "usd": 0.35,
-  "carta": "Greed's Gambit",
+  "carta": "Pactdoll Terror",
   "coste": "{3}{B}",
-  "tipo": "Enchantment"
+  "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.8997999999999919,
-  "usd": 0.16,
-  "carta": "Shredder's Revenge",
+  "delta": 2.9626333333333434,
+  "usd": 0.08,
+  "carta": "Crypt Feaster",
+  "coste": "{3}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.943733333333334,
+  "usd": 0.1,
+  "carta": "Shinra Reinforcements",
   "coste": "{2}{B}",
-  "tipo": "Sorcery"
+  "tipo": "Creature"
  },
  {
-  "delta": 0.8997999999999919,
-  "usd": 0.16,
-  "carta": "Cerebral Confiscation",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.8997999999999919,
-  "usd": 0.13,
-  "carta": "Psychic Whorl",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.8997999999999919,
-  "usd": 0.12,
-  "carta": "Seeker's Folly",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.8994,
-  "usd": 0.27,
-  "carta": "Meteor Sword",
+  "delta": 2.9372333333333316,
+  "usd": 0.28,
+  "carta": "Meteor Golem",
   "coste": "{7}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.890900000000002,
-  "usd": 0.19,
-  "carta": "Shredder's Armor",
-  "coste": "{1}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.8903999999999996,
-  "usd": 1.07,
-  "carta": "Rat King, Verminister",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.8720999999999961,
-  "usd": 0.16,
-  "carta": "Vault Plunderer",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.871299999999998,
-  "usd": 19.37,
-  "carta": "Summon: Bahamut",
-  "coste": "{9}",
-  "tipo": "Enchantment Creature"
- },
- {
-  "delta": 0.8695000000000022,
-  "usd": 0.35,
-  "carta": "Dawn-Blessed Pennant",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.8659999999999997,
-  "usd": 0.27,
-  "carta": "Hazel's Nocturne",
-  "coste": "{3}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.8631000000000029,
-  "usd": 1.73,
-  "carta": "Black Widow, Super Spy",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.8631000000000029,
-  "usd": 0.17,
-  "carta": "Reno and Rude",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.8614000000000033,
-  "usd": 0.04,
-  "carta": "Resurrected Cultist",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8559999999999945,
-  "usd": 0.13,
-  "carta": "Gutless Plunderer",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8559999999999945,
-  "usd": 0.12,
-  "carta": "Pirate Peddlers",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.853900000000003,
-  "usd": 0.22,
-  "carta": "Tomb Trawler",
-  "coste": "{2}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.8534000000000006,
-  "usd": 0.44,
-  "carta": "Agent Venom",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.8500000000000014,
-  "usd": 0.17,
-  "carta": "Sanguine Syphoner",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8475999999999999,
-  "usd": 0.21,
-  "carta": "Venomized Cat",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8474999999999966,
-  "usd": 11.83,
-  "carta": "Enduring Tenacity",
-  "coste": "{2}{B}{B}",
-  "tipo": "Enchantment Creature"
- },
- {
-  "delta": 0.8474999999999966,
-  "usd": 0.17,
-  "carta": "Wickerfolk Indomitable",
-  "coste": "{3}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.8474999999999966,
-  "usd": 0.11,
-  "carta": "Highborn Vampire",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8468000000000018,
-  "usd": 0.11,
-  "carta": "Ambush Gigapede",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.845799999999997,
-  "usd": 0.07,
-  "carta": "Unliving Legionnaire",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8425999999999974,
-  "usd": 0.19,
-  "carta": "Runaway Boulder",
-  "coste": "{6}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.8400000000000034,
-  "usd": 0.3,
-  "carta": "Marauding Blight-Priest",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8338999999999928,
-  "usd": 0.28,
-  "carta": "Fang, Fearless l'Cie",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.825800000000001,
-  "usd": 0.17,
-  "carta": "Demon Wall",
-  "coste": "{1}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.8186999999999927,
-  "usd": 0.32,
-  "carta": "Untamed Hunger",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.8186999999999927,
-  "usd": 0.13,
-  "carta": "Pirate's Cutlass",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.8164000000000016,
-  "usd": 0.2,
-  "carta": "Hoverstone Pilgrim",
-  "coste": "{5}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.8144999999999953,
-  "usd": 0.24,
-  "carta": "Al Bhed Salvagers",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8100999999999985,
-  "usd": 0.41,
-  "carta": "Rankle's Prank",
-  "coste": "{2}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.8083000000000027,
-  "usd": 4.77,
-  "carta": "Blasphemous Edict",
-  "coste": "{3}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.8042000000000016,
-  "usd": 0.14,
-  "carta": "Ahriman",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8036999999999992,
-  "usd": 0.22,
-  "carta": "Ashiok's Reaper",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8024999999999949,
-  "usd": 2.23,
-  "carta": "Twilight Diviner",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8024999999999949,
-  "usd": 1.88,
-  "carta": "Grave Researcher // Reanimate",
-  "coste": "{2}{B} // {B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8024999999999949,
-  "usd": 0.42,
-  "carta": "Kaervek, the Punisher",
-  "coste": "{1}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.8024999999999949,
-  "usd": 0.32,
-  "carta": "Baron Helmut Zemo",
-  "coste": "{B}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.8024999999999949,
-  "usd": 0.15,
-  "carta": "Shambling Cie'th",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.8024999999999949,
-  "usd": 0.12,
-  "carta": "Ronin, Shadow Stalker",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.8013999999999939,
-  "usd": 0.23,
-  "carta": "Instant Ramen",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7993000000000023,
-  "usd": 0.29,
-  "carta": "Zero Point Ballad",
-  "coste": "{X}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.7974999999999994,
-  "usd": 0.13,
-  "carta": "Cat-Gator",
-  "coste": "{6}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.796599999999998,
-  "usd": 0.29,
-  "carta": "Unbury",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.7874999999999943,
-  "usd": 0.19,
-  "carta": "Agate-Blade Assassin",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.7856999999999985,
-  "usd": 0.27,
-  "carta": "Hedron Archive",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7854999999999919,
-  "usd": 1.08,
-  "carta": "Sword of Vengeance",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7854999999999919,
-  "usd": 0.24,
-  "carta": "Rocket-Powered Goblin Glider",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7768000000000015,
-  "usd": 1.32,
-  "carta": "Collector's Vault",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7768000000000015,
-  "usd": 0.2,
-  "carta": "Contested Game Ball",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.772199999999998,
-  "usd": 1.12,
-  "carta": "Mai, Scornful Striker",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.772199999999998,
-  "usd": 0.11,
-  "carta": "Knight of Malice",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.7678000000000011,
-  "usd": 0.24,
-  "carta": "World Map",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7678000000000011,
-  "usd": 0.2,
-  "carta": "Keys to the House",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7617999999999938,
-  "usd": 0.09,
-  "carta": "Kin-Tree Nurturer",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.7608000000000033,
-  "usd": 1.62,
-  "carta": "Ral Zarek, Guest Lecturer",
-  "coste": "{1}{B}{B}",
-  "tipo": "Legendary Planeswalker"
- },
- {
-  "delta": 0.7596999999999952,
+  "delta": 2.933333333333337,
   "usd": 0.17,
   "carta": "Bear Trap",
   "coste": "{1}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.7596999999999952,
+  "delta": 2.912533333333336,
   "usd": 0.15,
-  "carta": "Scrap Compactor",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7593999999999994,
-  "usd": 18.29,
-  "carta": "Valgavoth, Terror Eater",
-  "coste": "{6}{B}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.7583999999999946,
-  "usd": 0.25,
-  "carta": "Aang's Journey",
-  "coste": "{2}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.7565999999999988,
-  "usd": 0.41,
-  "carta": "Armaggon, Future Shark",
-  "coste": "{6}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.755500000000005,
-  "usd": 0.39,
-  "carta": "Vengeful Bloodwitch",
+  "carta": "Beamsaw Prospector",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.7498000000000005,
-  "usd": 0.21,
-  "carta": "Aetherjacket",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.7379999999999995,
-  "usd": 0.27,
-  "carta": "Zombify",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.7308000000000021,
-  "usd": 0.18,
-  "carta": "Swarm Culler",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.7296000000000049,
-  "usd": 2.86,
-  "carta": "Meathook Massacre II",
-  "coste": "{X}{X}{B}{B}{B}{B}",
-  "tipo": "Legendary Enchantment"
- },
- {
-  "delta": 0.7286999999999964,
-  "usd": 0.3,
-  "carta": "Fungal Fortitude",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.7286999999999964,
-  "usd": 0.14,
-  "carta": "Quick-Draw Katana",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7280000000000015,
-  "usd": 0.1,
-  "carta": "Skeleton Archer",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.7260999999999953,
-  "usd": 0.29,
-  "carta": "Nutrient Block",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7230999999999952,
-  "usd": 0.4,
-  "carta": "Exsanguinate",
-  "coste": "{X}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.7212000000000032,
-  "usd": 1.08,
-  "carta": "Arc Reactor",
-  "coste": "{5}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7162999999999968,
-  "usd": 0.36,
-  "carta": "Supper for Spiders",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.7162999999999968,
-  "usd": 0.23,
-  "carta": "Savor",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.7139000000000024,
-  "usd": 0.28,
-  "carta": "Pinnacle Kill-Ship",
-  "coste": "{7}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7125999999999948,
-  "usd": 0.3,
-  "carta": "Tragic Trajectory",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.7125999999999948,
-  "usd": 0.12,
-  "carta": "Deathmark",
-  "coste": "{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 4.77,
-  "carta": "Ghost Vacuum",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 2.98,
-  "carta": "The Millennium Calendar",
-  "coste": "{1}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 1.63,
-  "carta": "Peter Parker's Camera",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 0.58,
-  "carta": "Tinybones Joins Up",
-  "coste": "{B}",
-  "tipo": "Legendary Enchantment"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 0.31,
-  "carta": "Elixir",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 0.28,
-  "carta": "Grim Bauble",
-  "coste": "{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 0.22,
-  "carta": "Dead Weight",
-  "coste": "{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 0.16,
-  "carta": "Feldon's Cane",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.712299999999999,
-  "usd": 0.11,
-  "carta": "Case of the Gorgon's Kiss",
-  "coste": "{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.7089999999999961,
-  "usd": 0.67,
-  "carta": "Extinguisher Battleship",
-  "coste": "{8}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.7058000000000035,
-  "usd": 0.41,
-  "carta": "Timeline Culler",
-  "coste": "{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6978999999999971,
-  "usd": 0.23,
-  "carta": "Scorpion, Seething Striker",
-  "coste": "{3}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.6978999999999971,
-  "usd": 0.2,
-  "carta": "Crossbones, Malicious Mercenary",
-  "coste": "{3}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.6925000000000026,
-  "usd": 0.61,
-  "carta": "PuPu UFO",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6912999999999911,
-  "usd": 0.24,
-  "carta": "Inner Demons Gangsters",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6912999999999911,
-  "usd": 0.14,
-  "carta": "Disruptor Wanderglyph",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6912999999999911,
-  "usd": 0.12,
-  "carta": "Rot Farm Mortipede",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6912999999999911,
-  "usd": 0.11,
-  "carta": "Biblioplex Tomekeeper",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6912999999999911,
+  "delta": 2.9098333333333386,
   "usd": 0.09,
-  "carta": "Gravblade Heavy",
+  "carta": "HYDRA Infiltration",
+  "coste": "{3}{B}",
+  "tipo": "Enchantment"
+ },
+ {
+  "delta": 2.9035333333333426,
+  "usd": 0.2,
+  "carta": "Bumbleflower's Sharepot",
+  "coste": "{2}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.8990333333333425,
+  "usd": 0.2,
+  "carta": "Nightmare Sower",
   "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6888999999999967,
-  "usd": 0.19,
-  "carta": "Scarecrow Guide",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6835999999999984,
-  "usd": 0.3,
-  "carta": "Magitek Scythe",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6835999999999984,
-  "usd": 0.1,
-  "carta": "Conductive Machete",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6822000000000017,
-  "usd": 0.11,
-  "carta": "Repeat Offender",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6813999999999965,
-  "usd": 0.44,
-  "carta": "Marketback Walker",
-  "coste": "{X}{X}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6811999999999969,
-  "usd": 0.23,
-  "carta": "Boneyard Desecrator",
+  "delta": 2.8928333333333427,
+  "usd": 0.28,
+  "carta": "Sinister Monolith",
   "coste": "{3}{B}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.8839333333333315,
+  "usd": 0.09,
+  "carta": "Basilica Stalker",
+  "coste": "{5}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6683000000000021,
-  "usd": 3.77,
-  "carta": "Marvin, Murderous Mimic",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.7,
-  "carta": "Zul Ashur, Lich Lord",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.29,
-  "carta": "Vadmir, New Blood",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.23,
-  "carta": "Leech Collector // Bloodletting",
-  "coste": "{1}{B} // {B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.19,
-  "carta": "Paramecia Coloniex",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.18,
-  "carta": "Homicide Investigator",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.17,
-  "carta": "Creakwood Safewright",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.16,
-  "carta": "Lightless Evangel",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.16,
-  "carta": "Bonebind Orator",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.14,
-  "carta": "Tunnel Rats",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.14,
-  "carta": "Swordsman, Sharp Scoundrel",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.14,
-  "carta": "Echo of Dusk",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.13,
-  "carta": "Deathless Pilot",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6683000000000021,
-  "usd": 0.11,
-  "carta": "Krumar Initiate",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.668299999999995,
+  "delta": 2.8643333333333416,
   "usd": 0.32,
-  "carta": "Changeling Wayfinder",
-  "coste": "{3}",
+  "carta": "Solemn Simulacrum",
+  "coste": "{4}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.8513333333333364,
+  "usd": 0.23,
+  "carta": "Wicked Visitor",
+  "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6672999999999973,
-  "usd": 0.29,
-  "carta": "Susurian Voidborn",
+  "delta": 2.8513333333333364,
+  "usd": 0.17,
+  "carta": "Balemurk Leech",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.851233333333333,
+  "usd": 0.13,
+  "carta": "Psychic Whorl",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 2.844833333333341,
+  "usd": 0.35,
+  "carta": "Abyssal Harvester",
+  "coste": "{1}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.8424333333333394,
+  "usd": 0.24,
+  "carta": "Deathcap Marionette",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.840433333333337,
+  "usd": 0.19,
+  "carta": "Runaway Boulder",
+  "coste": "{6}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.8351333333333386,
+  "usd": 0.27,
+  "carta": "Treasure Dredger",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.8292333333333346,
+  "usd": 0.27,
+  "carta": "Splinter, Hamato Yoshi",
+  "coste": "{1}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.821633333333338,
+  "usd": 0.14,
+  "carta": "Kingpin's Enforcers",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6664999999999992,
-  "usd": 3.98,
-  "carta": "The Ooze",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact"
+  "delta": 2.821633333333338,
+  "usd": 0.11,
+  "carta": "Comet Crawler",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.6659000000000006,
+  "delta": 2.8209333333333433,
+  "usd": 0.19,
+  "carta": "Gleaming Barrier",
+  "coste": "{2}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.8036333333333374,
+  "usd": 0.2,
+  "carta": "Nightblade Brigade",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.799033333333334,
+  "usd": 0.19,
+  "carta": "Transcendent Archaic",
+  "coste": "{7}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.7981333333333325,
+  "usd": 0.16,
+  "carta": "Hot Dog Cart",
+  "coste": "{3}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.7976333333333443,
+  "usd": 0.32,
+  "carta": "Together as One",
+  "coste": "{6}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 2.7943333333333342,
+  "usd": 0.26,
+  "carta": "Presumed Dead",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 2.7943333333333342,
+  "usd": 0.1,
+  "carta": "Give In to Violence",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 2.7895333333333383,
+  "usd": 0.15,
+  "carta": "Raven of Fell Omens",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.783433333333342,
+  "usd": 0.13,
+  "carta": "Syphon Fuel",
+  "coste": "{4}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 2.7803333333333313,
   "usd": 0.13,
   "carta": "News Helicopter",
   "coste": "{3}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.6649999999999991,
-  "usd": 0.14,
-  "carta": "Cracked Skull",
+  "delta": 2.7629333333333363,
+  "usd": 0.3,
+  "carta": "Marauding Blight-Priest",
   "coste": "{2}{B}",
-  "tipo": "Enchantment"
+  "tipo": "Creature"
  },
  {
-  "delta": 0.6633000000000067,
+  "delta": 2.75063333333334,
   "usd": 0.2,
-  "carta": "Vile Entomber",
-  "coste": "{2}{B}{B}",
+  "carta": "Daggerfang Duo",
+  "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6631999999999962,
-  "usd": 0.83,
-  "carta": "Bloodghast",
-  "coste": "{B}{B}",
+  "delta": 2.75063333333334,
+  "usd": 0.15,
+  "carta": "Rattleback Apothecary",
+  "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6631999999999962,
+  "delta": 2.7411333333333374,
   "usd": 0.15,
-  "carta": "Digsite Conservator",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6631999999999962,
-  "usd": 0.14,
-  "carta": "Walking Sarcophagus",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6631999999999962,
-  "usd": 0.14,
-  "carta": "Spider-Slayer, Hatred Honed",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 0.6631999999999962,
-  "usd": 0.11,
-  "carta": "Three Tree Mascot",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6631999999999962,
-  "usd": 0.11,
-  "carta": "Sanitation Automaton",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.6631999999999962,
-  "usd": 0.08,
-  "carta": "Mage Tower Referee",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.659399999999998,
-  "usd": 0.34,
-  "carta": "Dissection Tools",
-  "coste": "{5}",
+  "carta": "Trusty Boomerang",
+  "coste": "{1}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.6591999999999913,
-  "usd": 18.79,
-  "carta": "Monument to Endurance",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6582000000000008,
-  "usd": 0.19,
-  "carta": "Robot Domination",
-  "coste": "{3}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.6563000000000017,
-  "usd": 0.15,
-  "carta": "Agents of HYDRA",
+  "delta": 2.734633333333342,
+  "usd": 0.11,
+  "carta": "Repeat Offender",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6499999999999986,
-  "usd": 1.84,
-  "carta": "Not Dead After All",
-  "coste": "{B}",
-  "tipo": "Instant"
+  "delta": 2.7334333333333376,
+  "usd": 1.73,
+  "carta": "Black Widow, Super Spy",
+  "coste": "{1}{B}",
+  "tipo": "Legendary Creature"
  },
  {
-  "delta": 0.6499999999999986,
-  "usd": 0.3,
-  "carta": "Rat Out",
-  "coste": "{B}",
-  "tipo": "Instant"
+  "delta": 2.7334333333333376,
+  "usd": 0.17,
+  "carta": "Reno and Rude",
+  "coste": "{1}{B}",
+  "tipo": "Legendary Creature"
  },
  {
-  "delta": 0.6499999999999986,
-  "usd": 0.16,
-  "carta": "Stab",
-  "coste": "{B}",
-  "tipo": "Instant"
+  "delta": 2.7329333333333423,
+  "usd": 5.35,
+  "carta": "Decorum Dissertation",
+  "coste": "{3}{B}{B}",
+  "tipo": "Sorcery"
  },
  {
-  "delta": 0.6499999999999986,
-  "usd": 0.1,
-  "carta": "Scarblade's Malice",
-  "coste": "{B}",
-  "tipo": "Instant"
+  "delta": 2.715833333333336,
+  "usd": 0.09,
+  "carta": "Kin-Tree Nurturer",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.6499999999999986,
-  "usd": 0.1,
-  "carta": "Locust Spray",
-  "coste": "{B}",
-  "tipo": "Instant"
+  "delta": 2.71253333333334,
+  "usd": 0.84,
+  "carta": "Darkstar Augur",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.6454999999999984,
+  "delta": 2.7108333333333334,
+  "usd": 0.18,
+  "carta": "Potioner's Trove",
+  "coste": "{3}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.7068333333333356,
+  "usd": 0.58,
+  "carta": "Bringer of the Last Gift",
+  "coste": "{6}{B}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.6968333333333376,
+  "usd": 0.15,
+  "carta": "Watcher of the Wayside",
+  "coste": "{3}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.6904333333333383,
+  "usd": 0.27,
+  "carta": "Hedron Archive",
+  "coste": "{4}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.6658333333333317,
   "usd": 0.34,
   "carta": "Deep-Cavern Bat",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.6381999999999977,
-  "usd": 0.21,
-  "carta": "Myojin of Night's Reach",
-  "coste": "{5}{B}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.6363999999999947,
-  "usd": 0.26,
-  "carta": "Black Mage's Rod",
-  "coste": "{1}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6295000000000002,
-  "usd": 0.24,
-  "carta": "Goldvein Pick",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6295000000000002,
-  "usd": 0.09,
-  "carta": "Gold Pan",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6254000000000062,
-  "usd": 2.36,
-  "carta": "Patchwork Banner",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6254000000000062,
-  "usd": 0.37,
-  "carta": "Firdoch Core",
-  "coste": "{3}",
-  "tipo": "Kindred Artifact"
- },
- {
-  "delta": 0.6254000000000062,
-  "usd": 0.32,
-  "carta": "Heraldic Banner",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6254000000000062,
-  "usd": 0.27,
-  "carta": "Dragonstorm Globe",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6254000000000062,
-  "usd": 0.24,
-  "carta": "Blitzball",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6254000000000062,
-  "usd": 0.2,
-  "carta": "Starting Column",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.6254000000000062,
-  "usd": 0.13,
-  "carta": "Sunbird Standard // Sunbird Effigy",
-  "coste": "",
-  "tipo": "Artifact // Artifact Creature"
- },
- {
-  "delta": 0.6245999999999938,
-  "usd": 0.34,
-  "carta": "Doom Reigns Supreme",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.6242999999999981,
-  "usd": 0.22,
-  "carta": "Midnight Snack",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.6236999999999995,
-  "usd": 1.42,
-  "carta": "The Cloning of Shredder",
-  "coste": "{4}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.6210999999999984,
-  "usd": 0.06,
-  "carta": "Agency Coroner",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6141999999999967,
-  "usd": 0.23,
-  "carta": "Live or Die",
-  "coste": "{3}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.6141999999999967,
-  "usd": 0.21,
-  "carta": "Dose of Dawnglow",
-  "coste": "{4}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.6141999999999967,
-  "usd": 0.06,
-  "carta": "It Doesn't Add Up",
-  "coste": "{3}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.6141000000000005,
-  "usd": 0.3,
-  "carta": "Bygone Colossus",
-  "coste": "{9}",
+  "delta": 2.664433333333335,
+  "usd": 0.28,
+  "carta": "Scampering Surveyor",
+  "coste": "{4}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.6136999999999944,
+  "delta": 2.6642333333333355,
+  "usd": 0.21,
+  "carta": "Corroding Dragonstorm",
+  "coste": "{1}{B}",
+  "tipo": "Enchantment"
+ },
+ {
+  "delta": 2.647833333333338,
+  "usd": 0.44,
+  "carta": "Marketback Walker",
+  "coste": "{X}{X}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.642933333333339,
+  "usd": 0.17,
+  "carta": "Sanguine Syphoner",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.6427333333333394,
   "usd": 0.15,
   "carta": "Oroku Saki, Shredder Rising",
   "coste": "{2}{B}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 0.6117999999999952,
-  "usd": 0.33,
-  "carta": "Coiling Rebirth",
-  "coste": "{3}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.6117999999999952,
-  "usd": 0.18,
-  "carta": "Prison Break",
-  "coste": "{4}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.6117999999999952,
-  "usd": 0.16,
-  "carta": "Defossilize",
-  "coste": "{4}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.6117999999999952,
-  "usd": 0.15,
-  "carta": "Evil Reawakened",
-  "coste": "{4}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.6111000000000004,
-  "usd": 0.19,
-  "carta": "Commune with Evil",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.6086999999999918,
-  "usd": 0.16,
-  "carta": "Downwind Ambusher",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6086999999999918,
-  "usd": 0.14,
-  "carta": "Cheerful Osteomancer // Raise Dead",
-  "coste": "{3}{B} // {B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6086999999999918,
-  "usd": 0.12,
-  "carta": "Eternal Student",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6086999999999918,
-  "usd": 0.07,
-  "carta": "Hundred-Battle Veteran",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6086999999999918,
-  "usd": 0.06,
-  "carta": "Suspicious Shambler",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6073999999999984,
-  "usd": 0.18,
-  "carta": "Conceited Witch // Price of Beauty",
-  "coste": "{2}{B} // {B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6073999999999984,
-  "usd": 0.1,
-  "carta": "Ulna Alley Shopkeep",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.6037999999999997,
-  "usd": 0.18,
-  "carta": "Perfect Intimidation",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.6037999999999997,
+  "delta": 2.6397333333333464,
   "usd": 0.12,
   "carta": "Eriette's Whisper",
   "coste": "{3}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 0.6034000000000006,
-  "usd": 0.59,
-  "carta": "Black Cat, Cunning Thief",
-  "coste": "{3}{B}{B}",
+  "delta": 2.6379333333333435,
+  "usd": 0.23,
+  "carta": "Instant Ramen",
+  "coste": "{2}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.6188333333333347,
+  "usd": 1.12,
+  "carta": "Mai, Scornful Striker",
+  "coste": "{1}{B}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 0.6004999999999967,
-  "usd": 0.24,
-  "carta": "H.E.R.B.I.E. Scout Unit",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.5997000000000057,
-  "usd": 0.15,
-  "carta": "Lo and Li, Twin Tutors",
-  "coste": "{4}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.5991,
-  "usd": 0.94,
-  "carta": "Ardyn, the Usurper",
-  "coste": "{5}{B}{B}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.5869999999999962,
-  "usd": 0.16,
-  "carta": "Appendage Amalgam",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment Creature"
- },
- {
-  "delta": 0.5869999999999962,
-  "usd": 0.09,
-  "carta": "Unrooted Ancestor",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.5837999999999965,
-  "usd": 0.14,
-  "carta": "Ticket Tortoise",
+  "delta": 2.6117333333333335,
+  "usd": 0.19,
+  "carta": "Scarecrow Guide",
   "coste": "{2}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.5810999999999993,
-  "usd": 0.11,
-  "carta": "Slimy Dualleech",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.578400000000002,
-  "usd": 0.28,
-  "carta": "Taster of Wares",
+  "delta": 2.6102333333333476,
+  "usd": 0.46,
+  "carta": "Avenger of the Fallen",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.578400000000002,
-  "usd": 0.27,
-  "carta": "Rhovanion Rampager",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
+  "delta": 2.6057333333333403,
+  "usd": 0.23,
+  "carta": "Toxin Analysis",
+  "coste": "{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 0.578400000000002,
-  "usd": 0.16,
-  "carta": "Sterling Hound",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
+  "delta": 2.6057333333333403,
+  "usd": 0.09,
+  "carta": "Skulduggery",
+  "coste": "{B}",
+  "tipo": "Instant"
  },
  {
-  "delta": 0.578400000000002,
-  "usd": 0.15,
-  "carta": "Clandestine Meddler",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.578400000000002,
-  "usd": 0.08,
-  "carta": "HYDRA Troopers",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.578400000000002,
-  "usd": 0.08,
-  "carta": "Adventurous Eater // Have a Bite",
+  "delta": 2.5991333333333344,
+  "usd": 0.31,
+  "carta": "Gumdrop Poisoner // Tempt with Treats",
   "coste": "{2}{B} // {B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.578400000000002,
-  "usd": 0.06,
-  "carta": "Grim Javelineer",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.5766000000000062,
-  "usd": 0.14,
-  "carta": "Blade of the Swarm",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.5731999999999928,
-  "usd": 7.78,
-  "carta": "Liliana, Dreadhorde General",
-  "coste": "{4}{B}{B}",
-  "tipo": "Legendary Planeswalker"
- },
- {
-  "delta": 0.5726000000000013,
-  "usd": 0.36,
-  "carta": "Moonstone Harbinger",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.5686999999999998,
-  "usd": 0.34,
-  "carta": "Dauntless Scrapbot",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.5682000000000045,
-  "usd": 13.3,
-  "carta": "Ultron, Artificial Malevolence",
-  "coste": "{3}",
+  "delta": 2.5951333333333366,
+  "usd": 21.91,
+  "carta": "Krang, Utrom Warlord",
+  "coste": "{9}",
   "tipo": "Legendary Artifact Creature"
  },
  {
-  "delta": 0.5682000000000045,
-  "usd": 0.29,
-  "carta": "Kain, Traitorous Dragoon",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.5682000000000045,
-  "usd": 0.19,
-  "carta": "Attack-in-the-Box",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.5630999999999986,
-  "usd": 0.25,
-  "carta": "Diamond Mare",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.5589999999999975,
-  "usd": 0.29,
-  "carta": "Eerie Gravestone",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.5589999999999975,
-  "usd": 0.18,
-  "carta": "Mephitic Draught",
-  "coste": "{1}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.5589999999999975,
-  "usd": 0.16,
-  "carta": "Guidelight Matrix",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.5578999999999965,
-  "usd": 0.17,
-  "carta": "Chupacabra Echo",
-  "coste": "{2}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.5578999999999965,
-  "usd": 0.08,
-  "carta": "Driver of the Dead",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.5524000000000058,
-  "usd": 0.17,
-  "carta": "Living Brain, Mechanical Marvel",
-  "coste": "{4}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 0.5524000000000058,
-  "usd": 0.16,
-  "carta": "Vito's Inquisitor",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.5508999999999986,
-  "usd": 0.1,
-  "carta": "Magic Pot",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.5486999999999966,
-  "usd": 0.15,
-  "carta": "Saw",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.5478999999999985,
-  "usd": 0.21,
-  "carta": "Resentful Revelation",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.5478999999999985,
-  "usd": 0.21,
-  "carta": "Hymn of the Faller",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.5433999999999983,
-  "usd": 0.27,
-  "carta": "Energybending",
-  "coste": "{2}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.5433999999999983,
-  "usd": 0.22,
-  "carta": "Rabid Attack",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.5313000000000017,
-  "usd": 1.61,
-  "carta": "Vincent Valentine // Galian Beast",
-  "coste": "",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.5302000000000007,
-  "usd": 0.16,
-  "carta": "Puca's Eye",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.526600000000002,
-  "usd": 0.17,
-  "carta": "Dependable Quinjet",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.5256999999999934,
-  "usd": 0.16,
-  "carta": "Moonstone, Harsh Mistress",
-  "coste": "{3}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.5129999999999981,
-  "usd": 0.25,
-  "carta": "Swarm, Being of Bees",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.508899999999997,
-  "usd": 0.19,
-  "carta": "Ozai's Cruelty",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.5071999999999974,
-  "usd": 0.1,
-  "carta": "Cultivator's Caravan",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.5023999999999944,
-  "usd": 0.15,
-  "carta": "Buzzard-Wasp Colony",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.4972000000000065,
-  "usd": 0.26,
-  "carta": "All-Fates Scroll",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.4958999999999989,
-  "usd": 0.22,
-  "carta": "Wolfbat",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.4958999999999989,
-  "usd": 0.21,
-  "carta": "Starlit Soothsayer",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.4958999999999989,
-  "usd": 0.12,
-  "carta": "Screaming Phantom",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.4958999999999989,
+  "delta": 2.5778333333333308,
   "usd": 0.11,
-  "carta": "Insectoid Exterminator",
-  "coste": "{2}{B}",
+  "carta": "Highborn Vampire",
+  "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.4913999999999987,
-  "usd": 0.23,
-  "carta": "Crow of Dark Tidings",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.4913999999999987,
-  "usd": 0.14,
-  "carta": "Gravpack Monoist",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.4866999999999919,
-  "usd": 0.27,
-  "carta": "Gingerbrute",
-  "coste": "{1}",
+  "delta": 2.575233333333344,
+  "usd": 0.17,
+  "carta": "Demon Wall",
+  "coste": "{1}{B}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.48270000000000124,
-  "usd": 0.12,
-  "carta": "Ripclaw Wrangler",
+  "delta": 2.5677333333333365,
+  "usd": 0.15,
+  "carta": "Fanatic of the Harrowing",
   "coste": "{3}{B}",
-  "tipo": "Artifact"
+  "tipo": "Creature"
  },
  {
-  "delta": 0.4708000000000041,
+  "delta": 2.5633333333333397,
+  "usd": 0.14,
+  "carta": "Ahriman",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.560433333333336,
+  "usd": 0.44,
+  "carta": "Agent Venom",
+  "coste": "{2}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.5588333333333395,
+  "usd": 0.23,
+  "carta": "Scorpion, Seething Striker",
+  "coste": "{3}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.5588333333333395,
+  "usd": 0.2,
+  "carta": "Crossbones, Malicious Mercenary",
+  "coste": "{3}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.5414333333333374,
+  "usd": 0.29,
+  "carta": "Susurian Voidborn",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.5367333333333377,
+  "usd": 0.21,
+  "carta": "Venomized Cat",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.5306333333333413,
+  "usd": 0.1,
+  "carta": "Skeleton Archer",
+  "coste": "{3}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.5282333333333327,
+  "usd": 0.22,
+  "carta": "Ashiok's Reaper",
+  "coste": "{3}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.52503333333334,
   "usd": 0.14,
   "carta": "Sandskitter Outrider",
   "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.4689999999999941,
+  "delta": 2.520233333333344,
+  "usd": 0.13,
+  "carta": "Cat-Gator",
+  "coste": "{6}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.5200333333333447,
   "usd": 0.11,
-  "carta": "Dark Endurance",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
+  "carta": "Ambush Gigapede",
+  "coste": "{4}{B}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.45410000000000394,
-  "usd": 1.05,
-  "carta": "Darksteel Colossus",
-  "coste": "{11}",
-  "tipo": "Artifact Creature"
+  "delta": 2.513233333333339,
+  "usd": 0.16,
+  "carta": "Vault Plunderer",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.45070000000000476,
-  "usd": 0.2,
-  "carta": "Masterful Flourish",
-  "coste": "{B}",
-  "tipo": "Instant"
+  "delta": 2.5045333333333346,
+  "usd": 19.37,
+  "carta": "Summon: Bahamut",
+  "coste": "{9}",
+  "tipo": "Enchantment Creature"
  },
  {
-  "delta": 0.4397999999999982,
-  "usd": 0.3,
-  "carta": "Soul-Guide Lantern",
-  "coste": "{1}",
+  "delta": 2.4816333333333347,
+  "usd": 0.32,
+  "carta": "Untamed Hunger",
+  "coste": "{2}{B}",
+  "tipo": "Enchantment"
+ },
+ {
+  "delta": 2.4779333333333398,
+  "usd": 0.24,
+  "carta": "Al Bhed Salvagers",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.458133333333336,
+  "usd": 3.98,
+  "carta": "The Ooze",
+  "coste": "{2}",
+  "tipo": "Legendary Artifact"
+ },
+ {
+  "delta": 2.4563333333333404,
+  "usd": 1.32,
+  "carta": "Collector's Vault",
+  "coste": "{2}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.4391999999999996,
-  "usd": 24.15,
-  "carta": "The Walls of Ba Sing Se",
-  "coste": "{8}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 0.4288999999999987,
-  "usd": 0.16,
-  "carta": "Mechanical Mobster",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.4288999999999987,
-  "usd": 0.12,
-  "carta": "Cartographer's Companion",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.42199999999999704,
+  "delta": 2.4557333333333418,
   "usd": 0.22,
   "carta": "Thought-Stalker Warlock",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.42199999999999704,
-  "usd": 0.2,
-  "carta": "Insatiable Skittermaw",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.42199999999999704,
+  "delta": 2.4557333333333418,
   "usd": 0.15,
   "carta": "Deep Goblin Skulltaker",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.4166000000000025,
-  "usd": 0.13,
-  "carta": "Aggressive Negotiations",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.4094999999999942,
-  "usd": 0.36,
-  "carta": "Madame Null, Power Broker",
-  "coste": "{2}{B}",
+  "delta": 2.4386333333333425,
+  "usd": 0.41,
+  "carta": "Armaggon, Future Shark",
+  "coste": "{6}{B}{B}",
   "tipo": "Legendary Creature"
  },
  {
-  "delta": 0.40160000000000196,
-  "usd": 21.41,
-  "carta": "Chronicle of Victory",
-  "coste": "{6}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.4012000000000029,
-  "usd": 1.12,
-  "carta": "The Masamune",
-  "coste": "{3}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.4012000000000029,
-  "usd": 0.21,
-  "carta": "Fireshrieker",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.4012000000000029,
-  "usd": 0.18,
-  "carta": "Killer's Mask",
-  "coste": "{2}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.3989000000000047,
-  "usd": 0.2,
-  "carta": "Rover Blades",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.39700000000000557,
-  "usd": 5.24,
-  "carta": "White Lotus Tile",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.39700000000000557,
-  "usd": 0.3,
-  "carta": "Ring of the Lucii",
-  "coste": "{4}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.394999999999996,
-  "usd": 0.11,
-  "carta": "Dashing Bloodsucker",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.3941999999999979,
-  "usd": 0.11,
-  "carta": "Moment of Craving",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.3937999999999917,
-  "usd": 0.21,
-  "carta": "Canonized in Blood",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.3902999999999963,
-  "usd": 5.73,
-  "carta": "Death Baron",
-  "coste": "{1}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.3902999999999963,
-  "usd": 0.43,
-  "carta": "Adaptive Automaton",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.3902999999999963,
-  "usd": 0.22,
-  "carta": "Tombstone, Career Criminal",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.3902999999999963,
-  "usd": 0.19,
-  "carta": "Baron Strucker, HYDRA Overlord",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.3902999999999963,
-  "usd": 0.17,
-  "carta": "Heirloom Auntie",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.38930000000000575,
-  "usd": 0.3,
-  "carta": "Barkform Harvester",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.3862000000000023,
-  "usd": 0.16,
-  "carta": "The Black Arrow",
-  "coste": "{3}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.38299999999999557,
-  "usd": 1.14,
-  "carta": "Azog, Moria's Ruin",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.3791000000000011,
-  "usd": 0.25,
-  "carta": "Stalactite Dagger",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.3791000000000011,
-  "usd": 0.12,
-  "carta": "Glimmerlight",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.37770000000000437,
-  "usd": 7.11,
-  "carta": "Funeral Room // Awakening Hall",
-  "coste": "{2}{B} // {6}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.3762000000000043,
-  "usd": 8.41,
-  "carta": "Genji Glove",
-  "coste": "{5}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.3713999999999942,
-  "usd": 0.44,
-  "carta": "Barbed Servitor",
-  "coste": "{3}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.370199999999997,
-  "usd": 0.15,
-  "carta": "Gnarlbark Elm",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.36699999999999733,
-  "usd": 11.17,
-  "carta": "Aettir and Priwen",
-  "coste": "{6}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.3602999999999952,
-  "usd": 1.66,
-  "carta": "Nine-Lives Familiar",
-  "coste": "{1}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.35770000000000124,
-  "usd": 3.27,
-  "carta": "Leyline Axe",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.35770000000000124,
-  "usd": 0.87,
-  "carta": "Mirrormind Crown",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.3567999999999998,
-  "usd": 0.16,
-  "carta": "Dream Spoilers",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.34659999999999513,
-  "usd": 4.88,
-  "carta": "The Darkness Crystal",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.3458000000000041,
-  "usd": 0.16,
-  "carta": "Barbed Bloodletter",
-  "coste": "{1}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.33959999999999724,
-  "usd": 2.68,
-  "carta": "The Endstone",
-  "coste": "{7}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.33499999999999375,
-  "usd": 0.33,
-  "carta": "Boggart Mischief",
-  "coste": "{2}{B}",
-  "tipo": "Kindred Enchantment"
- },
- {
-  "delta": 0.33499999999999375,
-  "usd": 0.21,
-  "carta": "Rakish Crew",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.3311999999999955,
-  "usd": 0.2,
-  "carta": "Pull from the Grave",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.32789999999999964,
-  "usd": 0.2,
-  "carta": "Case of the Shattered Pact",
-  "coste": "{2}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.3269999999999982,
-  "usd": 0.19,
-  "carta": "Billowing Shriekmass",
-  "coste": "{3}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.32570000000000476,
-  "usd": 0.17,
-  "carta": "Jade-Cast Sentinel",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.32399999999999807,
-  "usd": 0.27,
-  "carta": "Reassembling Skeleton",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.32399999999999807,
+  "delta": 2.4383333333333397,
   "usd": 0.23,
-  "carta": "Innocuous Rat",
-  "coste": "{1}{B}",
+  "carta": "Boneyard Desecrator",
+  "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.315499999999993,
-  "usd": 0.26,
-  "carta": "Offer Immortality",
+  "delta": 2.4267333333333383,
+  "usd": 0.3,
+  "carta": "Fungal Fortitude",
   "coste": "{1}{B}",
-  "tipo": "Instant"
+  "tipo": "Enchantment"
  },
  {
-  "delta": 0.315499999999993,
-  "usd": 0.21,
-  "carta": "Maximum Overdrive",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
+  "delta": 2.4213333333333367,
+  "usd": 0.13,
+  "carta": "Gutless Plunderer",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.315499999999993,
-  "usd": 0.18,
-  "carta": "Alesha's Legacy",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
+  "delta": 2.4213333333333367,
+  "usd": 0.12,
+  "carta": "Pirate Peddlers",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.315499999999993,
+  "delta": 2.41993333333334,
+  "usd": 0.13,
+  "carta": "Silver Deputy",
+  "coste": "{2}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.417333333333346,
   "usd": 0.16,
-  "carta": "Stolen Stark Tech",
-  "coste": "{1}{B}",
+  "carta": "Puca's Eye",
+  "coste": "{2}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.30509999999999593,
-  "usd": 0.9,
-  "carta": "Expedition Map",
-  "coste": "{1}",
+  "delta": 2.4076333333333437,
+  "usd": 0.12,
+  "carta": "Ripclaw Wrangler",
+  "coste": "{3}{B}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.30290000000000106,
-  "usd": 0.32,
-  "carta": "Xu-Ifit, Osteoharmonist",
-  "coste": "{1}{B}{B}",
-  "tipo": "Legendary Creature"
+  "delta": 2.400333333333343,
+  "usd": 0.19,
+  "carta": "Robot Domination",
+  "coste": "{3}{B}",
+  "tipo": "Enchantment"
  },
  {
-  "delta": 0.30290000000000106,
-  "usd": 0.32,
-  "carta": "Virulent Silencer",
+  "delta": 2.391533333333342,
+  "usd": 0.21,
+  "carta": "Aetherjacket",
   "coste": "{3}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.30290000000000106,
+  "delta": 2.388133333333336,
   "usd": 0.18,
-  "carta": "Soulcoil Viper",
+  "carta": "Conceited Witch // Price of Beauty",
+  "coste": "{2}{B} // {B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.388133333333336,
+  "usd": 0.1,
+  "carta": "Ulna Alley Shopkeep",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.30290000000000106,
-  "usd": 0.16,
-  "carta": "Fire Nation Engineer",
-  "coste": "{2}{B}",
+  "delta": 2.3828333333333376,
+  "usd": 0.18,
+  "carta": "Swarm Culler",
+  "coste": "{3}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.30290000000000106,
-  "usd": 0.13,
-  "carta": "Arnim Zola, Bio-Fanatic",
-  "coste": "{2}{B}",
-  "tipo": "Legendary Artifact Creature"
- },
- {
-  "delta": 0.2997000000000014,
-  "usd": 0.2,
-  "carta": "Page, Loose Leaf",
+  "delta": 2.3764333333333383,
+  "usd": 0.14,
+  "carta": "Ticket Tortoise",
   "coste": "{2}",
-  "tipo": "Legendary Artifact Creature"
+  "tipo": "Artifact Creature"
  },
  {
-  "delta": 0.2930999999999955,
-  "usd": 3.29,
-  "carta": "The Eternity Elevator",
-  "coste": "{5}",
-  "tipo": "Legendary Artifact"
+  "delta": 2.365933333333338,
+  "usd": 0.15,
+  "carta": "Agents of HYDRA",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.2930999999999955,
-  "usd": 0.5,
-  "carta": "Gilded Lotus",
-  "coste": "{5}",
-  "tipo": "Artifact"
+  "delta": 2.3599333333333377,
+  "usd": 0.39,
+  "carta": "Vengeful Bloodwitch",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.285499999999999,
-  "usd": 2.06,
-  "carta": "Transmutation Font",
-  "coste": "{5}",
-  "tipo": "Artifact"
+  "delta": 2.3543333333333365,
+  "usd": 0.32,
+  "carta": "Changeling Wayfinder",
+  "coste": "{3}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.284000000000006,
-  "usd": 0.28,
-  "carta": "Popular Egotist",
+  "delta": 2.3543333333333365,
+  "usd": 0.1,
+  "carta": "Magic Pot",
+  "coste": "{3}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.3502333333333354,
+  "usd": 0.16,
+  "carta": "Appendage Amalgam",
+  "coste": "{2}{B}",
+  "tipo": "Enchantment Creature"
+ },
+ {
+  "delta": 2.3502333333333354,
+  "usd": 0.09,
+  "carta": "Unrooted Ancestor",
   "coste": "{2}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.28070000000000306,
-  "usd": 0.18,
-  "carta": "June, Bounty Hunter",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
+  "delta": 2.3494333333333373,
+  "usd": 0.2,
+  "carta": "Vile Entomber",
+  "coste": "{2}{B}{B}",
+  "tipo": "Creature"
  },
  {
-  "delta": 0.28070000000000306,
-  "usd": 0.17,
-  "carta": "Hungry Ghoul",
+  "delta": 2.3484333333333396,
+  "usd": 0.19,
+  "carta": "Agate-Blade Assassin",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.2804000000000002,
+  "delta": 2.3296333333333408,
+  "usd": 0.23,
+  "carta": "Crow of Dark Tidings",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.3296333333333408,
+  "usd": 0.14,
+  "carta": "Gravpack Monoist",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.3194333333333432,
+  "usd": 0.1,
+  "carta": "Cultivator's Caravan",
+  "coste": "{3}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.3039333333333403,
+  "usd": 0.17,
+  "carta": "Dependable Quinjet",
+  "coste": "{3}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.2877333333333354,
+  "usd": 0.06,
+  "carta": "Agency Coroner",
+  "coste": "{4}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.2703333333333404,
   "usd": 0.21,
   "carta": "Arcane Omens",
   "coste": "{4}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 0.28009999999999735,
-  "usd": 0.12,
-  "carta": "Kyoshi Battle Fan",
-  "coste": "{2}",
+  "delta": 2.2536333333333403,
+  "usd": 0.29,
+  "carta": "Nutrient Block",
+  "coste": "{1}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.27590000000000003,
-  "usd": 0.39,
-  "carta": "The Dominion Bracelet",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.27590000000000003,
-  "usd": 0.39,
-  "carta": "Sting, Bilbo's Sword",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.27590000000000003,
-  "usd": 0.28,
-  "carta": "Alien Symbiosis",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.27590000000000003,
-  "usd": 0.27,
-  "carta": "Short Bow",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.266299999999994,
-  "usd": 18.96,
-  "carta": "Super Shredder",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.2523999999999944,
-  "usd": 1.75,
-  "carta": "Tinybones, Bauble Burglar",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.2523999999999944,
-  "usd": 0.32,
-  "carta": "Sidisi, Regent of the Mire",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.2523999999999944,
-  "usd": 0.15,
-  "carta": "Foraging Wickermaw",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.2523999999999944,
-  "usd": 0.12,
-  "carta": "Boggart Prankster",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.2523999999999944,
-  "usd": 0.11,
-  "carta": "A.I.M. Synthoids",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.2523999999999944,
-  "usd": 0.06,
-  "carta": "Gravestone Strider",
-  "coste": "{2}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.2522999999999982,
-  "usd": 0.27,
-  "carta": "Sinkhole Surveyor",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.2522999999999982,
-  "usd": 0.23,
-  "carta": "Wreckage Wickerfolk",
-  "coste": "{1}{B}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.2522999999999982,
-  "usd": 0.2,
-  "carta": "Leering Onlooker",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.2512000000000043,
-  "usd": 0.26,
-  "carta": "Survey Mechan",
-  "coste": "{4}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.24039999999999395,
-  "usd": 0.75,
-  "carta": "The Irencrag",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.23899999999999721,
-  "usd": 0.15,
-  "carta": "Tundra Tank",
-  "coste": "{2}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.22820000000000107,
-  "usd": 0.09,
-  "carta": "Overzealous Muscle",
-  "coste": "{4}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.220799999999997,
-  "usd": 15.93,
-  "carta": "The Ten Rings",
-  "coste": "{8}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.21739999999999782,
-  "usd": 0.15,
-  "carta": "Rampaging Spiketail",
-  "coste": "{4}{B}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.18559999999999377,
-  "usd": 0.19,
-  "carta": "Ruinous Waterbending",
-  "coste": "{1}{B}{B}",
+  "delta": 2.2497333333333387,
+  "usd": 0.4,
+  "carta": "Exsanguinate",
+  "coste": "{X}{B}{B}",
   "tipo": "Sorcery"
  },
  {
-  "delta": 0.18390000000000128,
-  "usd": 0.11,
-  "carta": "Monk's Fist",
-  "coste": "{2}",
-  "tipo": "Artifact"
+  "delta": 2.2400333333333435,
+  "usd": 0.16,
+  "carta": "The Black Arrow",
+  "coste": "{3}",
+  "tipo": "Legendary Artifact"
  },
  {
-  "delta": 0.18370000000000175,
-  "usd": 0.44,
-  "carta": "Lord Skitter's Blessing",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.1798999999999964,
-  "usd": 0.51,
-  "carta": "Grievous Wound",
-  "coste": "{3}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.16839999999999833,
-  "usd": 0.18,
-  "carta": "Sidequest: Hunt the Mark // Yiazmat, Ultimate Mark",
-  "coste": "",
-  "tipo": "Enchantment // Legendary Creature"
- },
- {
-  "delta": 0.1681999999999988,
-  "usd": 0.18,
-  "carta": "Yellowjacket, Heartless Marauder",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature"
- },
- {
-  "delta": 0.15959999999999752,
-  "usd": 0.21,
-  "carta": "Acolyte of Aclazotz",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.15520000000000067,
-  "usd": 0.29,
-  "carta": "Luxurious Locomotive",
-  "coste": "{5}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.1501999999999981,
+  "delta": 2.2397333333333407,
   "usd": 2.17,
   "carta": "Iron Spider, Stark Upgrade",
   "coste": "{3}",
   "tipo": "Legendary Artifact Creature"
  },
  {
-  "delta": 0.14559999999999462,
-  "usd": 2.09,
-  "carta": "My Precious // Allure of Power",
-  "coste": "{3} // {1}{B}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.13750000000000284,
-  "usd": 0.27,
-  "carta": "Defiled Crypt // Cadaver Lab",
-  "coste": "{3}{B} // {B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.13110000000000355,
-  "usd": 9.35,
-  "carta": "Cosmic Cube",
-  "coste": "{5}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.13110000000000355,
-  "usd": 7.29,
-  "carta": "Banner of Kinship",
-  "coste": "{5}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.13110000000000355,
-  "usd": 1.59,
-  "carta": "Painful Quandary",
-  "coste": "{3}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.13110000000000355,
-  "usd": 0.56,
-  "carta": "Ashiok, Wicked Manipulator",
-  "coste": "{3}{B}{B}",
-  "tipo": "Legendary Planeswalker"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 2.27,
-  "carta": "Sothera, the Supervoid",
-  "coste": "{2}{B}{B}",
-  "tipo": "Legendary Enchantment"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 0.99,
-  "carta": "Gathering Stone",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 0.56,
-  "carta": "Leyline of the Void",
-  "coste": "{2}{B}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 0.33,
-  "carta": "Cursecloth Wrappings",
-  "coste": "{2}{B}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 0.32,
-  "carta": "Eriette's Tempting Apple",
-  "coste": "{4}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 0.29,
-  "carta": "Thunderbolts Conspiracy",
-  "coste": "{3}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 0.24,
-  "carta": "Chorale of the Void",
-  "coste": "{3}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.12950000000000728,
-  "usd": 0.23,
-  "carta": "Illicit Masquerade",
-  "coste": "{3}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.12950000000000017,
-  "usd": 0.17,
-  "carta": "Magnifying Glass",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.12780000000000058,
-  "usd": 3.76,
-  "carta": "Behold the Sinister Six!",
-  "coste": "{6}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.12290000000000134,
-  "usd": 9.99,
-  "carta": "Chimil, the Inner Sun",
-  "coste": "{6}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.12290000000000134,
-  "usd": 4.67,
-  "carta": "Planetarium of Wan Shi Tong",
-  "coste": "{6}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.12290000000000134,
-  "usd": 1.79,
-  "carta": "Nexus of Becoming",
-  "coste": "{6}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.12290000000000134,
-  "usd": 1.46,
-  "carta": "Radiant Lotus",
-  "coste": "{6}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.12180000000000035,
-  "usd": 0.27,
-  "carta": "Careening Mine Cart",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.1208999999999989,
-  "usd": 19.43,
-  "carta": "Beseech the Mirror",
-  "coste": "{1}{B}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.1208999999999989,
-  "usd": 1.7,
-  "carta": "Splinter's Technique",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.1208999999999989,
-  "usd": 0.32,
-  "carta": "Terror Tide",
-  "coste": "{2}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.1208999999999989,
-  "usd": 0.32,
-  "carta": "Pitiless Carnage",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.1208999999999989,
-  "usd": 0.31,
-  "carta": "Darkness Descends",
-  "coste": "{2}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.1208999999999989,
-  "usd": 0.3,
-  "carta": "Revenge of the Rats",
-  "coste": "{2}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.1208999999999989,
+  "delta": 2.2392333333333383,
   "usd": 0.26,
-  "carta": "Let's Play a Game",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
+  "carta": "Black Mage's Rod",
+  "coste": "{1}{B}",
+  "tipo": "Artifact"
  },
  {
-  "delta": 0.1208999999999989,
-  "usd": 0.25,
-  "carta": "Ancient Vendetta",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
+  "delta": 2.2367333333333335,
+  "usd": 24.15,
+  "carta": "The Walls of Ba Sing Se",
+  "coste": "{8}",
+  "tipo": "Legendary Artifact Creature"
  },
  {
-  "delta": 0.1208999999999989,
-  "usd": 0.22,
-  "carta": "The Final Days",
-  "coste": "{2}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.1203000000000003,
-  "usd": 1.24,
-  "carta": "The Regalia",
-  "coste": "{4}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.1203000000000003,
+  "delta": 2.223233333333333,
   "usd": 0.5,
-  "carta": "Cryptcaller Chariot",
-  "coste": "{3}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.1203000000000003,
-  "usd": 0.32,
-  "carta": "Entropic Battlecruiser",
-  "coste": "{3}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.1203000000000003,
-  "usd": 0.23,
-  "carta": "Phantom Train",
-  "coste": "{3}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.1203000000000003,
-  "usd": 0.09,
-  "carta": "S.H.I.E.L.D. Helicarrier",
-  "coste": "{4}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.117999999999995,
-  "usd": 0.88,
-  "carta": "Lich-Knights' Conquest",
-  "coste": "{4}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.117999999999995,
-  "usd": 0.31,
-  "carta": "Pox Plague",
-  "coste": "{B}{B}{B}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.117999999999995,
-  "usd": 0.22,
-  "carta": "Zuko's Exile",
+  "carta": "Gilded Lotus",
   "coste": "{5}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.2072333333333347,
+  "usd": 0.26,
+  "carta": "All-Fates Scroll",
+  "coste": "{3}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.203233333333337,
+  "usd": 1.05,
+  "carta": "Darksteel Colossus",
+  "coste": "{11}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.2020333333333326,
+  "usd": 0.25,
+  "carta": "Swarm, Being of Bees",
+  "coste": "{2}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.2020333333333326,
+  "usd": 0.21,
+  "carta": "Starlit Soothsayer",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.2020333333333326,
+  "usd": 0.12,
+  "carta": "Screaming Phantom",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.2020333333333326,
+  "usd": 0.11,
+  "carta": "Insectoid Exterminator",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.1850333333333367,
+  "usd": 0.17,
+  "carta": "Hungry Ghoul",
+  "coste": "{1}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.1746333333333396,
+  "usd": 0.23,
+  "carta": "Wreckage Wickerfolk",
+  "coste": "{1}{B}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.1672333333333427,
+  "usd": 0.36,
+  "carta": "Madame Null, Power Broker",
+  "coste": "{2}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.164433333333335,
+  "usd": 0.26,
+  "carta": "Survey Mechan",
+  "coste": "{4}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 2.1635333333333406,
+  "usd": 0.16,
+  "carta": "Dream Spoilers",
+  "coste": "{3}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.1406333333333407,
+  "usd": 0.36,
+  "carta": "Moonstone Harbinger",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 2.1397333333333393,
+  "usd": 0.19,
+  "carta": "Commune with Evil",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 2.1316333333333404,
+  "usd": 0.18,
+  "carta": "Yellowjacket, Heartless Marauder",
+  "coste": "{1}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.119733333333336,
+  "usd": 0.34,
+  "carta": "Doom Reigns Supreme",
+  "coste": "{1}{B}",
+  "tipo": "Enchantment"
+ },
+ {
+  "delta": 2.110033333333334,
+  "usd": 0.13,
+  "carta": "Aggressive Negotiations",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 2.1091333333333395,
+  "usd": 0.15,
+  "carta": "Saw",
+  "coste": "{2}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.10443333333334,
+  "usd": 0.36,
+  "carta": "Supper for Spiders",
+  "coste": "{1}{B}",
   "tipo": "Instant"
  },
  {
-  "delta": 0.117999999999995,
+  "delta": 2.10443333333334,
+  "usd": 0.23,
+  "carta": "Savor",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 2.0888333333333406,
+  "usd": 0.19,
+  "carta": "Ozai's Cruelty",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery"
+ },
+ {
+  "delta": 2.088533333333338,
+  "usd": 0.9,
+  "carta": "Expedition Map",
+  "coste": "{1}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 2.067933333333336,
+  "usd": 18.96,
+  "carta": "Super Shredder",
+  "coste": "{1}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.0515333333333388,
+  "usd": 1.14,
+  "carta": "Azog, Moria's Ruin",
+  "coste": "{2}{B}",
+  "tipo": "Legendary Creature"
+ },
+ {
+  "delta": 2.0503333333333345,
+  "usd": 0.39,
+  "carta": "Sting, Bilbo's Sword",
+  "coste": "{2}",
+  "tipo": "Legendary Artifact"
+ },
+ {
+  "delta": 2.03423333333334,
+  "usd": 0.2,
+  "carta": "Masterful Flourish",
+  "coste": "{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 2.0063333333333375,
   "usd": 0.16,
   "carta": "Turtle Blimp",
   "coste": "{5}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.117999999999995,
-  "usd": 0.16,
-  "carta": "Susurian Dirgecraft",
-  "coste": "{4}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.117999999999995,
-  "usd": 0.16,
-  "carta": "Back on Track",
-  "coste": "{4}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.117999999999995,
+  "delta": 2.0063333333333375,
   "usd": 0.14,
   "carta": "Skybox Ferry",
   "coste": "{5}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.11659999999999826,
-  "usd": 0.12,
-  "carta": "Red Room Recruit",
+  "delta": 2.002833333333335,
+  "usd": 0.29,
+  "carta": "Luxurious Locomotive",
+  "coste": "{5}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 1.9893333333333345,
+  "usd": 0.2,
+  "carta": "Rover Blades",
+  "coste": "{3}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 1.9855333333333363,
+  "usd": 0.26,
+  "carta": "Offer Immortality",
   "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 1.9855333333333363,
+  "usd": 0.21,
+  "carta": "Maximum Overdrive",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 1.9855333333333363,
+  "usd": 0.18,
+  "carta": "Alesha's Legacy",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 1.9815333333333385,
+  "usd": 0.24,
+  "carta": "H.E.R.B.I.E. Scout Unit",
+  "coste": "{4}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 1.9766333333333392,
+  "usd": 0.17,
+  "carta": "Jade-Cast Sentinel",
+  "coste": "{4}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 1.9729333333333372,
+  "usd": 0.09,
+  "carta": "Overzealous Muscle",
+  "coste": "{4}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": 0.11140000000000327,
-  "usd": 1.27,
-  "carta": "Candy Trail",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.11140000000000327,
-  "usd": 0.1,
-  "carta": "Found Footage",
-  "coste": "{1}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.10849999999999937,
-  "usd": 0.39,
-  "carta": "Demonic Junker",
-  "coste": "{6}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.10719999999999885,
-  "usd": 2.21,
-  "carta": "Bloodline Bidding",
-  "coste": "{6}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.09299999999999642,
-  "usd": 0.13,
-  "carta": "Macabre Reconstruction",
+  "delta": 1.9720333333333357,
+  "usd": 0.29,
+  "carta": "Thunderbolts Conspiracy",
   "coste": "{3}{B}",
-  "tipo": "Sorcery"
+  "tipo": "Enchantment"
  },
  {
-  "delta": 0.09119999999999351,
+  "delta": 1.9697333333333376,
+  "usd": 0.11,
+  "carta": "Moment of Craving",
+  "coste": "{1}{B}",
+  "tipo": "Instant"
+ },
+ {
+  "delta": 1.9588333333333452,
+  "usd": 1.24,
+  "carta": "The Regalia",
+  "coste": "{4}",
+  "tipo": "Legendary Artifact"
+ },
+ {
+  "delta": 1.9588333333333452,
+  "usd": 0.5,
+  "carta": "Cryptcaller Chariot",
+  "coste": "{3}{B}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 1.9588333333333452,
+  "usd": 0.23,
+  "carta": "Phantom Train",
+  "coste": "{3}{B}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 1.9588333333333452,
+  "usd": 0.09,
+  "carta": "S.H.I.E.L.D. Helicarrier",
+  "coste": "{4}",
+  "tipo": "Artifact"
+ },
+ {
+  "delta": 1.9537333333333322,
+  "usd": 0.33,
+  "carta": "Boggart Mischief",
+  "coste": "{2}{B}",
+  "tipo": "Kindred Enchantment"
+ },
+ {
+  "delta": 1.9537333333333322,
+  "usd": 0.21,
+  "carta": "Rakish Crew",
+  "coste": "{2}{B}",
+  "tipo": "Enchantment"
+ },
+ {
+  "delta": 1.936233333333334,
   "usd": 0.2,
   "carta": "Strixhaven Skycoach",
   "coste": "{3}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.09009999999999962,
-  "usd": 0.38,
-  "carta": "Lifecraft Engine",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.36,
-  "carta": "Rush of Dread",
-  "coste": "{1}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.3,
-  "carta": "Back for Seconds",
+  "delta": 1.905533333333345,
+  "usd": 0.15,
+  "carta": "Tundra Tank",
   "coste": "{2}{B}",
-  "tipo": "Sorcery"
+  "tipo": "Artifact"
  },
  {
-  "delta": 0.09009999999999962,
+  "delta": 1.8561333333333394,
   "usd": 0.28,
-  "carta": "Turtle Van",
+  "carta": "Popular Egotist",
+  "coste": "{2}{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 1.840433333333337,
+  "usd": 0.27,
+  "carta": "Careening Mine Cart",
   "coste": "{3}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.09009999999999962,
-  "usd": 0.27,
-  "carta": "Foggy Swamp Visions",
-  "coste": "{1}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.09009999999999962,
+  "delta": 1.8343333333333405,
   "usd": 0.25,
   "carta": "Spider-Mobile",
   "coste": "{3}",
   "tipo": "Artifact"
  },
  {
-  "delta": 0.09009999999999962,
-  "usd": 0.23,
-  "carta": "Scrounge for Eternity",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.23,
-  "carta": "Fell Gravship",
-  "coste": "{2}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.2,
-  "carta": "Sandman's Quicksand",
-  "coste": "{1}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.16,
-  "carta": "Too Evil to Stay Dead",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.16,
-  "carta": "Malicious Eclipse",
-  "coste": "{1}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.14,
-  "carta": "Fire Nation Warship",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.09009999999999962,
-  "usd": 0.14,
-  "carta": "Carrion Cruiser",
-  "coste": "{2}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.0777000000000001,
-  "usd": 0.4,
-  "carta": "Outrageous Robbery",
-  "coste": "{X}{B}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.46,
-  "carta": "Hylda's Crown of Winter",
-  "coste": "{3}",
-  "tipo": "Legendary Artifact"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.39,
-  "carta": "Corpses of the Lost",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.37,
-  "carta": "The Sibsig Ceremony",
-  "coste": "{B}{B}{B}",
-  "tipo": "Legendary Enchantment"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.33,
-  "carta": "Requiem Monolith",
-  "coste": "{2}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.32,
-  "carta": "Parker Luck",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.31,
-  "carta": "Construct a Cosmic Cube",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.29,
-  "carta": "Mornsong Aria",
-  "coste": "{1}{B}{B}",
-  "tipo": "Legendary Enchantment"
- },
- {
-  "delta": 0.07689999999999486,
-  "usd": 0.27,
-  "carta": "Hour of Victory",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": 0.0753999999999948,
-  "usd": 6.32,
-  "carta": "Rise of the Dark Realms",
-  "coste": "{7}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.07109999999999417,
-  "usd": 0.23,
-  "carta": "The Spot's Portal",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.07109999999999417,
-  "usd": 0.23,
-  "carta": "Another Chance",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.07109999999999417,
-  "usd": 0.21,
-  "carta": "Fight On!",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.07109999999999417,
-  "usd": 0.2,
-  "carta": "Wail of War",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.07109999999999417,
-  "usd": 0.18,
-  "carta": "Blight Rot",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.07109999999999417,
-  "usd": 0.15,
-  "carta": "Neutralize the Guards",
-  "coste": "{2}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": 0.06669999999999021,
-  "usd": 3.19,
-  "carta": "Inside Information",
-  "coste": "{X}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.06669999999999021,
-  "usd": 0.28,
-  "carta": "Stargaze",
-  "coste": "{X}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.06669999999999021,
-  "usd": 0.18,
-  "carta": "Dread Summons",
-  "coste": "{X}{B}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": 0.05069999999999908,
-  "usd": 0.19,
-  "carta": "Redrock Sentinel",
-  "coste": "{3}",
-  "tipo": "Artifact Creature"
- },
- {
-  "delta": 0.03260000000000218,
-  "usd": 1.21,
-  "carta": "Thrumming Hivepool",
-  "coste": "{6}",
-  "tipo": "Artifact"
- },
- {
-  "delta": 0.007799999999996032,
-  "usd": 0.16,
-  "carta": "Festerleech",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": 0.0033000000000029672,
-  "usd": 2.93,
-  "carta": "Iron Man Armor",
-  "coste": "{3}",
-  "tipo": "Artifact"
- },
- {
-  "delta": -0.0037999999999982492,
+  "delta": 1.8295333333333375,
   "usd": 1.06,
   "carta": "Captain America's Shield",
   "coste": "{2}",
   "tipo": "Legendary Artifact"
  },
  {
-  "delta": -0.013800000000003365,
-  "usd": 0.17,
-  "carta": "Sanguine Indulgence",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.015600000000006276,
-  "usd": 0.15,
-  "carta": "Swampsnare Trap",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.25,
-  "carta": "Nameless Inversion",
-  "coste": "{1}{B}",
-  "tipo": "Kindred Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.24,
-  "carta": "Pain 101",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.22,
-  "carta": "Vincent's Limit Break",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.18,
-  "carta": "Fatal Fissure",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.14,
-  "carta": "Desert's Due",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.11,
-  "carta": "Widow's Bite",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.11,
-  "carta": "Depressurize",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.1,
-  "carta": "Azula Always Lies",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.016100000000001558,
-  "usd": 0.09,
-  "carta": "Decoy Ploy",
-  "coste": "{1}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.03470000000000084,
+  "delta": 1.8209333333333362,
   "usd": 0.28,
-  "carta": "Faerie Fencing",
-  "coste": "{X}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.03470000000000084,
-  "usd": 0.18,
-  "carta": "Slice from the Shadows",
-  "coste": "{X}{B}",
-  "tipo": "Instant"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 2.56,
-  "carta": "Lively Dirge",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 2.11,
-  "carta": "Demonic Counsel",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 0.29,
-  "carta": "Quag Feast",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 0.27,
-  "carta": "Mobile Homestead",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 0.24,
-  "carta": "End of the Hunt",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 0.22,
-  "carta": "Macabre Waltz",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 0.19,
-  "carta": "Binding Negotiation",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 0.17,
-  "carta": "Poison the Waters",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.04700000000000415,
-  "usd": 0.17,
-  "carta": "Mourner's Surprise",
-  "coste": "{1}{B}",
-  "tipo": "Sorcery"
- },
- {
-  "delta": -0.06020000000000181,
-  "usd": 0.18,
-  "carta": "Wurmwall Sweeper",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": -0.0630999999999986,
-  "usd": 23.15,
-  "carta": "The Aetherspark",
-  "coste": "{4}",
-  "tipo": "Legendary Artifact Planeswalker"
- },
- {
-  "delta": -0.07350000000000279,
-  "usd": 4.77,
-  "carta": "Torpor Orb",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": -0.07350000000000279,
-  "usd": 1.84,
-  "carta": "Wishclaw Talisman",
-  "coste": "{1}{B}",
-  "tipo": "Artifact"
- },
- {
-  "delta": -0.07350000000000279,
-  "usd": 0.37,
-  "carta": "Case of the Stashed Skeleton",
-  "coste": "{1}{B}",
-  "tipo": "Enchantment"
- },
- {
-  "delta": -0.07350000000000279,
-  "usd": 0.25,
-  "carta": "Throne of the Grim Captain // The Grim Captain",
-  "coste": "",
-  "tipo": "Legendary Artifact // Legendary Creature"
- },
- {
-  "delta": -0.07350000000000279,
-  "usd": 0.17,
-  "carta": "Boom Box",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": -0.07350000000000279,
-  "usd": 0.08,
-  "carta": "Sorcerous Spyglass",
-  "coste": "{2}",
-  "tipo": "Artifact"
- },
- {
-  "delta": -0.14260000000000161,
-  "usd": 0.18,
-  "carta": "Tangle Tumbler",
+  "carta": "Turtle Van",
   "coste": "{3}",
   "tipo": "Artifact"
  },
  {
-  "delta": -0.15910000000000935,
-  "usd": 0.27,
-  "carta": "Diary of Dreams",
-  "coste": "{2}",
+  "delta": 1.8209333333333362,
+  "usd": 0.14,
+  "carta": "Fire Nation Warship",
+  "coste": "{3}",
   "tipo": "Artifact"
  },
  {
-  "delta": -0.24930000000000518,
+  "delta": 1.8121333333333354,
   "usd": 0.07,
   "carta": "Unburied Earthcarver",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": -0.3381000000000043,
+  "delta": 1.7708333333333357,
+  "usd": 0.19,
+  "carta": "Redrock Sentinel",
+  "coste": "{3}",
+  "tipo": "Artifact Creature"
+ },
+ {
+  "delta": 1.62263333333334,
   "usd": 0.29,
   "carta": "Burnished Hart",
   "coste": "{3}",
   "tipo": "Artifact Creature"
  },
  {
-  "delta": -0.4654999999999987,
+  "delta": 1.5822333333333347,
   "usd": 0.39,
   "carta": "Ninja's Blades",
   "coste": "{2}{B}",
   "tipo": "Artifact"
  },
  {
-  "delta": -0.5217000000000027,
-  "usd": 0.11,
-  "carta": "Mutant Surveyor",
-  "coste": "{2}{B}",
-  "tipo": "Creature"
+  "delta": 1.5555333333333365,
+  "usd": 0.18,
+  "carta": "Tangle Tumbler",
+  "coste": "{3}",
+  "tipo": "Artifact"
  },
  {
-  "delta": -0.5245000000000033,
-  "usd": 7.13,
-  "carta": "Virtue of Persistence // Locthwain Scorn",
-  "coste": "{5}{B}{B} // {1}{B}",
-  "tipo": "Enchantment // Sorcery"
- },
- {
-  "delta": -0.565100000000001,
-  "usd": 0.2,
-  "carta": "Blood Hustler",
-  "coste": "{1}{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": -0.7790999999999997,
-  "usd": 0.26,
-  "carta": "Burrog Banemaker",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": -0.8111999999999995,
+  "delta": 1.311633333333333,
   "usd": 0.11,
   "carta": "Vampiric Rites",
   "coste": "{B}",
   "tipo": "Enchantment"
  },
  {
-  "delta": -0.8843999999999994,
+  "delta": 1.246833333333342,
+  "usd": 0.26,
+  "carta": "Burrog Banemaker",
+  "coste": "{B}",
+  "tipo": "Creature"
+ },
+ {
+  "delta": 1.1028333333333364,
   "usd": 0.15,
   "carta": "Adventurer's Airship",
   "coste": "{3}",
   "tipo": "Artifact"
  },
  {
-  "delta": -0.9758000000000067,
+  "delta": 1.0928333333333455,
   "usd": 0.2,
   "carta": "Vampire Neonate",
   "coste": "{B}",
   "tipo": "Creature"
  },
  {
-  "delta": -1.0685000000000002,
+  "delta": 0.9269333333333378,
   "usd": 0.21,
   "carta": "Heirloom Epic",
   "coste": "{1}",
   "tipo": "Artifact"
  },
  {
-  "delta": -1.1655000000000015,
-  "usd": 0.17,
-  "carta": "Ravine Raider",
-  "coste": "{B}",
-  "tipo": "Creature"
- },
- {
-  "delta": -1.1946999999999974,
+  "delta": 0.86043333333334,
   "usd": 0.16,
   "carta": "Barrow Naughty",
   "coste": "{1}{B}",
   "tipo": "Creature"
  },
  {
-  "delta": -3.047599999999999,
-  "usd": 0.39,
-  "carta": "The Last Ride",
+  "delta": 0.7692333333333394,
+  "usd": 0.17,
+  "carta": "Ravine Raider",
   "coste": "{B}",
-  "tipo": "Legendary Artifact"
+  "tipo": "Creature"
+ },
+ {
+  "delta": -0.9887666666666632,
+  "usd": 0.27,
+  "carta": "Gingerbrute",
+  "coste": "{1}",
+  "tipo": "Artifact Creature"
  }
 ]

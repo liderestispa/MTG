@@ -79,15 +79,28 @@ def bien_leida(c):
         if _re.search(rx, t):
             return False, motivo
 
-    # frases con verbo de juego que no tienen ranura: la carta hace mas de lo que se lee
+    # ---- mana con coste: el motor lo regala ----
+    # mana_out no distingue "{T}: anade" de "{1},{T}: anade" ni de "gira una criatura".
+    # Springleaf Drum y Prophetic Prism salian como fuentes de 2 mana gratis.
+    if e.get('mana_out'):
+        _linea = next((l for l in t.split('\n') if _re.search(r':\s*add ', l)), '')
+        _coste = _linea.split(':')[0] if ':' in _linea else ''
+        if _re.search(r'\{\d+\}|tap an untapped|sacrifice|discard|pay ', _coste):
+            return False, 'su mana tiene coste y el motor lo da gratis'
+
+    # ---- disparo de ataque contado dos veces ----
+    # Si la carta dispara AL ATACAR, su ranura de entrada tiene que estar vacia. Pulse
+    # Tracker drenaba al entrar Y al atacar.
+    if _re.search(r'whenever [^.\n]{0,30}attacks', t) and e.get('eff'):
+        return False, 'dispara al atacar y ademas ocupa la ranura de entrada'
+
+    # frases con verbo de juego que no tienen ranura: la carta hace mas de lo que se lee.
+    # OJO: las lineas de palabras clave ya se excluyen del recuento de frases, asi que kw
+    # NO puede sumar como ranura; si sumaba, el 'volar' de Desecration Demon tapaba la
+    # frase de su inconveniente y la carta pasaba el filtro.
     ranuras = sum(1 for k in ('eff', 'eff2', 'eff3') if e.get(k))
     ranuras += sum(1 for k in ('die_eff', 'act_eff', 'atk_eff', 'adv_eff', 'saga_n',
-                               'dyn', 'alt', 'cred', 'cond') if e.get(k))
-    if e.get('kw'): ranuras += 1
-    # la habilidad de mana SI esta modelada (mana_out), aunque no ocupe ranura
-    # de efecto. Sin contarla, Prophetic Prism salia rechazada por su '{1},{T}:
-    # anade un mana de cualquier color', que el motor lee perfectamente.
-    if e.get('mana_out'): ranuras += 1
+                               'dyn', 'alt', 'cred', 'cond', 'mana_out') if e.get(k))
     frases = 0
     for l in t.split('\n'):
         l = l.strip()
