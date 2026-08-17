@@ -48,9 +48,31 @@ son DOS winrates de ladder.
 
 | Formato | Correlación | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
-| Pauper | r=+0,68 (n=6) | **NO** — 1,31% contra 1,25% | **no aporta informacion** |
-| Standard | r=+1,00 (n=4) | sí — 0,11% contra 2,44% | n=4 y dato pre-ban: no vale |
+| Pauper | r=+0,68 (n=6) | **SÍ** — 1,11% contra 1,25% | **aporta informacion** (desde 18-ago) |
+| Standard | r=+0,74 (n=4) | sí, apenas — 2,31% contra 2,44% | n=4 y dato pre-ban: no vale |
 | Standard Brawl | 2 datos | sin muestra | solo desplazamiento |
+
+> **EL OBJETIVO YA NO ES BUEN ÁRBITRO, Y HAY QUE SABERLO ANTES DE USARLO.**
+> Tres arreglos de lectura de cartas (ver la sección de la auditoría) subieron el
+> objetivo de **0,608 a 0,955** —o sea "empeoraron"— y a la vez:
+>
+> | | antes | después |
+> |---|---|---|
+> | residuo de campo en Pauper | 8,11 pts | **5,51 pts** |
+> | desplazamiento en Pauper | −2,4 | **−1,2** |
+> | LOOCV Pauper contra modelo tonto | **pierde** −0,17 | **gana** +0,14 |
+> | sobredispersión de Pauper | ×8,2 | **×5,9** |
+>
+> El objetivo mide **correlación de ORDEN**. En Pauper el orden real está dentro de
+> 1,04 puntos con ±1,2 a ±1,7 de error de medición: **el orden no es recuperable ni en
+> principio**. En Standard son 4 mazos pre-ban dentro de 5 puntos. Así que el objetivo
+> está optimizando un ranking que no existe, y premia errores grandes cuando conservan
+> la posición: con el motor viejo, Mardu Discard erraba −8,4 puntos y Mono Red Rally
+> −17,3, y el objetivo estaba más contento.
+>
+> **Mide con `calib_real.py` (residuo y desplazamiento) y `loocv.py`, no solo con
+> `obj_real.py`.** El objetivo sigue sirviendo como control de reproducibilidad y para
+> cambios de política, no para juzgar si una carta está bien leída.
 
 **Pauper es un formato casi plano.** La dispersion real entre arquetipos es de **1,04
 puntos** y el error de medir cada uno es de ±1,2 a ±1,7 al 95%: la separacion es del

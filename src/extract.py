@@ -109,6 +109,25 @@ def parse_card(c):
     # No se filtran las que solo producen mana ("{T}: Add {G}"), que mana_ability lee
     # aparte, ni la palabra clave equipar, que tiene su propia ranura.
     # Ablacion: ACTIVADAS_GRATIS=1 vuelve al comportamiento viejo.
+    # ---- MODAL: "elige uno" es UNO, no todos ----
+    # Las reglas de efecto barren el texto entero, asi que una carta con varios modos
+    # llenaba varias ranuras y el motor los ejecutaba TODOS a la vez. Warg Tactics
+    # ({1}{G}, instantaneo) destruia un volador Y ademas ponia un +1/+1 con arrollar y
+    # antimaleficio: son 4 copias en el mazo de Standard de Ricardo y 9 en el banco.
+    # Se conserva solo el PRIMER modo, que es conservador: el motor pierde opcionalidad
+    # en vez de ganar cartas que no existen. Modelar la eleccion de verdad pide una
+    # ranura nueva en el motor, no una regla en el extractor.
+    # Ablacion: MODAL_TODO=1.
+    if os.environ.get('MODAL_TODO') != '1' and re.search(r'choose one', low):
+        _vistos = 0; _lineas = []
+        for _l in low.split('\n'):
+            if _l.strip().startswith('•'):
+                _vistos += 1
+                if _vistos > 1: continue        # los modos 2, 3... no se leen
+            _lineas.append(_l)
+        if _vistos >= 2:
+            low = '\n'.join(_lineas)
+
     low_todo = low          # con las activadas dentro: lo necesita el parser de act_eff
     if os.environ.get('ACTIVADAS_GRATIS') != '1':
         # Un coste de activacion es una secuencia de partes separadas por coma, terminada
