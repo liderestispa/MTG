@@ -1,0 +1,222 @@
+[
+ {
+  "mazo": "Elspeth Storm Slayer",
+  "tienes": 0,
+  "total": 60,
+  "faltan": 60,
+  "usd": 132.76,
+  "sin_precio": 28,
+  "caras": [
+   [
+    91.14,
+    31,
+    "Hare Apparent"
+   ],
+   [
+    41.62,
+    1,
+    "Elspeth, Storm Slayer"
+   ]
+  ]
+ },
+ {
+  "mazo": "Sephiroth Fabled SOLDIER",
+  "tienes": 0,
+  "total": 60,
+  "faltan": 60,
+  "usd": 139.8,
+  "sin_precio": 18,
+  "caras": [
+   [
+    49.39,
+    1,
+    "Cavern of Souls"
+   ],
+   [
+    31.84,
+    1,
+    "Sephiroth, Fabled SOLDIER"
+   ],
+   [
+    16.35,
+    1,
+    "Bitterbloom Bearer"
+   ],
+   [
+    7.78,
+    1,
+    "Liliana, Dreadhorde General"
+   ],
+   [
+    5.28,
+    1,
+    "Unstoppable Slasher"
+   ],
+   [
+    4.68,
+    1,
+    "Lord Skitter, Sewer King"
+   ]
+  ]
+ },
+ {
+  "mazo": "Tifa Lockhart",
+  "tienes": 2,
+  "total": 60,
+  "faltan": 58,
+  "usd": 170.88,
+  "sin_precio": 17,
+  "caras": [
+   [
+    45.91,
+    1,
+    "Badgermole Cub"
+   ],
+   [
+    40.42,
+    1,
+    "Bristly Bill, Spine Sower"
+   ],
+   [
+    19.08,
+    1,
+    "Traveling Chocobo"
+   ],
+   [
+    16.32,
+    1,
+    "Icetill Explorer"
+   ],
+   [
+    9.16,
+    1,
+    "Mossborn Hydra"
+   ],
+   [
+    8.46,
+    1,
+    "Innkeeper's Talent"
+   ]
+  ]
+ },
+ {
+  "mazo": "Eluge the Shoreless Sea",
+  "tienes": 0,
+  "total": 60,
+  "faltan": 60,
+  "usd": 215.66,
+  "sin_precio": 20,
+  "caras": [
+   [
+    49.39,
+    1,
+    "Cavern of Souls"
+   ],
+   [
+    42.76,
+    1,
+    "Ugin, Eye of the Storms"
+   ],
+   [
+    37.05,
+    1,
+    "Wan Shi Tong, Librarian"
+   ],
+   [
+    34.12,
+    1,
+    "Quantum Riddler"
+   ],
+   [
+    9.15,
+    1,
+    "Mistrise Village"
+   ],
+   [
+    5.26,
+    1,
+    "Eluge, the Shoreless Sea"
+   ]
+  ]
+ },
+ {
+  "mazo": "Ketramose the New Dawn",
+  "tienes": 0,
+  "total": 60,
+  "faltan": 60,
+  "usd": 223.86,
+  "sin_precio": 13,
+  "caras": [
+   [
+    49.39,
+    1,
+    "Cavern of Souls"
+   ],
+   [
+    42.76,
+    1,
+    "Ugin, Eye of the Storms"
+   ],
+   [
+    37.48,
+    1,
+    "Agatha's Soul Cauldron"
+   ],
+   [
+    23.15,
+    1,
+    "The Aetherspark"
+   ],
+   [
+    9.86,
+    1,
+    "Shadowy Backstreet"
+   ],
+   [
+    9.72,
+    1,
+    "Bleachbone Verge"
+   ]
+  ]
+ },
+ {
+  "mazo": "Kona Rescue Beastie",
+  "tienes": 0,
+  "total": 60,
+  "faltan": 60,
+  "usd": 338.21,
+  "sin_precio": 22,
+  "caras": [
+   [
+    45.91,
+    1,
+    "Badgermole Cub"
+   ],
+   [
+    42.76,
+    1,
+    "Ugin, Eye of the Storms"
+   ],
+   [
+    34.22,
+    1,
+    "Vaultborn Tyrant"
+   ],
+   [
+    28.75,
+    1,
+    "Ghalta, Stampede Tyrant"
+   ],
+   [
+    22.7,
+    1,
+    "Lumra, Bellow of the Woods"
+   ],
+   [
+    22.0,
+    1,
+    "Craterhoof Behemoth"
+   ]
+  ]
+ }
+]
