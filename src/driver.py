@@ -84,7 +84,9 @@ class Registry:
             e.get('cred', 0), e.get('cond', 0), e.get('es_leg', 0),
             e.get('tax_atk', 0), e.get('entra_girada', 0),
             e.get('atk_eff', 0), e.get('atk_p1', 0),
-            e.get('coste_extra', 0)])
+            e.get('coste_extra', 0),
+            e.get('adv_eff', 0), e.get('adv_gen', 0), e.get('adv_p1', 0)]
+            + [e.get('adv_pips', {}).get(k, 0) for k in 'WUBRG'])
 
 def build(fmt):
     R=Registry()

@@ -62,6 +62,10 @@ typedef struct {
                           ranura de cementerio: se reutiliza apply(). */
   int16_t atk_p1;
   uint8_t coste_extra; /* coste adicional obligatorio, cobrado en generico */
+  uint8_t adv_eff, adv_gen, adv_pip[5];  /* AVENTURA: cara barata, su coste y su
+                          efecto. Se lanza antes, la carta vuelve a la mano y la
+                          criatura se lanza despues. Ablacion: AVENTURA_OFF=1. */
+  int16_t adv_p1;
   uint8_t entra_girada;/* "This land enters tapped". El motor las metia TODAS destapadas,
                           y en el banco de Standard eso es el 52% de las tierras: medio
                           turno de ventaja regalado a cada mazo, en todos los mazos. */
@@ -283,6 +287,7 @@ typedef struct {
                              y desaparece. Esto es lo minimo que hace falta para los
                              costes que bajan con el cementerio, y de paso sirve para
                              umbral, delirio y cuentas de hechizos. */
+  uint8_t hand_adv[ZONEMAX];   /* aventura ya usada en ESA copia de la mano */
   int played_land;
   int cards_drawn_turn;
   int lost;
@@ -626,7 +631,7 @@ static void draw_select(P*p,int n,int look){
              else if(isl==bl && D[p->deck[idx]].score > D[p->deck[best]].score) best=idx; }
     }
     if(best<0) best=p->nd-1;
-    p->hand[p->nh++]=p->deck[best];
+    p->hand_adv[p->nh]=0; p->hand[p->nh++]=p->deck[best];
     for(int i=best;i<p->nd-1;i++) p->deck[i]=p->deck[i+1];
     p->nd--;
     p->cards_drawn_turn++;
@@ -635,7 +640,7 @@ static void draw_select(P*p,int n,int look){
 static void draw(P*p,int n){
   for(int i=0;i<n;i++){
     if(p->nd<=0){ p->lost=1; return; }
-    p->hand[p->nh++]=p->deck[--p->nd];
+    p->hand_adv[p->nh]=0; p->hand[p->nh++]=p->deck[--p->nd];
     p->cards_drawn_turn++;
   }
 }
@@ -1152,9 +1157,46 @@ static void activar_habilidades(P*me,P*opp){
   }
 }
 
+
+/* ---- AVENTURA ----
+   Se evalua una vez por turno, antes de la fase principal. Solo se lanza si el efecto
+   sirve AHORA: remocion con objetivo, robo o rampa. Sin ese filtro el motor quemaba la
+   mitad barata de Smaug en el turno 2 contra una mesa vacia. */
+static int AVENTURA_ON = 1;
+static int aventura_util(P*me,P*opp,Def*d){
+  int e=d->adv_eff;
+  if(e==E_DESTROY||e==E_EXILE||e==E_DMG_SPELL||e==E_EDICT||e==E_TAPDOWN||e==E_BOUNCE)
+    return ncreat(opp)>0;
+  if(e==E_DMG_ANY||e==E_BURN_FACE||e==E_ETB_DRAIN) return 1;
+  if(e==E_ETB_DRAW||e==E_RAMP||e==E_ETB_TOKEN||e==E_LIFEGAIN||e==E_ETB_COUNTERS) return 1;
+  if(e==E_SWEEPER) return ncreat(opp)>ncreat(me);
+  return 0;
+}
+static void lanzar_aventuras(P*me,P*opp){
+  if(!AVENTURA_ON) return;
+  for(int i=0;i<me->nh;i++){
+    Def*d=&D[me->hand[i]];
+    if(!d->adv_eff || me->hand_adv[i]) continue;
+    if(!aventura_util(me,opp,d)) continue;
+    /* coste de la cara barata: se arma un Def temporal para reusar payable/paycost */
+    if(NDEF+2>=MAXDEF) return;
+    int t=NDEF+2;
+    D[t]=*d;
+    D[t].gen=d->adv_gen; D[t].typ=T_SORC; D[t].alt=0; D[t].coste_extra=0; D[t].cred=0;
+    for(int k=0;k<5;k++) D[t].pip[k]=d->adv_pip[k];
+    if(!payable(me,&D[t],me->treasures)) continue;
+    paycost(me,&D[t],&me->treasures);
+    D[t].eff=d->adv_eff; D[t].p1=d->adv_p1; D[t].p2=0;
+    D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0; D[t].atk_eff=0;
+    apply(me,opp,t,0);
+    me->hand_adv[i]=1;      /* esta copia ya gasto su aventura */
+    return;                 /* una por turno */
+  }
+}
+
 static void cast_phase(P*me,P*opp,int main2){
   ALT_OPP = opp;
-  if(!main2) activar_habilidades(me,opp);
+  if(!main2){ activar_habilidades(me,opp); lanzar_aventuras(me,opp); }
   /* impuesto que me cobra el rival (Ghostly Prison y familia): encarece todo lo mio */
   me->taxed=0; me->tax_atk=0;
   for(int i=0;i<opp->nbf;i++){
@@ -1177,7 +1219,8 @@ static void cast_phase(P*me,P*opp,int main2){
         int hb=__builtin_popcount(D[me->hand[best]].produces), hi=__builtin_popcount(D[me->hand[i]].produces);
         if(hi>hb) best=i; } }
     if(best>=0){ addbf(me,me->hand[best]); me->played_land=1;
-      for(int k=best;k<me->nh-1;k++) me->hand[k]=me->hand[k+1]; me->nh--; }
+      for(int k=best;k<me->nh-1;k++){ me->hand[k]=me->hand[k+1];
+      me->hand_adv[k]=me->hand_adv[k+1]; } me->nh--; }
   }
   /* lanzar hechizos por valor mientras alcance el mana.
      Dos pasadas: la primera respeta la reserva de mana para contrahechizos;
@@ -1310,7 +1353,8 @@ static void cast_phase(P*me,P*opp,int main2){
     }
     if(best<0||bv<CAST_FLOOR) break;
     int def=me->hand[best];
-    for(int k=best;k<me->nh-1;k++) me->hand[k]=me->hand[k+1]; me->nh--;
+    for(int k=best;k<me->nh-1;k++){ me->hand[k]=me->hand[k+1];
+      me->hand_adv[k]=me->hand_adv[k+1]; } me->nh--;
     paycost(me,&D[def],&me->treasures);
     tj_ev("lanza", me, def);
     SPARE_MANA = untapped_count(me);
@@ -1772,10 +1816,15 @@ int main(void){
     scanf("%d",&th_);
     int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0,cr_=0;
     int co_=0,lg_=0,ta_=0,eg_=0,ke_=0,kp_=0,cx_=0;
+    int av_=0,ag_=0,avp_=0,ap0_=0,ap1_=0,ap2_=0,ap3_=0,ap4_=0;
     scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,
           &e3_,&r1_,&r2_,&al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_,&eg_,&ke_,
           &kp_,&cx_);
+    scanf("%d %d %d %d %d %d %d %d",&av_,&ag_,&avp_,&ap0_,&ap1_,&ap2_,&ap3_,&ap4_);
     d->atk_eff=(uint8_t)ke_; d->atk_p1=(int16_t)kp_; d->coste_extra=(uint8_t)cx_;
+    d->adv_eff=(uint8_t)av_; d->adv_gen=(uint8_t)ag_; d->adv_p1=(int16_t)avp_;
+    d->adv_pip[0]=(uint8_t)ap0_; d->adv_pip[1]=(uint8_t)ap1_; d->adv_pip[2]=(uint8_t)ap2_;
+    d->adv_pip[3]=(uint8_t)ap3_; d->adv_pip[4]=(uint8_t)ap4_;
     d->cred=(uint8_t)cr_; d->cond=(uint8_t)co_; d->es_leg=(uint8_t)lg_;
     d->tax_atk=(uint8_t)ta_; d->entra_girada=(uint8_t)eg_;
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
@@ -1812,6 +1861,7 @@ int main(void){
     const char*tg=getenv("TIERRA_GIRADA"); if(tg) TIERRA_GIRADA=atoi(tg);
     const char*aq=getenv("ATAQUE_OFF"); if(aq&&atoi(aq)) ATAQUE_ON=0;
     const char*ce=getenv("COSTE_EXTRA_ON"); if(ce) COSTE_EXTRA_ON=atoi(ce);
+    const char*av=getenv("AVENTURA_OFF"); if(av&&atoi(av)) AVENTURA_ON=0;
 
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);

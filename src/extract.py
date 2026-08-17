@@ -785,6 +785,28 @@ def parse_card(c):
         setp(E[_r['efecto']], _v if _v is not None else 1, _r.get('p2', 0))
     return out
 
+def cara_aventura(c):
+    """(efecto, p1, generico, pips) de la cara de Aventura, o None.
+
+    parse_card lee solo la cara frontal, asi que la mitad barata —que es la que se lanza
+    primero y a menudo la que define la carta— era invisible. Son 30 copias de la
+    coleccion, entre ellas el comandante que el buscador eligio."""
+    faces = c.get('card_faces') or []
+    if len(faces) < 2:
+        return None
+    atras = faces[1]
+    if 'Adventure' not in (atras.get('type_line') or ''):
+        return None
+    falso = {'name': c.get('name'), 'type_line': atras.get('type_line'),
+             'oracle_text': atras.get('oracle_text') or '',
+             'mana_cost': atras.get('mana_cost') or '', 'cmc': 0}
+    sub = parse_card(falso)
+    if not sub['eff']:
+        return None
+    gen, pips, _ = mana_pips(atras.get('mana_cost') or '')
+    return sub['eff'], sub['p1'], gen, pips
+
+
 def color_mask(cols):
     B = {'W':1,'U':2,'B':4,'R':8,'G':16}
     return sum(B.get(x, 0) for x in (cols or []))
@@ -899,6 +921,9 @@ def convert(c):
     hybrid = bool(re.search(r'\{[WUBRG]/[WUBRG]\}', mc))
     gen, pips, hyb = mana_pips(mc)
     _txt = (c.get('oracle_text') or '').strip() or ((ff.get('oracle_text') if ff else '') or '')
+    _adv = cara_aventura(c)
+    _adv_eff, _adv_p1, _adv_gen, _adv_pips = _adv if _adv else (0, 0, 0,
+                                                                {'W':0,'U':0,'B':0,'R':0,'G':0})
     _red = cost_reduction(c, _txt)
     # Si la carta tiene rebaja DINAMICA, esa manda y la estimacion plana no se aplica:
     # son dos modelos del mismo coste, no dos rebajas distintas.
@@ -948,6 +973,7 @@ def convert(c):
         legal_std=(c.get('legalities') or {}).get('standard') == 'legal',
         legal_pau=(c.get('legalities') or {}).get('pauper') == 'legal',
         legal_brawl=(c.get('legalities') or {}).get('standardbrawl') == 'legal',
+        adv_eff=_adv_eff, adv_p1=_adv_p1, adv_gen=_adv_gen, adv_pips=_adv_pips,
         **e)
 
 if __name__ == '__main__':
