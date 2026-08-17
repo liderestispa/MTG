@@ -1,15 +1,16 @@
 [
  {
-  "carta": "Warg Tactics",
-  "copias": 5,
+  "carta": "Stir Up Trouble",
+  "copias": 3,
   "estado": "MAL_LEIDA",
-  "coste": "{1}{G}",
-  "tipo": "Instant",
+  "coste": "{B}",
+  "tipo": "Sorcery",
   "pt": "",
   "en_mazo": [
-   "standard"
+   "pauper",
+   "brawl"
   ],
-  "frases": 3,
+  "frases": 2,
   "ranuras": 1,
   "motor": "DESTROY",
   "motor_extra": "",
@@ -17,182 +18,9 @@
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [
-   "KW_PERDIDA: 'Hexproof' esta en el texto y no en kw"
+   "COSTE_ADICIONAL: el coste adicional no se cobra: \"as an additional cost to cast this spell, sacrifice an artifact or cre\""
   ],
-  "texto": "Choose one — | • Destroy target creature with flying. | • Put a +1/+1 counter on target creature you control. It gains trample and hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)"
- },
- {
-  "carta": "Gollum the Abandoned",
-  "copias": 2,
-  "estado": "MAL_LEIDA",
-  "coste": "{1}{B}",
-  "tipo": "Legendary Creature — Halfling Horror",
-  "pt": "2/2",
-  "en_mazo": [
-   "standard",
-   "brawl"
-  ],
-  "frases": 3,
-  "ranuras": 1,
-  "motor": "ETB_DRAIN",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "ACTIVADA_GRATIS: hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
-  ],
-  "texto": "Gollum can't block. | When Gollum enters, exile up to one target card from an opponent's graveyard. Each opponent loses 2 life. | {2}, Sacrifice an artifact or creature: Return this card from your graveyard to your hand. Activate only as a sorcery."
- },
- {
-  "carta": "Along the Crooked Way",
-  "copias": 1,
-  "estado": "MAL_LEIDA",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment",
-  "pt": "",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 3,
-  "ranuras": 2,
-  "motor": "REANIMATE/AMASS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "ACTIVADA_GRATIS: hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
-  ],
-  "texto": "When this enchantment enters, return target creature card from your graveyard to your hand. | Whenever a creature card leaves your graveyard, amass Goblins 1. | {1}{B}: Goblins and Orcs you control gain menace until end of turn."
- },
- {
-  "carta": "Foggy Swamp Hunters",
-  "copias": 1,
-  "estado": "MAL_LEIDA",
-  "coste": "{3}{B}",
-  "tipo": "Creature — Human Ranger Ally",
-  "pt": "3/4",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "KW_PERDIDA: 'Menace' esta en el texto y no en kw"
-  ],
-  "texto": "As long as you've drawn two or more cards this turn, this creature has lifelink and menace. (It can't be blocked except by two or more creatures.)"
- },
- {
-  "carta": "Smaug's Fury",
-  "copias": 1,
-  "estado": "MAL_LEIDA",
-  "coste": "{1}{R}",
-  "tipo": "Instant",
-  "pt": "",
-  "en_mazo": [
-   "pauper"
-  ],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "PUMP",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "KW_PERDIDA: 'First strike' esta en el texto y no en kw"
-  ],
-  "texto": "Target creature gets +3/+0 and gains reach and first strike until end of turn."
- },
- {
-  "carta": "Thrór's Map",
-  "copias": 1,
-  "estado": "MAL_LEIDA",
-  "coste": "{2}",
-  "tipo": "Legendary Artifact",
-  "pt": "",
-  "en_mazo": [
-   "standard"
-  ],
-  "frases": 2,
-  "ranuras": 2,
-  "motor": "RAMP/RAMP",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "ACTIVADA_GRATIS: hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
-  ],
-  "texto": "When Thrór's Map enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle. | {2}, {T}: Draw a card, then discard a card."
- },
- {
-  "carta": "Bofur, Reliable Guardian // Concerted Care",
-  "copias": 5,
-  "estado": "MAL_LEIDA",
-  "coste": "{W} // {1}{W}",
-  "tipo": "Legendary Creature — Dwarf Scout // Instant — Adventure",
-  "pt": "1/1",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "NADA",
-  "motor_extra": "kw=ETB_DISCARD",
-  "kw": [
-   "Lifelink"
-  ],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "KW_PERDIDA: 'Indestructible' esta en el texto y no en kw"
-  ],
-  "texto": "Lifelink | Target artifact or creature you control gains hexproof and indestructible until end of turn. (Then exile this card. You may cast the creature later from exile.)"
- },
- {
-  "carta": "Óin the Brave",
-  "copias": 3,
-  "estado": "MAL_LEIDA",
-  "coste": "{1}{R}",
-  "tipo": "Legendary Creature — Dwarf Warrior",
-  "pt": "1/3",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "COND_BUFF",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 1,
-  "tax_atk": 0,
-  "sospechas": [
-   "ACTIVADA_GRATIS: hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
-  ],
-  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Óin gets +1/+0 and has haste. | {1}, {T}, Discard a card: Draw a card."
- },
- {
-  "carta": "Eagle's Rescue",
-  "copias": 2,
-  "estado": "MAL_LEIDA",
-  "coste": "{2}{W/U}{W/U}",
-  "tipo": "Enchantment — Aura",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "EQUIP",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "ACTIVADA_GRATIS: hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
-  ],
-  "texto": "Enchant creature | Enchanted creature gets +2/+2 and has flying. | {2}{W/U}{W/U}: Return this card from your graveyard to the battlefield attached to target creature you control with power 1 or less. Activate only as a sorcery."
+  "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature or pay {4}. | Destroy target creature."
  },
  {
   "carta": "Elven Raft-Steerer",
@@ -215,26 +43,6 @@
   "texto": "Landfall — Whenever a land you control enters, choose one — | • Tap target creature an opponent controls. | • Untap target creature you control."
  },
  {
-  "carta": "Thranduil's Company",
-  "copias": 2,
-  "estado": "MAL_LEIDA",
-  "coste": "{2}{G}{U}",
-  "tipo": "Creature — Elf Soldier",
-  "pt": "3/4",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 2,
-  "motor": "COND_BUFF/ETB_COUNTERS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"as long as\""
-  ],
-  "texto": "As long as you control another Elf, you may play an additional land on each of your turns. | Landfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control. It gains vigilance until end of turn."
- },
- {
   "carta": "Bard's Company",
   "copias": 1,
   "estado": "MAL_LEIDA",
@@ -250,8 +58,7 @@
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [
-   "COND_SIEMPRE: LORD lo aplica siempre, pero el texto lo condiciona a \"if you control\"",
-   "KW_PERDIDA: 'Flash' esta en el texto y no en kw"
+   "COND_SIEMPRE: LORD lo aplica siempre, pero el texto lo condiciona a \"if you control\""
   ],
   "texto": "You may cast this spell as though it had flash if you control a Human. | Other creatures you control get +1/+1. | Whenever this creature enters or attacks, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)"
  },
@@ -276,26 +83,6 @@
   "texto": "Whenever a token you control enters, you gain 1 life if this is the first time this ability has resolved this turn. If it's the second time, draw a card. If it's the third time, put a +1/+1 counter on each creature you control."
  },
  {
-  "carta": "Beorn's Hospitality",
-  "copias": 1,
-  "estado": "MAL_LEIDA",
-  "coste": "{1}{G}",
-  "tipo": "Enchantment",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 2,
-  "motor": "COND_BUFF/ETB_COUNTERS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [
-   "ACTIVADA_GRATIS: hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
-  ],
-  "texto": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control. | {5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains \"This creature's power and toughness are each equal to the number of lands you control.\" (This effect doesn't end.)"
- },
- {
   "carta": "Momo, Playful Pet",
   "copias": 1,
   "estado": "MAL_LEIDA",
@@ -317,26 +104,6 @@
    "SALIR_COMO_ENTRAR: el disparo es al morir/irse y LIFEGAIN esta en ranura de entrada"
   ],
   "texto": "Flying, vigilance | When Momo leaves the battlefield, choose one — | • Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") | • Put a +1/+1 counter on target creature you control. | • Scry 2."
- },
- {
-  "carta": "Front Porch Sentries",
-  "copias": 2,
-  "estado": "MUDA",
-  "coste": "{1}{B}",
-  "tipo": "Creature — Goblin Soldier",
-  "pt": "2/2",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "When this creature dies, target creature an opponent controls gets -1/-1 until end of turn."
  },
  {
   "carta": "Giant's Boulder",
@@ -419,6 +186,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Pay 2 life: This creature gets +2/+2 until end of turn. Activate only once each turn."
+ },
+ {
+  "carta": "Foggy Swamp Hunters",
+  "copias": 1,
+  "estado": "MUDA",
+  "coste": "{3}{B}",
+  "tipo": "Creature — Human Ranger Ally",
+  "pt": "3/4",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 1,
+  "ranuras": 0,
+  "motor": "NADA",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "As long as you've drawn two or more cards this turn, this creature has lifelink and menace. (It can't be blocked except by two or more creatures.)"
  },
  {
   "carta": "Gollum, Riddle Master",
@@ -540,24 +327,6 @@
   "texto": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. | Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)"
  },
  {
-  "carta": "Enchanted River's Grasp",
-  "copias": 4,
-  "estado": "MUDA",
-  "coste": "{2}{U}",
-  "tipo": "Enchantment — Aura",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Enchant creature | When this Aura enters, tap enchanted creature and remove all counters from it. | Enchanted creature loses all abilities and doesn't untap during its controller's untap step."
- },
- {
   "carta": "Mirkwood Nurturer",
   "copias": 4,
   "estado": "MUDA",
@@ -574,24 +343,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "When this creature enters, return up to one other target permanent you control to its owner's hand. If you do, put a +1/+1 counter on this creature."
- },
- {
-  "carta": "Razor Rings",
-  "copias": 4,
-  "estado": "MUDA",
-  "coste": "{1}{W}",
-  "tipo": "Instant",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Razor Rings deals 4 damage to target attacking or blocking creature. You gain life equal to the excess damage dealt this way."
  },
  {
   "carta": "Elvenking's Harper",
@@ -720,24 +471,6 @@
   "texto": "Whenever another Ally you control enters, put a +1/+1 counter on this creature."
  },
  {
-  "carta": "Avatar's Wrath",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{2}{W}{W}",
-  "tipo": "Sorcery",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 3,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Choose up to one target creature, then airbend all other creatures. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.) | Until your next turn, your opponents can't cast spells from anywhere other than their hands. | Exile Avatar's Wrath."
- },
- {
   "carta": "Beifong's Bounty Hunters",
   "copias": 1,
   "estado": "MUDA",
@@ -846,24 +579,6 @@
   "texto": "Equip abilities you activate that target this creature cost {2} less to activate."
  },
  {
-  "carta": "Earth Kingdom Jailer",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{2}{W}",
-  "tipo": "Creature — Human Soldier Ally",
-  "pt": "3/3",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "When this creature enters, exile up to one target artifact, creature, or enchantment an opponent controls with mana value 3 or greater until this creature leaves the battlefield."
- },
- {
   "carta": "Earth Village Ruffians",
   "copias": 1,
   "estado": "MUDA",
@@ -934,42 +649,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.) | {1}{R}{R}: Put a +1/+1 counter on this creature."
- },
- {
-  "carta": "Honest Work",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{U}",
-  "tipo": "Enchantment — Aura",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Enchant creature an opponent controls | When this Aura enters, tap enchanted creature and remove all counters from it. | Enchanted creature loses all abilities and is a Citizen with base power and toughness 1/1 and \"{T}: Add {C}\" named Humble Merchant. (It loses all other creature types and names.)"
- },
- {
-  "carta": "How to Start a Riot",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{2}{R}",
-  "tipo": "Instant — Lesson",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Target creature gains menace until end of turn. (It can't be blocked except by two or more creatures.) | Creatures target player controls get +2/+0 until end of turn."
  },
  {
   "carta": "Jasmine Dragon Tea Shop",
@@ -1224,42 +903,6 @@
   "texto": "{3}: Until end of turn, this creature has base power 4 and gains trample."
  },
  {
-  "carta": "Watery Grasp",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{U}",
-  "tipo": "Enchantment — Aura",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Enchant creature | Enchanted creature doesn't untap during its controller's untap step. | Waterbend {5}: Enchanted creature's owner shuffles it into their library. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)"
- },
- {
-  "carta": "Yip Yip!",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{W}",
-  "tipo": "Instant — Lesson",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Target creature you control gets +2/+2 until end of turn. If that creature is an Ally, it also gains flying until end of turn."
- },
- {
   "carta": "Crude Bent Blade",
   "copias": 5,
   "estado": "A_MEDIAS",
@@ -1279,6 +922,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "When this Equipment enters, target opponent sacrifices a creature of their choice. | Equipped creature gets +2/+1. | Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)"
+ },
+ {
+  "carta": "Warg Tactics",
+  "copias": 5,
+  "estado": "A_MEDIAS",
+  "coste": "{1}{G}",
+  "tipo": "Instant",
+  "pt": "",
+  "en_mazo": [
+   "standard"
+  ],
+  "frases": 3,
+  "ranuras": 1,
+  "motor": "DESTROY",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Choose one — | • Destroy target creature with flying. | • Put a +1/+1 counter on target creature you control. It gains trample and hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)"
  },
  {
   "carta": "Duskwatch Hunter",
@@ -1301,25 +964,25 @@
   "texto": "This creature can't be blocked by tokens. | When this creature enters, put a +1/+1 counter on target creature."
  },
  {
-  "carta": "Stir Up Trouble",
-  "copias": 3,
+  "carta": "Gollum the Abandoned",
+  "copias": 2,
   "estado": "A_MEDIAS",
-  "coste": "{B}",
-  "tipo": "Sorcery",
-  "pt": "",
+  "coste": "{1}{B}",
+  "tipo": "Legendary Creature — Halfling Horror",
+  "pt": "2/2",
   "en_mazo": [
-   "pauper",
+   "standard",
    "brawl"
   ],
-  "frases": 2,
+  "frases": 3,
   "ranuras": 1,
-  "motor": "DESTROY",
+  "motor": "ETB_DRAIN",
   "motor_extra": "",
   "kw": [],
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature or pay {4}. | Destroy target creature."
+  "texto": "Gollum can't block. | When Gollum enters, exile up to one target card from an opponent's graveyard. Each opponent loses 2 life. | {2}, Sacrifice an artifact or creature: Return this card from your graveyard to your hand. Activate only as a sorcery."
  },
  {
   "carta": "Great Ugly-Looking Goblin // Clap! Snap!",
@@ -1463,6 +1126,28 @@
   "texto": "At the beginning of combat on your turn, target creature you control with a +1/+1 counter on it gains menace until end of turn. (It can't be blocked except by two or more creatures.) | Exhaust — {5}: Put two +1/+1 counters on this creature. (Activate each exhaust ability only once.)"
  },
  {
+  "carta": "Phoenix Fleet Airship",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{B}{B}",
+  "tipo": "Artifact — Vehicle",
+  "pt": "4/4",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "kw=ETB_DMG",
+  "kw": [
+   "Flying"
+  ],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Flying | At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle. | As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature. | Crew 1"
+ },
+ {
   "carta": "Ragged Short Spear",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -1597,6 +1282,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Choose one — | • Counter target spell unless its controller pays {4}. | • Draw two cards, then discard a card."
+ },
+ {
+  "carta": "Enchanted River's Grasp",
+  "copias": 4,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{U}",
+  "tipo": "Enchantment — Aura",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "TAPDOWN",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Enchant creature | When this Aura enters, tap enchanted creature and remove all counters from it. | Enchanted creature loses all abilities and doesn't untap during its controller's untap step."
  },
  {
   "carta": "Moment of Glory",
@@ -1747,6 +1450,24 @@
   "texto": "Draw a card. If this spell was cast from a graveyard, draw two cards instead. | Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)"
  },
  {
+  "carta": "Óin the Brave",
+  "copias": 3,
+  "estado": "A_MEDIAS",
+  "coste": "{1}{R}",
+  "tipo": "Legendary Creature — Dwarf Warrior",
+  "pt": "1/3",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 1,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Óin gets +1/+0 and has haste. | {1}, {T}, Discard a card: Draw a card."
+ },
+ {
   "carta": "Burn, Burn, Tree and Fern",
   "copias": 2,
   "estado": "A_MEDIAS",
@@ -1817,6 +1538,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This creature has lifelink as long as you control another Dwarf. | When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order."
+ },
+ {
+  "carta": "Eagle's Rescue",
+  "copias": 2,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{W/U}{W/U}",
+  "tipo": "Enchantment — Aura",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "EQUIP",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Enchant creature | Enchanted creature gets +2/+2 and has flying. | {2}{W/U}{W/U}: Return this card from your graveyard to the battlefield attached to target creature you control with power 1 or less. Activate only as a sorcery."
  },
  {
   "carta": "Magnificent End",
@@ -1891,6 +1630,24 @@
   "texto": "Choose one — | • Creatures you control get +2/+1 until end of turn. | • Destroy target artifact or enchantment. You gain 2 life."
  },
  {
+  "carta": "Thranduil's Company",
+  "copias": 2,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{G}{U}",
+  "tipo": "Creature — Elf Soldier",
+  "pt": "3/4",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "ETB_COUNTERS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "As long as you control another Elf, you may play an additional land on each of your turns. | Landfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control. It gains vigilance until end of turn."
+ },
+ {
   "carta": "Thranduil, Sindarin Liege // Silvan Rally",
   "copias": 2,
   "estado": "A_MEDIAS",
@@ -1963,6 +1720,42 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Airbend target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.) | Draw a card."
+ },
+ {
+  "carta": "Along the Crooked Way",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{B}",
+  "tipo": "Enchantment",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 3,
+  "ranuras": 2,
+  "motor": "REANIMATE/AMASS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "When this enchantment enters, return target creature card from your graveyard to your hand. | Whenever a creature card leaves your graveyard, amass Goblins 1. | {1}{B}: Goblins and Orcs you control gain menace until end of turn."
+ },
+ {
+  "carta": "Avatar's Wrath",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{W}{W}",
+  "tipo": "Sorcery",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 3,
+  "ranuras": 1,
+  "motor": "SWEEPER",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Choose up to one target creature, then airbend all other creatures. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.) | Until your next turn, your opponents can't cast spells from anywhere other than their hands. | Exile Avatar's Wrath."
  },
  {
   "carta": "Bifur, Melodic Rider",
@@ -2163,6 +1956,42 @@
   "texto": "When this Equipment enters, amass Goblins 1, then attach this Equipment to the amassed Army. (To amass Goblins 1, put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.) | Equipped creature gets +1/+0 and has menace. | Equip {4}"
  },
  {
+  "carta": "Honest Work",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{U}",
+  "tipo": "Enchantment — Aura",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "TAPDOWN",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Enchant creature an opponent controls | When this Aura enters, tap enchanted creature and remove all counters from it. | Enchanted creature loses all abilities and is a Citizen with base power and toughness 1/1 and \"{T}: Add {C}\" named Humble Merchant. (It loses all other creature types and names.)"
+ },
+ {
+  "carta": "How to Start a Riot",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{R}",
+  "tipo": "Instant — Lesson",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "TEAM_PUMP",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Target creature gains menace until end of turn. (It can't be blocked except by two or more creatures.) | Creatures target player controls get +2/+0 until end of turn."
+ },
+ {
   "carta": "Kyoshi Village",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -2256,26 +2085,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This land enters tapped. | {T}: Add {W} or {U}. | {4}, {T}, Sacrifice this land: Draw a card."
- },
- {
-  "carta": "Phoenix Fleet Airship",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{2}{B}{B}",
-  "tipo": "Artifact — Vehicle",
-  "pt": "4/4",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "NADA",
-  "motor_extra": "kw=ETB_DMG",
-  "kw": [
-   "Flying"
-  ],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Flying | At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle. | As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature. | Crew 1"
  },
  {
   "carta": "Platypus-Bear",
@@ -2390,6 +2199,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This spell costs {1} less to cast if it targets an attacking nontoken creature. | Target creature's owner puts it on their choice of the top or bottom of their library."
+ },
+ {
+  "carta": "Watery Grasp",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{U}",
+  "tipo": "Enchantment — Aura",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "TAPDOWN",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Enchant creature | Enchanted creature doesn't untap during its controller's untap step. | Waterbend {5}: Enchanted creature's owner shuffles it into their library. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)"
  },
  {
   "carta": "Wizard's Staff",
@@ -2628,6 +2455,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Destroy target creature."
+ },
+ {
+  "carta": "Front Porch Sentries",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{1}{B}",
+  "tipo": "Creature — Goblin Soldier",
+  "pt": "2/2",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "die_eff=DMG_SPELL",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "When this creature dies, target creature an opponent controls gets -1/-1 until end of turn."
  },
  {
   "carta": "Gollum, Silent Slinker // Meager Meal",
@@ -2960,6 +2807,26 @@
   "texto": "Reach | This creature can't be blocked by creatures with power 2 or less. | Whenever this creature becomes the target of a spell or ability an opponent controls, draw a card."
  },
  {
+  "carta": "Smaug's Fury",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{1}{R}",
+  "tipo": "Instant",
+  "pt": "",
+  "en_mazo": [
+   "pauper"
+  ],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "PUMP",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Target creature gets +3/+0 and gains reach and first strike until end of turn."
+ },
+ {
   "carta": "The Sackville-Bagginses",
   "copias": 1,
   "estado": "ok",
@@ -2979,6 +2846,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "When The Sackville-Bagginses enter, you may sacrifice another creature or artifact. If you do, draw a card and create a Treasure token. | Whenever you sacrifice a token, target opponent loses 1 life."
+ },
+ {
+  "carta": "Thrór's Map",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{2}",
+  "tipo": "Legendary Artifact",
+  "pt": "",
+  "en_mazo": [
+   "standard"
+  ],
+  "frases": 2,
+  "ranuras": 2,
+  "motor": "RAMP/RAMP",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "When Thrór's Map enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle. | {2}, {T}: Draw a card, then discard a card."
  },
  {
   "carta": "Walltop Sentries",
@@ -3002,6 +2889,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Reach, deathtouch | When this creature dies, if there's a Lesson card in your graveyard, you gain 2 life."
+ },
+ {
+  "carta": "Bofur, Reliable Guardian // Concerted Care",
+  "copias": 5,
+  "estado": "ok",
+  "coste": "{W} // {1}{W}",
+  "tipo": "Legendary Creature — Dwarf Scout // Instant — Adventure",
+  "pt": "1/1",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "kw=ETB_DISCARD",
+  "kw": [
+   "Lifelink"
+  ],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Lifelink | Target artifact or creature you control gains hexproof and indestructible until end of turn. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
   "carta": "Ordinary Bear",
@@ -3098,6 +3005,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Flash | When this creature enters, untap another target creature you control. If that creature is a Bear, put a +1/+1 counter on it."
+ },
+ {
+  "carta": "Razor Rings",
+  "copias": 4,
+  "estado": "ok",
+  "coste": "{1}{W}",
+  "tipo": "Instant",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "DMG_SPELL",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Razor Rings deals 4 damage to target attacking or blocking creature. You gain life equal to the excess damage dealt this way."
  },
  {
   "carta": "Shared Roots",
@@ -3312,8 +3237,8 @@
   "pt": "4/3",
   "en_mazo": [],
   "frases": 1,
-  "ranuras": 1,
-  "motor": "NADA",
+  "ranuras": 2,
+  "motor": "DMG_SPELL",
   "motor_extra": "kw=?",
   "kw": [
    "Reach"
@@ -3436,6 +3361,24 @@
   "texto": "When this creature enters, search your library for a Forest card, put that card onto the battlefield, then shuffle."
  },
  {
+  "carta": "Beorn's Hospitality",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{1}{G}",
+  "tipo": "Enchantment",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 2,
+  "motor": "COND_BUFF/ETB_COUNTERS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control. | {5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains \"This creature's power and toughness are each equal to the number of lands you control.\" (This effect doesn't end.)"
+ },
+ {
   "carta": "Compassionate Healer",
   "copias": 1,
   "estado": "ok",
@@ -3472,6 +3415,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "First strike | Whenever Dwalin enters or attacks, put a hone counter on each Equipment you control. (Each hone counter on an Equipment grants +1/+0 to equipped creature.)"
+ },
+ {
+  "carta": "Earth Kingdom Jailer",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{2}{W}",
+  "tipo": "Creature — Human Soldier Ally",
+  "pt": "3/3",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "EXILE",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "When this creature enters, exile up to one target artifact, creature, or enchantment an opponent controls with mana value 3 or greater until this creature leaves the battlefield."
  },
  {
   "carta": "Earth Rumble",
@@ -3928,6 +3889,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control."
+ },
+ {
+  "carta": "Yip Yip!",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{W}",
+  "tipo": "Instant — Lesson",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "PUMP",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Target creature you control gets +2/+2 until end of turn. If that creature is an Ally, it also gains flying until end of turn."
  },
  {
   "carta": "Zhao, Ruthless Admiral",

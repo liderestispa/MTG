@@ -78,6 +78,11 @@ def num(s, d=1):
     if s.isdigit(): return int(s)
     return NUMW.get(s.lower(), d)
 
+def tl_es_hechizo(tl):
+    """Instantaneo o conjuro: un pump ahi es un truco de combate, no un cuerpo."""
+    return 'instant' in tl or 'sorcery' in tl
+
+
 def parse_card(c):
     t = (c.get('type_line') or '')
     txt = (c.get('oracle_text') or '')
@@ -118,6 +123,10 @@ def parse_card(c):
     # en vez de ganar cartas que no existen. Modelar la eleccion de verdad pide una
     # ranura nueva en el motor, no una regla en el extractor.
     # Ablacion: MODAL_TODO=1.
+    if os.environ.get('MODAL_TODO') != '1' and \
+            re.search(r'if this is the (?:second|third) time', low):
+        # se queda el PRIMER escalon: el resto exige que la habilidad ya haya resuelto
+        low = re.split(r'if it.s the second time', low)[0]
     if os.environ.get('MODAL_TODO') != '1' and re.search(r'choose one', low):
         _vistos = 0; _lineas = []
         for _l in low.split('\n'):
@@ -525,6 +534,7 @@ def parse_card(c):
             if not re.search(r'is put into a graveyard from the battlefield|'
                              r'\bdies\b|leaves the battlefield', _lin): continue
             if not re.match(r'\s*when', _lin): continue      # "whenever a creature dies"
+            # si el disparo de salida es modal, el primer bullet va pegado abajo
             _tambien_al_entrar = bool(re.search(r'enters or (?:is put into|leaves)', _lin))
             _cl = _lin
             break
@@ -680,6 +690,57 @@ def parse_card(c):
             if _c: out['coste_extra'] = _c
             break
 
+    # ================= cartas que quedaban MUDAS =================
+    # Las 50 de out/ficha_coleccion.json, agrupadas por familia. El catalogo completo
+    # —incluido lo que NO se puede modelar y por que— esta en data/habilidades.md.
+    # Cada una solo escribe si la ranura esta libre, para no pisar lecturas mejores.
+    if os.environ.get('MUDAS_OFF') != '1':
+
+        # AURA QUE TRABA: "no se endereza" y/o "pierde todas las habilidades". No es un
+        # tapdown de un turno, es remocion permanente disfrazada. Se modela con
+        # E_TAPDOWN y una congelacion larga (frz = a-1 turnos), que en una partida de 14
+        # turnos equivale a sacarla del juego. Enchanted River's Grasp son 4 copias.
+        if 'enchant creature' in low and out['eff'] == E['NONE']:
+            if re.search(r"(?:doesn't|does not) untap during its controller's untap step"
+                         r"|loses all abilities", low):
+                setp(E['TAPDOWN'], 6)
+
+        # EXILIO CONDICIONADO POR COSTE: "exilia ... que un oponente controle con coste
+        # convertido 3 o mas". El motor no filtra por coste y se lleva la mayor amenaza,
+        # que es generoso pero casi siempre coincide: lo que quieres exiliar suele valer 3+.
+        if re.search(r'exile up to one target[^.]*an opponent controls', low) \
+                and out['eff'] == E['NONE']:
+            setp(E['EXILE'], 1)
+
+        # BARRIDO POR EXILIO: "airbend all other creatures" exilia todo lo demas. Que el
+        # dueno pueda relanzarlo por {2} lo hace peor que un barrido normal, pero el motor
+        # no tiene esa zona; se modela como barrido grande, que es lo que hace en la mesa.
+        if re.search(r'airbend all other creatures|exile all other creatures', low) \
+                and out['eff'] == E['NONE']:
+            setp(E['SWEEPER'], 6)
+
+        # PUMP DE EQUIPO en un hechizo: "las criaturas que controla el jugador objetivo
+        # obtienen +N/+0". Es un remate de mazo ancho.
+        _tp = re.search(r'creatures target player controls get \+(\d+)/\+\d+', low)
+        if _tp and out['eff'] == E['NONE']:
+            setp(E['TEAM_PUMP'], int(_tp.group(1)))
+
+        # PUMP DIRIGIDO en un hechizo suelto: "la criatura objetivo que controlas obtiene
+        # +N/+N". La regla general solo cubria el caso con otras palabras.
+        _pu = re.search(r'target creature (?:you control )?gets \+(\d+)/\+(\d+)', low)
+        if _pu and out['eff'] == E['NONE'] and tl_es_hechizo(tl):
+            setp(E['PUMP'], int(_pu.group(1)), int(_pu.group(2)))
+
+        # AL MORIR, ENCOGE ALGO: "cuando muere, la criatura objetivo del oponente obtiene
+        # -N/-N". Se modela como dano en la ranura de cementerio, que es donde va.
+        if not out.get('die_eff'):
+            for _l in low.split('\n'):
+                if not re.match(r'\s*when', _l) or ' dies' not in _l: continue
+                _mn = re.search(r'gets -(\d+)/-(\d+)', _l)
+                if _mn:
+                    out['die_eff'] = E['DMG_SPELL']; out['die_p1'] = int(_mn.group(2))
+                break
+
     # ---- CONDICION de los efectos estaticos ----
     # E_COND_BUFF, E_TAX y E_LORD se aplicaban siempre. Ahora llevan un codigo de
     # condicion que el motor cobra en cumple_cond(). Sin esto, Dain daba su prision
@@ -687,6 +748,12 @@ def parse_card(c):
     if re.search(r'\bstoried\b', low):                    out['cond'] = 1
     elif re.search(r'ferocious|creature with power 4 or greater', low): out['cond'] = 2
     elif re.search(r'\bmetalcraft\b', low):               out['cond'] = 3
+
+    if os.environ.get('COND_LAXA') != '1' and not out.get('cond'):
+        _GATE = re.compile(r'as long as|only if|while you|if you control (?:a|an|another)')
+        for _s3, _p3, _q3 in (('eff', 'p1', 'p2'), ('eff2', 'q1', 'q2'), ('eff3', 'r1', 'r2')):
+            if out[_s3] in (E['COND_BUFF'], E['TAX']) and _GATE.search(low):
+                out[_s3] = E['NONE']; out[_p3] = 0; out[_q3] = 0
 
     # El impuesto: ¿grava ATACAR o LANZAR? Confundirlos inflaba a Dain 17 puntos.
     if re.search(r"can't attack .{0,40}unless|attacks? .{0,30}unless .{0,25}pays?", low):

@@ -131,18 +131,39 @@ def sospechas(c, e):
                     f"el coste adicional no se cobra: \"{_m.group(0)[:70].strip()}\""))
 
     if _ACTIVADA.search(t) and llenas and not e.get('act_eff'):
-        # las de solo mana ya se descartan en cobertura_texto; aqui filtramos igual
-        if not re.search(r':\s*add \{', low):
+        # Solo es sospecha si TODO el texto con efecto es activado. Una carta con un
+        # disparo de entrada normal MAS una habilidad activada aparte no tiene problema:
+        # el efecto leido viene de la entrada. Sin esta guarda el detector marcaba a
+        # Thror's Map, Gollum the Abandoned, Oin the Brave y Beorn's Hospitality, que
+        # estan bien leidas desde que se filtran las activadas en el extractor.
+        _ES_ACT = re.compile(r'^\s*(?:\{[^}]+\}|sacrifice|tap|discard|exile|pay'
+                             r'|remove)[^:]{0,40}:')
+        _resto = [l for l in low.split(chr(10)) if l.strip() and not _ES_ACT.match(l)]
+        _VERBO = re.compile(r'\b(when|whenever|at the beginning|draw|destroy|exile'
+                            r'|deals|gain|create|return|search|counter|put|gets|becomes'
+                            r'|enchanted|equipped)\b')
+        _hay_otro = any(_VERBO.search(l) for l in _resto)
+        if not re.search(r':\s*add \{', low) and not _hay_otro:
             out.append(('ACTIVADA_GRATIS',
-                        "hay coste de activacion en el texto y el efecto esta en ranura "
-                        "libre: el motor lo ejecuta solo y sin pagar"))
+                        "TODO el texto con efecto es activado y aun asi hay ranura llena: "
+                        "el motor lo ejecuta solo y sin pagar"))
 
     for nombre, bit in KWBIT.items():
-        if re.search(r'\b' + re.escape(nombre.lower()) + r'\b', low) and not (e['kw'] & bit):
-            # "flying" aparece en "creatures with flying" sin que la carta vuele
-            if re.search(r'(with|without|gains?|have|has) ' + re.escape(nombre.lower()), low):
-                continue
-            out.append(('KW_PERDIDA', f"'{nombre}' esta en el texto y no en kw"))
+        _k = re.escape(nombre.lower())
+        if not re.search(r'\b' + _k + r'\b', low) or (e['kw'] & bit):
+            continue
+        # La carta OTORGA la palabra clave, no la tiene. Ojo con las LISTAS: "gains
+        # trample and hexproof", "has lifelink and menace", "as though it had flash".
+        # El verbo queda lejos, asi que hay que permitir palabras en medio. Sin esto el
+        # detector marcaba como error Warg Tactics, Smaug's Fury, Bofur, Foggy Swamp
+        # Hunters y Bard's Company, que estan todas bien leidas.
+        if re.search(r'\b(?:with|without|gains?|have|has|had)\b'
+                     r'(?:\s+(?:and|or|,)?\s*\w+){0,4}\s+' + _k, low):
+            continue
+        # "las criaturas con vigilancia que controlas", "criaturas sin volar"
+        if re.search(r'creatures?\b[^.]{0,50}' + _k, low):
+            continue
+        out.append(('KW_PERDIDA', f"'{nombre}' esta en el texto y no en kw"))
 
     if _SIMETRICO.search(low) and llenas:
         unilaterales = {E['SWEEPER'], E['ETB_DISCARD'], E['ETB_DMG'], E['DMG_SPELL'],
