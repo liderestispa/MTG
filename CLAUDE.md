@@ -369,7 +369,39 @@ Los ciclos 13 al 23 dan entre −0,004 y +0,012, todo ruido. Ojo al leer ese log
 nuevo entro a las 19:26, entre el ciclo 4 y el 5, asi que los primeros ciclos se midieron
 contra el banco viejo y no son comparables con los siguientes.
 
+## Standard Brawl, 18-ago: el blanco NO era el camino
+
+La pregunta era "¿el blanco es mi camino?". El buscador decía que sí y estaba apoyado en
+cartas mal leídas. Con el motor corregido, **los seis mejores comandantes de la colección
+son negros** y el blanco cae al puesto 10:
+
+| | obj | | obj |
+|---|---|---|---|
+| The Sackville-Bagginses (B) | 32,69 | Bolg of the North (BR) | 22,10 |
+| Gollum, Silent Slinker (B) | 31,62 | Belladonna Took (W) | 21,85 |
+| Gollum the Abandoned (B) | 29,34 | Momo, Playful Pet (W) | 21,65 |
+| Tom, Bert, and William (BG) | 28,98 | Thorin Oakenshield (RW) | 19,92 |
+
+**Dáin ni aparece en el top 14**, y antes marcaba 51,44. Su nota venía de que el motor
+gravaba lanzar hechizos en vez de atacar, y sin exigir Storied.
+
+Gana **Gollum, Silent Slinker // Meager Meal** con 33,2% contra el campo: cuarto de siete,
+por encima de Tifa, Kona y Eluge y por debajo de Sephiroth, Ketramose y Elspeth. Informe
+completo en `out/informe_brawl.md`, que lo genera `src/informe_brawl.py`.
+
+**Dos avisos sobre esa búsqueda.** La ventaja sobre la semilla codiciosa es de solo
+**+1,56** (31,62 → 33,18), muy lejos de los +13/+14 de Standard y Pauper: en Brawl,
+singleton y con un pool chico, el buscador casi no tiene margen. Y el motor lee bien 77 de
+las 204 cartas de la colección, así que las 51 mudas están **infravaloradas** y el
+buscador las descarta por defecto.
+
 ## Trampas ya encontradas (no las repitas)
+
+- **"Add one mana of any color. Spend this mana only to cast X" se lee sin la
+  restricción.** Jasmine Dragon Tea Shop queda con `produces=31`, o sea una tierra de
+  cinco colores perfecta. En un mazo mono-color da igual —medido, 33,22% con ella y con un
+  pantano— pero le haría creer al buscador que puede armar cinco colores con una tierra
+  que en realidad solo paga Aliados.
 
 La lista larga, con síntoma y arreglo de cada una, está en `docs/trampas.md`. Ese archivo manda;
 esto es el resumen.

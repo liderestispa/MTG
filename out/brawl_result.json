@@ -1,7 +1,7 @@
 {
- "commander": "The Sackville-Bagginses",
+ "commander": "Gollum, Silent Slinker // Meager Meal",
  "ci": "B",
- "obj": 0.344802,
+ "obj": 0.33182700000000004,
  "spells": [
   "Ravening Warg",
   "Stony-Voiced Goblins",
@@ -14,11 +14,9 @@
   "Front Porch Sentries",
   "Giant's Boulder",
   "Gollum the Abandoned",
-  "Gollum, Silent Slinker // Meager Meal",
   "Great Ugly-Looking Goblin // Clap! Snap!",
   "Head of the Hunt",
   "Old Thrush",
-  "Along the Crooked Way",
   "Beetle-Headed Merchants",
   "Bender's Waterskin",
   "Boiling Rock Rioter",
@@ -36,7 +34,9 @@
   "Joo Dee, One of Many",
   "Key to the Side-Door",
   "Merchant of Many Hats",
+  "Phoenix Fleet Airship",
   "Reverent Howl",
+  "The Sackville-Bagginses",
   "Troop of Ponies"
  ],
  "lands": [
