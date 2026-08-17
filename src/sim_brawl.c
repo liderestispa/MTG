@@ -31,7 +31,7 @@ enum { E_NONE=0, E_ETB_DMG=1, E_ETB_DRAIN=2, E_ETB_DRAW=3, E_ETB_DISCARD=4, E_ET
        E_UPKEEP_DRAW=36, E_REPEAT_PUMP=37, E_TEAM_PUMP=38, E_FOG_BOUNCE=39,
        E_MOBILIZE=40, E_MASS_CHEAT=41, E_DEATH_DMG=42, E_ATTACK_DRAW=43,
        E_RECURSIVE=44, E_TEAM_MANA=45, E_ATTACK_DMG=46, E_PROTECT=47,
-       E_DMG_ANY=48, E_EDICT=49, E_TAPDOWN=50, E_TAX=51,
+       E_DMG_ANY=48, E_EDICT=49, E_TAPDOWN=50, E_TAX=51, E_TMP_PUMP=55,
        E_LAND_KILL=52, E_MASS_BOUNCE=53,
        /* al entrar produce mana que dura solo este turno (Burning-Tree Emissary).
           No es un Tesoro: si sobra, se pierde al acabar el turno. */
@@ -45,7 +45,7 @@ typedef struct {
   int16_t die_p1;
   uint8_t act_eff, act_cost;  /* habilidad ACTIVADA: efecto y coste (1=sacrificar un
                                  artefacto). La decision de activarla es del jugador. */
-  int16_t act_p1;
+  int16_t act_p1, act_p2;
   uint8_t act_mana;    /* coste generico de la habilidad activada. Antes
                           solo se sabia cobrar 'sacrifica un artefacto', asi
                           que todo lo que pedia mana quedaba mudo. */
@@ -289,6 +289,7 @@ typedef struct {
   int taxed;                                     /* impuesto que le cobra el rival */
   int16_t ctr[BFMAX];     /* contadores +1/+1 */
   int16_t eqp[BFMAX];     /* bono de equipo acumulado (p<<8|t) */
+  int16_t tmp_p[BFMAX], tmp_t[BFMAX];  /* bono HASTA EL FINAL DEL TURNO */
   int lands[BFMAX], nl;   /* indices de def de tierras en juego */
   uint8_t ltap[BFMAX];
   int army;               /* indice bf del Army de amass, -1 */
@@ -397,9 +398,9 @@ static inline int dynbase(P*p,int i){
   return 4;
 }
 static inline int pw(P*p,int i){ int b=dynbase(p,i);
-  return (b>=0?b:D[p->bf[i]].power) + p->ctr[i] + (p->eqp[i]>>8); }
+  return (b>=0?b:D[p->bf[i]].power) + p->ctr[i] + (p->eqp[i]>>8) + p->tmp_p[i]; }
 static inline int th(P*p,int i){ int b=dynbase(p,i);
-  return (b>=0?b:D[p->bf[i]].tough) + p->ctr[i] + (p->eqp[i]&0xFF); }
+  return (b>=0?b:D[p->bf[i]].tough) + p->ctr[i] + (p->eqp[i]&0xFF) + p->tmp_t[i]; }
 
 /* ---- condiciones de los efectos estaticos ----
    E_COND_BUFF se llamaba condicional y se sumaba siempre; E_TAX igual. Doce cartas del
@@ -685,6 +686,7 @@ static void addbf(P*p,int def){
   if(p->nbf>=BFMAX) return;
   int i=p->nbf++;
   p->bf[i]=def; p->tap[i]=0; p->ctr[i]=0; p->eqp[i]=0;
+  p->tmp_p[i]=0; p->tmp_t[i]=0;
   p->sick[i] = (D[def].typ==T_CREA && !(D[def].kw&K_HAS)) ? 1 : 0;
 }
 static P *OPP_OF_A=0, *OPP_OF_B=0;
@@ -712,7 +714,8 @@ static void rmbf(P*p,int i){
   }
   p->nbf--;
   for(int k=i;k<p->nbf;k++){ p->bf[k]=p->bf[k+1];p->tap[k]=p->tap[k+1];p->sick[k]=p->sick[k+1];
-                             p->ctr[k]=p->ctr[k+1];p->eqp[k]=p->eqp[k+1]; }
+                             p->ctr[k]=p->ctr[k+1];p->eqp[k]=p->eqp[k+1]; p->tmp_p[k]=p->tmp_p[k+1];
+    p->tmp_t[k]=p->tmp_t[k+1]; }
   if(p->army==i) p->army=-1; else if(p->army>i) p->army--;
 }
 /* La mejor criatura que este dano SI puede matar. Un hechizo de 2 dano no debe
@@ -965,6 +968,20 @@ static void apply(P*me,P*opp,int def,int which){
       if(t>=0 && !try_protect(opp)){
         opp->tap[t]=1;
         if(a>=2) opp->frz[t]=(uint8_t)(a-1);      /* y tampoco se endereza */
+      }
+    } break;
+    case E_TMP_PUMP: {
+      /* +a/+a hasta el final del turno. p2=1 lo aplica a TODO el equipo (Dwarven
+         Provisioner), p2=0 a la mejor criatura (Timberwatch Elf). No son contadores:
+         se limpian al acabar el turno. */
+      if(d->p2){
+        for(int q=0;q<me->nbf;q++) if(D[me->bf[q]].typ==T_CREA){
+          me->tmp_p[q]+=a; me->tmp_t[q]+=a; }
+      } else {
+        int m2=-1,mv=-1;
+        for(int q=0;q<me->nbf;q++) if(D[me->bf[q]].typ==T_CREA && !me->sick[q] && pw(me,q)>mv){
+          mv=pw(me,q); m2=q; }
+        if(m2>=0){ me->tmp_p[m2]+=a; me->tmp_t[m2]+=a; }
       }
     } break;
     case E_TAX: break;         /* estatico: lo lee cast_phase via ->taxed */
@@ -1261,7 +1278,7 @@ static void activar_habilidades(P*me,P*opp){
         rmbf(me,i);
         int ts=NDEF+5; if(ts>=MAXDEF) return;
         D[ts]=D[guardado]; D[ts].eff=D[guardado].act_eff; D[ts].p1=D[guardado].act_p1;
-        D[ts].p2=0; D[ts].eff2=0; D[ts].eff3=0; D[ts].die_eff=0; D[ts].act_eff=0;
+        D[ts].p2=D[guardado].act_p2; D[ts].eff2=0; D[ts].eff3=0; D[ts].die_eff=0; D[ts].act_eff=0;
         apply(me,opp,ts,0);
         hecho=1; break;
       }
@@ -1272,7 +1289,8 @@ static void activar_habilidades(P*me,P*opp){
                                     D[me->bf[j]].act_cost==d->act_cost){ def=me->bf[j]; break; }
       if(def<0) break;
       int t=NDEF; if(t>=MAXDEF) return;
-      D[t]=D[def]; D[t].eff=D[def].act_eff; D[t].p1=D[def].act_p1; D[t].p2=0;
+      D[t]=D[def]; D[t].eff=D[def].act_eff; D[t].p1=D[def].act_p1;
+      D[t].p2=D[def].act_p2;
       D[t].eff2=0; D[t].eff3=0; D[t].die_eff=0; D[t].act_eff=0;
       apply(me,opp,t,0);
       hecho=1; break;                      /* el tablero cambio: reevaluar desde cero */
@@ -1928,6 +1946,8 @@ static int play_game_inner(const int*d1,int n1,const int*d2,int n2,int life,int 
       return (oth==&B); }
     /* el mana flotante no sobrevive al turno; los Tesoros si */
     if(cur->flot){ cur->treasures -= cur->flot; if(cur->treasures<0) cur->treasures=0; cur->flot=0; }
+    /* el bono temporal dura un turno, igual que el mana flotante */
+    for(int q=0;q<cur->nbf;q++){ cur->tmp_p[q]=0; cur->tmp_t[q]=0; }
     P*t=cur;cur=oth;oth=t;
   }
   ACC(); ST_timeout++;
@@ -1978,6 +1998,7 @@ int main(void){
     unsigned int sb_=0,ls_=0,cs_=0; int am_=0;
     scanf("%u %u %u %d",&sb_,&ls_,&cs_,&am_);
     d->act_mana=(uint8_t)am_;
+    int actp2_=0; scanf("%d",&actp2_); d->act_p2=(int16_t)actp2_;
     int sn_=0,se0=0,se1=0,se2=0,se3=0,sp0=0,sp1=0,sp2=0,sp3=0;
     scanf("%d %d %d %d %d %d %d %d %d",&sn_,&se0,&se1,&se2,&se3,
           &sp0,&sp1,&sp2,&sp3);

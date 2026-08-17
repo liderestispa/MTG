@@ -70,7 +70,8 @@ E = dict(NONE=0, ETB_DMG=1, ETB_DRAIN=2, ETB_DRAW=3, ETB_DISCARD=4, ETB_TOKEN=5,
          UPKEEP_DRAW=36, REPEAT_PUMP=37, TEAM_PUMP=38, FOG_BOUNCE=39, MOBILIZE=40,
          MASS_CHEAT=41, DEATH_DMG=42, ATTACK_DRAW=43, RECURSIVE=44, TEAM_MANA=45,
          ATTACK_DMG=46, PROTECT=47, DMG_ANY=48,
-         EDICT=49, TAPDOWN=50, TAX=51, LAND_KILL=52, MASS_BOUNCE=53, ETB_MANA=54)
+         EDICT=49, TAPDOWN=50, TAX=51, LAND_KILL=52, MASS_BOUNCE=53, ETB_MANA=54,
+         TMP_PUMP=55)
 
 NUMW = {'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'X':1}
 def num(s, d=1):
@@ -631,6 +632,31 @@ def parse_card(c):
                 elif re.search(r'sacrifice another creature|sacrifice another', _todo): _cost = 2
                 elif '{t}' in _todo:                        _cost = 3
                 elif 'pay 2 life' in _todo:                 _cost = 4
+                # "hasta el final del turno" no es un contador permanente. Antes se
+                # descartaba entero, que dejaba la carta muda; ahora va a E_TMP_PUMP,
+                # que vive un turno y se limpia. p2=1 marca que sube a TODO el equipo.
+                if os.environ.get('TMPPUMP_OFF') == '1' and \
+                        'until end of turn' in _cuerpo and not re.search(
+                            r'put \w+ \+1/\+1 counters? on', _cuerpo):
+                    continue          # ablacion: se descarta como antes
+                if 'until end of turn' in _cuerpo and not re.search(
+                        r'put \w+ \+1/\+1 counters? on', _cuerpo):
+                    # +X/+X donde X es un CONTEO (elfos en mesa, cartas en mano...).
+                    # Se estima en 2, que es conservador: en la mesa suele ser 3-4, pero
+                    # inflarlo es como leer un pump temporal como contador permanente.
+                    _tp = re.search(r'gets? \+(\d+)/\+(\d+)|base power (\d+)', _cuerpo)
+                    if not _tp and re.search(r'gets? \+x/\+x', _cuerpo):
+                        out['act_eff'] = E['TMP_PUMP']; out['act_p1'] = 2
+                        out['act_p2'] = 1 if 'creatures you control' in _cuerpo else 0
+                        out['act_cost'] = _cost; out['act_mana'] = _gen
+                        break
+                    if not _tp: continue
+                    _n = int(_tp.group(1) or _tp.group(3) or 1)
+                    out['act_eff'] = E['TMP_PUMP']; out['act_p1'] = _n
+                    out['act_p2'] = 1 if 'creatures you control' in _cuerpo else 0
+                    out['act_cost'] = _cost; out['act_mana'] = _gen
+                    break
+
                 # que hace
                 _ef = _p1 = None
                 _m2 = re.search(r'draw cards equal to', _cuerpo)
@@ -660,9 +686,6 @@ def parse_card(c):
                 # convierte a Timberwatch Elf en una bola de nieve infinita. Medido:
                 # Elves pasaba de -1,4 a +2,2 de error y Pauper perdia contra el modelo
                 # tonto. Si el efecto es temporal y no es un contador real, se descarta.
-                if 'until end of turn' in _cuerpo and not re.search(
-                        r'put \w+ \+1/\+1 counters? on', _cuerpo):
-                    continue
                 out['act_eff'] = E[_ef]; out['act_p1'] = _p1
                 out['act_cost'] = _cost; out['act_mana'] = _gen
                 break
@@ -722,6 +745,9 @@ def parse_card(c):
     for _l in low.split('\n'):
         if _RX_ATK.match(_l):
             _al = _l; break
+    # OJO: la linea puede llevar varios puntos ('...an opponent controls. Tap it,
+    # then...'), asi que los patrones de abajo miran la LINEA entera y no hasta
+    # el primer punto. Vengeful Villagers se perdia por eso.
     if _al:
         for _rx, _ef, _d in [
             (r'you gain (\w+) life',                          'LIFEGAIN',     2),
@@ -799,6 +825,20 @@ def parse_card(c):
     # —incluido lo que NO se puede modelar y por que— esta en data/habilidades.md.
     # Cada una solo escribe si la ranura esta libre, para no pisar lecturas mejores.
     if os.environ.get('MUDAS_OFF') != '1':
+
+        # REBOTE PROPIO CON PAGO: "devuelve un permanente TUYO a la mano; si lo
+        # haces, pon un +1/+1". El rebote es el coste y el contador el pago, asi que se
+        # lee el pago: leer el rebote seria modelar la carta al reves.
+        _mn = re.search(r'return up to one other target permanent you control[^.]*\.'
+                        r'\s*if you do, put (\w+) \+1/\+1 counters? on', low)
+        if _mn and out['eff'] == E['NONE']:
+            setp(E['ETB_COUNTERS'], num(_mn.group(1), 1))
+
+        # PUMP CON SUJETO IMPLICITO: "Untap target creature you control. It gets +2/+2".
+        # La regla general pide "target creature gets" y aqui el sujeto es "It".
+        _vw = re.search(r'untap target creature you control\.\s*it gets \+(\d+)/\+(\d+)', low)
+        if _vw and out['eff'] == E['NONE']:
+            setp(E['PUMP'], int(_vw.group(1)), int(_vw.group(2)))
 
         # AURA QUE TRABA: "no se endereza" y/o "pierde todas las habilidades". No es un
         # tapdown de un turno, es remocion permanente disfrazada. Se modela con

@@ -146,26 +146,6 @@
   "texto": "Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.) | Tap an untapped Ally you control: Exile target card from a graveyard. | Whenever this creature attacks, you may cast an Ally spell from among cards you own exiled with this creature."
  },
  {
-  "carta": "Desolation Prowler",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{1}{B}",
-  "tipo": "Creature — Wolf",
-  "pt": "2/2",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Pay 2 life: This creature gets +2/+2 until end of turn. Activate only once each turn."
- },
- {
   "carta": "Foggy Swamp Hunters",
   "copias": 1,
   "estado": "MUDA",
@@ -247,24 +227,6 @@
   "texto": "{2}{B}: Return this card from your graveyard to your hand."
  },
  {
-  "carta": "Mirkwood Nurturer",
-  "copias": 4,
-  "estado": "MUDA",
-  "coste": "{2}{G/U}",
-  "tipo": "Creature — Elf Ranger",
-  "pt": "3/2",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "When this creature enters, return up to one other target permanent you control to its owner's hand. If you do, put a +1/+1 counter on this creature."
- },
- {
   "carta": "Elvenking's Harper",
   "copias": 3,
   "estado": "MUDA",
@@ -281,42 +243,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "{4}{U}: Target creature can't be blocked this turn."
- },
- {
-  "carta": "Vow to Erebor",
-  "copias": 3,
-  "estado": "MUDA",
-  "coste": "{1}{W}",
-  "tipo": "Instant",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Untap target creature you control. It gets +2/+2 until end of turn. If it's a Dwarf, you may attach an Equipment you control to it."
- },
- {
-  "carta": "Dwarven Provisioner",
-  "copias": 2,
-  "estado": "MUDA",
-  "coste": "{1}{W}",
-  "tipo": "Creature — Dwarf Citizen",
-  "pt": "2/2",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "{3}{W}: Creatures you control get +1/+1 until end of turn."
  },
  {
   "carta": "Galion, Elvenking's Butler",
@@ -733,24 +659,6 @@
   "texto": "Whenever a creature you control attacks alone, it gets +X/+X until end of turn, where X is the number of creatures you control. | {2}{W}, Discard this card: It deals damage equal to the number of creatures you control to target creature."
  },
  {
-  "carta": "Turtle-Duck",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{G}",
-  "tipo": "Creature — Turtle Bird",
-  "pt": "0/4",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "{3}: Until end of turn, this creature has base power 4 and gains trample."
- },
- {
   "carta": "Crude Bent Blade",
   "copias": 5,
   "estado": "A_MEDIAS",
@@ -875,6 +783,26 @@
   "texto": "Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.) | Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
+  "carta": "Along the Crooked Way",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{B}",
+  "tipo": "Enchantment",
+  "pt": "",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 3,
+  "ranuras": 2,
+  "motor": "REANIMATE/AMASS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "When this enchantment enters, return target creature card from your graveyard to your hand. | Whenever a creature card leaves your graveyard, amass Goblins 1. | {1}{B}: Goblins and Orcs you control gain menace until end of turn."
+ },
+ {
   "carta": "Dai Li Indoctrination",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -913,26 +841,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "When this Equipment enters, attach it to target Dwarf you control. | Equipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.) | Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
- },
- {
-  "carta": "Gathering of Darkness",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery",
-  "pt": "",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "AMASS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Return up to one target creature card from your graveyard to your hand. | Amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
  },
  {
   "carta": "Gnashing of Teeth",
@@ -1592,24 +1500,6 @@
   "texto": "Airbend target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.) | Draw a card."
  },
  {
-  "carta": "Along the Crooked Way",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{2}{B}",
-  "tipo": "Enchantment",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 3,
-  "ranuras": 2,
-  "motor": "REANIMATE/AMASS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "When this enchantment enters, return target creature card from your graveyard to your hand. | Whenever a creature card leaves your graveyard, amass Goblins 1. | {1}{B}: Goblins and Orcs you control gain menace until end of turn."
- },
- {
   "carta": "Avatar's Wrath",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -1788,6 +1678,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This land enters tapped. | {T}: Add {B} or {G}. | {4}, {T}, Sacrifice this land: Draw a card."
+ },
+ {
+  "carta": "Gathering of Darkness",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{3}{B}",
+  "tipo": "Sorcery",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "AMASS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Return up to one target creature card from your graveyard to your hand. | Amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
  },
  {
   "carta": "Glider Staff",
@@ -2658,6 +2566,26 @@
   "texto": "When this creature enters, target opponent discards a card."
  },
  {
+  "carta": "Desolation Prowler",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{1}{B}",
+  "tipo": "Creature — Wolf",
+  "pt": "2/2",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "act_eff=TMP_PUMP",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Pay 2 life: This creature gets +2/+2 until end of turn. Activate only once each turn."
+ },
+ {
   "carta": "Dreaded Bat-Cloud",
   "copias": 1,
   "estado": "ok",
@@ -2970,6 +2898,24 @@
   "texto": "Flash | When this creature enters, untap another target creature you control. If that creature is a Bear, put a +1/+1 counter on it."
  },
  {
+  "carta": "Mirkwood Nurturer",
+  "copias": 4,
+  "estado": "ok",
+  "coste": "{2}{G/U}",
+  "tipo": "Creature — Elf Ranger",
+  "pt": "3/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "ETB_COUNTERS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "When this creature enters, return up to one other target permanent you control to its owner's hand. If you do, put a +1/+1 counter on this creature."
+ },
+ {
   "carta": "Razor Rings",
   "copias": 4,
   "estado": "ok",
@@ -3116,6 +3062,24 @@
   "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Ori gets +1/+0 and has vigilance."
  },
  {
+  "carta": "Vow to Erebor",
+  "copias": 3,
+  "estado": "ok",
+  "coste": "{1}{W}",
+  "tipo": "Instant",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "PUMP",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Untap target creature you control. It gets +2/+2 until end of turn. If it's a Dwarf, you may attach an Equipment you control to it."
+ },
+ {
   "carta": "Wargling",
   "copias": 3,
   "estado": "ok",
@@ -3150,6 +3114,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Óin gets +1/+0 and has haste. | {1}, {T}, Discard a card: Draw a card."
+ },
+ {
+  "carta": "Dwarven Provisioner",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{1}{W}",
+  "tipo": "Creature — Dwarf Citizen",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "act_eff=TMP_PUMP",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "{3}{W}: Creatures you control get +1/+1 until end of turn."
  },
  {
   "carta": "Dáin, Lord of the Iron Hills",
@@ -3832,6 +3814,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "{2}, {T}, Sacrifice this creature: Search your library for up to two basic land cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle."
+ },
+ {
+  "carta": "Turtle-Duck",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{G}",
+  "tipo": "Creature — Turtle Bird",
+  "pt": "0/4",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "act_eff=TMP_PUMP",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "{3}: Until end of turn, this creature has base power 4 and gains trample."
  },
  {
   "carta": "Vindictive Warden",
