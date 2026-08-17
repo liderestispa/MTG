@@ -78,6 +78,40 @@ def num(s, d=1):
     if s.isdigit(): return int(s)
     return NUMW.get(s.lower(), d)
 
+
+SUBTIPOS = ['Human', 'Elf', 'Noble', 'Goblin', 'Rabbit', 'Dwarf', 'Soldier', 'Elemental', 'Warrior', 'Ally', 'Bird', 'Druid', 'Bear', 'Bard', 'Vampire', 'Citizen', 'Rogue', 'Wolf', 'Cleric', 'Scout', 'Shaman', 'Ranger', 'Wizard', 'Knight', 'Spider', 'Horror', 'Halfling', 'Orc', 'Ninja', 'Troll', 'Beast']
+SUBBIT = {s: 1 << i for i, s in enumerate(SUBTIPOS)}
+SUB_OTRO = 1 << 31
+
+
+def subtipos_mask(c):
+    """Mascara de subtipos de criatura. Changeling = todos."""
+    tl = c.get('type_line') or ''
+    faces = c.get('card_faces') or []
+    if faces and 'Creature' not in tl:
+        tl = faces[0].get('type_line') or tl
+    if 'Creature' not in tl or '—' not in tl:
+        return 0
+    txt = (c.get('oracle_text') or '').lower()
+    if 'changeling' in txt:
+        return (1 << 31) - 1          # es de todos los tipos
+    m = 0
+    for s in tl.split('—')[1].split('//')[0].split():
+        m |= SUBBIT.get(s, SUB_OTRO)
+    return m
+
+
+def sub_referido(txt):
+    """El subtipo que NOMBRA un lord o una condicion, si es uno de los conocidos."""
+    import re as _re
+    for pat in (r'(?:other )?([A-Z][a-z]+)s you control (?:get|gain|have)',
+                r'you control (?:another|a) ([A-Z][a-z]+)\b'):
+        m = _re.search(pat, txt or '')
+        if m and m.group(1) in SUBBIT:
+            return SUBBIT[m.group(1)]
+    return 0
+
+
 def tl_es_hechizo(tl):
     """Instantaneo o conjuro: un pump ahi es un truco de combate, no un cuerpo."""
     return 'instant' in tl or 'sorcery' in tl
@@ -690,6 +724,18 @@ def parse_card(c):
             if _c: out['coste_extra'] = _c
             break
 
+    # ---- LORD TRIBAL ----
+    # "Los Humanos que controlas ganan prisa", "los Ninjas que controlas obtienen +1/+1".
+    # No se leian: ni bien ni mal, simplemente faltaban. Ahora van a E_LORD con la
+    # restriccion en lord_sub, para que solo suban a los suyos. Ablacion: SUBTIPOS_OFF=1.
+    if os.environ.get('SUBTIPOS_OFF') != '1':
+        _lt = re.search(r'(?:other )?([a-z]+)s you control get \+(\d+)/\+(\d+)', low)
+        if _lt and out['eff'] != E['LORD'] and out['eff2'] != E['LORD']:
+            _bit = sub_referido(txt)
+            if _bit:
+                setp(E['LORD'], int(_lt.group(2)), int(_lt.group(3)))
+                out['lord_sub'] = _bit
+
     # ================= cartas que quedaban MUDAS =================
     # Las 50 de out/ficha_coleccion.json, agrupadas por familia. El catalogo completo
     # —incluido lo que NO se puede modelar y por que— esta en data/habilidades.md.
@@ -745,6 +791,11 @@ def parse_card(c):
     # E_COND_BUFF, E_TAX y E_LORD se aplicaban siempre. Ahora llevan un codigo de
     # condicion que el motor cobra en cumple_cond(). Sin esto, Dain daba su prision
     # desde el turno 2 sin cumplir Storied, y el buscador de Brawl lo elegia por eso.
+    if os.environ.get('SUBTIPOS_OFF') != '1' and \
+            re.search(r'as long as you control (?:another|a) [A-Z]', txt or ''):
+        _cb = sub_referido(txt)
+        if _cb:
+            out['cond'] = 4; out['cond_sub'] = _cb
     if re.search(r'\bstoried\b', low):                    out['cond'] = 1
     elif re.search(r'ferocious|creature with power 4 or greater', low): out['cond'] = 2
     elif re.search(r'\bmetalcraft\b', low):               out['cond'] = 3
@@ -752,7 +803,8 @@ def parse_card(c):
     if os.environ.get('COND_LAXA') != '1' and not out.get('cond'):
         _GATE = re.compile(r'as long as|only if|while you|if you control (?:a|an|another)')
         for _s3, _p3, _q3 in (('eff', 'p1', 'p2'), ('eff2', 'q1', 'q2'), ('eff3', 'r1', 'r2')):
-            if out[_s3] in (E['COND_BUFF'], E['TAX']) and _GATE.search(low):
+            if out[_s3] in (E['COND_BUFF'], E['TAX']) and _GATE.search(low) \
+                    and not out.get('cond'):
                 out[_s3] = E['NONE']; out[_p3] = 0; out[_q3] = 0
 
     # El impuesto: ¿grava ATACAR o LANZAR? Confundirlos inflaba a Dain 17 puntos.
@@ -974,6 +1026,7 @@ def convert(c):
         legal_pau=(c.get('legalities') or {}).get('pauper') == 'legal',
         legal_brawl=(c.get('legalities') or {}).get('standardbrawl') == 'legal',
         adv_eff=_adv_eff, adv_p1=_adv_p1, adv_gen=_adv_gen, adv_pips=_adv_pips,
+        sub=subtipos_mask(c),
         **e)
 
 if __name__ == '__main__':

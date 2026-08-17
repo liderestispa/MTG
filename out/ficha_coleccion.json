@@ -128,52 +128,12 @@
   "texto": "When this artifact enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.) | {1}, {T}: Add one mana of any color. | {7}, {T}, Sacrifice this artifact: Destroy target permanent."
  },
  {
-  "carta": "Bender's Waterskin",
+  "carta": "Beifong's Bounty Hunters",
   "copias": 1,
   "estado": "MUDA",
-  "coste": "{3}",
-  "tipo": "Artifact",
-  "pt": "",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Untap this artifact during each other player's untap step. | {T}: Add one mana of any color."
- },
- {
-  "carta": "Boiling Rock Rioter",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{2}{B}",
-  "tipo": "Creature — Human Rogue Ally",
-  "pt": "3/3",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.) | Tap an untapped Ally you control: Exile target card from a graveyard. | Whenever this creature attacks, you may cast an Ally spell from among cards you own exiled with this creature."
- },
- {
-  "carta": "Desolation Prowler",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{1}{B}",
-  "tipo": "Creature — Wolf",
-  "pt": "2/2",
+  "coste": "{2}{B}{G}",
+  "tipo": "Creature — Human Mercenary",
+  "pt": "4/4",
   "en_mazo": [
    "brawl"
   ],
@@ -185,7 +145,7 @@
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "Pay 2 life: This creature gets +2/+2 until end of turn. Activate only once each turn."
+  "texto": "Whenever a nonland creature you control dies, earthbend X, where X is that creature's power. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)"
  },
  {
   "carta": "Foggy Swamp Hunters",
@@ -215,8 +175,7 @@
   "tipo": "Legendary Creature — Halfling Horror",
   "pt": "3/1",
   "en_mazo": [
-   "standard",
-   "brawl"
+   "standard"
   ],
   "frases": 5,
   "ranuras": 0,
@@ -229,32 +188,12 @@
   "texto": "As Gollum enters, choose odd or even. (Zero is even.) | Whenever an opponent casts a spell with mana value of the chosen quality, choose one that hasn't been chosen — | • Put a +1/+1 counter on Gollum. | • Each opponent loses 2 life and you gain 2 life. | • Draw a card."
  },
  {
-  "carta": "Joo Dee, One of Many",
+  "carta": "Tom, Bert, and William",
   "copias": 1,
   "estado": "MUDA",
-  "coste": "{1}{B}",
-  "tipo": "Creature — Human Advisor",
-  "pt": "2/2",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "{B}, {T}: Surveil 1. Create a token that's a copy of this creature, then sacrifice an artifact or creature. Activate only as a sorcery. (To surveil 1, look at the top card of your library. You may put it into your graveyard.)"
- },
- {
-  "carta": "Key to the Side-Door",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{1}",
-  "tipo": "Artifact",
-  "pt": "",
+  "coste": "{3}{B}{G}",
+  "tipo": "Legendary Creature — Troll",
+  "pt": "5/5",
   "en_mazo": [
    "brawl"
   ],
@@ -266,15 +205,15 @@
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "{2}, {T}: Target creature can't be blocked this turn. | {1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards."
+  "texto": "{1}, Sacrifice another creature: Draw cards equal to the sacrificed creature's power, then discard a card. | When Tom, Bert, and William die, if they were a creature, return them to the battlefield. They're an artifact. (They're no longer a creature.)"
  },
  {
-  "carta": "Merchant of Many Hats",
+  "carta": "Turtle-Duck",
   "copias": 1,
   "estado": "MUDA",
-  "coste": "{1}{B}",
-  "tipo": "Creature — Human Peasant Ally",
-  "pt": "2/2",
+  "coste": "{G}",
+  "tipo": "Creature — Turtle Bird",
+  "pt": "0/4",
   "en_mazo": [
    "brawl"
   ],
@@ -286,27 +225,7 @@
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "{2}{B}: Return this card from your graveyard to your hand."
- },
- {
-  "carta": "Troop of Ponies",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{2}",
-  "tipo": "Creature — Horse",
-  "pt": "2/1",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "{2}, {T}, Sacrifice this creature: Search your library for up to two basic land cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle."
+  "texto": "{3}: Until end of turn, this creature has base power 4 and gains trample."
  },
  {
   "carta": "Hobbit Hole",
@@ -471,14 +390,14 @@
   "texto": "Whenever another Ally you control enters, put a +1/+1 counter on this creature."
  },
  {
-  "carta": "Beifong's Bounty Hunters",
+  "carta": "Bender's Waterskin",
   "copias": 1,
   "estado": "MUDA",
-  "coste": "{2}{B}{G}",
-  "tipo": "Creature — Human Mercenary",
-  "pt": "4/4",
+  "coste": "{3}",
+  "tipo": "Artifact",
+  "pt": "",
   "en_mazo": [],
-  "frases": 1,
+  "frases": 2,
   "ranuras": 0,
   "motor": "NADA",
   "motor_extra": "",
@@ -486,7 +405,7 @@
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "Whenever a nonland creature you control dies, earthbend X, where X is that creature's power. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)"
+  "texto": "Untap this artifact during each other player's untap step. | {T}: Add one mana of any color."
  },
  {
   "carta": "Bilbo, Thief in the Night",
@@ -505,6 +424,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Spells you cast from anywhere other than your hand cost {1} less to cast. | Whenever Bilbo attacks, you may cast an artifact, instant, or sorcery spell from your graveyard. If an instant or sorcery spell cast this way would be put into your graveyard, exile it instead."
+ },
+ {
+  "carta": "Boiling Rock Rioter",
+  "copias": 1,
+  "estado": "MUDA",
+  "coste": "{2}{B}",
+  "tipo": "Creature — Human Rogue Ally",
+  "pt": "3/3",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 0,
+  "motor": "NADA",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.) | Tap an untapped Ally you control: Exile target card from a graveyard. | Whenever this creature attacks, you may cast an Ally spell from among cards you own exiled with this creature."
  },
  {
   "carta": "Bolg of the North",
@@ -541,6 +478,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This creature gets +2/+0 for each Mountain you control. | Whenever you attack with creatures with total power 12 or greater for the first time each turn, untap all attacking creatures. After this phase, there is an additional combat phase."
+ },
+ {
+  "carta": "Desolation Prowler",
+  "copias": 1,
+  "estado": "MUDA",
+  "coste": "{1}{B}",
+  "tipo": "Creature — Wolf",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 0,
+  "motor": "NADA",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Pay 2 life: This creature gets +2/+2 until end of turn. Activate only once each turn."
  },
  {
   "carta": "Dragon-Cursed Halls",
@@ -687,6 +642,42 @@
   "texto": "Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.) | Exhaust — {3}: Put a +1/+1 counter on Jeong Jeong. When you next cast a Lesson spell this turn, copy it and you may choose new targets for the copy. (Activate each exhaust ability only once.)"
  },
  {
+  "carta": "Joo Dee, One of Many",
+  "copias": 1,
+  "estado": "MUDA",
+  "coste": "{1}{B}",
+  "tipo": "Creature — Human Advisor",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 0,
+  "motor": "NADA",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "{B}, {T}: Surveil 1. Create a token that's a copy of this creature, then sacrifice an artifact or creature. Activate only as a sorcery. (To surveil 1, look at the top card of your library. You may put it into your graveyard.)"
+ },
+ {
+  "carta": "Key to the Side-Door",
+  "copias": 1,
+  "estado": "MUDA",
+  "coste": "{1}",
+  "tipo": "Artifact",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 0,
+  "motor": "NADA",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "{2}, {T}: Target creature can't be blocked this turn. | {1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards."
+ },
+ {
   "carta": "Lake-town Toymaker",
   "copias": 1,
   "estado": "MUDA",
@@ -721,6 +712,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "The owner of target creature or enchantment puts it into their library second from the top or on the bottom. You create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")"
+ },
+ {
+  "carta": "Merchant of Many Hats",
+  "copias": 1,
+  "estado": "MUDA",
+  "coste": "{1}{B}",
+  "tipo": "Creature — Human Peasant Ally",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 0,
+  "motor": "NADA",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "{2}{B}: Return this card from your graveyard to your hand."
  },
  {
   "carta": "Nori, Teller of Tales",
@@ -867,30 +876,12 @@
   "texto": "({T}: Add {R}.) | This land enters tapped unless you control an Equipment. | {4}{R}, {T}: Create a 2/2 red Dwarf creature token. This ability costs {1} less to activate for each Equipment you control. Activate only as a sorcery."
  },
  {
-  "carta": "Tom, Bert, and William",
+  "carta": "Troop of Ponies",
   "copias": 1,
   "estado": "MUDA",
-  "coste": "{3}{B}{G}",
-  "tipo": "Legendary Creature — Troll",
-  "pt": "5/5",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 0,
-  "motor": "NADA",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "{1}, Sacrifice another creature: Draw cards equal to the sacrificed creature's power, then discard a card. | When Tom, Bert, and William die, if they were a creature, return them to the battlefield. They're an artifact. (They're no longer a creature.)"
- },
- {
-  "carta": "Turtle-Duck",
-  "copias": 1,
-  "estado": "MUDA",
-  "coste": "{G}",
-  "tipo": "Creature — Turtle Bird",
-  "pt": "0/4",
+  "coste": "{2}",
+  "tipo": "Creature — Horse",
+  "pt": "2/1",
   "en_mazo": [],
   "frases": 1,
   "ranuras": 0,
@@ -900,7 +891,7 @@
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "{3}: Until end of turn, this creature has base power 4 and gains trample."
+  "texto": "{2}, {T}, Sacrifice this creature: Search your library for up to two basic land cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle."
  },
  {
   "carta": "Crude Bent Blade",
@@ -931,7 +922,8 @@
   "tipo": "Instant",
   "pt": "",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 3,
   "ranuras": 1,
@@ -951,7 +943,8 @@
   "tipo": "Creature — Wolf",
   "pt": "3/1",
   "en_mazo": [
-   "pauper"
+   "pauper",
+   "brawl"
   ],
   "frases": 2,
   "ranuras": 1,
@@ -985,26 +978,6 @@
   "texto": "Gollum can't block. | When Gollum enters, exile up to one target card from an opponent's graveyard. Each opponent loses 2 life. | {2}, Sacrifice an artifact or creature: Return this card from your graveyard to your hand. Activate only as a sorcery."
  },
  {
-  "carta": "Great Ugly-Looking Goblin // Clap! Snap!",
-  "copias": 2,
-  "estado": "A_MEDIAS",
-  "coste": "{5}{B} // {1}{B}",
-  "tipo": "Creature — Goblin Soldier // Sorcery — Adventure",
-  "pt": "4/4",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "ETB_COUNTERS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.) | Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.)"
- },
- {
   "carta": "Dai Li Indoctrination",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -1023,46 +996,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Choose one — | • Target opponent reveals their hand. You choose a nonland permanent card from it. That player discards that card. | • Earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)"
- },
- {
-  "carta": "Dwarven Mattock",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{2}",
-  "tipo": "Artifact — Equipment",
-  "pt": "",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 3,
-  "ranuras": 1,
-  "motor": "EQUIP",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "When this Equipment enters, attach it to target Dwarf you control. | Equipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.) | Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
- },
- {
-  "carta": "Gathering of Darkness",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{3}{B}",
-  "tipo": "Sorcery",
-  "pt": "",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "AMASS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Return up to one target creature card from your graveyard to your hand. | Amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
  },
  {
   "carta": "Gnashing of Teeth",
@@ -1126,28 +1059,6 @@
   "texto": "At the beginning of combat on your turn, target creature you control with a +1/+1 counter on it gains menace until end of turn. (It can't be blocked except by two or more creatures.) | Exhaust — {5}: Put two +1/+1 counters on this creature. (Activate each exhaust ability only once.)"
  },
  {
-  "carta": "Phoenix Fleet Airship",
-  "copias": 1,
-  "estado": "A_MEDIAS",
-  "coste": "{2}{B}{B}",
-  "tipo": "Artifact — Vehicle",
-  "pt": "4/4",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 1,
-  "motor": "NADA",
-  "motor_extra": "kw=ETB_DMG",
-  "kw": [
-   "Flying"
-  ],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Flying | At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle. | As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature. | Crew 1"
- },
- {
   "carta": "Ragged Short Spear",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -1176,8 +1087,7 @@
   "pt": "",
   "en_mazo": [
    "standard",
-   "pauper",
-   "brawl"
+   "pauper"
   ],
   "frases": 3,
   "ranuras": 1,
@@ -1534,7 +1444,7 @@
   "motor": "ETB_DRAW",
   "motor_extra": "",
   "kw": [],
-  "cond": 0,
+  "cond": 4,
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This creature has lifelink as long as you control another Dwarf. | When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order."
@@ -1556,6 +1466,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Enchant creature | Enchanted creature gets +2/+2 and has flying. | {2}{W/U}{W/U}: Return this card from your graveyard to the battlefield attached to target creature you control with power 1 or less. Activate only as a sorcery."
+ },
+ {
+  "carta": "Great Ugly-Looking Goblin // Clap! Snap!",
+  "copias": 2,
+  "estado": "A_MEDIAS",
+  "coste": "{5}{B} // {1}{B}",
+  "tipo": "Creature — Goblin Soldier // Sorcery — Adventure",
+  "pt": "4/4",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "ETB_COUNTERS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.) | Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
   "carta": "Magnificent End",
@@ -1848,6 +1776,24 @@
   "texto": "Target creature gets +3/+1 until end of turn. | Create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")"
  },
  {
+  "carta": "Dwarven Mattock",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{2}",
+  "tipo": "Artifact — Equipment",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 3,
+  "ranuras": 1,
+  "motor": "EQUIP",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "When this Equipment enters, attach it to target Dwarf you control. | Equipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.) | Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
+ },
+ {
   "carta": "Elvenking's Halls",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -1918,6 +1864,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This land enters tapped. | {T}: Add {B} or {G}. | {4}, {T}, Sacrifice this land: Draw a card."
+ },
+ {
+  "carta": "Gathering of Darkness",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{3}{B}",
+  "tipo": "Sorcery",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "AMASS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Return up to one target creature card from your graveyard to your hand. | Amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
  },
  {
   "carta": "Glider Staff",
@@ -2085,6 +2049,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "This land enters tapped. | {T}: Add {W} or {U}. | {4}, {T}, Sacrifice this land: Draw a card."
+ },
+ {
+  "carta": "Phoenix Fleet Airship",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{2}{B}{B}",
+  "tipo": "Artifact — Vehicle",
+  "pt": "4/4",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "kw=ETB_DMG",
+  "kw": [
+   "Flying"
+  ],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Flying | At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle. | As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature. | Crew 1"
  },
  {
   "carta": "Platypus-Bear",
@@ -2285,46 +2269,26 @@
   "texto": "When this creature enters, each opponent discards a card."
  },
  {
-  "carta": "Rage into the Valley",
-  "copias": 5,
-  "estado": "ok",
-  "coste": "{2}{B}",
-  "tipo": "Sorcery",
-  "pt": "",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 2,
-  "ranuras": 2,
-  "motor": "ETB_DRAW/AMASS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "You draw a card and lose 1 life. | Amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
- },
- {
-  "carta": "Great Fierce Bee",
+  "carta": "Beorn, Reluctant Host // Till and Tend",
   "copias": 4,
   "estado": "ok",
-  "coste": "{2}{B}",
-  "tipo": "Creature — Insect",
-  "pt": "2/2",
+  "coste": "{4}{G} // {1}{G}",
+  "tipo": "Legendary Creature — Human Bear Shapeshifter // Sorcery — Adventure",
+  "pt": "5/5",
   "en_mazo": [
    "brawl"
   ],
   "frases": 1,
   "ranuras": 1,
   "motor": "NADA",
-  "motor_extra": "kw=ETB_DMG",
+  "motor_extra": "kw=DMG_SPELL",
   "kw": [
-   "Flying"
+   "Trample"
   ],
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "Flying | Whenever one or more other creatures die, scry 1. (Look at the top card of your library. You may put that card on the bottom.)"
+  "texto": "Trample | You may play an additional land this turn. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
   "carta": "Gundabad Opportunist",
@@ -2376,7 +2340,8 @@
   "tipo": "Creature — Bear",
   "pt": "10/7",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 1,
   "ranuras": 1,
@@ -2414,27 +2379,24 @@
   "texto": "Haste | When this creature enters, amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
  },
  {
-  "carta": "Long-Bodied Grey Dog",
+  "carta": "Wargling",
   "copias": 3,
   "estado": "ok",
-  "coste": "{3}",
-  "tipo": "Creature — Dog",
+  "coste": "{1}{G}",
+  "tipo": "Creature — Wolf",
   "pt": "2/2",
   "en_mazo": [
    "brawl"
   ],
   "frases": 1,
-  "ranuras": 2,
-  "motor": "TREASURE",
-  "motor_extra": "kw=?",
-  "kw": [
-   "Reach",
-   "Flash"
-  ],
-  "cond": 0,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 2,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "Flash | Reach | When this creature enters, create a tapped Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")"
+  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, until end of turn, this creature gets +1/+0 and creatures you control gain trample."
  },
  {
   "carta": "Bilbo's Deadly Slice",
@@ -2477,28 +2439,6 @@
   "texto": "When this creature dies, target creature an opponent controls gets -1/-1 until end of turn."
  },
  {
-  "carta": "Gollum, Silent Slinker // Meager Meal",
-  "copias": 2,
-  "estado": "ok",
-  "coste": "{3}{B} // {B}",
-  "tipo": "Legendary Creature — Halfling Horror // Sorcery — Adventure",
-  "pt": "4/3",
-  "en_mazo": [
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "NADA",
-  "motor_extra": "kw=?",
-  "kw": [
-   "Menace"
-  ],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Menace (This creature can't be blocked except by two or more creatures.) | Put a +1/+1 counter on up to one target creature. Target player gains 2 life. (Then exile this card. You may cast the creature later from exile.)"
- },
- {
   "carta": "Head of the Hunt",
   "copias": 2,
   "estado": "ok",
@@ -2529,7 +2469,8 @@
   "tipo": "Creature — Bear",
   "pt": "5/5",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 0,
   "ranuras": 1,
@@ -2553,7 +2494,8 @@
   "tipo": "Creature — Elf Ranger",
   "pt": "*/*",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 1,
   "ranuras": 1,
@@ -2609,6 +2551,26 @@
   "texto": "When this creature dies, create a 1/1 white Ally creature token."
  },
  {
+  "carta": "Quarrel",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{1}{G}",
+  "tipo": "Instant",
+  "pt": "",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "FIGHT",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Target creature you control deals damage equal to its power to target creature an opponent controls."
+ },
+ {
   "carta": "Smaug, the Great Calamity // Spew Flame",
   "copias": 2,
   "estado": "ok",
@@ -2638,7 +2600,8 @@
   "tipo": "Creature — Spider",
   "pt": "2/1",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 1,
   "ranuras": 2,
@@ -2681,7 +2644,8 @@
   "tipo": "Creature — Elf Scout",
   "pt": "4/4",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 2,
   "ranuras": 2,
@@ -2792,7 +2756,8 @@
   "tipo": "Creature — Spider",
   "pt": "6/7",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 2,
   "ranuras": 2,
@@ -2868,6 +2833,26 @@
   "texto": "When Thrór's Map enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle. | {2}, {T}: Draw a card, then discard a card."
  },
  {
+  "carta": "Troll Negotiations",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{2}{G}{G}",
+  "tipo": "Sorcery",
+  "pt": "",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 1,
+  "ranuras": 2,
+  "motor": "FIGHT/ETB_COUNTERS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Put two +1/+1 counters on target creature you control. Then it fights target creature an opponent controls. (Each deals damage equal to its power to the other.)"
+ },
+ {
   "carta": "Walltop Sentries",
   "copias": 1,
   "estado": "ok",
@@ -2875,7 +2860,8 @@
   "tipo": "Creature — Human Soldier Ally",
   "pt": "2/3",
   "en_mazo": [
-   "standard"
+   "standard",
+   "brawl"
   ],
   "frases": 1,
   "ranuras": 2,
@@ -2889,6 +2875,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Reach, deathtouch | When this creature dies, if there's a Lesson card in your graveyard, you gain 2 life."
+ },
+ {
+  "carta": "Wilderland Scrounger",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{4}{G}",
+  "tipo": "Creature — Wolf",
+  "pt": "3/6",
+  "en_mazo": [
+   "brawl"
+  ],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 2,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control."
  },
  {
   "carta": "Bofur, Reliable Guardian // Concerted Care",
@@ -2949,24 +2955,42 @@
   "texto": "Vigilance | When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)"
  },
  {
-  "carta": "Beorn, Reluctant Host // Till and Tend",
+  "carta": "Rage into the Valley",
+  "copias": 5,
+  "estado": "ok",
+  "coste": "{2}{B}",
+  "tipo": "Sorcery",
+  "pt": "",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 2,
+  "motor": "ETB_DRAW/AMASS",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "You draw a card and lose 1 life. | Amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
+ },
+ {
+  "carta": "Great Fierce Bee",
   "copias": 4,
   "estado": "ok",
-  "coste": "{4}{G} // {1}{G}",
-  "tipo": "Legendary Creature — Human Bear Shapeshifter // Sorcery — Adventure",
-  "pt": "5/5",
+  "coste": "{2}{B}",
+  "tipo": "Creature — Insect",
+  "pt": "2/2",
   "en_mazo": [],
   "frases": 1,
   "ranuras": 1,
   "motor": "NADA",
-  "motor_extra": "kw=DMG_SPELL",
+  "motor_extra": "kw=ETB_DMG",
   "kw": [
-   "Trample"
+   "Flying"
   ],
   "cond": 0,
   "tax_atk": 0,
   "sospechas": [],
-  "texto": "Trample | You may play an additional land this turn. (Then exile this card. You may cast the creature later from exile.)"
+  "texto": "Flying | Whenever one or more other creatures die, scry 1. (Look at the top card of your library. You may put that card on the bottom.)"
  },
  {
   "carta": "Jeong Jeong's Deserters",
@@ -3099,6 +3123,27 @@
   "texto": "Vigilance | Whenever you draw your second card each turn, put a +1/+1 counter on this creature."
  },
  {
+  "carta": "Long-Bodied Grey Dog",
+  "copias": 3,
+  "estado": "ok",
+  "coste": "{3}",
+  "tipo": "Creature — Dog",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 2,
+  "motor": "TREASURE",
+  "motor_extra": "kw=?",
+  "kw": [
+   "Reach",
+   "Flash"
+  ],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Flash | Reach | When this creature enters, create a tapped Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")"
+ },
+ {
   "carta": "Mirkwood Meditator",
   "copias": 3,
   "estado": "ok",
@@ -3151,24 +3196,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Ori gets +1/+0 and has vigilance."
- },
- {
-  "carta": "Wargling",
-  "copias": 3,
-  "estado": "ok",
-  "coste": "{1}{G}",
-  "tipo": "Creature — Wolf",
-  "pt": "2/2",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "COND_BUFF",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 2,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, until end of turn, this creature gets +1/+0 and creatures you control gain trample."
  },
  {
   "carta": "Dáin, Lord of the Iron Hills",
@@ -3267,6 +3294,26 @@
   "texto": "When this artifact is put into a graveyard from the battlefield, reveal the top thirteen cards of your library. Put a random creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order."
  },
  {
+  "carta": "Gollum, Silent Slinker // Meager Meal",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{3}{B} // {B}",
+  "tipo": "Legendary Creature — Halfling Horror // Sorcery — Adventure",
+  "pt": "4/3",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "NADA",
+  "motor_extra": "kw=?",
+  "kw": [
+   "Menace"
+  ],
+  "cond": 0,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Menace (This creature can't be blocked except by two or more creatures.) | Put a +1/+1 counter on up to one target creature. Target player gains 2 life. (Then exile this card. You may cast the creature later from exile.)"
+ },
+ {
   "carta": "Kyoshi Warriors",
   "copias": 2,
   "estado": "ok",
@@ -3283,24 +3330,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "When this creature enters, create a 1/1 white Ally creature token."
- },
- {
-  "carta": "Quarrel",
-  "copias": 2,
-  "estado": "ok",
-  "coste": "{1}{G}",
-  "tipo": "Instant",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "FIGHT",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Target creature you control deals damage equal to its power to target creature an opponent controls."
  },
  {
   "carta": "Thorin Oakenshield",
@@ -3817,24 +3846,6 @@
   "texto": "Look at the top twenty cards of your library, put any number of land cards from among them onto the battlefield tapped, then shuffle. You gain 8 life."
  },
  {
-  "carta": "Troll Negotiations",
-  "copias": 1,
-  "estado": "ok",
-  "coste": "{2}{G}{G}",
-  "tipo": "Sorcery",
-  "pt": "",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 2,
-  "motor": "FIGHT/ETB_COUNTERS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 0,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Put two +1/+1 counters on target creature you control. Then it fights target creature an opponent controls. (Each deals damage equal to its power to the other.)"
- },
- {
   "carta": "Vindictive Warden",
   "copias": 1,
   "estado": "ok",
@@ -3871,24 +3882,6 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Draw three cards. Then discard a card unless you waterbend {2}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)"
- },
- {
-  "carta": "Wilderland Scrounger",
-  "copias": 1,
-  "estado": "ok",
-  "coste": "{4}{G}",
-  "tipo": "Creature — Wolf",
-  "pt": "3/6",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "COND_BUFF",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 2,
-  "tax_atk": 0,
-  "sospechas": [],
-  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control."
  },
  {
   "carta": "Yip Yip!",

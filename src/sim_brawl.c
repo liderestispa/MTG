@@ -66,6 +66,9 @@ typedef struct {
                           efecto. Se lanza antes, la carta vuelve a la mano y la
                           criatura se lanza despues. Ablacion: AVENTURA_OFF=1. */
   int16_t adv_p1;
+  uint32_t sub;        /* subtipos de criatura, mascara */
+  uint32_t lord_sub;   /* si el lord solo sube a una tribu, cual */
+  uint32_t cond_sub;   /* tribu que exige cond=4 */
   uint8_t entra_girada;/* "This land enters tapped". El motor las metia TODAS destapadas,
                           y en el banco de Standard eso es el 52% de las tierras: medio
                           turno de ventaja regalado a cada mazo, en todos los mazos. */
@@ -429,6 +432,11 @@ static int cumple_cond(P*p, Def*d){
       if(D[p->bf[i]].typ==T_CREA && D[p->bf[i]].power>=4) return 1;
     return 0;
   }
+  if(d->cond==4){                      /* controlas OTRA criatura de esa tribu */
+    for(int i=0;i<p->nbf;i++)
+      if(D[p->bf[i]].typ==T_CREA && (D[p->bf[i]].sub & d->cond_sub)) return 1;
+    return 0;
+  }
   if(d->cond==3){                      /* Metalcraft: 3+ artefactos */
     int n=0; for(int i=0;i<p->nbf;i++) if(D[p->bf[i]].typ==T_ART) n++;
     return n>=3;
@@ -437,10 +445,23 @@ static int cumple_cond(P*p, Def*d){
 }
 
 /* lord estatico: suma bonos de todas las criaturas/artefactos con E_LORD */
+/* Bonus para UNA criatura concreta: un lord tribal solo sube a los de su tribu, y hasta
+   el 18-ago el motor no sabia distinguirlos porque no tenia subtipos. lord_sub=0 quiere
+   decir "sube a todas", que es como se comportaba antes. */
+static void lordbonus_de(P*p,int idx,int*bp,int*bt){
+  *bp=0;*bt=0;
+  uint32_t mia = (idx>=0 && idx<p->nbf) ? D[p->bf[idx]].sub : 0xFFFFFFFFu;
+  for(int i=0;i<p->nbf;i++){ Def*d=&D[p->bf[i]];
+    if(!cumple_cond(p,d)) continue;
+    if(d->eff==E_LORD && (!d->lord_sub || (mia & d->lord_sub))){*bp+=d->p1;*bt+=d->p2;}
+    if(d->eff2==E_LORD && (!d->lord_sub || (mia & d->lord_sub))){*bp+=d->q1;*bt+=d->q2;} }
+}
+/* Version global: solo los lords SIN restriccion. La usan los sitios que estiman el
+   tablero entero de un vistazo y no pueden preguntar por una criatura concreta. */
 static void lordbonus(P*p,int*bp,int*bt){
   *bp=0;*bt=0;
   for(int i=0;i<p->nbf;i++){ Def*d=&D[p->bf[i]];
-    if(!cumple_cond(p,d)) continue;
+    if(!cumple_cond(p,d) || d->lord_sub) continue;
     if(d->eff==E_LORD){*bp+=d->p1;*bt+=d->p2;}
     if(d->eff2==E_LORD){*bp+=d->q1;*bt+=d->q2;} }
 }
@@ -451,11 +472,11 @@ static void lordbonus(P*p,int*bp,int*bt){
    Con LORD_VE=0 se comportan como antes, para poder medir la diferencia. */
 static inline int pw_eff(P*p,int i){
   if(!LORD_VE) return pw(p,i);
-  int bp,bt; lordbonus(p,&bp,&bt); return pw(p,i)+bp;
+  int bp,bt; lordbonus_de(p,i,&bp,&bt); return pw(p,i)+bp;
 }
 static inline int th_eff(P*p,int i){
   if(!LORD_VE) return th(p,i);
-  int bp,bt; lordbonus(p,&bp,&bt); return th(p,i)+bt;
+  int bp,bt; lordbonus_de(p,i,&bp,&bt); return th(p,i)+bt;
 }
 
 /* ---------- mana: comprueba si se puede pagar coste con tierras destapadas ---------- */
@@ -1377,9 +1398,19 @@ static void cast_phase(P*me,P*opp,int main2){
   }
 }
 
+/* Fuerza y resistencia EFECTIVAS de una criatura en combate: cuerpo + contadores +
+   equipo + los lords que de verdad la suben. Un lord tribal solo cuenta para los suyos,
+   asi que esto NO se puede resolver con un bono global calculado una vez. */
+#define PWC(p,i) ({ int _b,_t; lordbonus_de((p),(i),&_b,&_t); pw((p),(i))+_b; })
+#define THC(p,i) ({ int _b,_t; lordbonus_de((p),(i),&_b,&_t); th((p),(i))+_t; })
+
 static void combat(P*me,P*opp){
+  /* Estos dos son el bono de los lords SIN restriccion de tribu, y ya solo sirven de
+     resumen: cada criatura pregunta por el suyo con PWC/THC, porque un lord de Elfos no
+     sube a un Goblin. Antes se calculaba una vez y se sumaba a todo el mundo. */
   int bp,bt; lordbonus(me,&bp,&bt);
   int obp,obt; lordbonus(opp,&obp,&obt);
+  (void)bp; (void)bt; (void)obp; (void)obt;
   /* habilidades activadas de pump: se usan una vez por turno sobre la mejor criatura */
   { int pump=0;
     for(int i=0;i<me->nbf;i++) if(D[me->bf[i]].eff==E_REPEAT_PUMP && !me->tap[i]) pump+=D[me->bf[i]].p1;
@@ -1405,7 +1436,7 @@ static void combat(P*me,P*opp){
     int pot[BFMAX], np=0;
     for(int i=0;i<me->nbf;i++){ Def*d2=&D[me->bf[i]];
       if(d2->typ!=T_CREA||me->sick[i]||me->tap[i]||(d2->kw&K_DEF)) continue;
-      int p2=pw(me,i)+bp;
+      int p2=PWC(me,i);
       if(d2->eff ==E_COND_BUFF && cumple_cond(me,d2)) p2+=d2->p1;
       if(d2->eff2==E_COND_BUFF && cumple_cond(me,d2)) p2+=d2->q1;
       if(p2>0) pot[np++]=p2;
@@ -1431,7 +1462,7 @@ static void combat(P*me,P*opp){
     Def*d=&D[me->bf[i]];
     if(na >= cupo_atacantes) break;             /* no alcanza para pagar mas ataques */
     if(d->typ!=T_CREA||me->sick[i]||me->tap[i]||(d->kw&K_DEF)) continue;
-    int P_=pw(me,i)+bp, T_=th(me,i)+bt;
+    int P_=PWC(me,i), T_=THC(me,i);
     if(d->eff==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->p1; T_+=d->p2; }
     if(d->eff2==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->q1; T_+=d->q2; }
     if(P_<=0) continue;
@@ -1440,7 +1471,7 @@ static void combat(P*me,P*opp){
     for(int j=0;j<opp->nbf;j++){ Def*o=&D[opp->bf[j]];
       if(o->typ!=T_CREA||opp->tap[j]) continue;
       if((d->kw&K_FLY) && !((o->kw&K_FLY)||(o->kw&K_REA))) continue;
-      int op=pw(opp,j)+obp, ot=th(opp,j)+obt;
+      int op=PWC(opp,j), ot=THC(opp,j);
       poder_disponible += op; n_disponibles++;
       int kills_me=(op>=T_)||(o->kw&K_DT);
       int i_kill=(P_>=ot)||(d->kw&K_DT);
@@ -1466,7 +1497,7 @@ static void combat(P*me,P*opp){
       for(int j=0;j<opp->nbf && usados<3;j++){ Def*o=&D[opp->bf[j]];
         if(o->typ!=T_CREA||opp->tap[j]) continue;
         if((d->kw&K_FLY) && !((o->kw&K_FLY)||(o->kw&K_REA))) continue;
-        int ot=th(opp,j)+obt; usados++;
+        int ot=THC(opp,j); usados++;
         if(resto>=ot || (d->kw&K_DT)){ mueren++; resto-=ot; }
       }
       if(mueren<=1) lethalblk++;      /* cambio malo: yo muero, el pierde <=1 */
@@ -1503,7 +1534,7 @@ static void combat(P*me,P*opp){
   }
   if(!na) return;
 
-  int total=0; for(int k=0;k<na;k++) total+=pw(me,atk[k])+bp;
+  int total=0; for(int k=0;k<na;k++) total+=PWC(me,atk[k]);
 
   /* --- bloqueos: el defensor intercambia Y puede bloquear en grupo --- */
   int blk[BFMAX][3]; int nblk[BFMAX];
@@ -1517,7 +1548,7 @@ static void combat(P*me,P*opp){
   for(int oi=0;oi<na;oi++){
     int k=order[oi];
     int i=atk[k]; Def*d=&D[me->bf[i]];
-    int P_=pw(me,i)+bp, T_=th(me,i)+bt;
+    int P_=PWC(me,i), T_=THC(me,i);
     if(d->eff==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->p1; T_+=d->p2; }
     if(d->eff2==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->q1; T_+=d->q2; }
     int lethal_now = (incoming >= opp->life);
@@ -1537,7 +1568,7 @@ static void combat(P*me,P*opp){
     /* 1) el bloqueo individual mas rentable */
     int best=-1,bs=-1000;
     for(int q=0;q<nc;q++){ int j=cand[q]; Def*o=&D[opp->bf[j]];
-      int op=pw(opp,j)+obp, ot=th(opp,j)+obt;
+      int op=PWC(opp,j), ot=THC(opp,j);
       int kills=(op>=T_)||(o->kw&K_DT);
       int dies =(P_>=ot)||(d->kw&K_DT);
       if((d->kw&K_FS) && !(o->kw&K_FS) && (P_>=ot)) kills=0;
@@ -1562,7 +1593,7 @@ static void combat(P*me,P*opp){
         if(pw(opp,ord[b2]) > pw(opp,ord[a2])){ int t=ord[a2];ord[a2]=ord[b2];ord[b2]=t; }
       int acc=0, take[3], nt=0;
       for(int q=0;q<nc && nt<3;q++){
-        int j=ord[q]; acc += pw(opp,j)+obp; take[nt++]=j;
+        int j=ord[q]; acc += PWC(opp,j); take[nt++]=j;
         if(acc>=T_ || (D[opp->bf[j]].kw&K_DT)) break;
       }
       int mata = (acc>=T_);
@@ -1571,7 +1602,7 @@ static void combat(P*me,P*opp){
         /* cuanto pierdo: el atacante reparte su dano entre los bloqueadores */
         int perdidos=0, resto=P_, coste=0;
         for(int q=0;q<nt;q++){ int j=take[q];
-          int ot=th(opp,j)+obt;
+          int ot=THC(opp,j);
           if(resto>=ot || (d->kw&K_DT)){ perdidos++; coste += D[opp->bf[j]].cmc; resto-=ot; }
         }
         gangval = GANG_BASE - perdidos*7 - coste + pressure + P_/2;
@@ -1593,7 +1624,7 @@ static void combat(P*me,P*opp){
   memset(deadA,0,me->nbf); memset(deadB,0,opp->nbf);
   for(int k=0;k<na;k++){
     int i=atk[k]; Def*d=&D[me->bf[i]];
-    int P_=pw(me,i)+bp, T_=th(me,i)+bt;
+    int P_=PWC(me,i), T_=THC(me,i);
     if(d->eff==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->p1; T_+=d->p2; }
     if(d->eff2==E_COND_BUFF && cumple_cond(me,d)){ P_+=d->q1; T_+=d->q2; }
     if(nblk[k]==0){
@@ -1613,7 +1644,7 @@ static void combat(P*me,P*opp){
       int resto=P_, total_bloq=0, ll=0;
       for(int q=0;q<nblk[k];q++){
         int j=blk[k][q]; Def*o=&D[opp->bf[j]];
-        int op=pw(opp,j)+obp, ot=th(opp,j)+obt;
+        int op=PWC(opp,j), ot=THC(opp,j);
         total_bloq += op;
         /* el atacante reparte su dano en orden */
         int asigna = (resto>=ot)? ot : resto;
@@ -1830,6 +1861,9 @@ int main(void){
           &e3_,&r1_,&r2_,&al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_,&eg_,&ke_,
           &kp_,&cx_);
     scanf("%d %d %d %d %d %d %d %d",&av_,&ag_,&avp_,&ap0_,&ap1_,&ap2_,&ap3_,&ap4_);
+    unsigned int sb_=0,ls_=0,cs_=0;
+    scanf("%u %u %u",&sb_,&ls_,&cs_);
+    d->sub=sb_; d->lord_sub=ls_; d->cond_sub=cs_;
     d->atk_eff=(uint8_t)ke_; d->atk_p1=(int16_t)kp_; d->coste_extra=(uint8_t)cx_;
     d->adv_eff=(uint8_t)av_; d->adv_gen=(uint8_t)ag_; d->adv_p1=(int16_t)avp_;
     d->adv_pip[0]=(uint8_t)ap0_; d->adv_pip[1]=(uint8_t)ap1_; d->adv_pip[2]=(uint8_t)ap2_;

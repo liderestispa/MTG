@@ -31,7 +31,10 @@ def carta(**kw):
              pips=dict(W=0, U=0, B=0, R=0, G=0), kw=0, eff=0, eff2=0, eff3=0,
              p1=0, p2=0, p3=0, q1=0, q2=0, r1=0, r2=0, power=0, tough=0,
              mana_out=0, dyn=0, no_untap=0, alt=0, altn=0,
-             die_eff=0, die_p1=0, act_eff=0, act_p1=0, act_cost=0, score=0)
+             die_eff=0, die_p1=0, act_eff=0, act_p1=0, act_cost=0, score=0,
+             cred=0, cond=0, es_leg=0, tax_atk=0, entra_girada=0, atk_eff=0, atk_p1=0,
+             coste_extra=0, adv_eff=0, adv_gen=0, adv_p1=0,
+             adv_pips=dict(W=0,U=0,B=0,R=0,G=0), sub=0, lord_sub=0, cond_sub=0)
     d.update(kw)
     return d
 
@@ -222,8 +225,31 @@ def prueba_ataque_letal():
     return 'ataque letal agregado (rival a 12 vidas)', fila
 
 
+def prueba_lord_tribal():
+    """Un lord tribal sube SOLO a los suyos. Hasta que el motor tuvo subtipos no sabia
+    distinguirlos, asi que un lord de Elfos o no se leia (el caso real) o habria subido
+    a todo el mundo (que es peor). Aqui se comprueba que discrimina: el mismo lord con
+    un tablero de Elfos y con uno de Goblins tiene que dar resultados distintos."""
+    ELFO, GOBLIN = 1 << 1, 1 << 3          # bits de SUBTIPOS en extract.py
+    B = Banco()
+    bosque = B.add('Bosque', typ=6, produces=1 << 4, cmc=0)
+    lord = B.add('lord de Elfos +2/+2', typ=1, cmc=2, gen=2, power=1, tough=1,
+                 eff=E['LORD'], p1=2, p2=2, sub=ELFO, lord_sub=ELFO)
+    elfo = B.add('Elfo 1/1', typ=1, cmc=1, gen=1, power=1, tough=1, sub=ELFO)
+    gobl = B.add('Goblin 1/1', typ=1, cmc=1, gen=1, power=1, tough=1, sub=GOBLIN)
+    muro = B.add('2/2 rival', typ=1, cmc=2, gen=2, power=2, tough=2)
+    rival = mazo((20, muro), (40, bosque))
+    fila = []
+    for etiqueta, cria in [('tablero de ELFOS (el lord aplica)', elfo),
+                           ('tablero de GOBLINS (no aplica)', gobl)]:
+        r = duelo(B, mazo((8, lord), (28, cria), (24, bosque)), rival)
+        fila.append((etiqueta, 1, r['wr'], r['gamelen']))
+    return 'lord tribal: solo sube a su tribu', fila
+
+
 PRUEBAS = [prueba_amenaza, prueba_dano_primero, prueba_indestructible,
-           prueba_lord, prueba_barrido_lord, prueba_remate, prueba_ataque_letal]
+           prueba_lord, prueba_barrido_lord, prueba_remate, prueba_ataque_letal,
+           prueba_lord_tribal]
 
 
 def main():
