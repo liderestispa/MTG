@@ -4,30 +4,30 @@
 
 35 hechizos + 24 tierras + comandante = 60
 
-Indice bruto del motor: **38.1%** contra el campo. Partida media 7.7 turnos.
+Indice bruto del motor: **38.3%** contra el campo. Partida media 7.6 turnos.
 
 ## Donde cae contra el metajuego
 
 | mazo | motor |
 |---|---|
-| Elspeth Storm Slayer | 66.3% |
-| Ketramose the New Dawn | 62.4% |
-| Sephiroth Fabled SOLDIER | 43.8% |
-| **TU MAZO (The Sackville-Bagginses)** | **38.1%** |
+| Elspeth Storm Slayer | 66.4% |
+| Ketramose the New Dawn | 62.2% |
+| Sephiroth Fabled SOLDIER | 44.5% |
+| **TU MAZO (The Sackville-Bagginses)** | **38.3%** |
 | Tifa Lockhart | 28.8% |
-| Kona Rescue Beastie | 26.3% |
-| Eluge the Shoreless Sea | 24.0% |
+| Eluge the Shoreless Sea | 24.5% |
+| Kona Rescue Beastie | 24.1% |
 
 ## Enfrentamiento por enfrentamiento
 
 | contra | ganas |
 |---|---|
-| Eluge the Shoreless Sea | 77.4% |
-| Tifa Lockhart | 74.6% |
-| Kona Rescue Beastie | 58.3% |
-| Sephiroth Fabled SOLDIER | 38.8% |
-| Ketramose the New Dawn | 26.0% |
-| Elspeth Storm Slayer | 11.9% |
+| Eluge the Shoreless Sea | 77.8% |
+| Tifa Lockhart | 74.1% |
+| Kona Rescue Beastie | 60.9% |
+| Sephiroth Fabled SOLDIER | 39.2% |
+| Ketramose the New Dawn | 27.4% |
+| Elspeth Storm Slayer | 11.7% |
 
 ## Legalidad y armabilidad: OK
 
@@ -61,6 +61,7 @@ Legal en Standard Brawl y armable con la coleccion, carta por carta.
 
 **3 mana**
 
+- Along the Crooked Way — `{2}{B}` Enchantment
 - Bender's Waterskin — `{3}` Artifact
 - Bilbo's Deadly Slice — `{1}{B}{B}` Instant
 - Boiling Rock Rioter — `{2}{B}` 3/3
@@ -75,7 +76,6 @@ Legal en Standard Brawl y armable con la coleccion, carta por carta.
 **4 mana**
 
 - Foggy Swamp Hunters — `{3}{B}` 3/4
-- Gathering of Darkness — `{3}{B}` Sorcery
 - Gollum, Silent Slinker // Meager Meal — `{3}{B} // {B}` 4/3
 - Head of the Hunt — `{2}{B}{B}` 4/3
 - Phoenix Fleet Airship — `{2}{B}{B}` 4/4
@@ -98,4 +98,4 @@ Legal en Standard Brawl y armable con la coleccion, carta por carta.
 
 - El **porcentaje bruto no es una prediccion**. `src/escala.py` se niega a calibrar el nivel de Brawl: solo hay dos winrates reales publicados y los dos estan entre 73% y 77%, asi que ajustar una recta con n=2 devuelve 90% para cualquier cosa.
 - Lo que **si** vale es la posicion relativa y los enfrentamientos: son comparaciones dentro del mismo motor, con semillas independientes.
-- El motor lee bien 89 de las 204 cartas de la coleccion, a medias 75, mudas 35 y mal leidas 5. Los mazos se buscan sobre esa lectura, asi que las mudas estan INFRAvaloradas y pueden ser mejores de lo que el motor cree.
+- El motor lee bien 88 de las 204 cartas de la coleccion, a medias 76, mudas 35 y mal leidas 5. Los mazos se buscan sobre esa lectura, asi que las mudas estan INFRAvaloradas y pueden ser mejores de lo que el motor cree.
