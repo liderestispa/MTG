@@ -22,6 +22,9 @@ import sys, io, json, time
 sys.path.insert(0, 'src'); sys.path.insert(0, 'data')
 from driver import lookup, norm
 from brawl import build_brawl, run_brawl, objective, my_pool
+from extract import convert
+from auditoria_lectura import sospechas, texto
+import re as _re
 
 TOPE_USD = float(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1][0].isdigit() else 25.0
 RAPIDO = '--rapido' in sys.argv
@@ -39,6 +42,66 @@ def precio(c):
     return None
 
 
+
+
+def bien_leida(c):
+    """¿El motor entiende esta carta lo bastante como para fiarse de la medicion?
+
+    Sin este filtro el barrido recomienda las cartas MAS MAL LEIDAS, no las mejores:
+    ordena por mejora medida y el error de medida es maximo donde la lectura es
+    equivocada y generosa. Se rechaza si el auditor tiene alguna sospecha, si quedan
+    frases de juego sin ranura, o si el texto tiene marcas de inconveniente que el motor
+    no modela."""
+    try:
+        e = convert(c)
+    except Exception:
+        return False, 'no se pudo convertir'
+    if sospechas(c, e):
+        return False, 'el auditor la marca'
+    t = _re.sub(r'\([^)]*\)', '', texto(c) or '').lower()
+
+    # inconvenientes que el motor NO modela y que lo harian sobrevalorarla
+    CONTRAS = [
+        (r'target opponent creates|opponent creates',   'le regala criaturas al rival'),
+        (r'\bdecayed\b',                                'Decayed: no bloquea y se sacrifica'),
+        (r"can't block\b",                              'no puede bloquear'),
+        (r'activate only if you control',               'condicion de activacion no modelada'),
+        (r'\bkicker\b|if it was kicked',                'kicker: el motor no paga el extra'),
+        (r'as an additional cost',                      'coste adicional no cobrado'),
+        (r'enters tapped',                              'entra girada, y eso esta apagado'),
+        (r'\bflashback\b|from your graveyard',          'cementerio: se lee de mas'),
+        (r'sacrifice it at end of combat|at end of combat, sacrifice', 'se sacrifica sola'),
+        (r'you lose \d+ life|lose \d+ life at',          'coste en vidas no modelado'),
+        (r'\bvoid\b —|\bvoid\b -',                      'Void: condicion no modelada'),
+        (r'charge counter',                             'contadores de carga no modelados'),
+    ]
+    for rx, motivo in CONTRAS:
+        if _re.search(rx, t):
+            return False, motivo
+
+    # frases con verbo de juego que no tienen ranura: la carta hace mas de lo que se lee
+    ranuras = sum(1 for k in ('eff', 'eff2', 'eff3') if e.get(k))
+    ranuras += sum(1 for k in ('die_eff', 'act_eff', 'atk_eff', 'adv_eff', 'saga_n',
+                               'dyn', 'alt', 'cred', 'cond') if e.get(k))
+    if e.get('kw'): ranuras += 1
+    # la habilidad de mana SI esta modelada (mana_out), aunque no ocupe ranura
+    # de efecto. Sin contarla, Prophetic Prism salia rechazada por su '{1},{T}:
+    # anade un mana de cualquier color', que el motor lee perfectamente.
+    if e.get('mana_out'): ranuras += 1
+    frases = 0
+    for l in t.split('\n'):
+        l = l.strip()
+        if not l: continue
+        if _re.match(r"^[\w\s,'-]+$", l) and len(l.split()) <= 6 and ':' not in l: continue
+        frases += 1
+    if frases > ranuras:
+        return False, f'{frases} frases y {ranuras} ranuras: se lee a medias'
+    return True, ''
+
+
+RECHAZADAS = []
+
+
 def candidatas(ci_mazo, tengo):
     """Legales en Standard Brawl, identidad compatible, que NO tenga ya, con precio."""
     out = []
@@ -53,6 +116,9 @@ def candidatas(ci_mazo, tengo):
         if norm(c['name']) in tengo: continue
         p = precio(c)
         if p is None or p > TOPE_USD: continue
+        ok, _motivo = bien_leida(c)
+        if not ok:
+            RECHAZADAS.append((c['name'], _motivo)); continue
         out.append((c, p))
     # una entrada por nombre, la mas barata
     mejor = {}
@@ -125,11 +191,31 @@ def main():
     for d, p, n, mc, t in filas[:25]:
         print(f"{d:+7.2f} {p:7.2f} {d/max(p,0.01):8.2f}  {n[:34]:<36} {mc}")
 
+    # ---- validacion ----
+    # El barrido mide con UNA semilla: sirve para ordenar, no para decidir. El top se
+    # re-mide con tres y mas partidas, igual que hace el laboratorio con las hipotesis.
+    print(f"\n{'='*74}\nVALIDACION DEL TOP 15 (3 semillas, {NG_FINAL} partidas)\n{'='*74}")
+    print(f"{'barrido':>8} {'validado':>9} {'USD':>7}  carta")
+    validadas = []
+    for d, p, n, mc, t in filas[:15]:
+        v = mide(resto + [n], NG_FINAL, SEMILLAS) - base
+        validadas.append((v, p, n, mc))
+        marca = '' if abs(v - d) < 1.5 else '   <- el barrido exageraba'
+        print(f"{d:+8.2f} {v:+9.2f} {p:7.2f}  {n[:32]:<34}{marca}")
+    validadas.sort(reverse=True)
+    json.dump([dict(mejora=v, usd=p, carta=n, coste=mc) for v, p, n, mc in validadas],
+              io.open('out/compras_validadas.json', 'w', encoding='utf-8'),
+              ensure_ascii=False, indent=1)
+
     print(f"\n{'='*74}\nMEJOR RELACION MEJORA/PRECIO (solo las que suben)\n{'='*74}")
     porusd = sorted([f for f in filas if f[0] > 0], key=lambda x: -x[0]/max(x[1], 0.01))
     for d, p, n, mc, t in porusd[:15]:
         print(f"{d:+7.2f} {p:7.2f} {d/max(p,0.01):8.2f}  {n[:34]:<36} {mc}")
-    print(f"\nescrito out/compras_brawl.json   ({(time.time()-t0)/60:.0f} min)")
+    print(f"\n{len(RECHAZADAS)} cartas descartadas por no leerse bien. Las mas caras que se pierden:")
+    for nm, mv in RECHAZADAS[:8]:
+        print(f"   {nm[:36]:<38} {mv}")
+    print(f"\nescrito out/compras_brawl.json y out/compras_validadas.json"
+          f"   ({(time.time()-t0)/60:.0f} min)")
 
 
 if __name__ == '__main__':
