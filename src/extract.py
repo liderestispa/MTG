@@ -91,6 +91,40 @@ def parse_card(c):
     # quitar texto recordatorio
     low = re.sub(r'\([^)]*\)', '', low)
 
+    # ---- fuera las HABILIDADES ACTIVADAS ----
+    # Las reglas de efecto barren el texto entero, asi que un efecto que en la carta
+    # cuesta activarlo caia en una ranura libre y el motor lo ejecutaba SOLO, GRATIS y
+    # AL ENTRAR. No es teorico y no era raro: src/auditoria_lectura.py encontro 36 cartas
+    # asi, varias en los mazos que se le recomendaron a Ricardo.
+    #
+    #   Giant's Boulder     artefacto de {1}, "{7}, {T}, Sacrificar: destruye el
+    #                       permanente objetivo"  ->  el motor tenia un Vindicate de 1 mana
+    #   Dwarven Provisioner "{3}{W}: las criaturas ganan +1/+1 hasta el final del turno"
+    #                       ->  el motor tenia un lord estatico permanente y gratis
+    #
+    # Es la leccion de Krark-Clan Shaman otra vez: una habilidad ACTIVADA no se puede
+    # aproximar con un efecto de entrada. La ranura act_eff existe para las que se pueden
+    # modelar; el resto se DESCARTA, que es conservador y no regala nada.
+    #
+    # No se filtran las que solo producen mana ("{T}: Add {G}"), que mana_ability lee
+    # aparte, ni la palabra clave equipar, que tiene su propia ranura.
+    # Ablacion: ACTIVADAS_GRATIS=1 vuelve al comportamiento viejo.
+    low_todo = low          # con las activadas dentro: lo necesita el parser de act_eff
+    if os.environ.get('ACTIVADAS_GRATIS') != '1':
+        # Un coste de activacion es una secuencia de partes separadas por coma, terminada
+        # en ':'. Cada parte puede ser mana ({3}{W} van pegados, sin coma), girar, o
+        # sacrificar/descartar/exiliar algo.
+        _PARTE = (r'(?:\{[^}]+\}\s*)+|sacrifice [^,:]{1,30}|tap [^,:]{1,30}|'
+                  r'discard [^,:]{1,30}|exile [^,:]{1,30}|pay \d+ life|remove [^,:]{1,30}')
+        _ACT = re.compile(r'^\s*(?:' + _PARTE + r')(?:\s*,\s*(?:' + _PARTE + r'))*\s*:')
+        _lineas = []
+        for _l in low.split('\n'):
+            if (_ACT.match(_l) and not re.search(r':\s*add \{', _l)
+                    and not _l.strip().startswith('equip')):
+                continue                      # es una habilidad activada: no se lee
+            _lineas.append(_l)
+        low = '\n'.join(_lineas)
+
     out = {'eff': E['NONE'], 'p1': 0, 'p2': 0, 'p3': 0, 'eff2': E['NONE'], 'q1': 0, 'q2': 0,
            'eff3': E['NONE'], 'r1': 0, 'r2': 0}
     # Las palabras clave estaticas viven en su propia linea al principio del texto
@@ -462,25 +496,40 @@ def parse_card(c):
     if os.environ.get('MUERTE_OFF') != '1':
         # se busca en la LINEA entera, no hasta el primer punto: Nihil Spellbomb parte el
         # efecto en dos frases ("you may pay {B}. If you do, draw a card").
+        # Se reconocen las TRES formas de decirlo. Antes solo casaba "is put into a
+        # graveyard", que es la rara; la comun es "when this creature dies", y por eso
+        # src/auditoria_lectura.py encontro 14 cartas con el disparo de muerte metido en
+        # la ranura de entrada. Cuatro de ellas —Pretending Poxbearers— estaban en el
+        # mazo de Pauper que se le recomendo a Ricardo, regalandole una ficha al entrar.
         _cl, _tambien_al_entrar = None, False
         for _lin in low.split('\n'):
-            if 'is put into a graveyard from the battlefield' not in _lin: continue
-            _tambien_al_entrar = 'enters or is put into a graveyard' in _lin
+            if not re.search(r'is put into a graveyard from the battlefield|'
+                             r'\bdies\b|leaves the battlefield', _lin): continue
+            if not re.match(r'\s*when', _lin): continue      # "whenever a creature dies"
+            _tambien_al_entrar = bool(re.search(r'enters or (?:is put into|leaves)', _lin))
             _cl = _lin
             break
         if _cl:
-            _d = re.search(r'draw (\w+) cards?', _cl)
-            if _d:
-                out['die_eff'] = E['ETB_DRAW']; out['die_p1'] = num(_d.group(1), 1)
+            # orden de preferencia: el efecto mas "duro" primero. Solo hay una ranura.
+            _cands = [
+                (r'draw (\w+) cards?',            'ETB_DRAW',  1),
+                (r'create (\w+) .{0,40}token',    'ETB_TOKEN', 1),
+                (r'deals? (\w+) damage to any target|deals? (\w+) damage to target player',
+                                                  'BURN_FACE', 1),
+                (r'you gain (\w+) life',          'LIFEGAIN',  2),
+            ]
+            for _rx, _ef, _def in _cands:
+                _m = re.search(_rx, _cl)
+                if not _m: continue
+                _val = num(next(g for g in _m.groups() if g), _def)
+                out['die_eff'] = E[_ef]; out['die_p1'] = _val
                 if not _tambien_al_entrar:
-                    # el robo era de muerte y estaba contado como de entrada: se mueve
+                    # estaba contado como efecto DE ENTRADA: se MUEVE, no se suma
                     for _s, _p in (('eff', 'p1'), ('eff2', 'q1'), ('eff3', 'r1')):
-                        if out[_s] == E['ETB_DRAW']:
+                        if out[_s] == E[_ef]:
                             out[_s] = E['NONE']; out[_p] = 0
                             break
-            _g = re.search(r'you gain (\w+) life', _cl)
-            if _g and not out.get('die_eff'):
-                out['die_eff'] = E['LIFEGAIN']; out['die_p1'] = num(_g.group(1), 2)
+                break
 
     # ---- habilidad ACTIVADA con coste de sacrificio ----
     # Ranura propia (act_eff/act_p1/act_cost) porque el jugador ELIGE cuando activarla y
@@ -489,7 +538,9 @@ def parse_card(c):
     # Hoy solo se cubre el caso "sacrifica un artefacto: N danio a cada criatura", que es
     # el motor de Jund Wildfire. Ablacion: ACTIVADAS_OFF=1.
     if os.environ.get('ACTIVADAS_OFF') != '1':
-        _a = re.search(r'sacrifice an artifact:[^.]*deals? (\w+) damage to each creature', low)
+        # low_todo y no low: el filtro de habilidades-gratis quita justo estas lineas.
+        _a = re.search(r'sacrifice an artifact:[^.]*deals? (\w+) damage to each creature',
+                       low_todo)
         if _a:
             out['act_eff'] = E['SWEEPER']
             out['act_p1'] = num(_a.group(1), 1)

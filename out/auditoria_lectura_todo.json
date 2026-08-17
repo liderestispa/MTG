@@ -1,0 +1,1558 @@
+[
+ {
+  "carta": "Dáin, Lord of the Iron Hills",
+  "copias": 3,
+  "donde": [
+   "coleccion",
+   "mazo/brawl"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "TAX, COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
+   },
+   {
+    "tipo": "TAX_ATAQUE",
+    "nota": "el texto grava ATACAR y E_TAX grava LANZAR hechizos"
+   }
+  ],
+  "texto": "Vigilance | Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, creatures can't attack you unless their controller pays {",
+  "motor": "TAX/COND_BUFF/NONE"
+ },
+ {
+  "carta": "Ravening Warg",
+  "copias": 15,
+  "donde": [
+   "coleccion",
+   "mazo/pauper",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"whenever this creature attacks\""
+   }
+  ],
+  "texto": "Deathtouch | Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, you gain 2 life.",
+  "motor": "LIFEGAIN/COND_BUFF/NONE"
+ },
+ {
+  "carta": "Ori, Keeper of Songs",
+  "copias": 4,
+  "donde": [
+   "coleccion",
+   "mazo/brawl"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
+   }
+  ],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Ori gets +1/+0 and has vigilance.",
+  "motor": "COND_BUFF/NONE/NONE"
+ },
+ {
+  "carta": "Bloodghast",
+  "copias": 5,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER",
+   "standard/Mardu Discard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"as long as\""
+   }
+  ],
+  "texto": "This creature can't block. | This creature has haste as long as an opponent has 10 or less life. | Landfall — Whenever a land you control enters, you may return this card from your graveyard to the battlefield.",
+  "motor": "COND_BUFF/NONE/NONE"
+ },
+ {
+  "carta": "Bombur, Gentle Dreamer",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
+   }
+  ],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Bombur doesn't untap during your untap step unless you have an enduring story.",
+  "motor": "COND_BUFF/NONE/NONE"
+ },
+ {
+  "carta": "Wargling",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"whenever this creature attacks\""
+   }
+  ],
+  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, until end of turn, this creature gets +1/+0 and creatures you control gain trample.",
+  "motor": "COND_BUFF/NONE/NONE"
+ },
+ {
+  "carta": "Óin the Brave",
+  "copias": 3,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
+   },
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Óin gets +1/+0 and has haste. | {1}, {T}, Discard a card: Draw a card",
+  "motor": "COND_BUFF/NONE/NONE"
+ },
+ {
+  "carta": "Thorin Oakenshield",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
+   }
+  ],
+  "texto": "Trample | Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, artifacts and creatures you control have ward {1}.",
+  "motor": "COND_BUFF/NONE/NONE"
+ },
+ {
+  "carta": "Thranduil's Company",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"as long as\""
+   }
+  ],
+  "texto": "As long as you control another Elf, you may play an additional land on each of your turns. | Landfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control. It gains vigilance until end of turn.",
+  "motor": "COND_BUFF/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Bard's Company",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "LORD lo aplica siempre, pero el texto lo condiciona a \"if you control\""
+   },
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flash' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "You may cast this spell as though it had flash if you control a Human. | Other creatures you control get +1/+1. | Whenever this creature enters or attacks, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create ",
+  "motor": "LORD/LOOT_TOKEN/NONE"
+ },
+ {
+  "carta": "Bifur, Melodic Rider",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
+   }
+  ],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Whenever Bifur enters or attacks, put a +1/+1 counter on target creature. | As long as you have an enduring ",
+  "motor": "COND_BUFF/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Wilderland Scrounger",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "COND_SIEMPRE",
+    "nota": "COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"whenever this creature attacks\""
+   }
+  ],
+  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control.",
+  "motor": "COND_BUFF/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Pretending Poxbearers",
+  "copias": 4,
+  "donde": [
+   "coleccion",
+   "mazo/pauper"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_TOKEN esta en ranura de entrada"
+   }
+  ],
+  "texto": "When this creature dies, create a 1/1 white Ally creature token.",
+  "motor": "ETB_TOKEN/NONE/NONE"
+ },
+ {
+  "carta": "Curious Farm Animals",
+  "copias": 3,
+  "donde": [
+   "coleccion",
+   "mazo/brawl"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y LIFEGAIN esta en ranura de entrada"
+   },
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "When this creature dies, you gain 3 life. | {2}, Sacrifice this creature: Destroy up to one target artifact or enchantment.",
+  "motor": "LIFEGAIN/NONE/NONE"
+ },
+ {
+  "carta": "Walltop Sentries",
+  "copias": 2,
+  "donde": [
+   "coleccion",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y LIFEGAIN esta en ranura de entrada"
+   }
+  ],
+  "texto": "Reach, deathtouch | When this creature dies, if there's a Lesson card in your graveyard, you gain 2 life.",
+  "motor": "LIFEGAIN/NONE/NONE"
+ },
+ {
+  "carta": "Momo, Playful Pet",
+  "copias": 2,
+  "donde": [
+   "coleccion",
+   "mazo/brawl"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y LIFEGAIN, ETB_COUNTERS esta en ranura de entrada"
+   },
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (LIFEGAIN, ETB_COUNTERS): se disparan todas juntas"
+   }
+  ],
+  "texto": "Flying, vigilance | When Momo leaves the battlefield, choose one — | • Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") | • Put a +1/+1 counter on target creature you control. | • Scry 2.",
+  "motor": "LIFEGAIN/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Clockwork Percussionist",
+  "copias": 4,
+  "donde": [
+   "pauper/Mono Red Rally"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_DRAW esta en ranura de entrada"
+   }
+  ],
+  "texto": "Haste | When this creature dies, exile the top card of your library. You may play it until the end of your next turn.",
+  "motor": "ETB_DRAW/NONE/NONE"
+ },
+ {
+  "carta": "Experimental Synthesizer",
+  "copias": 3,
+  "donde": [
+   "pauper/Mono Red Rally"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_TOKEN, ETB_DRAW esta en ranura de entrada"
+   },
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "When this artifact enters or leaves the battlefield, exile the top card of your library. Until end of turn, you may play that card. | {2}{R}, Sacrifice this artifact: Create a 2/2 white Samurai creature token with vigilance. Activate only a",
+  "motor": "ETB_TOKEN/ETB_DRAW/NONE"
+ },
+ {
+  "carta": "Liliana, Dreadhorde General",
+  "copias": 2,
+  "donde": [
+   "brawl/Ketramose the New Dawn",
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_DRAW, ETB_TOKEN, ETB_DRAIN esta en ranura de entrada"
+   }
+  ],
+  "texto": "Whenever a creature you control dies, draw a card. | +1: Create a 2/2 black Zombie creature token. | −4: Each player sacrifices two creatures of their choice. | −9: Each opponent chooses a permanent they control of each permanent type and s",
+  "motor": "ETB_DRAW/ETB_TOKEN/ETB_DRAIN"
+ },
+ {
+  "carta": "Sewer-veillance Cam",
+  "copias": 1,
+  "donde": [
+   "pauper/Grixis Affinity"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_DRAW esta en ranura de entrada"
+   },
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Flash | When this artifact enters or leaves the battlefield, you may tap or untap target creature. | {3}{U}, Sacrifice this artifact: Draw two cards.",
+  "motor": "ETB_DRAW/NONE/NONE"
+ },
+ {
+  "carta": "Sephiroth, Fabled SOLDIER",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_DRAIN, LIFEGAIN esta en ranura de entrada"
+   },
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Whenever Sephiroth enters or attacks, you may sacrifice another creature. If you do, draw a card. | Whenever another creature dies, target opponent loses 1 life and you gain 1 life. If this is the fourth time this ability has resolved this ",
+  "motor": "ETB_DRAIN/DRAW_ON_DMG/LIFEGAIN"
+ },
+ {
+  "carta": "Greedy Freebooter",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y TREASURE esta en ranura de entrada"
+   }
+  ],
+  "texto": "When this creature dies, scry 1 and create a Treasure token. (To scry 1, look at the top card of your library. You may put that card on the bottom. A Treasure token is an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\"",
+  "motor": "TREASURE/NONE/NONE"
+ },
+ {
+  "carta": "Infestation Sage",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_TOKEN esta en ranura de entrada"
+   }
+  ],
+  "texto": "When this creature dies, create a 1/1 black and green Insect creature token with flying.",
+  "motor": "ETB_TOKEN/NONE/NONE"
+ },
+ {
+  "carta": "Nezumi Linkbreaker",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_TOKEN esta en ranura de entrada"
+   }
+  ],
+  "texto": "When this creature dies, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"",
+  "motor": "ETB_TOKEN/NONE/NONE"
+ },
+ {
+  "carta": "Anticausal Vestige",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_DRAW esta en ranura de entrada"
+   }
+  ],
+  "texto": "When this creature leaves the battlefield, draw a card, then you may put a permanent card with mana value less than or equal to the number of lands you control from your hand onto the battlefield tapped. | Warp {4} (You may cast this card f",
+  "motor": "ETB_DRAW/NONE/NONE"
+ },
+ {
+  "carta": "Vaultborn Tyrant",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SALIR_COMO_ENTRAR",
+    "nota": "el disparo es al morir/irse y ETB_DRAW, LIFEGAIN esta en ranura de entrada"
+   }
+  ],
+  "texto": "Trample | Whenever this creature or another creature you control with power 4 or greater enters, you gain 3 life and draw a card. | When this creature dies, if it's not a token, create a token that's a copy of it, except it's an artifact in",
+  "motor": "ETB_DRAW/LIFEGAIN/NONE"
+ },
+ {
+  "carta": "Giant's Boulder",
+  "copias": 7,
+  "donde": [
+   "coleccion",
+   "mazo/brawl",
+   "mazo/pauper",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "When this artifact enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.) | {1}, {T}: Add one mana of any color. | {7}, {T}, Sacrifice this artifact: Destroy ",
+  "motor": "DESTROY/NONE/NONE"
+ },
+ {
+  "carta": "Thrór's Map",
+  "copias": 3,
+  "donde": [
+   "coleccion",
+   "mazo/brawl",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "When Thrór's Map enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle. | {2}, {T}: Draw a card, then discard a card.",
+  "motor": "ETB_DRAW/RAMP/RAMP"
+ },
+ {
+  "carta": "Gollum the Abandoned",
+  "copias": 3,
+  "donde": [
+   "coleccion",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Gollum can't block. | When Gollum enters, exile up to one target card from an opponent's graveyard. Each opponent loses 2 life. | {2}, Sacrifice an artifact or creature: Return this card from your graveyard to your hand. Activate only as a ",
+  "motor": "ETB_DRAIN/NONE/NONE"
+ },
+ {
+  "carta": "Dwarven Provisioner",
+  "copias": 3,
+  "donde": [
+   "coleccion",
+   "mazo/brawl"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{3}{W}: Creatures you control get +1/+1 until end of turn.",
+  "motor": "LORD/NONE/NONE"
+ },
+ {
+  "carta": "Hobbit Hole",
+  "copias": 5,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. | Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand,",
+  "motor": "RAMP/RAMP/NONE"
+ },
+ {
+  "carta": "Lunar Convocation",
+  "copias": 4,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "At the beginning of your end step, if you gained life this turn, each opponent loses 1 life. | At the beginning of your end step, if you gained and lost life this turn, create a 1/1 black Bat creature token with flying. | {1}{B}, Pay 2 life",
+  "motor": "ETB_DRAIN/ETB_TOKEN/NONE"
+ },
+ {
+  "carta": "Floodpits Drowner",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Midrange"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Flash | Vigilance | When this creature enters, tap target creature an opponent controls and put a stun counter on it. | {1}{U}, {T}: Shuffle this creature and target creature with a stun counter on it into their owners' libraries.",
+  "motor": "TAPDOWN/NONE/NONE"
+ },
+ {
+  "carta": "Cool but Rude",
+  "copias": 4,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "(Gain the next level as a sorcery to add its ability.) | Whenever you attack, you may discard a card. If you do, draw a card. | {1}{R}: Level 2 | Whenever you discard a card, this Class deals 2 damage to each opponent. | {1}{R}: Level 3 | W",
+  "motor": "ETB_DRAW/NONE/NONE"
+ },
+ {
+  "carta": "Bramble Wurm",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Reach, trample | When this creature enters, you gain 5 life. | {2}{G}, Exile this card from your graveyard: You gain 5 life.",
+  "motor": "LIFEGAIN/NONE/NONE"
+ },
+ {
+  "carta": "Barrels of Blasting Jelly",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{1}: Add one mana of any color. Activate only once each turn. | {5}, {T}, Sacrifice this artifact: It deals 5 damage to target creature.",
+  "motor": "DMG_SPELL/NONE/NONE"
+ },
+ {
+  "carta": "Candy Trail",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "When this artifact enters, scry 2. | {2}, {T}, Sacrifice this artifact: You gain 3 life and draw a card.",
+  "motor": "ETB_DRAW/LIFEGAIN/NONE"
+ },
+ {
+  "carta": "Expedition Map",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{2}, {T}, Sacrifice this artifact: Search your library for a land card, reveal it, put it into your hand, then shuffle.",
+  "motor": "RAMP/NONE/NONE"
+ },
+ {
+  "carta": "Timberwatch Elf",
+  "copias": 4,
+  "donde": [
+   "pauper/Elves"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{T}: Target creature gets +X/+X until end of turn, where X is the number of Elves on the battlefield.",
+  "motor": "REPEAT_PUMP/NONE/NONE"
+ },
+ {
+  "carta": "Fabled Passage",
+  "copias": 3,
+  "donde": [
+   "brawl/Ketramose the New Dawn",
+   "brawl/Kona Rescue Beastie",
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. Then if you control four or more lands, untap that land.",
+  "motor": "RAMP/RAMP/NONE"
+ },
+ {
+  "carta": "Lembas",
+  "copias": 2,
+  "donde": [
+   "pauper/Jund Wildfire"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "When this artifact enters, scry 1, then draw a card. | {2}, {T}, Sacrifice this artifact: You gain 3 life. | When this artifact is put into a graveyard from the battlefield, its owner shuffles it into their library.",
+  "motor": "ETB_DRAW/LIFEGAIN/NONE"
+ },
+ {
+  "carta": "Makeshift Munitions",
+  "copias": 2,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Jund Wildfire"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{1}, Sacrifice an artifact or creature: This enchantment deals 1 damage to any target.",
+  "motor": "DMG_ANY/NONE/NONE"
+ },
+ {
+  "carta": "Eagle's Rescue",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Enchant creature | Enchanted creature gets +2/+2 and has flying. | {2}{W/U}{W/U}: Return this card from your graveyard to the battlefield attached to target creature you control with power 1 or less. Activate only as a sorcery.",
+  "motor": "EQUIP/NONE/NONE"
+ },
+ {
+  "carta": "Bristly Bill, Spine Sower",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature. | {3}{G}{G}: Double the number of +1/+1 counters on each creature you control.",
+  "motor": "COND_BUFF/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Loot, Exuberant Explorer",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "You may play an additional land on each of your turns. | {4}{G}{G}, {T}: Look at the top six cards of your library. You may reveal a creature card with mana value less than or equal to the number of lands you control from among them and put",
+  "motor": "ETB_DRAW/NONE/NONE"
+ },
+ {
+  "carta": "Herd Heirloom",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{T}: Add one mana of any color. Spend this mana only to cast a creature spell. | {T}: Until end of turn, target creature you control with power 4 or greater gains trample and \"Whenever this creature deals combat damage to a player, draw a c",
+  "motor": "DRAW_ON_DMG/NONE/NONE"
+ },
+ {
+  "carta": "Ride the Shoopuf",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control. | {5}{G}{G}: This enchantment becomes a 7/7 Beast creature in addition to its other types.",
+  "motor": "COND_BUFF/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Innkeeper's Talent",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "(Gain the next level as a sorcery to add its ability.) | At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. | {G}: Level 2 | Permanents you control with counters on them have ward {1}. | {3}{G}: Lev",
+  "motor": "ETB_COUNTERS/NONE/NONE"
+ },
+ {
+  "carta": "Escape Tunnel",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. | {T}, Sacrifice this land: Target creature with power 2 or less can't be blocked this turn.",
+  "motor": "RAMP/RAMP/NONE"
+ },
+ {
+  "carta": "Evolving Wilds",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "motor": "RAMP/RAMP/NONE"
+ },
+ {
+  "carta": "Terramorphic Expanse",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "motor": "RAMP/RAMP/NONE"
+ },
+ {
+  "carta": "Agatha's Soul Cauldron",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "You may spend mana as though it were mana of any color to activate abilities of creatures you control. | Creatures you control with +1/+1 counters on them have all activated abilities of all creature cards exiled with Agatha's Soul Cauldron",
+  "motor": "ETB_COUNTERS/NONE/NONE"
+ },
+ {
+  "carta": "The Ooze",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target crea",
+  "motor": "ETB_COUNTERS/NONE/NONE"
+ },
+ {
+  "carta": "Stormchaser's Talent",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "(Gain the next level as a sorcery to add its ability.) | When this Class enters, create a 1/1 blue and red Otter creature token with prowess. | {3}{U}: Level 2 | When this Class becomes level 2, return target instant or sorcery card from yo",
+  "motor": "ETB_TOKEN/NONE/NONE"
+ },
+ {
+  "carta": "Along the Crooked Way",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "When this enchantment enters, return target creature card from your graveyard to your hand. | Whenever a creature card leaves your graveyard, amass Goblins 1. | {1}{B}: Goblins and Orcs you control gain menace until end of turn.",
+  "motor": "REANIMATE/AMASS/NONE"
+ },
+ {
+  "carta": "Beorn's Hospitality",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control. | {5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains \"This creature's power and toughness are each ",
+  "motor": "COND_BUFF/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "The Lonely Mountain",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "({T}: Add {R}.) | This land enters tapped unless you control an Equipment. | {4}{R}, {T}: Create a 2/2 red Dwarf creature token. This ability costs {1} less to activate for each Equipment you control. Activate only as a sorcery.",
+  "motor": "ETB_TOKEN/NONE/NONE"
+ },
+ {
+  "carta": "Vindictive Warden",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "ACTIVADA_GRATIS",
+    "nota": "hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
+   }
+  ],
+  "texto": "Menace (This creature can't be blocked except by two or more creatures.) | Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.) | {3}: This creature deals 1 damage to each opponent.",
+  "motor": "BURN_FACE/NONE/NONE"
+ },
+ {
+  "carta": "Warg Tactics",
+  "copias": 9,
+  "donde": [
+   "coleccion",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (DESTROY, ETB_COUNTERS): se disparan todas juntas"
+   },
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Hexproof' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Choose one — | • Destroy target creature with flying. | • Put a +1/+1 counter on target creature you control. It gains trample and hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)",
+  "motor": "DESTROY/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Reverent Howl",
+  "copias": 3,
+  "donde": [
+   "coleccion",
+   "mazo/pauper",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (ETB_DRAW, PUMP): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Target player draws two cards and loses 2 life. | • Target creature gets +2/+2 and gains lifelink until end of turn.",
+  "motor": "ETB_DRAW/PUMP/NONE"
+ },
+ {
+  "carta": "Gollum, Riddle Master",
+  "copias": 2,
+  "donde": [
+   "coleccion",
+   "mazo/standard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 3 ranuras llenas (ETB_DRAIN, ETB_DRAW, LIFEGAIN): se disparan todas juntas"
+   }
+  ],
+  "texto": "As Gollum enters, choose odd or even. (Zero is even.) | Whenever an opponent casts a spell with mana value of the chosen quality, choose one that hasn't been chosen — | • Put a +1/+1 counter on Gollum. | • Each opponent loses 2 life and you",
+  "motor": "ETB_DRAIN/ETB_DRAW/LIFEGAIN"
+ },
+ {
+  "carta": "Belladonna Took",
+  "copias": 2,
+  "donde": [
+   "coleccion",
+   "mazo/brawl"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 3 ranuras llenas (ETB_DRAW, LIFEGAIN, ETB_COUNTERS): se disparan todas juntas"
+   }
+  ],
+  "texto": "Whenever a token you control enters, you gain 1 life if this is the first time this ability has resolved this turn. If it's the second time, draw a card. If it's the third time, put a +1/+1 counter on each creature you control.",
+  "motor": "ETB_DRAW/LIFEGAIN/ETB_COUNTERS"
+ },
+ {
+  "carta": "Prismari Charm",
+  "copias": 4,
+  "donde": [
+   "standard/Izzet Spellementals"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (BOUNCE, ETB_DRAW): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Surveil 2, then draw a card. | • Prismari Charm deals 1 damage to each of one or two targets. | • Return target nonland permanent to its owner's hand.",
+  "motor": "BOUNCE/ETB_DRAW/NONE"
+ },
+ {
+  "carta": "Confusticate and Bebother",
+  "copias": 4,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (COUNTER, ETB_DRAW): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Counter target spell unless its controller pays {4}. | • Draw two cards, then discard a card.",
+  "motor": "COUNTER/ETB_DRAW/NONE"
+ },
+ {
+  "carta": "Origin of Metalbending",
+  "copias": 2,
+  "donde": [
+   "brawl/Tifa Lockhart",
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (PROTECT, ETB_COUNTERS): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Destroy target artifact or enchantment. | • Put a +1/+1 counter on target creature you control. It gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)",
+  "motor": "PROTECT/ETB_COUNTERS/NONE"
+ },
+ {
+  "carta": "Thorin's Last Stand",
+  "copias": 2,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (LIFEGAIN, LORD): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Creatures you control get +2/+1 until end of turn. | • Destroy target artifact or enchantment. You gain 2 life.",
+  "motor": "LIFEGAIN/LORD/NONE"
+ },
+ {
+  "carta": "Bushwhack",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 3 ranuras llenas (FIGHT, RAMP, RAMP): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Search your library for a basic land card, reveal it, put it into your hand, then shuffle. | • Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)",
+  "motor": "FIGHT/RAMP/RAMP"
+ },
+ {
+  "carta": "Gaius van Baelsar",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (EDICT, ETB_DRAIN): se disparan todas juntas"
+   },
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "When Gaius van Baelsar enters, choose one — | • Each player sacrifices a creature token of their choice. | • Each player sacrifices a nontoken creature of their choice. | • Each player sacrifices an enchantment of their choice.",
+  "motor": "EDICT/ETB_DRAIN/NONE"
+ },
+ {
+  "carta": "Spellgyre",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 2 ranuras llenas (COUNTER, ETB_DRAW): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Counter target spell. | • Surveil 2, then draw two cards. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",
+  "motor": "COUNTER/ETB_DRAW/NONE"
+ },
+ {
+  "carta": "Archdruid's Charm",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "MODAL_TODO",
+    "nota": "texto modal y 3 ranuras llenas (RAMP, ETB_COUNTERS, FIGHT): se disparan todas juntas"
+   }
+  ],
+  "texto": "Choose one — | • Search your library for a creature or land card and reveal it. Put it onto the battlefield tapped if it's a land card. Otherwise, put it into your hand. Then shuffle. | • Put a +1/+1 counter on target creature you control. ",
+  "motor": "RAMP/ETB_COUNTERS/FIGHT"
+ },
+ {
+  "carta": "Krark-Clan Shaman",
+  "copias": 6,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Jund Wildfire"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "Sacrifice an artifact: This creature deals 1 damage to each creature without flying.",
+  "motor": "DMG_SPELL/NONE/NONE"
+ },
+ {
+  "carta": "Deadly Cover-Up",
+  "copias": 4,
+  "donde": [
+   "brawl/Ketramose the New Dawn",
+   "standard/Dimir Excruciator",
+   "standard/Four-Color Control"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "As an additional cost to cast this spell, you may collect evidence 6. | Destroy all creatures. If evidence was collected, exile a card from an opponent's graveyard. Then search its owner's graveyard, hand, and library for any number of card",
+  "motor": "SWEEPER/ETB_DRAW/SWEEPER"
+ },
+ {
+  "carta": "Day of Black Sun",
+  "copias": 2,
+  "donde": [
+   "standard/Dimir Excruciator"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "Each creature with mana value X or less loses all abilities until end of turn. Destroy those creatures.",
+  "motor": "DESTROY/SWEEPER/NONE"
+ },
+ {
+  "carta": "End the Festivities",
+  "copias": 1,
+  "donde": [
+   "pauper/Mono Red Rally"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "End the Festivities deals 1 damage to each opponent and each creature and planeswalker they control.",
+  "motor": "BURN_FACE/SWEEPER/NONE"
+ },
+ {
+  "carta": "Withering Curse",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "All creatures get -2/-2 until end of turn. | Infusion — If you gained life this turn, destroy all creatures instead.",
+  "motor": "SWEEPER/SWEEPER/NONE"
+ },
+ {
+  "carta": "Season of Loss",
+  "copias": 1,
+  "donde": [
+   "brawl/Sephiroth Fabled SOLDIER"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "Choose up to five {P} worth of modes. You may choose the same mode more than once. | {P} — Each player sacrifices a creature of their choice. | {P}{P} — Draw a card for each creature that died under your control this turn. | {P}{P}{P} — Eac",
+  "motor": "ETB_DRAIN/ETB_DRAW/EDICT"
+ },
+ {
+  "carta": "Day of Judgment",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "Destroy all creatures.",
+  "motor": "SWEEPER/SWEEPER/NONE"
+ },
+ {
+  "carta": "Expel the Interlopers",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "sospechas": [
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "Choose a number between 0 and 10. Destroy all creatures with power greater than or equal to the chosen number.",
+  "motor": "SWEEPER/SWEEPER/NONE"
+ },
+ {
+  "carta": "Extinguisher Battleship",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   },
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Trample' esta en el texto y no en kw"
+   },
+   {
+    "tipo": "SIMETRICO",
+    "nota": "el texto toca a los dos lados y el efecto solo castiga al rival"
+   }
+  ],
+  "texto": "When this Spacecraft enters, destroy target noncreature permanent. Then this Spacecraft deals 4 damage to each creature. | Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as",
+  "motor": "DESTROY/DMG_SPELL/NONE"
+ },
+ {
+  "carta": "Bofur, Reliable Guardian // Concerted Care",
+  "copias": 6,
+  "donde": [
+   "coleccion",
+   "mazo/brawl"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Indestructible' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Lifelink | Target artifact or creature you control gains hexproof and indestructible until end of turn. (Then exile this card. You may cast the creature later from exile.)",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "Smaug's Fury",
+  "copias": 2,
+  "donde": [
+   "coleccion",
+   "mazo/pauper"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'First strike' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Target creature gets +3/+0 and gains reach and first strike until end of turn.",
+  "motor": "PUMP/NONE/NONE"
+ },
+ {
+  "carta": "Nowhere to Run",
+  "copias": 4,
+  "donde": [
+   "standard/Dimir Midrange",
+   "standard/Four-Color Control"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Ward' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Flash | When this enchantment enters, target creature an opponent controls gets -3/-3 until end of turn. | Creatures your opponents control can be the targets of spells and abilities as though they didn't have hexproof. Ward abilities of th",
+  "motor": "DESTROY/NONE/NONE"
+ },
+ {
+  "carta": "Amalia Benavides Aguirre",
+  "copias": 4,
+  "donde": [
+   "standard/Orzhov Lifegain"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Ward' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Ward—Pay 3 life. | Whenever you gain life, Amalia Benavides Aguirre explores. Then destroy all other creatures if its power is exactly 20. (To have this creature explore, reveal the top card of your library. Put that card into your hand if ",
+  "motor": "SWEEPER/NONE/NONE"
+ },
+ {
+  "carta": "Pinnacle Kill-Ship",
+  "copias": 4,
+  "donde": [
+   "pauper/Tron"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "When this Spacecraft enters, it deals 10 damage to up to one target creature. | Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+",
+  "motor": "DMG_SPELL/NONE/NONE"
+ },
+ {
+  "carta": "Practiced Offense",
+  "copias": 3,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Lifelink' esta en el texto y no en kw"
+   },
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Double strike' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Put a +1/+1 counter on each creature target player controls. Target creature gains your choice of double strike or lifelink until end of turn. | Flashback {1}{W} (You may cast this card from your graveyard for its flashback cost. Then exile",
+  "motor": "ETB_COUNTERS/NONE/NONE"
+ },
+ {
+  "carta": "Toxin Analysis",
+  "copias": 3,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Jund Wildfire"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Lifelink' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Target creature gains deathtouch and lifelink until end of turn. Investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")",
+  "motor": "PUMP/NONE/NONE"
+ },
+ {
+  "carta": "Larval Scoutlander",
+  "copias": 2,
+  "donde": [
+   "brawl/Kona Rescue Beastie",
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "When this Spacecraft enters, you may sacrifice a land or Lander. If you do, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle. | Station (Tap another creature you control: Put charge coun",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "Cecil, Dark Knight",
+  "copias": 1,
+  "donde": [
+   "standard/Mardu Discard"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Lifelink' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Deathtouch | Darkness — Whenever Cecil deals damage, you lose that much life. Then if your life total is less than or equal to half your starting life total, untap Cecil and transform it. | Lifelink | Protect — Whenever Cecil attacks, other",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "Horrid Vigor",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Indestructible' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Target creature gains deathtouch and indestructible until end of turn.",
+  "motor": "PROTECT/NONE/NONE"
+ },
+ {
+  "carta": "Defend the Rider",
+  "copias": 1,
+  "donde": [
+   "brawl/Tifa Lockhart"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Indestructible' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Choose one — | • Target permanent you control gains hexproof and indestructible until end of turn. | • Create a 1/1 colorless Pilot creature token with \"This token saddles Mounts and crews Vehicles as though its power were 2 greater.\"",
+  "motor": "ETB_TOKEN/NONE/NONE"
+ },
+ {
+  "carta": "Sheltered by Ghosts",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Ward' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Enchant creature you control | When this Aura enters, exile target nonland permanent an opponent controls until this Aura leaves the battlefield. | Enchanted creature gets +1/+0 and has lifelink and ward {2}.",
+  "motor": "EXILE/EQUIP/NONE"
+ },
+ {
+  "carta": "Ghost Vacuum",
+  "copias": 1,
+  "donde": [
+   "brawl/Ketramose the New Dawn"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "{T}: Exile target card from a graveyard. | {6}, {T}, Sacrifice this artifact: Put each creature card exiled with this artifact onto the battlefield under your control with a flying counter on it. Each of them is a 1/1 Spirit in addition to ",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "The Unagi of Kyoshi Island",
+  "copias": 1,
+  "donde": [
+   "brawl/Eluge the Shoreless Sea"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Ward' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Flash | Ward—Waterbend {4}. (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {4}. They can tap their artifacts and creatures to help. Each one pays for {1}.) | Wheneve",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "Sire of Seven Deaths",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Ward' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Reach, first strike | Vigilance, menace | Trample, lifelink | Ward—Pay 7 life.",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "Dawnsire, Sunstar Dreadnought",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 20+.) | 10+ | Whenever you attack, Dawnsire deals 100 damage to up to one target c",
+  "motor": "DMG_SPELL/NONE/NONE"
+ },
+ {
+  "carta": "Wurmwall Sweeper",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "When this Spacecraft enters, surveil 2. | Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 4+.) | 4+ | Flying",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "Sledge-Class Seedship",
+  "copias": 1,
+  "donde": [
+   "brawl/Kona Rescue Beastie"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Flying' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.) | 7+ | Flying | Whenever this Spacecraft attacks, you may put a creature card",
+  "motor": "NONE/NONE/NONE"
+ },
+ {
+  "carta": "Foggy Swamp Hunters",
+  "copias": 1,
+  "donde": [
+   "coleccion"
+  ],
+  "sospechas": [
+   {
+    "tipo": "KW_PERDIDA",
+    "nota": "'Menace' esta en el texto y no en kw"
+   }
+  ],
+  "texto": "As long as you've drawn two or more cards this turn, this creature has lifelink and menace. (It can't be blocked except by two or more creatures.)",
+  "motor": "NONE/NONE/NONE"
+ }
+]
