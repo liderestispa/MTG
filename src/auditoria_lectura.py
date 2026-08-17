@@ -119,6 +119,17 @@ def sospechas(c, e):
                     f"texto modal y {len(llenas)} ranuras llenas "
                     f"({', '.join(INV[x] for x in llenas)}): se disparan todas juntas"))
 
+    # COSTE ADICIONAL: no es una habilidad activada, asi que el filtro de activadas no lo
+    # ve, y el efecto queda leido a precio de tapa. Stir Up Trouble pide sacrificar un
+    # artefacto o criatura O pagar {4} ademas de su {B}, y el motor tenia un Doom Blade
+    # de un mana. Tres copias, en el mazo de Pauper que se le recomendo a Ricardo.
+    # "you may blight 1" / "you may collect evidence 6" son OPCIONALES: no pagarlas
+    # es legal, asi que leerlas gratis no es un error. Solo cuentan las obligatorias.
+    if re.search(r'as an additional cost to cast(?![^.]*you may)', low) and llenas:
+        _m = re.search(r'as an additional cost to cast[^.]{0,80}', low)
+        out.append(('COSTE_ADICIONAL',
+                    f"el coste adicional no se cobra: \"{_m.group(0)[:70].strip()}\""))
+
     if _ACTIVADA.search(t) and llenas and not e.get('act_eff'):
         # las de solo mana ya se descartan en cobertura_texto; aqui filtramos igual
         if not re.search(r':\s*add \{', low):
@@ -212,7 +223,7 @@ def main():
 
     # ordena por gravedad y despues por cuantas copias hay en juego
     GRAVEDAD = {'TAX_ATAQUE': 0, 'COND_SIEMPRE': 1, 'SALIR_COMO_ENTRAR': 2,
-                'ATACAR_COMO_ENTRAR': 2,
+                'ATACAR_COMO_ENTRAR': 2, 'COSTE_ADICIONAL': 1,
                 'ACTIVADA_GRATIS': 3, 'MODAL_TODO': 4, 'SIMETRICO': 5, 'KW_PERDIDA': 6}
     def clave(r):
         g = min(GRAVEDAD.get(x['tipo'], 9) for x in r['sospechas'])

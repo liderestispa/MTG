@@ -642,6 +642,44 @@ def parse_card(c):
                     break
             break
 
+
+    # dano a criatura ATACANTE o BLOQUEADORA: la regla general pedia "target creature"
+    # y estas se quedaban mudas. Razor Rings son 4 copias de remocion de 2 mana.
+    _rr = re.search(r'deals (\w+) damage to target (?:attacking|blocking)[\w\s]*creature', low)
+    if _rr and out['eff'] == E['NONE']:
+        setp(E['DMG_SPELL'], num(_rr.group(1), 2))
+    # dano repartido entre varios objetivos: se modela como dano a una criatura, que es
+    # el uso normal. Gandalf, Spark Starter reparte 3.
+    _rd = re.search(r'deals (\w+) damage divided as you choose', low)
+    if _rd and out['eff'] == E['NONE']:
+        setp(E['DMG_SPELL'], num(_rd.group(1), 3))
+
+    # ---- COSTE ADICIONAL obligatorio ----
+    # No es una habilidad activada, asi que el filtro de activadas no lo ve, y el efecto
+    # quedaba leido a precio de tapa. src/auditoria_lectura.py encontro 16 cartas asi:
+    #
+    #   Stir Up Trouble   {B}, "sacrifica un artefacto o criatura o paga {4}. Destruye la
+    #                     criatura objetivo"  ->  el motor tenia un Doom Blade de 1 mana
+    #   Bitter Triumph    "descarta una carta o paga 3 vidas" ademas de su coste
+    #
+    # No hay ranura para "sacrificar como coste", asi que se cobra en MANA GENERICO, que
+    # es crudo pero va en la direccion correcta: una carta mas un cuerpo no son gratis.
+    # Las OPCIONALES ("you may blight 1", "you may collect evidence 6") no se cobran: no
+    # pagarlas es legal. Ablacion: COSTE_EXTRA_OFF=1.
+    if os.environ.get('COSTE_EXTRA_OFF') != '1':
+        for _l in low.split('\n'):
+            if 'as an additional cost to cast' not in _l: continue
+            if re.search(r'as an additional cost to cast[^.]*\byou may\b', _l): break
+            _c = 0
+            if re.search(r'sacrifice (?:a|an|one) ', _l):        _c = max(_c, 2)
+            if re.search(r'discard (?:a|an|one|\d+) ', _l):      _c = max(_c, 1)
+            if re.search(r'pay (\d+) life', _l):                 _c = max(_c, 1)
+            if re.search(r'exile [^,.]{0,30} from your graveyard', _l): _c = max(_c, 1)
+            _m = re.search(r'pay \{(\d+)\}', _l)
+            if _m: _c = min(_c, int(_m.group(1))) if _c else int(_m.group(1))
+            if _c: out['coste_extra'] = _c
+            break
+
     # ---- CONDICION de los efectos estaticos ----
     # E_COND_BUFF, E_TAX y E_LORD se aplicaban siempre. Ahora llevan un codigo de
     # condicion que el motor cobra en cumple_cond(). Sin esto, Dain daba su prision

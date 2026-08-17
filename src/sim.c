@@ -61,6 +61,7 @@ typedef struct {
                           se disparaban al bajar la criatura. Misma solucion que la
                           ranura de cementerio: se reutiliza apply(). */
   int16_t atk_p1;
+  uint8_t coste_extra; /* coste adicional obligatorio, cobrado en generico */
   uint8_t entra_girada;/* "This land enters tapped". El motor las metia TODAS destapadas,
                           y en el banco de Standard eso es el 52% de las tierras: medio
                           turno de ventaja regalado a cada mazo, en todos los mazos. */
@@ -484,8 +485,21 @@ static int reduccion(P*p,Def*d){
   if(d->cred==2) return mayor_cmc_criatura(p);
   return 0;
 }
+/* Cobrar el coste adicional obligatorio. APAGADO POR DEFECTO: COSTE_EXTRA_ON=1.
+   Es correcto —Stir Up Trouble pide sacrificar un artefacto o criatura ADEMAS de su {B}
+   y el motor tenia un Doom Blade de un mana— y rompe el ajuste justo donde mas duele:
+
+       Pauper  residuo 5,51 -> 5,61   r=+0,68 -> +0,48
+       LOOCV   Pauper pasa de GANARLE al modelo tonto (+0,14) a PERDER (-0,31)
+
+   Es el caso 12 de mas-correcto-y-ajusta-peor, y el primero que tumba el unico
+   resultado bueno que tiene el proyecto, asi que no se adopta. La lectura probable es
+   la de siempre: encarecer la remocion frena a los mazos del banco y el motor ya iba
+   lento. Volver a medirlo si algun dia se arregla el modelo de mana. */
+static int COSTE_EXTRA_ON = 0;
 static int pay_gen(P*p,Def*d){
   int g = d->gen + (p->taxed>0 && d->typ!=T_LAND ? p->taxed : 0);
+  if(COSTE_EXTRA_ON) g += d->coste_extra;
   g -= reduccion(p,d);
   return g>0 ? g : 0;
 }
@@ -1757,10 +1771,11 @@ int main(void){
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
     int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0,cr_=0;
-    int co_=0,lg_=0,ta_=0,eg_=0,ke_=0,kp_=0;
-    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,
-          &r1_,&r2_,&al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_,&eg_,&ke_,&kp_);
-    d->atk_eff=(uint8_t)ke_; d->atk_p1=(int16_t)kp_;
+    int co_=0,lg_=0,ta_=0,eg_=0,ke_=0,kp_=0,cx_=0;
+    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,
+          &e3_,&r1_,&r2_,&al_,&an_,&de_,&dp_,&ae_,&ap_,&ac_,&cr_,&co_,&lg_,&ta_,&eg_,&ke_,
+          &kp_,&cx_);
+    d->atk_eff=(uint8_t)ke_; d->atk_p1=(int16_t)kp_; d->coste_extra=(uint8_t)cx_;
     d->cred=(uint8_t)cr_; d->cond=(uint8_t)co_; d->es_leg=(uint8_t)lg_;
     d->tax_atk=(uint8_t)ta_; d->entra_girada=(uint8_t)eg_;
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
@@ -1796,6 +1811,7 @@ int main(void){
     const char*co=getenv("CONDICIONES_OFF"); if(co&&atoi(co)) CONDICIONES_ON=0;
     const char*tg=getenv("TIERRA_GIRADA"); if(tg) TIERRA_GIRADA=atoi(tg);
     const char*aq=getenv("ATAQUE_OFF"); if(aq&&atoi(aq)) ATAQUE_ON=0;
+    const char*ce=getenv("COSTE_EXTRA_ON"); if(ce) COSTE_EXTRA_ON=atoi(ce);
 
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
