@@ -1,45 +1,39 @@
-<title>Tom, Bert y William</title>
+<title>Los Sackville-Bagginses</title>
 <style>
   :root{
     --ground:#EDEBF0; --panel:#F7F6F9; --edge:#D6D2DD;
     --ink:#191622; --ink-2:#4A4356; --ink-3:#7A7288;
     --blood:#8C2F39; --blood-soft:#8C2F3922;
-    --verd:#3F6B60; --verd-soft:#3F6B6022;
-    --bar:#231E30;
+    --verd:#3F6B60; --bar:#231E30;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
       --ground:#131019; --panel:#1C1826; --edge:#2E2839;
       --ink:#EDEAF2; --ink-2:#B3ACC0; --ink-3:#7E7590;
       --blood:#C4636C; --blood-soft:#C4636C22;
-      --verd:#6FA697; --verd-soft:#6FA69722;
-      --bar:#C9C2D6;
+      --verd:#6FA697; --bar:#C9C2D6;
     }
   }
   :root[data-theme="dark"]{
     --ground:#131019; --panel:#1C1826; --edge:#2E2839;
     --ink:#EDEAF2; --ink-2:#B3ACC0; --ink-3:#7E7590;
     --blood:#C4636C; --blood-soft:#C4636C22;
-    --verd:#6FA697; --verd-soft:#6FA69722;
-    --bar:#C9C2D6;
+    --verd:#6FA697; --bar:#C9C2D6;
   }
 
   *{box-sizing:border-box}
-  body{
-    margin:0; background:var(--ground); color:var(--ink);
+  body{margin:0; background:var(--ground); color:var(--ink);
     font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
-    font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
-  }
+    font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased}
   .wrap{max-width:44rem; margin:0 auto; padding:3.5rem 1.4rem 6rem;
         display:flex; flex-direction:column; gap:3.2rem}
   .num{font-family:'Cascadia Mono',Consolas,ui-monospace,'SF Mono',monospace;
        font-variant-numeric:tabular-nums}
-
   .eyebrow{font-family:'Segoe UI',system-ui,sans-serif; font-size:.7rem;
     letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin:0 0 .7rem}
-  h1{font-size:clamp(2.1rem,6vw,3rem); line-height:1.06; margin:0; font-weight:600;
+  h1{font-size:clamp(2rem,5.6vw,2.8rem); line-height:1.06; margin:0; font-weight:600;
      letter-spacing:-.015em; text-wrap:balance}
-  h1 .sub{display:block; font-size:.4em; font-weight:400; color:var(--ink-2);
+  h1 .sub{display:block; font-size:.42em; font-weight:400; color:var(--ink-2);
           letter-spacing:0; margin-top:.6rem; font-style:italic}
   h2{font-size:1.32rem; font-weight:600; margin:0 0 1rem; letter-spacing:-.01em;
      text-wrap:balance}
@@ -52,7 +46,6 @@
   .lede{font-size:1.12rem; color:var(--ink-2)} .lede strong{color:var(--ink)}
   .panel{background:var(--panel); border:1px solid var(--edge); border-radius:3px;
          padding:1.5rem 1.6rem}
-
   .mu{display:flex; flex-direction:column; gap:.1rem; margin-top:.4rem}
   .mu-row{display:grid; grid-template-columns:1fr 4.2rem; align-items:center;
           gap:.9rem; padding:.5rem 0; border-bottom:1px solid var(--edge)}
@@ -60,17 +53,14 @@
   .mu-name{position:relative; font-size:.95rem}
   .mu-name .track{position:absolute; inset:auto 0 -.42rem 0; height:2px; background:var(--edge)}
   .mu-name .fill{position:absolute; left:0; bottom:-.42rem; height:2px; background:var(--bar)}
-  .mu-row.win .fill{background:var(--verd)}
-  .mu-row.lose .fill{background:var(--blood)}
+  .mu-row.win .fill{background:var(--verd)} .mu-row.lose .fill{background:var(--blood)}
   .mu-val{text-align:right; font-size:.95rem}
   .mu-row.win .mu-val{color:var(--verd)} .mu-row.lose .mu-val{color:var(--blood)}
-
   .field{display:flex; flex-direction:column; gap:.15rem}
   .field-row{display:grid; grid-template-columns:1fr 3.6rem; gap:.9rem;
              padding:.42rem .7rem; font-size:.95rem; border-radius:2px}
   .field-row.you{background:var(--blood-soft); font-weight:600; outline:1px solid var(--blood)}
   .field-row .v{text-align:right}
-
   .deck{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
         gap:1.6rem 2.2rem; margin-top:.4rem}
   .curve{display:flex; flex-direction:column; gap:.42rem; break-inside:avoid}
@@ -82,7 +72,6 @@
   .cmd .name{font-size:1.24rem; font-weight:600; display:block}
   .cmd .txt{color:var(--ink-2); font-size:.92rem; font-style:italic;
             margin-top:.35rem; display:block}
-
   table{width:100%; border-collapse:collapse; font-size:.9rem}
   .scroll{overflow-x:auto}
   th{text-align:left; font-family:'Segoe UI',system-ui,sans-serif; font-size:.68rem;
@@ -102,17 +91,14 @@
 
   <header>
     <p class="eyebrow">Standard Brawl · colección de 371 cartas</p>
-    <h1>Tom, Bert y William
-      <span class="sub">Negro-verde, sacrificar por cartas. Ni blanco, ni mono negro.</span></h1>
+    <h1>Los Sackville-Bagginses
+      <span class="sub">Mono negro. Sacrificar por cartas y drenar.</span></h1>
   </header>
 
   <section>
-    <p class="lede">La respuesta cambió tres veces en una noche, y cada cambio vino de
-    arreglar cómo el motor <em>lee</em> las cartas. Primero era blanco con Dáin — un
-    espejismo. Después mono negro. Al leer las caras de Aventura y descartar las
-    condiciones que el motor no sabe evaluar, ganó el <strong>negro-verde</strong>, y con
-    el margen más grande de todos: <strong>40,0%</strong> contra el campo, cuando el mazo
-    de anoche marcaba 33,2%.</p>
+    <p class="lede">Ocho versiones del motor después, la respuesta se estabilizó: <strong>mono
+    negro con The Sackville-Bagginses</strong>, <strong>38,3%</strong> contra el campo.
+    Ni el blanco de Dáin —que era un espejismo— ni el verde de los cuerpos gordos.</p>
   </section>
 
   <hr>
@@ -120,65 +106,61 @@
   <section>
     <h2>El mazo</h2>
     <div class="panel cmd">
-      <span class="name">Tom, Bert, and William</span>
-      <span class="num" style="font-size:.8rem;color:var(--ink-3);font-family:'Segoe UI',sans-serif">{3}{B}{G} · 5/5 · Legendary Creature — Troll</span>
-      <span class="txt">{1}, Sacrifica otra criatura: Roba cartas igual a su fuerza, luego
-      descarta una. · Cuando mueran, si eran criatura, vuelven al campo como artefacto.</span>
+      <span class="name">The Sackville-Bagginses</span>
+      <span class="num" style="font-size:.8rem;color:var(--ink-3);font-family:'Segoe UI',sans-serif">{1}{B} · 2/2 · Legendary Creature — Halfling Citizen</span>
+      <span class="txt">Al entrar, puedes sacrificar otra criatura o artefacto. Si lo haces,
+      roba una carta y crea un Tesoro. · Cada vez que sacrifiques una ficha, un oponente
+      pierde 1 vida.</span>
     </div>
 
     <div class="deck">
       <div class="curve"><h3>1 maná</h3><ul>
         <li>Giant's Boulder <span class="mc num">{1}</span></li>
+        <li>Key to the Side-Door <span class="mc num">{1}</span></li>
         <li>Stir Up Trouble <span class="mc num">{B}</span></li>
-        <li>Turtle-Duck <span class="mc num">{G}</span></li>
       </ul></div>
       <div class="curve"><h3>2 maná</h3><ul>
-        <li>Attercop <span class="mc num">{1}{G}</span></li>
         <li>Corrupt Court Official <span class="mc num">{1}{B}</span></li>
         <li>Dai Li Indoctrination <span class="mc num">{1}{B}</span></li>
+        <li>Desolation Prowler <span class="mc num">{1}{B}</span></li>
+        <li>Dwarven Mattock <span class="mc num">{2}</span></li>
         <li>Front Porch Sentries <span class="mc num">{1}{B}</span></li>
         <li>Gollum the Abandoned <span class="mc num">{1}{B}</span></li>
+        <li>Gollum, Riddle Master <span class="mc num">{1}{B}</span></li>
         <li>Heartless Act <span class="mc num">{1}{B}</span></li>
+        <li>Joo Dee, One of Many <span class="mc num">{1}{B}</span></li>
+        <li>Merchant of Many Hats <span class="mc num">{1}{B}</span></li>
         <li>Old Thrush <span class="mc num">{2}</span></li>
-        <li>Quarrel <span class="mc num">{1}{G}</span></li>
         <li>Ravening Warg <span class="mc num">{1}{B}</span></li>
         <li>Stony-Voiced Goblins <span class="mc num">{1}{B}</span></li>
-        <li>The Sackville-Bagginses <span class="mc num">{1}{B}</span></li>
-        <li>Warg Tactics <span class="mc num">{1}{G}</span></li>
-        <li>Wargling <span class="mc num">{1}{G}</span></li>
+        <li>Thrór's Map <span class="mc num">{2}</span></li>
       </ul></div>
       <div class="curve"><h3>3 maná</h3><ul>
+        <li>Along the Crooked Way <span class="mc num">{2}{B}</span></li>
+        <li>Bender's Waterskin <span class="mc num">{3}</span></li>
         <li>Bilbo's Deadly Slice <span class="mc num">{1}{B}{B}</span></li>
+        <li>Boiling Rock Rioter <span class="mc num">{2}{B}</span></li>
         <li>Crude Bent Blade <span class="mc num">{2}{B}</span></li>
-        <li>Duskwatch Hunter <span class="mc num">{2}{B/G}</span></li>
         <li>Gnashing of Teeth <span class="mc num">{1}{B}{B}</span></li>
+        <li>Great Fierce Bee <span class="mc num">{2}{B}</span></li>
         <li>Hog-Monkey <span class="mc num">{2}{B}</span></li>
-        <li>Mirkwood Pathmaker <span class="mc num">{2}{G}</span></li>
-        <li>Walltop Sentries <span class="mc num">{2}{G}</span></li>
+        <li>Long-Bodied Grey Dog <span class="mc num">{3}</span></li>
+        <li>Rage into the Valley <span class="mc num">{2}{B}</span></li>
+        <li>Reverent Howl <span class="mc num">{2}{B}</span></li>
       </ul></div>
       <div class="curve"><h3>4 maná</h3><ul>
-        <li>Beifong's Bounty Hunters <span class="mc num">{2}{B}{G}</span></li>
         <li>Foggy Swamp Hunters <span class="mc num">{3}{B}</span></li>
+        <li>Gollum, Silent Slinker <span class="mc num">{3}{B}</span></li>
         <li>Head of the Hunt <span class="mc num">{2}{B}{B}</span></li>
-        <li>Troll Negotiations <span class="mc num">{2}{G}{G}</span></li>
+        <li>Phoenix Fleet Airship <span class="mc num">{2}{B}{B}</span></li>
       </ul></div>
-      <div class="curve"><h3>5 maná</h3><ul>
+      <div class="curve"><h3>5 y 6 maná</h3><ul>
         <li>Beetle-Headed Merchants <span class="mc num">{4}{B}</span></li>
-        <li>Beorn, Reluctant Host <span class="mc num">{4}{G}</span></li>
         <li>Dreaded Bat-Cloud <span class="mc num">{4}{B}</span></li>
-        <li>Large Bear <span class="mc num">{3}{B/G}{B/G}</span></li>
-        <li>Wilderland Scrounger <span class="mc num">{4}{G}</span></li>
-      </ul></div>
-      <div class="curve"><h3>6 y 7 maná</h3><ul>
-        <li>Boughside Wanderers <span class="mc num">{4}{G}{G}</span></li>
-        <li>Old Fat Spider <span class="mc num">{4}{G}{G}</span></li>
-        <li>Gigantic Big Bear <span class="mc num">{5}{G}{G}</span></li>
+        <li>Great Ugly-Looking Goblin <span class="mc num">{5}{B}</span></li>
       </ul></div>
       <div class="curve"><h3>24 tierras</h3><ul>
-        <li>Pantano <span class="mc num">×11</span></li>
-        <li>Bosque <span class="mc num">×10</span></li>
-        <li>Mirkwood <span class="mc num">×1</span></li>
-        <li>Foggy Bottom Swamp <span class="mc num">×1</span></li>
+        <li>Pantano <span class="mc num">×23</span></li>
         <li>Jasmine Dragon Tea Shop <span class="mc num">×1</span></li>
       </ul></div>
     </div>
@@ -190,98 +172,99 @@
     <h2>Dónde caes contra el metajuego</h2>
     <div class="field">
       <div class="field-row"><span>Elspeth Storm Slayer</span><span class="v num">66,4</span></div>
-      <div class="field-row"><span>Ketramose the New Dawn</span><span class="v num">61,7</span></div>
-      <div class="field-row"><span>Sephiroth, Fabled SOLDIER</span><span class="v num">44,3</span></div>
-      <div class="field-row you"><span>Tu mazo</span><span class="v num">40,0</span></div>
-      <div class="field-row"><span>Tifa Lockhart</span><span class="v num">28,7</span></div>
-      <div class="field-row"><span>Kona Rescue Beastie</span><span class="v num">26,3</span></div>
-      <div class="field-row"><span>Eluge, the Shoreless Sea</span><span class="v num">23,9</span></div>
+      <div class="field-row"><span>Ketramose the New Dawn</span><span class="v num">62,2</span></div>
+      <div class="field-row"><span>Sephiroth, Fabled SOLDIER</span><span class="v num">44,5</span></div>
+      <div class="field-row you"><span>Tu mazo</span><span class="v num">38,3</span></div>
+      <div class="field-row"><span>Tifa Lockhart</span><span class="v num">28,8</span></div>
+      <div class="field-row"><span>Eluge, the Shoreless Sea</span><span class="v num">24,5</span></div>
+      <div class="field-row"><span>Kona Rescue Beastie</span><span class="v num">24,1</span></div>
     </div>
   </section>
 
   <section>
     <h2>Enfrentamiento por enfrentamiento</h2>
     <div class="mu">
-      <div class="mu-row win"><div class="mu-name">Eluge, the Shoreless Sea<span class="track"></span><span class="fill" style="width:75.5%"></span></div><div class="mu-val num">75,5%</div></div>
-      <div class="mu-row win"><div class="mu-name">Tifa Lockhart<span class="track"></span><span class="fill" style="width:71.8%"></span></div><div class="mu-val num">71,8%</div></div>
-      <div class="mu-row win"><div class="mu-name">Kona Rescue Beastie<span class="track"></span><span class="fill" style="width:59.1%"></span></div><div class="mu-val num">59,1%</div></div>
-      <div class="mu-row"><div class="mu-name">Sephiroth, Fabled SOLDIER<span class="track"></span><span class="fill" style="width:46.4%"></span></div><div class="mu-val num">46,4%</div></div>
-      <div class="mu-row lose"><div class="mu-name">Ketramose the New Dawn<span class="track"></span><span class="fill" style="width:39.2%"></span></div><div class="mu-val num">39,2%</div></div>
-      <div class="mu-row lose"><div class="mu-name">Elspeth Storm Slayer<span class="track"></span><span class="fill" style="width:10.0%"></span></div><div class="mu-val num">10,0%</div></div>
+      <div class="mu-row win"><div class="mu-name">Eluge, the Shoreless Sea<span class="track"></span><span class="fill" style="width:77.8%"></span></div><div class="mu-val num">77,8%</div></div>
+      <div class="mu-row win"><div class="mu-name">Tifa Lockhart<span class="track"></span><span class="fill" style="width:74.1%"></span></div><div class="mu-val num">74,1%</div></div>
+      <div class="mu-row win"><div class="mu-name">Kona Rescue Beastie<span class="track"></span><span class="fill" style="width:60.9%"></span></div><div class="mu-val num">60,9%</div></div>
+      <div class="mu-row lose"><div class="mu-name">Sephiroth, Fabled SOLDIER<span class="track"></span><span class="fill" style="width:39.2%"></span></div><div class="mu-val num">39,2%</div></div>
+      <div class="mu-row lose"><div class="mu-name">Ketramose the New Dawn<span class="track"></span><span class="fill" style="width:27.4%"></span></div><div class="mu-val num">27,4%</div></div>
+      <div class="mu-row lose"><div class="mu-name">Elspeth Storm Slayer<span class="track"></span><span class="fill" style="width:11.7%"></span></div><div class="mu-val num">11,7%</div></div>
     </div>
-    <p style="margin-top:1.2rem">Ganas tres, empatas Sephiroth y pierdes dos. Frente al
-    mazo de anoche subes en <strong>todos</strong> los enfrentamientos menos contra
-    Elspeth, que sigue siendo tu muro: 10%.</p>
   </section>
 
   <hr>
 
   <section>
-    <h2>Cómo cambió la respuesta tres veces</h2>
-    <p>No cambió el metajuego ni la colección. Cambió lo que el motor entiende al leer
-    tus cartas.</p>
+    <h2>Cómo se juega</h2>
+    <p>El comandante convierte cualquier permanente sobrante en <strong>una carta y un
+    Tesoro</strong>, y cada ficha que sacrificas drena una vida. Los artefactos baratos
+    —Giant's Boulder, Key to the Side-Door, Dwarven Mattock, Thrór's Map— no están por lo
+    que hacen: están para tener siempre algo que sacrificar.</p>
+    <p>El plan es de desgaste: cambias uno a uno, robas de más y drenas por los costados.
+    Por eso ganas cómodo contra los mazos lentos y pierdes contra Elspeth, que va más
+    rápido de lo que tú puedes grindear.</p>
+  </section>
+
+  <section>
+    <h2>Cómo cambió la respuesta, versión por versión</h2>
     <div class="scroll">
       <table>
         <thead><tr><th>Al arreglar…</th><th>Ganaba</th><th class="n">vs campo</th></tr></thead>
         <tbody>
-          <tr><td><em>(motor con cartas mal leídas)</em></td><td>Dáin — mono blanco</td><td class="n num">51,4</td></tr>
-          <tr><td>Habilidades activadas, modales, disparos de muerte</td><td>Sackville — mono negro</td><td class="n num">24,4</td></tr>
-          <tr><td>Condiciones y política aprendida</td><td>Gollum Silent Slinker — mono negro</td><td class="n num">33,2</td></tr>
-          <tr><td>Caras de Aventura, condiciones no evaluables</td><td><strong>Tom, Bert y William — BG</strong></td><td class="n num good">40,0</td></tr>
+          <tr><td><em>(cartas mal leídas)</em></td><td>Dáin — mono blanco</td><td class="n num">51,4</td></tr>
+          <tr><td>Activadas, modales, disparos de muerte</td><td>Sackville — mono negro</td><td class="n num">24,4</td></tr>
+          <tr><td>Condiciones y política aprendida</td><td>Gollum Silent Slinker</td><td class="n num">33,2</td></tr>
+          <tr><td>Caras de Aventura</td><td>Tom, Bert y William — BG</td><td class="n num">40,0</td></tr>
+          <tr><td>Activadas con maná y sacrificio cobrado</td><td>Sackville — mono negro</td><td class="n num">38,1</td></tr>
+          <tr><td>Sagas por capítulos, política de sacrificio</td><td><strong>Sackville — mono negro</strong></td><td class="n num good">38,3</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-top:1.4rem">El 51,4 de Dáin no era un mazo mejor: era un motor que
-    creía que Giant's Boulder destruía cualquier permanente por un maná.</p>
+    <p style="margin-top:1.4rem">Las dos últimas versiones dan el mismo comandante y
+    difieren en <strong>una carta</strong>. Eso es lo más parecido a una respuesta estable
+    que ha dado el proyecto.</p>
   </section>
 
   <section>
     <h2>El motor, medido</h2>
     <div class="scroll">
       <table>
-        <thead><tr><th></th><th class="n">Ayer</th><th class="n">Hoy</th></tr></thead>
+        <thead><tr><th></th><th class="n">Ayer</th><th class="n">Ahora</th></tr></thead>
         <tbody>
-          <tr><td>Error en Pauper <em>(77.000 partidas reales)</em></td><td class="n num">8,11 pts</td><td class="n num good">5,55 pts</td></tr>
-          <tr><td>Error en Standard</td><td class="n num">4,92 pts</td><td class="n num good">2,33 pts</td></tr>
-          <tr><td>Cuánto baja el error sobre no simular nada</td><td class="n num">6%</td><td class="n num good">26%</td></tr>
-          <tr><td>Cartas tuyas bien leídas</td><td class="n num">77</td><td class="n num good">85</td></tr>
+          <tr><td>Baja el error sobre no simular nada</td><td class="n num">6%</td><td class="n num good">47%</td></tr>
+          <tr><td>Error en Standard</td><td class="n num">4,92 pts</td><td class="n num good">2,14 pts</td></tr>
+          <tr><td>Error en Pauper <em>(77.000 partidas)</em></td><td class="n num">8,11 pts</td><td class="n num good">5,81 pts</td></tr>
+          <tr><td>Cartas tuyas bien leídas</td><td class="n num">77</td><td class="n num good">88</td></tr>
           <tr><td>Cartas tuyas mal leídas</td><td class="n num bad">15</td><td class="n num good">5</td></tr>
+          <tr><td>Cartas tuyas mudas</td><td class="n num bad">51</td><td class="n num good">35</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-top:1.4rem">Los dos saltos grandes: <strong>descartar las condiciones
-    que el motor no sabe evaluar</strong> en vez de aplicarlas gratis, y <strong>leer las
-    caras de Aventura</strong> — que partió el error de Standard a la mitad.</p>
   </section>
 
   <hr>
 
   <section>
-    <h2>El techo, y por qué no lo cruzo</h2>
-    <p>Quedan 71 cartas leídas a medias, y la mayoría <strong>no son bugs sino límites del
-    motor</strong>:</p>
+    <h2>Lo que queda, y por qué no lo cruzo</h2>
     <ul class="plain">
-      <li><strong>34 copias necesitan subtipos de criatura.</strong> El motor no sabe qué
-      es un Aliado, un Enano o un Elfo.</li>
-      <li><strong>19 necesitan un cementerio de verdad.</strong> Hay un contador de
-      hechizos, no una zona con cartas.</li>
-      <li><strong>20 otorgan habilidades temporales</strong> — «gana volar hasta el final
-      del turno» — que el motor no representa.</li>
+      <li><strong>35 cartas mudas.</strong> Casi todas piden conceptos que el motor no
+      tiene: fichas-artefacto con habilidad (Pista, Comida), un cementerio de verdad con
+      cartas, o efectos que otorgan habilidades temporales.</li>
+      <li><strong>Construir esos conceptos es posible</strong>, pero el proyecto lleva
+      <strong>doce casos medidos</strong> de cambios más correctos que ajustan peor.
+      Añadirlos sin dato que los valide es exactamente lo que ha fallado antes.</li>
+      <li><strong>Las mudas están infravaloradas</strong>, no sobrevaloradas. El buscador
+      las descarta por defecto, así que puede haber cartas mejores de lo que cree — nunca
+      al revés.</li>
     </ul>
-    <p style="margin-top:1rem">Construir esos tres conceptos es posible, pero el proyecto
-    lleva <strong>doce casos medidos</strong> de cambios más correctos que ajustan peor.
-    Añadirlos sin dato que los valide es exactamente lo que ha fallado antes. Están
-    catalogados en <span class="num" style="font-size:.85rem">data/habilidades.md</span>
-    con lo que sí sabemos leer y lo que no.</p>
   </section>
 
   <section class="note">
-    <p><strong>Y lo de siempre: el 40,0% no es una predicción.</strong> En Brawl hay dos
+    <p><strong>Y lo de siempre: el 38,3% no es una predicción.</strong> En Brawl hay dos
     winrates reales publicados y los dos están entre 73% y 77%; ajustar con eso devuelve
     90% para cualquier cosa. Lo que vale es la posición y los enfrentamientos, que son
-    comparaciones dentro del mismo motor. Y las 43 cartas mudas siguen
-    <em>infravaloradas</em>: el buscador las descarta, así que puede haber mejores de las
-    que cree.</p>
+    comparaciones dentro del mismo motor con semillas independientes.</p>
   </section>
 
 </div>
