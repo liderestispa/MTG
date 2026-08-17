@@ -44,6 +44,14 @@ def lookup(name):
 
 LAST_STDERR = ''   # stderr del ultimo run(): lo consume src/tablero.py
 
+# Que binario se usa. En Windows no se puede reenlazar bin_sim.exe mientras haya un
+# proceso usandolo: si el orquestador esta corriendo, gcc falla con "Permission denied"
+# y no hay forma de probar un build nuevo sin parar el trabajo de horas. Con esto se
+# compila a otro nombre y se prueba en paralelo:
+#     gcc -O3 -w -o bin_prueba src/sim.c -lm
+#     BIN_SIM=./bin_prueba python3 src/obj_real.py 2000
+BIN = os.environ.get('BIN_SIM') or './bin_sim'
+
 URZA = {"Urza's Mine","Urza's Power Plant","Urza's Tower"}
 
 class Registry:
@@ -96,7 +104,7 @@ def run(R, opps, variants, ngames=200, life=20, maxturn=14, seed=12345):
     for v in variants:
         inp.append(f"{len(v)} " + ' '.join(map(str,v)))
     import os as _os
-    out = subprocess.run(['./bin_sim'], input='\n'.join(inp), capture_output=True,
+    out = subprocess.run([_os.environ.get('BIN_SIM') or BIN], input='\n'.join(inp), capture_output=True,
                          text=True, env=dict(_os.environ), creationflags=_FLAGS)
     global LAST_STDERR
     LAST_STDERR = out.stderr          # lo usa src/tablero.py para leer la traza JSON

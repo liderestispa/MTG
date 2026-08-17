@@ -1,5 +1,5 @@
 {
- "probadas": 33,
+ "probadas": 43,
  "entradas": [
   {
    "spec": "REGLA_SOLO=tapdown_multiple",
@@ -1032,6 +1032,336 @@
     0.663,
     0.881,
     0.925
+   ]
+  },
+  {
+   "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+   "media": -0.0543,
+   "sd": 0.0378,
+   "se": 0.0126,
+   "z_exigido": 3.18,
+   "n_probadas": 34,
+   "confirmacion": -0.09807553855924171,
+   "veredicto": "MEJORA",
+   "motivo": "-0.054 (confirmacion -0.098)",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.075,
+    1.047,
+    1.09,
+    1.133,
+    0.937,
+    1.038,
+    0.651,
+    0.956,
+    0.968
+   ]
+  },
+  {
+   "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+   "media": -0.0037,
+   "sd": 0.0357,
+   "se": 0.0119,
+   "z_exigido": 3.189,
+   "n_probadas": 35,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|-0.004| no supera 3.19·0.012=0.038",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.111,
+    1.058,
+    1.145,
+    1.188,
+    0.983,
+    1.091,
+    0.696,
+    1.026,
+    1.052
+   ]
+  },
+  {
+   "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+   "media": 0.0011,
+   "sd": 0.0388,
+   "se": 0.0129,
+   "z_exigido": 3.197,
+   "n_probadas": 36,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|+0.001| no supera 3.20·0.013=0.041",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.116,
+    1.084,
+    1.127,
+    1.202,
+    1.013,
+    1.084,
+    0.708,
+    1.02,
+    1.039
+   ]
+  },
+  {
+   "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+   "media": 0.0119,
+   "sd": 0.0368,
+   "se": 0.0123,
+   "z_exigido": 3.205,
+   "n_probadas": 37,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|+0.012| no supera 3.20·0.012=0.039",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.131,
+    1.091,
+    1.157,
+    1.218,
+    0.995,
+    1.113,
+    0.705,
+    1.017,
+    1.064
+   ]
+  },
+  {
+   "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+   "media": 0.0075,
+   "sd": 0.0407,
+   "se": 0.0136,
+   "z_exigido": 3.213,
+   "n_probadas": 38,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|+0.008| no supera 3.21·0.014=0.044",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.133,
+    1.07,
+    1.15,
+    1.207,
+    1.003,
+    1.083,
+    0.724,
+    1.047,
+    1.035
+   ]
+  },
+  {
+   "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+   "media": 0.0112,
+   "sd": 0.031,
+   "se": 0.0103,
+   "z_exigido": 3.22,
+   "n_probadas": 39,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|+0.011| no supera 3.22·0.010=0.033",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.11,
+    1.079,
+    1.167,
+    1.177,
+    1.021,
+    1.091,
+    0.749,
+    1.035,
+    1.055
+   ]
+  },
+  {
+   "spec": "REMATE_LETAL=1",
+   "media": 0.0001,
+   "sd": 0.0004,
+   "se": 0.0001,
+   "z_exigido": 3.227,
+   "n_probadas": 40,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|+0.000| no supera 3.23·0.000=0.000",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.072,
+    1.092,
+    1.134,
+    1.167,
+    0.957,
+    1.121,
+    0.767,
+    1.009,
+    1.066
+   ]
+  },
+  {
+   "spec": "ATAQUE_LETAL=1",
+   "media": -0.0049,
+   "sd": 0.0013,
+   "se": 0.0004,
+   "z_exigido": 3.234,
+   "n_probadas": 41,
+   "confirmacion": null,
+   "veredicto": "irrelevante",
+   "motivo": "-0.005 real pero por debajo de 0.02",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.068,
+    1.087,
+    1.13,
+    1.163,
+    0.953,
+    1.116,
+    0.759,
+    1.004,
+    1.061
+   ]
+  },
+  {
+   "spec": "KW_ATAQUE=1",
+   "media": -0.0014,
+   "sd": 0.0016,
+   "se": 0.0005,
+   "z_exigido": 3.241,
+   "n_probadas": 42,
+   "confirmacion": null,
+   "veredicto": "ruido",
+   "motivo": "|-0.001| no supera 3.24·0.001=0.002",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.074,
+    1.09,
+    1.132,
+    1.165,
+    0.956,
+    1.117,
+    0.764,
+    1.009,
+    1.064
+   ]
+  },
+  {
+   "spec": "LORD_VE=1",
+   "media": -0.0003,
+   "sd": 0.0002,
+   "se": 0.0001,
+   "z_exigido": 3.248,
+   "n_probadas": 43,
+   "confirmacion": null,
+   "veredicto": "irrelevante",
+   "motivo": "-0.000 real pero por debajo de 0.02",
+   "base": [
+    1.072,
+    1.092,
+    1.134,
+    1.166,
+    0.957,
+    1.122,
+    0.766,
+    1.01,
+    1.065
+   ],
+   "variante": [
+    1.072,
+    1.092,
+    1.133,
+    1.166,
+    0.956,
+    1.121,
+    0.766,
+    1.009,
+    1.065
    ]
   }
  ]

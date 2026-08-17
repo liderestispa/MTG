@@ -248,6 +248,58 @@ Están en `references/trampas.md` con el detalle. Las que más daño hacen:
   se reproduce. Corre el objetivo **justo después de commitear**, sobre el árbol limpio, y confirma
   que da lo que dice la documentación. Un `git status` limpio no prueba que midieras lo commiteado.
 
+## Dos preguntas distintas: ¿funciona? y ¿conviene adoptarlo?
+
+Es fácil confundirlas, y confundirlas cuesta días. Necesitas **dos bancos de prueba
+separados**, porque responden cosas distintas y ninguno sustituye al otro.
+
+- **¿El arreglo funciona?** Se responde con mazos sintéticos que aíslan un solo
+  comportamiento: 24 criaturas con amenaza contra 16 muros, y nada más. Ahí el efecto o
+  aparece o no aparece, sin ruido de metajuego. Si el arreglo es correcto, el sintético lo
+  grita: en una medición real, dar visibilidad a la amenaza al declarar ataques llevó el
+  winrate de 24,3% a 98,0%.
+- **¿Conviene adoptarlo?** Se responde midiendo contra winrates reales publicados, con
+  números aleatorios comunes, corrección por comparaciones múltiples y semillas de
+  confirmación.
+
+**Cuenta la materia antes de medir.** Un cambio correcto sobre material que tu banco no
+tiene mide exactamente cero, y ese cero se lee como "no sirve" cuando en realidad es "no
+medible". Pasó con tres arreglos verificados: el banco de 19 mazos tenía 8 criaturas con
+amenaza, 1 con daño primero, 1 indestructible y 4 copias de un solo lord — y las 19
+indestructibles que parecía haber eran una tierra que no ataca nunca. Escribe el contador
+de material *antes* de escribir el experimento: es media hora y te ahorra interpretar mal
+el resultado. Además, cada hipótesis medida endurece el umbral de Bonferroni para todas las
+demás, así que gastar medidas en preguntas que el banco no puede responder tiene un coste
+real sobre las que sí puede.
+
+## Un máximo sobre una serie ruidosa no es una medida
+
+Si informas del progreso de una búsqueda o un entrenamiento como *el mejor resultado hasta
+ahora*, estás informando de una marca personal, no de una medida. El máximo de N tiradas
+ruidosas queda por encima de la media aunque no haya ningún progreso, y el sesgo crece con
+N: eso significa que **el número mejora solo con dejarlo corriendo más tiempo**.
+
+Un entrenador evolutivo reportaba +2,135 puntos sobre su heurística de base. Re-medido en
+12 semillas limpias y emparejadas, el valor real era **+1,251 ± 0,056**: el 41% era
+selección sobre ruido. La causa era estructural — comparaba el máximo de ~1.000
+evaluaciones contra **una sola** evaluación de referencia.
+
+Las tres cosas que lo arreglan:
+
+1. **Semillas de validación que no participan en ninguna selección.** Reserva unas pocas y
+   no las uses jamás para elegir.
+2. **Emparejamiento.** Mide la referencia y el candidato en las mismas semillas y compara
+   diferencias. Quita del medio la varianza del escenario.
+3. **Reporta el centro, no el máximo.** En un método de entropía cruzada, informa de lo que
+   vale `mu` — que es lo que se ha aprendido de verdad —, no del mejor individuo que salió
+   alguna vez.
+
+Y una pista para detectarlo sin instrumentar nada: **si tu métrica alterna con periodo dos,
+la está moviendo la semilla, no el aprendizaje.** En el caso real la élite y la media
+alternaban casi un punto entre generaciones pares e impares y el centro alternaba en
+anti-fase, porque la semilla era `900000+g*7919` (paridad alternante) y el centro se
+evaluaba en `semilla+1`, siempre en la paridad contraria.
+
 ## Reglas de formato
 
 `references/formatos.md` tiene las reglas verificadas contra el Comprehensive Rules, incluidos

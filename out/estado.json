@@ -1,10 +1,10 @@
 {
  "inicio": "2026-08-16T18:47:58",
  "horas": 6.0,
- "fase": "entrenando (ciclo 5)",
- "ciclo": 5,
+ "fase": "entrenando (ciclo 27)",
+ "ciclo": 27,
  "avisos": [],
- "actualizado": "2026-08-16T19:32:38",
+ "actualizado": "2026-08-16T22:49:34",
  "objetivo_control": 0.978,
  "cobertura": {
   "blancas": 71,
@@ -20,14 +20,14 @@
    "4x Sunderflock"
   ]
  },
- "minutos_restantes": 315,
+ "minutos_restantes": 118,
  "laboratorio": {
-  "probadas": 33,
+  "probadas": 43,
   "veredictos": {
-   "irrelevante": 4,
+   "irrelevante": 6,
    "empeora": 15,
-   "ruido": 6,
-   "MEJORA": 8
+   "ruido": 13,
+   "MEJORA": 9
   },
   "mejoras": [
    {
@@ -61,20 +61,19 @@
    {
     "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
     "media": -0.0891
+   },
+   {
+    "spec": "POLNET=out/politica_probando.txt POLNET_LADO=1",
+    "media": -0.0543
    }
   ]
  },
  "politica": {
-  "gen": 160,
+  "gen": 1040,
   "base": 0.46055523809523813,
-  "mejor": 0.4741265952380953,
-  "reinicios": 1,
-  "sigma": 0.0587,
-  "ganancia_autojuego": 1.357,
-  "contra_dato_real": {
-   "media": -0.0891,
-   "veredicto": "MEJORA",
-   "motivo": "-0.089 (confirmacion -0.108)"
-  }
+  "mejor": 0.48190449999999996,
+  "reinicios": 23,
+  "sigma": 0.0807,
+  "ganancia_autojuego": 2.135
  }
 }

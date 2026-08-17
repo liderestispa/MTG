@@ -85,6 +85,34 @@ def evalua(args):
 
 ESTADO_CEM = 'out/politica_cem.json'
 
+# ---- semillas de VALIDACION, que no participan en la seleccion ----
+# El entrenador reportaba (mejor_f - base), y ese numero esta inflado por construccion:
+# mejor_f es el MAXIMO de una evaluacion por generacion —mas de mil— mientras que base
+# era UNA sola evaluacion en la semilla 1234567. El maximo de mil tiradas ruidosas queda
+# muy por encima de la media aunque no se haya aprendido nada. Medido con
+# src/audita_politica.py en la generacion 1036: el entrenador decia +2,135 y la ganancia
+# real, emparejada y en semillas nuevas, era +1,251 +-0,056. O sea el 41% del numero era
+# seleccion sobre ruido.
+# Estas semillas nunca se usan para elegir nada: solo para decir la verdad.
+SEMILLAS_VAL = [1234567, 777001, 424243, 99881177]
+CADA_VAL = 20        # cada cuantas generaciones se revalida
+
+
+def gana_de_verdad(v, nucleos):
+    """Ganancia EMPAREJADA de 'v' sobre la heuristica, en semillas de validacion.
+    Emparejada quiere decir la misma semilla para los dos, que es lo que quita del
+    medio la varianza del escenario: la heuristica y la politica juegan las mismas
+    partidas."""
+    cero = [0.0] * NPAR
+    tareas = [(cero, s) for s in SEMILLAS_VAL] + [(v, s) for s in SEMILLAS_VAL]
+    with ProcessPoolExecutor(max_workers=nucleos) as ex:
+        r = list(ex.map(evalua, tareas))
+    n = len(SEMILLAS_VAL)
+    difs = [(r[n + i] - r[i]) * 100 for i in range(n)]
+    m = sum(difs) / n
+    sd = (sum((x - m) ** 2 for x in difs) / (n - 1)) ** 0.5 if n > 1 else 0.0
+    return m, sd / n ** 0.5
+
 
 def guarda_cem(mu, sigma, mejor_v, mejor_f, base, reinicios, gen_total, hist):
     json.dump(dict(mu=mu, sigma=sigma, mejor_v=mejor_v, mejor_f=mejor_f, base=base,
@@ -150,6 +178,7 @@ def main():
         print(f"heuristica actual (pesos a cero): {base*100:.3f}%", flush=True)
     print(f"poblacion {POB}, elite {ELITE}, {NGAMES} partidas, {nucleos} nucleos", flush=True)
 
+    val_m = None
     for g in range(gen_previas + 1, gen_previas + gens + 1):
         if limite and time.time() > limite:
             print("tiempo agotado"); break
@@ -188,13 +217,29 @@ def main():
               f"mu {fmu*100:6.3f}%  (base {base*100:.3f}%)  sigma {sum(sigma)/NPAR:.3f}",
               flush=True)
         escribe_pesos(mejor_v, 'out/politica.txt')
-        json.dump(dict(base=base, mejor=mejor_f, gens=len(hist), hist=hist[-300:]),
+        # ---- la cifra honesta ----
+        # mejor_f sirve para GUARDAR la politica, no para reportar cuanto se avanzo.
+        # Cada CADA_VAL generaciones se mide mu contra la heuristica en semillas que no
+        # participaron en ninguna seleccion, y emparejadas. Ese es el numero que hay que
+        # mirar; el otro esta inflado por ser un maximo.
+        if g % CADA_VAL == 0:
+            val_m, val_se = gana_de_verdad(mu, nucleos)
+            print(f"  === validacion gen {g}: mu gana {val_m:+.3f} +-{val_se:.3f} puntos "
+                  f"en {len(SEMILLAS_VAL)} semillas limpias  "
+                  f"(el maximo historico dice {(mejor_f-base)*100:+.3f}) ===", flush=True)
+        json.dump(dict(base=base, mejor=mejor_f, gens=len(hist), hist=hist[-300:],
+                       validacion=val_m),
                   io.open('out/politica_hist.json', 'w', encoding='utf-8'), indent=1)
         guarda_cem(mu, sigma, mejor_v, mejor_f, base, reinicios, g, hist)
         if respiro: time.sleep(respiro)   # deja respirar al sistema entre generaciones
 
-    print(f"\nmejor politica {mejor_f*100:.3f}% contra {base*100:.3f}% de la heuristica "
-          f"({(mejor_f-base)*100:+.3f} puntos), escrita en out/politica.txt")
+    val_m, val_se = gana_de_verdad(mu, nucleos)
+    print(f"\nGANANCIA REAL en semillas limpias y emparejadas: {val_m:+.3f} +-{val_se:.3f} "
+          f"puntos sobre la heuristica.")
+    print(f"(el maximo historico, que es lo que se reportaba antes, dice "
+          f"{(mejor_f-base)*100:+.3f}: esta inflado por ser el maximo de {g} evaluaciones "
+          f"ruidosas contra una sola de referencia)")
+    print(f"politica escrita en out/politica.txt")
     print("\nGANAR PARTIDAS NO BASTA PARA ADOPTARLA. Comprueba contra dato real:")
     print("  POLNET=out/politica.txt POLNET_LADO=1 python3 src/obj_real.py 2000")
     print("  y validala con src/valida_semillas.py antes de tocar nada.")

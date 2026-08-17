@@ -1,0 +1,9 @@
+﻿5 semillas independientes, 2000 partidas por enfrentamiento
+
+  REMATE_LETAL=0 ATAQUE_LETAL=0 KW_ATAQUE=0 LORD_VE=0 semilla   1234567    1.072   sta cal 0.02 (r=+1.00 x3.3) | pau cal 0.83 (r=+0.68 x8.4) | bra resid  2.06
+  REMATE_LETAL=0 ATAQUE_LETAL=0 KW_ATAQUE=0 LORD_VE=0 semilla    777001    1.092   sta cal 0.15 (r=+1.00 x3.4) | pau cal 0.79 (r=+0.71 x8.6) | bra resid  2.15
+  REMATE_LETAL=0 ATAQUE_LETAL=0 KW_ATAQUE=0 LORD_VE=0 semilla  20260816    1.134   sta cal 0.24 (r=+0.99 x3.3) | pau cal 0.83 (r=+0.68 x8.6) | bra resid  2.21
+  REMATE_LETAL=0 ATAQUE_LETAL=0 KW_ATAQUE=0 LORD_VE=0 semilla    424242    1.166   sta cal 0.11 (r=+1.00 x3.3) | pau cal 0.84 (r=+0.68 x8.7) | bra resid  2.32
+  REMATE_LETAL=0 ATAQUE_LETAL=0 KW_ATAQUE=0 LORD_VE=0 semilla  99881177    0.957   sta cal 0.08 (r=+1.00 x3.0) | pau cal 0.79 (r=+0.71 x8.8) | bra resid  1.77
+  REMATE_LETAL=0 ATAQUE_LETAL=0 KW_ATAQUE=0 LORD_VE=0 MEDIA   1.084  sd 0.080  rango [0.957, 1.166]
+

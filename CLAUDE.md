@@ -219,6 +219,77 @@ Detalles que importan al ampliarlas:
 sigue sin pagar: 0,978 → 2,488, con Jund todavia en −18,7. Su hueco es mayor que lo que
 arreglan estas dos ranuras.
 
+## Los tres hallazgos que quedaban: cuenta la materia ANTES de medir
+
+Quedaban tres puntos de `data/errores_juego.md` sin probar. Los tres son *informacion que
+al motor le falta para decidir*, que segun la teoria corregida es justo lo que suele
+pagar. Se implementaron los cuatro arreglos (el 4 se partio en dos), se verificaron en
+sintetico y se midieron contra dato real. **Los cuatro miden cero.**
+
+| bandera | que arregla | sintetico | contra dato real |
+|---|---|---|---|
+| `KW_ATAQUE` | amenaza / dano primero / indestructible al atacar | 24,3% → **98,0%** | −0,001 ruido |
+| `ATAQUE_LETAL` | el ataque no suma el dano de todos los atacantes | 57,5% → **99,3%** | −0,005 irrelevante |
+| `LORD_VE` | remocion y barridos ven el bono de lord | 1,74 → **0,16** muertes | −0,000 irrelevante |
+| `REMATE_LETAL` | `E_BURN_FACE`/`E_ETB_DRAIN` no saben que rematan | 3,22 → **2,23** turnos | +0,000 ruido |
+
+**Y el motivo no es que la teoria falle: es que el banco no tiene con que medirlos.**
+`src/chk_hallazgos.py` los cuenta en los 19 mazos: **8 criaturas con amenaza, 1 con dano
+primero, 1 indestructible y 4 copias de un solo lord** (Goblin Bushwhacker, que ademas no
+es un lord estatico). Parecia haber 19 indestructibles: eran Darksteel Citadel, que es una
+tierra y no ataca jamas.
+
+> **Regla nueva, y ahorra horas: antes de medir una hipotesis, cuenta cuantas cartas del
+> banco la activan.** Un cambio correcto sobre materia inexistente mide exactamente cero,
+> y ese cero se lee como "no sirve" cuando en realidad es "no medible". Ya paso con
+> `REGLA_SOLO`, donde seis candidatas midieron +0,000 clavado por un bug. Distinguir las
+> dos cosas necesita `src/sintetico.py`, que pregunta *¿el arreglo funciona?*, separado de
+> `src/laboratorio.py`, que pregunta *¿conviene adoptarlo?*. Son preguntas distintas.
+
+Y una consecuencia incomoda: **la teoria de leer-vs-jugar sigue sin probarse.** Estos tres
+casos eran los que la habrian puesto a prueba y el banco no da para tanto.
+
+Se adoptaron igual (banderas a 1), por el mismo criterio que las dos ranuras: modelos mas
+correctos, verificados, gratis, y sin efecto medible en las listas ya elegidas (−0,04 en
+Standard y +0,04 en Pauper, con `src/impacto_mazos.py`). El objetivo pasa de 1,072 a
+**1,069**, que es ruido de semilla.
+
+## El entrenador se estaba mintiendo: +2,135 eran +1,25
+
+El orquestador reportaba que la politica aprendida ganaba **+2,135 puntos** en autojuego.
+Es falso, y el error es estructural, no un bug de una linea:
+
+```
+base    = UNA evaluacion de la heuristica, en la semilla 1234567
+mejor_f = el MAXIMO de ~1.000 evaluaciones, una por generacion
+```
+
+El maximo de mil tiradas ruidosas queda muy por encima de la media aunque no se haya
+aprendido nada. Re-medido con `src/audita_politica.py` en 12 semillas limpias y
+**emparejadas** (la heuristica y la politica juegan las mismas partidas):
+
+| | reportado | real |
+|---|---|---|
+| politica guardada | +2,135 | **+1,251 ± 0,056** |
+| mu (el centro de lo aprendido) | — | +1,187 ± 0,042 |
+
+O sea **el 41% del numero era seleccion sobre ruido**, y el maximo ni siquiera compro una
+politica mejor que su propio centro (+1,251 contra +1,187, indistinguible).
+
+La pista estaba en el log a simple vista: `elite` y `media` alternaban casi un punto entre
+generaciones pares e impares y `mu` alternaba en **anti-fase**. La semilla es
+`900000+g*7919`, cuya paridad alterna con `g`, y mu se evalua en `semilla+1`, siempre en la
+paridad contraria. El efecto de paridad medido sobre la MISMA heuristica es −0,169 puntos.
+
+Arreglado: `entrenar_politica.py` ahora valida cada 20 generaciones contra semillas que no
+participan en ninguna seleccion y reporta la ganancia emparejada. **Cuando un numero es el
+maximo de una serie ruidosa, no es una medida: es una marca personal.**
+
+Y lo que no cambia: ese +1,25 real en autojuego **sigue sin transferirse** al dato real.
+Los ciclos 13 al 23 dan entre −0,004 y +0,012, todo ruido. Ojo al leer ese log: el banco
+nuevo entro a las 19:26, entre el ciclo 4 y el 5, asi que los primeros ciclos se midieron
+contra el banco viejo y no son comparables con los siguientes.
+
 ## Trampas ya encontradas (no las repitas)
 
 La lista larga, con síntoma y arreglo de cada una, está en `docs/trampas.md`. Ese archivo manda;

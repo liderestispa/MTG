@@ -9,3 +9,4 @@ bin_brawl
 *.exe
 out/*.log
 out/*.out
+bin_prueba

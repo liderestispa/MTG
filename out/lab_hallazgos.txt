@@ -1,0 +1,8 @@
+﻿2 hipotesis. Umbral con Bonferroni sobre 39 ya probadas.
+
+    ruido        REMATE_LETAL=1                     +0.000  |+0.000| no supera 3.23·0.000=0.000
+    irrelevante  ATAQUE_LETAL=1                     -0.005  -0.005 real pero por debajo de 0.02
+
+9 mejoras confirmadas en toda la historia del registro (41 hipotesis).
+Ninguna se adopta sola: revisa el desglose por arquetipo antes de encender nada,
+porque el objetivo mide ORDEN y un arreglo puede subir a un mazo y romper la tabla.

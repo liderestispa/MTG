@@ -1,0 +1,8 @@
+﻿2 hipotesis. Umbral con Bonferroni sobre 41 ya probadas.
+
+    ruido        KW_ATAQUE=1                        -0.001  |-0.001| no supera 3.24·0.001=0.002
+    irrelevante  LORD_VE=1                          -0.000  -0.000 real pero por debajo de 0.02
+
+9 mejoras confirmadas en toda la historia del registro (43 hipotesis).
+Ninguna se adopta sola: revisa el desglose por arquetipo antes de encender nada,
+porque el objetivo mide ORDEN y un arreglo puede subir a un mazo y romper la tabla.
