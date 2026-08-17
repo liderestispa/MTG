@@ -38,7 +38,7 @@ NGAMES   = 300       # partidas por enfrentamiento
 SIGMA0    = 0.35
 SIGMA_MIN = 0.03     # suelo; al tocarlo se reinicia en vez de quedarse ahi
 SUAVE     = 0.30     # cuanto se mueve la media hacia la elite
-FMT      = 'pauper'  # formato de entrenamiento: es el unico validado
+FMT      = os.environ.get('FMT_ENTRENA', 'pauper')   # 'brawl' tambien
 
 # Cuanta maquina se usa. Por defecto un TERCIO de los nucleos, no todos: esto esta
 # pensado para correr mientras trabajas. Ademas driver.py lanza el simulador con
@@ -58,11 +58,11 @@ def escribe_pesos(v, ruta):
 
 
 def evalua(args):
-    """Winrate medio del jugador A a traves de todos los enfrentamientos del banco."""
+    """Winrate medio del jugador A a traves de todos los enfrentamientos del banco.
+
+    FMT='brawl' usa otro motor (bin_brawl) y otra firma, porque cada mazo lleva
+    comandante. Se separa aqui y no en el resto del archivo: el CEM es identico."""
     v, semilla = args
-    import driver
-    from driver import build, run
-    R, opps = build(FMT)
     fd, ruta = tempfile.mkstemp(suffix='.txt', prefix='pol_')
     os.close(fd)
     try:
@@ -70,12 +70,24 @@ def evalua(args):
         os.environ['POLNET'] = ruta
         os.environ['POLNET_LADO'] = '0'
         tot, n = 0.0, 0
-        for i, (dn, w, ids) in enumerate(opps):
-            for j, (dn2, w2, ids2) in enumerate(opps):
-                if i == j: continue
-                r = run(R, [(dn2, 1000, ids2)], [ids],
-                        ngames=NGAMES, life=20, seed=semilla + i * 97 + j)[0]
-                tot += r['wr']; n += 1
+        if FMT == 'brawl':
+            from brawl import build_brawl, run_brawl
+            R, opps = build_brawl()
+            for i, (dn, w, cmd, ids) in enumerate(opps):
+                for j, (dn2, w2, cmd2, ids2) in enumerate(opps):
+                    if i == j: continue
+                    r = run_brawl(R, [(dn2, 1000, cmd2, ids2)], [(cmd, ids)],
+                                  ngames=NGAMES, life=25, seed=semilla + i * 97 + j)[0]
+                    tot += r['wr']; n += 1
+        else:
+            from driver import build, run
+            R, opps = build(FMT)
+            for i, (dn, w, ids) in enumerate(opps):
+                for j, (dn2, w2, ids2) in enumerate(opps):
+                    if i == j: continue
+                    r = run(R, [(dn2, 1000, ids2)], [ids],
+                            ngames=NGAMES, life=20, seed=semilla + i * 97 + j)[0]
+                    tot += r['wr']; n += 1
         return tot / n if n else 0.0
     finally:
         os.environ.pop('POLNET', None)
@@ -83,7 +95,10 @@ def evalua(args):
         except OSError: pass
 
 
-ESTADO_CEM = 'out/politica_cem.json'
+# El estado va POR FORMATO: si no, entrenar brawl pisa las 1.584 generaciones
+# de pauper y se pierden. Ya paso una vez con --reanudar mal usado.
+ESTADO_CEM = f'out/politica_cem_{FMT}.json' if FMT != 'pauper' else 'out/politica_cem.json'
+SALIDA_POL = f'out/politica_{FMT}.txt' if FMT != 'pauper' else 'out/politica.txt'
 
 # ---- semillas de VALIDACION, que no participan en la seleccion ----
 # El entrenador reportaba (mejor_f - base), y ese numero esta inflado por construccion:
@@ -216,7 +231,7 @@ def main():
         print(f"  gen {g:>3}  elite {max(fits)*100:6.3f}%  media {sum(fits)/POB*100:6.3f}%  "
               f"mu {fmu*100:6.3f}%  (base {base*100:.3f}%)  sigma {sum(sigma)/NPAR:.3f}",
               flush=True)
-        escribe_pesos(mejor_v, 'out/politica.txt')
+        escribe_pesos(mejor_v, SALIDA_POL)
         # ---- la cifra honesta ----
         # mejor_f sirve para GUARDAR la politica, no para reportar cuanto se avanzo.
         # Cada CADA_VAL generaciones se mide mu contra la heuristica en semillas que no
@@ -229,7 +244,7 @@ def main():
                   f"(el maximo historico dice {(mejor_f-base)*100:+.3f}) ===", flush=True)
         json.dump(dict(base=base, mejor=mejor_f, gens=len(hist), hist=hist[-300:],
                        validacion=val_m),
-                  io.open('out/politica_hist.json', 'w', encoding='utf-8'), indent=1)
+                  io.open(f'out/politica_hist_{FMT}.json', 'w', encoding='utf-8'), indent=1)
         guarda_cem(mu, sigma, mejor_v, mejor_f, base, reinicios, g, hist)
         if respiro: time.sleep(respiro)   # deja respirar al sistema entre generaciones
 
@@ -239,7 +254,7 @@ def main():
     print(f"(el maximo historico, que es lo que se reportaba antes, dice "
           f"{(mejor_f-base)*100:+.3f}: esta inflado por ser el maximo de {g} evaluaciones "
           f"ruidosas contra una sola de referencia)")
-    print(f"politica escrita en out/politica.txt")
+    print(f"politica escrita en {SALIDA_POL}")
     print("\nGANAR PARTIDAS NO BASTA PARA ADOPTARLA. Comprueba contra dato real:")
     print("  POLNET=out/politica.txt POLNET_LADO=1 python3 src/obj_real.py 2000")
     print("  y validala con src/valida_semillas.py antes de tocar nada.")

@@ -1,107 +1,83 @@
 # Transcript de continuación — proyecto MTG
 
-Pega esto como primer mensaje en Claude Code (o deja que lea `CLAUDE.md`, que tiene lo mismo
-en formato de contexto permanente).
+Pega esto como primer mensaje en Claude Code, o deja que lea `CLAUDE.md`, que trae lo mismo
+en formato de contexto permanente. **Lee `CLAUDE.md` antes de tocar nada.**
 
 ---
 
-Estoy retomando un proyecto de optimización de mazos de Magic por simulación. Está en este repo
-y ya tiene cuatro campañas de calibración encima. **Lee `CLAUDE.md` antes de tocar nada** — trae
-las reglas de trabajo y las trampas que ya costaron caro.
+Estoy retomando un proyecto de optimización de mazos de Magic por simulación. Motor en C +
+buscador en Python, calibrado contra winrates realmente publicados. Juego en papel, en tienda
+local, y lo que corre mi tienda es **Standard Brawl**. Juego control de prisión: negarle el
+juego al rival.
 
-## Contexto de una línea
+## Dónde quedó (18-ago-2026)
 
-Motor de simulación en C + buscador de mazos en Python, calibrado contra winrates realmente
-publicados. Yo juego en papel, en tienda local, y lo que corre mi tienda es **Standard Brawl**.
-Juego control de prisión: negarle el juego al rival.
+El 18 de agosto se hizo la auditoría que faltaba y cambió medio proyecto. Resumen:
 
-## Dónde quedó
+**1. Ahora hay dos auditorías de cartas, no una.** `cobertura_texto.py` encuentra las que el
+motor NO lee; `auditoria_lectura.py` las que lee MAL. Faltaba la segunda y era la peligrosa:
+una carta muda te hace perder valor, una mal leída te hace **construir el mazo equivocado con
+confianza**. `ficha_coleccion.py` une las dos y da el estado de las 204 cartas distintas de la
+colección: **77 bien leídas, 61 a medias, 51 mudas, 15 mal leídas**.
 
-- Motor: **objetivo 0,978** contra dato real, medido sobre el árbol limpio. Le gana al modelo
-  tonto en los **dos** formatos con dato: Pauper 0,95% contra 4,40% (r=+0,99) y Standard 0,11%
-  contra 2,44% (r=+1,00). Global 0,67% contra 3,56%: baja el error un 81%. En Standard no está validado (r=+0,16, y 5,50% contra 2,44% del modelo tonto)
-  y hay una razón de fondo: el único dato real disponible es de mayo 2026 y **hubo bans después**,
-  así que estaríamos comparando listas de hoy contra winrates de otro formato.
-- **Pero Standard NO está validado**, por mucho que el número lo parezca: son n=4 puntos y el
-  dato es de mayo 2026, pre-13-bans. Una recta que pasa por cuatro puntos no demuestra nada.
-  Lo que sí pasó es que se arregló un error grande y real: Four-Color Control estaba en −19,8
-  porque la regla de pérdida de vida no cubría "its controller loses".
-- Hay un bug de datos sin corregir: Mono Red Madness lleva 4 Sneaky Snacker, un Hada {U}{B}, en
-  una lista con 19 Montañas. Son cuatro cartas inlanzables. Hace falta una fuente verificada de
-  la lista real para arreglarlo; `src/chk_castable.py` lo detecta.
-- El suelo de ruido estimado del banco de Pauper es 3,25% (`src/suelo_ruido.py`) y el motor está
-  en 1,73%, o sea **por debajo**. Eso no significa que se haya superado un límite: significa que
-  esa estimación es una cota superior, con pocos grados de libertad y muy sensible a una serie
-  volátil. Úsala como orden de magnitud. Standard y Brawl no tienen suelo calculable: hace falta
-  medir el mismo arquetipo varias veces y ninguno de los dos tiene series.
-- Mis tres mazos actuales: Brawl mono-blanco con Dáin Lord of the Iron Hills, Standard BG,
-  Pauper BR. Los tres legales y armables con mis 371 cartas, los tres revalidados y ganándole
-  a su semilla codiciosa.
-- Las tres últimas correcciones son de motor: el índice de Scryfall resolvía 88 nombres a su
-  versión **ficha** en vez de a la carta real; el robo recurrente solo se leía en el mantenimiento
-  (se perdía el del paso final, como The Arkenstone); y `upkeep()` en `sim.c` solo miraba la
-  ranura `eff`, así que las cartas que traen el motor de robo en `eff2` quedaban etiquetadas pero
-  nunca disparaban. Esa última mitad se había medido pero **no se había commiteado**, y por eso
-  la documentación decía 2,540 mientras el repo daba 2,557.
-- Ya está todo regenerado con el motor nuevo: `data/escala.json`, `out/report_v6.json` y el
-  gráfico `out/avance.html`. Índices brutos vigentes: Standard 88,3%, Pauper 74,3%, Brawl 61,5%.
-- El tuning (regla 4) se corrió y **no adoptó nada**. El único candidato, `SWEEP_MIN=3`, resultó
-  ser ruido de semilla: parecía bajar el objetivo a 2,534 pero con 5 semillas queda peor que el
-  default. El objetivo tiene un ruido de ±0,014, así que 2,543 hay que leerlo como 2,53 ± 0,01.
+**2. El caso que lo destapó.** Dáin, Lord of the Iron Hills, el comandante que el buscador
+elegía para Brawl, dice que las criaturas no pueden **atacarte** salvo que paguen {1}, y solo
+con *Storied*. El motor gravaba **lanzar hechizos**, sin condición. Quitando ese impuesto el
+mazo caía de 51,0% a 34,2%: dos tercios de su nota eran un efecto que la carta no tiene.
 
-## Lo primero que quiero que verifiques
+**3. Cinco clases de mala lectura arregladas**, cada una con su ablación:
+`ACTIVADAS_GRATIS=1` (41 cartas ejecutaban gratis habilidades con coste — Giant's Boulder era
+un Vindicate de 1 maná), `MUERTE_OFF=1` (14 disparos de muerte puestos al entrar),
+`MODAL_TODO=1` (13 modales disparaban todos los modos), `CONDICIONES_OFF=1` (Storied, Feroz,
+Metalcraft), `ATAQUE_OFF=1` (ranura nueva de disparo al atacar).
 
-```bash
-bash scripts/bootstrap.sh
-gcc -O3 -w -o bin_sim src/sim.c -lm
-python3 src/gen_brawl.py && sed -i 's/^static int CMD_A, CMD_B;$/static int CMD_A=-1, CMD_B=-1;/' src/sim_brawl.c
-gcc -O3 -w -o bin_brawl src/sim_brawl.c -lm
-python3 src/obj_real.py 2000     # esperado: OBJETIVO 0.978, sta r=+1.00, pau r=+0.99
-python3 src/loocv.py 2500        # esperado: pauper 0,95% vs 4,40% | standard 0,11% vs 2,44%
-python3 src/revalidar.py 2500    # esperado: sta +13,13 | pau +11,08 | brawl wr 60,6%
-```
+**4. Y lo más importante: el objetivo dejó de ser buen árbitro.** Esos arreglos suben
+`obj_real` de 0,608 a 0,955 y a la vez el residuo de Pauper baja de 8,11 a 5,51 puntos, el
+desplazamiento se parte a la mitad y **Pauper pasa de perder contra el modelo tonto a ganarle**
+(LOOCV 1,41% → 1,11% contra 1,25%). El objetivo mide **orden**, y en Pauper el orden real cabe
+en 1,04 puntos con ±1,5 de error: no es recuperable ni en principio. Para juzgar lecturas de
+cartas se usa `calib_real.py` (residuo y desplazamiento) y `loocv.py`. `obj_real.py` queda como
+control de reproducibilidad y para cambios de política.
 
-Los tres son control duro: están medidos sobre este árbol y salen de `out/obj_activadas.txt`. Si no dan eso, algo se rompió y hay que arreglarlo antes de seguir.
+**5. Un `.exe` viejo escondió durante medio día la mejora más grande del proyecto.** `bin_brawl`
+se genera de `sim.c` y no se estaba regenerando. Cuatro cambios midieron "cero" y eran falsos:
+con el binario al día, `ATAQUE_LETAL` baja el objetivo de 1,072 a 0,609. Guarda puesta en
+`src/salud.py`: `obj_real` **se niega a medir** con binarios viejos. **Compila siempre con
+`bash scripts/build.sh`**, nunca gcc a mano.
 
-En **Windows** pon `PYTHONUTF8=1` delante de cada `python3` o vas a ver `UnicodeDecodeError` y
-`KeyError: "Thrór's Map"`: hay 45 `open()` sin `encoding` declarado en 27 archivos. Y para
-compilar sirve MinGW, porque `sim.c` no usa nada de POSIX.
+**6. El entrenador se estaba mintiendo.** Reportaba +2,135 puntos de autojuego y eran
++1,251 ± 0,056: comparaba el **máximo** de ~1.000 evaluaciones contra **una** de referencia.
+Arreglado — valida cada 20 generaciones en semillas limpias y emparejadas. Y el aprendizaje no
+transfiere: el objetivo contra dato real da ruido en cada ciclo. `src/audita_politica.py` lo
+re-mide cuando haga falta.
 
-## Herramientas que hay que conocer antes de tocar nada
+## Reglas de trabajo que ya costaron caro
 
-    python src/sensibilidad.py      cuanto cambia el objetivo si sube cada arquetipo. El
-                                    objetivo mide ORDEN, asi que el residuo crudo NO dice
-                                    si conviene subir un mazo. Recalcularlo tras cada
-                                    cambio de motor.
-    python src/laboratorio.py       mide hipotesis con semillas emparejadas, correccion
-                                    por comparaciones multiples y semillas de
-                                    confirmacion. Nada se adopta sin pasar por aqui.
-    python src/cobertura_texto.py   cola de cartas cuyo texto el motor no lee.
-    python src/chk_castable.py      que ninguna carta del banco sea inlanzable.
-    python src/tablero.py           reproduce partidas en 2D: para ver POR QUE pierde.
-    python src/orquestador.py       encadena todo y escribe out/informe_dia.md.
-    python src/vigilar.py --seguir  mira como va sin esperar a que acabe.
+1. **Compila con `bash scripts/build.sh`.** Los dos binarios o ninguno.
+2. **Cuenta la materia antes de medir** (`chk_hallazgos.py`). Un cambio correcto sobre material
+   que el banco no tiene mide cero, y ese cero se lee como "no sirve".
+3. **Consulta `sensibilidad.py` ANTES de implementar**, no después. Dos veces se implementó un
+   arreglo cuyo fracaso el análisis ya predecía.
+4. **Dos preguntas distintas.** `sintetico.py` responde *¿funciona?*; `laboratorio.py` responde
+   *¿conviene adoptarlo?*. Ninguno sustituye al otro.
+5. **Un máximo sobre una serie ruidosa no es una medida.**
+6. **Nunca reportes un winrate del motor como predicción.** En Brawl la escala se niega a
+   calibrar: n=2 y los dos entre 73% y 77%.
+7. **Revalida los mazos después de tocar el motor** (`impacto_mazos.py`, `revalidar.py`).
+8. **Corre todo con `PYTHONUTF8=1`** — hay 45 `open()` sin encoding y los nombres con acento
+   revientan.
 
-## Lo que quiero hacer a continuación, en orden
+## Lo que sigue pendiente
 
-1. **Más dato de Pauper**, que ahora vale más que cualquier cambio de modelo: el motor está en
-   el suelo. Primero, más semanas para Grixis Affinity y Elves, que tienen una sola medición y
-   aportan el 69% del ruido. Después, ampliar el banco con Dimir Faeries y Gruul Ponza (listas
-   ya validadas a 60 cartas en `data/nuevos/listas.txt`): pasar de n=6 a n=8 mejora la estimación
-   de k, la de r y el objetivo. Las series van en `REAL_SEMANAL` de `data/real_wr.py`.
-2. **Cuatro Colores Control** marca 33,9% contra 53% real — el peor error que queda, y está muy
-   por encima de cualquier suelo de ruido. Míralo con `python3 src/tablero.py standard
-   "Four-Color" "Mardu" 8 12`, que ahora reproduce las partidas y canta cada jugada.
-3. **Sin sideboard.** Los winrates reales son al mejor de tres y el motor juega una sola partida.
-   Explica buena parte de la sobredispersión que queda.
-
-## Reglas que no se negocian
-
-- Toda mejora se mide con `src/obj_real.py` **antes** de adoptarse. "Es más correcto según las
-  reglas" no es evidencia — el bloqueo en grupo era correcto y empeoraba el ajuste.
-- Después de tocar el motor, `src/revalidar.py`: si un mazo dejó de ganarle a su semilla
-  codiciosa, hay que rehacer la búsqueda.
-- Un cambio de modelo reabre el espacio de parámetros: volver a correr `src/tune_real.py`.
-- Nunca me des un winrate del motor como predicción. Dame el índice bruto **y** la estimación
-  comprimida por `src/escala.py`.
-- Mide con semillas independientes: las búsquedas mienten con la suya.
+- **51 cartas mudas y 61 a medias** en la colección (`out/ficha_coleccion.md`). Las mudas están
+  INFRAvaloradas, así que el buscador las descarta y pueden ser mejores de lo que cree.
+- **Familias identificadas y sin escribir**: daño a criatura atacante/bloqueadora (Razor Rings,
+  4 copias), daño repartido (Gandalf Spark Starter), Auras que traban una criatura (Enchanted
+  River's Grasp, 4), disparo al atacar que tapea (Vengeful Villagers), y las caras de Aventura
+  y MDFC, que el motor ignora por completo (14 copias, entre ellas Smaug).
+- **Tierras que entran giradas**: implementado y APAGADO (`TIERRA_GIRADA=1`). El 52% de las
+  tierras del banco de Standard entran giradas y el motor las mete destapadas. Correcto y
+  mide peor también por residuo. Caso 11 de "más correcto y ajusta peor".
+- **El banco de Standard es pre-ban** y n=4: no vale para juzgar nada.
+- **Sneaky Snacker en `data/meta_decks.py`**: 4 Hadas {U}{B} en un mazo de 19 Montañas. Hace
+  falta una fuente verificada de la lista real.

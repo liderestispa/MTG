@@ -1,31 +1,5 @@
 [
  {
-  "carta": "Ravening Warg",
-  "copias": 7,
-  "estado": "MAL_LEIDA",
-  "coste": "{1}{B}",
-  "tipo": "Creature — Wolf",
-  "pt": "2/2",
-  "en_mazo": [
-   "standard",
-   "pauper",
-   "brawl"
-  ],
-  "frases": 1,
-  "ranuras": 3,
-  "motor": "LIFEGAIN/COND_BUFF",
-  "motor_extra": "kw=ETB_DRAIN",
-  "kw": [
-   "Deathtouch"
-  ],
-  "cond": 2,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"whenever this creature attacks\""
-  ],
-  "texto": "Deathtouch | Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, you gain 2 life."
- },
- {
   "carta": "Warg Tactics",
   "copias": 5,
   "estado": "MAL_LEIDA",
@@ -181,66 +155,6 @@
   "texto": "Lifelink | Target artifact or creature you control gains hexproof and indestructible until end of turn. (Then exile this card. You may cast the creature later from exile.)"
  },
  {
-  "carta": "Bombur, Gentle Dreamer",
-  "copias": 3,
-  "estado": "MAL_LEIDA",
-  "coste": "{2}{R}",
-  "tipo": "Legendary Creature — Dwarf Bard",
-  "pt": "5/3",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "COND_BUFF",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 1,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
-  ],
-  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Bombur doesn't untap during your untap step unless you have an enduring story."
- },
- {
-  "carta": "Ori, Keeper of Songs",
-  "copias": 3,
-  "estado": "MAL_LEIDA",
-  "coste": "{2}{W}",
-  "tipo": "Legendary Creature — Dwarf Bard",
-  "pt": "3/3",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "COND_BUFF",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 1,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
-  ],
-  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Ori gets +1/+0 and has vigilance."
- },
- {
-  "carta": "Wargling",
-  "copias": 3,
-  "estado": "MAL_LEIDA",
-  "coste": "{1}{G}",
-  "tipo": "Creature — Wolf",
-  "pt": "2/2",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 1,
-  "motor": "COND_BUFF",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 2,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"whenever this creature attacks\""
-  ],
-  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, until end of turn, this creature gets +1/+0 and creatures you control gain trample."
- },
- {
   "carta": "Óin the Brave",
   "copias": 3,
   "estado": "MAL_LEIDA",
@@ -256,33 +170,9 @@
   "cond": 1,
   "tax_atk": 0,
   "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\"",
    "ACTIVADA_GRATIS: hay coste de activacion en el texto y el efecto esta en ranura libre: el motor lo ejecuta solo y sin pagar"
   ],
   "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Óin gets +1/+0 and has haste. | {1}, {T}, Discard a card: Draw a card."
- },
- {
-  "carta": "Dáin, Lord of the Iron Hills",
-  "copias": 2,
-  "estado": "MAL_LEIDA",
-  "coste": "{1}{W}",
-  "tipo": "Legendary Creature — Dwarf Noble",
-  "pt": "2/2",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 3,
-  "motor": "TAX/COND_BUFF",
-  "motor_extra": "kw=BURN_FACE",
-  "kw": [
-   "Vigilance"
-  ],
-  "cond": 1,
-  "tax_atk": 1,
-  "sospechas": [
-   "COND_SIEMPRE: TAX, COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\"",
-   "TAX_ATAQUE: el texto grava ATACAR y E_TAX grava LANZAR hechizos"
-  ],
-  "texto": "Vigilance | Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures."
  },
  {
   "carta": "Eagle's Rescue",
@@ -323,28 +213,6 @@
    "MODAL_TODO: texto modal y 2 ranuras llenas (TAPDOWN, COND_BUFF): se disparan todas juntas"
   ],
   "texto": "Landfall — Whenever a land you control enters, choose one — | • Tap target creature an opponent controls. | • Untap target creature you control."
- },
- {
-  "carta": "Thorin Oakenshield",
-  "copias": 2,
-  "estado": "MAL_LEIDA",
-  "coste": "{R}{W}",
-  "tipo": "Legendary Creature — Dwarf Noble",
-  "pt": "3/2",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 2,
-  "motor": "COND_BUFF",
-  "motor_extra": "kw=DMG_SPELL",
-  "kw": [
-   "Trample"
-  ],
-  "cond": 1,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
-  ],
-  "texto": "Trample | Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, artifacts and creatures you control have ward {1}."
  },
  {
   "carta": "Thranduil's Company",
@@ -428,26 +296,6 @@
   "texto": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control. | {5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains \"This creature's power and toughness are each equal to the number of lands you control.\" (This effect doesn't end.)"
  },
  {
-  "carta": "Bifur, Melodic Rider",
-  "copias": 1,
-  "estado": "MAL_LEIDA",
-  "coste": "{4}{R/W}{R/W}",
-  "tipo": "Legendary Creature — Dwarf Bard",
-  "pt": "4/5",
-  "en_mazo": [],
-  "frases": 2,
-  "ranuras": 2,
-  "motor": "COND_BUFF/ETB_COUNTERS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 1,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"storied\""
-  ],
-  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Whenever Bifur enters or attacks, put a +1/+1 counter on target creature. | As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time."
- },
- {
   "carta": "Momo, Playful Pet",
   "copias": 1,
   "estado": "MAL_LEIDA",
@@ -469,26 +317,6 @@
    "SALIR_COMO_ENTRAR: el disparo es al morir/irse y LIFEGAIN esta en ranura de entrada"
   ],
   "texto": "Flying, vigilance | When Momo leaves the battlefield, choose one — | • Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") | • Put a +1/+1 counter on target creature you control. | • Scry 2."
- },
- {
-  "carta": "Wilderland Scrounger",
-  "copias": 1,
-  "estado": "MAL_LEIDA",
-  "coste": "{4}{G}",
-  "tipo": "Creature — Wolf",
-  "pt": "3/6",
-  "en_mazo": [],
-  "frases": 1,
-  "ranuras": 2,
-  "motor": "COND_BUFF/ETB_COUNTERS",
-  "motor_extra": "",
-  "kw": [],
-  "cond": 2,
-  "tax_atk": 0,
-  "sospechas": [
-   "COND_SIEMPRE: COND_BUFF lo aplica siempre, pero el texto lo condiciona a \"whenever this creature attacks\""
-  ],
-  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control."
  },
  {
   "carta": "Front Porch Sentries",
@@ -2137,6 +1965,24 @@
   "texto": "Airbend target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.) | Draw a card."
  },
  {
+  "carta": "Bifur, Melodic Rider",
+  "copias": 1,
+  "estado": "A_MEDIAS",
+  "coste": "{4}{R/W}{R/W}",
+  "tipo": "Legendary Creature — Dwarf Bard",
+  "pt": "4/5",
+  "en_mazo": [],
+  "frases": 2,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 1,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Whenever Bifur enters or attacks, put a +1/+1 counter on target creature. | As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time."
+ },
+ {
   "carta": "Bilbo Baggins, Burglar // Take a Glance",
   "copias": 1,
   "estado": "A_MEDIAS",
@@ -2564,6 +2410,30 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Equipped creature has prowess. (Whenever its controller casts a noncreature spell, that creature gets +1/+1 until end of turn.) | If a triggered ability of equipped creature triggers, that ability triggers an additional time. | Equip Wizard {1} | Equip {3}"
+ },
+ {
+  "carta": "Ravening Warg",
+  "copias": 7,
+  "estado": "ok",
+  "coste": "{1}{B}",
+  "tipo": "Creature — Wolf",
+  "pt": "2/2",
+  "en_mazo": [
+   "standard",
+   "pauper",
+   "brawl"
+  ],
+  "frases": 1,
+  "ranuras": 2,
+  "motor": "COND_BUFF",
+  "motor_extra": "kw=ETB_DRAIN",
+  "kw": [
+   "Deathtouch"
+  ],
+  "cond": 2,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Deathtouch | Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, you gain 2 life."
  },
  {
   "carta": "Stony-Voiced Goblins",
@@ -3248,6 +3118,24 @@
   "texto": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."
  },
  {
+  "carta": "Bombur, Gentle Dreamer",
+  "copias": 3,
+  "estado": "ok",
+  "coste": "{2}{R}",
+  "tipo": "Legendary Creature — Dwarf Bard",
+  "pt": "5/3",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 1,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | Bombur doesn't untap during your untap step unless you have an enduring story."
+ },
+ {
   "carta": "Lake-town Lookout",
   "copias": 3,
   "estado": "ok",
@@ -3320,6 +3208,62 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Whenever you attack, amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
+ },
+ {
+  "carta": "Ori, Keeper of Songs",
+  "copias": 3,
+  "estado": "ok",
+  "coste": "{2}{W}",
+  "tipo": "Legendary Creature — Dwarf Bard",
+  "pt": "3/3",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 1,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, Ori gets +1/+0 and has vigilance."
+ },
+ {
+  "carta": "Wargling",
+  "copias": 3,
+  "estado": "ok",
+  "coste": "{1}{G}",
+  "tipo": "Creature — Wolf",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 2,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, until end of turn, this creature gets +1/+0 and creatures you control gain trample."
+ },
+ {
+  "carta": "Dáin, Lord of the Iron Hills",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{1}{W}",
+  "tipo": "Legendary Creature — Dwarf Noble",
+  "pt": "2/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 3,
+  "motor": "TAX/COND_BUFF",
+  "motor_extra": "kw=BURN_FACE",
+  "kw": [
+   "Vigilance"
+  ],
+  "cond": 1,
+  "tax_atk": 1,
+  "sospechas": [],
+  "texto": "Vigilance | Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures."
  },
  {
   "carta": "Eagle of the Great Shelf",
@@ -3432,6 +3376,26 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Target creature you control deals damage equal to its power to target creature an opponent controls."
+ },
+ {
+  "carta": "Thorin Oakenshield",
+  "copias": 2,
+  "estado": "ok",
+  "coste": "{R}{W}",
+  "tipo": "Legendary Creature — Dwarf Noble",
+  "pt": "3/2",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 2,
+  "motor": "COND_BUFF",
+  "motor_extra": "kw=DMG_SPELL",
+  "kw": [
+   "Trample"
+  ],
+  "cond": 1,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Trample | Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.) | As long as you have an enduring story, artifacts and creatures you control have ward {1}."
  },
  {
   "carta": "Velvetwing Butterflies // Gaze in Wonder",
@@ -3946,6 +3910,24 @@
   "tax_atk": 0,
   "sospechas": [],
   "texto": "Draw three cards. Then discard a card unless you waterbend {2}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)"
+ },
+ {
+  "carta": "Wilderland Scrounger",
+  "copias": 1,
+  "estado": "ok",
+  "coste": "{4}{G}",
+  "tipo": "Creature — Wolf",
+  "pt": "3/6",
+  "en_mazo": [],
+  "frases": 1,
+  "ranuras": 1,
+  "motor": "COND_BUFF",
+  "motor_extra": "",
+  "kw": [],
+  "cond": 2,
+  "tax_atk": 0,
+  "sospechas": [],
+  "texto": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control."
  },
  {
   "carta": "Zhao, Ruthless Admiral",

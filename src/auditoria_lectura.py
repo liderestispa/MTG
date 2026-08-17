@@ -85,7 +85,10 @@ def sospechas(c, e):
     llenas = [x for x in ranuras if x]
     out = []
 
-    if set(ranuras) & ESTATICOS:
+    # Ojo: estas dos ya NO son sospechas si el extractor las etiqueto. Sin esta guarda,
+    # el detector seguia listando a Dain y a Ori despues de arreglarlos, y la cola de
+    # trabajo mentia diciendo que quedaba trabajo hecho.
+    if set(ranuras) & ESTATICOS and not e.get('cond'):
         m = _COND.search(low)
         if m:
             cual = ', '.join(INV[x] for x in ranuras if x in ESTATICOS)
@@ -93,9 +96,17 @@ def sospechas(c, e):
                         f"{cual} lo aplica siempre, pero el texto lo condiciona "
                         f"a \"{m.group(0).strip()}\""))
 
-    if E['TAX'] in ranuras and _TAX_ATK.search(low):
+    if E['TAX'] in ranuras and _TAX_ATK.search(low) and not e.get('tax_atk'):
         out.append(('TAX_ATAQUE',
                     "el texto grava ATACAR y E_TAX grava LANZAR hechizos"))
+
+    # disparo al atacar que quedo en ranura de entrada, ahora que existe atk_eff
+    if not e.get('atk_eff'):
+        _ma = re.search(r'whenever (?:this creature|this|[\w\' ]{1,24}) attacks[^.\n]*', low)
+        if _ma and set(llenas) & ETB:
+            out.append(('ATACAR_COMO_ENTRAR',
+                        f"el disparo es AL ATACAR y {', '.join(INV[x] for x in llenas if x in ETB)}"
+                        f" esta en ranura de entrada"))
 
     if _SALE.search(low) and not e.get('die_eff'):
         if set(llenas) & ETB:
@@ -201,6 +212,7 @@ def main():
 
     # ordena por gravedad y despues por cuantas copias hay en juego
     GRAVEDAD = {'TAX_ATAQUE': 0, 'COND_SIEMPRE': 1, 'SALIR_COMO_ENTRAR': 2,
+                'ATACAR_COMO_ENTRAR': 2,
                 'ACTIVADA_GRATIS': 3, 'MODAL_TODO': 4, 'SIMETRICO': 5, 'KW_PERDIDA': 6}
     def clave(r):
         g = min(GRAVEDAD.get(x['tipo'], 9) for x in r['sospechas'])
