@@ -46,6 +46,10 @@ typedef struct {
   uint8_t act_eff, act_cost;  /* habilidad ACTIVADA: efecto y coste (1=sacrificar un
                                  artefacto). La decision de activarla es del jugador. */
   int16_t act_p1;
+  uint8_t cred;        /* COSTE QUE BAJA SEGUN EL TABLERO. 1 = {1} menos por cada
+                          instantaneo/conjuro en tu cementerio (Eddymurk Crab).
+                          2 = {X} menos, X = el mayor coste convertido entre tus
+                          criaturas (Sunderflock; ver la nota en pay_gen). */
   uint8_t pip[5];
   uint32_t kw;
   uint8_t eff, eff2, eff3;
@@ -137,27 +141,38 @@ static int ACTIVADAS_ON=1;
    es darle al motor un dato que no tenia; lo que falla es quitarle o imponerle una
    decision.
 
-   RESULTADO, y no es el que predecia la teoria. Los cuatro estan VERIFICADOS en
-   src/sintetico.py: donde hay materia, el efecto es enorme (una criatura con amenaza
-   pasa de 24,3% a 98,0% de winrate). Y los cuatro miden CERO contra el dato real:
+   RESULTADO. Medidos de uno en uno contra dato real, base 1,072:
 
-       REMATE_LETAL   +0,000  ruido
-       ATAQUE_LETAL   -0,005  irrelevante (el minimo practico es 0,02)
-       KW_ATAQUE      -0,001  ruido
-       LORD_VE        -0,000  irrelevante
+       ATAQUE_LETAL   0,609   -0,463   ADOPTADO. 23 veces el ruido de semilla.
+       REMATE_LETAL   1,073   +0,001   neutro, se deja por ser mas correcto
+       LORD_VE        1,072   +0,000   neutro, se deja por ser mas correcto
+       KW_ATAQUE      1,204   +0,132   APAGADO: empeora
 
-   El motivo no es que la teoria falle: es que EL BANCO NO TIENE MATERIA para medirlos.
-   src/chk_hallazgos.py cuenta, en los 19 mazos: 8 criaturas con amenaza, 1 con dano
-   primero, 1 indestructible y 4 copias de un solo lord. Las 19 "indestructibles" que
-   parecia haber eran Darksteel Citadel, que es una tierra y no ataca. Con esa materia
-   ningun arreglo puede mover el objetivo, y "cero" ahi significa NO MEDIBLE, no
-   INUTIL. La teoria de leer-vs-jugar sigue sin probarse ni refutarse.
+   ADVERTENCIA sobre como se llego a esa tabla, porque la primera version era FALSA.
+   Los cuatro midieron cero clavado al principio, y el motivo era que bin_brawl estaba
+   VIEJO: se genera de sim.c con src/gen_brawl.py, asi que un cambio aqui no le llega
+   hasta que se regenera, y nada avisaba. El residuo de Brawl estaba congelado en 2,06 y
+   como estos cambios actuan casi solo ahi, ninguno se veia. Con el binario al dia el
+   residuo cae a 0,04. Guarda puesta en src/salud.py: obj_real ahora se NIEGA a medir con
+   un binario mas viejo que sim.c.
 
-   Se adoptan igual, por el mismo criterio que las dos ranuras del 17-ago: son modelos
-   mas correctos, estan verificados, no cuestan rendimiento y no rompen nada. Y ademas
-   la coleccion de Ricardo SI tiene materia donde el banco no la tiene —The Arkenstone
-   es un lord y esta en el mazo de Standard—, aunque medido con src/impacto_mazos.py
-   el efecto sobre las listas ya elegidas es de -0,04 y +0,04, o sea nada.
+   ATAQUE_LETAL merece una lectura honesta: toda su ganancia esta en Brawl, cuyo dato
+   real son DOS winrates de ladder. Standard y Pauper no se mueven. Con n=2 no se puede
+   separar "el motor mejoro" de "el motor ahora acierta dos numeros". Lo que si es
+   independiente del ajuste: los dos mazos de Brawl marcaban 62% de motor contra 75%
+   real —partidas demasiado lentas— y esto es justo lo que hace que un mazo cierre las
+   que ya iba ganando. Verificado ademas en sintetico: 57,5% -> 99,3%.
+
+   KW_ATAQUE es el noveno cambio "mas correcto segun las reglas" que ajusta peor, y esta
+   vez estaba avisado: src/sensibilidad.py dice que subir a Ketramose cuesta +0,449, y
+   Ketramose es indestructible Y tiene amenaza, o sea que la bandera lo habilita por
+   partida doble. CONSULTA sensibilidad.py ANTES de implementar, no despues.
+
+   Lo que NO queda probado es la teoria de leer-vs-jugar. Los tres hallazgos eran
+   "informacion que falta para decidir" y uno gano fuerte, otro perdio y dos no hicieron
+   nada. Ademas el banco casi no tiene materia para dos: src/chk_hallazgos.py cuenta 8
+   criaturas con amenaza, 1 con dano primero, 1 indestructible y 4 copias de un solo lord
+   en los 19 mazos.
 
    Ablacion: poner la variable a 0.
 
@@ -182,7 +197,7 @@ static int ACTIVADAS_ON=1;
                    deberian ser cero. */
 static int REMATE_LETAL=1;
 static int ATAQUE_LETAL=1;
-static int KW_ATAQUE=1;
+static int KW_ATAQUE=0;    /* APAGADO: ver la tabla de abajo, empeora +0,132 */
 static int LORD_VE=1;
 /* Umbrales de la politica de bloqueo, ajustados por descenso coordenada-a-coordenada
    contra la calibracion del meta (11.07 -> 10.35). No son "juego optimo": son los
@@ -242,6 +257,11 @@ typedef struct {
   int army;               /* indice bf del Army de amass, -1 */
   int treasures;
   int flot;               /* mana flotante de este turno (E_ETB_MANA); se pierde al acabar */
+  int gy_is;              /* instantaneos y conjuros que han ido al cementerio.
+                             El motor NO tiene cementerio: un hechizo lanzado se resuelve
+                             y desaparece. Esto es lo minimo que hace falta para los
+                             costes que bajan con el cementerio, y de paso sirve para
+                             umbral, delirio y cuentas de hechizos. */
   int played_land;
   int cards_drawn_turn;
   int lost;
@@ -364,7 +384,41 @@ static inline int th_eff(P*p,int i){
 
 /* ---------- mana: comprueba si se puede pagar coste con tierras destapadas ---------- */
 /* asignacion por backtracking pequeno: pips de color primero (los mas restringidos) */
-static int pay_gen(P*p,Def*d){ return d->gen + (p->taxed>0 && d->typ!=T_LAND ? p->taxed : 0); }
+/* ---- costes que BAJAN con el tablero ----
+   Distinto de un coste alternativo: aqui no se cambia la forma de pagar, se paga menos.
+   Y no es un detalle de una carta: Izzet Spellementals lleva 4 Eddymurk Crab a 7 mana y
+   4 Sunderflock a 9 en un mazo de cantrips de 1 y 2. Cobrandolos a precio de tapa, el
+   motor NO LOS LANZA NUNCA, y por eso las dos reglas que les daban su efecto de entrada
+   midieron +0,009 y +0,000: le estaban dando habilidades a cartas que no salen de la
+   mano. Es el mismo error que cobrar Fireblast a 6.
+
+   La reduccion solo toca la parte GENERICA del coste, que es como funciona de verdad:
+   los pips de color hay que pagarlos igual.
+
+   La ablacion es CRED_OFF=1 y va en el EXTRACTOR, no aqui: extract.py deja de etiquetar
+   la carta y le devuelve la rebaja plana de cost_reduction(), que es el modelo anterior.
+   Apagarlo solo en C dejaria las cartas a precio de tapa, que no es ninguno de los dos
+   modelos y no serviria para comparar. */
+static int mayor_cmc_criatura(P*p){
+  int m=0; for(int i=0;i<p->nbf;i++)
+    if(D[p->bf[i]].typ==T_CREA && D[p->bf[i]].cmc>m) m=D[p->bf[i]].cmc;
+  return m;
+}
+static int reduccion(P*p,Def*d){
+  if(!d->cred) return 0;
+  if(d->cred==1) return p->gy_is;
+  /* cred=2 es "el mayor coste convertido entre los Elementales que controlas". El motor
+     no tiene subtipos, asi que se aproxima con TODAS tus criaturas. En Izzet
+     Spellementals, el unico mazo del banco que lleva la carta, las criaturas son todas
+     Elementales y la aproximacion es exacta. En un mazo mixto sobreestimaria. */
+  if(d->cred==2) return mayor_cmc_criatura(p);
+  return 0;
+}
+static int pay_gen(P*p,Def*d){
+  int g = d->gen + (p->taxed>0 && d->typ!=T_LAND ? p->taxed : 0);
+  g -= reduccion(p,d);
+  return g>0 ? g : 0;
+}
 
 /* ---- costes alternativos ("rather than pay this spell's mana cost") ----
    alt=1 sacrificar altn tierras (Fireblast), alt=2 pagar altn vidas (Snuff Out).
@@ -940,6 +994,7 @@ static void defender_instants(P*def,P*act){
     int di=def->hand[best];
     for(int k=best;k<def->nh-1;k++) def->hand[k]=def->hand[k+1]; def->nh--;
     paycost(def,&D[di],&def->treasures);
+    if(D[di].typ==T_INST||D[di].typ==T_SORC) def->gy_is++;
     if(D[di].typ==T_CREA) addbf(def,di);
     SPARE_MANA = untapped_count(def);
     apply(def,act,di,0);
@@ -1152,6 +1207,8 @@ static void cast_phase(P*me,P*opp,int main2){
     tj_ev("lanza", me, def);
     SPARE_MANA = untapped_count(me);
     Def*d=&D[def];
+    /* al cementerio va igual, se resuelva o lo contrarresten */
+    if(d->typ==T_INST||d->typ==T_SORC) me->gy_is++;
     if(try_counter(opp,d)) continue;                 /* contrarrestado: se va al cementerio */
     if(d->typ!=T_CREA){
       for(int q=0;q<me->nbf;q++){
@@ -1592,9 +1649,10 @@ int main(void){
     scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
-    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0;
-    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,
-          &de_,&dp_,&ae_,&ap_,&ac_);
+    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0,cr_=0;
+    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,
+          &de_,&dp_,&ae_,&ap_,&ac_,&cr_);
+    d->cred=(uint8_t)cr_;
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
     d->eff3=(uint8_t)e3_; d->r1=(int16_t)r1_; d->r2=(int16_t)r2_;
     d->alt=(uint8_t)al_; d->altn=(uint8_t)an_;
@@ -1625,6 +1683,7 @@ int main(void){
     const char*al=getenv("ATAQUE_LETAL"); if(al) ATAQUE_LETAL=atoi(al);
     const char*ka=getenv("KW_ATAQUE");    if(ka) KW_ATAQUE=atoi(ka);
     const char*lv=getenv("LORD_VE");      if(lv) LORD_VE=atoi(lv);
+
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
     const char*e6=getenv("HEXWARD_ON"); if(e6) HEXWARD_ON=atoi(e6);

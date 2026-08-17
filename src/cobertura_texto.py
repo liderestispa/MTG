@@ -62,7 +62,12 @@ def analiza(nombre, copias, donde):
     fs = frases(txt)
     if not fs: return None
     e = convert(c)
+    # Cuentan TODAS las ranuras, no solo las tres primarias. Las dos nuevas —disparo al
+    # ir al cementerio y habilidad activada— llevaban a Nihil Spellbomb y compania a la
+    # cabeza de la cola de trabajo estando ya modeladas: seis copias de una carta
+    # resuelta pidiendo tokens. Cuando se agregue una ranura, hay que agregarla aqui.
     usadas = sum(1 for k in ('eff', 'eff2', 'eff3') if e[k] != E['NONE'])
+    usadas += sum(1 for k in ('die_eff', 'act_eff') if e.get(k))
     if usadas == 0:      cat = 'BLANCA'
     elif usadas >= 3 and len(fs) > 3: cat = 'RANURAS'
     elif len(fs) > usadas:            cat = 'PARCIAL'
@@ -70,7 +75,8 @@ def analiza(nombre, copias, donde):
     return dict(carta=nombre, copias=copias, donde=sorted(donde), categoria=cat,
                 frases=len(fs), ranuras=usadas, tipo=tl,
                 texto=' | '.join(fs)[:220],
-                efectos=[e['eff'], e['eff2'], e['eff3']])
+                efectos=[e['eff'], e['eff2'], e['eff3'],
+                         e.get('die_eff', 0), e.get('act_eff', 0)])
 
 
 def del_banco():

@@ -34,10 +34,17 @@ El 17-ago-2026 se cambio el banco de Pauper por dato de **77.000 partidas**
 4-6 semanas de 180-640 listas. Eso reescribio lo que sabiamos:
 
 ```
+$ bash scripts/build.sh          # SIEMPRE los dos binarios, ver la seccion del .exe viejo
 $ python3 src/obj_real.py 2000
-sta cal 0.02 (r=+1.00 x3.3) | pau cal 0.83 (r=+0.68 x8.4) | bra resid  2.06
-OBJETIVO 1.072
+sta cal 0.01 (r=+1.00 x3.2) | pau cal 0.82 (r=+0.69 x8.2) | bra resid  0.03
+OBJETIVO 0.608
 ```
+
+El salto de 1,072 a 0,608 es entero de `ATAQUE_LETAL` (el ataque no sumaba el dano de
+todos los atacantes) y entero en Brawl: el residuo pasa de 2,06 a 0,03. Validado en 5
+semillas independientes: **0,603 con la bandera contra 1,091 sin ella, sd 0,084**, casi
+seis veces el ruido. Pero leelo con la reserva que esta mas abajo: el dato real de Brawl
+son DOS winrates de ladder.
 
 | Formato | Correlación | ¿Le gana al modelo tonto? | Veredicto |
 |---|---|---|---|
@@ -219,40 +226,90 @@ Detalles que importan al ampliarlas:
 sigue sin pagar: 0,978 → 2,488, con Jund todavia en −18,7. Su hueco es mayor que lo que
 arreglan estas dos ranuras.
 
-## Los tres hallazgos que quedaban: cuenta la materia ANTES de medir
+## Los tres hallazgos que quedaban, y el .exe viejo que casi los entierra
 
-Quedaban tres puntos de `data/errores_juego.md` sin probar. Los tres son *informacion que
-al motor le falta para decidir*, que segun la teoria corregida es justo lo que suele
-pagar. Se implementaron los cuatro arreglos (el 4 se partio en dos), se verificaron en
-sintetico y se midieron contra dato real. **Los cuatro miden cero.**
+Quedaban tres puntos de `data/errores_juego.md` sin probar. Se implementaron los cuatro
+arreglos (el 4 se partio en dos) y se midieron de uno en uno. Contra la base de 1,072:
 
 | bandera | que arregla | sintetico | contra dato real |
 |---|---|---|---|
-| `KW_ATAQUE` | amenaza / dano primero / indestructible al atacar | 24,3% → **98,0%** | −0,001 ruido |
-| `ATAQUE_LETAL` | el ataque no suma el dano de todos los atacantes | 57,5% → **99,3%** | −0,005 irrelevante |
-| `LORD_VE` | remocion y barridos ven el bono de lord | 1,74 → **0,16** muertes | −0,000 irrelevante |
-| `REMATE_LETAL` | `E_BURN_FACE`/`E_ETB_DRAIN` no saben que rematan | 3,22 → **2,23** turnos | +0,000 ruido |
+| **`ATAQUE_LETAL`** | el ataque no suma el dano de todos los atacantes | 57,5% → **99,3%** | **0,609 (−0,463)** |
+| `REMATE_LETAL` | `E_BURN_FACE`/`E_ETB_DRAIN` no saben que rematan | 3,22 → **2,23** turnos | 1,073 (+0,001) |
+| `LORD_VE` | remocion y barridos ven el bono de lord | 1,74 → **0,16** muertes | 1,072 (+0,000) |
+| `KW_ATAQUE` | amenaza / dano primero / indestructible al atacar | 24,3% → **98,0%** | 1,204 (**+0,132**) |
 
-**Y el motivo no es que la teoria falle: es que el banco no tiene con que medirlos.**
-`src/chk_hallazgos.py` los cuenta en los 19 mazos: **8 criaturas con amenaza, 1 con dano
-primero, 1 indestructible y 4 copias de un solo lord** (Goblin Bushwhacker, que ademas no
-es un lord estatico). Parecia haber 19 indestructibles: eran Darksteel Citadel, que es una
-tierra y no ataca jamas.
+**El ataque letal agregado es la mejora mas grande del proyecto: 23 veces el ruido de
+semilla.** Se adopta. `REMATE_LETAL` y `LORD_VE` se dejan encendidas por ser modelos mas
+correctos y gratis. `KW_ATAQUE` queda **apagada**.
 
-> **Regla nueva, y ahorra horas: antes de medir una hipotesis, cuenta cuantas cartas del
-> banco la activan.** Un cambio correcto sobre materia inexistente mide exactamente cero,
-> y ese cero se lee como "no sirve" cuando en realidad es "no medible". Ya paso con
-> `REGLA_SOLO`, donde seis candidatas midieron +0,000 clavado por un bug. Distinguir las
-> dos cosas necesita `src/sintetico.py`, que pregunta *¿el arreglo funciona?*, separado de
-> `src/laboratorio.py`, que pregunta *¿conviene adoptarlo?*. Son preguntas distintas.
+### El error que produjo media pagina de conclusiones falsas
 
-Y una consecuencia incomoda: **la teoria de leer-vs-jugar sigue sin probarse.** Estos tres
-casos eran los que la habrian puesto a prueba y el banco no da para tanto.
+La primera medicion de las cuatro dio **cero clavado en todas**, y se documento aqui una
+teoria elaborada sobre por que el banco no tenia materia para medirlas. Era falso de
+principio a fin: **`bin_brawl` estaba viejo.**
 
-Se adoptaron igual (banderas a 1), por el mismo criterio que las dos ranuras: modelos mas
-correctos, verificados, gratis, y sin efecto medible en las listas ya elegidas (−0,04 en
-Standard y +0,04 en Pauper, con `src/impacto_mazos.py`). El objetivo pasa de 1,072 a
-**1,069**, que es ruido de semilla.
+`bin_brawl` no se compila de `sim.c`. Se compila de `src/sim_brawl.c`, que `gen_brawl.py`
+**genera** a partir de `sim.c`. Tocar el motor y recompilar solo `bin_sim` deja Brawl
+corriendo con el codigo de antes, y eso **no da ningun error: da numeros**. El residuo de
+Brawl estaba congelado en 2,06, y como estos cuatro cambios actuan casi solo en Brawl,
+ninguno se veia. Al regenerar el binario por otro motivo, el residuo cayo a 0,04.
+
+> **Guarda puesta.** `src/salud.py` compara fechas de binarios y fuentes, y
+> `obj_real.medir()` **se niega a medir** si algo esta viejo (`SALUD_OFF=1` lo salta).
+> Recompila siempre con `bash scripts/build.sh`, que hace los dos. Y cuando cambies el
+> protocolo de cable, `bin_brawl` **tiene** que regenerarse o `run_brawl` devuelve listas
+> vacias.
+
+### Lo que sigue siendo verdad de aquella pagina
+
+- **Cuenta la materia antes de medir.** `src/chk_hallazgos.py` cuenta en los 19 mazos: 8
+  criaturas con amenaza, 1 con dano primero, 1 indestructible y 4 copias de un solo lord.
+  Las 19 "indestructibles" que parecia haber eran Darksteel Citadel, que es una tierra y
+  no ataca jamas. Para `LORD_VE` y `KW_ATAQUE` el banco de verdad da poco.
+- **Dos bancos, dos preguntas.** `src/sintetico.py` responde *¿el arreglo funciona?* con
+  mazos artificiales que aislan un comportamiento; `src/laboratorio.py` responde *¿conviene
+  adoptarlo?* contra dato real. Ninguno sustituye al otro.
+
+### Lo que hay que leer con cuidado
+
+**Toda la ganancia de `ATAQUE_LETAL` esta en Brawl, cuyo dato real son DOS winrates de
+ladder.** Standard y Pauper no se mueven. Con n=2 no se puede separar "el motor mejoro" de
+"el motor ahora acierta dos numeros". Lo que si es independiente del ajuste: los dos mazos
+de Brawl marcaban 62% de motor contra 75% real —partidas demasiado lentas— y esto es justo
+lo que hace que un mazo cierre las que ya iba ganando.
+
+Y `KW_ATAQUE` es el **noveno** cambio mas-correcto-que-ajusta-peor, esta vez con aviso
+previo: `sensibilidad.py` dice que subir a Ketramose cuesta +0,449, y Ketramose es
+indestructible **y** tiene amenaza, o sea que la bandera lo habilita por partida doble. Ese
+numero estaba delante y no se miro. **Consulta `sensibilidad.py` ANTES de implementar.**
+
+## Costes que bajan con el tablero: correcto, y ajusta peor (el decimo)
+
+Izzet Spellementals lleva 4 Eddymurk Crab y 4 Sunderflock, las dos con rebaja de coste. El
+extractor ya tenia `cost_reduction()`, que aplica una rebaja **plana** estimada a ojo, pero
+su patron exige `{N}` con digitos: `{X} less to cast, where X is the greatest mana value
+among Elementals you control` no casa, y **Sunderflock se quedaba a 9 mana, muerta**.
+
+Se construyo la rebaja **dinamica** (`Def.cred`, `P.gy_is`, `pay_gen`), que la calcula
+mirando el tablero y reemplaza a la plana. Medido contra la base 0,608:
+
+| | objetivo | delta |
+|---|---|---|
+| `cred=1` Eddymurk dinamico en vez de −4 plano | 0,675 | +0,067 |
+| `cred=2` Sunderflock deja de estar muerta | 0,846 | **+0,238** |
+| las dos | 0,854 | +0,246 |
+
+**Apagado** (`CRED_ON=1` para activarlo). Dos cosas que aprender:
+
+- `cred=1` no toca solo a Eddymurk: **Cryptic Serpent**, la amenaza de Blue Terror en
+  Pauper, lleva el mismo texto, y el dano de esa mitad esta en Pauper (0,82 → 0,91), no en
+  Standard. Comprueba **todas** las cartas que casa un patron, no solo la que te llevo a el.
+- `cred=2` rompe el orden de Standard (r=+1,00 → +0,81). La leccion no es que Sunderflock
+  deba seguir muerta: es que **el motor sobrevalora volador gordo + rebote masivo**, y al
+  darle acceso a esa carta el error se hace visible. Eso es un hallazgo sobre el motor.
+
+El codigo se queda, con `P.gy_is` contando instantaneos y conjuros que van al cementerio.
+Es lo primero parecido a un cementerio que tiene el motor y sirve para umbral y delirio.
 
 ## El entrenador se estaba mintiendo: +2,135 eran +1,25
 
@@ -424,9 +481,9 @@ stdint`, cero POSIX), así que compila con MinGW sin tocar nada; los binarios sa
 
 ```bash
 bash scripts/bootstrap.sh                     # bulk de Scryfall
-gcc -O3 -w -o bin_sim src/sim.c -lm
-python3 src/gen_brawl.py && sed -i 's/^static int CMD_A, CMD_B;$/static int CMD_A=-1, CMD_B=-1;/' src/sim_brawl.c
-gcc -O3 -w -o bin_brawl src/sim_brawl.c -lm
+bash scripts/build.sh               # LOS DOS binarios. No compiles a mano: bin_brawl se
+                                    # genera de sim.c y olvidarlo no da error, da numeros
+python3 src/salud.py                # ¿hay algun binario mas viejo que su fuente?
 
 python3 src/obj_real.py 2000        # objetivo contra dato real (menor = mejor)
 python3 src/loocv.py 2500           # ¿le gana a no simular nada?
@@ -439,6 +496,11 @@ python3 src/valida_semillas.py 2000 "" "SWEEP_MIN=3"   # ¿sobrevive a semillas 
 python3 src/escala.py 2000          # regenera data/escala.json (hazlo tras tocar el motor)
 python3 src/build_report_v6.py      # regenera out/report_v6.json
 python3 src/grafico.py              # out/avance.html: vista referencial del informe
+python3 src/sintetico.py            # ¿el arreglo FUNCIONA? (mazos artificiales aislados)
+python3 src/chk_hallazgos.py        # ¿tiene el banco materia para medir esta hipótesis?
+python3 src/sensibilidad.py         # ¿subir este arquetipo ayuda o estorba? MÍRALO ANTES
+python3 src/impacto_mazos.py "FLAG=1"   # ¿mueve el cambio a los mazos ya elegidos?
+python3 src/audita_politica.py      # ¿la ganancia de la IA es real o máximo sobre ruido?
 python3 src/suelo_ruido.py 3.13 4.40                       # ¿cuánto margen queda de verdad?
 python3 src/tablero.py pauper "Mono Red" "Blue Terror" 8 12 # out/tablero.html: mira las partidas
 python3 src/run_all.py              # búsqueda de mazos (Standard + Pauper)

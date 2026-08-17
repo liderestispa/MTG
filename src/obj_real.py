@@ -3,8 +3,18 @@
 import sys, math, statistics; sys.path.insert(0,'src'); sys.path.insert(0,'data')
 from calibrate import rr
 from real_wr import REAL_FIELD, REAL_H2H
+from salud import exige_binarios_al_dia
+
+_REVISADO = False
 
 def medir(ng=900, fmts=('standard','pauper','brawl'), seed=1234567):
+    # Un binario viejo no da error: da numeros. bin_brawl estuvo desincronizado medio dia
+    # y congelo el residuo de Brawl en 2,06, escondiendo la mejora mas grande del
+    # proyecto y produciendo media pagina de conclusiones falsas. Se revisa UNA vez por
+    # proceso: el laboratorio llama a medir() cientos de veces.
+    global _REVISADO
+    if not _REVISADO:
+        exige_binarios_al_dia(); _REVISADO = True
     d={}
     for f in fmts:
         names,ws,M=rr(f,ngames=ng,life=25 if f=='brawl' else 20,seed=seed)

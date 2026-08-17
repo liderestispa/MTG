@@ -1,23 +1,5 @@
 [
  {
-  "carta": "Nihil Spellbomb",
-  "copias": 6,
-  "donde": [
-   "pauper/Grixis Affinity",
-   "pauper/Jund Wildfire"
-  ],
-  "categoria": "BLANCA",
-  "frases": 3,
-  "ranuras": 0,
-  "tipo": "Artifact",
-  "texto": "{T}, Sacrifice this artifact: Exile target player's graveyard. | When this artifact is put into a graveyard from the battlefield, you may pay {B}. | If you do, draw a card.",
-  "efectos": [
-   0,
-   0,
-   0
-  ]
- },
- {
   "carta": "Restless Reef",
   "copias": 6,
   "donde": [
@@ -30,6 +12,8 @@
   "tipo": "Land",
   "texto": "Whenever this land attacks, target player mills four cards.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -51,6 +35,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -66,6 +52,8 @@
   "tipo": "Legendary Creature — Spider Human Hero",
   "texto": "Mind Swap — You may have Superior Spider-Man enter as a copy of any creature card in a graveyard, except his name is Superior Spider-Man and he's a 4/4 Spider Human Hero in addition to his other types. | When you do, exi",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -86,6 +74,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -101,6 +91,8 @@
   "tipo": "Creature — Shapeshifter",
   "texto": "When this creature enters, you may exile a creature card from your graveyard. | If you do, exile target artifact or enchantment an opponent controls.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -120,6 +112,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -137,6 +131,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -152,6 +148,8 @@
   "tipo": "Land",
   "texto": "{5}: If this land isn't a creature, it becomes a 2/4 Wizard creature with \"Whenever you cast an instant or sorcery spell, this creature gets +1/+0 until end of turn.\" It's still a land.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -172,6 +170,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -187,6 +187,8 @@
   "tipo": "Creature — Siren Pirate",
   "texto": "When this creature enters, create a Map token.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -206,6 +208,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -221,6 +225,8 @@
   "tipo": "Creature — Elemental",
   "texto": "Whenever one or more permanent cards are put into your graveyard from anywhere while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -240,6 +246,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -255,6 +263,8 @@
   "tipo": "Land — Urza's Mine",
   "texto": "If you control an Urza's Power-Plant and an Urza's Tower, add {C}{C} instead.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -274,6 +284,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -289,6 +301,8 @@
   "tipo": "Land — Urza's Tower",
   "texto": "If you control an Urza's Mine and an Urza's Power-Plant, add {C}{C}{C} instead.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -308,6 +322,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -323,6 +339,8 @@
   "tipo": "Land",
   "texto": "{T}, Sacrifice this land: Search your library for a basic Swamp, Mountain, or Forest card, put it onto the battlefield tapped, then shuffle.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -342,6 +360,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -357,6 +377,8 @@
   "tipo": "Creature — Elf Ranger",
   "texto": "Return a Forest you control to its owner's hand: Untap target creature.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -376,6 +398,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -391,6 +415,8 @@
   "tipo": "Creature — Elemental Incarnation",
   "texto": "When this creature enters, if {W}{W} was spent to cast it, return target creature card with mana value 3 or less from your graveyard to the battlefield. | When this creature enters, if {B}{B} was spent to cast it, put th",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -410,6 +436,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -425,6 +453,8 @@
   "tipo": "Land — Desert",
   "texto": "When this land enters, surveil 1. | {1}, {T}: Add one mana of any color.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -445,6 +475,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -461,6 +493,8 @@
   "tipo": "Artifact — Spacecraft",
   "texto": "When this Spacecraft enters, you may sacrifice a land or Lander. | If you do, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -480,6 +514,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -495,6 +531,8 @@
   "tipo": "Legendary Creature — Human Hero",
   "texto": "Wasp's Sting — When The Wondrous Wasp enters, tap up to one target creature.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -515,6 +553,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -530,6 +570,8 @@
   "tipo": "Sorcery",
   "texto": "The owner of target nonland permanent puts it into their library second from the top or on the bottom.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -550,6 +592,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -565,6 +609,8 @@
   "tipo": "Enchantment — Aura",
   "texto": "Whenever enchanted creature attacks, put a +1/+1 counter on it. | Then if it has three or more +1/+1 counters on it, sacrifice this Aura. | When you sacrifice this Aura, search your library for up to two basic land cards",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -584,6 +630,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -599,6 +647,8 @@
   "tipo": "Legendary Creature — Elemental Fish",
   "texto": "Whenever Eluge enters or attacks, put a flood counter on target land. | It's an Island in addition to its other types for as long as it has a flood counter on it. | The first instant or sorcery spell you cast each turn c",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -618,6 +668,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -633,6 +685,8 @@
   "tipo": "Legendary Creature — Orc Wizard",
   "texto": "When Tersa Lightshatter enters, discard up to two cards, then draw that many cards. | Whenever Tersa Lightshatter attacks, if there are seven or more cards in your graveyard, exile a card at random from your graveyard.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -652,6 +706,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -667,6 +723,8 @@
   "tipo": "Sorcery",
   "texto": "Sacrifice two lands. | Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -686,6 +744,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -701,6 +761,8 @@
   "tipo": "Artifact",
   "texto": "{T}: Exile target card from a graveyard. | {6}, {T}, Sacrifice this artifact: Put each creature card exiled with this artifact onto the battlefield under your control with a flying counter on it.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -720,6 +782,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -735,6 +799,8 @@
   "tipo": "Creature — Satyr Warrior",
   "texto": "When this creature enters, if it isn't a token, create two tokens that are copies of it. | When this creature dies, put a number of +1/+1 counters equal to its power on each creature you control named Gruff Triplets.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -754,6 +820,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -769,6 +837,8 @@
   "tipo": "Creature — Dragon Spirit Avatar",
   "texto": "When this creature enters, if you cast it, you may put a card you own from outside the game into your hand.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -788,6 +858,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -803,6 +875,8 @@
   "tipo": "Land",
   "texto": "{4}, {T}: Target creature can't be blocked this turn.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -822,6 +896,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -837,6 +913,8 @@
   "tipo": "Creature — Dog",
   "texto": "Whenever another creature you control with power 2 or less enters, surveil 1.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -856,6 +934,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -871,6 +951,8 @@
   "tipo": "Creature — Cat",
   "texto": "When this creature dies, if it had a revival counter on it, return it to the battlefield with one fewer revival counter on it at the beginning of the next end step.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -890,6 +972,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -905,6 +989,8 @@
   "tipo": "Land",
   "texto": "Max speed — {3}, {T}, Discard a card: Draw a card.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -924,6 +1010,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -939,6 +1027,8 @@
   "tipo": "Enchantment",
   "texto": "When this enchantment enters, exile target artifact, creature, or enchantment an opponent controls until this enchantment leaves the battlefield.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -958,6 +1048,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -973,6 +1065,8 @@
   "tipo": "Land — Plains Swamp",
   "texto": "When this land enters, surveil 1.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -992,6 +1086,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1007,6 +1103,8 @@
   "tipo": "Artifact",
   "texto": "{6}, {T}: Draw a card.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -1026,6 +1124,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1041,6 +1141,8 @@
   "tipo": "Legendary Creature — Serpent",
   "texto": "Whenever an opponent draws their second card each turn, you draw two cards.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -1060,6 +1162,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1075,6 +1179,8 @@
   "tipo": "Enchantment Creature — Avatar Horror",
   "texto": "Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -1094,6 +1200,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1109,6 +1217,8 @@
   "tipo": "Creature — Wurm",
   "texto": "Whenever a creature you control deals combat damage during your turn, put that many +1/+1 counters on it.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -1128,6 +1238,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1143,6 +1255,8 @@
   "tipo": "Legendary Artifact — Spacecraft",
   "texto": "20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -1162,6 +1276,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1177,6 +1293,8 @@
   "tipo": "Legendary Artifact",
   "texto": "At the beginning of your end step, discover 5.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -1196,6 +1314,8 @@
   "efectos": [
    0,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1211,6 +1331,8 @@
   "tipo": "Land — Planet",
   "texto": "12+ | {G}, {T}: Add {G} for each creature you control.",
   "efectos": [
+   0,
+   0,
    0,
    0,
    0
@@ -1231,6 +1353,8 @@
   "efectos": [
    16,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1249,6 +1373,28 @@
   "efectos": [
    48,
    0,
+   0,
+   0,
+   0
+  ]
+ },
+ {
+  "carta": "Nihil Spellbomb",
+  "copias": 6,
+  "donde": [
+   "pauper/Grixis Affinity",
+   "pauper/Jund Wildfire"
+  ],
+  "categoria": "PARCIAL",
+  "frases": 3,
+  "ranuras": 1,
+  "tipo": "Artifact",
+  "texto": "{T}, Sacrifice this artifact: Exile target player's graveyard. | When this artifact is put into a graveyard from the battlefield, you may pay {B}. | If you do, draw a card.",
+  "efectos": [
+   0,
+   0,
+   0,
+   3,
    0
   ]
  },
@@ -1268,6 +1414,8 @@
   "efectos": [
    7,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1286,6 +1434,8 @@
   "efectos": [
    7,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1303,6 +1453,8 @@
   "efectos": [
    50,
    20,
+   0,
+   0,
    0
   ]
  },
@@ -1319,6 +1471,8 @@
   "texto": "Whenever you attack, you may discard a card. | If you do, draw a card. | Whenever you discard a card, this Class deals 2 damage to each opponent. | When this Class becomes level 3, search your library for a card, put it ",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -1337,6 +1491,8 @@
   "efectos": [
    22,
    3,
+   0,
+   0,
    0
   ]
  },
@@ -1355,6 +1511,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1372,6 +1530,8 @@
   "efectos": [
    2,
    5,
+   0,
+   0,
    0
   ]
  },
@@ -1388,6 +1548,8 @@
   "texto": "Look at the top three cards of your library, then put them back in any order. | You may shuffle. | Draw a card.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -1406,6 +1568,8 @@
   "efectos": [
    16,
    3,
+   0,
+   0,
    0
   ]
  },
@@ -1422,6 +1586,8 @@
   "texto": "Destroy target land. | Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle. | Draw a card.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -1440,6 +1606,8 @@
   "efectos": [
    3,
    17,
+   0,
+   0,
    0
   ]
  },
@@ -1456,6 +1624,8 @@
   "texto": "When this creature enters, if {U}{U} was spent to cast it, return up to one other target nonland permanent to its owner's hand. | When this creature enters, if {B}{B} was spent to cast it, target opponent reveals their h",
   "efectos": [
    4,
+   0,
+   0,
    0,
    0
   ]
@@ -1474,6 +1644,8 @@
   "efectos": [
    17,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1490,6 +1662,8 @@
   "texto": "Whenever you gain life, Amalia Benavides Aguirre explores. | Then destroy all other creatures if its power is exactly 20.",
   "efectos": [
    9,
+   0,
+   0,
    0,
    0
   ]
@@ -1508,6 +1682,8 @@
   "efectos": [
    50,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1524,6 +1700,8 @@
   "texto": "Discard a card: This creature gains lifelink until end of turn. | Whenever one or more cards leave your graveyard, put a +1/+1 counter on target creature you control.",
   "efectos": [
    24,
+   0,
+   0,
    0,
    0
   ]
@@ -1542,6 +1720,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1558,6 +1738,8 @@
   "texto": "Target player mills two cards. | Draw a card.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -1576,6 +1758,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1592,6 +1776,8 @@
   "texto": "When this creature enters, you gain 5 life. | {2}{G}, Exile this card from your graveyard: You gain 5 life.",
   "efectos": [
    17,
+   0,
+   0,
    0,
    0
   ]
@@ -1610,6 +1796,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1626,6 +1814,8 @@
   "texto": "{1}: Add one mana of any color. | {5}, {T}, Sacrifice this artifact: It deals 5 damage to target creature.",
   "efectos": [
    8,
+   0,
+   0,
    0,
    0
   ]
@@ -1644,6 +1834,8 @@
   "efectos": [
    5,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1660,6 +1852,8 @@
   "texto": "When you cast this spell, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this token: Add {C}.\" | Whenever you sacrifice another Eldrazi, put a +1/+1 counter on this creature.",
   "efectos": [
    5,
+   0,
+   0,
    0,
    0
   ]
@@ -1678,6 +1872,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1694,6 +1890,8 @@
   "texto": "Reveal the top four cards of your library. | Put all cards of the chosen type revealed this way into your hand and the rest into your graveyard.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -1714,6 +1912,8 @@
   "efectos": [
    5,
    28,
+   0,
+   0,
    0
   ]
  },
@@ -1731,6 +1931,8 @@
   "efectos": [
    48,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1747,6 +1949,8 @@
   "texto": "Put one of them into your hand and the rest on the bottom of your library in any order. | If there is an instant card and a sorcery card in your graveyard, instead put two of them into your hand and the rest on the botto",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -1766,6 +1970,8 @@
   "efectos": [
    15,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1784,6 +1990,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1800,6 +2008,8 @@
   "texto": "Firebending Lesson deals 2 damage to target creature. | If this spell was kicked, it deals 5 damage to that creature instead.",
   "efectos": [
    8,
+   0,
+   0,
    0,
    0
   ]
@@ -1818,6 +2028,8 @@
   "efectos": [
    24,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1834,6 +2046,8 @@
   "texto": "You may sacrifice two Mountains rather than pay this spell's mana cost. | Fireblast deals 4 damage to any target.",
   "efectos": [
    48,
+   0,
+   0,
    0,
    0
   ]
@@ -1852,6 +2066,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1869,6 +2085,8 @@
   "efectos": [
    50,
    22,
+   0,
+   0,
    0
   ]
  },
@@ -1886,6 +2104,8 @@
   "efectos": [
    3,
    17,
+   0,
+   0,
    0
   ]
  },
@@ -1902,6 +2122,8 @@
   "texto": "Torch the Tower deals 2 damage to target creature or planeswalker. | If this spell was bargained, instead it deals 3 damage to that permanent and you scry 1. | If a permanent dealt damage by Torch the Tower would die thi",
   "efectos": [
    8,
+   0,
+   0,
    0,
    0
   ]
@@ -1920,6 +2142,8 @@
   "efectos": [
    15,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1936,6 +2160,8 @@
   "texto": "When Casey Jones enters, draw three cards. | At the beginning of your next upkeep, discard three cards at random.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -1954,6 +2180,8 @@
   "efectos": [
    14,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1971,6 +2199,8 @@
   "efectos": [
    48,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -1987,6 +2217,8 @@
   "texto": "As an additional cost to cast this spell, sacrifice an artifact or creature. | Draw two cards.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -2006,6 +2238,8 @@
   "efectos": [
    4,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2022,6 +2256,8 @@
   "texto": "When this creature enters, choose one — | • Scry 2. | • You gain 3 life. | • Exile another target creature you own. | Return it to the battlefield under your control at the beginning of the next end step.",
   "efectos": [
    17,
+   0,
+   0,
    0,
    0
   ]
@@ -2040,6 +2276,8 @@
   "efectos": [
    17,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2057,6 +2295,8 @@
   "efectos": [
    3,
    23,
+   0,
+   0,
    0
   ]
  },
@@ -2073,6 +2313,8 @@
   "texto": "• Somersault — {0} — Target creature gets +2/+2 until end of turn. | • Meteor Strikes — {2} — Double target creature's power and toughness until end of turn. | • Final Heaven — {6}{G} — Triple target creature's power and",
   "efectos": [
    18,
+   0,
+   0,
    0,
    0
   ]
@@ -2091,6 +2333,8 @@
   "efectos": [
    20,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2107,6 +2351,8 @@
   "texto": "Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. | {T}: Exile target card from a graveyard. | Create a Mutagen token.",
   "efectos": [
    24,
+   0,
+   0,
    0,
    0
   ]
@@ -2125,6 +2371,8 @@
   "efectos": [
    5,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2142,6 +2390,8 @@
   "efectos": [
    15,
    3,
+   0,
+   0,
    0
   ]
  },
@@ -2158,6 +2408,8 @@
   "texto": "When Wan Shi Tong enters, put X +1/+1 counters on him. | Then draw half X cards, rounded down. | Whenever an opponent searches their library, put a +1/+1 counter on Wan Shi Tong and draw a card.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -2176,6 +2428,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2192,6 +2446,8 @@
   "texto": "{P} — Draw a card. | Create a token that's a copy of it. | {P}{P}{P} — Return each nonland, nontoken permanent to its owner's hand.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -2210,6 +2466,8 @@
   "efectos": [
    14,
    14,
+   0,
+   0,
    0
   ]
  },
@@ -2226,6 +2484,8 @@
   "texto": "{1}, {T}, Sacrifice this land: Destroy target nonbasic land an opponent controls. | That player may search their library for a basic land card, put it onto the battlefield, then shuffle. | You create a Treasure token.",
   "efectos": [
    28,
+   0,
+   0,
    0,
    0
   ]
@@ -2244,6 +2504,8 @@
   "efectos": [
    24,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2260,6 +2522,8 @@
   "texto": "I, II — Destroy up to one target nonland permanent. | III — Draw two cards. | IV — Mega Flare — This creature deals damage equal to the total mana value of other permanents you control to each opponent.",
   "efectos": [
    20,
+   0,
+   0,
    0,
    0
   ]
@@ -2278,6 +2542,8 @@
   "efectos": [
    20,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2294,6 +2560,8 @@
   "texto": "Whenever you gain life, put a +1/+1 counter on this creature. | Whenever you put one or more +1/+1 counters on this creature, draw a card.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -2312,6 +2580,8 @@
   "efectos": [
    17,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2328,6 +2598,8 @@
   "texto": "As an additional cost to cast this spell, return a land you control to its owner's hand. | Counter target spell.",
   "efectos": [
    15,
+   0,
+   0,
    0,
    0
   ]
@@ -2346,6 +2618,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2362,6 +2636,8 @@
   "texto": "You may reveal a creature card with mana value less than or equal to the number of lands you control from among them and put it onto the battlefield. | Put the rest on the bottom in a random order.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -2380,6 +2656,8 @@
   "efectos": [
    47,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2396,6 +2674,8 @@
   "texto": "• Target permanent you control gains hexproof and indestructible until end of turn. | • Create a 1/1 colorless Pilot creature token with \"This token saddles Mounts and crews Vehicles as though its power were 2 greater.\"",
   "efectos": [
    5,
+   0,
+   0,
    0,
    0
   ]
@@ -2414,6 +2694,8 @@
   "efectos": [
    24,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2430,6 +2712,8 @@
   "texto": "Whenever this creature deals combat damage to a player, they lose half their life, rounded up. | When this creature dies, if it had no counters on it, return it to the battlefield tapped under its owner's control with tw",
   "efectos": [
    42,
+   0,
+   0,
    0,
    0
   ]
@@ -2448,6 +2732,8 @@
   "efectos": [
    42,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2464,6 +2750,8 @@
   "texto": "At the beginning of your upkeep, reveal the top card of your library and put that card into your hand. | You lose life equal to its mana value.",
   "efectos": [
    36,
+   0,
+   0,
    0,
    0
   ]
@@ -2482,6 +2770,8 @@
   "efectos": [
    36,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2498,6 +2788,8 @@
   "texto": "Whenever another Rat you control enters, exile up to one target card from an opponent's graveyard. | At the beginning of combat on your turn, create a 1/1 black Rat creature token with \"This token can't block.\"",
   "efectos": [
    5,
+   0,
+   0,
    0,
    0
   ]
@@ -2516,6 +2808,8 @@
   "efectos": [
    43,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2532,6 +2826,8 @@
   "texto": "As an additional cost to cast this spell, sacrifice a creature. | Draw two cards.",
   "efectos": [
    3,
+   0,
+   0,
    0,
    0
   ]
@@ -2550,6 +2846,8 @@
   "efectos": [
    7,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2566,6 +2864,8 @@
   "texto": "As an additional cost to cast this spell, sacrifice a creature or pay {3}{B}. | Exile target creature or planeswalker.",
   "efectos": [
    21,
+   0,
+   0,
    0,
    0
   ]
@@ -2584,6 +2884,8 @@
   "efectos": [
    21,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2600,6 +2902,8 @@
   "texto": "• Destroy all tapped creatures. | • Destroy all untapped creatures.",
   "efectos": [
    9,
+   0,
+   0,
    0,
    0
   ]
@@ -2618,6 +2922,8 @@
   "efectos": [
    7,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2634,6 +2940,8 @@
   "texto": "{T}: Exile target card from a graveyard. | When a creature card is exiled this way, put a +1/+1 counter on target creature you control.",
   "efectos": [
    24,
+   0,
+   0,
    0,
    0
   ]
@@ -2652,6 +2960,8 @@
   "efectos": [
    7,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2668,6 +2978,8 @@
   "texto": "Return target creature an opponent controls to its owner's hand. | If the gift was promised, instead return target nonland permanent an opponent controls to its owner's hand.",
   "efectos": [
    22,
+   0,
+   0,
    0,
    0
   ]
@@ -2686,6 +2998,8 @@
   "efectos": [
    15,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2702,6 +3016,8 @@
   "texto": "Whenever Malcolm deals combat damage to a player, put a chorus counter on it. | Draw a card, then discard a card.",
   "efectos": [
    12,
+   0,
+   0,
    0,
    0
   ]
@@ -2720,6 +3036,8 @@
   "efectos": [
    15,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2736,6 +3054,8 @@
   "texto": "• Counter target spell. | • Tap one or two target creatures.",
   "efectos": [
    15,
+   0,
+   0,
    0,
    0
   ]
@@ -2754,6 +3074,8 @@
   "efectos": [
    3,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2770,6 +3092,8 @@
   "texto": "At the beginning of combat on your turn, put a +1/+1 counter on target creature. | Whenever this creature attacks while saddled, double the number of +1/+1 counters on target creature.",
   "efectos": [
    24,
+   0,
+   0,
    0,
    0
   ]
@@ -2788,6 +3112,8 @@
   "efectos": [
    45,
    0,
+   0,
+   0,
    0
   ]
  },
@@ -2805,7 +3131,9 @@
   "efectos": [
    48,
    3,
-   5
+   5,
+   0,
+   0
   ]
  },
  {
@@ -2824,7 +3152,9 @@
   "efectos": [
    3,
    17,
-   20
+   20,
+   0,
+   0
   ]
  },
  {
@@ -2841,7 +3171,9 @@
   "efectos": [
    14,
    24,
-   23
+   23,
+   0,
+   0
   ]
  },
  {
@@ -2858,7 +3190,9 @@
   "efectos": [
    21,
    5,
-   20
+   20,
+   0,
+   0
   ]
  },
  {
@@ -2875,7 +3209,9 @@
   "efectos": [
    12,
    11,
-   20
+   20,
+   0,
+   0
   ]
  },
  {
@@ -2892,7 +3228,9 @@
   "efectos": [
    34,
    5,
-   24
+   24,
+   0,
+   0
   ]
  },
  {
@@ -2909,7 +3247,9 @@
   "efectos": [
    14,
    25,
-   24
+   24,
+   0,
+   0
   ]
  }
 ]

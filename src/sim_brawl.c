@@ -46,6 +46,10 @@ typedef struct {
   uint8_t act_eff, act_cost;  /* habilidad ACTIVADA: efecto y coste (1=sacrificar un
                                  artefacto). La decision de activarla es del jugador. */
   int16_t act_p1;
+  uint8_t cred;        /* COSTE QUE BAJA SEGUN EL TABLERO. 1 = {1} menos por cada
+                          instantaneo/conjuro en tu cementerio (Eddymurk Crab).
+                          2 = {X} menos, X = el mayor coste convertido entre tus
+                          criaturas (Sunderflock; ver la nota en pay_gen). */
   uint8_t pip[5];
   uint32_t kw;
   uint8_t eff, eff2, eff3;
@@ -129,6 +133,72 @@ static int FICHAS_REALES=0;
 static int MUERTE_ON=1;
 /* habilidades activadas, evaluadas con su coste. Ablacion: ACTIVADAS_ON=0. */
 static int ACTIVADAS_ON=1;
+
+/* ---- los tres hallazgos que quedaban de data/errores_juego.md ----
+   Los tres son INFORMACION QUE LE FALTA AL MOTOR PARA DECIDIR, no restricciones
+   nuevas sobre lo que puede hacer. Esa distincion es la teoria corregida despues de
+   que ocho cambios "mas correctos segun las reglas" empeoraran el ajuste: lo que paga
+   es darle al motor un dato que no tenia; lo que falla es quitarle o imponerle una
+   decision.
+
+   RESULTADO. Medidos de uno en uno contra dato real, base 1,072:
+
+       ATAQUE_LETAL   0,609   -0,463   ADOPTADO. 23 veces el ruido de semilla.
+       REMATE_LETAL   1,073   +0,001   neutro, se deja por ser mas correcto
+       LORD_VE        1,072   +0,000   neutro, se deja por ser mas correcto
+       KW_ATAQUE      1,204   +0,132   APAGADO: empeora
+
+   ADVERTENCIA sobre como se llego a esa tabla, porque la primera version era FALSA.
+   Los cuatro midieron cero clavado al principio, y el motivo era que bin_brawl estaba
+   VIEJO: se genera de sim.c con src/gen_brawl.py, asi que un cambio aqui no le llega
+   hasta que se regenera, y nada avisaba. El residuo de Brawl estaba congelado en 2,06 y
+   como estos cambios actuan casi solo ahi, ninguno se veia. Con el binario al dia el
+   residuo cae a 0,04. Guarda puesta en src/salud.py: obj_real ahora se NIEGA a medir con
+   un binario mas viejo que sim.c.
+
+   ATAQUE_LETAL merece una lectura honesta: toda su ganancia esta en Brawl, cuyo dato
+   real son DOS winrates de ladder. Standard y Pauper no se mueven. Con n=2 no se puede
+   separar "el motor mejoro" de "el motor ahora acierta dos numeros". Lo que si es
+   independiente del ajuste: los dos mazos de Brawl marcaban 62% de motor contra 75%
+   real —partidas demasiado lentas— y esto es justo lo que hace que un mazo cierre las
+   que ya iba ganando. Verificado ademas en sintetico: 57,5% -> 99,3%.
+
+   KW_ATAQUE es el noveno cambio "mas correcto segun las reglas" que ajusta peor, y esta
+   vez estaba avisado: src/sensibilidad.py dice que subir a Ketramose cuesta +0,449, y
+   Ketramose es indestructible Y tiene amenaza, o sea que la bandera lo habilita por
+   partida doble. CONSULTA sensibilidad.py ANTES de implementar, no despues.
+
+   Lo que NO queda probado es la teoria de leer-vs-jugar. Los tres hallazgos eran
+   "informacion que falta para decidir" y uno gano fuerte, otro perdio y dos no hicieron
+   nada. Ademas el banco casi no tiene materia para dos: src/chk_hallazgos.py cuenta 8
+   criaturas con amenaza, 1 con dano primero, 1 indestructible y 4 copias de un solo lord
+   en los 19 mazos.
+
+   Ablacion: poner la variable a 0.
+
+   REMATE_LETAL=1  E_DMG_ANY tenia +60 cuando el hechizo mata al rival; E_BURN_FACE y
+                   E_ETB_DRAIN no tenian nada, asi que un remate que gana la partida
+                   competia con una criatura por su puntuacion normal y solia perder.
+                   Sintetico del detector: el mismo hechizo etiquetado BURN_FACE gana
+                   en 2,94 turnos y etiquetado DMG_ANY en 2,07.
+   ATAQUE_LETAL=1  la decision de atacar mira criatura a criatura (opp->life <= P_*2).
+                   Cinco criaturas de poder 2 contra un rival a 9 vidas es letal y
+                   ninguna de las cinco lo ve. En el lado del bloqueo la agregada si
+                   existe (lethal_now).
+   KW_ATAQUE=1     amenaza, dano primero e indestructible son invisibles al declarar
+                   ataques. Medido por el detector: las tres no cambian NI UNA partida.
+                   Con GANG_ON=0 una criatura con amenaza es literalmente imbloqueable
+                   en este motor (el bloqueo simple exige minb==1) y aun asi se queda
+                   en casa.
+   LORD_VE=1       pw()/th() devuelven el cuerpo base; lordbonus() solo se llamaba
+                   dentro de combat(). Todo lo que decide fuera del combate ve las
+                   criaturas mas chicas de lo que son: 1 de dano "mata" a un 1/1 que
+                   con su lord es un 3/3. Sintetico: 5,24 muertes por partida que
+                   deberian ser cero. */
+static int REMATE_LETAL=1;
+static int ATAQUE_LETAL=1;
+static int KW_ATAQUE=0;    /* APAGADO: ver la tabla de abajo, empeora +0,132 */
+static int LORD_VE=1;
 /* Umbrales de la politica de bloqueo, ajustados por descenso coordenada-a-coordenada
    contra la calibracion del meta (11.07 -> 10.35). No son "juego optimo": son los
    valores que reproducen mejor los resultados reales. */
@@ -187,6 +257,11 @@ typedef struct {
   int army;               /* indice bf del Army de amass, -1 */
   int treasures;
   int flot;               /* mana flotante de este turno (E_ETB_MANA); se pierde al acabar */
+  int gy_is;              /* instantaneos y conjuros que han ido al cementerio.
+                             El motor NO tiene cementerio: un hechizo lanzado se resuelve
+                             y desaparece. Esto es lo minimo que hace falta para los
+                             costes que bajan con el cementerio, y de paso sirve para
+                             umbral, delirio y cuentas de hechizos. */
   int played_land;
   int cards_drawn_turn;
   int lost;
@@ -294,9 +369,56 @@ static void lordbonus(P*p,int*bp,int*bt){
     if(d->eff2==E_LORD){*bp+=d->q1;*bt+=d->q2;} }
 }
 
+/* poder/resistencia EFECTIVOS: el cuerpo mas el bono estatico de los lords.
+   combat() ya llamaba a lordbonus(); best_killable, biggest_threat, board_pressure y
+   E_SWEEPER no, asi que decidian sobre criaturas mas chicas de lo que estan en mesa.
+   Con LORD_VE=0 se comportan como antes, para poder medir la diferencia. */
+static inline int pw_eff(P*p,int i){
+  if(!LORD_VE) return pw(p,i);
+  int bp,bt; lordbonus(p,&bp,&bt); return pw(p,i)+bp;
+}
+static inline int th_eff(P*p,int i){
+  if(!LORD_VE) return th(p,i);
+  int bp,bt; lordbonus(p,&bp,&bt); return th(p,i)+bt;
+}
+
 /* ---------- mana: comprueba si se puede pagar coste con tierras destapadas ---------- */
 /* asignacion por backtracking pequeno: pips de color primero (los mas restringidos) */
-static int pay_gen(P*p,Def*d){ return d->gen + (p->taxed>0 && d->typ!=T_LAND ? p->taxed : 0); }
+/* ---- costes que BAJAN con el tablero ----
+   Distinto de un coste alternativo: aqui no se cambia la forma de pagar, se paga menos.
+   Y no es un detalle de una carta: Izzet Spellementals lleva 4 Eddymurk Crab a 7 mana y
+   4 Sunderflock a 9 en un mazo de cantrips de 1 y 2. Cobrandolos a precio de tapa, el
+   motor NO LOS LANZA NUNCA, y por eso las dos reglas que les daban su efecto de entrada
+   midieron +0,009 y +0,000: le estaban dando habilidades a cartas que no salen de la
+   mano. Es el mismo error que cobrar Fireblast a 6.
+
+   La reduccion solo toca la parte GENERICA del coste, que es como funciona de verdad:
+   los pips de color hay que pagarlos igual.
+
+   La ablacion es CRED_OFF=1 y va en el EXTRACTOR, no aqui: extract.py deja de etiquetar
+   la carta y le devuelve la rebaja plana de cost_reduction(), que es el modelo anterior.
+   Apagarlo solo en C dejaria las cartas a precio de tapa, que no es ninguno de los dos
+   modelos y no serviria para comparar. */
+static int mayor_cmc_criatura(P*p){
+  int m=0; for(int i=0;i<p->nbf;i++)
+    if(D[p->bf[i]].typ==T_CREA && D[p->bf[i]].cmc>m) m=D[p->bf[i]].cmc;
+  return m;
+}
+static int reduccion(P*p,Def*d){
+  if(!d->cred) return 0;
+  if(d->cred==1) return p->gy_is;
+  /* cred=2 es "el mayor coste convertido entre los Elementales que controlas". El motor
+     no tiene subtipos, asi que se aproxima con TODAS tus criaturas. En Izzet
+     Spellementals, el unico mazo del banco que lleva la carta, las criaturas son todas
+     Elementales y la aproximacion es exacta. En un mazo mixto sobreestimaria. */
+  if(d->cred==2) return mayor_cmc_criatura(p);
+  return 0;
+}
+static int pay_gen(P*p,Def*d){
+  int g = d->gen + (p->taxed>0 && d->typ!=T_LAND ? p->taxed : 0);
+  g -= reduccion(p,d);
+  return g>0 ? g : 0;
+}
 
 /* ---- costes alternativos ("rather than pay this spell's mana cost") ----
    alt=1 sacrificar altn tierras (Fireblast), alt=2 pagar altn vidas (Snuff Out).
@@ -491,8 +613,8 @@ static int best_killable(P*p,int dmg){
     if(d->kw&K_IND) continue;
     if(!targetable(p,i)) continue;
     int t=0; for(int q=0;q<p->nbf;q++) if(q==i) t=th(p,i);
-    if(th(p,i)>dmg) continue;
-    int v=pw(p,i)*2+th(p,i);
+    if(th_eff(p,i)>dmg) continue;
+    int v=pw_eff(p,i)*2+th_eff(p,i);
     if(d->kw&K_FLY) v+=3; if(d->kw&K_DT) v+=3;
     if(d->eff==E_LORD||d->eff==E_ENGINE||d->eff==E_SPELL_DMG||d->eff==E_UPKEEP_DRAW) v+=8;
     if(v>bv){bv=v;best=i;} }
@@ -514,7 +636,7 @@ static int biggest_threat(P*p){
   int best=-1,bv=-1;
   for(int i=0;i<p->nbf;i++){ if(D[p->bf[i]].typ!=T_CREA) continue;
     if(!targetable(p,i)) continue;
-    int v=pw(p,i)*2+th(p,i); if(D[p->bf[i]].kw&K_FLY) v+=3; if(D[p->bf[i]].kw&K_DT) v+=3;
+    int v=pw_eff(p,i)*2+th_eff(p,i); if(D[p->bf[i]].kw&K_FLY) v+=3; if(D[p->bf[i]].kw&K_DT) v+=3;
     if(D[p->bf[i]].eff==E_LORD||D[p->bf[i]].eff==E_ENGINE) v+=6;
     if(v>bv){bv=v;best=i;} }
   return best;
@@ -522,8 +644,8 @@ static int biggest_threat(P*p){
 /* dano por turno que me viene encima, descontando lo que pueden frenar mis bloqueadores */
 static int board_pressure(P*me,P*opp){
   int dmg=0, blk=0;
-  for(int i=0;i<opp->nbf;i++) if(D[opp->bf[i]].typ==T_CREA) dmg+=pw(opp,i);
-  for(int i=0;i<me->nbf;i++)  if(D[me->bf[i]].typ==T_CREA && !(D[me->bf[i]].kw&K_DEF)) blk+=th(me,i);
+  for(int i=0;i<opp->nbf;i++) if(D[opp->bf[i]].typ==T_CREA) dmg+=pw_eff(opp,i);
+  for(int i=0;i<me->nbf;i++)  if(D[me->bf[i]].typ==T_CREA && !(D[me->bf[i]].kw&K_DEF)) blk+=th_eff(me,i);
   int neto = dmg - blk/2;
   return neto>0?neto:0;
 }
@@ -726,13 +848,19 @@ static void apply(P*me,P*opp,int def,int which){
         for(int i=0;i<me->nbf;i++) if(D[me->bf[i]].typ==T_CREA&&pw(me,i)>mv){mv=pw(me,i);m=i;}
         if(t>=0&&m>=0){ if(mv>=th(opp,t)) rmbf(opp,t); } } break;
     case E_SWEEPER: { ST_sweep++;
-      { int n=0; for(int i=0;i<opp->nbf;i++) if(D[opp->bf[i]].typ==T_CREA&&th(opp,i)<=a) n++;
+      { int n=0; for(int i=0;i<opp->nbf;i++) if(D[opp->bf[i]].typ==T_CREA&&th_eff(opp,i)<=a) n++;
         if(n>0) for(int q=0;q<me->nbf;q++)
           if(D[me->bf[q]].eff==E_EXILE_ENGINE){ draw_select(me,D[me->bf[q]].p1,3); me->life--; } }
-      for(int i=opp->nbf-1;i>=0;i--)
-        if(D[opp->bf[i]].typ==T_CREA && th(opp,i)<=a && !(D[opp->bf[i]].kw&K_IND)) rmbf(opp,i);
-      for(int i=me->nbf-1;i>=0;i--)
-        if(D[me->bf[i]].typ==T_CREA && th(me,i)<=a && !(D[me->bf[i]].kw&K_IND)) rmbf(me,i); } break;
+      /* Ojo con el orden: el barrido mata lords, y en cuanto muere uno el resto encoge.
+         Se congela el bono de los dos lados ANTES de empezar a quitar criaturas, que es
+         como funciona de verdad (el dano se marca a la vez y luego mueren juntas). */
+      { int sbp,sbt,mbp,mbt; lordbonus(opp,&sbp,&sbt); lordbonus(me,&mbp,&mbt);
+        if(!LORD_VE){ sbt=0; mbt=0; }
+        for(int i=opp->nbf-1;i>=0;i--)
+          if(D[opp->bf[i]].typ==T_CREA && th(opp,i)+sbt<=a && !(D[opp->bf[i]].kw&K_IND)) rmbf(opp,i);
+        for(int i=me->nbf-1;i>=0;i--)
+          if(D[me->bf[i]].typ==T_CREA && th(me,i)+mbt<=a && !(D[me->bf[i]].kw&K_IND)) rmbf(me,i); }
+    } break;
     case E_LIFEGAIN: me->life+=a; break;
     case E_ETB_COUNTERS: { int m=-1,mv=-1; for(int i=0;i<me->nbf;i++) if(D[me->bf[i]].typ==T_CREA&&pw(me,i)>mv){mv=pw(me,i);m=i;}
         if(m>=0) me->ctr[m]+=a; } break;
@@ -867,6 +995,7 @@ static void defender_instants(P*def,P*act){
     int di=def->hand[best];
     for(int k=best;k<def->nh-1;k++) def->hand[k]=def->hand[k+1]; def->nh--;
     paycost(def,&D[di],&def->treasures);
+    if(D[di].typ==T_INST||D[di].typ==T_SORC) def->gy_is++;
     if(D[di].typ==T_CREA) addbf(def,di);
     SPARE_MANA = untapped_count(def);
     apply(def,act,di,0);
@@ -988,6 +1117,17 @@ static void cast_phase(P*me,P*opp,int main2){
           }
           if(opp->life <= d->p1) v += 60;                  /* remata: lanzalo ya */
         }
+        /* Mismo bonus para las otras dos formas de mandar dano a la cara. Sin esto un
+           hechizo que gana la partida ahi mismo puntuaba 2*p1 (BURN_FACE) o 3*p1
+           (ETB_DRAIN) y perdia contra una criatura decente. "Si esto gana ahora, se
+           lanza ahora" no admite discusion. Ablacion: REMATE_LETAL=0. */
+        if(REMATE_LETAL){
+          int cara = 0;
+          if(d->eff ==E_BURN_FACE || d->eff ==E_ETB_DRAIN) cara += d->p1;
+          if(d->eff2==E_BURN_FACE || d->eff2==E_ETB_DRAIN) cara += d->q1;
+          if(d->eff3==E_BURN_FACE || d->eff3==E_ETB_DRAIN) cara += d->r1;
+          if(cara>0 && opp->life <= cara) v += 60;
+        }
         int es_rem = (d->eff==E_DESTROY||d->eff==E_EXILE||d->eff==E_DMG_SPELL||d->eff==E_ETB_DMG);
         if(es_rem && d->typ!=T_CREA){
           int t = (d->eff==E_DESTROY||d->eff==E_EXILE) ? biggest_threat(opp)
@@ -1068,6 +1208,8 @@ static void cast_phase(P*me,P*opp,int main2){
     tj_ev("lanza", me, def);
     SPARE_MANA = untapped_count(me);
     Def*d=&D[def];
+    /* al cementerio va igual, se resuelva o lo contrarresten */
+    if(d->typ==T_INST||d->typ==T_SORC) me->gy_is++;
     if(try_counter(opp,d)) continue;                 /* contrarrestado: se va al cementerio */
     if(d->typ!=T_CREA){
       for(int q=0;q<me->nbf;q++){
@@ -1097,6 +1239,32 @@ static void combat(P*me,P*opp){
   int atk[BFMAX], na=0;
   int def_untapped=0;
   for(int j=0;j<opp->nbf;j++) if(D[opp->bf[j]].typ==T_CREA && !opp->tap[j]) def_untapped++;
+
+  /* --- ataque letal AGREGADO ---
+     La decision de atacar se toma criatura a criatura contra opp->life <= P_*2, asi que
+     cinco criaturas de poder 2 frente a un rival a 9 vidas no ven que juntas lo matan y
+     cada una decide quedarse en casa. En el lado del bloqueo la variable agregada si
+     existe (lethal_now); en el del ataque no existia.
+     Se calcula el dano que pasa SI ATACAN TODAS y el defensor bloquea lo mejor posible,
+     o sea parando a los mas grandes. Es deliberadamente conservador: solo cuenta lo que
+     al defensor no le alcanzan cuerpos para frenar. Ablacion: ATAQUE_LETAL=0. */
+  int letal_agregado = 0;
+  if(ATAQUE_LETAL){
+    int pot[BFMAX], np=0;
+    for(int i=0;i<me->nbf;i++){ Def*d2=&D[me->bf[i]];
+      if(d2->typ!=T_CREA||me->sick[i]||me->tap[i]||(d2->kw&K_DEF)) continue;
+      int p2=pw(me,i)+bp;
+      if(d2->eff ==E_COND_BUFF) p2+=d2->p1;
+      if(d2->eff2==E_COND_BUFF) p2+=d2->q1;
+      if(p2>0) pot[np++]=p2;
+    }
+    for(int a2=0;a2<np;a2++) for(int b2=a2+1;b2<np;b2++)
+      if(pot[b2]>pot[a2]){ int t=pot[a2];pot[a2]=pot[b2];pot[b2]=t; }
+    int pasa=0;
+    for(int q=def_untapped;q<np;q++) pasa+=pot[q];
+    letal_agregado = (pasa>0 && pasa >= opp->life);
+  }
+
   for(int i=0;i<me->nbf;i++){
     Def*d=&D[me->bf[i]];
     if(d->typ!=T_CREA||me->sick[i]||me->tap[i]||(d->kw&K_DEF)) continue;
@@ -1113,6 +1281,15 @@ static void combat(P*me,P*opp){
       poder_disponible += op; n_disponibles++;
       int kills_me=(op>=T_)||(o->kw&K_DT);
       int i_kill=(P_>=ot)||(d->kw&K_DT);
+      /* Dano primero e indestructible ya se tienen en cuenta al BLOQUEAR y no al
+         ATACAR. La asimetria hace que el motor crea que va a morir en un combate que
+         el mismo resolveria a su favor tres lineas mas abajo. Ablacion: KW_ATAQUE=0. */
+      if(KW_ATAQUE){
+        if((d->kw&K_FS) && !(o->kw&K_FS) && i_kill)   kills_me=0;  /* lo mato antes */
+        if((o->kw&K_FS) && !(d->kw&K_FS) && kills_me) i_kill=0;    /* y al reves */
+        if(d->kw&K_IND) kills_me=0;
+        if(o->kw&K_IND) i_kill=0;
+      }
       if(kills_me && !i_kill) lethalblk++;
       else if(kills_me && i_kill) tradeblk++;
     }
@@ -1131,8 +1308,14 @@ static void combat(P*me,P*opp){
       }
       if(mueren<=1) lethalblk++;      /* cambio malo: yo muero, el pierde <=1 */
     }
-    int racing  = (opp->life <= P_*2) || (ncreat(opp)==0);
+    int racing  = (opp->life <= P_*2) || (ncreat(opp)==0) || letal_agregado;
     int behind  = (me->life < opp->life - 6);
+    /* AMENAZA: el defensor necesita minb_atk cuerpos para bloquear. Si no los tiene, el
+       ataque no puede salir mal. Y con GANG_ON=0 el bloqueo en grupo ni siquiera existe
+       —la rama de bloqueo simple exige minb==1—, asi que en este motor una criatura con
+       amenaza es literalmente imbloqueable... y aun asi se quedaba en casa. */
+    int imbloqueable = KW_ATAQUE &&
+                       (n_disponibles < minb_atk || (!GANG_ON && minb_atk > 1));
     /* CADA criatura bloquea a UN atacante. Si ya declare tantos atacantes como
        bloqueadores pueden pararme, este pasa si o si y da igual que lo maten: no queda
        nadie libre para bloquearlo.
@@ -1147,7 +1330,7 @@ static void combat(P*me,P*opp){
        n_disponibles ya respeta volar, asi que sirve mejor que def_untapped, que cuenta
        a todos. Ablacion: BLOQ_LIBRE=0. */
     int hay_bloqueador_libre = (na < n_disponibles);
-    if(BLOQ_LIBRE && !hay_bloqueador_libre) { /* pasa: no queda quien lo bloquee */ }
+    if((BLOQ_LIBRE && !hay_bloqueador_libre) || imbloqueable) { /* nadie puede pararlo */ }
     else {
       if(lethalblk>0 && !racing) continue;              /* no regalar criaturas */
       if(tradeblk>0 && !racing && !behind && d->cmc >= 4) continue; /* no cambiar mi bomba por su 2-drop */
@@ -1475,9 +1658,10 @@ int main(void){
     scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",
       &cmc,&typ,&col,&prod,&gen,&hyb,&p0,&p1_,&p2_,&p3_,&p4_,&kw,&eff,&eff2,&a,&b,&c,&q1,&q2,&pw_);
     scanf("%d",&th_);
-    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0;
-    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,
-          &de_,&dp_,&ae_,&ap_,&ac_);
+    int mo_=0,dy_=0,nu_=0,e3_=0,r1_=0,r2_=0,al_=0,an_=0,de_=0,dp_=0,ae_=0,ap_=0,ac_=0,cr_=0;
+    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d",&mo_,&dy_,&nu_,&e3_,&r1_,&r2_,&al_,&an_,
+          &de_,&dp_,&ae_,&ap_,&ac_,&cr_);
+    d->cred=(uint8_t)cr_;
     d->mana_out=(uint8_t)mo_; d->dyn=(uint8_t)dy_; d->no_untap=(uint8_t)nu_;
     d->eff3=(uint8_t)e3_; d->r1=(int16_t)r1_; d->r2=(int16_t)r2_;
     d->alt=(uint8_t)al_; d->altn=(uint8_t)an_;
@@ -1504,6 +1688,11 @@ int main(void){
     const char*mo=getenv("MUERTE_ON"); if(mo) MUERTE_ON=atoi(mo);
     const char*ao=getenv("ACTIVADAS_ON"); if(ao) ACTIVADAS_ON=atoi(ao);
     const char*fr=getenv("FICHAS_REALES"); if(fr) FICHAS_REALES=atoi(fr);
+    const char*rl=getenv("REMATE_LETAL"); if(rl) REMATE_LETAL=atoi(rl);
+    const char*al=getenv("ATAQUE_LETAL"); if(al) ATAQUE_LETAL=atoi(al);
+    const char*ka=getenv("KW_ATAQUE");    if(ka) KW_ATAQUE=atoi(ka);
+    const char*lv=getenv("LORD_VE");      if(lv) LORD_VE=atoi(lv);
+
     const char*e4=getenv("GANG_BASE"); if(e4) GANG_BASE=atoi(e4);
     const char*e5=getenv("GANG_ON"); if(e5) GANG_ON=atoi(e5);
     const char*e6=getenv("HEXWARD_ON"); if(e6) HEXWARD_ON=atoi(e6);

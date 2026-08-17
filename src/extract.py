@@ -495,6 +495,48 @@ def parse_card(c):
             out['act_p1'] = num(_a.group(1), 1)
             out['act_cost'] = 1          # 1 = sacrificar un artefacto
 
+    # ---- coste que baja con el tablero, DE VERDAD y no de media ----
+    # Ojo: cost_reduction() ya abarata estas cartas, pero con un numero FIJO estimado a
+    # ojo ("costs {N} less for each" -> N*4, tope 5). Eso tiene dos problemas:
+    #
+    #   1. El patron pide {N} con digitos, asi que "{X} less to cast, where X is the
+    #      greatest mana value among Elementals you control" NO CASA. Sunderflock se
+    #      queda a 9 mana en un mazo de cantrips y el motor no la lanza jamas: son 4
+    #      cartas muertas en Izzet Spellementals, que esta 5,9 puntos por debajo de su
+    #      winrate real.
+    #   2. Donde si casa, la rebaja es incondicional. Eddymurk Crab queda pagable por
+    #      {1}{U}{U} en el turno 3 con el cementerio vacio, que es media carta distinta.
+    #      La rebaja de verdad EXIGE haber gastado hechizos antes.
+    #
+    # Con cred el motor calcula la rebaja mirando el tablero, y por eso REEMPLAZA a la
+    # estimacion plana en vez de sumarse: si se aplicaran las dos, Eddymurk Crab pasaria
+    # de gen 5 a gen 1 y de ahi a gratis.
+    #
+    # APAGADO POR DEFECTO: CRED_ON=1 para activarlo. Es mas correcto y ajusta PEOR, que
+    # ya es el decimo caso. Medido contra la base 0,608:
+    #
+    #     cred=1  Eddymurk Crab dinamico en vez de -4 plano   0,675  +0,067
+    #     cred=2  Sunderflock deja de estar muerta a 9 mana   0,846  +0,238
+    #     las dos                                             0,854  +0,246
+    #
+    # Ojo con cred=1: no toca solo a Eddymurk. Cryptic Serpent, que es la amenaza de
+    # Blue Terror en Pauper, lleva el mismo texto, y el dano de esa mitad esta en Pauper
+    # (0,82 -> 0,91), no en Standard.
+    # El de cred=2 se entiende mirando que hace: un 5/5 volador de 9 mana con rebote
+    # masivo, al volverse lanzable, dispara a Izzet Spellementals muy por encima de su
+    # winrate real y rompe el ORDEN de Standard (r=+1,00 -> +0,81). La leccion no es que
+    # la carta deba seguir muerta, es que el motor sobrevalora volador gordo + rebote.
+    #
+    # CRED_SOLO=1 o 2 mide una de las dos mitades por separado; la otra vuelve al
+    # modelo plano. Hace falta porque son cartas y arquetipos distintos y el agregado
+    # no dice cual es la que rompe.
+    if os.environ.get('CRED_ON') == '1' and 'less to cast' in low:
+        _solo = os.environ.get('CRED_SOLO')
+        if re.search(r'less to cast for each instant and sorcery', low):
+            if _solo in (None, '1'): out['cred'] = 1
+        elif re.search(r'less to cast,? where x is the greatest mana value among', low):
+            if _solo in (None, '2'): out['cred'] = 2
+
     # ---- reglas de datos (data/reglas_extra.json) ----
     # Se aplican al final, sobre las ranuras que hayan quedado libres. Estan en un JSON y
     # no en codigo para que src/laboratorio.py pueda proponerlas, activarlas y medirlas
@@ -625,6 +667,9 @@ def convert(c):
     gen, pips, hyb = mana_pips(mc)
     _txt = (c.get('oracle_text') or '').strip() or ((ff.get('oracle_text') if ff else '') or '')
     _red = cost_reduction(c, _txt)
+    # Si la carta tiene rebaja DINAMICA, esa manda y la estimacion plana no se aplica:
+    # son dos modelos del mismo coste, no dos rebajas distintas.
+    if e.get('cred'): _red = 0
     if _red: gen = max(0, gen - _red)
     _cmc = int(c.get('cmc') or ff.get('cmc') or 0)
     # APAGADO POR DEFECTO: CMCRED=1 para activarlo.
