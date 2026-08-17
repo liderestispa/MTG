@@ -997,6 +997,23 @@ static void apply(P*me,P*opp,int def,int which){
         if(m2>=0){ me->tmp_p[m2]+=a; me->tmp_t[m2]+=a; }
       }
     } break;
+    case E_REANIMATE: {
+      /* Devuelve la mejor criatura del cementerio a la mano. Estaba en el enum desde
+         siempre SIN case en apply(), o sea que se parseaba y no hacia nada: era
+         imposible implementarlo porque no habia cementerio de donde sacarla. Ahora si.
+         Se elige la de mas cuerpo, que es lo que hace un jugador. */
+      int mejor=-1, mv=-1;
+      for(int q=0;q<me->ngy;q++){ Def*g=&D[me->gy[q]];
+        if(g->typ!=T_CREA) continue;
+        int v=g->power*2+g->tough;
+        if(v>mv){ mv=v; mejor=q; } }
+      if(mejor>=0 && me->nh<ZONEMAX){
+        me->hand[me->nh]=me->gy[mejor];
+        me->hand_adv[me->nh]=0; me->nh++;
+        for(int q=mejor;q<me->ngy-1;q++) me->gy[q]=me->gy[q+1];
+        me->ngy--;
+      }
+    } break;
     case E_TAX: break;         /* estatico: lo lee cast_phase via ->taxed */
     case E_SAGA: {
       /* El capitulo I dispara AL ENTRAR: "as this Saga enters, add a lore counter".
