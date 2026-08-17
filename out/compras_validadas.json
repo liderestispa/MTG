@@ -1,23 +1,5 @@
 [
  {
-  "mejora": 7.968966666666674,
-  "usd": 0.33,
-  "carta": "Springleaf Drum",
-  "coste": "{1}"
- },
- {
-  "mejora": 6.945500000000003,
-  "usd": 0.21,
-  "carta": "Prophetic Prism",
-  "coste": "{2}"
- },
- {
-  "mejora": 6.574666666666673,
-  "usd": 0.5,
-  "carta": "Pulse Tracker",
-  "coste": "{B}"
- },
- {
   "mejora": 6.032366666666668,
   "usd": 0.13,
   "carta": "Ego Drain",
@@ -30,40 +12,10 @@
   "coste": "{B}"
  },
  {
-  "mejora": 5.739400000000003,
-  "usd": 0.26,
-  "carta": "Raven Eagle",
-  "coste": "{2}{B}"
- },
- {
-  "mejora": 5.695600000000013,
-  "usd": 1.2,
-  "carta": "Lotus Ring",
-  "coste": "{3}"
- },
- {
-  "mejora": 5.4978333333333325,
-  "usd": 0.18,
-  "carta": "Desecration Demon",
-  "coste": "{2}{B}{B}"
- },
- {
   "mejora": 5.484666666666669,
   "usd": 0.21,
   "carta": "Stingblade Assassin",
   "coste": "{3}{B}"
- },
- {
-  "mejora": 5.394666666666666,
-  "usd": 0.29,
-  "carta": "Huskburster Swarm",
-  "coste": "{7}{B}"
- },
- {
-  "mejora": 5.378833333333333,
-  "usd": 0.42,
-  "carta": "Caustic Bronco",
-  "coste": "{1}{B}"
  },
  {
   "mejora": 5.332433333333327,
@@ -78,15 +30,63 @@
   "coste": "{2}{B}"
  },
  {
-  "mejora": 5.162666666666674,
-  "usd": 0.16,
-  "carta": "Omni-Cheese Pizza",
-  "coste": "{2}"
+  "mejora": 5.052399999999999,
+  "usd": 0.32,
+  "carta": "Interdimensional Web Watch",
+  "coste": "{4}"
  },
  {
-  "mejora": 5.122333333333337,
-  "usd": 0.16,
-  "carta": "Delta Bloodflies",
+  "mejora": 5.0344333333333395,
+  "usd": 0.18,
+  "carta": "High Fae Negotiator",
+  "coste": "{3}{B}{B}"
+ },
+ {
+  "mejora": 4.920033333333336,
+  "usd": 0.49,
+  "carta": "Greedy Freebooter",
+  "coste": "{B}"
+ },
+ {
+  "mejora": 4.754566666666669,
+  "usd": 0.24,
+  "carta": "Bonecache Overseer",
+  "coste": "{B}"
+ },
+ {
+  "mejora": 4.681766666666661,
+  "usd": 0.3,
+  "carta": "Dream Beavers",
+  "coste": "{B}"
+ },
+ {
+  "mejora": 4.586366666666677,
+  "usd": 0.18,
+  "carta": "Foot Mystic",
+  "coste": "{3}{B}"
+ },
+ {
+  "mejora": 4.578900000000004,
+  "usd": 0.15,
+  "carta": "Mintstrosity",
   "coste": "{1}{B}"
+ },
+ {
+  "mejora": 4.444033333333337,
+  "usd": 0.17,
+  "carta": "Hullcarver",
+  "coste": "{B}"
+ },
+ {
+  "mejora": 4.444033333333337,
+  "usd": 0.15,
+  "carta": "Squirrelanoids",
+  "coste": "{B}"
+ },
+ {
+  "mejora": 4.370833333333337,
+  "usd": 0.16,
+  "carta": "Dream Seizer",
+  "coste": "{3}{B}"
  }
 ]

@@ -1,0 +1,216 @@
+<title>Ochenta y seis centavos</title>
+<style>
+  :root{
+    --ground:#EFEDE9; --panel:#F8F7F4; --edge:#DAD5CC;
+    --ink:#1B1815; --ink-2:#4E4840; --ink-3:#7E7568;
+    --oro:#8A6A1F; --oro-soft:#8A6A1F1a;
+    --verd:#3F6B52; --blood:#8C3A2F; --bar:#2A241D;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#15130F; --panel:#1E1B16; --edge:#332E26;
+      --ink:#F0ECE4; --ink-2:#B8B0A3; --ink-3:#847A6B;
+      --oro:#C9A24E; --oro-soft:#C9A24E1f;
+      --verd:#74A98A; --blood:#C4736A; --bar:#CFC7B8;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#15130F; --panel:#1E1B16; --edge:#332E26;
+    --ink:#F0ECE4; --ink-2:#B8B0A3; --ink-3:#847A6B;
+    --oro:#C9A24E; --oro-soft:#C9A24E1f;
+    --verd:#74A98A; --blood:#C4736A; --bar:#CFC7B8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--ground); color:var(--ink);
+    font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:42rem; margin:0 auto; padding:3.5rem 1.4rem 6rem;
+        display:flex; flex-direction:column; gap:3rem}
+  .num{font-family:'Cascadia Mono',Consolas,ui-monospace,'SF Mono',monospace;
+       font-variant-numeric:tabular-nums}
+  .eyebrow{font-family:'Segoe UI',system-ui,sans-serif; font-size:.7rem;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin:0 0 .7rem}
+  h1{font-size:clamp(2rem,5.5vw,2.9rem); line-height:1.05; margin:0; font-weight:600;
+     letter-spacing:-.02em; text-wrap:balance}
+  h1 .sub{display:block; font-size:.4em; font-weight:400; color:var(--ink-2);
+          letter-spacing:0; margin-top:.6rem; font-style:italic}
+  h2{font-size:1.3rem; font-weight:600; margin:0 0 1rem; letter-spacing:-.01em}
+  p{margin:0 0 1rem; max-width:37rem} p:last-child{margin-bottom:0}
+  section{display:flex; flex-direction:column}
+  strong{font-weight:600} em{color:var(--ink-2)}
+  .lede{font-size:1.13rem; color:var(--ink-2)} .lede strong{color:var(--ink)}
+  hr{border:0; border-top:1px solid var(--edge); margin:0}
+
+  /* la lista de compra, como un recibo */
+  .recibo{background:var(--panel); border:1px solid var(--edge); border-radius:3px;
+          padding:1.6rem 1.7rem; display:flex; flex-direction:column; gap:.1rem}
+  .item{display:grid; grid-template-columns:1.6rem 1fr auto; gap:.9rem;
+        padding:.85rem 0; border-bottom:1px dashed var(--edge); align-items:start}
+  .item:last-of-type{border-bottom:0}
+  .item .box{width:1rem; height:1rem; border:1.5px solid var(--ink-3); border-radius:2px;
+             margin-top:.35rem}
+  .item .nom{font-weight:600}
+  .item .mc{font-size:.78rem; color:var(--ink-3); margin-left:.4rem}
+  .item .txt{font-size:.87rem; color:var(--ink-2); font-style:italic; margin-top:.2rem;
+             display:block; line-height:1.45}
+  .item .usd{text-align:right; font-size:.95rem; color:var(--oro); white-space:nowrap}
+  .total{display:grid; grid-template-columns:1.6rem 1fr auto; gap:.9rem;
+         padding-top:1rem; margin-top:.4rem; border-top:2px solid var(--edge);
+         font-weight:600; font-size:1.1rem}
+  .total .usd{text-align:right; color:var(--oro)}
+
+  .fuera{display:flex; flex-direction:column; gap:.3rem; margin-top:.4rem}
+  .fuera div{font-size:.95rem; color:var(--ink-2)}
+  .fuera .n{color:var(--ink)}
+
+  table{width:100%; border-collapse:collapse; font-size:.92rem}
+  .scroll{overflow-x:auto}
+  th{text-align:left; font-family:'Segoe UI',system-ui,sans-serif; font-size:.68rem;
+     letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); font-weight:600;
+     padding:0 .8rem .5rem 0; border-bottom:1px solid var(--edge); white-space:nowrap}
+  td{padding:.5rem .8rem .5rem 0; border-bottom:1px solid var(--edge)}
+  tr:last-child td{border-bottom:0}
+  td.n{text-align:right; white-space:nowrap}
+  .up{color:var(--verd); font-weight:600} .down{color:var(--blood)}
+  .note{border-left:2px solid var(--oro); padding-left:1.1rem; color:var(--ink-2);
+        font-size:.96rem} .note strong{color:var(--ink)}
+  ul.plain{margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:.6rem}
+  .big{font-size:2.6rem; font-weight:600; letter-spacing:-.03em; color:var(--oro);
+       line-height:1; font-family:'Cascadia Mono',Consolas,monospace}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Standard Brawl · The Sackville-Bagginses</p>
+    <h1>Ochenta y seis centavos
+      <span class="sub">Cinco cartas comunes que suben el mazo catorce puntos.</span></h1>
+  </header>
+
+  <section>
+    <p class="lede">Tenías presupuesto de doscientos a seiscientos dólares. <strong>La
+    respuesta cuesta menos de uno.</strong> El problema del mazo no era falta de dinero:
+    eran cinco slots por debajo del nivel de reemplazo, y lo que los arregla son comunes
+    de a diez centavos.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Qué comprar</h2>
+    <div class="recibo">
+
+      <div class="item"><div class="box"></div>
+        <div><span class="nom">Duress</span><span class="mc num">{B}</span>
+          <span class="txt">El rival revela su mano; eliges una carta que no sea criatura
+          ni tierra y la descarta.</span></div>
+        <div class="usd num">0,09</div></div>
+
+      <div class="item"><div class="box"></div>
+        <div><span class="nom">Ego Drain</span><span class="mc num">{B}</span>
+          <span class="txt">Igual pero puede llevarse una criatura. Un poco mejor y un
+          poco más cara.</span></div>
+        <div class="usd num">0,13</div></div>
+
+      <div class="item"><div class="box"></div>
+        <div><span class="nom">Shimmercreep</span><span class="mc num">{4}{B}</span>
+          <span class="txt">3/5 con amenaza. Al entrar drena vidas. El cuerpo bloquea y
+          la amenaza lo hace difícil de parar.</span></div>
+        <div class="usd num">0,16</div></div>
+
+      <div class="item"><div class="box"></div>
+        <div><span class="nom">Dawnhand Eulogist</span><span class="mc num">{3}{B}</span>
+          <span class="txt">3/3 con amenaza, y llena tu cementerio al entrar — que con
+          este comandante es material.</span></div>
+        <div class="usd num">0,18</div></div>
+
+      <div class="item"><div class="box"></div>
+        <div><span class="nom">Dream Beavers</span><span class="mc num">{B}</span>
+          <span class="txt">1/1 volador por un maná que drena al entrar. Barata, vuela y
+          es comida para sacrificar.</span></div>
+        <div class="usd num">0,30</div></div>
+
+      <div class="total"><div></div><div>Total</div><div class="usd num">USD 0,86</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Qué sacar</h2>
+    <div class="fuera">
+      <div><span class="n">Key to the Side-Door</span> — tu peor carta por margen claro</div>
+      <div><span class="n">Gathering of Darkness</span></div>
+      <div><span class="n">Gollum, Silent Slinker // Meager Meal</span></div>
+      <div><span class="n">Along the Crooked Way</span></div>
+      <div><span class="n">Phoenix Fleet Airship</span></div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Cuánto sube</h2>
+    <p style="margin-bottom:1.4rem">Medido con <strong>semillas que no participaron en
+    elegir las cartas</strong>, 4.000 partidas contra cada mazo del metajuego:</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>contra</th><th class="n">ahora</th><th class="n">con las cinco</th></tr></thead>
+        <tbody>
+          <tr><td>Eluge, the Shoreless Sea</td><td class="n num">77,8%</td><td class="n num up">87,2%</td></tr>
+          <tr><td>Tifa Lockhart</td><td class="n num">74,1%</td><td class="n num up">81,4%</td></tr>
+          <tr><td>Kona Rescue Beastie</td><td class="n num">60,9%</td><td class="n num up">71,5%</td></tr>
+          <tr><td>Sephiroth, Fabled SOLDIER</td><td class="n num">36,9%</td><td class="n num up">52,4%</td></tr>
+          <tr><td>Ketramose the New Dawn</td><td class="n num">29,2%</td><td class="n num up">49,7%</td></tr>
+          <tr><td>Elspeth Storm Slayer</td><td class="n num">12,3%</td><td class="n num up">18,9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1.6rem">Los dos partidos que perdías feo —Sephiroth y
+    Ketramose— <strong>pasan a estar parejos</strong>. Elspeth sigue ganándote, pero de
+    12% a 19% ya es un partido y no un trámite.</p>
+    <p style="margin-top:1rem"><span class="big">+14,6</span></p>
+    <p style="margin-top:.6rem;color:var(--ink-2)">puntos de índice, de 31,1 a 45,7.
+    Winrate contra el campo: <span class="num">36,0%</span> →
+    <span class="num up">49,2%</span>.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Por qué la lista es tan corta</h2>
+    <p>Se barrieron <strong>918 cartas</strong> mono negras legales que no tienes, con
+    precio de hasta 25 dólares. Solo <strong>223 pasaron el filtro de lectura</strong>, y
+    de esas hubo que revisar el top a mano.</p>
+    <p>El primer barrido, sin filtro, recomendaba en primer lugar <em>Hunted Bonebrute</em>
+    con +10,36. Su texto le da <strong>dos bloqueadores al rival</strong> — y el motor se
+    los daba a sí mismo. Detrás venían un 5/5 por dos maná cuyo inconveniente no se leía,
+    un Mox que solo funciona con Dragones, y tres criaturas que drenan al atacar contadas
+    también al entrar.</p>
+    <p><strong>No fue mala suerte.</strong> Un buscador de compras ordena por mejora
+    medida, y el error de medida es máximo justo donde la lectura está equivocada y es
+    generosa: encuentra <em>las cartas peor leídas</em>, no las mejores.</p>
+  </section>
+
+  <section>
+    <h2>Qué creerle a esto</h2>
+    <ul class="plain">
+      <li>El <strong>+14,6 es una comparación dentro del mismo motor</strong>, con
+      semillas independientes. No es una predicción de winrate real: en Brawl solo hay dos
+      winrates publicados y ajustar con eso devuelve 90% para cualquier cosa.</li>
+      <li><strong>Lo que sí es sólido</strong> es la dirección y el tamaño relativo. Cinco
+      cartas de a veinte centavos moviendo el mazo más que cualquier reorganización de lo
+      que ya tienes: eso se sostiene.</li>
+      <li><strong>Y una advertencia útil:</strong> el motor solo pudo evaluar una cuarta
+      parte del universo comprable. Hay cartas mejores que estas cinco entre las 695 que
+      rechazó — simplemente no puede juzgarlas sin arriesgarse a recomendarte otra
+      Hunted Bonebrute.</li>
+    </ul>
+  </section>
+
+  <section class="note">
+    <p><strong>Si quieres gastar más de un dólar</strong>, el dinero rinde mejor en la
+    base de maná que en hechizos: 23 pantanos y una tierra utilitaria es lo que hay, y ahí
+    el motor no puede ayudarte porque las tierras que entran giradas están apagadas —
+    correcto y mide peor, uno de los doce casos del proyecto.</p>
+  </section>
+
+</div>
