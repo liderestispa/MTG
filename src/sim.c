@@ -94,6 +94,7 @@ static long long ST_cast, ST_counter_used, ST_counter_seen, ST_removal, ST_kills
                  ST_gamelen, ST_draw, ST_manaflood, ST_manascrew, ST_handend, ST_lifeend;
 
 static long long ST_turns_dbg, ST_win_dmg, ST_lose_dmg, ST_timeout, ST_deck;
+static long long ST_gy_fin;   /* cartas en el cementerio al terminar */
 /* diagnostico de negacion: manos por turno y eficacia del descarte */
 static long long ST_hA[16], ST_hB[16], ST_hn[16];
 static long long ST_disc_try, ST_disc_hit, ST_disc_handsz;
@@ -297,11 +298,13 @@ typedef struct {
   int flot;               /* mana flotante de este turno (E_ETB_MANA); se pierde al acabar */
   int storied;            /* "enduring story": una vez conseguido, no se pierde */
   int tax_atk;            /* {N} que hay que pagar POR CRIATURA para atacarme */
-  int gy_is;              /* instantaneos y conjuros que han ido al cementerio.
-                             El motor NO tiene cementerio: un hechizo lanzado se resuelve
-                             y desaparece. Esto es lo minimo que hace falta para los
-                             costes que bajan con el cementerio, y de paso sirve para
-                             umbral, delirio y cuentas de hechizos. */
+  int gy[ZONEMAX], ngy;   /* CEMENTERIO: la zona de verdad, con las cartas dentro.
+                             Antes solo habia un contador de instantaneos y conjuros, asi
+                             que una carta que moria desaparecia y no habia forma de
+                             modelar flashback, escapar, recursion ni umbral. */
+  int gy_is;              /* de ese cementerio, cuantos son instantaneo o conjuro. Se
+                             mantiene aparte por velocidad: pay_gen lo consulta en cada
+                             comprobacion de coste y recorrer la zona ahi seria caro. */
   uint8_t hand_adv[ZONEMAX];   /* aventura ya usada en ESA copia de la mano */
   int played_land;
   int cards_drawn_turn;
@@ -349,6 +352,7 @@ static void pn_cargar(const char*ruta){
   fclose(f); PN_ON = 1;
 }
 
+static void al_cementerio(P*p,int def);   /* la usa alt_pay, mucho antes */
 static int ncreat(P*p);              /* definidas mas abajo */
 static int untapped_count(P*p);
 static inline int pw(P*p,int i);
@@ -569,6 +573,7 @@ static void alt_pay(P*p,Def*d){
       int q=-1;
       for(int i=p->nl-1;i>=0;i--) if(p->ltap[i]){ q=i; break; }
       if(q<0) q=p->nl-1;
+      al_cementerio(p, p->lands[q]);
       for(int i=q;i<p->nl-1;i++){ p->lands[i]=p->lands[i+1]; p->ltap[i]=p->ltap[i+1]; }
       p->nl--;
     }
@@ -694,7 +699,15 @@ static void apply(P*me,P*opp,int def,int which);
 static void apply_die(P*me,P*opp,int def);
 static void apply_atk(P*me,P*opp,int def);
 static void saga_capitulo(P*me,P*opp,int def,int cap);
+/* Unico camino al cementerio. Tenerlo en una funcion evita el error clasico de este
+   motor: dos sitios que deben mantenerse en sincronia y uno que se olvida. */
+static void al_cementerio(P*p,int def){
+  if(p->ngy < ZONEMAX) p->gy[p->ngy++] = def;
+  if(D[def].typ==T_INST || D[def].typ==T_SORC) p->gy_is++;
+}
+
 static void rmbf(P*p,int i){
+  al_cementerio(p, p->bf[i]);
   tj_ev("sale", p, p->bf[i]);
   /* disparo al ir al cementerio (Ichor Wellspring, Nihil Spellbomb, Lembas). Antes no
      existia: el motor solo leia la mitad de entrada de esas cartas. */
@@ -1174,7 +1187,7 @@ static void defender_instants(P*def,P*act){
     int di=def->hand[best];
     for(int k=best;k<def->nh-1;k++) def->hand[k]=def->hand[k+1]; def->nh--;
     paycost(def,&D[di],&def->treasures);
-    if(D[di].typ==T_INST||D[di].typ==T_SORC) def->gy_is++;
+    if(D[di].typ!=T_CREA) al_cementerio(def, di);
     if(D[di].typ==T_CREA) addbf(def,di);
     SPARE_MANA = untapped_count(def);
     apply(def,act,di,0);
@@ -1501,7 +1514,8 @@ static void cast_phase(P*me,P*opp,int main2){
     SPARE_MANA = untapped_count(me);
     Def*d=&D[def];
     /* al cementerio va igual, se resuelva o lo contrarresten */
-    if(d->typ==T_INST||d->typ==T_SORC) me->gy_is++;
+    if(d->typ!=T_CREA && d->typ!=T_ART && d->typ!=T_ENCH && d->typ!=T_PW && d->typ!=T_LAND)
+      al_cementerio(me, def);
     if(try_counter(opp,d)) continue;                 /* contrarrestado: se va al cementerio */
     if(d->typ!=T_CREA){
       for(int q=0;q<me->nbf;q++){
